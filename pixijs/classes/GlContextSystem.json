@@ -1,0 +1,295 @@
+{
+  "type": "class",
+  "name": "GlContextSystem",
+  "sourcePath": "rendering/renderers/gl/context/GlContextSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "Options for the context system. of GPU is suitable for the WebGL context, can be `'high-performance'` or `'low-power'`. Setting to `'high-performance'` will prioritize rendering performance over power consumption, while setting to `'low-power'` will prioritize power saving over rendering performance. colors with premultiplied alpha. If enabled, the drawing buffer will preserve its value until cleared or overwritten. Enable this if you need to call `toDataUrl` on the WebGL context. / export interface ContextSystemOptions { /** User-provided WebGL rendering context object. / context: WebGL2RenderingContext | null; /** An optional hint indicating what configuration of GPU is suitable for the WebGL context, can be `'high-performance'` or `'low-power'`. Setting to `'high-performance'` will prioritize rendering performance over power consumption, while setting to `'low-power'` will prioritize power saving over rendering performance. / powerPreference?: GpuPowerPreference; /** Whether the compositor will assume the drawing buffer contains colors with premultiplied alpha. / premultipliedAlpha: boolean; /** Whether to enable drawing buffer preservation. If enabled, the drawing buffer will preserve its value until cleared or overwritten. Enable this if you need to call `toDataUrl` on the WebGL context. / preserveDrawingBuffer: boolean; antialias?: boolean; /** The preferred WebGL version to use. / preferWebGLVersion?: 1 | 2; /** Whether to enable multi-view rendering. Set to true when rendering to multiple canvases on the dom. / multiView: boolean; } /** System plugin to the renderer to manage the context",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": "`true` if the context is lost / get isLost(): boolean { return (!this.gl || this.gl.isContextLost()); } /** Handles the context change event. / protected contextChange(gl: WebGL2RenderingContext): void { this.gl = gl; this._renderer.gl = gl; } public init(options: ContextSystemOptions): void { options = { ...GlContextSystem.defaultOptions, ...options }; // TODO add to options let multiView = this.multiView = options.multiView; if (options.context && multiView) { // eslint-disable-next-line max-len warn('Renderer created with both a context and multiview enabled. Disabling multiView as both cannot work together.'); multiView = false; } if (multiView) { this.canvas = DOMAdapter.get() .createCanvas(this._renderer.canvas.width, this._renderer.canvas.height); } else { this.canvas = this._renderer.view.canvas; } /* The options passed in to create a new WebGL context."
+    },
+    {
+      "name": "initFromContext",
+      "params": [
+        {
+          "name": "options.context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createContext",
+      "params": [
+        {
+          "name": "options.preferWebGLVersion",
+          "type": null
+        },
+        {
+          "name": "{\n                alpha",
+          "type": null
+        },
+        {
+          "name": "premultipliedAlpha",
+          "type": null
+        },
+        {
+          "name": "antialias",
+          "type": null
+        },
+        {
+          "name": "stencil",
+          "type": "true",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "preserveDrawingBuffer",
+          "type": "options.preserveDrawingBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "powerPreference",
+          "type": "options.powerPreference ?? 'default'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureCanvasSize",
+      "params": [
+        {
+          "name": "targetCanvas",
+          "type": "ICanvas",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.multiView",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "targetCanvas !== this.canvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'multiView is disabled",
+          "type": null
+        },
+        {
+          "name": "but targetCanvas is not the main canvas'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "canvas.width < targetCanvas.width || canvas.height < targetCanvas.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "targetCanvas.width",
+          "type": null
+        },
+        {
+          "name": "targetCanvas.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "targetCanvas.height",
+          "type": null
+        },
+        {
+          "name": "targetCanvas.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forceContextLoss",
+      "params": [],
+      "returnType": "void",
+      "description": "Initializes the context. / protected initFromContext(gl: WebGL2RenderingContext): void { this.gl = gl; this.webGLVersion = gl instanceof DOMAdapter.get().getWebGLRenderingContext() ? 1 : 2; this.getExtensions(); this.validateContext(gl); this._renderer.runners.contextChange.emit(gl); const element = this._renderer.view.canvas; (element as any).addEventListener('webglcontextlost', this.handleContextLost, false); element.addEventListener('webglcontextrestored', this.handleContextRestored, false); } /** Initialize from context options / protected createContext(preferWebGLVersion: 1 | 2, options: WebGLContextAttributes): void { let gl: WebGL2RenderingContext | WebGLRenderingContext; const canvas = this.canvas; if (preferWebGLVersion === 2) { gl = canvas.getContext('webgl2', options); } if (!gl) { gl = canvas.getContext('webgl', options); if (!gl) { // fail, not able to get a context throw new Error('This browser does not support WebGL. Try using the canvas renderer'); } } this.gl = gl as WebGL2RenderingContext; this.initFromContext(this.gl); } /** Auto-populate the {@link GlContextSystem.extensions extensions}. */ protected getExtensions(): void { // time to set up default extensions that Pixi uses. const { gl } = this; const common = { anisotropicFiltering: gl.getExtension('EXT_texture_filter_anisotropic'), floatTextureLinear: gl.getExtension('OES_texture_float_linear'), s3tc: gl.getExtension('WEBGL_compressed_texture_s3tc'), s3tc_sRGB: gl.getExtension('WEBGL_compressed_texture_s3tc_srgb'), // eslint-disable-line camelcase etc: gl.getExtension('WEBGL_compressed_texture_etc'), etc1: gl.getExtension('WEBGL_compressed_texture_etc1'), pvrtc: gl.getExtension('WEBGL_compressed_texture_pvrtc') || gl.getExtension('WEBKIT_WEBGL_compressed_texture_pvrtc'), atc: gl.getExtension('WEBGL_compressed_texture_atc'), astc: gl.getExtension('WEBGL_compressed_texture_astc'), bptc: gl.getExtension('EXT_texture_compression_bptc'), rgtc: gl.getExtension('EXT_texture_compression_rgtc'), loseContext: gl.getExtension('WEBGL_lose_context'), }; if (this.webGLVersion === 1) { this.extensions = { ...common, drawBuffers: gl.getExtension('WEBGL_draw_buffers'), depthTexture: gl.getExtension('WEBGL_depth_texture'), vertexArrayObject: gl.getExtension('OES_vertex_array_object') || gl.getExtension('MOZ_OES_vertex_array_object') || gl.getExtension('WEBKIT_OES_vertex_array_object'), uint32ElementIndex: gl.getExtension('OES_element_index_uint'), // Floats and half-floats floatTexture: gl.getExtension('OES_texture_float'), floatTextureLinear: gl.getExtension('OES_texture_float_linear'), textureHalfFloat: gl.getExtension('OES_texture_half_float'), textureHalfFloatLinear: gl.getExtension('OES_texture_half_float_linear'), vertexAttribDivisorANGLE: gl.getExtension('ANGLE_instanced_arrays'), srgb: gl.getExtension('EXT_sRGB'), }; } else { this.extensions = { ...common, colorBufferFloat: gl.getExtension('EXT_color_buffer_float'), }; const provokeExt = gl.getExtension('WEBGL_provoking_vertex'); if (provokeExt) { provokeExt.provokingVertexWEBGL(provokeExt.FIRST_VERTEX_CONVENTION_WEBGL); } } } /** Handles a lost webgl context / protected handleContextLost(event: WebGLContextEvent): void { event.preventDefault(); // only restore if we purposefully nuked it if (this._contextLossForced) { this._contextLossForced = false; // Restore the context after this event has exited setTimeout(() => { if (this.gl.isContextLost()) { this.extensions.loseContext?.restoreContext(); } }, 0); } } /** Handles a restored webgl context. */ protected handleContextRestored(): void { this.getExtensions(); // restore extensions state this._renderer.runners.contextChange.emit(this.gl); } public destroy(): void { const element = this._renderer.view.canvas; this._renderer = null; // remove listeners (element as any).removeEventListener('webglcontextlost', this.handleContextLost); element.removeEventListener('webglcontextrestored', this.handleContextRestored); this.gl.useProgram(null); this.extensions.loseContext?.loseContext(); } /** this function can be called to force a webGL context loss this will release all resources on the GPU. Useful if you need to put Pixi to sleep, and save some GPU memory As soon as render is called - all resources will be created again."
+    },
+    {
+      "name": "loseContext",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "validateContext",
+      "params": [
+        {
+          "name": "gl",
+          "type": "WebGL2RenderingContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getContextAttributes",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "attributes && !attributes.stencil",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'Provided WebGL context does not have a stencil buffer",
+          "type": null
+        },
+        {
+          "name": "masks may not render correctly'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!supports.uint32Indices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'Provided WebGL context does not support 32 index buffer",
+          "type": null
+        },
+        {
+          "name": "large scenes may not render correctly'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "isLost",
+      "type": "boolean",
+      "description": "`true` if the context is lost"
+    }
+  ]
+}

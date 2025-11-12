@@ -1,0 +1,5463 @@
+{
+  "type": "class",
+  "name": "Render",
+  "sourcePath": "physics/matter-js/lib/render/Render.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../body/Body'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Common'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../body/Composite'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Bounds'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Events'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Vector'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Mouse'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof window !== 'undefined'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTimeout",
+      "params": [
+        {
+          "name": "function(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "callback",
+      "params": [
+        {
+          "name": "Common.now(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "defaults",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.canvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getContext",
+      "params": [
+        {
+          "name": "'2d'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.options.pixelRatio !== 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPixelRatio",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "render.options.pixelRatio",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Common.isElement(render.element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "appendChild",
+      "params": [
+        {
+          "name": "render.canvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "loop",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "world",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.options.showStats || render.options.showDebug",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stats",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "render.context",
+          "type": null
+        },
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.options.showPerformance || render.options.showDebug",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "performance",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "render.context",
+          "type": null
+        },
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "pixelRatio",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pixelRatio === 'auto'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setAttribute",
+      "params": [
+        {
+          "name": "'data-pixel-ratio'",
+          "type": null
+        },
+        {
+          "name": "pixelRatio",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "width",
+      "params": [
+        {
+          "name": "in CSS pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "height",
+      "params": [
+        {
+          "name": "in CSS pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.options.pixelRatio !== 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPixelRatio",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "render.options.pixelRatio",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "objects",
+          "type": null
+        },
+        {
+          "name": "padding",
+          "type": null
+        },
+        {
+          "name": "center",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isArray",
+      "params": [
+        {
+          "name": "objects",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < objects.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "min && max",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "min.x < bounds.min.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "max.x > bounds.max.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "min.y < bounds.min.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "max.y > bounds.max.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "innerRatio > outerRatio",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "center",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.mouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setScale",
+      "params": [
+        {
+          "name": "render.mouse",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": "(render.bounds.max.x - render.bounds.min.x",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setOffset",
+      "params": [
+        {
+          "name": "render.mouse",
+          "type": null
+        },
+        {
+          "name": "render.bounds.min",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "render.options.pixelRatio / boundsScaleX",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "render.options.pixelRatio / boundsScaleY",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "-render.bounds.min.x",
+          "type": null
+        },
+        {
+          "name": "-render.bounds.min.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "render.options.pixelRatio",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "render.options.pixelRatio",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allBodies",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allConstraints",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "'beforeRender'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.currentBackground !== background",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "canvas.width",
+          "type": null
+        },
+        {
+          "name": "canvas.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.hasBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < allBodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Bounds.overlaps(body.bounds",
+          "type": null
+        },
+        {
+          "name": "render.bounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < allConstraints.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "bodyA.position",
+          "type": null
+        },
+        {
+          "name": "constraint.pointA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "bodyB.position",
+          "type": null
+        },
+        {
+          "name": "constraint.pointB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pointAWorld || !pointBWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Bounds.contains(render.bounds",
+          "type": null
+        },
+        {
+          "name": "pointAWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contains",
+      "params": [
+        {
+          "name": "render.bounds",
+          "type": null
+        },
+        {
+          "name": "pointBWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "constraint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "startViewTransform",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.mouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setScale",
+      "params": [
+        {
+          "name": "render.mouse",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": "(render.bounds.max.x - render.bounds.min.x",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setOffset",
+      "params": [
+        {
+          "name": "render.mouse",
+          "type": null
+        },
+        {
+          "name": "render.bounds.min",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.options.pixelRatio !== 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "render.options.pixelRatio",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "render.options.pixelRatio",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!options.wireframes || (engine.enableSleeping && options.showSleeping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bodies",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showConvexHulls",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bodyConvexHulls",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bodyWireframes",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bodyBounds",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showAxes || options.showAngleIndicator",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bodyAxes",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showPositions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bodyPositions",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showVelocity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bodyVelocity",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showIds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bodyIds",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showSeparations",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "separations",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "engine.pairs.list",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showCollisions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collisions",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "engine.pairs.list",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showVertexNumbers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vertexNumbers",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showMousePosition",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mousePosition",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "render.mouse",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "constraints",
+      "params": [
+        {
+          "name": "constraints",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.hasBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "endViewTransform",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "'afterRender'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allBodies",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allConstraints",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allComposites",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width * 5.5",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var key in sections",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillText",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "x + width",
+          "type": null
+        },
+        {
+          "name": "y + 8",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillText",
+      "params": [
+        {
+          "name": "section",
+          "type": null
+        },
+        {
+          "name": "x + width",
+          "type": null
+        },
+        {
+          "name": "y + 26",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "deltaMean / lastEngineDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "50",
+          "type": null
+        },
+        {
+          "name": "gap * 5 + width * 6 + 22",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "status",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "graphHeight",
+          "type": null
+        },
+        {
+          "name": "deltaHistory.length",
+          "type": null
+        },
+        {
+          "name": "Math.round(fps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "deltaHistory[i] / deltaMean",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "status",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "x + gap + width",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "graphHeight",
+          "type": null
+        },
+        {
+          "name": "engineDeltaHistory.length",
+          "type": null
+        },
+        {
+          "name": "lastEngineDelta.toFixed(2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "engineDeltaHistory[i] / engineDeltaMean",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "status",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "x + (gap + width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pow",
+      "params": [
+        {
+          "name": "Common.clamp((engineUpdatesMean / neededUpdatesPerFrame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "engineUpdatesHistory[i] / engineUpdatesMean",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "status",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "x + (gap + width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toFixed",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "engineElapsedHistory[i] / engineElapsedMean",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "status",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "x + (gap + width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toFixed",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "elapsedHistory[i] / elapsedMean",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "status",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "x + (gap + width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toFixed",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "((timestampElapsedHistory[i] / deltaHistory[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "count",
+          "type": null
+        },
+        {
+          "name": "label",
+          "type": null
+        },
+        {
+          "name": "indicator",
+          "type": null
+        },
+        {
+          "name": "plotY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y + 7",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y + 7 - height * Common.clamp(0.4 * plotY(0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < width; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "x + i",
+          "type": null
+        },
+        {
+          "name": "y + 7 - (i < count ? height * Common.clamp(0.4 * plotY(i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hsl",
+      "params": [
+        {
+          "name": "' + Common.clamp(25 + 95 * indicator",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "120",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y - 7",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillText",
+      "params": [
+        {
+          "name": "label",
+          "type": null
+        },
+        {
+          "name": "x + width",
+          "type": null
+        },
+        {
+          "name": "y - 5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraints",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < constraints.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!constraint.render.visible || !constraint.pointA || !constraint.pointB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "bodyA.position",
+          "type": null
+        },
+        {
+          "name": "constraint.pointA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "constraint.render.type === 'pin'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "start.x",
+          "type": null
+        },
+        {
+          "name": "start.y",
+          "type": null
+        },
+        {
+          "name": "3",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2 * Math.PI",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "bodyB.position",
+          "type": null
+        },
+        {
+          "name": "constraint.pointB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "start.x",
+          "type": null
+        },
+        {
+          "name": "start.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "constraint.render.type === 'spring'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sub",
+      "params": [
+        {
+          "name": "end",
+          "type": null
+        },
+        {
+          "name": "start",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "perp",
+      "params": [
+        {
+          "name": "Vector.normalise(delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "Common.clamp(constraint.length / 5",
+          "type": null
+        },
+        {
+          "name": "12",
+          "type": null
+        },
+        {
+          "name": "20",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 1; j < coils; j += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "start.x + delta.x * (j / coils",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "end.x",
+          "type": null
+        },
+        {
+          "name": "end.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "constraint.render.lineWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "constraint.render.anchors",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "start.x",
+          "type": null
+        },
+        {
+          "name": "start.y",
+          "type": null
+        },
+        {
+          "name": "3",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2 * Math.PI",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "end.x",
+          "type": null
+        },
+        {
+          "name": "end.y",
+          "type": null
+        },
+        {
+          "name": "3",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2 * Math.PI",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "k = body.parts.length > 1 ? 1 : 0; k < body.parts.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!part.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showSleeping && body.isSleeping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "part.render.opacity !== 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "part.render.sprite && part.render.sprite.texture && !options.wireframes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "part.position.x",
+          "type": null
+        },
+        {
+          "name": "part.position.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "part.angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawImage",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "texture.width * -sprite.xOffset * sprite.xScale",
+          "type": null
+        },
+        {
+          "name": "texture.height * -sprite.yOffset * sprite.yScale",
+          "type": null
+        },
+        {
+          "name": "texture.width * sprite.xScale",
+          "type": null
+        },
+        {
+          "name": "texture.height * sprite.yScale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "-part.angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "-part.position.x",
+          "type": null
+        },
+        {
+          "name": "-part.position.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "part.circleRadius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "part.position.x",
+          "type": null
+        },
+        {
+          "name": "part.position.y",
+          "type": null
+        },
+        {
+          "name": "part.circleRadius",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2 * Math.PI",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "part.vertices[0].x",
+          "type": null
+        },
+        {
+          "name": "part.vertices[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 1; j < part.vertices.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!part.vertices[j - 1].isInternal || showInternalEdges",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "part.vertices[j].x",
+          "type": null
+        },
+        {
+          "name": "part.vertices[j].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "part.vertices[j].x",
+          "type": null
+        },
+        {
+          "name": "part.vertices[j].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "part.vertices[j].isInternal && !showInternalEdges",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "part.vertices[(j + 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "part.vertices[0].x",
+          "type": null
+        },
+        {
+          "name": "part.vertices[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!options.wireframes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "part.render.lineWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "k = body.parts.length > 1 ? 1 : 0; k < body.parts.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "part.vertices[0].x",
+          "type": null
+        },
+        {
+          "name": "part.vertices[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = 1; j < part.vertices.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!part.vertices[j - 1].isInternal || showInternalEdges",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "part.vertices[j].x",
+          "type": null
+        },
+        {
+          "name": "part.vertices[j].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "part.vertices[j].x",
+          "type": null
+        },
+        {
+          "name": "part.vertices[j].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "part.vertices[j].isInternal && !showInternalEdges",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "part.vertices[(j + 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "part.vertices[0].x",
+          "type": null
+        },
+        {
+          "name": "part.vertices[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible || body.parts.length === 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "body.vertices[0].x",
+          "type": null
+        },
+        {
+          "name": "body.vertices[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = 1; j < body.vertices.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "body.vertices[j].x",
+          "type": null
+        },
+        {
+          "name": "body.vertices[j].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "body.vertices[0].x",
+          "type": null
+        },
+        {
+          "name": "body.vertices[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0.2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "k = parts.length > 1 ? 1 : 0; k < parts.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = 0; j < part.vertices.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0.2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillText",
+      "params": [
+        {
+          "name": "i + '_' + j",
+          "type": null
+        },
+        {
+          "name": "part.position.x + (part.vertices[j].x - part.position.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "mouse",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0.8",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillText",
+      "params": [
+        {
+          "name": "mouse.position.x + '  ' + mouse.position.y",
+          "type": null
+        },
+        {
+          "name": "mouse.position.x + 5",
+          "type": null
+        },
+        {
+          "name": "mouse.position.y - 5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = parts.length > 1 ? 1 : 0; j < parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "part.bounds.min.x",
+          "type": null
+        },
+        {
+          "name": "part.bounds.min.y",
+          "type": null
+        },
+        {
+          "name": "part.bounds.max.x - part.bounds.min.x",
+          "type": null
+        },
+        {
+          "name": "part.bounds.max.y - part.bounds.min.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.wireframes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0.08",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0.1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.showAxes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = parts.length > 1 ? 1 : 0; j < parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "k = 0; k < part.axes.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "part.position.x",
+          "type": null
+        },
+        {
+          "name": "part.position.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "part.position.x + axis.x * 20",
+          "type": null
+        },
+        {
+          "name": "part.position.y + axis.y * 20",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = parts.length > 1 ? 1 : 0; j < parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "k = 0; k < part.axes.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "part.position.x",
+          "type": null
+        },
+        {
+          "name": "part.position.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "(part.vertices[0].x + part.vertices[part.vertices.length-1].x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.wireframes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0.4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "k = 0; k < body.parts.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "part.position.x",
+          "type": null
+        },
+        {
+          "name": "part.position.y",
+          "type": null
+        },
+        {
+          "name": "3",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2 * Math.PI",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.wireframes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "body.positionPrev.x",
+          "type": null
+        },
+        {
+          "name": "body.positionPrev.y",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2 * Math.PI",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "165",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0.8",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getVelocity",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "body.position.x",
+          "type": null
+        },
+        {
+          "name": "body.position.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "body.position.x + velocity.x",
+          "type": null
+        },
+        {
+          "name": "body.position.y + velocity.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!bodies[i].render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = parts.length > 1 ? 1 : 0; j < parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillText",
+      "params": [
+        {
+          "name": "part.id",
+          "type": null
+        },
+        {
+          "name": "part.position.x + 10",
+          "type": null
+        },
+        {
+          "name": "part.position.y - 10",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "pairs",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < pairs.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pair.isActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = 0; j < pair.contactCount; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "vertex.x - 1.5",
+          "type": null
+        },
+        {
+          "name": "vertex.y - 1.5",
+          "type": null
+        },
+        {
+          "name": "3.5",
+          "type": null
+        },
+        {
+          "name": "3.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.wireframes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0.7",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < pairs.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pair.isActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pair.contactCount > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pair.contactCount === 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "collision.bodyB === collision.supports[0].body || collision.bodyA.isStatic === true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "normalPosX - collision.normal.x * 8",
+          "type": null
+        },
+        {
+          "name": "normalPosY - collision.normal.y * 8",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "normalPosX + collision.normal.x * 8",
+          "type": null
+        },
+        {
+          "name": "normalPosY + collision.normal.y * 8",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "normalPosX",
+          "type": null
+        },
+        {
+          "name": "normalPosY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.wireframes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "165",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0.7",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "pairs",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < pairs.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pair.isActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!bodyB.isStatic && !bodyA.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "bodyB.position.x",
+          "type": null
+        },
+        {
+          "name": "bodyB.position.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "bodyB.position.x - collision.penetration.x * k",
+          "type": null
+        },
+        {
+          "name": "bodyB.position.y - collision.penetration.y * k",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!bodyB.isStatic && !bodyA.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "bodyA.position.x",
+          "type": null
+        },
+        {
+          "name": "bodyA.position.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "bodyA.position.x + collision.penetration.x * k",
+          "type": null
+        },
+        {
+          "name": "bodyA.position.y + collision.penetration.y * k",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.wireframes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "165",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "inspector",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.hasBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "1 / boundsScaleX",
+          "type": null
+        },
+        {
+          "name": "1 / boundsScaleY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "-render.bounds.min.x",
+          "type": null
+        },
+        {
+          "name": "-render.bounds.min.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < selected.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "165",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0.9",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setLineDash",
+      "params": [
+        {
+          "name": "[1",
+          "type": null
+        },
+        {
+          "name": "2]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "switch",
+      "params": [
+        {
+          "name": "item.type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "Math.floor(bounds.min.x - 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "bounds.min.y - 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "bounds.max.x - bounds.min.x + 6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "bounds.max.y - bounds.min.y + 6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item.bodyA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "point.x",
+          "type": null
+        },
+        {
+          "name": "point.y",
+          "type": null
+        },
+        {
+          "name": "10",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2 * Math.PI",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setLineDash",
+      "params": [
+        {
+          "name": "[]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "-0.5",
+          "type": null
+        },
+        {
+          "name": "-0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "inspector.selectStart !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "165",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0.6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "165",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0.1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "Math.floor(bounds.min.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "bounds.min.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "bounds.max.x - bounds.min.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "bounds.max.y - bounds.min.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "-0.5",
+          "type": null
+        },
+        {
+          "name": "-0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.hasBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unshift",
+      "params": [
+        {
+          "name": "timing.delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "timing.deltaHistory.length",
+          "type": null
+        },
+        {
+          "name": "historySize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unshift",
+      "params": [
+        {
+          "name": "engine.timing.lastDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "timing.engineDeltaHistory.length",
+          "type": null
+        },
+        {
+          "name": "historySize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unshift",
+      "params": [
+        {
+          "name": "timing.timestampElapsed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "timing.timestampElapsedHistory.length",
+          "type": null
+        },
+        {
+          "name": "historySize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unshift",
+      "params": [
+        {
+          "name": "engine.timing.lastUpdatesPerFrame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "timing.engineUpdatesHistory.length",
+          "type": null
+        },
+        {
+          "name": "historySize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unshift",
+      "params": [
+        {
+          "name": "engine.timing.lastElapsed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "timing.engineElapsedHistory.length",
+          "type": null
+        },
+        {
+          "name": "historySize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unshift",
+      "params": [
+        {
+          "name": "timing.lastElapsed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "timing.elapsedHistory.length",
+          "type": null
+        },
+        {
+          "name": "historySize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "values",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < values.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "result / values.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createElement",
+      "params": [
+        {
+          "name": "'canvas'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "canvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getContext",
+      "params": [
+        {
+          "name": "'2d'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "an Image",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "imagePath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "image",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Image",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "background",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "/(jpg|gif|png",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "background",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "url",
+      "params": [
+        {
+          "name": "' + background + '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "inserted",
+      "params": [
+        {
+          "name": "if `render.canvas` has not been specified",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "size",
+      "params": [
+        {
+          "name": "`render.options.width` and `render.options.height`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "frequency",
+      "params": [
+        {
+          "name": "e.g. 60 fps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "e.g. 16.66ms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "duration",
+      "params": [
+        {
+          "name": "e.g. 5.00ms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "duration",
+      "params": [
+        {
+          "name": "e.g. 0.40ms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "speed",
+      "params": [
+        {
+          "name": "e.g. '1.00x' is 'real-time'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "frames",
+      "params": [
+        {
+          "name": "60 frames",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

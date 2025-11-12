@@ -1,0 +1,976 @@
+{
+  "type": "class",
+  "name": "Text",
+  "sourcePath": "gameobjects/text/Text.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "gameobjects",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "GameObject",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Mixins",
+          "type": "[\n        Components.Alpha",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Components.BlendMode",
+          "type": null
+        },
+        {
+          "name": "Components.ComputedSize",
+          "type": null
+        },
+        {
+          "name": "Components.Crop",
+          "type": null
+        },
+        {
+          "name": "Components.Depth",
+          "type": null
+        },
+        {
+          "name": "Components.Flip",
+          "type": null
+        },
+        {
+          "name": "Components.GetBounds",
+          "type": null
+        },
+        {
+          "name": "Components.Mask",
+          "type": null
+        },
+        {
+          "name": "Components.Origin",
+          "type": null
+        },
+        {
+          "name": "Components.Pipeline",
+          "type": null
+        },
+        {
+          "name": "Components.PostPipeline",
+          "type": null
+        },
+        {
+          "name": "Components.ScrollFactor",
+          "type": null
+        },
+        {
+          "name": "Components.Tint",
+          "type": null
+        },
+        {
+          "name": "Components.Transform",
+          "type": null
+        },
+        {
+          "name": "Components.Visible",
+          "type": null
+        },
+        {
+          "name": "TextRender\n    ]",
+          "type": null
+        },
+        {
+          "name": "initialize",
+          "type": "function Text (scene",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "'Text'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPosition",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setOrigin",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initPipeline",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initPostPipeline",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextStyle",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.style.resolution === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetCropObject",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UUID",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addCanvas",
+      "params": [
+        {
+          "name": "this._textureKey",
+          "type": null
+        },
+        {
+          "name": "this.canvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderer && this.renderer.gl",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteTexture",
+      "params": [
+        {
+          "name": "this.frame.source.glTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initRTL",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setText",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style && style.padding",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPadding",
+      "params": [
+        {
+          "name": "style.padding",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style && style.lineSpacing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setLineSpacing",
+      "params": [
+        {
+          "name": "style.lineSpacing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style && style.letterSpacing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setLetterSpacing",
+      "params": [
+        {
+          "name": "style.letterSpacing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.style.rtl",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AddToDOM",
+      "params": [
+        {
+          "name": "this.canvas",
+          "type": null
+        },
+        {
+          "name": "this.scene.sys.canvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.wordWrapCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "style.wordWrapCallbackScope",
+          "type": null
+        },
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(wrappedLines",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "join",
+      "params": [
+        {
+          "name": "'\\n'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.wordWrapWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.wordWrapUseAdvanced",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "advancedWordWrap",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "this.context",
+          "type": null
+        },
+        {
+          "name": "this.style.wordWrapWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "basicWordWrap",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "this.context",
+          "type": null
+        },
+        {
+          "name": "this.style.wordWrapWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "wordWrapWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "/ +/gi",
+          "type": null
+        },
+        {
+          "name": "' '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "this.splitRegExp",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < linesCount; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "/^ *|\\s*$/gi",
+          "type": null
+        },
+        {
+          "name": "''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "line",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineWidth < wordWrapWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "' '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 0; j < words.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "wordWithSpace",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "wordWidth > currentLineWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "j === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "newWord.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "-1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "newWord",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "wordWidth <= currentLineWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!newWord.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'wordWrapWidth < a single character'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "substr",
+      "params": [
+        {
+          "name": "newWord.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "offset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "join",
+      "params": [
+        {
+          "name": "' '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "/[ \\n]*$/gi",
+          "type": null
+        },
+        {
+          "name": "''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "i + 1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "remainder",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "/[ \\n]*$/gi",
+          "type": null
+        },
+        {
+          "name": "''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "/[\\s|\\n]*$/gi",
+          "type": null
+        },
+        {
+          "name": "''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "wordWrapWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "this.splitRegExp",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "' '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i <= lastLineIndex; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "' '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 0; j <= lastWordIndex; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "word",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "j < lastWordIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "wordWidthWithSpace > spaceLeft",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "j > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "j < lastWordIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

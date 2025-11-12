@@ -1,0 +1,877 @@
+{
+  "type": "class",
+  "name": "TilingSprite",
+  "sourcePath": "scene/sprite-tiling/TilingSprite.ts",
+  "extends": "ViewContainer",
+  "implements": [],
+  "description": "Constructor options used for creating a TilingSprite instance. Defines the texture, tiling behavior, and rendering properties of the sprite. ```ts // Create a basic tiling sprite with repeating texture const tilingSprite = new TilingSprite({ texture: Texture.from('pattern.png'), width: 800,     // Width of the tiling area height: 600     // Height of the tiling area }); const background = new TilingSprite({ texture: Texture.from('background.png'), width: app.screen.width, height: app.screen.height, tilePosition: { x: 0, y: 0 }, tileScale: { x: 1.5, y: 1.5 }  // Scale up the texture anchor: 0.5,                    // Center anchor point roundPixels: true,              // Crisp pixel rendering }); ``` / export interface TilingSpriteOptions extends PixiMixins.TilingSpriteOptions, ViewContainerOptions { /** The anchor point of the TilingSprite (0-1 range) Controls the origin point for rotation, scaling, and positioning. Can be a number for uniform anchor or a PointData for separate x/y values. ```ts // Centered anchor const sprite = new TilingSprite({ ..., anchor: 0.5 }); sprite.anchor = 0.5; // Separate x/y anchor sprite.anchor = { x: 0.5, y: 0.5 }; // Right-aligned anchor sprite.anchor = { x: 1, y: 0 }; // Update anchor directly sprite.anchor.set(0.5, 0.5); ``` / anchor?: PointData | number; /** The offset of the tiling texture. Used to scroll or position the repeated pattern. ```ts // Offset the tiling pattern by 100 pixels in both x and y directions tilingSprite.tilePosition = { x: 100, y: 100 }; ``` / tilePosition?: PointData /** Scale of the tiling texture. Affects the size of each repeated instance of the texture. ```ts // Scale the texture by 1.5 in both x and y directions tilingSprite.tileScale = { x: 1.5, y: 1.5 }; ``` / tileScale?: PointData /** Rotation of the tiling texture in radians. This controls the rotation applied to the texture before tiling. ```ts // Rotate the texture by 45 degrees (in radians) tilingSprite.tileRotation = Math.PI / 4; // 45 degrees ``` / tileRotation?: number /** The texture to use for tiling. This is the image that will be repeated across the sprite. ```ts // Use a texture from the asset cache tilingSprite.texture = Texture.from('assets/pattern.png'); ``` / texture?: Texture /** The width of the tiling area. This defines how wide the tiling sprite will be. ```ts // Set the width of the tiling sprite to 800 pixels tilingSprite.width = 800; ``` / width?: number /** The height of the tiling area. This defines how tall the tiling sprite will be. ```ts // Set the height of the tiling sprite to 600 pixels tilingSprite.height = 600; ``` / height?: number /** Whether the tiling pattern should originate from the anchor point. When true, tiling starts from the origin instead of top-left. This will make the texture coordinates assigned to each vertex dependent on the value of the anchor. Without this, the top-left corner always gets the (0, 0) texture coordinate. ```ts // Enable anchor-based tiling tilingSprite.applyAnchorToTexture = true; ``` / applyAnchorToTexture?: boolean /** Whether to round the sprite's position to whole pixels. This can help with crisp rendering, especially for pixel art. When true, the sprite's position will be rounded to the nearest pixel. ```ts // Enable pixel rounding for crisp rendering tilingSprite.roundPixels = true; ``` / roundPixels?: boolean; } // eslint-disable-next-line requireExport/require-export-jsdoc, requireMemberAPI/require-member-api-doc export interface TilingSprite extends PixiMixins.TilingSprite, ViewContainer<TilingSpriteGpuData> {} /** A TilingSprite is a fast and efficient way to render a repeating texture across a given area. The texture can be scrolled, scaled, and rotated independently of the sprite itself. ```ts // Create a simple tiling background const background = new TilingSprite({ texture: Texture.from('background.png'), width: app.screen.width, height: app.screen.height, }); app.stage.addChild(background); // Create a scrolling parallax background const parallax = new TilingSprite({ texture: Texture.from('clouds.png'), width: app.screen.width, height: app.screen.height, tileScale: { x: 0.5, y: 0.5 } }); // Animate the tiling position app.ticker.add(() => { parallax.tilePosition.x -= 1; // Scroll left parallax.tilePosition.y -= 0.5; // Scroll up slowly }); // Create a repeating pattern with rotation const pattern = new TilingSprite({ texture: Texture.from('pattern.png'), width: 300, height: 200, tileRotation: Math.PI / 4, // 45 degree rotation anchor: 0.5 // Center anchor point }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "source",
+          "type": "Texture | string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "options",
+          "type": "TilingSpriteOptions",
+          "optional": true,
+          "default": "{}"
+        }
+      ],
+      "returnType": null,
+      "description": "Creates a new tiling sprite based on a source texture or image path. This is a convenience method that automatically creates and manages textures. ```ts // Create a new tiling sprite from an image path const pattern = TilingSprite.from('pattern.png'); pattern.width = 300; // Set the width of the tiling area pattern.height = 200; // Set the height of the tiling area // Create from options const texture = Texture.from('pattern.png'); const pattern = TilingSprite.from(texture, { width: 300, height: 200, tileScale: { x: 0.5, y: 0.5 } }); ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof source === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TilingSprite",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Cache.get(source",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TilingSprite",
+      "params": [
+        {
+          "name": "texture",
+          "type": "source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "...options",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options instanceof Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "args.length > 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'use new TilingSprite({ texture",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": "100",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "100 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "label",
+          "type": "'TilingSprite'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "...rest\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "_onUpdate",
+          "type": "(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Transform",
+      "params": [
+        {
+          "name": "observer",
+          "type": "{\n                _onUpdate: (",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anchor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "400",
+          "type": null
+        },
+        {
+          "name": "300",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": "this._anchor.copyFrom(value)",
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": "this._tileTransform.scale.copyFrom(value)",
+      "description": null
+    },
+    {
+      "name": "degrees",
+      "params": [
+        {
+          "name": "in radians",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "100",
+          "type": null
+        },
+        {
+          "name": "50",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTexture === value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTexture && currentTexture.dynamic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onViewUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value.dynamic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onViewUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "'assets/pattern.png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TilingSprite",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture.from('pattern.png'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TilingSprite",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture.from('pattern.png'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "300",
+          "type": null
+        },
+        {
+          "name": "200",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "size",
+      "params": [
+        {
+          "name": "square",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "400",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "width",
+          "type": "500",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "300\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "value",
+          "type": "number | Optional<Size",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "'height'>",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof value === 'object'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "Size",
+          "type": "${size.width}x${size.height}`",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [
+        {
+          "name": "reuseSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [
+        {
+          "name": "out",
+          "type": "Size",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Size",
+      "description": null
+    },
+    {
+      "name": "updateBounds",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TilingSprite",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture.from('pattern.png'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "x",
+          "type": "50",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "25 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "inside",
+          "type": "'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "contains",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "point",
+          "type": "'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "150",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "75 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "point",
+          "type": "PointData",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "point.x >= x1 && point.x <= x1 + width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "point.y >= y1 && point.y <= y1 + height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "texture",
+          "type": "true",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureSource",
+          "type": "true }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": "DestroyOptions",
+          "optional": true,
+          "default": "false"
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "destroyTextureSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "anchor",
+      "type": "ObservablePoint",
+      "description": "The anchor sets the origin point of the sprite. The default value is taken from the {@link Texture} and passed to the constructor. - The default is `(0,0)`, this means the sprite's origin is the top left. - Setting the anchor to `(0.5,0.5)` means the sprite's origin is centered. - Setting the anchor to `(1,1)` would mean the sprite's origin point will be the bottom right corner. If you pass only single parameter, it will set both x and y to the same value as shown in the example below. ```ts // Center the anchor point sprite.anchor = 0.5; // Sets both x and y to 0.5 sprite.position.set(400, 300); // Sprite will be centered at this position // Set specific x/y anchor points sprite.anchor = { x: 1, // Right edge y: 0  // Top edge }; // Using individual coordinates sprite.anchor.set(0.5, 1); // Center-bottom // For rotation around center sprite.anchor.set(0.5); sprite.rotation = Math.PI / 4; // 45 degrees around center // For scaling from center sprite.anchor.set(0.5); sprite.scale.set(2); // Scales from center point ```"
+    },
+    {
+      "name": "tilePosition",
+      "type": "ObservablePoint",
+      "description": "The offset of the tiling texture. Used to scroll or position the repeated pattern. ```ts // Offset the tiling pattern by 100 pixels in both x and y directions tilingSprite.tilePosition = { x: 100, y: 100 }; ```"
+    },
+    {
+      "name": "tileScale",
+      "type": "ObservablePoint",
+      "description": "Scale of the tiling texture. Affects the size of each repeated instance of the texture. ```ts // Scale the texture by 1.5 in both x and y directions tilingSprite.tileScale = { x: 1.5, y: 1.5 }; ```"
+    }
+  ]
+}

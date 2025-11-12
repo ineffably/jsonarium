@@ -1,0 +1,299 @@
+{
+  "type": "class",
+  "name": "PinLightBlend",
+  "sourcePath": "advanced-blend-modes/PinLightBlend.ts",
+  "extends": "BlendModeFilter",
+  "implements": [],
+  "description": "Replaces colors based on the blend color. Available as `container.blendMode = 'pin-light'` after importing `pixi.js/advanced-blend-modes`. import 'pixi.js/advanced-blend-modes'; import { Sprite } from 'pixi.js'; const sprite = Sprite.from('something.png'); sprite.blendMode = 'pin-light'",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "gl",
+          "type": "{\n                functions: `\n                float pinLight(float base",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "float blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blend <= 0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "base",
+          "type": null
+        },
+        {
+          "name": "2.0 * blend",
+          "type": null
+        }
+      ],
+      "returnType": "max(base, 2.0 * (blend - 0.5))",
+      "description": null
+    },
+    {
+      "name": "blendPinLight",
+      "params": [
+        {
+          "name": "vec3 base",
+          "type": null
+        },
+        {
+          "name": "vec3 blend",
+          "type": null
+        },
+        {
+          "name": "float opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec3",
+      "params": [
+        {
+          "name": "pinLight(base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pinLight",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pinLight",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec4",
+      "params": [
+        {
+          "name": "blendPinLight(back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pinLight",
+      "params": [
+        {
+          "name": "base",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "select",
+      "params": [
+        {
+          "name": "max(base",
+          "type": null
+        },
+        {
+          "name": "2.0*(blend-0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "base",
+          "type": null
+        },
+        {
+          "name": "2.0*blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendPinLight",
+      "params": [
+        {
+          "name": "base",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "opacity",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pinLight",
+      "params": [
+        {
+          "name": "base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pinLight",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pinLight",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendPinLight",
+      "params": [
+        {
+          "name": "back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

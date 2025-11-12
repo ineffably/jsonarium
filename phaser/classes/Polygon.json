@@ -1,0 +1,298 @@
+{
+  "type": "class",
+  "name": "Polygon",
+  "sourcePath": "geom/polygon/Polygon.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "geom",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Point",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function Polygon (points",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTo",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Contains",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Point",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof points === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "' '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!Array.isArray(points",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < points.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof points[i] === 'number' || typeof points[i] === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFloat",
+      "params": [
+        {
+          "name": "points[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFloat",
+      "params": [
+        {
+          "name": "points[i + 1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(points[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "p",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "calculateArea",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.points.length < 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < this.points.length - 1; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "quantity",
+          "type": null
+        },
+        {
+          "name": "step",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetPoints",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "quantity",
+          "type": null
+        },
+        {
+          "name": "step",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,405 @@
+{
+  "type": "class",
+  "name": "TexturePoolClass",
+  "sourcePath": "rendering/renderers/shared/texture/TexturePool.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Texture pool, used by FilterSystem and plugins. Stores collection of temporary pow2 or screen-sized renderTextures If you use custom RenderTexturePool for your filters, you can use methods `getFilterTexture` and `returnFilterTexture` same as in default pool",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "TextureStyle",
+      "params": [
+        {
+          "name": "this.textureOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createTexture",
+      "params": [
+        {
+          "name": "pixelWidth",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "pixelHeight",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "antialias",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Texture",
+      "description": "Creates texture with params that were specified in pool constructor."
+    },
+    {
+      "name": "TextureSource",
+      "params": [
+        {
+          "name": "{\n            ...this.textureOptions",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": "pixelWidth",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "pixelHeight",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "antialias",
+          "type": null
+        },
+        {
+          "name": "autoGarbageCollect",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Texture",
+      "params": [
+        {
+          "name": "source",
+          "type": "textureSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "label",
+          "type": "`texturePool_${count++}`",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getOptimalTexture",
+      "params": [
+        {
+          "name": "frameWidth",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "frameHeight",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution = 1",
+          "type": null
+        },
+        {
+          "name": "antialias",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Texture",
+      "description": "Gets a Power-of-Two render texture or fullScreen texture"
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "(frameWidth * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "(frameHeight * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextPow2",
+      "params": [
+        {
+          "name": "po2Width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextPow2",
+      "params": [
+        {
+          "name": "po2Height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._texturePool[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createTexture",
+      "params": [
+        {
+          "name": "po2Width",
+          "type": null
+        },
+        {
+          "name": "po2Height",
+          "type": null
+        },
+        {
+          "name": "antialias",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUvs",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSameSizeTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "antialias = false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": "Gets extra texture of the same size as input renderTexture"
+    },
+    {
+      "name": "getOptimalTexture",
+      "params": [
+        {
+          "name": "texture.width",
+          "type": null
+        },
+        {
+          "name": "texture.height",
+          "type": null
+        },
+        {
+          "name": "source._resolution",
+          "type": null
+        },
+        {
+          "name": "antialias",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "renderTexture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resetStyle = false",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Place a render texture back into the pool. Optionally reset the style of the texture to the default texture style. useful if you modified the style of the texture after getting it from the pool."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resetStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "renderTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "destroyTextures",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Clears the pool."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this._texturePool",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let j = 0; j < textures.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TexturePoolClass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "TexturePool",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,31 @@
+{
+  "type": "interface",
+  "name": "OnRenderMixin",
+  "sourcePath": "scene/container/container-mixins/onRenderMixin.ts",
+  "extends": [
+    "Required"
+  ],
+  "description": "This callback is used when the container is rendered. It runs every frame during the render process, making it ideal for per-frame updates and animations. > [!NOTE] In v7 many users used `updateTransform` for this, however the way v8 renders objects is different > and \"updateTransform\" is no longer called every frame ```ts // Basic rotation animation const container = new Container(); container.onRender = () => { container.rotation += 0.01; }; // Cleanup when done container.onRender = null; // Removes callback ``` / onRender?: ((renderer: Renderer) => void) | null; } /** The OnRenderMixin interface provides a way to define a callback that is executed every time the container is rendered. This is useful for adding custom rendering logic or animations that need to be updated each frame.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "_onRender",
+      "type": "((renderer: Renderer) => void) | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "onRenderMixin",
+      "type": "Partial<Container> = {\n    _onRender: null,\n\n    set onRender(func: (renderer: Renderer) => void)\n    {\n        const renderGroup = this.renderGroup || this.parentRenderGroup",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer) => void\n    {\n        return this._onRender",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

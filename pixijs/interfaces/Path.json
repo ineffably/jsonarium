@@ -1,0 +1,389 @@
+{
+  "type": "interface",
+  "name": "Path",
+  "sourcePath": "utils/path.ts",
+  "extends": [],
+  "description": "Path utilities for working with URLs and file paths in a cross-platform way. All paths that are passed in will become normalized to have posix separators. ```js import { path } from 'pixi.js'; path.normalize('http://www.example.com/foo/bar/../baz'); // http://www.example.com/foo/baz ```",
+  "category": "utils",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "toPosix",
+      "type": "(path: string) => string",
+      "optional": false,
+      "description": "Converts a path to posix format."
+    },
+    {
+      "name": "isUrl",
+      "type": "(path: string) => boolean",
+      "optional": false,
+      "description": "Checks if the path is a URL e.g. http://, https://"
+    },
+    {
+      "name": "isDataUrl",
+      "type": "(path: string) => boolean",
+      "optional": false,
+      "description": "Checks if the path is a data URL"
+    },
+    {
+      "name": "isBlobUrl",
+      "type": "(path: string) => boolean",
+      "optional": false,
+      "description": "Checks if the path is a blob URL"
+    },
+    {
+      "name": "hasProtocol",
+      "type": "(path: string) => boolean",
+      "optional": false,
+      "description": "Checks if the path has a protocol e.g. http://, https://, file:///, data:, blob:, C:/ This will return true for windows file paths"
+    },
+    {
+      "name": "getProtocol",
+      "type": "(path: string) => string",
+      "optional": false,
+      "description": "Returns the protocol of the path e.g. http://, https://, file:///, data:, blob:, C:/"
+    },
+    {
+      "name": "toAbsolute",
+      "type": "(url: string, baseUrl?: string, rootUrl?: string) => string",
+      "optional": false,
+      "description": "Converts URL to an absolute path. When loading from a Web Worker, we must use absolute paths. If the URL is already absolute we return it as is If it's not, we convert it"
+    },
+    {
+      "name": "normalize",
+      "type": "(path: string) => string",
+      "optional": false,
+      "description": "Normalizes the given path, resolving '..' and '.' segments"
+    },
+    {
+      "name": "isAbsolute",
+      "type": "(path: string) => boolean",
+      "optional": false,
+      "description": "Determines if path is an absolute path. Absolute paths can be urls, data urls, or paths on disk"
+    },
+    {
+      "name": "join",
+      "type": "(...paths: string[]) => string",
+      "optional": false,
+      "description": "Joins all given path segments together using the platform-specific separator as a delimiter, then normalizes the resulting path"
+    },
+    {
+      "name": "dirname",
+      "type": "(path: string) => string",
+      "optional": false,
+      "description": "Returns the directory name of a path"
+    },
+    {
+      "name": "rootname",
+      "type": "(path: string) => string",
+      "optional": false,
+      "description": "Returns the root of the path e.g. /, C:/, file:///, http://domain.com/"
+    },
+    {
+      "name": "basename",
+      "type": "(path: string, ext?: string) => string",
+      "optional": false,
+      "description": "Returns the last portion of a path"
+    },
+    {
+      "name": "extname",
+      "type": "(path: string) => string",
+      "optional": false,
+      "description": "Returns the extension of the path, from the last occurrence of the . (period) character to end of string in the last portion of the path. If there is no . in the last portion of the path, or if there are no . characters other than the first character of the basename of path, an empty string is returned."
+    },
+    {
+      "name": "parse",
+      "type": "(path: string) => { root?: string, dir?: string, base?: string, ext?: string, name?: string }",
+      "optional": false,
+      "description": "Parses a path into an object containing the 'root', `dir`, `base`, `ext`, and `name` properties."
+    },
+    {
+      "name": "sep",
+      "type": "string,\n    delimiter: string,\n    joinExtensions: string[],\n}\n\n/**\n * Path utilities for working with URLs and file paths in a cross-platform way.\n * All paths that are passed in will become normalized to have posix separators.\n * @example\n * ```ts\n * import { path } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/bar/../baz')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/baz'\n *\n * // Working with file paths\n * path.join('assets', 'images', 'sprite.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//example.com/assets/')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//example.com/assets/images/texture.png'\n * ```\n * @remarks\n * - Normalizes to POSIX separators (forward slashes)\n * - Handles URLs, data URLs, and file paths\n * - Supports path composition and decomposition\n * - Common in asset loading and URL management\n * @category utils\n * @standard\n * @see {@link Path} For full API reference\n * @see {@link DOMAdapter} For platform-specific path handling\n */\nexport const path: Path = {\n    /**\n     * Converts a path to posix format.\n     * @param path - The path to convert to posix\n     * @example\n     * ```ts\n     * // Convert a Windows path to POSIX format\n     * path.toPosix('C:\\\\Users\\\\User\\\\Documents\\\\file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/Users/User/Documents/file.txt'\n     * ```\n     */\n    toPosix(path: string) { return replaceAll(path, '\\\\', '/')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//, https://\n     * @param path - The path to check\n     * @example\n     * ```ts\n     * // Check if a path is a URL\n     * path.isUrl('http://www.example.com')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "string) { return (/^https?:/).test(this.toPosix(path))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "image/png",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "string)\n    {\n        // eslint-disable-next-line max-len\n        return (/^data:([a-z]+\\/[a-z0-9-+.]+(",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "blob",
+      "type": "http://www.example.com/12345678-1234-1234-1234-123456789012')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "string)\n    {\n        // Not necessary to have an exact regex to match the blob URLs\n        return path.startsWith('blob:')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//, https://, file:///, data:, blob:, C:/\n     * This will return true for windows file paths\n     * @param path - The path to check\n     * @example\n     * ```ts\n     * // Check if a path has a protocol\n     * path.hasProtocol('http://www.example.com')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "string) { return (/^[^/:]+:/).test(this.toPosix(path))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//, https://, file:///, data:, blob:, C:/\n     * @param path - The path to get the protocol from\n     * @example\n     * ```ts\n     * // Get the protocol from a URL\n     * path.getProtocol('http://www.example.com/path/to/resource')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//'\n     * // Get the protocol from a file path\n     * path.getProtocol('C:/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/'\n     * ```\n     */\n    getProtocol(path: string)\n    {\n        assertPath(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "file",
+      "type": "\\/\\/\\//).exec(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//example.com/assets/')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//example.com/assets/images/texture.png'\n     * ```\n     */\n    toAbsolute(url: string, customBaseUrl?: string, customRootUrl?: string)\n    {\n        assertPath(url)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/bar/../baz')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/baz'\n     * // Normalize a file path with relative segments\n     * path.normalize('C:\\\\Users\\\\User\\\\Documents\\\\..\\\\file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/Users/User/file.txt'\n     * ```\n     */\n    normalize(path: string)\n    {\n        assertPath(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/bar')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "string)\n    {\n        assertPath(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "segments",
+      "type": "string[])\n    {\n        if (segments.length === 0)\n        { return '.'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/bar/baz.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/bar'\n     * // Get the directory name of a file path\n     * path.dirname('C:/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/Users/User/Documents'\n     * ```\n     */\n    dirname(path: string)\n    {\n        assertPath(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/, file:///, http://domain.com/\n     * @param path - The path to parse\n     * @example\n     * ```ts\n     * // Get the root of a URL\n     * path.rootname('http://www.example.com/foo/bar/baz.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/'\n     * // Get the root of a file path\n     * path.rootname('C:/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/'\n     * ```\n     */\n    rootname(path: string)\n    {\n        assertPath(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/bar/baz.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "string, ext?: string)\n    {\n        assertPath(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "i",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/bar/baz.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "C",
+      "type": "/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "string)\n    {\n        assertPath(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "http",
+      "type": "//www.example.com/foo/bar/baz.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "root",
+      "type": "'http://www.example.com/',\n     * //   dir: 'http://www.example.com/foo/bar',\n     * //   base: 'baz.png',\n     * //   ext: '.png',\n     * //   name: 'baz'\n     * // }\n     * // Parse a file path\n     * const parsedFile = path.parse('C:/Users/User/Documents/file.txt')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "root",
+      "type": "'C:/',\n     * //   dir: 'C:/Users/User/Documents',\n     * //   base: 'file.txt',\n     * //   ext: '.txt',\n     * //   name: 'file'\n     * // }\n     * ```\n     */\n    parse(path: string)\n    {\n        assertPath(path)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "root",
+      "type": "'', dir: '', base: '', ext: '', name: '' }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "start",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "sep",
+      "type": "'/',\n    delimiter: ':',\n    joinExtensions: ['.html'],\n} as Path",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

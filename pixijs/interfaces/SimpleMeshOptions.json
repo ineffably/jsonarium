@@ -1,0 +1,61 @@
+{
+  "type": "interface",
+  "name": "SimpleMeshOptions",
+  "sourcePath": "scene/mesh-simple/MeshSimple.ts",
+  "extends": [
+    "Omit"
+  ],
+  "description": "Options for creating a SimpleMesh instance. Defines the texture, geometry data, and rendering topology for a basic mesh with direct vertex manipulation capabilities. ```ts // Create a basic textured triangle const mesh = new MeshSimple({ texture: Texture.from('sprite.png'), vertices: new Float32Array([ 0, 0,      // Vertex 1 100, 0,    // Vertex 2 50, 100    // Vertex 3 ]), uvs: new Float32Array([ 0, 0,    // UV 1 1, 0,    // UV 2 0.5, 1   // UV 3 ]) }); // Create an indexed quad with custom topology const quadMesh = new MeshSimple({ texture: Texture.from('square.png'), vertices: new Float32Array([ 0, 0,     // Top-left 100, 0,   // Top-right 100, 100, // Bottom-right 0, 100    // Bottom-left ]), uvs: new Float32Array([ 0, 0,  // Top-left 1, 0,  // Top-right 1, 1,  // Bottom-right 0, 1   // Bottom-left ]), indices: new Uint32Array([ 0, 1, 2,  // Triangle 1 0, 2, 3   // Triangle 2 ]), topology: 'triangle-list' }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "texture",
+      "type": "Texture,\n    /** Array of vertex positions as x,y pairs. Each vertex is 2 floats - x, y */\n    vertices?: Float32Array,\n    /** Array of UV coordinates for texture mapping. Each UV is 2 floats - u, v */\n    uvs?: Float32Array,\n    /** Array of indices defining triangles. Each triangle is 3 indices into the vertices array. */\n    indices?: Uint32Array,\n    /**\n     * How vertices are connected to form triangles.\n     * - 'triangle-list': Individual triangles (default)\n     * - 'triangle-strip': Connected triangle strip\n     * - 'line-list': Lines between vertices\n     * - 'line-strip': Connected line strip\n     * - 'point-list': Points rendered individually\n     * @default 'triangle-list'\n     */\n    topology?: Topology",
+      "optional": false,
+      "description": "The texture to use"
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('sprite.png'),\n *     vertices: new Float32Array([\n *         0, 0,      // Top-left\n *         100, 0,    // Top-right\n *         50, 100    // Bottom-center\n *     ]),\n *     uvs: new Float32Array([\n *         0, 0,    // Map top-left of texture\n *         1, 0,    // Map top-right of texture\n *         0.5, 1   // Map bottom-center of texture\n *     ])\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('line.png'),\n *     vertices: new Float32Array([\n *         0, 0,\n *         50, 50,\n *         100, 0,\n *         150, 50\n *     ]),\n *     topology: 'line-strip'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoUpdate",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "SimpleMeshOptions)\n    {\n        const { texture, vertices, uvs, indices, topology, ...rest } = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "positions",
+      "type": "vertices,\n            uvs,\n            indices,\n            topology\n        }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "', vertices[0], vertices[1])",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "TypedArray)\n    {\n        this.geometry.getBuffer('aPosition').data = value",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

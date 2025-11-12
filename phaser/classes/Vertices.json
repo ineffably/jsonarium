@@ -1,0 +1,1309 @@
+{
+  "type": "class",
+  "name": "Vertices",
+  "sourcePath": "physics/matter-js/lib/geometry/Vertices.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Vector'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Common'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < points.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "vertex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "spaces",
+      "params": [
+        {
+          "name": "and optionally commas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "path",
+          "type": null
+        },
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "pathPattern",
+          "type": null
+        },
+        {
+          "name": "function(match",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "x",
+          "type": "parseFloat(x",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFloat",
+      "params": [
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "centre",
+      "params": [
+        {
+          "name": "centroid",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < vertices.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cross",
+      "params": [
+        {
+          "name": "vertices[i]",
+          "type": null
+        },
+        {
+          "name": "vertices[j]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mult",
+      "params": [
+        {
+          "name": "Vector.add(vertices[i]",
+          "type": null
+        },
+        {
+          "name": "vertices[j]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "centre",
+          "type": null
+        },
+        {
+          "name": "temp",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "div",
+      "params": [
+        {
+          "name": "centre",
+          "type": null
+        },
+        {
+          "name": "6 * area",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "average",
+      "params": [
+        {
+          "name": "mean",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < vertices.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "div",
+      "params": [
+        {
+          "name": "average",
+          "type": null
+        },
+        {
+          "name": "vertices.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "signed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < vertices.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "signed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "area",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "inertia",
+      "params": [
+        {
+          "name": "second moment of area",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "mass",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var n = 0; n < v.length; n++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "Vector.cross(v[j]",
+          "type": null
+        },
+        {
+          "name": "v[n]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dot",
+      "params": [
+        {
+          "name": "v[j]",
+          "type": null
+        },
+        {
+          "name": "v[j]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dot",
+      "params": [
+        {
+          "name": "v[j]",
+          "type": null
+        },
+        {
+          "name": "v[n]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dot",
+      "params": [
+        {
+          "name": "v[n]",
+          "type": null
+        },
+        {
+          "name": "v[n]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "mass / 6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "vector",
+          "type": null
+        },
+        {
+          "name": "scalar",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < verticesLength; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "angle",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "angle === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cos",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < verticesLength; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < verticesLength; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(pointX - vertex.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "point",
+      "params": [
+        {
+          "name": "default is centre",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "scaleX",
+          "type": null
+        },
+        {
+          "name": "scaleY",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scaleX === 1 && scaleY === 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "centre",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < vertices.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sub",
+      "params": [
+        {
+          "name": "vertex",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "quality",
+          "type": null
+        },
+        {
+          "name": "qualityMin",
+          "type": null
+        },
+        {
+          "name": "qualityMax",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof radius === 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < vertices.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentRadius === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "vertex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "normalise",
+      "params": [
+        {
+          "name": "x",
+          "type": "vertex.y - prevVertex.y",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "prevVertex.x - vertex.x\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "normalise",
+      "params": [
+        {
+          "name": "x",
+          "type": "nextVertex.y - vertex.y",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "vertex.x - nextVertex.x\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "2 * Math.pow(currentRadius",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mult",
+      "params": [
+        {
+          "name": "Common.clone(prevNormal",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "normalise",
+      "params": [
+        {
+          "name": "Vector.mult(Vector.add(prevNormal",
+          "type": null
+        },
+        {
+          "name": "nextNormal",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sub",
+      "params": [
+        {
+          "name": "vertex",
+          "type": null
+        },
+        {
+          "name": "Vector.mult(midNormal",
+          "type": null
+        },
+        {
+          "name": "diagonalRadius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "quality === -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pow",
+      "params": [
+        {
+          "name": "currentRadius",
+          "type": null
+        },
+        {
+          "name": "0.32",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clamp",
+      "params": [
+        {
+          "name": "precision",
+          "type": null
+        },
+        {
+          "name": "qualityMin",
+          "type": null
+        },
+        {
+          "name": "qualityMax",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "precision % 2 === 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "acos",
+      "params": [
+        {
+          "name": "Vector.dot(prevNormal",
+          "type": null
+        },
+        {
+          "name": "nextNormal",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 0; j < precision; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "Vector.add(Vector.rotate(radiusVector",
+          "type": null
+        },
+        {
+          "name": "theta * j",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mean",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sort",
+      "params": [
+        {
+          "name": "function(vertexA",
+          "type": null
+        },
+        {
+          "name": "vertexB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "params": [
+        {
+          "name": "centre",
+          "type": null
+        },
+        {
+          "name": "vertexA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "params": [
+        {
+          "name": "centre",
+          "type": null
+        },
+        {
+          "name": "vertexB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shape",
+      "params": [
+        {
+          "name": "vertices must be in clockwise order",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "not",
+      "params": [
+        {
+          "name": "or `null` if not computable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Copyright",
+      "params": [
+        {
+          "name": "c",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Bourke",
+      "params": [
+        {
+          "name": "use permitted",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "n < 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < n; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "z < 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "z > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flag === 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flag !== 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "axis",
+      "params": [
+        {
+          "name": "y-axis for ties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sort",
+      "params": [
+        {
+          "name": "function(vertexA",
+          "type": null
+        },
+        {
+          "name": "vertexB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < vertices.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "lower.length >= 2 \n                   && Vector.cross3(lower[lower.length - 2]",
+          "type": null
+        },
+        {
+          "name": "lower[lower.length - 1]",
+          "type": null
+        },
+        {
+          "name": "vertex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "vertex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = vertices.length - 1; i >= 0; i -= 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "upper.length >= 2 \n                   && Vector.cross3(upper[upper.length - 2]",
+          "type": null
+        },
+        {
+          "name": "upper[upper.length - 1]",
+          "type": null
+        },
+        {
+          "name": "vertex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "vertex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "concat",
+      "params": [
+        {
+          "name": "lower",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

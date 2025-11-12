@@ -1,0 +1,293 @@
+{
+  "type": "class",
+  "name": "StaticGroup",
+  "sourcePath": "physics/arcade/StaticPhysicsGroup.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "Group",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Mixins",
+          "type": "[\n        CollisionComponent\n    ]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function StaticPhysicsGroup (world",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "children",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!children && !config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "IsPlainObject(children",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'classType'",
+          "type": null
+        },
+        {
+          "name": "ArcadeSprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(children",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "IsPlainObject",
+      "params": [
+        {
+          "name": "children[0]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "function (singleConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "singleConfig",
+          "type": null
+        },
+        {
+          "name": "'classType'",
+          "type": null
+        },
+        {
+          "name": "ArcadeSprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "children",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "member",
+      "params": [
+        {
+          "name": "if it lacks one",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!child.body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enableBody",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "CONST.STATIC_BODY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "child.body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disableBody",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "refresh",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "changed",
+      "params": [
+        {
+          "name": "use {@link Phaser.Physics.Arcade.Components.Enable#refreshBody} for that",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < children.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

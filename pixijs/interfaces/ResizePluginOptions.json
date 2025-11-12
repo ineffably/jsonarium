@@ -1,0 +1,113 @@
+{
+  "type": "interface",
+  "name": "ResizePluginOptions",
+  "sourcePath": "app/ResizePlugin.ts",
+  "extends": [],
+  "description": "Application options for the {@link ResizePlugin}. These options control how your application handles window and element resizing. ```ts // Auto-resize to window await app.init({ resizeTo: window }); // Auto-resize to container element await app.init({ resizeTo: document.querySelector('#game') }); ```",
+  "category": "app",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "resizeTo",
+      "type": "Window | HTMLElement",
+      "optional": true,
+      "description": "Element to automatically resize the renderer to. ```ts const app = new Application(); await app.init({ resizeTo: window, // Resize to the entire window // or resizeTo: document.querySelector('#game-container'), // Resize to a specific element // or resizeTo: null, // Disable auto-resize }); ```"
+    },
+    {
+      "name": "1",
+      "type": "Auto-resize to window\n * await app.init({ resizeTo: window })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "2",
+      "type": "Auto-resize to specific element\n * const container = document.querySelector('#game-container')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resizeTo",
+      "type": "container })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "3",
+      "type": "Change resize target at runtime\n * app.resizeTo = window",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "extension",
+      "type": "ExtensionMetadata = ExtensionType.Application",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resizeTo",
+      "type": "Window | HTMLElement",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "type": "() => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "ResizeableRenderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "queueResize",
+      "type": "() => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "render",
+      "type": "() => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_resizeId",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_resizeTo",
+      "type": "Window | HTMLElement",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_cancelResize",
+      "type": "() => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ResizePluginOptions): void\n    {\n        Object.defineProperty(this, 'resizeTo',\n            {\n                set(dom: Window | HTMLElement)\n                {\n                    globalThis.removeEventListener('resize', this.queueResize)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

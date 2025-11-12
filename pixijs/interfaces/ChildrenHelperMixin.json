@@ -1,0 +1,173 @@
+{
+  "type": "interface",
+  "name": "ChildrenHelperMixin",
+  "sourcePath": "scene/container/container-mixins/childrenHelperMixin.ts",
+  "extends": [],
+  "description": "Mixin interface for containers that allows them to manage children. It provides methods for adding, removing, and manipulating child containers.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "allowChildren",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "U): U[0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "U): U[0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Removed",
+      "type": "', removed.length)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "beginIndex",
+      "type": "number, endIndex?: number): C[]",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "number): U",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "number): U",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "C, index: number): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "C): number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "U, index: number): U",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "U, child2: U): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "U): U[0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "U, index: number): U",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "oldChild",
+      "type": "U, newChild: T): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "childrenHelperMixin",
+      "type": "ChildrenHelperMixin<ContainerChild> = {\n\n    allowChildren: true,\n\n    removeChildren(beginIndex = 0, endIndex?: number): ContainerChild[]\n    {\n        const end = endIndex ?? this.children.length",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "removed",
+      "type": "ContainerChild[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "removeChildren",
+      "type": "numeric values are outside the acceptable range.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "number): U\n    {\n        const child = this.getChildAt<U>(index)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "number): U\n    {\n        if (index < 0 || index >= this.children.length)\n        {\n            throw new Error(`getChildAt: Index (${index}) does not exist.`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "ContainerChild, index: number): void\n    {\n        if (index < 0 || index >= this.children.length)\n        {\n            throw new Error(`The index ${index} supplied is out of bounds ${this.children.length}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "ContainerChild): number\n    {\n        const index = this.children.indexOf(child)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "U, index: number): U\n    {\n        // #if _DEBUG\n        if (!this.allowChildren)\n        {\n            deprecation(v8_0_0, 'addChildAt: Only Containers will be allowed to add children in v8.0.0')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "addChildAt",
+      "type": "The index ${index} supplied is out of bounds ${children.length}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "U, child2: U): void\n    {\n        if (child === child2)\n        {\n            return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "U): U[0]\n    {\n        if (child.length === 1)\n        {\n            return this.reparentChildAt(child[0], this.children.length)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "U, index: number): U\n    {\n        if (child.parent === this)\n        {\n            this.setChildIndex(child, index)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "oldChild",
+      "type": "U, newChild: T)\n    {\n        oldChild.updateLocalTransform()",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

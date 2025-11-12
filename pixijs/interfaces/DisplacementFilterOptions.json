@@ -1,0 +1,109 @@
+{
+  "type": "interface",
+  "name": "DisplacementFilterOptions",
+  "sourcePath": "filters/defaults/displacement/DisplacementFilter.ts",
+  "extends": [
+    "FilterOptions"
+  ],
+  "description": "Configuration options for the DisplacementFilter. A displacement filter uses a sprite's texture as a displacement map, moving pixels of the target based on the color values of corresponding pixels in the displacement sprite. ```ts const options: DisplacementFilterOptions = { sprite: displacementSprite, scale: { x: 20, y: 20 } }; const filter = new DisplacementFilter(options); ```",
+  "category": "filters",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "sprite",
+      "type": "Sprite",
+      "optional": false,
+      "description": "The sprite whose texture will be used as the displacement map. Red channel = horizontal displacement Green channel = vertical displacement ```ts const displacementSprite = new Sprite(texture); const filter = new DisplacementFilter({ sprite: displacementSprite }); ```"
+    },
+    {
+      "name": "scale",
+      "type": "number | PointData",
+      "optional": true,
+      "description": "The scale of the displacement effect. Can be a single number for uniform scaling or a point-like object for separate x/y scaling. ```ts // Uniform scaling new DisplacementFilter({ sprite, scale: 20 }); // Separate scaling new DisplacementFilter({ sprite, scale: { x: 10, y: 15 } }); ```"
+    },
+    {
+      "name": "offset",
+      "type": "* - Red channel controls horizontal displacement\n * - Green channel controls vertical displacement\n *\n * Common use cases:\n * - Creating ripple or wave effects\n * - Distorting images dynamically\n * - Implementing heat haze effects\n * - Creating transition effects\n * @example\n * ```ts\n * import { Sprite, DisplacementFilter } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "sprite",
+      "type": "displacementSprite,\n *     scale: { x: 20, y: 20 }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Vico",
+      "type": "vicocotea\n * @standard\n * @noInheritDoc\n */\nexport class DisplacementFilter extends Filter\n{\n    private readonly _sprite: Sprite",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "Sprite | DisplacementFilterOptions)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "sprite",
+      "type": "Sprite, scale?: number | PointData)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[Sprite | DisplacementFilterOptions] | [Sprite, (number | PointData)?])\n    {\n        let options = args[0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "sprite",
+      "type": "options, scale: args[1] }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "type": "scaleOption, ...rest } = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uFilterMatrix",
+      "type": "{ value: new Matrix(), type: 'mat3x3<f32>' },\n            uScale: { value: scale, type: 'vec2<f32>' },\n            uRotation: { value: new Float32Array([0, 0, 0, 0]), type: 'mat2x2<f32>' },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'displacement-filter'\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "{\n                source,\n                entryPoint: 'mainVertex',\n            },\n            fragment: {\n                source,\n                entryPoint: 'mainFragment',\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resources",
+      "type": "{\n                filterUniforms,\n                uMapTexture: textureSource,\n                uMapSampler: textureSource.style,\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filterManager",
+      "type": "FilterSystem,\n        input: Texture,\n        output: Texture,\n        clearMode: boolean\n    ): void\n    {\n        const uniforms = this.resources.filterUniforms.uniforms",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "Horizontal displacement scale\n     * - y: Vertical displacement scale\n     * @returns {Point} The current scale as a Point object\n     * @example\n     * ```ts\n     * const filter = new DisplacementFilter({ sprite })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

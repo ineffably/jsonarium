@@ -1,0 +1,119 @@
+{
+  "type": "interface",
+  "name": "GlBackBufferOptions",
+  "sourcePath": "rendering/renderers/gl/GlBackBufferSystem.ts",
+  "extends": [],
+  "description": "The options for the back buffer system.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "useBackBuffer",
+      "type": "boolean",
+      "optional": true,
+      "description": "if true will use the back buffer where required"
+    },
+    {
+      "name": "antialias",
+      "type": "boolean",
+      "optional": true,
+      "description": "if true will ensure the texture is antialiased"
+    },
+    {
+      "name": "useBackBuffer",
+      "type": "false,\n    }",
+      "optional": false,
+      "description": "For blend modes you need to know what pixels you are actually drawing to. For this to be possible in WebGL we need to render to a texture and then present that texture to the screen. This system manages that process. As the main scene is rendered to a texture, it means we can sample it and copy its pixels, something not possible on the main canvas. If antialiasing is set to to true and useBackBuffer is set to true, then the back buffer will be antialiased. and the main gl context will not. You only need to activate this back buffer if you are using a blend mode that requires it. to activate is simple, you pass `useBackBuffer:true` to your render options / export class GlBackBufferSystem implements System<GlBackBufferOptions> { /** @ignore */ public static extension = { type: [ ExtensionType.WebGLSystem, ], name: 'backBuffer', priority: 1 } as const; /** default options for the back buffer system */ public static defaultOptions: GlBackBufferOptions = { /** if true will use the back buffer where required"
+    },
+    {
+      "name": "_backBufferTexture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "WebGLRenderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_targetTexture",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_antialias",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_state",
+      "type": "State",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_bigTriangleShader",
+      "type": "Shader",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "WebGLRenderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GlBackBufferOptions = {})\n    {\n        const { useBackBuffer, antialias } = { ...GlBackBufferSystem.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "`\n                attribute vec2 aPosition",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fragment",
+      "type": "`\n                in vec2 vUv",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'big-triangle',\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "glProgram",
+      "type": "bigTriangleProgram,\n            resources: {\n                uTexture: Texture.WHITE.source,\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "RenderOptions)\n    {\n        const renderTarget = this._renderer.renderTarget.getRenderTarget(options.target)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "bigTriangleGeometry,\n            shader: this._bigTriangleShader,\n            state: this._state,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "targetSourceTexture",
+      "type": "TextureSource)\n    {\n        this._backBufferTexture = this._backBufferTexture || new Texture({\n            source: new TextureSource({\n                width: targetSourceTexture.width,\n                height: targetSourceTexture.height,\n                resolution: targetSourceTexture._resolution,\n                antialias: this._antialias,\n            }),\n        })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

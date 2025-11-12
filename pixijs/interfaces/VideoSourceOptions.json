@@ -1,0 +1,181 @@
+{
+  "type": "interface",
+  "name": "VideoSourceOptions",
+  "sourcePath": "rendering/renderers/shared/texture/sources/VideoSource.ts",
+  "extends": [
+    "TextureSourceOptions"
+  ],
+  "description": "The type of resource used for video textures. This is typically an HTMLVideoElement. / export type VideoResource = HTMLVideoElement; /** Options for video sources.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "autoLoad",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the video will start loading immediately."
+    },
+    {
+      "name": "autoPlay",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the video will start playing as soon as it is loaded."
+    },
+    {
+      "name": "updateFPS",
+      "type": "number",
+      "optional": true,
+      "description": "The number of times a second to update the texture from the video. Leave at 0 to update at every render."
+    },
+    {
+      "name": "crossorigin",
+      "type": "boolean | string",
+      "optional": true,
+      "description": "If true, the video will be loaded with the `crossorigin` attribute."
+    },
+    {
+      "name": "loop",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the video will loop when it ends."
+    },
+    {
+      "name": "muted",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the video will be muted."
+    },
+    {
+      "name": "playsinline",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the video will play inline."
+    },
+    {
+      "name": "preload",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the video will be preloaded."
+    },
+    {
+      "name": "preloadTimeoutMs",
+      "type": "number",
+      "optional": true,
+      "description": "The time in milliseconds to wait for the video to preload before timing out."
+    },
+    {
+      "name": "alphaMode",
+      "type": "ALPHA_MODES",
+      "optional": true,
+      "description": "The alpha mode of the video."
+    },
+    {
+      "name": "autoLoad",
+      "type": "true,\n        /** If true, the video will start playing as soon as it is loaded. */\n        autoPlay: true,\n        /** The number of times a second to update the texture from the video. Leave at 0 to update at every render. */\n        updateFPS: 0,\n        /** If true, the video will be loaded with the `crossorigin` attribute. */\n        crossorigin: true,\n        /** If true, the video will loop when it ends. */\n        loop: false,\n        /** If true, the video will be muted. */\n        muted: true,\n        /** If true, the video will play inline. */\n        playsinline: true,\n        /** If true, the video will be preloaded. */\n        preload: false,\n    }",
+      "optional": false,
+      "description": "A texture source that uses a video as its resource. It automatically resizes the texture based on the video dimensions. It also provides methods to control playback and handle video events. This class supports automatic loading, playback, and frame updates. It can also handle cross-origin videos and provides options for looping, muting, and inline playback. / export class VideoSource extends TextureSource<VideoResource> { public static extension: ExtensionMetadata = ExtensionType.TextureSource; /** The default options for video sources. */ public static defaultOptions: VideoSourceOptions = { ...TextureSource.defaultOptions, /** If true, the video will start loading immediately."
+    },
+    {
+      "name": "autoPlay",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_autoUpdate",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_isConnectedToTicker",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_load",
+      "type": "Promise<this>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_msToNextUpdate",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_preloadTimeout",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_resolve",
+      "type": "(value?: this | PromiseLike<this>) => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_reject",
+      "type": "(error: ErrorEvent) => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_updateFPS",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_videoFrameRequestCallbackHandle",
+      "type": "number | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "VideoSourceOptions\n    )\n    {\n        super(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "event",
+      "type": "ErrorEvent): void\n    {\n        this.resource.removeEventListener('error', this._onError, true)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        if (value !== this._autoUpdate)\n        {\n            this._autoUpdate = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        if (value !== this._updateFPS)\n        {\n            this._updateFPS = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "playing",
+      "type": "*   - It will prefer the native video frame callback if available and no specific FPS is set.\n     *   - Otherwise, it will use a custom ticker for manual updates.\n     * - If `_autoUpdate` is disabled or the video isn't playing, any active update mechanisms are halted.\n     */\n    private _configureAutoUpdate(): void\n    {\n        // Check if automatic updating is enabled and if the source is currently playing\n        if (this._autoUpdate && this._isSourcePlaying())\n        {\n            // Determine if we should use the browser's native video frame callback (generally for better performance)\n            if (!this._updateFPS && this.resource.requestVideoFrameCallback)\n            {\n                // If connected to a custom ticker, remove the update frame function from it\n                if (this._isConnectedToTicker)\n                {\n                    Ticker.shared.remove(this.updateFrame, this)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "MIME_TYPES",
+      "type": "Dict<string>\n        = {\n            ogv: 'video/ogg',\n            mov: 'video/quicktime',\n            m4v: 'video/mp4',\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resource",
+      "type": "any): resource is VideoResource\n    {\n        return (globalThis.HTMLVideoElement && resource instanceof HTMLVideoElement)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "type": "interface",
+  "name": "DOMContainerOptions",
+  "sourcePath": "dom/DOMContainer.ts",
+  "extends": [
+    "ViewContainerOptions"
+  ],
+  "description": "Options for configuring a {@link DOMContainer}. Controls how DOM elements are integrated into the PixiJS scene graph. ```ts // Create with a custom element const domContainer = new DOMContainer({ element: document.createElement('input'), anchor: { x: 0.5, y: 0.5 } // or anchor: 0.5 to center both x and y }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "element",
+      "type": "HTMLElement",
+      "optional": true,
+      "description": "The DOM element to use for the container. Can be any HTML element like div, input, textarea, etc. If not provided, creates a new div element."
+    },
+    {
+      "name": "anchor",
+      "type": "PointData | number",
+      "optional": true,
+      "description": "The anchor point of the container. - Can be a single number to set both x and y - Can be a point-like object with x,y coordinates - (0,0) is top-left - (1,1) is bottom-right - (0.5,0.5) is center"
+    },
+    {
+      "name": "element",
+      "type": "document.createElement('input'),\n *     anchor: 0.5\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "element",
+      "type": "document.createElement('textarea'),\n *     anchor: { x: 0, y: 0 }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "string = 'dom'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_anchor",
+      "type": "Point",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_element",
+      "type": "HTMLElement",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DOMContainerOptions = {})\n    {\n        const { element, anchor, ...rest } = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "'DOMContainer',\n            ...rest\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1, y: 1 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "* - number: Sets both x and y to same value\n     * - PointData: Sets x and y separately\n     */\n    set anchor(value: PointData | number)\n    {\n        typeof value === 'number' ? this._anchor.set(value) : this._anchor.copyFrom(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "HTMLElement)\n    {\n        if (this._element === value) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "boolean = false)\n    {\n        super.destroy(options)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

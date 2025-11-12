@@ -1,0 +1,299 @@
+{
+  "type": "class",
+  "name": "PrepareQueue",
+  "sourcePath": "prepare/PrepareQueue.ts",
+  "extends": "PrepareBase",
+  "implements": [],
+  "description": "Part of the prepare system. Responsible for uploading all the items to the GPU. This class extends the base functionality and resolves given resource items ready for the queue.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "resolveQueueItem",
+      "params": [
+        {
+          "name": "source",
+          "type": "PrepareSourceItem",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "queue",
+          "type": "PrepareQueueItem[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source instanceof Container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolveContainerQueueItem",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "queue",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source instanceof TextureSource || source instanceof Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "source.source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source instanceof GraphicsContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolveContainerQueueItem",
+      "params": [
+        {
+          "name": "container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "queue",
+          "type": "PrepareQueueItem[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container instanceof Sprite || container instanceof TilingSprite || container instanceof Mesh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "container.texture.source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container instanceof Text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container instanceof Graphics",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "container.context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container instanceof AnimatedSprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(textureOrFrame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(textureOrFrame as Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "(textureOrFrame as Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "(textureOrFrame as FrameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolveGraphicsContextQueueItem",
+      "params": [
+        {
+          "name": "graphicsContext",
+          "type": "GraphicsContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "PrepareQueueItem | null",
+      "description": null
+    },
+    {
+      "name": "getGpuContext",
+      "params": [
+        {
+          "name": "graphicsContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const instruction of instructions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'texture'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'fill'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

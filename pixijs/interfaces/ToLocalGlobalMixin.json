@@ -1,0 +1,77 @@
+{
+  "type": "interface",
+  "name": "ToLocalGlobalMixin",
+  "sourcePath": "scene/container/container-mixins/toLocalGlobalMixin.ts",
+  "extends": [],
+  "description": "Interface for a mixin that provides methods to convert between local and global coordinates. This mixin allows you to get the global position of a container, convert a point from local to global coordinates, and convert a point from global to local coordinates. It includes methods to optimize performance by using cached matrices when available.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "Global",
+      "type": "(${globalPos.x}, ${globalPos.y})`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "Point, skipUpdate?: boolean): Point",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "10, y: 20 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "50, y: 50 },\n     *     undefined,\n     *     true // Skip transform update\n     * )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "position",
+      "type": "PointData, point?: P, skipUpdate?: boolean): P",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "100, y: 100 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "10, y: 10 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "position",
+      "type": "PointData, from?: Container, point?: P, skipUpdate?: boolean): P",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "toLocalGlobalMixin",
+      "type": "Partial<Container> = {\n    getGlobalPosition(point: Point = new Point(), skipUpdate = false): Point\n    {\n        if (this.parent)\n        {\n            this.parent.toGlobal(this._position, point, skipUpdate)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "position",
+      "type": "PointData, point?: P, skipUpdate = false): P\n    {\n        const globalMatrix = this.getGlobalTransform(matrixPool.get(), skipUpdate)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "position",
+      "type": "PointData, from?: Container, point?: P, skipUpdate?: boolean): P\n    {\n        if (from)\n        {\n            position = from.toGlobal(position, point, skipUpdate)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

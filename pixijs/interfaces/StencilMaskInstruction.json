@@ -1,0 +1,91 @@
+{
+  "type": "interface",
+  "name": "StencilMaskInstruction",
+  "sourcePath": "rendering/mask/stencil/StencilMaskPipe.ts",
+  "extends": [
+    "Instruction"
+  ],
+  "description": "type MaskMode = 'pushMaskBegin' | 'pushMaskEnd' | 'popMaskBegin' | 'popMaskEnd'; /** @internal",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderPipeId",
+      "type": "'stencilMask',\n    action: MaskMode,\n    inverse: boolean,\n    mask: StencilMask,\n}\n\n/** @internal */\nexport class StencilMaskPipe implements InstructionPipe<StencilMaskInstruction>\n{\n    public static extension = {\n        type: [\n            ExtensionType.WebGLPipes,\n            ExtensionType.WebGPUPipes,\n            ExtensionType.CanvasPipes,\n        ],\n        name: 'stencilMask',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_maskStackHash",
+      "type": "Record<number, number> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionsStart",
+      "type": "number,\n        instructionsLength: number,\n    }>()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mask",
+      "type": "Effect, _container: Container, instructionSet: InstructionSet): void\n    {\n        const effect = mask as StencilMask",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'stencilMask',\n            action: 'pushMaskBegin',\n            mask,\n            inverse: _container._maskOptions.inverse,\n            canBundle: false,\n        } as StencilMaskInstruction)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionsStart",
+      "type": "0,\n                instructionsLength: 0,\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'stencilMask',\n            action: 'pushMaskEnd',\n            mask,\n            inverse: _container._maskOptions.inverse,\n            canBundle: false,\n        } as StencilMaskInstruction)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mask",
+      "type": "Effect, _container: Container, instructionSet: InstructionSet): void\n    {\n        const effect = mask as StencilMask",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'stencilMask',\n            action: 'popMaskBegin',\n            inverse: _container._maskOptions.inverse,\n            canBundle: false,\n        } as StencilMaskInstruction)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'stencilMask',\n            action: 'popMaskEnd',\n            canBundle: false,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instruction",
+      "type": "StencilMaskInstruction)\n    {\n        const renderer = this._renderer",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

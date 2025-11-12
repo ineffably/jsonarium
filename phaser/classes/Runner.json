@@ -1,0 +1,773 @@
+{
+  "type": "class",
+  "name": "Runner",
+  "sourcePath": "physics/matter-js/lib/core/Runner.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'./Events'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'./Engine'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'./Common'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "defaults",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "engine",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onFrame",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "time && runner.enabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tick",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "step",
+      "params": [
+        {
+          "name": "a 'tick'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!frameDelta || !runner.timeLastTick || frameDelta > Math.max(Runner._maxFrameDelta",
+          "type": null
+        },
+        {
+          "name": "runner.maxFrameTime",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.frameDeltaSmoothing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "frameDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "-runner.frameDeltaHistorySize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sort",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "deltaHistorySorted.length * Runner._smoothingLowerBound",
+          "type": null
+        },
+        {
+          "name": "deltaHistorySorted.length * Runner._smoothingUpperBound",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.frameDeltaSnapping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "1000 / frameDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clamp",
+      "params": [
+        {
+          "name": "runner.timeBuffer",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "runner.frameDelta + engineDelta * Runner._timeBufferMargin",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "runner.maxFrameTime / engineDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "'beforeTick'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "'tick'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "engineDelta > 0 && runner.timeBuffer >= engineDelta * Runner._timeBufferMargin",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "'beforeUpdate'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "engineDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "'afterUpdate'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "updateCount >= maxUpdates || elapsedNextEstimate > runner.maxFrameTime",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "Math.max(0",
+          "type": null
+        },
+        {
+          "name": "(runner.timeBuffer / engineDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "'afterTick'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.frameDeltaHistory.length >= 100",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.lastUpdatesDeferred && Math.round(runner.frameDelta / engineDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warnOnce",
+      "params": [
+        {
+          "name": "Runner",
+          "type": "runner reached runner.maxUpdates",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "see docs.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.lastUpdatesDeferred",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warnOnce",
+      "params": [
+        {
+          "name": "Runner",
+          "type": "runner reached runner.maxFrameTime",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "see docs.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof runner.isFixed !== 'undefined'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warnOnce",
+      "params": [
+        {
+          "name": "Runner",
+          "type": "runner.isFixed is now redundant",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "see docs.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.deltaMin || runner.deltaMax",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warnOnce",
+      "params": [
+        {
+          "name": "Runner",
+          "type": "runner.deltaMin and runner.deltaMax were removed",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "see docs.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.fps !== 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warnOnce",
+      "params": [
+        {
+          "name": "Runner",
+          "type": "runner.fps was replaced by runner.delta",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "see docs.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof window !== 'undefined' && window.requestAnimationFrame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "requestAnimationFrame",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "Runner",
+          "type": "missing required global window.requestAnimationFrame.'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "runner",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof window !== 'undefined' && window.cancelAnimationFrame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cancelAnimationFrame",
+      "params": [
+        {
+          "name": "runner.frameRequestId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "Runner",
+          "type": "missing required global window.cancelAnimationFrame.'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "values",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < valuesLength; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "result / valuesLength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

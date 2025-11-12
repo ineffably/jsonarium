@@ -1,0 +1,1903 @@
+{
+  "type": "class",
+  "name": "Particle",
+  "sourcePath": "gameobjects/particles/Particle.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "gameobjects",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function Particle (emitter",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.emitter.anims.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AnimationState",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        },
+        {
+          "name": "a1",
+          "type": null
+        },
+        {
+          "name": "a2",
+          "type": null
+        },
+        {
+          "name": "a3",
+          "type": null
+        },
+        {
+          "name": "a4",
+          "type": null
+        },
+        {
+          "name": "a5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        },
+        {
+          "name": "a1",
+          "type": null
+        },
+        {
+          "name": "a2",
+          "type": null
+        },
+        {
+          "name": "a3",
+          "type": null
+        },
+        {
+          "name": "a4",
+          "type": null
+        },
+        {
+          "name": "a5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.lifeCurrent > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAnim",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anim",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "play",
+      "params": [
+        {
+          "name": "anim",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFrame",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.frame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'Particle has no texture frame'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getEmitZone",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'x'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "ops.x.steps > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forced",
+      "params": [
+        {
+          "name": "follower?",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'x'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'y'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "ops.y.steps > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forced",
+      "params": [
+        {
+          "name": "follower?",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'y'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'lifespan'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'delay'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'hold'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'scaleX'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'scaleY'",
+          "type": null
+        }
+      ],
+      "returnType": "this.scaleX",
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'rotate'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DegToRad",
+      "params": [
+        {
+          "name": "this.angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.worldPosition",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.delayCurrent === 0 && emitter.getDeathZone(this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'speedX'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'speedY'",
+          "type": null
+        }
+      ],
+      "returnType": "sx",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "emitter.radial",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DegToRad",
+      "params": [
+        {
+          "name": "ops.angle.onEmit(this",
+          "type": null
+        },
+        {
+          "name": "'angle'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cos",
+      "params": [
+        {
+          "name": "rad",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "sx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "rad",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "sy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "emitter.moveTo",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'moveToX'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'moveToY'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "emitter.acceleration",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'accelerationX'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'accelerationY'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'maxVelocityX'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'maxVelocityY'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'bounce'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'alpha'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "ops.color.active",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'tint'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onEmit",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'tint'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        },
+        {
+          "name": "step",
+          "type": null
+        },
+        {
+          "name": "processors",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.lifeCurrent <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.holdCurrent > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.holdCurrent <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.delayCurrent > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.anims",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'x'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'y'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "emitter.moveTo",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'moveToX'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "emitter.moveToX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'moveToY'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "emitter.moveToY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "computeVelocity",
+      "params": [
+        {
+          "name": "emitter",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        },
+        {
+          "name": "step",
+          "type": null
+        },
+        {
+          "name": "processors",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'scaleX'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.scaleX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "ops.scaleY.active",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'scaleY'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.scaleY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'rotate'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DegToRad",
+      "params": [
+        {
+          "name": "this.angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "emitter.getDeathZone(this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Clamp",
+      "params": [
+        {
+          "name": "ops.alpha.onUpdate(this",
+          "type": null
+        },
+        {
+          "name": "'alpha'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.alpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "ops.color.active",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'color'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.tint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'tint'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.tint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.lifeCurrent <= 0 && this.holdCurrent <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "0",
+      "params": [
+        {
+          "name": "birth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "1",
+      "params": [
+        {
+          "name": "death",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "emitter",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        },
+        {
+          "name": "step",
+          "type": null
+        },
+        {
+          "name": "processors",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'accelerationX'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.accelerationX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'accelerationY'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.accelerationY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'maxVelocityX'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.maxVelocityX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'maxVelocityY'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.maxVelocityY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'bounce'",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        },
+        {
+          "name": "this.bounce",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Clamp",
+      "params": [
+        {
+          "name": "vx",
+          "type": null
+        },
+        {
+          "name": "-mx",
+          "type": null
+        },
+        {
+          "name": "mx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Clamp",
+      "params": [
+        {
+          "name": "vy",
+          "type": null
+        },
+        {
+          "name": "-my",
+          "type": null
+        },
+        {
+          "name": "my",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.worldPosition",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "processors",
+      "params": [
+        {
+          "name": "these can update velocity and/or position",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < processors.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "processor.active",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        },
+        {
+          "name": "step",
+          "type": null
+        },
+        {
+          "name": "t",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "matrix === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getWorldTransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "matrix.scaleX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "matrix.scaleY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [
+        {
+          "name": "x - width",
+          "type": null
+        },
+        {
+          "name": "y - height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [
+        {
+          "name": "x + width",
+          "type": null
+        },
+        {
+          "name": "y - height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [
+        {
+          "name": "x - width",
+          "type": null
+        },
+        {
+          "name": "y + height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [
+        {
+          "name": "x + width",
+          "type": null
+        },
+        {
+          "name": "y + height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "rotation !== 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RotateAround",
+      "params": [
+        {
+          "name": "topLeft",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RotateAround",
+      "params": [
+        {
+          "name": "topRight",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RotateAround",
+      "params": [
+        {
+          "name": "bottomLeft",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RotateAround",
+      "params": [
+        {
+          "name": "bottomRight",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "topLeft.x",
+          "type": null
+        },
+        {
+          "name": "topLeft.y",
+          "type": null
+        },
+        {
+          "name": "topLeft",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "topRight.x",
+          "type": null
+        },
+        {
+          "name": "topRight.y",
+          "type": null
+        },
+        {
+          "name": "topRight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "bottomLeft.x",
+          "type": null
+        },
+        {
+          "name": "bottomLeft.y",
+          "type": null
+        },
+        {
+          "name": "bottomLeft",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "bottomRight.x",
+          "type": null
+        },
+        {
+          "name": "bottomRight.y",
+          "type": null
+        },
+        {
+          "name": "bottomRight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "topLeft.x",
+          "type": null
+        },
+        {
+          "name": "topRight.x",
+          "type": null
+        },
+        {
+          "name": "bottomLeft.x",
+          "type": null
+        },
+        {
+          "name": "bottomRight.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "topLeft.y",
+          "type": null
+        },
+        {
+          "name": "topRight.y",
+          "type": null
+        },
+        {
+          "name": "bottomLeft.y",
+          "type": null
+        },
+        {
+          "name": "bottomRight.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "topLeft.x",
+          "type": null
+        },
+        {
+          "name": "topRight.x",
+          "type": null
+        },
+        {
+          "name": "bottomLeft.x",
+          "type": null
+        },
+        {
+          "name": "bottomRight.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "topLeft.y",
+          "type": null
+        },
+        {
+          "name": "topRight.y",
+          "type": null
+        },
+        {
+          "name": "bottomLeft.y",
+          "type": null
+        },
+        {
+          "name": "bottomRight.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.anims",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,1464 @@
+{
+  "type": "class",
+  "name": "FilterSystem",
+  "sourcePath": "filters/FilterSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "The filter pipeline is responsible for applying filters scene items! KNOWN BUGS: 1. Global bounds calculation is incorrect if it is used when flip flopping filters. The maths can be found below eg: filters [noiseFilter, blurFilter] noiseFilter will calculate the global bounds incorrectly. 2. RenderGroups do not work with filters. This is because the renderGroup matrix is not currently taken into account. Implementation notes: 1. Gotcha - nesting filters that require blending will not work correctly. This creates a chicken and egg problem the complexity and performance required to do this is not worth it i feel.. but lets see if others agree! 2. Filters are designed to be changed on the fly, this is means that changing filter information each frame will not trigger an instruction rebuild. If you are constantly turning a filter on and off.. its therefore better to set enabled to true or false on the filter. Or setting an empty array. 3. Need to look at perhaps aliasing when flip flopping filters. Really we should only need to antialias the FIRST Texture we render too. The rest can be non aliased. This might help performance. Currently we flip flop with an antialiased texture if antialiasing is enabled on the filter. / export interface FilterInstruction extends Instruction { renderPipeId: 'filter', action: 'pushFilter' | 'popFilter', container?: Container, renderables?: Renderable[], filterEffect: FilterEffect, } /** Class representing the data required for applying filters. This class holds various properties that are used during the filter application process. / class FilterData { /** Indicates whether the filter should be skipped. / public skip = false; /** The texture to which the filter is applied. / public inputTexture: Texture = null; /** The back texture used for blending, if required. / public backTexture?: Texture = null; /** The list of filters to be applied. / public filters: Filter[] = null; /** The bounds of the filter area. / public bounds = new Bounds(); /** The container to which the filter is applied. / public container: Container = null; /** Indicates whether blending is required for the filter. / public blendRequired: boolean = false; /** The render surface where the output of the filter is rendered. / public outputRenderSurface: RenderSurface = null; /** The global frame of the filter area. / public globalFrame = { x: 0, y: 0, width: 0, height: 0 }; /** Indicates whether antialiasing is enabled for the filter. / public antialias: boolean; /** The resolution of the filter. / public resolution: number; /** The first enabled filter index in the current filter list. */ public firstEnabledIndex = -1; /** The last enabled filter index in the current filter list. */ public lastEnabledIndex = -1; } /** System that manages the filter pipeline",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "instruction",
+          "type": "FilterInstruction",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ], name: 'filter', } as const; public readonly renderer: Renderer; private _filterStackIndex = 0; private _filterStack: FilterData[] = []; private readonly _filterGlobalUniforms = new UniformGroup({ uInputSize: { value: new Float32Array(4), type: 'vec4<f32>' }, uInputPixel: { value: new Float32Array(4), type: 'vec4<f32>' }, uInputClamp: { value: new Float32Array(4), type: 'vec4<f32>' }, uOutputFrame: { value: new Float32Array(4), type: 'vec4<f32>' }, uGlobalFrame: { value: new Float32Array(4), type: 'vec4<f32>' }, uOutputTexture: { value: new Float32Array(4), type: 'vec4<f32>' }, }); private readonly _globalFilterBindGroup: BindGroup = new BindGroup({}); private _activeFilterData: FilterData; private _passthroughFilter: Filter; constructor(renderer: Renderer) { this.renderer = renderer; } /** The back texture of the currently active filter. Requires the filter to have `blendRequired` set to true. / public get activeBackTexture(): Texture | undefined { return this._activeFilterData?.backTexture; } /** Pushes a filter instruction onto the filter stack."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filters.every((filter",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filterData.skip",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "previousFilterData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateFilteredTexture",
+      "params": [
+        {
+          "name": "{ texture",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "filters",
+          "type": "Filter[]}",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Texture",
+      "description": "Applies filters to a texture. This method takes a texture and a list of filters, applies the filters to the texture, and returns the resulting texture. ```ts // Create a texture and a list of filters const texture = new Texture(...); const filters = [new BlurFilter(), new ColorMatrixFilter()]; // Apply the filters to the texture const resultTexture = filterSystem.applyToTexture({ texture, filters }); // Use the resulting texture sprite.texture = resultTexture; ``` Key Points: 1. padding is not currently supported here - so clipping may occur with filters that use padding. 2. If all filters are disabled or skipped, the original texture is returned."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filters.every((filter",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRect",
+      "params": [
+        {
+          "name": "texture.frame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filterData.skip",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getOptimalTexture",
+      "params": [
+        {
+          "name": "bounds.width",
+          "type": null
+        },
+        {
+          "name": "bounds.height",
+          "type": null
+        },
+        {
+          "name": "filterData.resolution",
+          "type": null
+        },
+        {
+          "name": "filterData.antialias",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filterData.skip",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filterData.blendRequired",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "filterData.backTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "filterData.inputTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBackTexture",
+      "params": [
+        {
+          "name": "lastRenderSurface",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bounds",
+          "type": "Bounds",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "previousBounds",
+          "type": "Bounds",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Copies the last render surface to a texture."
+    },
+    {
+      "name": "getOptimalTexture",
+      "params": [
+        {
+          "name": "bounds.width",
+          "type": null
+        },
+        {
+          "name": "bounds.height",
+          "type": null
+        },
+        {
+          "name": "backgroundResolution",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "previousBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "x * backgroundResolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "y * backgroundResolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "bounds.width * backgroundResolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "bounds.height * backgroundResolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyToTexture",
+      "params": [
+        {
+          "name": "lastRenderSurface",
+          "type": null
+        },
+        {
+          "name": "backTexture",
+          "type": null
+        },
+        {
+          "name": "{ x",
+          "type": null
+        },
+        {
+          "name": "y }",
+          "type": null
+        },
+        {
+          "name": "{ width",
+          "type": null
+        },
+        {
+          "name": "height }",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "0 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyFilter",
+      "params": [
+        {
+          "name": "filter",
+          "type": "Filter",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "input",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "output",
+          "type": "RenderSurface",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "clear",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Applies a filter to a texture."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isFinalTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "through",
+      "params": [
+        {
+          "name": "copy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "calculateSpriteMatrix",
+      "params": [
+        {
+          "name": "outputMatrix",
+          "type": "Matrix",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sprite",
+          "type": "Sprite",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Matrix",
+      "description": "Multiply _input normalized coordinates_ to this matrix to get _sprite texture normalized coordinates_. Use `outputMatrix * vTextureCoord` in the shader."
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "data.inputTexture._source.width",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "data.inputTexture._source.height",
+          "type": null
+        },
+        {
+          "name": "data.bounds.minX",
+          "type": null
+        },
+        {
+          "name": "data.bounds.minY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyTo",
+      "params": [
+        {
+          "name": "Matrix.shared",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderGroup && renderGroup.cacheToLocalTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prepend",
+      "params": [
+        {
+          "name": "renderGroup.cacheToLocalTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "invert",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prepend",
+      "params": [
+        {
+          "name": "worldTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "1.0 / sprite.texture.orig.width",
+          "type": null
+        },
+        {
+          "name": "1.0 / sprite.texture.orig.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "sprite.anchor.x",
+          "type": null
+        },
+        {
+          "name": "sprite.anchor.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "PassthroughFilter",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(renderer as WebGPURenderer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUboResource",
+      "params": [
+        {
+          "name": "this._filterGlobalUniforms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "batchUniforms",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "this._filterGlobalUniforms",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "input.source",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "input.source.style",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "quadGeometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": "filter",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "state",
+          "type": "filter._state",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "topology",
+          "type": "'triangle-list'\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer.type === RendererType.WEBGL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getOptimalTexture",
+      "params": [
+        {
+          "name": "bounds.width",
+          "type": null
+        },
+        {
+          "name": "bounds.height",
+          "type": null
+        },
+        {
+          "name": "filterData.resolution",
+          "type": null
+        },
+        {
+          "name": "filterData.antialias",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "important",
+      "params": [
+        {
+          "name": "!",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "application",
+      "params": [
+        {
+          "name": "check `pop` method",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "order",
+      "params": [
+        {
+          "name": "inputTexture -> backTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filterData.blendRequired",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getRenderTarget",
+      "params": [
+        {
+          "name": "filterData.outputRenderSurface",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBackTexture",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": null
+        },
+        {
+          "name": "bounds",
+          "type": null
+        },
+        {
+          "name": "previousFilterData?.bounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "filterData.inputTexture",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "offset",
+          "type": "bounds",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isFinalTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "output instanceof Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getRenderTarget",
+      "params": [
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "output",
+          "type": null
+        },
+        {
+          "name": "!!clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "output instanceof Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "currentIndex > 0 && this._filterStack[currentIndex].skip",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "lastIndex > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!prevFilterData.skip",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.renderables",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlobalRenderableBounds",
+      "params": [
+        {
+          "name": "instruction.renderables",
+          "type": null
+        },
+        {
+          "name": "bounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.filterEffect.filterArea",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRect",
+      "params": [
+        {
+          "name": "instruction.filterEffect.filterArea",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyMatrix",
+      "params": [
+        {
+          "name": "instruction.container.worldTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFastGlobalBounds",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "bounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filterFrameTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyMatrix",
+      "params": [
+        {
+          "name": "filterFrameTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "inputTexture.source.style",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "filterData.backTexture.source",
+          "type": null
+        },
+        {
+          "name": "3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "firstEnabled === lastEnabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "inputTexture",
+          "type": null
+        },
+        {
+          "name": "filterData.outputRenderSurface",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getOptimalTexture",
+      "params": [
+        {
+          "name": "bounds.width",
+          "type": null
+        },
+        {
+          "name": "bounds.height",
+          "type": null
+        },
+        {
+          "name": "flip.source._resolution",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = firstEnabled; i < lastEnabled; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!filter.enabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "flip",
+          "type": null
+        },
+        {
+          "name": "flop",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "flip",
+          "type": null
+        },
+        {
+          "name": "filterData.outputRenderSurface",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "tempTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < filters.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!filter.enabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "firstEnabledIndex === -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "resolution",
+          "type": null
+        },
+        {
+          "name": "filter.resolution === 'inherit'\n                ? rootResolution : filter.resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filter.antialias === 'off'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filter.antialias === 'inherit'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!filter.clipToViewport",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!isCompatible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filter.blendRequired && !((renderer as WebGLRenderer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "useBackBuffer",
+          "type": "true` in the renderer options.'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!enabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clipToViewport",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fitBounds",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "viewPort.width / rootResolution",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "viewPort.height / rootResolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "1 / resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pad",
+      "params": [
+        {
+          "name": "(padding | 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!bounds.isPositive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "index > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!previousFilterData.skip",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!filterData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FilterData",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

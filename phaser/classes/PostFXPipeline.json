@@ -1,0 +1,1378 @@
+{
+  "type": "class",
+  "name": "PostFXPipeline",
+  "sourcePath": "renderer/webgl/pipelines/PostFXPipeline.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "WebGLPipeline",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function PostFXPipeline (config",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'fragShader'",
+          "type": null
+        },
+        {
+          "name": "ShaderSourceFS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'vertShader'",
+          "type": null
+        },
+        {
+          "name": "ShaderSourceVS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'attributes'",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": "'inPosition'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "2\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inTexCoord'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "2\n            }\n        ]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ColorMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderer.isBooted",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uMainSampler'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "'uResolution'",
+          "type": null
+        },
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < targets.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.hasBooted",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bootFX",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.currentRenderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onDraw",
+      "params": [
+        {
+          "name": "this.currentRenderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onPostBatch",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindAndDraw",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "controller",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "controller !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.controller",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "reset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "reset === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "source.texture.webGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getParameter",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER_BINDING",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "target.framebuffer.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "target.texture.webGLTexture",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "gl.ARRAY_BUFFER",
+          "type": null
+        },
+        {
+          "name": "this.vertexData",
+          "type": null
+        },
+        {
+          "name": "gl.STATIC_DRAW",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawArrays",
+      "params": [
+        {
+          "name": "gl.TRIANGLES",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "reset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "currentFBO",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "brightness",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrame",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "brightness",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyToGame",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawFrame",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        },
+        {
+          "name": "this.colorMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source1",
+          "type": null
+        },
+        {
+          "name": "source2",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendFrames",
+      "params": [
+        {
+          "name": "source1",
+          "type": null
+        },
+        {
+          "name": "source2",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source1",
+          "type": null
+        },
+        {
+          "name": "source2",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendFramesAdditive",
+      "params": [
+        {
+          "name": "source1",
+          "type": null
+        },
+        {
+          "name": "source2",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearFrame",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "brightness",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        },
+        {
+          "name": "eraseMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blitFrame",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "brightness",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        },
+        {
+          "name": "eraseMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrameRect",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        },
+        {
+          "name": "currentShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clear === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clearAlpha === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "currentShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uMainSampler'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "target.width",
+          "type": null
+        },
+        {
+          "name": "target.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "target.framebuffer.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "target.texture.webGLTexture",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "popFramebuffer",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderer.currentFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "restoreStencilMask",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "source.texture.webGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "gl.ARRAY_BUFFER",
+          "type": null
+        },
+        {
+          "name": "this.vertexData",
+          "type": null
+        },
+        {
+          "name": "gl.STATIC_DRAW",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawArrays",
+      "params": [
+        {
+          "name": "gl.TRIANGLES",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "renderer.currentFramebuffer.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.controller",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removePostPipeline",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

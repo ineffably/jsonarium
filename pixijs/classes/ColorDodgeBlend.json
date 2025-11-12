@@ -1,0 +1,243 @@
+{
+  "type": "class",
+  "name": "ColorDodgeBlend",
+  "sourcePath": "advanced-blend-modes/ColorDodgeBlend.ts",
+  "extends": "BlendModeFilter",
+  "implements": [],
+  "description": "The final color is the result of dividing the bottom color by the inverse of the top color. A black foreground leads to no change. A foreground with the inverse color of the backdrop leads to a fully lit color. This blend mode is similar to screen, but the foreground need only be as light as the inverse of the backdrop to create a fully lit color. Available as `container.blendMode = 'color-dodge'` after importing `pixi.js/advanced-blend-modes`. import 'pixi.js/advanced-blend-modes'; import { Sprite } from 'pixi.js'; const sprite = Sprite.from('something.png'); sprite.blendMode = 'color-dodge'",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "gl",
+          "type": "{\n                functions: `\n                float colorDodge(float base",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "float blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendColorDodge",
+      "params": [
+        {
+          "name": "vec3 base",
+          "type": null
+        },
+        {
+          "name": "vec3 blend",
+          "type": null
+        },
+        {
+          "name": "float opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec3",
+      "params": [
+        {
+          "name": "colorDodge(base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec4",
+      "params": [
+        {
+          "name": "blendColorDodge(back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "base",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendColorDodge",
+      "params": [
+        {
+          "name": "base",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "opacity",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendColorDodge",
+      "params": [
+        {
+          "name": "back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

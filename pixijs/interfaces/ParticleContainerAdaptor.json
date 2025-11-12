@@ -1,0 +1,77 @@
+{
+  "type": "interface",
+  "name": "ParticleContainerAdaptor",
+  "sourcePath": "scene/particle-container/shared/ParticleContainerPipe.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "particleContainerPop",
+      "type": "ParticleContainerPipe, container: ParticleContainer): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultShader",
+      "type": "Shader",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "adaptor",
+      "type": "ParticleContainerAdaptor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uTranslationMatrix",
+      "type": "{ value: new Matrix(), type: 'mat3x3<f32>' },\n        uColor: { value: new Float32Array(4), type: 'vec4<f32>' },\n        uRound: { value: 1, type: 'f32' },\n        uResolution: { value: [0, 0], type: 'vec2<f32>' },\n    })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer, adaptor: ParticleContainerAdaptor)\n    {\n        this.renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderable",
+      "type": "ParticleContainer): boolean\n    {\n        // always fine :D\n        return false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderable",
+      "type": "ParticleContainer, instructionSet: InstructionSet)\n    {\n        this.renderer.renderPipes.batch.break(instructionSet)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderable",
+      "type": "ParticleContainer): ParticleBuffer\n    {\n        return renderable._gpuData[this.renderer.uid] || this._initBuffer(renderable)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderable",
+      "type": "ParticleContainer): ParticleBuffer\n    {\n        renderable._gpuData[this.renderer.uid] = new ParticleBuffer({\n            size: renderable.particleChildren.length,\n            properties: renderable._properties,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderable",
+      "type": "ParticleContainer)\n    {\n        // nothing to be done here!\n\n    }\n\n    public execute(container: ParticleContainer): void\n    {\n        const children = container.particleChildren",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

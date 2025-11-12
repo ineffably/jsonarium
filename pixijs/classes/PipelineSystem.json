@@ -1,0 +1,279 @@
+{
+  "type": "class",
+  "name": "PipelineSystem",
+  "sourcePath": "rendering/renderers/gpu/pipeline/PipelineSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "A system that creates and manages the GPU pipelines. Caching Mechanism: At its core, the system employs a two-tiered caching strategy to minimize the redundant creation of GPU pipelines (or \"pipes\"). This strategy is based on generating unique keys that represent the state of the graphics settings and the specific requirements of the item being rendered. By caching these pipelines, subsequent draw calls with identical configurations can reuse existing pipelines instead of generating new ones. State Management: The system differentiates between \"global\" state properties (like color masks and stencil masks, which do not change frequently) and properties that may vary between draw calls (such as geometry, shaders, and blend modes). Unique keys are generated for both these categories using getStateKey for global state and getGraphicsStateKey for draw-specific settings. These keys are then then used to caching the pipe. The next time we need a pipe we can check the cache by first looking at the state cache and then the pipe cache.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "getBufferNamesToBind",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "Geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "program",
+          "type": "GpuProgram",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Record<string, string>",
+      "description": "public static extension = { type: [ExtensionType.WebGPUSystem], name: 'pipeline', } as const; private readonly _renderer: WebGPURenderer; protected CONTEXT_UID: number; private _moduleCache: Record<string, GPUShaderModule> = Object.create(null); private _bufferLayoutsCache: Record<number, GPUVertexBufferLayout[]> = Object.create(null); private readonly _bindingNamesCache: Record<string, Record<string, string>> = Object.create(null); private _pipeCache: PipeHash = Object.create(null); private readonly _pipeStateCaches: Record<number, PipeHash> = Object.create(null); private _gpu: GPU; private _stencilState: StencilState; private _stencilMode: STENCIL_MODES; private _colorMask = 0b1111; private _multisampleCount = 1; private _depthStencilAttachment: 0 | 1; constructor(renderer: WebGPURenderer) { this._renderer = renderer; } protected contextChange(gpu: GPU): void { this._gpu = gpu; this.setStencilMode(STENCIL_MODES.DISABLED); this._updatePipeHash(); } public setMultisampleCount(multisampleCount: number): void { if (this._multisampleCount === multisampleCount) return; this._multisampleCount = multisampleCount; this._updatePipeHash(); } public setRenderTarget(renderTarget: GpuRenderTarget) { this._multisampleCount = renderTarget.msaaSamples; this._depthStencilAttachment = renderTarget.descriptor.depthStencilAttachment ? 1 : 0; this._updatePipeHash(); } public setColorMask(colorMask: number): void { if (this._colorMask === colorMask) return; this._colorMask = colorMask; this._updatePipeHash(); } public setStencilMode(stencilMode: STENCIL_MODES): void { if (this._stencilMode === stencilMode) return; this._stencilMode = stencilMode; this._stencilState = GpuStencilModesToPixi[stencilMode]; this._updatePipeHash(); } public setPipeline(geometry: Geometry, program: GpuProgram, state: State, passEncoder: GPURenderPassEncoder): void { const pipeline = this.getPipeline(geometry, program, state); passEncoder.setPipeline(pipeline); } public getPipeline( geometry: Geometry, program: GpuProgram, state: State, topology?: Topology, ): GPURenderPipeline { if (!geometry._layoutKey) { ensureAttributes(geometry, program.attributeData); // prepare the geometry for the pipeline this._generateBufferKey(geometry); } topology ||= geometry.topology; // now we have set the Ids - the key is different... const key = getGraphicsStateKey( geometry._layoutKey, program._layoutKey, state.data, state._blendModeId, topologyStringToId[topology], ); if (this._pipeCache[key]) return this._pipeCache[key]; this._pipeCache[key] = this._createPipeline(geometry, program, state, topology); return this._pipeCache[key]; } private _createPipeline(geometry: Geometry, program: GpuProgram, state: State, topology: Topology): GPURenderPipeline { const device = this._gpu.device; const buffers = this._createVertexBufferLayouts(geometry, program); const blendModes = this._renderer.state.getColorTargets(state); blendModes[0].writeMask = this._stencilMode === STENCIL_MODES.RENDERING_MASK_ADD ? 0 : this._colorMask; const layout = this._renderer.shader.getProgramData(program).pipeline; const descriptor: GPURenderPipelineDescriptor = { // TODO later check if its helpful to create.. // layout, vertex: { module: this._getModule(program.vertex.source), entryPoint: program.vertex.entryPoint, // geometry.. buffers, }, fragment: { module: this._getModule(program.fragment.source), entryPoint: program.fragment.entryPoint, targets: blendModes, }, primitive: { topology, cullMode: state.cullMode, }, layout, multisample: { count: this._multisampleCount, }, // depthStencil, label: `PIXI Pipeline`, }; // only apply if the texture has stencil or depth if (this._depthStencilAttachment) { // mask states.. descriptor.depthStencil = { ...this._stencilState, format: 'depth24plus-stencil8', depthWriteEnabled: state.depthTest, depthCompare: state.depthTest ? 'less' : 'always', }; } const pipeline = device.createRenderPipeline(descriptor); return pipeline; } private _getModule(code: string): GPUShaderModule { return this._moduleCache[code] || this._createModule(code); } private _createModule(code: string): GPUShaderModule { const device = this._gpu.device; this._moduleCache[code] = device.createShaderModule({ code, }); return this._moduleCache[code]; } private _generateBufferKey(geometry: Geometry): number { const keyGen = []; let index = 0; // generate a key.. const attributeKeys = Object.keys(geometry.attributes).sort(); for (let i = 0; i < attributeKeys.length; i++) { const attribute = geometry.attributes[attributeKeys[i]]; keyGen[index++] = attribute.offset; keyGen[index++] = attribute.format; keyGen[index++] = attribute.stride; keyGen[index++] = attribute.instance; } const stringKey = keyGen.join('|'); geometry._layoutKey = createIdFromString(stringKey, 'geometry'); return geometry._layoutKey; } private _generateAttributeLocationsKey(program: GpuProgram): number { const keyGen = []; let index = 0; // generate a key.. const attributeKeys = Object.keys(program.attributeData).sort(); for (let i = 0; i < attributeKeys.length; i++) { const attribute = program.attributeData[attributeKeys[i]]; keyGen[index++] = attribute.location; } const stringKey = keyGen.join('|'); program._attributeLocationsKey = createIdFromString(stringKey, 'programAttributes'); return program._attributeLocationsKey; } /** Returns a hash of buffer names mapped to bind locations. This is used to bind the correct buffer to the correct location in the shader."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._bindingNamesCache[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < data.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "values",
+      "params": [
+        {
+          "name": "data[i].attributes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const j in attributeData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "attributeData[j].location === shaderLocation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!program._attributeLocationsKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._bufferLayoutsCache[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in program.attributeData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(attribute.divisor ?? 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "`Attribute ${i} has an invalid divisor value of '${attribute.divisor}'. `\n                        + 'WebGPU only supports a divisor value of 1'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "attribute.buffer === buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "shaderLocation",
+          "type": "program.attributeData[i].location",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "offset",
+          "type": "attribute.offset",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "attribute.format",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bufferEntryAttributes.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "bufferEntry",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlobalStateKey",
+      "params": [
+        {
+          "name": "this._stencilMode",
+          "type": null
+        },
+        {
+          "name": "this._multisampleCount",
+          "type": null
+        },
+        {
+          "name": "this._colorMask",
+          "type": null
+        },
+        {
+          "name": "this._depthStencilAttachment",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._pipeStateCaches[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

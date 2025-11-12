@@ -1,0 +1,71 @@
+{
+  "type": "interface",
+  "name": "GPUProgramData",
+  "sourcePath": "rendering/renderers/gpu/shader/GpuShaderSystem.ts",
+  "extends": [],
+  "description": "Data structure for GPU program layout. Contains bind group layouts and pipeline layout.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "bindGroups",
+      "type": "GPUBindGroupLayout[]\n    pipeline: GPUPipelineLayout\n}\n\n/**\n * A system that manages the rendering of GpuPrograms.\n * @category rendering\n * @advanced\n */\nexport class GpuShaderSystem\n{\n    /** @ignore */\n    public static extension = {\n        type: [\n            ExtensionType.WebGPUSystem,\n        ],\n        name: 'shader',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_gpu",
+      "type": "GPU",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_gpuProgramData",
+      "type": "Record<number, GPUProgramData> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "gpu",
+      "type": "GPU): void\n    {\n        this._gpu = gpu",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "program",
+      "type": "GpuProgram)\n    {\n        return this._gpuProgramData[program._layoutKey] || this._createGPUProgramData(program)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "program",
+      "type": "GpuProgram)\n    {\n        const device = this._gpu.device",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "entries",
+      "type": "group }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bindGroupLayouts",
+      "type": "bindGroups }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "pipeline",
+      "type": "device.createPipelineLayout(pipelineLayoutDesc),\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bindGroups",
+      "type": "null,\n        //     pipeline: 'auto',\n        // }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

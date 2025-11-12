@@ -1,0 +1,575 @@
+{
+  "type": "class",
+  "name": "GeometryMask",
+  "sourcePath": "display/mask/GeometryMask.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "display",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function GeometryMask (scene",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "graphicsGeometry",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "graphicsGeometry",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer.maskStack.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enable",
+      "params": [
+        {
+          "name": "gl.STENCIL_TEST",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.STENCIL_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer.currentCameraMask.mask !== this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "mask",
+          "type": "this",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "camera",
+          "type": "camera }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyStencil",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "inc",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorMask",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "inc",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilFunc",
+      "params": [
+        {
+          "name": "gl.EQUAL",
+          "type": null
+        },
+        {
+          "name": "level",
+          "type": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilOp",
+      "params": [
+        {
+          "name": "gl.KEEP",
+          "type": null
+        },
+        {
+          "name": "gl.KEEP",
+          "type": null
+        },
+        {
+          "name": "gl.INCR",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilFunc",
+      "params": [
+        {
+          "name": "gl.EQUAL",
+          "type": null
+        },
+        {
+          "name": "level + 1",
+          "type": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilOp",
+      "params": [
+        {
+          "name": "gl.KEEP",
+          "type": null
+        },
+        {
+          "name": "gl.KEEP",
+          "type": null
+        },
+        {
+          "name": "gl.DECR",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderWebGL",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "geometryMask",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorMask",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilOp",
+      "params": [
+        {
+          "name": "gl.KEEP",
+          "type": null
+        },
+        {
+          "name": "gl.KEEP",
+          "type": null
+        },
+        {
+          "name": "gl.KEEP",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.invertAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilFunc",
+      "params": [
+        {
+          "name": "gl.NOTEQUAL",
+          "type": null
+        },
+        {
+          "name": "level",
+          "type": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilFunc",
+      "params": [
+        {
+          "name": "gl.EQUAL",
+          "type": null
+        },
+        {
+          "name": "level",
+          "type": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer.maskStack.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disable",
+      "params": [
+        {
+          "name": "gl.STENCIL_TEST",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyStencil",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "prev.camera",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer.currentCameraMask.mask !== prev.mask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "save",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderCanvas",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "geometryMask",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clip",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "renderer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "restore",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

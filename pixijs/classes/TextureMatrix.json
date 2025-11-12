@@ -1,0 +1,178 @@
+{
+  "type": "class",
+  "name": "TextureMatrix",
+  "sourcePath": "rendering/renderers/shared/texture/TextureMatrix.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Class controls uv mapping from Texture normal space to BaseTexture normal space. Takes `trim` and `rotate` into account. May contain clamp settings for Meshes and TilingSprite. Can be used in Texture `uvMatrix` field, or separately, you can use different clamp settings on the same texture. If you want to add support for texture region of certain feature or filter, that's what you're looking for. Takes track of Texture changes through `_lastTextureID` private field. Use `update()` method call to track it from outside.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(typeof clampMargin === 'undefined'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiplyUvs",
+      "params": [
+        {
+          "name": "uvs",
+          "type": "Float32Array",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "out",
+          "type": "Float32Array",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Float32Array",
+      "description": "Texture property. */ get texture(): Texture { return this._texture; } set texture(value: Texture) { if (this.texture === value) return; this._texture?.removeListener('update', this.update, this); this._texture = value; this._texture.addListener('update', this.update, this); this.update(); } /** Multiplies uvs array to transform"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "out === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < uvs.length; i += 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": "boolean",
+      "description": "Updates matrices if texture was changed"
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "uvs.x1 - uvs.x0",
+          "type": null
+        },
+        {
+          "name": "uvs.y1 - uvs.y0",
+          "type": null
+        },
+        {
+          "name": "uvs.x3 - uvs.x0",
+          "type": null
+        },
+        {
+          "name": "uvs.y3 - uvs.y0",
+          "type": null
+        },
+        {
+          "name": "uvs.x0",
+          "type": null
+        },
+        {
+          "name": "uvs.y0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "trim",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "orig.width / trim.width",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "orig.height / trim.height",
+          "type": null
+        },
+        {
+          "name": "-trim.x / trim.width",
+          "type": null
+        },
+        {
+          "name": "-trim.y / trim.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "append",
+      "params": [
+        {
+          "name": "tempMat",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "texture",
+      "type": "Texture",
+      "description": "Texture property."
+    }
+  ]
+}

@@ -1,0 +1,591 @@
+{
+  "type": "class",
+  "name": "VideoSource",
+  "sourcePath": "rendering/renderers/shared/texture/sources/VideoSource.ts",
+  "extends": "TextureSource",
+  "implements": [],
+  "description": "The type of resource used for video textures. This is typically an HTMLVideoElement. / export type VideoResource = HTMLVideoElement; /** Options for video sources. / export interface VideoSourceOptions extends TextureSourceOptions<VideoResource> { /** If true, the video will start loading immediately. */ autoLoad?: boolean; /** If true, the video will start playing as soon as it is loaded. */ autoPlay?: boolean; /** The number of times a second to update the texture from the video. Leave at 0 to update at every render. */ updateFPS?: number; /** If true, the video will be loaded with the `crossorigin` attribute. */ crossorigin?: boolean | string; /** If true, the video will loop when it ends. */ loop?: boolean; /** If true, the video will be muted. */ muted?: boolean; /** If true, the video will play inline. */ playsinline?: boolean; /** If true, the video will be preloaded. */ preload?: boolean; /** The time in milliseconds to wait for the video to preload before timing out. */ preloadTimeoutMs?: number; /** The alpha mode of the video. */ alphaMode?: ALPHA_MODES; } /** A texture source that uses a video as its resource. It automatically resizes the texture based on the video dimensions. It also provides methods to control playback and handle video events. This class supports automatic loading, playback, and frame updates. It can also handle cross-origin videos and provides options for looping, muting, and inline playback.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "load",
+      "params": [],
+      "returnType": "Promise<this>",
+      "description": "The default options for video sources. */ public static defaultOptions: VideoSourceOptions = { ...TextureSource.defaultOptions, /** If true, the video will start loading immediately. */ autoLoad: true, /** If true, the video will start playing as soon as it is loaded. */ autoPlay: true, /** The number of times a second to update the texture from the video. Leave at 0 to update at every render. */ updateFPS: 0, /** If true, the video will be loaded with the `crossorigin` attribute. */ crossorigin: true, /** If true, the video will loop when it ends. */ loop: false, /** If true, the video will be muted. */ muted: true, /** If true, the video will play inline. */ playsinline: true, /** If true, the video will be preloaded. */ preload: false, }; // Public /** Whether or not the video is ready to play. */ public isReady = false; /** The upload method for this texture. */ public uploadMethodId = 'video'; // Protected /** When set to true will automatically play videos used by this texture once they are loaded. If false, it will not modify the playing state. / protected autoPlay: boolean; // Private /** `true` to use Ticker.shared to auto update the base texture. / private _autoUpdate: boolean; /** `true` if the instance is currently connected to Ticker.shared to auto update the base texture. / private _isConnectedToTicker: boolean; /** Promise when loading. / private _load: Promise<this>; private _msToNextUpdate: number; private _preloadTimeout: number; /** Callback when completed with load. */ private _resolve: (value?: this | PromiseLike<this>) => void; private _reject: (error: ErrorEvent) => void; private _updateFPS: number; private _videoFrameRequestCallbackHandle: number | null; constructor( options: VideoSourceOptions ) { super(options); // Merge provided options with default ones options = { ...VideoSource.defaultOptions, ...options }; this._autoUpdate = true; this._isConnectedToTicker = false; this._updateFPS = options.updateFPS || 0; this._msToNextUpdate = 0; this.autoPlay = options.autoPlay !== false; this.alphaMode = options.alphaMode ?? 'premultiply-alpha-on-upload'; // Binding for frame updates this._videoFrameRequestCallback = this._videoFrameRequestCallback.bind(this); this._videoFrameRequestCallbackHandle = null; this._load = null; this._resolve = null; this._reject = null; // Bind for listeners this._onCanPlay = this._onCanPlay.bind(this); this._onCanPlayThrough = this._onCanPlayThrough.bind(this); this._onError = this._onError.bind(this); this._onPlayStart = this._onPlayStart.bind(this); this._onPlayStop = this._onPlayStop.bind(this); this._onSeeked = this._onSeeked.bind(this); if (options.autoLoad !== false) { void this.load(); } } /** Update the video frame if the source is not destroyed and meets certain conditions. */ protected updateFrame(): void { if (this.destroyed) { return; } if (this._updateFPS) { // Account for if video has had its playbackRate changed const elapsedMS = Ticker.shared.elapsedMS * this.resource.playbackRate; this._msToNextUpdate = Math.floor(this._msToNextUpdate - elapsedMS); } if (!this._updateFPS || this._msToNextUpdate <= 0) { this._msToNextUpdate = this._updateFPS ? Math.floor(1000 / this._updateFPS) : 0; } if (this.isValid) { this.update(); } } /** Callback to update the video frame and potentially request the next frame update. */ private _videoFrameRequestCallback(): void { this.updateFrame(); if (this.destroyed) { this._videoFrameRequestCallbackHandle = null; } else { this._videoFrameRequestCallbackHandle = this.resource.requestVideoFrameCallback( this._videoFrameRequestCallback ); } } /** Checks if the resource has valid dimensions. / public get isValid(): boolean { return !!this.resource.videoWidth && !!this.resource.videoHeight; } /** Start preloading the video resource."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._load",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(source.readyState === source.HAVE_ENOUGH_DATA || source.readyState === source.HAVE_FUTURE_DATA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "'play'",
+          "type": null
+        },
+        {
+          "name": "this._onPlayStart",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "'pause'",
+          "type": null
+        },
+        {
+          "name": "this._onPlayStop",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "'seeked'",
+          "type": null
+        },
+        {
+          "name": "this._onSeeked",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._isSourceReady(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!options.preload",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "'canplay'",
+          "type": null
+        },
+        {
+          "name": "this._onCanPlay",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "'canplaythrough'",
+          "type": null
+        },
+        {
+          "name": "this._onCanPlayThrough",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventListener",
+      "params": [
+        {
+          "name": "'error'",
+          "type": null
+        },
+        {
+          "name": "this._onError",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "detectVideoAlphaMode",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Promise",
+      "params": [
+        {
+          "name": "(resolve",
+          "type": null
+        },
+        {
+          "name": "reject",
+          "type": null
+        }
+      ],
+      "returnType": "void =>",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isValid",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolve",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.preloadTimeoutMs !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTimeout",
+      "params": [
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "load",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": "Handle video error events. / private _onError(event: ErrorEvent): void { this.resource.removeEventListener('error', this._onError, true); this.emit('error', event); if (this._reject) { this._reject(event); this._reject = null; this._resolve = null; } } /** Checks if the underlying source is playing. / private _isSourcePlaying(): boolean { const source = this.resource; return (!source.paused && !source.ended); } /** Checks if the underlying source is ready for playing. / private _isSourceReady(): boolean { const source = this.resource; return source.readyState > 2; } /** Runs the update loop when the video is ready to play. */ private _onPlayStart(): void { // Handle edge case where video might not have received its \"can play\" event yet if (!this.isValid) { this._mediaReady(); } this._configureAutoUpdate(); } /** Stops the update loop when a pause event is triggered. */ private _onPlayStop(): void { this._configureAutoUpdate(); } /** Handles behavior when the video completes seeking to the current playback position. */ private _onSeeked(): void { if (this._autoUpdate && !this._isSourcePlaying()) { this._msToNextUpdate = 0; this.updateFrame(); this._msToNextUpdate = 0; } } private _onCanPlay(): void { const source = this.resource; // Remove event listeners source.removeEventListener('canplay', this._onCanPlay); this._mediaReady(); } private _onCanPlayThrough(): void { const source = this.resource; // Remove event listeners source.removeEventListener('canplaythrough', this._onCanPlay); if (this._preloadTimeout) { clearTimeout(this._preloadTimeout); this._preloadTimeout = undefined; } this._mediaReady(); } /** Fired when the video is loaded and ready to play. */ private _mediaReady(): void { const source = this.resource; if (this.isValid) { this.isReady = true; this.resize(source.videoWidth, source.videoHeight); } // Reset update timers and perform a frame update this._msToNextUpdate = 0; this.updateFrame(); this._msToNextUpdate = 0; // Resolve the loading promise if it exists if (this._resolve) { this._resolve(this); this._resolve = null; this._reject = null; } // Handle play behavior based on current source status if (this._isSourcePlaying()) { this._onPlayStart(); } else if (this.autoPlay) { void this.resource.play(); } } /** Cleans up resources and event listeners associated with this texture."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeEventListener",
+      "params": [
+        {
+          "name": "'play'",
+          "type": null
+        },
+        {
+          "name": "this._onPlayStart",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeEventListener",
+      "params": [
+        {
+          "name": "'pause'",
+          "type": null
+        },
+        {
+          "name": "this._onPlayStop",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeEventListener",
+      "params": [
+        {
+          "name": "'seeked'",
+          "type": null
+        },
+        {
+          "name": "this._onSeeked",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeEventListener",
+      "params": [
+        {
+          "name": "'canplay'",
+          "type": null
+        },
+        {
+          "name": "this._onCanPlay",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeEventListener",
+      "params": [
+        {
+          "name": "'canplaythrough'",
+          "type": null
+        },
+        {
+          "name": "this._onCanPlayThrough",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeEventListener",
+      "params": [
+        {
+          "name": "'error'",
+          "type": null
+        },
+        {
+          "name": "this._onError",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pause",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "load",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value !== this._autoUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value !== this._updateFPS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._autoUpdate && this._isSourcePlaying(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "callback",
+      "params": [
+        {
+          "name": "generally for better performance",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._updateFPS && this.resource.requestVideoFrameCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._isConnectedToTicker",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this.updateFrame",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._videoFrameRequestCallbackHandle === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "requestVideoFrameCallback",
+      "params": [
+        {
+          "name": "this._videoFrameRequestCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._videoFrameRequestCallbackHandle !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cancelVideoFrameCallback",
+      "params": [
+        {
+          "name": "this._videoFrameRequestCallbackHandle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._isConnectedToTicker",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this.updateFrame",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._videoFrameRequestCallbackHandle !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cancelVideoFrameCallback",
+      "params": [
+        {
+          "name": "this._videoFrameRequestCallbackHandle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._isConnectedToTicker",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this.updateFrame",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "resource",
+          "type": "any",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "resource is VideoResource",
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "globalThis.HTMLVideoElement && resource instanceof HTMLVideoElement",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "autoUpdate",
+      "type": "boolean",
+      "description": "Should the base texture automatically update itself, set to true by default."
+    },
+    {
+      "name": "updateFPS",
+      "type": "number",
+      "description": "How many times a second to update the texture from the video. Leave at 0 to update at every render. A lower fps can help performance, as updating the texture at 60fps on a 30ps video may not be efficient."
+    }
+  ]
+}

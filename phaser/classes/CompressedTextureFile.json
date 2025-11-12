@@ -1,0 +1,1826 @@
+{
+  "type": "class",
+  "name": "CompressedTextureFile",
+  "sourcePath": "loader/filetypes/CompressedTextureFile.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "loader",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "MultiFile",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function CompressedTextureFile (loader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "entry",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.multiAtlasURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "JSONFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": "key",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "entry.multiAtlasURL",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": "xhrSettings",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "config",
+          "type": "entry\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "'texture'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "[ multi ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "substr",
+      "params": [
+        {
+          "name": "entry.textureURL.length - 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!entry.type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toLowerCase",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BinaryFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": "key",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "entry.textureURL",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "extension",
+          "type": "extension",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": "xhrSettings",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "config",
+          "type": "entry\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.atlasURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "JSONFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": "key",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "entry.atlasURL",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": "xhrSettings",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "config",
+          "type": "entry\n                }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "'texture'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "[ image",
+          "type": null
+        },
+        {
+          "name": "data ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "'texture'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "[ image ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "indexOf",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "index !== -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.config.multiAtlasURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.type === 'json' && file.data.hasOwnProperty('textures'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'multiBaseURL'",
+          "type": null
+        },
+        {
+          "name": "this.baseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'multiPath'",
+          "type": null
+        },
+        {
+          "name": "this.path",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'prefix'",
+          "type": null
+        },
+        {
+          "name": "this.prefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'textureXhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "baseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBaseURL",
+      "params": [
+        {
+          "name": "baseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "path",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPath",
+      "params": [
+        {
+          "name": "path",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "prefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPrefix",
+      "params": [
+        {
+          "name": "prefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < textures.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BinaryFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToMultiFile",
+      "params": [
+        {
+          "name": "image",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "image",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textures[i].normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BinaryFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textures[i].normalMap",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setLink",
+      "params": [
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToMultiFile",
+      "params": [
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBaseURL",
+      "params": [
+        {
+          "name": "currentBaseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPath",
+      "params": [
+        {
+          "name": "currentPath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPrefix",
+      "params": [
+        {
+          "name": "currentPrefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compressionWarning",
+      "params": [
+        {
+          "name": "message",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "Invalid",
+          "type": "\"' + image.key + '\". ' + message",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isReadyToProcess(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.multiAtlasURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addMultiToCache",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.type === 'PVR'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "PVRParser",
+      "params": [
+        {
+          "name": "image.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.type === 'KTX'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "KTXParser",
+      "params": [
+        {
+          "name": "image.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compressionWarning",
+      "params": [
+        {
+          "name": "'KTX file contains unsupported format.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureData && !verifyCompressedTexture(textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compressionWarning",
+      "params": [
+        {
+          "name": "'Texture dimensions failed verification. Check the texture format specifications for ' + entry.format + ' 0x' + textureData.internalFormat.toString(16",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureData && !renderer.supportsCompressedTexture(entry.format",
+          "type": null
+        },
+        {
+          "name": "textureData.internalFormat",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compressionWarning",
+      "params": [
+        {
+          "name": "'Texture format ' + entry.format + ' with internal format ' + textureData.internalFormat + ' not supported by the GPU. Texture invalid. This is often due to the texture using sRGB instead of linear RGB.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCompressedTextureName",
+      "params": [
+        {
+          "name": "entry.format",
+          "type": null
+        },
+        {
+          "name": "textureData.internalFormat",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addCompressedTexture",
+      "params": [
+        {
+          "name": "image.key",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        },
+        {
+          "name": "atlasData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 1; i < this.files.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.type === 'normalMap'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "indexOf",
+      "params": [
+        {
+          "name": "'_'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "substr",
+      "params": [
+        {
+          "name": "pos + 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var t = 0; t < json.data.textures.length; t++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item.image === key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.type === 'PVR'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "PVRParser",
+      "params": [
+        {
+          "name": "image",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.type === 'KTX'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "KTXParser",
+      "params": [
+        {
+          "name": "image",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureData && renderer.supportsCompressedTexture(entry.format",
+          "type": null
+        },
+        {
+          "name": "textureData.internalFormat",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCompressedTextureName",
+      "params": [
+        {
+          "name": "entry.format",
+          "type": null
+        },
+        {
+          "name": "textureData.internalFormat",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.linkFile",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "file.linkFile.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "normalMaps.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addAtlasJSONArray",
+      "params": [
+        {
+          "name": "this.key",
+          "type": null
+        },
+        {
+          "name": "images",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "normalMaps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "'yourPic'",
+          "type": null
+        },
+        {
+          "name": "ASTC",
+          "type": "{ type: 'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'pic-astc-4x4.pvr' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "PVRTC",
+          "type": "{ type: 'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'pic-pvrtc-4bpp-rgba.pvr' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "S3TC",
+          "type": "{ type: 'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'pic-dxt5.pvr' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "IMG",
+          "type": "{ textureURL: 'pic.png' }\n *     }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "'yourAtlas'",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": "'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "`${path}/textures-astc-4x4.pvr`",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "`${path}/textures.json` }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "`${path}/textures-pvrtc-4bpp-rgba.pvr`",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "`${path}/textures-pvrtc-4bpp-rgba.json` }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "`${path}/textures-dxt5.pvr`",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "`${path}/textures-dxt5.json` }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "`${path}/textures.png`",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "`${path}/textures.json` }\n *     }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "'yourAtlas'",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": "'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "`${path}/textures.json` }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "`${path}/textures-pvrtc-4bpp-rgba.json` }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "`${path}/textures-dxt5.json` }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "`${path}/textures.json` }\n *     }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "key",
+          "type": "'yourPic'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "{\n *         ASTC: { type: 'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'pic-astc-4x4.pvr' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "PVRTC",
+          "type": "{ type: 'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'pic-pvrtc-4bpp-rgba.pvr' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "S3TC",
+          "type": "{ type: 'PVR'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'pic-dxt5.pvr' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "IMG",
+          "type": "{ textureURL: 'pic.png' }\n *    }\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "2020",
+      "params": [
+        {
+          "name": "https",
+          "type": "//aras-p.info/blog/2020/12/08/Texture-Compression-in-2020/",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Formats",
+      "params": [
+        {
+          "name": "https",
+          "type": "//themaister.net/blog/2020/08/12/compressed-gpu-texture-formats-a-review-and-compute-shader-decoders-part-1/",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Packer",
+      "params": [
+        {
+          "name": "https",
+          "type": "//www.codeandweb.com/texturepacker/tutorials/how-to-create-sprite-sheets-for-phaser3?utm_source",
+          "optional": true,
+          "default": "ad&utm_medium=banner&utm_campaign=phaser-2018-10-16"
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "PVRTexTool",
+      "params": [
+        {
+          "name": "https",
+          "type": "//developer.imaginationtech.com/pvrtextool/",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Tool",
+      "params": [
+        {
+          "name": "https",
+          "type": "//developer.arm.com/tools-and-software/graphics-and-gaming/mali-texture-compression-tool",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Encoder",
+      "params": [
+        {
+          "name": "https",
+          "type": "//github.com/ARM-software/astc-encoder",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Bytes",
+      "params": [
+        {
+          "name": "UNorm",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'texture'",
+          "type": null
+        },
+        {
+          "name": "function (key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "urls",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "IsPlainObject(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'key'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'url'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'xhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var textureBaseFormat in urls",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer.supportsCompressedTexture(textureBaseFormat",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof urlEntry === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Merge",
+      "params": [
+        {
+          "name": "urlEntry",
+          "type": null
+        },
+        {
+          "name": "entry",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toUpperCase",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!matched",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'No supported compressed texture format or IMG fallback'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.format === 'IMG'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.multiAtlasURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MultiAtlasFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "entry.multiAtlasURL",
+          "type": null
+        },
+        {
+          "name": "entry.multiPath",
+          "type": null
+        },
+        {
+          "name": "entry.multiBaseURL",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.atlasURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AtlasJSONFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "entry.textureURL",
+          "type": null
+        },
+        {
+          "name": "entry.atlasURL",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ImageFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "entry.textureURL",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CompressedTextureFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "entry",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "texture.files",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < key.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AddEntry",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "key[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AddEntry",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

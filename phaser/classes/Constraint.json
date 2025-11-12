@@ -1,0 +1,929 @@
+{
+  "type": "class",
+  "name": "Constraint",
+  "sourcePath": "physics/matter-js/lib/constraint/Constraint.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Vertices'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Vector'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Sleeping'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Bounds'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Axes'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Common'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "constraint",
+      "params": [
+        {
+          "name": "or pin joint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "value",
+      "params": [
+        {
+          "name": "e.g. `0.7` or above",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "body",
+      "params": [
+        {
+          "name": "not one of its parts",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "constraint.bodyA && !constraint.pointA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "constraint.bodyB && !constraint.pointB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "constraint.bodyA.position",
+          "type": null
+        },
+        {
+          "name": "constraint.pointA",
+          "type": null
+        }
+      ],
+      "returnType": "constraint.pointA,\n            initialPointB = constraint.bodyB ? Vector.add(constraint.bodyB.position, constraint.pointB) : constraint.pointB,\n            length = Vector.magnitude(Vector.sub(initialPointA, initialPointB))",
+      "description": null
+    },
+    {
+      "name": "nextId",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "constraint.length === 0 && constraint.stiffness > 0.1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "constraint.stiffness < 0.9",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "render",
+          "type": null
+        },
+        {
+          "name": "constraint.render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body.isStatic || (impulse.x === 0 && impulse.y === 0 && impulse.angle === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraints",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clamp",
+      "params": [
+        {
+          "name": "delta / Common._baseDelta",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < constraints.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fixedA || fixedB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "solve",
+      "params": [
+        {
+          "name": "constraints[i]",
+          "type": null
+        },
+        {
+          "name": "timeScale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < constraints.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!fixedA && !fixedB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "solve",
+      "params": [
+        {
+          "name": "constraints[i]",
+          "type": null
+        },
+        {
+          "name": "timeScale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraint",
+          "type": null
+        },
+        {
+          "name": "timeScale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!bodyA && !bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA && !bodyA.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "pointA",
+          "type": null
+        },
+        {
+          "name": "bodyA.angle - constraint.angleA",
+          "type": null
+        },
+        {
+          "name": "pointA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB && !bodyB.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "pointB",
+          "type": null
+        },
+        {
+          "name": "bodyB.angle - constraint.angleB",
+          "type": null
+        },
+        {
+          "name": "pointB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "bodyA.position",
+          "type": null
+        },
+        {
+          "name": "pointA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "bodyB.position",
+          "type": null
+        },
+        {
+          "name": "pointB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pointAWorld || !pointBWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sub",
+      "params": [
+        {
+          "name": "pointAWorld",
+          "type": null
+        },
+        {
+          "name": "pointBWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "magnitude",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentLength < Constraint._minLength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mult",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        },
+        {
+          "name": "difference * stiffness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "damping > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "div",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        },
+        {
+          "name": "currentLength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sub",
+      "params": [
+        {
+          "name": "bodyB && Vector.sub(bodyB.position",
+          "type": null
+        },
+        {
+          "name": "bodyB.positionPrev",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sub",
+      "params": [
+        {
+          "name": "bodyA.position",
+          "type": null
+        },
+        {
+          "name": "bodyA.positionPrev",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dot",
+      "params": [
+        {
+          "name": "normal",
+          "type": null
+        },
+        {
+          "name": "relativeVelocity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA && !bodyA.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "damping > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cross",
+      "params": [
+        {
+          "name": "pointA",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB && !bodyB.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "damping > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cross",
+      "params": [
+        {
+          "name": "pointB",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body.isStatic || (impulse.x === 0 && impulse.y === 0 && impulse.angle === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 0; j < body.parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "part.vertices",
+          "type": null
+        },
+        {
+          "name": "impulse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "j > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "impulse.angle !== 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "part.vertices",
+          "type": null
+        },
+        {
+          "name": "impulse.angle",
+          "type": null
+        },
+        {
+          "name": "body.position",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "part.axes",
+          "type": null
+        },
+        {
+          "name": "impulse.angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "j > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotateAbout",
+      "params": [
+        {
+          "name": "part.position",
+          "type": null
+        },
+        {
+          "name": "impulse.angle",
+          "type": null
+        },
+        {
+          "name": "body.position",
+          "type": null
+        },
+        {
+          "name": "part.position",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "part.bounds",
+          "type": null
+        },
+        {
+          "name": "part.vertices",
+          "type": null
+        },
+        {
+          "name": "body.velocity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "deltaX * deltaX + deltaY * deltaY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

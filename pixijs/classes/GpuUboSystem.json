@@ -1,0 +1,36 @@
+{
+  "type": "class",
+  "name": "GpuUboSystem",
+  "sourcePath": "rendering/renderers/gpu/GpuUboSystem.ts",
+  "extends": "UboSystem",
+  "implements": [],
+  "description": "System plugin to the renderer to manage uniform buffers. With a WGSL twist!",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "createUboElements",
+          "type": "createUboElementsWGSL",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "generateUboSync",
+          "type": "createUboSyncFunctionWGSL",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

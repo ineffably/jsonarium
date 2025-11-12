@@ -1,0 +1,1385 @@
+{
+  "type": "class",
+  "name": "Engine",
+  "sourcePath": "physics/matter-js/lib/core/Engine.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'./Sleeping'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../collision/Resolver'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../collision/Detector'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../collision/Pairs'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'./Events'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../body/Composite'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../constraint/Constraint'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'./Common'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../body/Body'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "defaults",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "label",
+          "type": "'World' }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "delta > Engine._deltaMax",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warnOnce",
+      "params": [
+        {
+          "name": "update",
+          "type": "delta argument is recommended to be less than or equal to'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Engine._deltaMax.toFixed(3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'beforeUpdate'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allBodies",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allConstraints",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allComposites",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "world.isModified",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBodies",
+      "params": [
+        {
+          "name": "detector",
+          "type": null
+        },
+        {
+          "name": "allBodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setModified",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "engine.enableSleeping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "allBodies",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "wrap",
+      "params": [
+        {
+          "name": "allBodies",
+          "type": null
+        },
+        {
+          "name": "allComposites",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "attractors",
+      "params": [
+        {
+          "name": "allBodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "delta > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'beforeSolve'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "constraints",
+      "params": [
+        {
+          "name": "first pass",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preSolveAll",
+      "params": [
+        {
+          "name": "allBodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < engine.constraintIterations; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "solveAll",
+      "params": [
+        {
+          "name": "allConstraints",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "postSolveAll",
+      "params": [
+        {
+          "name": "allBodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collisions",
+      "params": [
+        {
+          "name": "detector",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "pairs",
+          "type": null
+        },
+        {
+          "name": "collisions",
+          "type": null
+        },
+        {
+          "name": "timestamp",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "engine.enableSleeping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "afterCollisions",
+      "params": [
+        {
+          "name": "pairs.list",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pairs.collisionStart.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'collisionStart'",
+          "type": null
+        },
+        {
+          "name": "pairs",
+          "type": "pairs.collisionStart",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "timestamp",
+          "type": "timing.timestamp",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "delta",
+          "type": "delta\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clamp",
+      "params": [
+        {
+          "name": "20 / engine.positionIterations",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preSolvePosition",
+      "params": [
+        {
+          "name": "pairs.list",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < engine.positionIterations; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "solvePosition",
+      "params": [
+        {
+          "name": "pairs.list",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        },
+        {
+          "name": "positionDamping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "postSolvePosition",
+      "params": [
+        {
+          "name": "allBodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "constraints",
+      "params": [
+        {
+          "name": "second pass",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preSolveAll",
+      "params": [
+        {
+          "name": "allBodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < engine.constraintIterations; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "solveAll",
+      "params": [
+        {
+          "name": "allConstraints",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "postSolveAll",
+      "params": [
+        {
+          "name": "allBodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preSolveVelocity",
+      "params": [
+        {
+          "name": "pairs.list",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < engine.velocityIterations; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "solveVelocity",
+      "params": [
+        {
+          "name": "pairs.list",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pairs.collisionActive.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'collisionActive'",
+          "type": null
+        },
+        {
+          "name": "pairs",
+          "type": "pairs.collisionActive",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "timestamp",
+          "type": "timing.timestamp",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "delta",
+          "type": "delta\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pairs.collisionEnd.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'collisionEnd'",
+          "type": null
+        },
+        {
+          "name": "pairs",
+          "type": "pairs.collisionEnd",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "timestamp",
+          "type": "timing.timestamp",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "delta",
+          "type": "delta\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'afterUpdate'",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "engineA",
+          "type": null
+        },
+        {
+          "name": "engineB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "engineA",
+          "type": null
+        },
+        {
+          "name": "engineB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "engineB.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "engineA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allBodies",
+      "params": [
+        {
+          "name": "engineA.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextId",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "engine.pairs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "engine.detector",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodiesLength; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "gravity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(gravity.x === 0 && gravity.y === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodiesLength; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body.ignoreGravity || body.isStatic || body.isSleeping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodiesLength; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body.isStatic || body.isSleeping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodiesLength; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateVelocities",
+      "params": [
+        {
+          "name": "bodies[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "composites",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body.wrapBounds !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "wrap",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "body.wrapBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < composites.length; i += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "composite.wrapBounds !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "wrap",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        },
+        {
+          "name": "composite.wrapBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "attractors && attractors.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 0; j < bodies.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "i !== j",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var k = 0; k < attractors.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Common.isFunction(attractor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "attractor",
+      "params": [
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "forceVector",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyForce",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "bodyB.position",
+          "type": null
+        },
+        {
+          "name": "forceVector",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "run",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "run",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tick",
+      "params": [
+        {
+          "name": "if any",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tick",
+      "params": [
+        {
+          "name": "if any",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tick",
+      "params": [
+        {
+          "name": "if any",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

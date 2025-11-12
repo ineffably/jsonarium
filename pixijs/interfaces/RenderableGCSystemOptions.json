@@ -1,0 +1,143 @@
+{
+  "type": "interface",
+  "name": "RenderableGCSystemOptions",
+  "sourcePath": "rendering/renderers/shared/texture/RenderableGCSystem.ts",
+  "extends": [],
+  "description": "Options for the {@link RenderableGCSystem}. The maximum idle frames before a texture is destroyed by garbage collection.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderableGCActive",
+      "type": "boolean",
+      "optional": false,
+      "description": "If set to true, this will enable the garbage collector on the GPU."
+    },
+    {
+      "name": "renderableGCMaxUnusedTime",
+      "type": "number",
+      "optional": false,
+      "description": "The maximum idle frames before a texture is destroyed by garbage collection."
+    },
+    {
+      "name": "renderableGCFrequency",
+      "type": "number",
+      "optional": false,
+      "description": "Frames between two garbage collections."
+    },
+    {
+      "name": "renderableGCActive",
+      "type": "true,\n        /** Time in ms before an unused resource is collected (default 1 minute) */\n        renderableGCMaxUnusedTime: 60000,\n        /** How often to run garbage collection in ms (default 30 seconds) */\n        renderableGCFrequency: 30000,\n    }",
+      "optional": false,
+      "description": "The RenderableGCSystem is responsible for cleaning up GPU resources that are no longer being used. When rendering objects like sprites, text, etc - GPU resources are created and managed by the renderer. If these objects are no longer needed but not properly destroyed (via sprite.destroy()), their GPU resources would normally leak. This system prevents that by automatically cleaning up unused GPU resources. Key features: - Runs every 30 seconds by default to check for unused resources - Cleans up resources not rendered for over 1 minute - Works independently of rendering - will clean up even when not actively rendering - When cleaned up resources are needed again, new GPU objects are quickly assigned from a pool - Can be disabled with renderableGCActive:false for manual control Best practices: - Always call destroy() explicitly when done with renderables (e.g. sprite.destroy()) - This system is a safety net, not a replacement for proper cleanup - Adjust frequency and timeouts via options if needed ```js // Sprite created but reference lost without destroy let sprite = new Sprite(texture); // internally the renderer will assign a resource to the sprite renderer.render(sprite); sprite = null; // Reference lost but GPU resources still exist // After 1 minute of not being rendered: // - RenderableGC will clean up the sprite's GPU resources // - JS garbage collector can then clean up the sprite itself ``` / export class RenderableGCSystem implements System<RenderableGCSystemOptions> { /** Extension metadata for registering this system with the renderer. / public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ], name: 'renderableGC', priority: 0 } as const; /** Default configuration options for the garbage collection system. These can be overridden when initializing the renderer. / public static defaultOptions: RenderableGCSystemOptions = { /** Enable/disable the garbage collector"
+    },
+    {
+      "name": "maxUnusedTime",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_managedRenderables",
+      "type": "Renderable[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_handler",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_frequency",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_now",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_managedHashes",
+      "type": "{context: any, hash: string}[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_hashHandler",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_managedArrays",
+      "type": "{context: any, hash: string}[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_arrayHandler",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "RenderableGCSystemOptions): void\n    {\n        options = { ...RenderableGCSystem.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        if (this.enabled === value) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "T, hash: string): void\n    {\n        this._managedHashes.push({ context, hash: hash as string })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "T, hash: string): void\n    {\n        this._managedArrays.push({ context, hash: hash as string })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderable",
+      "type": "Renderable): void\n    {\n        if (!this.enabled) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderable",
+      "type": "Container): void\n    {\n        const index = this._managedRenderables.indexOf(renderable as Renderable)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderGroup",
+      "type": "RenderGroup, gcTick: number): void\n    {\n        renderGroup.instructionSet.gcTick = gcTick",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,2884 @@
+{
+  "type": "class",
+  "name": "PreFXPipeline",
+  "sourcePath": "renderer/webgl/pipelines/PreFXPipeline.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "MultiPipeline",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function PreFXPipeline (config",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'fragShader'",
+          "type": null
+        },
+        {
+          "name": "PostFXFS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'vertShader'",
+          "type": null
+        },
+        {
+          "name": "SingleQuadVS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'drawShader'",
+          "type": null
+        },
+        {
+          "name": "PostFXFS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'shaders'",
+          "type": null
+        },
+        {
+          "name": "[]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "concat",
+      "params": [
+        {
+          "name": "configShaders",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!config.vertShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fbo",
+      "params": [
+        {
+          "name": "or to the game if drawToFrame is false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderer.isBooted",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "boot",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "target",
+      "params": [
+        {
+          "name": "exclusive to this pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "concat",
+      "params": [
+        {
+          "name": "this.fsTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ArrayBuffer",
+      "params": [
+        {
+          "name": "168",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createVertexBuffer",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "this.gl.STATIC_DRAW",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onResize",
+      "params": [
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "'uResolution'",
+          "type": null
+        },
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        },
+        {
+          "name": "u0",
+          "type": null
+        },
+        {
+          "name": "v0",
+          "type": null
+        },
+        {
+          "name": "u1",
+          "type": null
+        },
+        {
+          "name": "v1",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "x3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "x3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTo",
+      "params": [
+        {
+          "name": "bx",
+          "type": null
+        },
+        {
+          "name": "by",
+          "type": null
+        },
+        {
+          "name": "bw",
+          "type": null
+        },
+        {
+          "name": "bh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "Math.max(width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getRenderTarget",
+      "params": [
+        {
+          "name": "maxDimension",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTo",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "target.width",
+          "type": null
+        },
+        {
+          "name": "target.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CenterOn",
+      "params": [
+        {
+          "name": "targetBounds",
+          "type": null
+        },
+        {
+          "name": "Math.round(bounds.centerX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "bounds.centerY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearStencilMask",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setShader",
+      "params": [
+        {
+          "name": "this.drawSpriteShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uMainSampler'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "'uResolution'",
+          "type": null
+        },
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flipProjectionMatrix",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onDrawSprite",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onFX",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "fsTarget.framebuffer.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "fsTarget.texture.webGLTexture",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture2D",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "u0",
+          "type": null
+        },
+        {
+          "name": "v0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "u0",
+          "type": null
+        },
+        {
+          "name": "v1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "u1",
+          "type": null
+        },
+        {
+          "name": "v1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "u0",
+          "type": null
+        },
+        {
+          "name": "v0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "u1",
+          "type": null
+        },
+        {
+          "name": "v1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        },
+        {
+          "name": "u1",
+          "type": null
+        },
+        {
+          "name": "v0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flipProjectionMatrix",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "target.texture.webGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyTexSubImage2D",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "targetBounds.x",
+          "type": null
+        },
+        {
+          "name": "targetBounds.y",
+          "type": null
+        },
+        {
+          "name": "targetBounds.width",
+          "type": null
+        },
+        {
+          "name": "targetBounds.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "target",
+      "params": [
+        {
+          "name": "using our pipeline shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onBatch",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onDraw",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "this.manager.getSwapRenderTarget(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAltSwapRenderTarget",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        },
+        {
+          "name": "eraseMode",
+          "type": null
+        },
+        {
+          "name": "colorMatrix",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clear === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clearAlpha === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "eraseMode === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "shader === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "colorMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setVertexBuffer",
+      "params": [
+        {
+          "name": "this.quadVertexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "wasBound",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uMainSampler'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "'uResolution'",
+          "type": null
+        },
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onFXCopy",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onCopySprite",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "sprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "colorMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1fv",
+      "params": [
+        {
+          "name": "'uColorMatrix'",
+          "type": null
+        },
+        {
+          "name": "colorMatrix.getData(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1f",
+      "params": [
+        {
+          "name": "'uAlpha'",
+          "type": null
+        },
+        {
+          "name": "colorMatrix.alpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "source.texture.webGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source.height > target.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "source.width",
+          "type": null
+        },
+        {
+          "name": "source.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTargetUVs",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "diff",
+          "type": null
+        },
+        {
+          "name": "source.width",
+          "type": null
+        },
+        {
+          "name": "source.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetUVs",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "target.framebuffer.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "target.texture.webGLTexture",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "Number(!clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "eraseMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBlendMode",
+      "params": [
+        {
+          "name": "BlendModes.ERASE",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "gl.ARRAY_BUFFER",
+          "type": null
+        },
+        {
+          "name": "this.quadVertexData",
+          "type": null
+        },
+        {
+          "name": "gl.STATIC_DRAW",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawArrays",
+      "params": [
+        {
+          "name": "gl.TRIANGLES",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "eraseMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBlendMode",
+      "params": [
+        {
+          "name": "blendMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uMainSampler'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "source.texture.webGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "source.width",
+          "type": null
+        },
+        {
+          "name": "source.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setUVs",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "target.framebuffer.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "target.texture.webGLTexture",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "gl.ARRAY_BUFFER",
+          "type": null
+        },
+        {
+          "name": "this.quadVertexData",
+          "type": null
+        },
+        {
+          "name": "gl.STATIC_DRAW",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawArrays",
+      "params": [
+        {
+          "name": "gl.TRIANGLES",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source1",
+          "type": null
+        },
+        {
+          "name": "source2",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendFrames",
+      "params": [
+        {
+          "name": "source1",
+          "type": null
+        },
+        {
+          "name": "source2",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source1",
+          "type": null
+        },
+        {
+          "name": "source2",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendFramesAdditive",
+      "params": [
+        {
+          "name": "source1",
+          "type": null
+        },
+        {
+          "name": "source2",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "clearAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setShader",
+      "params": [
+        {
+          "name": "this.copyShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindAndDraw",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setShader",
+      "params": [
+        {
+          "name": "this.gameShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindAndDraw",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uMainSampler'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.customMainSampler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture2D",
+      "params": [
+        {
+          "name": "this.customMainSampler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture2D",
+      "params": [
+        {
+          "name": "source.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "loadIdentity",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "yh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "xw",
+          "type": null
+        },
+        {
+          "name": "yh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "xw",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "yh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "xw",
+          "type": null
+        },
+        {
+          "name": "yh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "xw",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "yh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "xw",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "xw",
+          "type": null
+        },
+        {
+          "name": "yh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "white",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "white",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "white",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "white",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "white",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchVert",
+      "params": [
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "white",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "restoreFramebuffer",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderer.currentFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "restoreStencilMask",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "source.framebuffer.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawToGame",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "uA",
+          "type": null
+        },
+        {
+          "name": "vA",
+          "type": null
+        },
+        {
+          "name": "uB",
+          "type": null
+        },
+        {
+          "name": "vB",
+          "type": null
+        },
+        {
+          "name": "uC",
+          "type": null
+        },
+        {
+          "name": "vC",
+          "type": null
+        },
+        {
+          "name": "uD",
+          "type": null
+        },
+        {
+          "name": "vD",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "diff > 0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setUVs",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "diff",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1 + diff",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1 + diff",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "diff",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setUVs",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteBuffer",
+      "params": [
+        {
+          "name": "this.quadVertexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

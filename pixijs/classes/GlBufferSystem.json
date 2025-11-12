@@ -1,0 +1,619 @@
+{
+  "type": "class",
+  "name": "GlBufferSystem",
+  "sourcePath": "rendering/renderers/gl/buffer/GlBufferSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "System plugin to the renderer to manage buffers. WebGL uses Buffers as a way to store objects to the GPU. This system makes working with them a lot easier. Buffers are used in three main places in WebGL - geometry information - Uniform information (via uniform buffer objects - a WebGL 2 only feature) - Transform feedback information. (WebGL 2 only feature) This system will handle the binding of buffers to the GPU as well as uploading them. With this system, you never need to work directly with GPU buffers, but instead work with the Buffer class.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "addManagedHash",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'_gpuBuffers'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "Buffer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Sets up the renderer context and necessary buffers. */ protected contextChange(): void { this._gl = this._renderer.gl; this._gpuBuffers = Object.create(null); this._maxBindings = this._renderer.limits.maxUniformBindings; } public getGlBuffer(buffer: Buffer): GlBuffer { return this._gpuBuffers[buffer.uid] || this.createGLBuffer(buffer); } /** This binds specified buffer. On first run, it will create the webGL buffers for the context too"
+    },
+    {
+      "name": "getGlBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBuffer",
+      "params": [
+        {
+          "name": "glBuffer.type",
+          "type": null
+        },
+        {
+          "name": "glBuffer.buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBufferBase",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": "GlBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Binds an uniform buffer to at the given index. A cache is used so a buffer will not be bound again if already bound."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._boundBufferBases[index] !== glBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBufferBase",
+      "params": [
+        {
+          "name": "gl.UNIFORM_BUFFER",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "glBuffer.buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextBindBase",
+      "params": [
+        {
+          "name": "hasTransformFeedback",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "hasTransformFeedback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._nextBindBaseIndex < 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeLocationForBufferBase",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": "GlBuffer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "number",
+      "description": null
+    },
+    {
+      "name": "getLastBindBaseLocation",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "freeIndex >= this._minBaseLocation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "loop < 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "nextIndex >= this._maxBindings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "curBuf && curBuf._lastBindCallId === this._bindCallId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "loop >= 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getLastBindBaseLocation",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": "GlBuffer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "number",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._boundBufferBases[index] === glBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBufferRange",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": "GlBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Binds a buffer whilst also binding its range. This will make the buffer start from the offset supplied rather than 0 when it is read."
+    },
+    {
+      "name": "bindBufferRange",
+      "params": [
+        {
+          "name": "gl.UNIFORM_BUFFER",
+          "type": null
+        },
+        {
+          "name": "index || 0",
+          "type": null
+        },
+        {
+          "name": "glBuffer.buffer",
+          "type": null
+        },
+        {
+          "name": "offset * 256",
+          "type": null
+        },
+        {
+          "name": "size || 256",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "Buffer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GlBuffer",
+      "description": "Will ensure the data in the buffer is uploaded to the GPU."
+    },
+    {
+      "name": "getGlBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "buffer._updateID === glBuffer.updateID",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBuffer",
+      "params": [
+        {
+          "name": "glBuffer.type",
+          "type": null
+        },
+        {
+          "name": "glBuffer.buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "glBuffer.byteLength >= data.byteLength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferSubData",
+      "params": [
+        {
+          "name": "glBuffer.type",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "buffer._updateSize / data.BYTES_PER_ELEMENT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "glBuffer.type",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "drawType",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "glBuffer.type",
+          "type": null
+        },
+        {
+          "name": "glBuffer.byteLength",
+          "type": null
+        },
+        {
+          "name": "drawType",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroyAll",
+      "params": [],
+      "returnType": "void",
+      "description": "dispose all WebGL resources of all managed buffers"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const id in this._gpuBuffers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteBuffer",
+      "params": [
+        {
+          "name": "this._gpuBuffers[id].buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onBufferDestroy",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "Buffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "contextLost",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!contextLost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteBuffer",
+      "params": [
+        {
+          "name": "glBuffer.buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createGLBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "Buffer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GlBuffer",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(buffer.descriptor.usage & BufferUsage.INDEX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(buffer.descriptor.usage & BufferUsage.UNIFORM",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GlBuffer",
+      "params": [
+        {
+          "name": "gl.createBuffer(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onBufferDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetState",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

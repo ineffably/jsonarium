@@ -1,0 +1,161 @@
+{
+  "type": "interface",
+  "name": "FillStyle",
+  "sourcePath": "scene/graphics/shared/FillTypes.ts",
+  "extends": [],
+  "description": "Determines how texture coordinates are calculated Local Space:              Global Space: ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐ │ A   B   │  │ A   B   │  │ A...B   │  │ ...B... │ │         │  │         │  │         │  │         │ │ C   D   │  │ C   D   │  │ C...D   │  │ ...D... │ └─────────┘  └─────────┘  └─────────┘  └─────────┘ (Each shape   (Each shape  (Texture continues across gets full     gets full    shapes as if they're texture)      texture)     windows to same texture) / export type TextureSpace = /** 'local' - Texture coordinates are relative to the shape's bounds. The texture will stretch/fit to each individual shape's boundaries. Think of it like the shape having its own coordinate system. / | 'local' /** 'global' - Texture coordinates are in world space. The texture position is consistent across all shapes, as if the texture was laid down first and shapes were cut out of it. Think of it like wallpaper that shows through shaped holes. / | 'global'; /** Defines the style properties used for filling shapes in graphics and text operations. This interface provides options for colors, textures, patterns, and gradients. ```ts // Basic color fill const fillStyle = { color: 0xff0000,  // Red alpha: 0.5        // 50% opacity }; // Textured fill ( Graphics only ) const fillStyle = { texture: Texture.from('myImage.png'), matrix: new Matrix().scale(0.5, 0.5), }; // Gradient fill const gradient = new FillGradient({ end: { x: 1, y: 0 }, stops: [ { color: 0xff0000, offset: 0 }, // Red at start { color: 0x0000ff, offset: 1 }, // Blue at end ] }) const fillStyle = { fill: gradient, alpha: 1 }; ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "color",
+      "type": "ColorSource",
+      "optional": true,
+      "description": "The color to use for the fill. This can be any valid color source, such as a hex value, a Color object, or a string. ```ts // Using a hex color const fillStyle = { color: 0xff0000 }; // Red // Using a Color object const fillStyle = { color: new Color(1, 0, 0) }; // Red // Using a string color const fillStyle = { color: 'red' }; // Red // Using object string const fillStyle = { color: 'rgb(255, 0, 0)' }; // Red ```"
+    },
+    {
+      "name": "alpha",
+      "type": "number",
+      "optional": true,
+      "description": "The alpha value to use for the fill. This value should be between 0 (fully transparent) and 1 (fully opaque). ```ts const fillStyle = { alpha: 0.5 }; // 50% opacity ```"
+    },
+    {
+      "name": "texture",
+      "type": "Texture | null",
+      "optional": true,
+      "description": "The texture to use for the fill. ```ts const fillStyle = { texture: Texture.from('myImage.png') }; ```"
+    },
+    {
+      "name": "matrix",
+      "type": "Matrix | null",
+      "optional": true,
+      "description": "The transformation matrix to apply to the fill pattern or texture. Used to scale, rotate, translate, or skew the fill. ```ts // Scale and rotate a texture fill const fillStyle = { texture: Texture.from('myImage.png'), matrix: new Matrix() .scale(0.5, 0.5) .rotate(Math.PI / 4) }; ```"
+    },
+    {
+      "name": "fill",
+      "type": "FillPattern | FillGradient | null",
+      "optional": true,
+      "description": "The fill pattern or gradient to use. This can be either a FillPattern for repeating textures or a FillGradient for color transitions. ```ts // Using a gradient const gradient = new FillGradient({ end: { x: 1, y: 0 }, stops: [ { color: 0xff0000, offset: 0 }, // Red at start { color: 0x0000ff, offset: 1 }, // Blue at end ] }); const fillStyle = { fill: gradient, alpha: 0.8 }; // Using a pattern const pattern = new FillPattern( Texture.from('pattern.png'), 'repeat' // or 'no-repeat', 'repeat-x', 'repeat-y' ); const fillStyle = { fill: pattern }; ```"
+    },
+    {
+      "name": "textureSpace",
+      "type": "TextureSpace",
+      "optional": true,
+      "description": "Determines how texture coordinates are calculated across shapes. - 'local': Texture coordinates are relative to each shape's bounds - 'global': Texture coordinates are in world space ```ts // Local space - texture fits each shape independently const fillStyle = { texture: Texture.from('myImage.png'), textureSpace: 'local' }; // Global space - texture continues across shapes const fillStyle = { texture: Texture.from('myImage.png'), textureSpace: 'global' }; ```"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": true,
+      "description": "A stroke attribute object that defines how lines and shape outlines are drawn. Controls properties like width, alignment, line caps, joins, and more. ```ts const graphics = new Graphics(); // Basic stroke with width graphics.stroke({ width: 4, color: 0xff0000 // Or use a Color object }); // Stroke with rounded corners and ends const text = new Text('Hello World', { fontSize: 32, fill: 0x000000, // Text color stroke: { width: 8, color: 0x00ff00, // Or use a Color object cap: 'round',    // Round end caps join: 'round',   // Round corner joins alignment: 0.5   // Center alignment } }); // Stroke with mitered corners graphics.stroke({ width: 6, color: 0x0000ff, // Or use a Color object join: 'miter', miterLimit: 3,   // Limit how far miter extends alignment: 0     // Outside alignment }); // Pixel-perfect line graphics.stroke({ width: 1, pixelLine: true, // Ensures crisp 1px lines color: 0x000000  // Or use a Color object }); ``` / export interface StrokeAttributes { /** The width of the stroke in pixels. ```ts const stroke = { width: 4 }; ```"
+    },
+    {
+      "name": "alignment",
+      "type": "number",
+      "optional": true,
+      "description": "The alignment of the stroke relative to the path. - 1: Inside the shape - 0.5: Centered on the path (default) - 0: Outside the shape ```ts // Inside alignment const stroke = { alignment: 1 }; // Centered alignment const stroke = { alignment: 0.5 }; // Outside alignment const stroke = { alignment: 0 }; ```"
+    },
+    {
+      "name": "cap",
+      "type": "LineCap",
+      "optional": true,
+      "description": "The style to use for the ends of open paths. - 'butt': Ends at path end - 'round': Rounds past path end - 'square': Squares past path end ```ts const stroke = { cap: 'round' }; ```"
+    },
+    {
+      "name": "join",
+      "type": "LineJoin",
+      "optional": true,
+      "description": "The style to use where paths connect. - 'miter': Sharp corner - 'round': Rounded corner - 'bevel': Beveled corner ```ts const stroke = { join: 'round' }; ```"
+    },
+    {
+      "name": "miterLimit",
+      "type": "number",
+      "optional": true,
+      "description": "Controls how far miter joins can extend. Only applies when join is 'miter'. Higher values allow sharper corners. ```ts const stroke = { join: 'miter', miterLimit: 3, }; ```"
+    },
+    {
+      "name": "pixelLine",
+      "type": "boolean",
+      "optional": true,
+      "description": "When true, ensures crisp 1px lines by aligning to pixel boundaries. > [!NOTE] Only available for Graphics fills. ```ts const graphics = new Graphics(); // Draw pixel-perfect line graphics .moveTo(50, 50) .lineTo(150, 50) .stroke({ width: 1, pixelLine: true, color: 0x000000 }); ```"
+    },
+    {
+      "name": "width",
+      "type": "4,\n *     color: 0xff0000,\n *     alpha: 0.8,\n *     join: 'round'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 1, y: 0 },\n *    stops: [\n *        { color: 0xff0000, offset: 0 }, // Red at start\n *        { color: 0x0000ff, offset: 1 }, // Blue at end\n *    ]\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "8,\n *     fill: gradient,\n *     cap: 'round',\n *     join: 'round',\n *     alignment: 0.5\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontSize",
+      "type": "48,\n *     stroke: {\n *         width: 4,\n *         color: 0x000000,\n *         alignment: 0  // Outside stroke\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 1, y: 0 },\n *   stops: [\n *       { color: 0xff0000, offset: 0 }, // Red at start\n *       { color: 0x0000ff, offset: 1 }, // Blue at end\n *   ]\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontSize",
+      "type": "64,\n *     fill: 0xffffff,\n *     stroke: {\n *         width: 6,\n *         fill: textGradient,\n *         alignment: 0.5,\n *         join: 'round'\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000,\n *   alpha: 0.5,\n *   texture?: null,\n *   matrix?: null,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "new FillPattern(texture),\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "new FillGradient(0, 0, 200, 0),\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000,\n *   width?: 1,\n *   alignment?: 0.5,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "new FillPattern(texture),\n *   width: 1,\n *   alignment: 0.5,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "new FillGradient(0, 0, 200, 0),\n *   width: 1,\n *   alignment: 0.5,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "number }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

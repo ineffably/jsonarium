@@ -1,0 +1,129 @@
+{
+  "type": "class",
+  "name": "Culler",
+  "sourcePath": "culling/Culler.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A rectangle-like object that contains x, y, width, and height properties. const rect = { x: 0, y: 0, width: 100, height: 100 }; / export type RectangleLike = {x: number, y: number, width: number, height: number}; /** The Culler class is responsible for managing and culling containers. Culling optimizes rendering performance by skipping objects outside the visible area. > [!IMPORTANT] culling is not always a golden bullet, it can be more expensive than rendering > objects that are not visible, so it is best used in scenarios where you have many objects > that are not visible at the same time, such as in large scenes or games with many sprites. ```ts import { Culler, Container, Rectangle } from 'pixi.js'; // Create a culler and container const culler = new Culler(); const stage = new Container(); // Set up container with culling stage.cullable = true; stage.cullArea = new Rectangle(0, 0, 800, 600); // Add some sprites that will be culled for (let i = 0; i < 1000; i++) { const sprite = Sprite.from('texture.png'); sprite.x = Math.random() * 2000; sprite.y = Math.random() * 2000; sprite.cullable = true; stage.addChild(sprite); } // Cull objects outside view culler.cull(stage, { x: 0, y: 0, width: 800, height: 600 }); // Only visible objects will be rendered renderer.render(stage); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "cull",
+      "params": [
+        {
+          "name": "container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "view",
+          "type": "RectangleLike",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "skipUpdateTransform = true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": "Culls the children of a specific container based on the given view rectangle. This determines which objects should be rendered and which can be skipped. ```ts // Basic culling with view bounds const culler = new Culler(); culler.cull(stage, { x: 0, y: 0, width: 800, height: 600 }); // Culling to renderer screen culler.cull(stage, renderer.screen, false); ``` - Recursively processes all cullable children - Uses cullArea if defined, otherwise calculates bounds - Performance depends on scene complexity"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container.cullable && container.measurable && container.includeInBuild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlobalBounds",
+      "params": [
+        {
+          "name": "container",
+          "type": null
+        },
+        {
+          "name": "skipUpdateTransform",
+          "type": null
+        },
+        {
+          "name": "tempBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!container.cullableChildren\n            || container.culled\n            || !container.renderable\n            || !container.measurable\n            || !container.includeInBuild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < container.children.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cull",
+      "params": [
+        {
+          "name": "stage",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "800",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "600\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Culler",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

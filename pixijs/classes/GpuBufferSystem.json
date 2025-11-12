@@ -1,0 +1,307 @@
+{
+  "type": "class",
+  "name": "GpuBufferSystem",
+  "sourcePath": "rendering/renderers/gpu/buffer/GpuBufferSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "System plugin to the renderer to manage buffers.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "destroyAll",
+      "params": [],
+      "returnType": "void",
+      "description": "public static extension = { type: [ ExtensionType.WebGPUSystem, ], name: 'buffer', } as const; protected CONTEXT_UID: number; private _gpuBuffers: { [key: number]: GPUBuffer } = Object.create(null); private readonly _managedBuffers: Buffer[] = []; private _gpu: GPU; constructor(renderer: WebGPURenderer) { renderer.renderableGC.addManagedHash(this, '_gpuBuffers'); } protected contextChange(gpu: GPU): void { this._gpu = gpu; } public getGPUBuffer(buffer: Buffer): GPUBuffer { return this._gpuBuffers[buffer.uid] || this.createGPUBuffer(buffer); } public updateBuffer(buffer: Buffer): GPUBuffer { const gpuBuffer = this._gpuBuffers[buffer.uid] || this.createGPUBuffer(buffer); const data = buffer.data; // TODO this can be better... if (buffer._updateID && data) { buffer._updateID = 0; // make sure this._gpu.device.queue.writeBuffer( gpuBuffer, 0, data.buffer, 0, // round to the nearest 4 bytes ((buffer._updateSize || data.byteLength) + 3) & ~3 ); } return gpuBuffer; } /** dispose all WebGL resources of all managed buffers"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const id in this._gpuBuffers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createGPUBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "Buffer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GPUBuffer",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._gpuBuffers[buffer.uid]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.updateBuffer",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'change'",
+          "type": null
+        },
+        {
+          "name": "this.onBufferChange",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onBufferDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBuffer",
+      "params": [
+        {
+          "name": "buffer.descriptor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "buffer.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fastCopy",
+      "params": [
+        {
+          "name": "buffer.data.buffer",
+          "type": null
+        },
+        {
+          "name": "gpuBuffer.getMappedRange(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unmap",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onBufferChange",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "Buffer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createGPUBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onBufferDestroy",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "Buffer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "this._managedBuffers.indexOf(buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.updateBuffer",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'change'",
+          "type": null
+        },
+        {
+          "name": "this.onBufferChange",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onBufferDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

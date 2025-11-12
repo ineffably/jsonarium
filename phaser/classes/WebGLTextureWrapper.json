@@ -1,0 +1,721 @@
+{
+  "type": "class",
+  "name": "WebGLTextureWrapper",
+  "sourcePath": "renderer/webgl/wrappers/WebGLTextureWrapper.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function WebGLTextureWrapper (gl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mipLevel",
+          "type": null
+        },
+        {
+          "name": "minFilter",
+          "type": null
+        },
+        {
+          "name": "magFilter",
+          "type": null
+        },
+        {
+          "name": "wrapT",
+          "type": null
+        },
+        {
+          "name": "wrapS",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "pixels",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "pma",
+          "type": null
+        },
+        {
+          "name": "forceSize",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createResource",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.pixels instanceof WebGLTextureWrapper",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createTexture",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        },
+        {
+          "name": "wrapS",
+          "type": null
+        },
+        {
+          "name": "wrapT",
+          "type": null
+        },
+        {
+          "name": "minFilter",
+          "type": null
+        },
+        {
+          "name": "magFilter",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width === 0 || height === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getParameter",
+      "params": [
+        {
+          "name": "gl.TEXTURE_BINDING_2D",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "this.webGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texParameteri",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_MIN_FILTER",
+          "type": null
+        },
+        {
+          "name": "this.minFilter",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texParameteri",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_MAG_FILTER",
+          "type": null
+        },
+        {
+          "name": "this.magFilter",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texParameteri",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_WRAP_S",
+          "type": null
+        },
+        {
+          "name": "this.wrapS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texParameteri",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_WRAP_T",
+          "type": null
+        },
+        {
+          "name": "this.wrapT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pixelStorei",
+      "params": [
+        {
+          "name": "gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL",
+          "type": null
+        },
+        {
+          "name": "this.pma",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pixelStorei",
+      "params": [
+        {
+          "name": "gl.UNPACK_FLIP_Y_WEBGL",
+          "type": null
+        },
+        {
+          "name": "this.flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pixels === null || pixels === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "mipLevel",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "gl.UNSIGNED_BYTE",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "IsSizePowerOfTwo",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pixels.compressed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < pixels.mipmaps.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compressedTexImage2D",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        },
+        {
+          "name": "pixels.internalFormat",
+          "type": null
+        },
+        {
+          "name": "pixels.mipmaps[i].width",
+          "type": null
+        },
+        {
+          "name": "pixels.mipmaps[i].height",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "pixels.mipmaps[i].data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pixels instanceof Uint8Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "mipLevel",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "gl.UNSIGNED_BYTE",
+          "type": null
+        },
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "IsSizePowerOfTwo",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.forceSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "mipLevel",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "gl.UNSIGNED_BYTE",
+          "type": null
+        },
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "IsSizePowerOfTwo",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "generateMipmap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateMipmap",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "currentTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.webGLTexture === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(this.pixels instanceof WebGLTextureWrapper",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteTexture",
+      "params": [
+        {
+          "name": "this.webGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

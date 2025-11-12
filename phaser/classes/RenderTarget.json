@@ -1,0 +1,890 @@
+{
+  "type": "class",
+  "name": "RenderTarget",
+  "sourcePath": "renderer/webgl/RenderTarget.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scale === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "minFilter === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "autoClear === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "autoResize === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "addDepthBuffer === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "forceClamp === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cleared",
+      "params": [
+        {
+          "name": "via `gl.COLOR_BUFFER_BIT`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "autoResize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "Events.RESIZE",
+          "type": null
+        },
+        {
+          "name": "this.resize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createTextureFromSource",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.minFilter",
+          "type": null
+        },
+        {
+          "name": "this.forceClamp",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createFramebuffer",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.texture",
+          "type": null
+        },
+        {
+          "name": "this.hasDepthBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "autoResize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "autoResize && !this.autoResize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "Events.RESIZE",
+          "type": null
+        },
+        {
+          "name": "this.resize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!autoResize && this.autoResize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "Events.RESIZE",
+          "type": null
+        },
+        {
+          "name": "this.resize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.autoResize && this.willResize(width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteFramebuffer",
+      "params": [
+        {
+          "name": "this.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteTexture",
+      "params": [
+        {
+          "name": "this.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createTextureFromSource",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.minFilter",
+          "type": null
+        },
+        {
+          "name": "this.forceClamp",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createFramebuffer",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.texture",
+          "type": null
+        },
+        {
+          "name": "this.hasDepthBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof width !== 'number' || typeof height !== 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "width * this.scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "height * this.scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "width !== this.width || height !== this.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "adjustViewport",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "adjustViewport === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "adjustViewport",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width && height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pushFramebuffer",
+      "params": [
+        {
+          "name": "this.framebuffer",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "adjustViewport",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "adjustViewport",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.autoClear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearStencilMask",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "this.width",
+          "type": null
+        },
+        {
+          "name": "this.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disable",
+      "params": [
+        {
+          "name": "gl.SCISSOR_TEST",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pushFramebuffer",
+      "params": [
+        {
+          "name": "this.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x !== undefined && y !== undefined && width !== undefined && height !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enable",
+      "params": [
+        {
+          "name": "gl.SCISSOR_TEST",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scissor",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disable",
+      "params": [
+        {
+          "name": "gl.SCISSOR_TEST",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "popFramebuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetScissor",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "flush",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flush === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flush",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "popFramebuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "Events.RESIZE",
+          "type": null
+        },
+        {
+          "name": "this.resize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteFramebuffer",
+      "params": [
+        {
+          "name": "this.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteTexture",
+      "params": [
+        {
+          "name": "this.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

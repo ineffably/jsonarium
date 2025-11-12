@@ -1,0 +1,90 @@
+{
+  "type": "class",
+  "name": "PassthroughFilter",
+  "sourcePath": "filters/defaults/passthrough/PassthroughFilter.ts",
+  "extends": "Filter",
+  "implements": [],
+  "description": "The PassthroughFilter passes the input data through without altering it. It serves as a basic filter, performing no graphical alterations.",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "vertex",
+          "type": "{ source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainVertex' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fragment",
+          "type": "{ source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainFragment' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'passthrough-filter'\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "{\n            vertex",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": "'passthrough-filter'\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            gpuProgram",
+          "type": null
+        },
+        {
+          "name": "glProgram",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

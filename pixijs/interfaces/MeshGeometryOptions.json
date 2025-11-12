@@ -1,0 +1,119 @@
+{
+  "type": "interface",
+  "name": "MeshGeometryOptions",
+  "sourcePath": "scene/mesh/shared/MeshGeometry.ts",
+  "extends": [],
+  "description": "Options for the mesh geometry.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "positions",
+      "type": "Float32Array",
+      "optional": true,
+      "description": "The positions of the mesh."
+    },
+    {
+      "name": "uvs",
+      "type": "Float32Array",
+      "optional": true,
+      "description": "The UVs of the mesh. If not provided, they will be filled with 0 and match the size of the positions."
+    },
+    {
+      "name": "indices",
+      "type": "Uint32Array",
+      "optional": true,
+      "description": "The indices of the mesh."
+    },
+    {
+      "name": "topology",
+      "type": "Topology",
+      "optional": true,
+      "description": "The topology of the mesh."
+    },
+    {
+      "name": "shrinkBuffersToFit",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to shrink the buffers to fit the data."
+    },
+    {
+      "name": "defaultOptions",
+      "type": "MeshGeometryOptions = {\n        topology: 'triangle-list',\n        shrinkBuffersToFit: false,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "batchMode",
+      "type": "BatchMode = 'auto'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "MeshGeometryOptions)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "positions",
+      "type": "Float32Array, uvs: Float32Array, indices: Uint32Array)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[MeshGeometryOptions] | [Float32Array, Float32Array, Uint32Array])\n    {\n        let options = args[0] ?? {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "positions",
+      "type": "options,\n                uvs: args[1],\n                indices: args[2],\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "positions,\n            label: 'attribute-mesh-positions',\n            shrinkToFit,\n            usage: BufferUsage.VERTEX | BufferUsage.COPY_DST,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "uvs,\n            label: 'attribute-mesh-uvs',\n            shrinkToFit,\n            usage: BufferUsage.VERTEX | BufferUsage.COPY_DST,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "indices,\n            label: 'index-mesh-buffer',\n            shrinkToFit,\n            usage: BufferUsage.INDEX | BufferUsage.COPY_DST,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "attributes",
+      "type": "{\n                aPosition: {\n                    buffer: positionBuffer,\n                    format: 'float32x2',\n                    stride: 2 * 4,\n                    offset: 0,\n                },\n                aUV: {\n                    buffer: uvBuffer,\n                    format: 'float32x2',\n                    stride: 2 * 4,\n                    offset: 0,\n                },\n            },\n            indexBuffer,\n            topology: options.topology,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Float32Array)\n    {\n        this.attributes.aPosition.buffer.data = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Float32Array)\n    {\n        this.attributes.aUV.buffer.data = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Uint32Array)\n    {\n        this.indexBuffer.data = value",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

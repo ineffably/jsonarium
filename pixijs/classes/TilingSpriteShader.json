@@ -1,0 +1,294 @@
+{
+  "type": "class",
+  "name": "TilingSpriteShader",
+  "sourcePath": "scene/sprite-tiling/shader/TilingSpriteShader.ts",
+  "extends": "Shader",
+  "implements": [],
+  "description": "The shader used by the TilingSprite.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "compileHighShaderGpuProgram",
+      "params": [
+        {
+          "name": "name",
+          "type": "'tiling-sprite-shader'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bits",
+          "type": "[\n                localUniformBit",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "tilingBit",
+          "type": null
+        },
+        {
+          "name": "roundPixelsBit",
+          "type": null
+        },
+        {
+          "name": "]",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compileHighShaderGlProgram",
+      "params": [
+        {
+          "name": "name",
+          "type": "'tiling-sprite-shader'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bits",
+          "type": "[\n                localUniformBitGl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "tilingBitGl",
+          "type": null
+        },
+        {
+          "name": "roundPixelsBitGl",
+          "type": null
+        },
+        {
+          "name": "]\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uMapCoord",
+          "type": "{ value: new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[0",
+          "type": null
+        },
+        {
+          "name": "0]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[100",
+          "type": null
+        },
+        {
+          "name": "100",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        },
+        {
+          "name": "0.5]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            glProgram",
+          "type": null
+        },
+        {
+          "name": "gpuProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                localUniforms: new UniformGroup({\n                    uTransformMatrix: { value: new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUniforms",
+      "params": [
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "anchorX",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "anchorY",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "matrix.a * textureWidth / width",
+          "type": null
+        },
+        {
+          "name": "matrix.b * textureWidth / height",
+          "type": null
+        },
+        {
+          "name": "matrix.c * textureHeight / width",
+          "type": null
+        },
+        {
+          "name": "matrix.d * textureHeight / height",
+          "type": null
+        },
+        {
+          "name": "matrix.tx / width",
+          "type": null
+        },
+        {
+          "name": "matrix.ty / height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "invert",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

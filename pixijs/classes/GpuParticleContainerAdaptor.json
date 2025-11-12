@@ -1,0 +1,104 @@
+{
+  "type": "class",
+  "name": "GpuParticleContainerAdaptor",
+  "sourcePath": "scene/particle-container/gpu/GpuParticleContainerAdaptor.ts",
+  "extends": null,
+  "implements": [
+    "ParticleContainerAdaptor"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "particleContainerPipe",
+          "type": "ParticleContainerPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "container",
+          "type": "ParticleContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUniformBindGroup",
+      "params": [
+        {
+          "name": "particleContainerPipe.localUniforms",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTextureBindGroup",
+      "params": [
+        {
+          "name": "container.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBuffers",
+      "params": [
+        {
+          "name": "container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "buffer.geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": "container.shader || particleContainerPipe.defaultShader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "state",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": "container.particleChildren.length * 6",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

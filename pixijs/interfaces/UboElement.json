@@ -1,0 +1,41 @@
+{
+  "type": "interface",
+  "name": "UboElement",
+  "sourcePath": "rendering/renderers/shared/shader/types.ts",
+  "extends": [],
+  "description": "the value of the uniform, this could be any object - a parser will figure out how to write it to the buffer */ value: unknown; type: UNIFORM_TYPES; /** the size of the variable (eg 2 for vec2, 3 for vec3, 4 for vec4) */ size?: number; name?: string; } /** @internal",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "data",
+      "type": "UniformData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "offset",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "optional": false,
+      "description": "export interface UboLayout { uboElements: UboElement[]; /** float32 size // TODO change to bytes"
+    },
+    {
+      "name": "args",
+      "type": "any[]) => void",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "type": "class",
+  "name": "MeshGeometry",
+  "sourcePath": "scene/mesh/shared/MeshGeometry.ts",
+  "extends": "Geometry",
+  "implements": [],
+  "description": "Options for the mesh geometry. / export interface MeshGeometryOptions { /** The positions of the mesh. */ positions?: Float32Array; /** The UVs of the mesh. If not provided, they will be filled with 0 and match the size of the positions. */ uvs?: Float32Array; /** The indices of the mesh. */ indices?: Uint32Array; /** The topology of the mesh. */ topology?: Topology; /** Whether to shrink the buffers to fit the data. */ shrinkBuffersToFit?: boolean; } /** A geometry used to batch multiple meshes with the same texture.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options instanceof Float32Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'use new MeshGeometry({ positions",
+          "type": null
+        },
+        {
+          "name": "uvs",
+          "type": null
+        },
+        {
+          "name": "indices }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!uvs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.positions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "positions.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint32Array",
+      "params": [
+        {
+          "name": "[0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        },
+        {
+          "name": "3]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "positions",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "label",
+          "type": "'attribute-mesh-positions'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shrinkToFit",
+          "type": null
+        },
+        {
+          "name": "usage",
+          "type": "BufferUsage.VERTEX | BufferUsage.COPY_DST",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "uvs",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "label",
+          "type": "'attribute-mesh-uvs'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shrinkToFit",
+          "type": null
+        },
+        {
+          "name": "usage",
+          "type": "BufferUsage.VERTEX | BufferUsage.COPY_DST",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "indices",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "label",
+          "type": "'index-mesh-buffer'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shrinkToFit",
+          "type": null
+        },
+        {
+          "name": "usage",
+          "type": "BufferUsage.INDEX | BufferUsage.COPY_DST",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "attributes",
+          "type": "{\n                aPosition: {\n                    buffer: positionBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "'float32x2'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stride",
+          "type": "2 * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "offset",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "aUV",
+          "type": "{\n                    buffer: uvBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "'float32x2'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stride",
+          "type": "2 * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "offset",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "indexBuffer",
+          "type": null
+        },
+        {
+          "name": "topology",
+          "type": "options.topology",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "positions",
+      "type": "Float32Array",
+      "description": "The positions of the mesh."
+    },
+    {
+      "name": "uvs",
+      "type": "Float32Array",
+      "description": "The UVs of the mesh."
+    },
+    {
+      "name": "indices",
+      "type": "Uint32Array",
+      "description": "The indices of the mesh."
+    }
+  ]
+}

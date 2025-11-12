@@ -1,0 +1,29 @@
+{
+  "type": "interface",
+  "name": "System",
+  "sourcePath": "rendering/renderers/shared/system/System.ts",
+  "extends": [],
+  "description": "A system is a generic interface for a renderer system. It is used to define the methods that a system should implement.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "init",
+      "type": "(options: INIT_OPTIONS) => void",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "type": "(options?: DESTROY_OPTIONS) => void",
+      "optional": true,
+      "description": "Generic destroy methods to be overridden by the subclass"
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer): System",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,1441 @@
+{
+  "type": "class",
+  "name": "InputManager",
+  "sourcePath": "input/InputManager.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "input",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function InputManager (game",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "EventEmitter",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Keyboard",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": "null",
+      "description": null
+    },
+    {
+      "name": "Mouse",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": "null",
+      "description": null
+    },
+    {
+      "name": "Touch",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": "null",
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i <= this.pointersTotal; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Pointer",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "GameEvents.BOOT",
+          "type": null
+        },
+        {
+          "name": "this.boot",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.MANAGER_BOOT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "GameEvents.PRE_RENDER",
+          "type": null
+        },
+        {
+          "name": "this.preRender",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "GameEvents.DESTROY",
+          "type": null
+        },
+        {
+          "name": "this.destroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.GAME_OVER",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.GAME_OUT",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScenes",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.MANAGER_UPDATE",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < scenes.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene.sys.input && scene.sys.input.updatePoll(time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDefaultCursor",
+      "params": [
+        {
+          "name": "'url(assets/cursors/sword.cur",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "cursor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.canvas.style.cursor !== cursor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "interactiveObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "interactiveObject.cursor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "interactiveObject",
+          "type": null
+        },
+        {
+          "name": "forceReset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(forceReset || (interactiveObject && interactiveObject.cursor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "quantity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "quantity === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.pointersTotal + quantity > 10",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < quantity; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Pointer",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "id",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "order",
+      "params": [
+        {
+          "name": "top to bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        },
+        {
+          "name": "pointers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScenes",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < scenes.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene.sys.input",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        },
+        {
+          "name": "pointers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(capture && this.globalTopOnly",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ELEMENT",
+      "params": [
+        {
+          "name": "i.e. game dom element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var c = 0; c < event.changedTouches.length; c++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 1; i < pointers.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pointer.active",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "touchstart",
+      "params": [
+        {
+          "name": "changedTouch",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateInputPlugins",
+      "params": [
+        {
+          "name": "CONST.TOUCH_START",
+          "type": null
+        },
+        {
+          "name": "changed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var c = 0; c < event.changedTouches.length; c++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 1; i < pointers.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pointer.active && pointer.identifier === changedTouch.identifier",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "elementFromPoint",
+      "params": [
+        {
+          "name": "changedTouch.clientX",
+          "type": null
+        },
+        {
+          "name": "changedTouch.clientY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.isOver && overCanvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCanvasOver",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isOver && !overCanvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCanvasOut",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isOver",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "touchmove",
+      "params": [
+        {
+          "name": "changedTouch",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateInputPlugins",
+      "params": [
+        {
+          "name": "CONST.TOUCH_MOVE",
+          "type": null
+        },
+        {
+          "name": "changed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var c = 0; c < event.changedTouches.length; c++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 1; i < pointers.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pointer.active && pointer.identifier === changedTouch.identifier",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "touchend",
+      "params": [
+        {
+          "name": "changedTouch",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateInputPlugins",
+      "params": [
+        {
+          "name": "CONST.TOUCH_END",
+          "type": null
+        },
+        {
+          "name": "changed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var c = 0; c < event.changedTouches.length; c++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 1; i < pointers.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pointer.active && pointer.identifier === changedTouch.identifier",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "touchcancel",
+      "params": [
+        {
+          "name": "changedTouch",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateInputPlugins",
+      "params": [
+        {
+          "name": "CONST.TOUCH_CANCEL",
+          "type": null
+        },
+        {
+          "name": "changed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "down",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateMotion",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateInputPlugins",
+      "params": [
+        {
+          "name": "CONST.MOUSE_DOWN",
+          "type": null
+        },
+        {
+          "name": "this.mousePointerContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "move",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateMotion",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateInputPlugins",
+      "params": [
+        {
+          "name": "CONST.MOUSE_MOVE",
+          "type": null
+        },
+        {
+          "name": "this.mousePointerContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "up",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateMotion",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateInputPlugins",
+      "params": [
+        {
+          "name": "CONST.MOUSE_UP",
+          "type": null
+        },
+        {
+          "name": "this.mousePointerContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "wheel",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateInputPlugins",
+      "params": [
+        {
+          "name": "CONST.MOUSE_WHEEL",
+          "type": null
+        },
+        {
+          "name": "this.mousePointerContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.POINTERLOCK_CHANGE",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        },
+        {
+          "name": "isLocked",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!input || !input.enabled || !gameObject.willRender(camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!parent.willRender(camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        },
+        {
+          "name": "gameObjects",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "output === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getWorldPoint",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "tempPoint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < gameObjects.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "input",
+      "params": [
+        {
+          "name": "isn't being ignored by the camera",
+          "type": null
+        },
+        {
+          "name": "invisible",
+          "type": null
+        },
+        {
+          "name": "etc",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.inputCandidate(gameObject",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.parentContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getWorldTransformMatrix",
+      "params": [
+        {
+          "name": "matrix",
+          "type": null
+        },
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyInverse",
+      "params": [
+        {
+          "name": "px",
+          "type": null
+        },
+        {
+          "name": "py",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformXY",
+      "params": [
+        {
+          "name": "px",
+          "type": null
+        },
+        {
+          "name": "py",
+          "type": null
+        },
+        {
+          "name": "gameObject.x",
+          "type": null
+        },
+        {
+          "name": "gameObject.y",
+          "type": null
+        },
+        {
+          "name": "gameObject.rotation",
+          "type": null
+        },
+        {
+          "name": "gameObject.scaleX",
+          "type": null
+        },
+        {
+          "name": "gameObject.scaleY",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.pointWithinHitArea(gameObject",
+          "type": null
+        },
+        {
+          "name": "point.x",
+          "type": null
+        },
+        {
+          "name": "point.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

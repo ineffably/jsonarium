@@ -1,0 +1,425 @@
+{
+  "type": "interface",
+  "name": "BundleIdentifierOptions",
+  "sourcePath": "assets/resolver/Resolver.ts",
+  "extends": [],
+  "description": "Options for how the resolver deals with generating bundle ids",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "connector",
+      "type": "string",
+      "optional": true,
+      "description": "The character that is used to connect the bundleId and the assetId when generating a bundle asset id key"
+    },
+    {
+      "name": "createBundleAssetId",
+      "type": "(bundleId: string, assetId: string) => string",
+      "optional": true,
+      "description": "A function that generates a bundle asset id key from a bundleId and an assetId"
+    },
+    {
+      "name": "extractAssetIdFromBundle",
+      "type": "(bundleId: string, assetBundleId: string) => string",
+      "optional": true,
+      "description": "A function that generates an assetId from a bundle asset id key. This is the reverse of generateBundleAssetId"
+    },
+    {
+      "name": "Aliases",
+      "type": "*\n * ```js\n * resolver.add('foo', 'bar')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "URL",
+      "type": "*\n * ```js\n * resolver.prefer({\n *     params: {\n *         format: 'webp',\n *         resolution: 2,\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "include",
+      "type": "* - Ability to process a manifest file to get the correct understanding of how to resolve all assets\n * - Ability to add custom parsers for specific file types\n * - Ability to add custom prefer rules\n *\n * This class only cares about the URL, not the loading of the asset itself.\n *\n * It is not intended that this class is created by developers - its part of the Asset class\n * This is the third major system of PixiJS' main Assets class\n * @category assets\n * @advanced\n */\nexport class Resolver\n{\n    /**\n     * The prefix that denotes a URL is for a retina asset.\n     * @default /@([0-9\\.]+)x/\n     * @example `@2x`\n     */\n    public static RETINA_PREFIX = /@([0-9\\.]+)x/",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_defaultBundleIdentifierOptions",
+      "type": "Required<BundleIdentifierOptions> = {\n        connector: '-',\n        createBundleAssetId: (bundleId, assetId) =>\n            `${bundleId}${this._bundleIdConnector}${assetId}`,\n        extractAssetIdFromBundle: (bundleId, assetBundleId) =>\n            assetBundleId.replace(`${bundleId}${this._bundleIdConnector}`, ''),\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_createBundleAssetId",
+      "type": "(\n        bundleId: string,\n        assetId: string\n    ) => string = this._defaultBundleIdentifierOptions.createBundleAssetId",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_extractAssetIdFromBundle",
+      "type": "(\n        bundleId: string,\n        assetBundleId: string\n    ) => string = this._defaultBundleIdentifierOptions.extractAssetIdFromBundle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_assetMap",
+      "type": "Record<string, ResolvedAsset[]> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_preferredOrder",
+      "type": "PreferOrder[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_parsers",
+      "type": "ResolveURLParser[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_resolverHash",
+      "type": "Record<string, ResolvedAsset> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_rootPath",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_basePath",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_manifest",
+      "type": "AssetsManifest",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_bundles",
+      "type": "Record<string, string[]> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_defaultSearchParams",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bundleIdentifier",
+      "type": "BundleIdentifierOptions): void\n    {\n        this._bundleIdConnector = bundleIdentifier.connector ?? this._bundleIdConnector",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "priority",
+      "type": "['format', 'resolution'],\n     *     params:{\n     *         format:'webp', // prefer webp images\n     *         resolution: 2, // prefer a resolution of 2\n     *     }\n     * })\n     * resolver.add('foo', ['bar@2x.webp', 'bar@2x.png', 'bar.webp', 'bar.png'])",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "preferOrders",
+      "type": "PreferOrder[]): void\n    {\n        preferOrders.forEach((prefer) =>\n        {\n            this._preferredOrder.push(prefer)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//home.com/'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//home.com/bar.png'\n     * @param basePath - the base path to use\n     */\n    public set basePath(basePath: string)\n    {\n        this._basePath = basePath",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//home.com/some-path/index.html\n     * resolver.basePath = 'https://home.com/some-path/'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//home.com/'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//home.com/bar.png'\n     * @param rootPath - the root path to use\n     */\n    public set rootPath(rootPath: string)\n    {\n        this._rootPath = rootPath",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resolution",
+      "type": "2,\n     *         format: 'png',\n     *         src: 'image@2x.png',\n     *     },\n     *     {\n     *         resolution:1,\n     *         format:'png',\n     *         src: 'image.png',\n     *     },\n     * ])",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "itself",
+      "type": "* extensions.add({\n     *     extension: ExtensionType.ResolveParser,\n     *     test: loadTextures.test, // test if url ends in an image\n     *     parse: (value: string) =>\n     *     ({\n     *         resolution: parseFloat(Resolver.RETINA_PREFIX.exec(value)?.[1] ?? '1'),\n     *         format: value.split('.').pop(),\n     *         src: value,\n     *     }),\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "searchParams",
+      "type": "string | Record<string, unknown>): void\n    {\n        if (typeof searchParams === 'string')\n        {\n            this._defaultSearchParams = searchParams",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "asset",
+      "type": "UnresolvedAsset): string[]\n    {\n        const { alias, src } = asset",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "string | AssetSrc) =>\n            {\n                if (typeof value === 'string') return value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "manifest",
+      "type": "AssetsManifest): void\n    {\n        if (this._manifest)\n        {\n            // #if _DEBUG\n            warn('[Resolver] Manifest already exists, this will be overwritten')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alias",
+      "type": "'bunny', src: 'bunny.png' },\n     *  { alias: 'chicken', src: 'chicken.png' },\n     *  { alias: 'thumper', src: 'thumper.png' },\n     * ])",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bunny",
+      "type": "'bunny.png',\n     *     chicken: 'chicken.png',\n     *     thumper: 'thumper.png',\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bundleId",
+      "type": "string, assets: AssetsBundle['assets']): void\n    {\n        const assetNames: string[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "convertedAssets",
+      "type": "UnresolvedAsset[] = assets as UnresolvedAsset[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "ids",
+      "type": "string[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alias",
+      "type": "ids,\n                    src: srcs,\n                }\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "asset",
+      "type": "* resolver.add({alias: 'foo', src: 'bar.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "asset",
+      "type": "* resolver.add({alias: ['foo', 'boo'], src: 'bar.png'})",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assets",
+      "type": "* resolver.add({alias: ['foo', 'boo'], src: ['bar.png', 'bar.webp']})",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alias",
+      "type": "'bunnyBooBooSmooth',\n     *     src: 'bunny{png,webp}',\n     *     data: { scaleMode:SCALE_MODES.NEAREST }, // Base texture options\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "src",
+      "type": "'bunny.png', data: { scaleMode: SCALE_MODES.NEAREST } }\n     * @param aliases - the UnresolvedAsset or array of UnresolvedAssets to add to the resolver\n     */\n    public add(\n        aliases: ArrayOr<UnresolvedAsset>,\n    ): void\n    {\n        const assets: UnresolvedAsset[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "keyCheck",
+      "type": "(key: string) => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "key",
+      "type": "string) =>\n        {\n            if (this.hasKey(key))\n            {\n                // #if _DEBUG\n                warn(`[Resolver] already has key: ${key} overwriting`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "loadParser",
+      "type": "userDefinedLoadParser,\n                parser: userDefinedParser,\n            } = asset",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "srcsToUse",
+      "type": "(string | ResolvedSrc)[][] = convertToList<AssetSrc>(src).map((src) =>\n            {\n                if (typeof src === 'string')\n                { return createStringVariations(src)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resolvedAssets",
+      "type": "ResolvedAsset[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "asset",
+      "type": "${formattedAsset.src}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "aliases",
+      "type": "aliasesToUse,\n                        data,\n                        format,\n                        loadParser: userDefinedLoadParser,\n                        parser: userDefinedParser,\n                        progressSize: asset.progressSize,\n                    })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "TODO",
+      "type": "this needs an overload like load did in Assets\n    /**\n     * If the resolver has had a manifest set via setManifest, this will return the assets urls for\n     * a given bundleId or bundleIds.\n     * @example\n     * // Manifest Example\n     * const manifest = {\n     *     bundles: [\n     *         {\n     *             name: 'load-screen',\n     *             assets: [\n     *                 {\n     *                     alias: 'background',\n     *                     src: 'sunset.png',\n     *                 },\n     *                 {\n     *                     alias: 'bar',\n     *                     src: 'load-bar.{png,webp}',\n     *                 },\n     *             ],\n     *         },\n     *         {\n     *             name: 'game-screen',\n     *             assets: [\n     *                 {\n     *                     alias: 'character',\n     *                     src: 'robot.png',\n     *                 },\n     *                 {\n     *                     alias: 'enemy',\n     *                     src: 'bad-guy.png',\n     *                 },\n     *             ],\n     *         },\n     *     ]\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bundleIds",
+      "type": "ArrayOr<string>):\n    Record<string, ResolvedAsset> | Record<string, Record<string, ResolvedAsset>>\n    {\n        const singleAsset = isSingleItem(bundleIds)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Record<string, Record<string, ResolvedAsset>> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assets",
+      "type": "Record<string, ResolvedAsset> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "key",
+      "type": "ArrayOr<string>): string | Record<string, string>\n    {\n        const result = this.resolve(key as string) as ResolvedAsset | Record<string, ResolvedAsset>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Record<string, string> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "src",
+      "type": "'bunny.png' }\n     *\n     * // Will return the same string as no key was added for this value..\n     * resolver.resolve('another-thing.png') // => { src: 'another-thing.png' }\n     * @param keys - key or keys to resolve\n     * @returns - the resolve asset or a hash of resolve assets for each key specified\n     */\n    public resolve(keys: string): ResolvedAsset",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "keys",
+      "type": "string[]): Record<string, ResolvedAsset>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "keys",
+      "type": "ArrayOr<string>): ResolvedAsset | Record<string, ResolvedAsset>\n    {\n        const singleAsset = isSingleItem(keys)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "result",
+      "type": "Record<string, ResolvedAsset> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "unknown) =>\n                        {\n                            const filteredAssets = assets.filter((asset) =>\n                            {\n                                if (asset[priorityKey as keyof ResolvedAsset])\n                                {\n                                    return asset[priorityKey as keyof ResolvedAsset] === value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alias",
+      "type": "[key],\n                        src: key,\n                    }, {})",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "key",
+      "type": "string): boolean\n    {\n        return !!this._assetMap[key]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "key",
+      "type": "string): boolean\n    {\n        return !!this._bundles[key]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assets",
+      "type": "ResolvedAsset[]): PreferOrder\n    {\n        for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "preference",
+      "type": "PreferOrder) =>\n                preference.params.format.includes(asset.format))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "string): string\n    {\n        if (!this._defaultSearchParams) return url",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "formattedAsset",
+      "type": "ResolvedAsset, data?: {\n        aliases?: string[],\n        data?: Record<string, unknown>\n        loadParser?: string,\n        parser?: string,\n        format?: string,\n        progressSize?: number,\n    }): ResolvedAsset\n    {\n        const { aliases, data: assetData, loadParser, parser, format, progressSize } = data",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "string)\n{\n    return url.split('.').pop().split('?').shift()\n        .split('#')\n        .shift()",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "type": "class",
+  "name": "BatchableGraphics",
+  "sourcePath": "scene/graphics/shared/BatchableGraphics.ts",
+  "extends": null,
+  "implements": [
+    "DefaultBatchableMeshElement"
+  ],
+  "description": "A batchable graphics object.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderable && this.applyTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiplyHexColors",
+      "params": [
+        {
+          "name": "bgr",
+          "type": null
+        },
+        {
+          "name": "renderable.groupColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyTo",
+      "params": [
+        {
+          "name": "gpuBuffer",
+          "type": "BatchableGraphics",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

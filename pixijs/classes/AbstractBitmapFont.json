@@ -1,0 +1,231 @@
+{
+  "type": "class",
+  "name": "AbstractBitmapFont",
+  "sourcePath": "scene/text-bitmap/AbstractBitmapFont.ts",
+  "extends": null,
+  "implements": [],
+  "description": "/ export interface CharData { /** Unique id of character */ id: number; /** x-offset to apply when rendering character */ xOffset: number; /** y-offset to apply when rendering character. */ yOffset: number; /** Advancement to apply to next character. */ xAdvance: number; /** The kerning values for this character. */ kerning: Record<string, number>; /** The texture of the character. */ texture?: Texture; } /** The raw data of a character in a bitmap font. / export interface RawCharData extends Omit<CharData, 'texture'> { /** The page of the font texture that the character is on. */ page: number; /** The x position of the character in the page. */ x: number; /** The y position of the character in the page. */ y: number; /** The width of the character in the page. */ width: number; /** The height of the character in the page. */ height: number; /** The letter of the character. */ letter: string; } /** The raw data of a bitmap font. / export interface BitmapFontData { /** The offset of the font face from the baseline. */ baseLineOffset: number; /** The map of characters by character code. */ chars: Record<string, RawCharData>; /** The map of base page textures (i.e., sheets of glyphs). */ pages: { /** Unique id for bitmap texture */ id: number; /** File name */ file: string }[]; /** The line-height of the font face in pixels. */ lineHeight: number; /** The size of the font face in pixels. */ fontSize: number; /** The name of the font face. */ fontFamily: string; /** The range and type of the distance field for this font. */ distanceField?: { /** Type of distance field */ type: 'sdf' | 'msdf' | 'none'; /** Range of the distance field in pixels */ range: number; }; } interface BitmapFontEvents<Type> { destroy: [Type]; } /** An abstract representation of a bitmap font.",
+  "category": "text",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "textures",
+      "params": [
+        {
+          "name": "i.e.",
+          "type": null
+        },
+        {
+          "name": "sheets of glyphs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'BitmapFont.font is deprecated",
+          "type": null
+        },
+        {
+          "name": "please use BitmapFont.fontFamily instead.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "textures",
+      "params": [
+        {
+          "name": "i.e.",
+          "type": null
+        },
+        {
+          "name": "sheets of glyphs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'BitmapFont.pageTextures is deprecated",
+          "type": null
+        },
+        {
+          "name": "please use BitmapFont.pages instead.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'BitmapFont.size is deprecated",
+          "type": null
+        },
+        {
+          "name": "please use BitmapFont.fontMetrics.fontSize instead.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'BitmapFont.distanceFieldRange is deprecated",
+          "type": null
+        },
+        {
+          "name": "please use BitmapFont.distanceField.range instead.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'BitmapFont.distanceFieldType is deprecated",
+          "type": null
+        },
+        {
+          "name": "please use BitmapFont.distanceField.type instead.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "destroyTextures = false",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this as unknown as FontType",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeAllListeners",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this.chars",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(page",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

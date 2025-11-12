@@ -1,0 +1,2316 @@
+{
+  "type": "class",
+  "name": "Container",
+  "sourcePath": "gameobjects/container/Container.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "gameobjects",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "GameObject",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Mixins",
+          "type": "[\n        Components.AlphaSingle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Components.BlendMode",
+          "type": null
+        },
+        {
+          "name": "Components.ComputedSize",
+          "type": null
+        },
+        {
+          "name": "Components.Depth",
+          "type": null
+        },
+        {
+          "name": "Components.Mask",
+          "type": null
+        },
+        {
+          "name": "Components.PostPipeline",
+          "type": null
+        },
+        {
+          "name": "Components.Transform",
+          "type": null
+        },
+        {
+          "name": "Components.Visible",
+          "type": null
+        },
+        {
+          "name": "Render\n    ]",
+          "type": null
+        },
+        {
+          "name": "initialize",
+          "type": "function Container (scene",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "children",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "'Container'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initPostPipeline",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPosition",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBlendMode",
+      "params": [
+        {
+          "name": "BlendModes.SKIP_CHECK",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "children",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "children",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "output === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTo",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.parentContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBoundsTransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTo",
+      "params": [
+        {
+          "name": "transformedPosition.x",
+          "type": null
+        },
+        {
+          "name": "transformedPosition.y",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.list.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setEmpty",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < children.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "entry.getBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBounds",
+      "params": [
+        {
+          "name": "tempRect",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!hasSetFirst",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTo",
+      "params": [
+        {
+          "name": "tempRect.x",
+          "type": null
+        },
+        {
+          "name": "tempRect.y",
+          "type": null
+        },
+        {
+          "name": "tempRect.width",
+          "type": null
+        },
+        {
+          "name": "tempRect.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Union",
+      "params": [
+        {
+          "name": "tempRect",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "Events.DESTROY",
+          "type": null
+        },
+        {
+          "name": "this.onChildDestroyed",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.exclusive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.parentContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeFromDisplayList",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addedToScene",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "Events.DESTROY",
+          "type": null
+        },
+        {
+          "name": "this.remove",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.exclusive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removedFromScene",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToDisplayList",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "output === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.parentContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pointToContainer",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyITRS",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.rotation",
+          "type": null
+        },
+        {
+          "name": "this.scaleX",
+          "type": null
+        },
+        {
+          "name": "this.scaleY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "invert",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "source.x",
+          "type": null
+        },
+        {
+          "name": "source.y",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getWorldTransformMatrix",
+      "params": [
+        {
+          "name": "tempTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "this.localTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Add",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "this.maxSize",
+          "type": null
+        },
+        {
+          "name": "this.addHandler",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AddAt",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "this.maxSize",
+          "type": null
+        },
+        {
+          "name": "this.addHandler",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "indexOf",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sort",
+      "params": [
+        {
+          "name": "'alpha'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "handler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!property",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "handler === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "childA",
+          "type": null
+        },
+        {
+          "name": "childB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "StableSort",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "handler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "name",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFirst",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "'name'",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "elements",
+      "params": [
+        {
+          "name": "from the startIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetRandom",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFirst",
+      "params": [
+        {
+          "name": "'visible'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strict",
+      "params": [
+        {
+          "name": "`===`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "to",
+      "params": [
+        {
+          "name": "but not included",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFirst",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAll",
+      "params": [
+        {
+          "name": "'body'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAll",
+      "params": [
+        {
+          "name": "'visible'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "to",
+      "params": [
+        {
+          "name": "but not included",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetAll",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "count",
+      "params": [
+        {
+          "name": "'visible'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "to",
+      "params": [
+        {
+          "name": "but not included",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CountAllMatching",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child1",
+          "type": null
+        },
+        {
+          "name": "child2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Swap",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child1",
+          "type": null
+        },
+        {
+          "name": "child2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MoveTo",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child1",
+          "type": null
+        },
+        {
+          "name": "child2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MoveAbove",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child1",
+          "type": null
+        },
+        {
+          "name": "child2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child1",
+          "type": null
+        },
+        {
+          "name": "child2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MoveBelow",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child1",
+          "type": null
+        },
+        {
+          "name": "child2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "destroyChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Remove",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "this.removeHandler",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyChild && removed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!Array.isArray(removed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < removed.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "destroyChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RemoveAt",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "this.removeHandler",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyChild && removed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "to",
+      "params": [
+        {
+          "name": "but not included",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        },
+        {
+          "name": "destroyChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RemoveBetween",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        },
+        {
+          "name": "this.removeHandler",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < removed.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "destroyChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < list.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "list[i] && list[i].scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "Events.DESTROY",
+          "type": null
+        },
+        {
+          "name": "this.onChildDestroyed",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RemoveBetween",
+      "params": [
+        {
+          "name": "list",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "list.length",
+          "type": null
+        },
+        {
+          "name": "this.removeHandler",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BringToTop",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SendToBack",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MoveUp",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MoveDown",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reverse",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Shuffle",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "oldChild",
+          "type": null
+        },
+        {
+          "name": "newChild",
+          "type": null
+        },
+        {
+          "name": "destroyChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Replace",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "oldChild",
+          "type": null
+        },
+        {
+          "name": "newChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "moved",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addHandler",
+      "params": [
+        {
+          "name": "newChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeHandler",
+      "params": [
+        {
+          "name": "oldChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyChild",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.list.indexOf(child",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "to",
+      "params": [
+        {
+          "name": "but not included",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetAll",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "property",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startIndex",
+          "type": null
+        },
+        {
+          "name": "endIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 2; i < arguments.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "arguments[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < len; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "args",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 2; i < arguments.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "arguments[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < this.list.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "args",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "updateChildren",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "updateChildren === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "updateChildren",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetAll",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "'scrollFactorX'",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetAll",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "'scrollFactorY'",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.list.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.list.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.position < this.list.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.position > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeAll",
+      "params": [
+        {
+          "name": "!!this.exclusive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Remove",
+      "params": [
+        {
+          "name": "this.list",
+          "type": null
+        },
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.exclusive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removedFromScene",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

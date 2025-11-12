@@ -1,0 +1,164 @@
+{
+  "type": "class",
+  "name": "ViewableBuffer",
+  "sourcePath": "utils/data/ViewableBuffer.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Flexible wrapper around `ArrayBuffer` that also provides typed array views on demand.",
+  "category": "utils",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof sizeOrBuffer === 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ArrayBuffer",
+      "params": [
+        {
+          "name": "sizeOrBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "sizeOrBuffer instanceof Uint8Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint32Array",
+      "params": [
+        {
+          "name": "this.rawBinaryData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "this.rawBinaryData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "view",
+      "params": [
+        {
+          "name": "type",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "TypedArray",
+      "description": "View on the raw binary data as a `Int8Array`. */ get int8View(): Int8Array { if (!this._int8View) { this._int8View = new Int8Array(this.rawBinaryData); } return this._int8View; } /** View on the raw binary data as a `Uint8Array`. */ get uint8View(): Uint8Array { if (!this._uint8View) { this._uint8View = new Uint8Array(this.rawBinaryData); } return this._uint8View; } /**  View on the raw binary data as a `Int16Array`. */ get int16View(): Int16Array { if (!this._int16View) { this._int16View = new Int16Array(this.rawBinaryData); } return this._int16View; } /** View on the raw binary data as a `Int32Array`. */ get int32View(): Int32Array { if (!this._int32View) { this._int32View = new Int32Array(this.rawBinaryData); } return this._int32View; } /** View on the raw binary data as a `Float64Array`. */ get float64View(): Float64Array { if (!this._float64Array) { this._float64Array = new Float64Array(this.rawBinaryData); } return this._float64Array; } /** View on the raw binary data as a `BigUint64Array`. */ get bigUint64View(): BigUint64Array { if (!this._bigUint64Array) { this._bigUint64Array = new BigUint64Array(this.rawBinaryData); } return this._bigUint64Array; } /** Returns the view of the given type. `uint16`, `int32`, `uint32`, and `float32`."
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this as any",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": "Destroys all buffer references. Do not use after calling this."
+    },
+    {
+      "name": "sizeOf",
+      "params": [
+        {
+          "name": "type",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "number",
+      "description": "Returns the size of the given type in bytes. `uint16`, `int32`, `uint32`, and `float32`."
+    },
+    {
+      "name": "switch",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "`${type} isn't a valid view type`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "int8View",
+      "type": "Int8Array",
+      "description": "View on the raw binary data as a `Int8Array`."
+    },
+    {
+      "name": "uint8View",
+      "type": "Uint8Array",
+      "description": "View on the raw binary data as a `Uint8Array`."
+    },
+    {
+      "name": "int16View",
+      "type": "Int16Array",
+      "description": "View on the raw binary data as a `Int16Array`."
+    },
+    {
+      "name": "int32View",
+      "type": "Int32Array",
+      "description": "View on the raw binary data as a `Int32Array`."
+    },
+    {
+      "name": "float64View",
+      "type": "Float64Array",
+      "description": "View on the raw binary data as a `Float64Array`."
+    },
+    {
+      "name": "bigUint64View",
+      "type": "BigUint64Array",
+      "description": "View on the raw binary data as a `BigUint64Array`."
+    }
+  ]
+}

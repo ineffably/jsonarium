@@ -1,0 +1,191 @@
+{
+  "type": "interface",
+  "name": "FontMetrics",
+  "sourcePath": "scene/text/canvas/CanvasTextMetrics.ts",
+  "extends": [],
+  "description": "Creates a new Intl.Segmenter object. / new(): ISegmenter; }; } /** A number, or a string containing a number.",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "ascent",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "descent",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "contextSettings",
+      "type": "ICanvasRenderingContext2DSettings = {\n    // TextMetrics requires getImageData readback for measuring fonts.\n    willReadFrequently: true,\n}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontFamily",
+      "type": "'Arial',\n *     fontSize: 24,\n *     fill: 0xff1010,\n *     align: 'center',\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "style",
+      "type": "TextStyle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "lines",
+      "type": "string[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "lineWidths",
+      "type": "number[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "lineHeight",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "maxLineWidth",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontProperties",
+      "type": "FontMetrics",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//www.npmjs.com/package/grapheme-splitter}\n     * or [graphemer]{@link https://www.npmjs.com/package/graphemer} to create a polyfill. Since these libraries can be\n     * relatively large in size to handle various Unicode grapheme clusters properly, PixiJS won't use them directly.\n     */\n    public static graphemeSegmenter: (s: string) => string[] = (() =>\n    {\n        if (typeof (Intl as IIntl)?.Segmenter === 'function')\n        {\n            const segmenter = new (Intl as IIntl).Segmenter()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "s",
+      "type": "string) =>\n            {\n                const segments = segmenter.segment(s)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "s",
+      "type": "string) => [...s]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_experimentalLetterSpacingSupported",
+      "type": "boolean",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "Note",
+      "type": "This is an unstable API, Chrome < 94 use `textLetterSpacing`, later versions use `letterSpacing`.\n     * @see TextMetrics.experimentalLetterSpacing\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/ICanvasRenderingContext2D/letterSpacing\n     * @see https://developer.chrome.com/origintrials/#/view_trial/3585991203293757441\n     */\n    public static get experimentalLetterSpacingSupported(): boolean\n    {\n        let result = CanvasTextMetrics._experimentalLetterSpacingSupported",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_fonts",
+      "type": "Record<string, FontMetrics> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_newlines",
+      "type": "number[] = [\n        0x000A, // line feed\n        0x000D, // carriage return\n    ]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_breakingSpaces",
+      "type": "number[] = [\n        0x0009, // character tabulation\n        0x0020, // space\n        0x2000, // en quad\n        0x2001, // em quad\n        0x2002, // en space\n        0x2003, // em space\n        0x2004, // three-per-em space\n        0x2005, // four-per-em space\n        0x2006, // six-per-em space\n        0x2008, // punctuation space\n        0x2009, // thin space\n        0x200A, // hair space\n        0x205F, // medium mathematical space\n        0x3000, // ideographic space\n    ]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "__canvas",
+      "type": "ICanvas",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "__context",
+      "type": "ICanvasRenderingContext2D",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "string, style: TextStyle, width: number, height: number, lines: string[], lineWidths: number[],\n        lineHeight: number, maxLineWidth: number, fontProperties: FontMetrics)\n    {\n        this.text = text",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "style",
+      "type": "TextStyle,\n        canvas: ICanvas = CanvasTextMetrics._canvas,\n        wordWrap: boolean = style.wordWrap,\n    ): CanvasTextMetrics\n    {\n        const textKey = `${text}-${style.styleKey}-wordWrap-${wordWrap}`",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "string,\n        letterSpacing: number,\n        context: ICanvasRenderingContext2D\n    )\n    {\n        let useExperimentalLetterSpacing = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "NOTE",
+      "type": "this is a bit of a hack as metrics.width and the bounding box width do not measure the same thing\n        // We can't seem to exclusively use one or the other, so are taking the largest of the two\n        return Math.max(metricWidth, boundsWidth)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "string,\n        style: TextStyle,\n        canvas: ICanvas = CanvasTextMetrics._canvas\n    ): string\n    {\n        const context = canvas.getContext('2d', contextSettings)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "cache",
+      "type": "CharacterWidthCache = Object.create(null)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

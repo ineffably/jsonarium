@@ -1,0 +1,207 @@
+{
+  "type": "class",
+  "name": "Circle",
+  "sourcePath": "maths/shapes/Circle.ts",
+  "extends": null,
+  "implements": [
+    "ShapePrimitive"
+  ],
+  "description": "The Circle object represents a circle shape in a two-dimensional coordinate system. Used for drawing graphics and specifying hit areas for containers. ```ts // Basic circle creation const circle = new Circle(100, 100, 50); // Use as hit area container.hitArea = new Circle(0, 0, 100); // Check point containment const isInside = circle.contains(mouseX, mouseY); // Get bounding box const bounds = circle.getBounds(); ``` - Defined by center (x,y) and radius - Supports point containment tests - Can check stroke intersections",
+  "category": "maths",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": "Circle",
+      "description": "Creates a clone of this Circle instance. ```ts // Basic circle cloning const original = new Circle(100, 100, 50); const copy = original.clone(); // Clone and modify const modified = original.clone(); modified.radius = 75; // Verify independence console.log(original.radius); // 50 console.log(modified.radius); // 75 ```"
+    },
+    {
+      "name": "Circle",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.radius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contains",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks whether the x and y coordinates given are contained within this circle. Uses the distance formula to determine if a point is inside the circle's radius. Commonly used for hit testing in PixiJS events and graphics. ```ts // Basic containment check const circle = new Circle(100, 100, 50); const isInside = circle.contains(120, 120); // Check mouse position const circle = new Circle(0, 0, 100); container.hitArea = circle; container.on('pointermove', (e) => { // only called if pointer is within circle }); ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.radius <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "dx + dy <= r2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeContains",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "alignment",
+          "type": "number",
+          "optional": true,
+          "default": "0.5"
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks whether the x and y coordinates given are contained within this circle including the stroke. ```ts // Basic stroke check const circle = new Circle(100, 100, 50); const isOnStroke = circle.strokeContains(150, 100, 4); // 4px line width // Check with different alignments const innerStroke = circle.strokeContains(150, 100, 4, 1);   // Inside const centerStroke = circle.strokeContains(150, 100, 4, 0.5); // Centered const outerStroke = circle.strokeContains(150, 100, 4, 0);   // Outside ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.radius === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "(dx * dx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "distance <= radius + outerWidth && distance > radius - (width - outerWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBounds",
+      "params": [
+        {
+          "name": "out",
+          "type": "Rectangle",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Rectangle",
+      "description": "Returns the framing rectangle of the circle as a Rectangle object. ```ts // Basic bounds calculation const circle = new Circle(100, 100, 50); const bounds = circle.getBounds(); // bounds: x=50, y=50, width=100, height=100 // Reuse existing rectangle const rect = new Rectangle(); circle.getBounds(rect); ```"
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "circle",
+          "type": "Circle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Copies another circle to this one. ```ts // Basic copying const source = new Circle(100, 100, 50); const target = new Circle(); target.copyFrom(source); ```"
+    },
+    {
+      "name": "copyTo",
+      "params": [
+        {
+          "name": "circle",
+          "type": "Circle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Circle",
+      "description": "Copies this circle to another one. ```ts // Basic copying const source = new Circle(100, 100, 50); const target = new Circle(); source.copyTo(target); ```"
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": "string",
+      "description": null
+    }
+  ],
+  "properties": []
+}

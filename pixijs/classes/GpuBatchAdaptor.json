@@ -1,0 +1,240 @@
+{
+  "type": "class",
+  "name": "GpuBatchAdaptor",
+  "sourcePath": "rendering/batcher/gpu/GpuBatchAdaptor.ts",
+  "extends": null,
+  "implements": [
+    "BatcherAdaptor"
+  ],
+  "description": "A BatcherAdaptor that uses the GPU to render batches.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "batchPipe",
+          "type": "BatcherPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "geometry",
+          "type": "Geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": "Shader",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "setGeometry",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPipeline",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        },
+        {
+          "name": "tempState",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetBindGroup",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "globalUniformsBindGroup",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "batchPipe",
+          "type": "BatcherPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "batch",
+          "type": "Batch",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!batch.bindGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTextureBatchBindGroup",
+      "params": [
+        {
+          "name": "textureBatch.textures",
+          "type": null
+        },
+        {
+          "name": "textureBatch.count",
+          "type": null
+        },
+        {
+          "name": "renderer.limits.maxBatchableTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBindGroup",
+      "params": [
+        {
+          "name": "batch.bindGroup",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPipeline",
+      "params": [
+        {
+          "name": "this._geometry",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        },
+        {
+          "name": "tempState",
+          "type": null
+        },
+        {
+          "name": "batch.topology",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipeline",
+      "params": [
+        {
+          "name": "pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "gpuBindGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawIndexed",
+      "params": [
+        {
+          "name": "batch.size",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "batch.start",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,95 @@
+{
+  "type": "interface",
+  "name": "AlphaMaskData",
+  "sourcePath": "rendering/mask/alpha/AlphaMaskPipe.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "filterEffect",
+      "type": "AlphaMaskEffect,\n    maskedContainer: Container,\n    previousRenderTarget?: RenderTarget,\n    filterTexture?: Texture,\n}\n\n/** @internal */\nexport class AlphaMaskPipe implements InstructionPipe<AlphaMaskInstruction>\n{\n    /** @ignore */\n    public static extension = {\n        type: [\n            ExtensionType.WebGLPipes,\n            ExtensionType.WebGPUPipes,\n            ExtensionType.CanvasPipes,\n        ],\n        name: 'alphaMask',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_activeMaskStage",
+      "type": "AlphaMaskData[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mask",
+      "type": "Effect, maskedContainer: Container, instructionSet: InstructionSet): void\n    {\n        const renderer = this._renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'alphaMask',\n            action: 'pushMaskBegin',\n            mask,\n            inverse: maskedContainer._maskOptions.inverse,\n            canBundle: false,\n            maskedContainer\n        } as AlphaMaskInstruction)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'alphaMask',\n            action: 'pushMaskEnd',\n            mask,\n            maskedContainer,\n            inverse: maskedContainer._maskOptions.inverse,\n            canBundle: false,\n        } as AlphaMaskInstruction)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mask",
+      "type": "Effect, _maskedContainer: Container, instructionSet: InstructionSet): void\n    {\n        const renderer = this._renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'alphaMask',\n            action: 'popMaskEnd',\n            mask,\n            inverse: _maskedContainer._maskOptions.inverse,\n            canBundle: false,\n        } as AlphaMaskInstruction)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instruction",
+      "type": "AlphaMaskInstruction)\n    {\n        const renderer = this._renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "offset",
+      "type": "bounds,\n                    worldColor: 0xFFFFFFFF\n                })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "maskedContainer",
+      "type": "instruction.maskedContainer,\n                    filterTexture,\n                })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "maskedContainer",
+      "type": "instruction.maskedContainer,\n                })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'filter',\n                action: 'pushFilter',\n                container: maskData.maskedContainer,\n                filterEffect: maskData.filterEffect,\n                canBundle: false,\n            })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "type": "interface",
+  "name": "RenderLayerOptions",
+  "sourcePath": "scene/layers/RenderLayer.ts",
+  "extends": [],
+  "description": "Options for configuring a RenderLayer. A RenderLayer allows control over rendering order independent of the scene graph hierarchy. ```ts // Basic layer with automatic sorting const layer = new RenderLayer({ sortableChildren: true }); // Layer with custom sort function const customLayer = new RenderLayer({ sortableChildren: true, sortFunction: (a, b) => { // Sort by y position return a.position.y - b.position.y; } }); // Add objects to layer while maintaining scene graph parent const sprite = new Sprite(texture); container.addChild(sprite);      // Add to scene graph layer.attach(sprite);            // Add to render layer // Manual sorting when needed const manualLayer = new RenderLayer({ sortableChildren: false }); manualLayer.attach(sprite1, sprite2); manualLayer.sortRenderLayerChildren(); // Sort manually ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "sortableChildren",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the layer's children will be sorted by zIndex before rendering. If false, you can manually sort the children using sortRenderLayerChildren when needed. ```ts const layer = new RenderLayer({ sortableChildren: true // Automatically sorts children by zIndex }); ```"
+    },
+    {
+      "name": "sortFunction",
+      "type": "(a: Container, b: Container) => number",
+      "optional": true,
+      "description": "Custom sort function to sort layer children. Default sorts by zIndex. ```ts const layer = new RenderLayer({ sortFunction: (a, b) => { // Sort by y position return a.position.y - b.position.y; } }); ```"
+    },
+    {
+      "name": "sortableChildren",
+      "type": "false,\n        /**\n         * Function used to sort layer children.\n         * Default sorts by zIndex. Accepts two Container objects and returns\n         * a number indicating their relative order.\n         * @param a - First container to compare\n         * @param b - Second container to compare\n         * @returns Negative if a should render before b, positive if b should render before a\n         */\n        sortFunction: (a, b) => a.zIndex - b.zIndex,\n    }",
+      "optional": false,
+      "description": "The RenderLayer API provides a way to control the rendering order of objects independently of their logical parent-child relationships in the scene graph. This allows developers to decouple how objects are transformed (via their logical parent) from how they are rendered on the screen. ### Key Concepts #### RenderLayers Control Rendering Order: - RenderLayers define where in the render stack objects are drawn, but they do not affect an object's transformations (e.g., position, scale, rotation) or logical hierarchy. - RenderLayers can be added anywhere in the scene graph. #### Logical Parenting Remains Unchanged: - Objects still have a logical parent for transformations via addChild. - Assigning an object to a layer does not reparent it. #### Explicit Control: - Developers assign objects to layers using renderLayer.add and remove them using renderLayer.remove. --- ### API Details #### 1. Creating a RenderLayer A RenderLayer is a lightweight object responsible for controlling render order. It has no children or transformations of its own but can be inserted anywhere in the scene graph to define its render position. ```js const layer = new RenderLayer(); app.stage.addChild(layer); // Insert the layer into the scene graph ``` #### 2. Adding Objects to a Layer Use renderLayer.add to assign an object to a layer. This overrides the object's default render order defined by its logical parent. ```js const rect = new Graphics(); container.addChild(rect);    // Add to logical parent layer.attach(rect);      // Control render order via the layer ``` #### 3. Removing Objects from a Layer To stop an object from being rendered in the layer, use remove. ```js layer.remove(rect); // Stop rendering rect via the layer ``` When an object is removed from its logical parent (removeChild), it is automatically removed from the layer. #### 4. Re-Adding Objects to Layers If an object is re-added to a logical parent, it does not automatically reassign itself to the layer. Developers must explicitly reassign it. ```js container.addChild(rect);    // Logical parent layer.attach(rect);      // Explicitly reassign to the layer ``` #### 5. Layer Position in Scene Graph A layer's position in the scene graph determines its render priority relative to other layers and objects. Layers can be inserted anywhere in the scene graph. ```js const backgroundLayer = new RenderLayer(); const uiLayer = new RenderLayer(); app.stage.addChild(backgroundLayer); app.stage.addChild(world); app.stage.addChild(uiLayer); ``` This is a new API and therefore considered experimental at this stage. While the core is pretty robust, there are still a few tricky issues we need to tackle. However, even with the known issues below, we believe this API is incredibly useful! Known issues: - Interaction may not work as expected since hit testing does not account for the visual render order created by layers. For example, if an object is visually moved to the front via a layer, hit testing will still use its original position. - RenderLayers and their children must all belong to the same renderGroup to work correctly / export class RenderLayer extends Container { /** Default options for RenderLayer instances. These options control the sorting behavior of objects within the render layer. ```ts // Create a custom render layer with modified default options RenderLayer.defaultOptions = { sortableChildren: true, sortFunction: (a, b) => a.y - b.y // Sort by vertical position }; // All new render layers will use these defaults const layer1 = new RenderLayer(); // layer1 will have sortableChildren = true ``` / public static defaultOptions: RenderLayerOptions = { /** If true, layer children will be automatically sorted each render. Default is false."
+    },
+    {
+      "name": "sortFunction",
+      "type": "(a: Container, b: Container) => number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "', child)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderLayerChildren",
+      "type": "Container[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parent",
+      "type": "Container | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "didChange",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_updateFlags",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parentRenderLayer",
+      "type": "null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "destroyed",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "layerParentId",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "RenderLayerOptions = {})\n    {\n        options = { ...RenderLayer.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "U): U[0]\n    {\n        for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "U): U[0]\n    {\n        for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet, renderer: Renderer, _currentLayer: RenderLayer): void\n    {\n        const layerChildren = this.renderLayerChildren",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "now",
+      "type": "sprite2 (1), sprite3 (2), sprite1 (3)\n     *\n     * // Custom sort by y position\n     * layer.sortFunction = (a, b) => a.y - b.y",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "factorRenderLayers",
+      "type": "boolean,\n        bounds: Bounds,\n        _currentLayer: RenderLayer,\n    ): void\n    {\n        if (!factorRenderLayers) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "factorRenderLayers",
+      "type": "boolean, bounds?: Bounds): Bounds\n    {\n        return super.getFastGlobalBounds(factorRenderLayers, bounds)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "_children",
+      "type": "U): never\n    {\n        throw new Error(\n            'RenderLayer.addChild() is not available. Please use RenderLayer.attach()',\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_children",
+      "type": "U): never\n    {\n        throw new Error(\n            'RenderLayer.removeChild() is not available. Please use RenderLayer.detach()',\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_beginIndex",
+      "type": "number, _endIndex?: number): never\n    {\n        throw new Error(\n            'RenderLayer.removeChildren() is not available. Please use RenderLayer.detach()',\n        )",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "_index",
+      "type": "number): never\n    {\n        throw new Error(\n            'RenderLayer.removeChildAt() is not available',\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_index",
+      "type": "number): never\n    {\n        throw new Error(\n            'RenderLayer.getChildAt() is not available',\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_child",
+      "type": "Container, _index: number): never\n    {\n        throw new Error(\n            'RenderLayer.setChildIndex() is not available',\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_child",
+      "type": "Container): never\n    {\n        throw new Error(\n            'RenderLayer.getChildIndex() is not available',\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_child",
+      "type": "U, _index: number): never\n    {\n        throw new Error(\n            'RenderLayer.addChildAt() is not available',\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_child",
+      "type": "U, _child2: U): never\n    {\n        throw new Error(\n            'RenderLayer.swapChildren() is not available',\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_child",
+      "type": "Container[]): never\n    {\n        throw new Error('RenderLayer.reparentChild() is not available with the render layer')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_child",
+      "type": "Container, _index: number): never\n    {\n        throw new Error('RenderLayer.reparentChildAt() is not available with the render layer')",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

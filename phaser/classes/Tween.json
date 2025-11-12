@@ -1,0 +1,1502 @@
+{
+  "type": "class",
+  "name": "Tween",
+  "sourcePath": "tweens/tween/Tween.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "tweens",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "BaseTween",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function Tween (parent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "playthrough",
+      "params": [
+        {
+          "name": "including looping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "targetIndex",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "getEnd",
+          "type": null
+        },
+        {
+          "name": "getStart",
+          "type": null
+        },
+        {
+          "name": "getActive",
+          "type": null
+        },
+        {
+          "name": "ease",
+          "type": null
+        },
+        {
+          "name": "delay",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "yoyo",
+          "type": null
+        },
+        {
+          "name": "hold",
+          "type": null
+        },
+        {
+          "name": "repeat",
+          "type": null
+        },
+        {
+          "name": "repeatDelay",
+          "type": null
+        },
+        {
+          "name": "flipX",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        },
+        {
+          "name": "interpolation",
+          "type": null
+        },
+        {
+          "name": "interpolationData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TweenData",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "targetIndex",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "getEnd",
+          "type": null
+        },
+        {
+          "name": "getStart",
+          "type": null
+        },
+        {
+          "name": "getActive",
+          "type": null
+        },
+        {
+          "name": "ease",
+          "type": null
+        },
+        {
+          "name": "delay",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "yoyo",
+          "type": null
+        },
+        {
+          "name": "hold",
+          "type": null
+        },
+        {
+          "name": "repeat",
+          "type": null
+        },
+        {
+          "name": "repeatDelay",
+          "type": null
+        },
+        {
+          "name": "flipX",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        },
+        {
+          "name": "interpolation",
+          "type": null
+        },
+        {
+          "name": "interpolationData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "tweenData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "targetIndex",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "frame",
+          "type": null
+        },
+        {
+          "name": "delay",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "hold",
+          "type": null
+        },
+        {
+          "name": "repeat",
+          "type": null
+        },
+        {
+          "name": "repeatDelay",
+          "type": null
+        },
+        {
+          "name": "flipX",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TweenFrameData",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "targetIndex",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "frame",
+          "type": null
+        },
+        {
+          "name": "delay",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "hold",
+          "type": null
+        },
+        {
+          "name": "repeat",
+          "type": null
+        },
+        {
+          "name": "repeatDelay",
+          "type": null
+        },
+        {
+          "name": "flipX",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "tweenData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "index === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.targets && this.targets.indexOf(target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "playing",
+      "params": [
+        {
+          "name": "either forwards or backwards",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "startToCurrent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "startToCurrent === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "key !== 'texture'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < this.totalData; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tweenData.key === key && (tweenData.isPlayingForward(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isPlayingBackward",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "startToCurrent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "switch",
+      "params": [
+        {
+          "name": "this.state",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "seek",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "makeActive",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'Cannot restart destroyed Tween'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "seek",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.loopCounter > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initTweenData",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.loopDelay > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setLoopDelayState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setActiveState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "Events.TWEEN_LOOP",
+          "type": null
+        },
+        {
+          "name": "'onLoop'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.completeDelay > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCompleteDelayState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onCompleteHandler",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "seek",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "play",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isDestroyed(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'Cannot play destroyed Tween'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isPendingRemove(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isFinished",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "seek",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setActiveState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "amount",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        },
+        {
+          "name": "emit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "amount === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "delta === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "emit === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isDestroyed(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'Cannot seek destroyed Tween'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!emit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initTweenData",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setActiveState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "Events.TWEEN_ACTIVE",
+          "type": null
+        },
+        {
+          "name": "'onActive'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "amount > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "amount / delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < iterations; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "remainder > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "remainder",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "isSeeking",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isSeeking === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < this.totalData; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [
+        {
+          "name": "isSeeking",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "this.duration",
+          "type": null
+        },
+        {
+          "name": "0.01",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "loopCounter > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "skipInit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "skipInit === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.loop === -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!skipInit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initTweenData",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setActiveState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "Events.TWEEN_ACTIVE",
+          "type": null
+        },
+        {
+          "name": "'onActive'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isPendingRemove(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isDestroyed",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.persist",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setFinishedState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.paused || this.isFinished(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isLoopDelayed(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateLoopCountdown",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isCompleteDelayed(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateCompleteDelay",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.hasStarted",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.startDelay <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "Events.TWEEN_START",
+          "type": null
+        },
+        {
+          "name": "'onStart'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isActive(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < this.totalData; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "data[i].update(delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "this.elapsed / this.duration",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "this.totalElapsed / this.totalDuration",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!stillRunning",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isPendingRemove",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "remove && this.persist",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setFinishedState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "ms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "ms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "ms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "-ms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.isSeeking",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "this.targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.callbacks",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "handler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "this.callbackScope",
+          "type": null
+        },
+        {
+          "name": "[ this",
+          "type": null
+        },
+        {
+          "name": "this.targets ].concat(handler.params",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'tween'",
+          "type": null
+        },
+        {
+          "name": "function (config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'tween'",
+          "type": null
+        },
+        {
+          "name": "function (config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,101 @@
+{
+  "type": "interface",
+  "name": "BufferDescriptor",
+  "sourcePath": "rendering/renderers/shared/buffer/Buffer.ts",
+  "extends": [],
+  "description": "the data to initialize the buffer with, this can be a typed array, or a regular number array. If it is a number array, it will be converted to a Float32Array / data?: TypedArray | number[]; /** the size of the buffer in bytes, if not supplied, it will be inferred from the data */ size?: number; /** the usage of the buffer, see {@link BufferUsage} */ usage: number; /** a label for the buffer, this is useful for debugging */ label?: string; /** should the GPU buffer be shrunk when the data becomes smaller? changing this will cause the buffer to be destroyed and a new one created on the GPU this can be expensive, especially if the buffer is already big enough! setting this to false will prevent the buffer from being shrunk. This will yield better performance if you are constantly setting data that is changing size often. / shrinkToFit?: boolean; } /** @internal",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "label",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "GPUSize64",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "usage",
+      "type": "BufferUsage",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mappedAtCreation",
+      "type": "boolean",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "places",
+      "type": "* <br><br>\n * .1. {@link Geometry} as attribute data or index data for geometry\n * <br>\n * .2. {@link UniformGroup} as an underlying buffer for uniform data\n * <br>\n * .3. {@link BufferResource} as an underlying part of a buffer used directly by the GPU program\n * <br>\n *\n * It is important to note that you must provide a usage type when creating a buffer. This is because\n * the underlying GPU buffer needs to know how it will be used. For example, if you are creating a buffer\n * to hold vertex data, you would use `BufferUsage.VERTEX`. This will tell the GPU that this buffer will be\n * used as a vertex buffer. This is important because it will affect how you can use the buffer.\n *\n * Buffers are updated by calling the {@link Buffer.update} method. This immediately updates the buffer on the GPU.\n * Be mindful of calling this more often than you need to. It is recommended to update buffers only when needed.\n *\n * In WebGPU, a GPU buffer cannot resized. This limitation is abstracted away, but know that resizing a buffer means\n * creating a brand new one and destroying the old, so it is best to limit this if possible.\n * @example\n *\n * const buffer = new Buffer({\n *     data: new Float32Array([1, 2, 3, 4]),\n *     usage: BufferUsage.VERTEX,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "change",
+      "type": "BindResource,\n    update: Buffer,\n    destroy: Buffer,\n}> implements BindResource\n{\n    /**\n     * emits when the underlying buffer has changed shape (i.e. resized)\n     * letting the renderer know that it needs to discard the old buffer on the GPU and create a new one\n     * @event change\n     */\n\n    /**\n     * emits when the underlying buffer data has been updated. letting the renderer know\n     * that it needs to update the buffer on the GPU\n     * @event update\n     */\n\n    /**\n     * emits when the buffer is destroyed. letting the renderer know that it needs to destroy the buffer on the GPU\n     * @event destroy\n     */\n\n    /** a unique id for this uniform group used through the renderer */\n    public readonly uid: number = uid('buffer')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "descriptor",
+      "type": "BufferDescriptor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_updateSize",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_data",
+      "type": "TypedArray",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_dataInt32",
+      "type": "Int32Array = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "BufferOptions)\n    {\n        let { data, size } = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "TypedArray)\n    {\n        this.setDataWithSize(value, value.length, true)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        if (value)\n        {\n            this.descriptor.usage |= BufferUsage.STATIC",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "TypedArray, size: number, syncGPU: boolean)\n    {\n        // Increment update ID\n        this._updateID++",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "sizeInBytes",
+      "type": "number): void\n    {\n        this._updateSize = sizeInBytes ?? this._updateSize",
+      "optional": true,
+      "description": null
+    }
+  ]
+}

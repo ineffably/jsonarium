@@ -1,0 +1,181 @@
+{
+  "type": "class",
+  "name": "GlMeshAdaptor",
+  "sourcePath": "scene/mesh/gl/GlMeshAdaptor.ts",
+  "extends": null,
+  "implements": [
+    "MeshAdaptor"
+  ],
+  "description": "A MeshAdaptor that uses the WebGL to render meshes.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "init",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "compileHighShaderGlProgram",
+      "params": [
+        {
+          "name": "name",
+          "type": "'mesh'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bits",
+          "type": "[\n                localUniformBitGl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureBitGl",
+          "type": null
+        },
+        {
+          "name": "roundPixelsBitGl",
+          "type": null
+        },
+        {
+          "name": "]\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Shader",
+      "params": [
+        {
+          "name": "{\n            glProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                uTexture: Texture.EMPTY.source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureUniforms",
+          "type": "{\n                    uTextureMatrix: { type: 'mat3x3<f32>'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "value",
+          "type": "new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "meshPipe",
+          "type": "MeshPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mesh",
+          "type": "Mesh",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!shader.glProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'Mesh shader has no glProgram'",
+          "type": null
+        },
+        {
+          "name": "mesh.shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "mesh._geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        },
+        {
+          "name": "state",
+          "type": "mesh.state",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

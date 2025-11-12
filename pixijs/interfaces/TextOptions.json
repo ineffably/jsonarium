@@ -1,0 +1,317 @@
+{
+  "type": "interface",
+  "name": "TextOptions",
+  "sourcePath": "scene/text/AbstractText.ts",
+  "extends": [],
+  "description": "A string or number that can be used as text. ```ts const text: TextString = 'Hello Pixi!'; const text2: TextString = 12345; const text3: TextString = { toString: () => 'Hello Pixi!' }; ``` / export type TextString = string | number | { toString: () => string }; /** A union of all text styles, including HTML, Bitmap and Canvas text styles. This is used to allow for any text style to be passed to a text object. ```ts import { TextStyle, HTMLTextStyle } from 'pixi.js'; const style: AnyTextStyle = new TextStyle({ fontSize: 24 }); const htmlStyle: AnyTextStyle = new HTMLTextStyle({ fontSize: '24px' }); ``` / export type AnyTextStyle = TextStyle | HTMLTextStyle; /** A union of all text style options, including HTML, Bitmap and Canvas text style options. This is used to allow for any text style options to be passed to a text object. ```ts import { TextStyleOptions, HTMLTextStyleOptions } from 'pixi.js'; const styleOptions: AnyTextStyleOptions = { fontSize: 24 } as TextStyleOptions; const htmlStyleOptions: AnyTextStyleOptions = { fontSize: '24px' } as HTMLTextStyleOptions; ``` / export type AnyTextStyleOptions = TextStyleOptions | HTMLTextStyleOptions; /** Options for creating text objects in PixiJS. This interface defines the common properties used across different text rendering implementations (Canvas, HTML, and Bitmap). ```ts // Create basic text with minimal options const basicText = new Text({ text: 'Hello Pixi!', style: { fontSize: 24, fill: 0xff1010 } }); // Create text with advanced styling const styledText = new Text({ text: 'Styled Text', style: { fontFamily: 'Arial', fontSize: 32, fill: new FillGradient({ end: { x: 1, y: 1 }, stops: [ { color: 0xff0000, offset: 0 }, // Red at start { color: 0x0000ff, offset: 1 }, // Blue at end ] }), stroke: { color: '#4a1850', width: 5 }, dropShadow: { color: '#000000', blur: 4, distance: 6 }, align: 'center' }, anchor: 0.5, resolution: window.devicePixelRatio }); // Create multiline text with word wrap const wrappedText = new Text({ text: 'This is a long piece of text that will wrap onto multiple lines', style: { fontSize: 20, wordWrap: true, wordWrapWidth: 200, lineHeight: 30 }, resolution: 2, roundPixels: true }); ```",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "anchor",
+      "type": "PointData | number",
+      "optional": true,
+      "description": "The anchor point of the text that controls the origin point for positioning and rotation. Can be a number (same value for x/y) or a PointData object. - (0,0) is top-left - (0.5,0.5) is center - (1,1) is bottom-right ```ts // Set anchor to center const text = new Text({ text: 'Hello Pixi!', anchor: 0.5 // Same as { x: 0.5, y: 0.5 } }); // Set anchor to top-left const text2 = new Text({ text: 'Hello Pixi!', anchor: { x: 0, y: 0 } // Top-left corner }); // Set anchor to bottom-right const text3 = new Text({ text: 'Hello Pixi!', anchor: { x: 1, y: 1 } // Bottom-right corner }); ```"
+    },
+    {
+      "name": "text",
+      "type": "TextString",
+      "optional": true,
+      "description": "The text content to display. Use '\\n' for line breaks. Accepts strings, numbers, or objects with toString() method. ```ts const text = new Text({ text: 'Hello Pixi!', }); const multilineText = new Text({ text: 'Line 1\\nLine 2\\nLine 3', }); const numberText = new Text({ text: 12345, // Will be converted to '12345' }); const objectText = new Text({ text: { toString: () => 'Object Text' }, // Custom toString }); ```"
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "optional": true,
+      "description": "The resolution/device pixel ratio for rendering. Higher values result in sharper text at the cost of performance. Set to null for auto-resolution based on device. ```ts const text = new Text({ text: 'Hello Pixi!', resolution: 2 // High DPI for sharper text }); const autoResText = new Text({ text: 'Auto Resolution', resolution: null // Use device's pixel ratio }); ```"
+    },
+    {
+      "name": "style",
+      "type": "TEXT_STYLE | TEXT_STYLE_OPTIONS",
+      "optional": true,
+      "description": "The style configuration for the text. Can be a TextStyle instance or a configuration object. Supports canvas text styles, HTML text styles, and bitmap text styles. ```ts const text = new Text({ text: 'Styled Text', style: { fontSize: 24, fill: 0xff1010, // Red color fontFamily: 'Arial', align: 'center', // Center alignment stroke: { color: '#4a1850', width: 5 }, // Purple stroke dropShadow: { color: '#000000', // Black shadow blur: 4, // Shadow blur distance: 6 // Shadow distance } } }); const htmlText = new HTMLText({ text: 'HTML Styled Text', style: { fontSize: '20px', fill: 'blue', fontFamily: 'Verdana', } }); const bitmapText = new BitmapText({ text: 'Bitmap Styled Text', style: { fontName: 'Arial', fontSize: 32, } })"
+    },
+    {
+      "name": "roundPixels",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to round the x/y position to whole pixels. Enabling can prevent anti-aliasing of text edges but may cause slight position shifting. ```ts const text = new Text({ text: 'Rounded Text', roundPixels: true // Rounds position to whole pixels });"
+    },
+    {
+      "name": "destroy",
+      "type": "() => void } = any\n> extends ViewContainer<GPU_DATA> implements View\n{\n    /** @internal */\n    public batched = true",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_anchor",
+      "type": "ObservablePoint",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_resolution",
+      "type": "number = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_autoResolution",
+      "type": "boolean = true",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_style",
+      "type": "TEXT_STYLE",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_text",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_styleClass",
+      "type": "new (options: TEXT_STYLE_OPTIONS) => TEXT_STYLE",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "TEXT_OPTIONS,\n        styleClass: new (options: TEXT_STYLE_OPTIONS) => TEXT_STYLE\n    )\n    {\n        const { text, resolution, style, anchor, width, height, roundPixels, ...rest } = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_onUpdate",
+      "type": "() =>\n                {\n                    this.onViewUpdate()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n     *     anchor: 0.5 // Same as { x: 0.5, y: 0.5 }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n     *     anchor: { x: 0, y: 0 } // Top-left corner\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n     *     anchor: { x: 1, y: 1 } // Bottom-right corner\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0, y: 0 }\n     */\n    get anchor(): ObservablePoint\n    {\n        return this._anchor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData | number)\n    {\n        typeof value === 'number' ? this._anchor.set(value) : this._anchor.copyFrom(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Line 1\\nLine 2\\nLine 3',\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "12345, // Will be converted to '12345'\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "{ toString: () => 'Object Text' }, // Custom toString\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "type": "() => 'Dynamic Text' }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "TextString)\n    {\n        // check its a string\n        value = value.toString()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n     *     resolution: 2 // High DPI for sharper text\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Auto Resolution',\n     *     resolution: null // Use device's pixel ratio\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._autoResolution = value === null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Styled Text',\n     *     style: {\n     *         fontSize: 24,\n     *         fill: 0xff1010, // Red color\n     *         fontFamily: 'Arial',\n     *         align: 'center', // Center alignment\n     *         stroke: { color: '#4a1850', width: 5 }, // Purple stroke\n     *         dropShadow: {\n     *             color: '#000000', // Black shadow\n     *             blur: 4, // Shadow blur\n     *             distance: 6 // Shadow distance\n     *         }\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'HTML Styled Text',\n     *     style: {\n     *         fontSize: '20px',\n     *         fill: 'blue',\n     *         fontFamily: 'Verdana',\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Bitmap Styled Text',\n     *     style: {\n     *         fontName: 'Arial',\n     *         fontSize: 32,\n     *     }\n     * })\n     *\n     * // Update style dynamically\n     * text.style = {\n     *     fontSize: 30, // Change font size\n     *     fill: 0x00ff00, // Change color to green\n     *     align: 'right', // Change alignment to right\n     *     stroke: { color: '#000000', width: 2 }, // Add black stroke\n     * }\n     */\n    set style(style: TEXT_STYLE | Partial<TEXT_STYLE> | TEXT_STYLE_OPTIONS)\n    {\n        style ||= {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._setWidth(value, this.bounds.width)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._setHeight(value, this.bounds.height)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n     *     style: { fontSize: 24 }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Size",
+      "type": "${size.width}x${size.height}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "0, height: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Size): Size\n    {\n        out ||= {} as Size",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n     *    style: { fontSize: 24 }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Width",
+      "type": "100, Height: 200\n     *\n     * // Set uniform size\n     * text.setSize(100)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "200,\n     *     height: 300\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | Optional<Size, 'height'>, height?: number)\n    {\n        if (typeof value === 'object')\n        {\n            height = value.height ?? value.width",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "50, y: 25 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "inside",
+      "type": "', contains)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "PointData)\n    {\n        const width = this.bounds.width",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "style",
+      "type": "true, texture: true, textureSource: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions = false): void\n    {\n        super.destroy(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "way",
+      "type": "* const options = ensureTextOptions([{\n *     text: \"Hello\",\n *     style: { fontSize: 20 }\n * }], \"Text\")",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontSize",
+      "type": "20 }], \"Text\")",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "any[],\n    name: string\n): TEXT_OPTIONS\n{\n    let options = (args[0] ?? {}) as TEXT_OPTIONS",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "\"hi!\", style }) instead`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "options,\n            style: args[1],\n        } as unknown as TEXT_OPTIONS",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

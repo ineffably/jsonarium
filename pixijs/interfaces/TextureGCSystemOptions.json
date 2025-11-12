@@ -1,0 +1,89 @@
+{
+  "type": "interface",
+  "name": "TextureGCSystemOptions",
+  "sourcePath": "rendering/renderers/shared/texture/TextureGCSystem.ts",
+  "extends": [],
+  "description": "Options for the {@link TextureGCSystem}.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "textureGCActive",
+      "type": "boolean",
+      "optional": false,
+      "description": "If set to true, this will enable the garbage collector on the GPU."
+    },
+    {
+      "name": "textureGCAMaxIdle",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureGCMaxIdle",
+      "type": "number",
+      "optional": false,
+      "description": "The maximum idle frames before a texture is destroyed by garbage collection."
+    },
+    {
+      "name": "textureGCCheckCountMax",
+      "type": "number",
+      "optional": false,
+      "description": "Frames between two garbage collections."
+    },
+    {
+      "name": "textureGCActive",
+      "type": "true,\n        /**\n         * @deprecated since 8.3.0\n         * @see {@link TextureGCSystemOptions.textureGCMaxIdle}\n         */\n        textureGCAMaxIdle: null,\n        /**\n         * The maximum idle frames before a texture is destroyed by garbage collection.\n         * @default 60 * 60\n         */\n        textureGCMaxIdle: 60 * 60,\n        /**\n         * Frames between two garbage collections.\n         * @default 600\n         */\n        textureGCCheckCountMax: 600,\n    }",
+      "optional": false,
+      "description": "System plugin to the renderer to manage texture garbage collection on the GPU, ensuring that it does not get clogged up with textures that are no longer being used. / export class TextureGCSystem implements System<TextureGCSystemOptions> { /** @ignore */ public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ], name: 'textureGC', } as const; /** default options for the TextureGCSystem */ public static defaultOptions: TextureGCSystemOptions = { /** If set to true, this will enable the garbage collector on the GPU."
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "checkCount",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "maxIdle",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "checkCountMax",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "TextureGCSystemOptions): void\n    {\n        options = { ...TextureGCSystem.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

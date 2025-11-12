@@ -1,0 +1,1019 @@
+{
+  "type": "class",
+  "name": "Rectangle",
+  "sourcePath": "maths/shapes/Rectangle.ts",
+  "extends": null,
+  "implements": [
+    "ShapePrimitive"
+  ],
+  "description": "The `Rectangle` object represents a rectangular area defined by its position and dimensions. Used for hit testing, bounds calculation, and general geometric operations. ```ts // Basic rectangle creation const rect = new Rectangle(100, 100, 200, 150); // Use as container bounds container.hitArea = new Rectangle(0, 0, 100, 100); // Check point containment const isInside = rect.contains(mouseX, mouseY); // Manipulate dimensions rect.width *= 2; rect.height += 50; ``` - Position defined by top-left corner (x,y) - Dimensions defined by width and height - Supports point and rectangle containment - Common in UI and layout calculations",
+  "category": "maths",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Number",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Number",
+      "params": [
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Number",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Number",
+      "params": [
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isEmpty",
+      "params": [],
+      "returnType": "boolean",
+      "description": "Returns the left edge (x-coordinate) of the rectangle. ```ts // Get left edge position const rect = new Rectangle(100, 100, 200, 150); console.log(rect.left); // 100 // Use in alignment calculations sprite.x = rect.left + padding; // Compare positions if (point.x > rect.left) { console.log('Point is right of rectangle'); } ``` / get left(): number { return this.x; } /** Returns the right edge (x + width) of the rectangle. ```ts // Get right edge position const rect = new Rectangle(100, 100, 200, 150); console.log(rect.right); // 300 // Align to right edge sprite.x = rect.right - sprite.width; // Check boundaries if (point.x < rect.right) { console.log('Point is inside right bound'); } ``` / get right(): number { return this.x + this.width; } /** Returns the top edge (y-coordinate) of the rectangle. ```ts // Get top edge position const rect = new Rectangle(100, 100, 200, 150); console.log(rect.top); // 100 // Position above rectangle sprite.y = rect.top - sprite.height; // Check vertical position if (point.y > rect.top) { console.log('Point is below top edge'); } ``` / get top(): number { return this.y; } /** Returns the bottom edge (y + height) of the rectangle. ```ts // Get bottom edge position const rect = new Rectangle(100, 100, 200, 150); console.log(rect.bottom); // 250 // Stack below rectangle sprite.y = rect.bottom + margin; // Check vertical bounds if (point.y < rect.bottom) { console.log('Point is above bottom edge'); } ``` / get bottom(): number { return this.y + this.height; } /** Determines whether the Rectangle is empty (has no area). ```ts // Check zero dimensions const rect = new Rectangle(100, 100, 0, 50); console.log(rect.isEmpty()); // true ```"
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": "Rectangle",
+      "description": "A constant empty rectangle. This is a new object every time the property is accessed. ```ts // Get fresh empty rectangle const empty = Rectangle.EMPTY; console.log(empty.isEmpty()); // true ``` / static get EMPTY(): Rectangle { return new Rectangle(0, 0, 0, 0); } /** Creates a clone of this Rectangle ```ts // Basic cloning const original = new Rectangle(100, 100, 200, 150); const copy = original.clone(); // Clone and modify const modified = original.clone(); modified.width *= 2; modified.height += 50; // Verify independence console.log(original.width);  // 200 console.log(modified.width);  // 400 ```"
+    },
+    {
+      "name": "Rectangle",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.width",
+          "type": null
+        },
+        {
+          "name": "this.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFromBounds",
+      "params": [
+        {
+          "name": "bounds",
+          "type": "Bounds",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Converts a Bounds object to a Rectangle object. ```ts // Convert bounds to rectangle const bounds = container.getBounds(); const rect = new Rectangle().copyFromBounds(bounds); ```"
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "rectangle",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Rectangle",
+      "description": "Copies another rectangle to this one. ```ts // Basic copying const source = new Rectangle(100, 100, 200, 150); const target = new Rectangle(); target.copyFrom(source); // Chain with other operations const rect = new Rectangle() .copyFrom(source) .pad(10); ```"
+    },
+    {
+      "name": "copyTo",
+      "params": [
+        {
+          "name": "rectangle",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Rectangle",
+      "description": "Copies this rectangle to another one. ```ts // Basic copying const source = new Rectangle(100, 100, 200, 150); const target = new Rectangle(); source.copyTo(target); // Chain with other operations const result = source .copyTo(new Rectangle()) .getBounds(); ```"
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contains",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks whether the x and y coordinates given are contained within this Rectangle ```ts // Basic containment check const rect = new Rectangle(100, 100, 200, 150); const isInside = rect.contains(150, 125); // true // Check edge cases console.log(rect.contains(100, 100)); // true (on edge) console.log(rect.contains(300, 250)); // false (outside) ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.width <= 0 || this.height <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x >= this.x && x < this.x + this.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y >= this.y && y < this.y + this.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeContains",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "strokeWidth",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "alignment",
+          "type": "number",
+          "optional": true,
+          "default": "0.5"
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks whether the x and y coordinates given are contained within this rectangle including the stroke. ```ts // Basic stroke check const rect = new Rectangle(100, 100, 200, 150); const isOnStroke = rect.strokeContains(150, 100, 4); // 4px line width // Check with different alignments const innerStroke = rect.strokeContains(150, 100, 4, 1);   // Inside const centerStroke = rect.strokeContains(150, 100, 4, 0.5); // Centered const outerStroke = rect.strokeContains(150, 100, 4, 0);   // Outside ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width <= 0 || height <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "x >= outerLeft && x <= outerRight && y >= outerTop && y <= outerBottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "intersects",
+      "params": [
+        {
+          "name": "other",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Determines whether the `other` Rectangle transformed by `transform` intersects with `this` Rectangle object. Returns true only if the area of the intersection is >0, this means that Rectangles sharing a side are not overlapping. Another side effect is that an arealess rectangle (width or height equal to zero) can't intersect any other rectangle. / /** Determines whether the `other` Rectangle transformed by `transform` intersects with `this` Rectangle object. Returns true only if the area of the intersection is greater than 0. This means that rectangles sharing only a side are not considered intersecting. ```ts // Basic intersection check const rect1 = new Rectangle(0, 0, 100, 100); const rect2 = new Rectangle(50, 50, 100, 100); console.log(rect1.intersects(rect2)); // true // With transformation matrix const matrix = new Matrix(); matrix.rotate(Math.PI / 4); // 45 degrees console.log(rect1.intersects(rect2, matrix)); // Checks with rotation // Edge cases const zeroWidth = new Rectangle(0, 0, 0, 100); console.log(rect1.intersects(zeroWidth)); // false (no area) ``` - Returns true only if intersection area is > 0 - Rectangles sharing only a side are not intersecting - Zero-area rectangles cannot intersect anything - Supports optional transformation matrix"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x1 <= x0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x1 <= x0 || y1 <= y0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "other.left",
+          "type": null
+        },
+        {
+          "name": "other.top",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "other.left",
+          "type": null
+        },
+        {
+          "name": "other.bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "other.right",
+          "type": null
+        },
+        {
+          "name": "other.top",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "other.right",
+          "type": null
+        },
+        {
+          "name": "other.bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "rt.x <= lt.x || lb.y <= lt.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sign",
+      "params": [
+        {
+          "name": "(transform.a * transform.d",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "s === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "lt",
+          "type": null
+        },
+        {
+          "name": "lt",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "lb",
+          "type": null
+        },
+        {
+          "name": "lb",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "rt",
+          "type": null
+        },
+        {
+          "name": "rt",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "rb",
+          "type": null
+        },
+        {
+          "name": "rb",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Math.max(lt.x",
+          "type": null
+        },
+        {
+          "name": "lb.x",
+          "type": null
+        },
+        {
+          "name": "rt.x",
+          "type": null
+        },
+        {
+          "name": "rb.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "lt.x",
+          "type": null
+        },
+        {
+          "name": "lb.x",
+          "type": null
+        },
+        {
+          "name": "rt.x",
+          "type": null
+        },
+        {
+          "name": "rb.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "lt.y",
+          "type": null
+        },
+        {
+          "name": "lb.y",
+          "type": null
+        },
+        {
+          "name": "rt.y",
+          "type": null
+        },
+        {
+          "name": "rb.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "lt.y",
+          "type": null
+        },
+        {
+          "name": "lb.y",
+          "type": null
+        },
+        {
+          "name": "rt.y",
+          "type": null
+        },
+        {
+          "name": "rb.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Math.max(n00",
+          "type": null
+        },
+        {
+          "name": "n10",
+          "type": null
+        },
+        {
+          "name": "n01",
+          "type": null
+        },
+        {
+          "name": "n11",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "n00",
+          "type": null
+        },
+        {
+          "name": "n10",
+          "type": null
+        },
+        {
+          "name": "n01",
+          "type": null
+        },
+        {
+          "name": "n11",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Math.max(m00",
+          "type": null
+        },
+        {
+          "name": "m10",
+          "type": null
+        },
+        {
+          "name": "m01",
+          "type": null
+        },
+        {
+          "name": "m11",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "m00",
+          "type": null
+        },
+        {
+          "name": "m10",
+          "type": null
+        },
+        {
+          "name": "m01",
+          "type": null
+        },
+        {
+          "name": "m11",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pad",
+      "params": [
+        {
+          "name": "paddingX = 0",
+          "type": null
+        },
+        {
+          "name": "paddingY = paddingX",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Pads the rectangle making it grow in all directions. If paddingY is omitted, both paddingX and paddingY will be set to paddingX. ```ts // Basic padding const rect = new Rectangle(100, 100, 200, 150); rect.pad(10); // Adds 10px padding on all sides // Different horizontal and vertical padding const uiRect = new Rectangle(0, 0, 100, 50); uiRect.pad(20, 10); // 20px horizontal, 10px vertical ``` - Adjusts x/y by subtracting padding - Increases width/height by padding * 2 - Common in UI layout calculations - Chainable with other methods"
+    },
+    {
+      "name": "fit",
+      "params": [
+        {
+          "name": "rectangle",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Fits this rectangle around the passed one. ```ts // Basic fitting const container = new Rectangle(0, 0, 100, 100); const content = new Rectangle(25, 25, 200, 200); content.fit(container); // Clips to container bounds ```"
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "rectangle.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "this.x + this.width",
+          "type": null
+        },
+        {
+          "name": "rectangle.x + rectangle.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "rectangle.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "this.y + this.height",
+          "type": null
+        },
+        {
+          "name": "rectangle.y + rectangle.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "x2 - x1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "y2 - y1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "resolution = 1",
+          "type": null
+        },
+        {
+          "name": "eps = 0.001",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Enlarges rectangle so that its corners lie on a grid defined by resolution. ```ts // Basic grid alignment const rect = new Rectangle(10.2, 10.6, 100.8, 100.4); rect.ceil(); // Aligns to whole pixels // Custom resolution grid const uiRect = new Rectangle(5.3, 5.7, 50.2, 50.8); uiRect.ceil(0.5); // Aligns to half pixels // Use with precision value const preciseRect = new Rectangle(20.001, 20.999, 100.001, 100.999); preciseRect.ceil(1, 0.01); // Handles small decimal variations ```"
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "(this.x + this.width - eps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "(this.y + this.height - eps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "(this.x + eps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "(this.y + eps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": true,
+          "default": "x"
+        }
+      ],
+      "returnType": "this",
+      "description": "Scales the rectangle's dimensions and position by the specified factors. ```ts const rect = new Rectangle(50, 50, 100, 100); // Scale uniformly rect.scale(0.5, 0.5); // rect is now: x=25, y=25, width=50, height=50 // non-uniformly rect.scale(0.5, 1); // rect is now: x=25, y=50, width=50, height=100 ```"
+    },
+    {
+      "name": "enlarge",
+      "params": [
+        {
+          "name": "rectangle",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Enlarges this rectangle to include the passed rectangle. ```ts // Basic enlargement const rect = new Rectangle(50, 50, 100, 100); const other = new Rectangle(0, 0, 200, 75); rect.enlarge(other); // rect is now: x=0, y=0, width=200, height=150 // Use for bounding box calculation const bounds = new Rectangle(); objects.forEach((obj) => { bounds.enlarge(obj.getBounds()); }); ```"
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "rectangle.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "this.x + this.width",
+          "type": null
+        },
+        {
+          "name": "rectangle.x + rectangle.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "rectangle.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "this.y + this.height",
+          "type": null
+        },
+        {
+          "name": "rectangle.y + rectangle.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBounds",
+      "params": [
+        {
+          "name": "out",
+          "type": "Rectangle",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Rectangle",
+      "description": "Returns the framing rectangle of the rectangle as a Rectangle object ```ts // Basic bounds retrieval const rect = new Rectangle(100, 100, 200, 150); const bounds = rect.getBounds(); // Reuse existing rectangle const out = new Rectangle(); rect.getBounds(out); ```"
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsRect",
+      "params": [
+        {
+          "name": "other",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Determines whether another Rectangle is fully contained within this Rectangle. Rectangles that occupy the same space are considered to be containing each other. Rectangles without area (width or height equal to zero) can't contain anything, not even other arealess rectangles. ```ts // Check if one rectangle contains another const container = new Rectangle(0, 0, 100, 100); const inner = new Rectangle(25, 25, 50, 50); console.log(container.containsRect(inner)); // true // Check overlapping rectangles const partial = new Rectangle(75, 75, 50, 50); console.log(container.containsRect(partial)); // false // Zero-area rectangles const empty = new Rectangle(0, 0, 0, 100); console.log(container.containsRect(empty)); // false ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.width <= 0 || this.height <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Sets the position and dimensions of the rectangle. ```ts // Basic usage const rect = new Rectangle(); rect.set(100, 100, 200, 150); // Chain with other operations const bounds = new Rectangle() .set(0, 0, 100, 100) .pad(10); ```"
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": "string",
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "left",
+      "type": "number",
+      "description": "Returns the left edge (x-coordinate) of the rectangle. ```ts // Get left edge position const rect = new Rectangle(100, 100, 200, 150); console.log(rect.left); // 100 // Use in alignment calculations sprite.x = rect.left + padding; // Compare positions if (point.x > rect.left) { console.log('Point is right of rectangle'); } ```"
+    },
+    {
+      "name": "right",
+      "type": "number",
+      "description": "Returns the right edge (x + width) of the rectangle. ```ts // Get right edge position const rect = new Rectangle(100, 100, 200, 150); console.log(rect.right); // 300 // Align to right edge sprite.x = rect.right - sprite.width; // Check boundaries if (point.x < rect.right) { console.log('Point is inside right bound'); } ```"
+    },
+    {
+      "name": "top",
+      "type": "number",
+      "description": "Returns the top edge (y-coordinate) of the rectangle. ```ts // Get top edge position const rect = new Rectangle(100, 100, 200, 150); console.log(rect.top); // 100 // Position above rectangle sprite.y = rect.top - sprite.height; // Check vertical position if (point.y > rect.top) { console.log('Point is below top edge'); } ```"
+    },
+    {
+      "name": "bottom",
+      "type": "number",
+      "description": "Returns the bottom edge (y + height) of the rectangle. ```ts // Get bottom edge position const rect = new Rectangle(100, 100, 200, 150); console.log(rect.bottom); // 250 // Stack below rectangle sprite.y = rect.bottom + margin; // Check vertical bounds if (point.y < rect.bottom) { console.log('Point is above bottom edge'); } ```"
+    }
+  ]
+}

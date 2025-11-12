@@ -1,0 +1,353 @@
+{
+  "type": "class",
+  "name": "RenderLayer",
+  "sourcePath": "scene/layers/RenderLayer.ts",
+  "extends": "Container",
+  "implements": [],
+  "description": "Options for configuring a RenderLayer. A RenderLayer allows control over rendering order independent of the scene graph hierarchy. ```ts // Basic layer with automatic sorting const layer = new RenderLayer({ sortableChildren: true }); // Layer with custom sort function const customLayer = new RenderLayer({ sortableChildren: true, sortFunction: (a, b) => { // Sort by y position return a.position.y - b.position.y; } }); // Add objects to layer while maintaining scene graph parent const sprite = new Sprite(texture); container.addChild(sprite);      // Add to scene graph layer.attach(sprite);            // Add to render layer // Manual sorting when needed const manualLayer = new RenderLayer({ sortableChildren: false }); manualLayer.attach(sprite1, sprite2); manualLayer.sortRenderLayerChildren(); // Sort manually ``` / export interface RenderLayerOptions { /** If true, the layer's children will be sorted by zIndex before rendering. If false, you can manually sort the children using sortRenderLayerChildren when needed. ```ts const layer = new RenderLayer({ sortableChildren: true // Automatically sorts children by zIndex }); ``` / sortableChildren?: boolean; /** Custom sort function to sort layer children. Default sorts by zIndex. ```ts const layer = new RenderLayer({ sortFunction: (a, b) => { // Sort by y position return a.position.y - b.position.y; } }); ``` / sortFunction?: (a: Container, b: Container) => number; } /** The RenderLayer API provides a way to control the rendering order of objects independently of their logical parent-child relationships in the scene graph. This allows developers to decouple how objects are transformed (via their logical parent) from how they are rendered on the screen. ### Key Concepts #### RenderLayers Control Rendering Order: - RenderLayers define where in the render stack objects are drawn, but they do not affect an object's transformations (e.g., position, scale, rotation) or logical hierarchy. - RenderLayers can be added anywhere in the scene graph. #### Logical Parenting Remains Unchanged: - Objects still have a logical parent for transformations via addChild. - Assigning an object to a layer does not reparent it. #### Explicit Control: - Developers assign objects to layers using renderLayer.add and remove them using renderLayer.remove. --- ### API Details #### 1. Creating a RenderLayer A RenderLayer is a lightweight object responsible for controlling render order. It has no children or transformations of its own but can be inserted anywhere in the scene graph to define its render position. ```js const layer = new RenderLayer(); app.stage.addChild(layer); // Insert the layer into the scene graph ``` #### 2. Adding Objects to a Layer Use renderLayer.add to assign an object to a layer. This overrides the object's default render order defined by its logical parent. ```js const rect = new Graphics(); container.addChild(rect);    // Add to logical parent layer.attach(rect);      // Control render order via the layer ``` #### 3. Removing Objects from a Layer To stop an object from being rendered in the layer, use remove. ```js layer.remove(rect); // Stop rendering rect via the layer ``` When an object is removed from its logical parent (removeChild), it is automatically removed from the layer. #### 4. Re-Adding Objects to Layers If an object is re-added to a logical parent, it does not automatically reassign itself to the layer. Developers must explicitly reassign it. ```js container.addChild(rect);    // Logical parent layer.attach(rect);      // Explicitly reassign to the layer ``` #### 5. Layer Position in Scene Graph A layer's position in the scene graph determines its render priority relative to other layers and objects. Layers can be inserted anywhere in the scene graph. ```js const backgroundLayer = new RenderLayer(); const uiLayer = new RenderLayer(); app.stage.addChild(backgroundLayer); app.stage.addChild(world); app.stage.addChild(uiLayer); ``` This is a new API and therefore considered experimental at this stage. While the core is pretty robust, there are still a few tricky issues we need to tackle. However, even with the known issues below, we believe this API is incredibly useful! Known issues: - Interaction may not work as expected since hit testing does not account for the visual render order created by layers. For example, if an object is visually moved to the front via a layer, hit testing will still use its original position. - RenderLayers and their children must all belong to the same renderGroup to work correctly",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "detachAll",
+      "params": [],
+      "returnType": null,
+      "description": "Adds one or more Containers to this render layer. The Containers will be rendered as part of this layer while maintaining their original parent in the scene graph. If the Container already belongs to a layer, it will be removed from the old layer before being added to this one. ```ts const layer = new RenderLayer(); const container = new Container(); const sprite1 = new Sprite(texture1); const sprite2 = new Sprite(texture2); // Add sprites to scene graph for transforms container.addChild(sprite1, sprite2); // Add sprites to layer for render order control layer.attach(sprite1, sprite2); // Add single sprite with type checking const typedSprite = layer.attach<Sprite>(new Sprite(texture3)); typedSprite.tint = 'red'; // Automatically removes from previous layer if needed const otherLayer = new RenderLayer(); otherLayer.attach(sprite1); // Removes from previous layer ``` / public attach<U extends Container[]>(...children: U): U[0] { for (let i = 0; i < children.length; i++) { const child = children[i]; if (child.parentRenderLayer) { if (child.parentRenderLayer === this) continue; child.parentRenderLayer.detach(child); } this.renderLayerChildren.push(child); child.parentRenderLayer = this; const renderGroup = this.renderGroup || this.parentRenderGroup; if (renderGroup) { renderGroup.structureDidChange = true; } } return children[0]; } /** Removes one or more Containers from this render layer. The Containers will maintain their original parent in the scene graph but will no longer be rendered as part of this layer. ```ts const layer = new RenderLayer(); const container = new Container(); const sprite1 = new Sprite(texture1); const sprite2 = new Sprite(texture2); // Add sprites to scene graph and layer container.addChild(sprite1, sprite2); layer.attach(sprite1, sprite2); // Remove single sprite from layer layer.detach(sprite1); // sprite1 is still child of container but not rendered in layer // Remove multiple sprites at once const otherLayer = new RenderLayer(); otherLayer.attach(sprite3, sprite4); otherLayer.detach(sprite3, sprite4); // Type-safe detachment const typedSprite = layer.detach<Sprite>(spriteInLayer); typedSprite.texture = newTexture; // TypeScript knows this is a Sprite ``` / public detach<U extends Container[]>(...children: U): U[0] { for (let i = 0; i < children.length; i++) { const child = children[i]; const index = this.renderLayerChildren.indexOf(child); if (index !== -1) { this.renderLayerChildren.splice(index, 1); } child.parentRenderLayer = null; const renderGroup = this.renderGroup || this.parentRenderGroup; if (renderGroup) { renderGroup.structureDidChange = true; } } return children[0]; } /** Removes all objects from this render layer. Objects will maintain their original parent in the scene graph but will no longer be rendered as part of this layer. ```ts const layer = new RenderLayer(); const container = new Container(); // Add multiple sprites to scene graph and layer const sprites = [ new Sprite(texture1), new Sprite(texture2), new Sprite(texture3) ]; container.addChild(...sprites);  // Add to scene graph layer.attach(...sprites);       // Add to render layer // Later, remove all sprites from layer at once layer.detachAll(); console.log(layer.renderLayerChildren.length); // 0 console.log(container.children.length);        // 3 (still in scene graph) ```"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < layerChildren.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sortRenderLayerChildren",
+      "params": [],
+      "returnType": null,
+      "description": "Collects renderables for this layer and its children. This method is called by the renderer to gather all objects that should be rendered in this layer. / public override collectRenderables(instructionSet: InstructionSet, renderer: Renderer, _currentLayer: RenderLayer): void { const layerChildren = this.renderLayerChildren; const length = layerChildren.length; if (this.sortableChildren) { this.sortRenderLayerChildren(); } for (let i = 0; i < length; i++) { if (!layerChildren[i].parent) { // eslint-disable-next-line max-len warn('Container must be added to both layer and scene graph. Layers only handle render order - the scene graph is required for transforms (addChild)', layerChildren[i]); } layerChildren[i].collectRenderables(instructionSet, renderer, this); } } /** Sort the layer's children using the defined sort function. This method allows manual sorting of layer children and is automatically called during rendering if sortableChildren is true. ```ts const layer = new RenderLayer(); // Add multiple sprites at different depths const sprite1 = new Sprite(texture); const sprite2 = new Sprite(texture); const sprite3 = new Sprite(texture); sprite1.zIndex = 3; sprite2.zIndex = 1; sprite3.zIndex = 2; layer.attach(sprite1, sprite2, sprite3); // Manual sorting with default zIndex sort layer.sortRenderLayerChildren(); // Order is now: sprite2 (1), sprite3 (2), sprite1 (3) // Custom sort by y position layer.sortFunction = (a, b) => a.y - b.y; layer.sortRenderLayerChildren(); // Automatic sorting layer.sortableChildren = true; // Will sort each render ```"
+    },
+    {
+      "name": "sort",
+      "params": [
+        {
+          "name": "this.sortFunction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFastGlobalBounds",
+      "params": [
+        {
+          "name": "factorRenderLayers",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "bounds",
+          "type": "Bounds",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Bounds",
+      "description": "Recursively calculates the global bounds of this RenderLayer and its children. / public override _getGlobalBoundsRecursive( factorRenderLayers: boolean, bounds: Bounds, _currentLayer: RenderLayer, ): void { if (!factorRenderLayers) return; const children = this.renderLayerChildren; for (let i = 0; i < children.length; i++) { children[i]._getGlobalBoundsRecursive(true, bounds, this); } } /**"
+    },
+    {
+      "name": "getFastGlobalBounds",
+      "params": [
+        {
+          "name": "factorRenderLayers",
+          "type": null
+        },
+        {
+          "name": "bounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "attach",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.addChild(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "attach",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "detach",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.removeChild(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "detach",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "detach",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeChildren",
+      "params": [
+        {
+          "name": "_beginIndex",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "_endIndex",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "never",
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.removeChildren(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "detach",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeChildAt",
+      "params": [
+        {
+          "name": "_index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "never",
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.removeChildAt(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getChildAt",
+      "params": [
+        {
+          "name": "_index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "never",
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.getChildAt(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setChildIndex",
+      "params": [
+        {
+          "name": "_child",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "never",
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.setChildIndex(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getChildIndex",
+      "params": [
+        {
+          "name": "_child",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "never",
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.getChildIndex(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.addChildAt(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.swapChildren(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reparentChild",
+      "params": [
+        {
+          "name": "_child",
+          "type": "Container[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "never",
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.reparentChild(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reparentChildAt",
+      "params": [
+        {
+          "name": "_child",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "never",
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'RenderLayer.reparentChildAt(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

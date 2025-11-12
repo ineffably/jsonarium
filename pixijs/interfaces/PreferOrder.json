@@ -1,0 +1,35 @@
+{
+  "type": "interface",
+  "name": "PreferOrder",
+  "sourcePath": "assets/resolver/types.ts",
+  "extends": [],
+  "description": "A prefer order lets the resolver know which assets to prefer depending on the various parameters passed to it.",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "priority",
+      "type": "string[]",
+      "optional": true,
+      "description": "the importance order of the params"
+    },
+    {
+      "name": "params",
+      "type": "{\n        [key: string]: any",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "config",
+      "type": "Record<string, any>\n    /** the test to perform on the url to determine if it should be parsed */\n    test: (url: string) => boolean",
+      "optional": true,
+      "description": "Format for url parser, will test a string and if it pass will then parse it, turning it into an ResolvedAsset / export interface ResolveURLParser { extension?: ExtensionMetadata; /** A config to adjust the parser"
+    },
+    {
+      "name": "parse",
+      "type": "(value: string) => ResolvedAsset & {[key: string]: any}",
+      "optional": false,
+      "description": "the function that will convert the url into an object"
+    }
+  ]
+}

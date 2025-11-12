@@ -1,0 +1,72 @@
+{
+  "type": "class",
+  "name": "property",
+  "sourcePath": "utils/object/IsPlainObject.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "utils",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "obj",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!obj || typeof(obj",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "obj.constructor && !({}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "obj.constructor.prototype",
+          "type": null
+        },
+        {
+          "name": "'isPrototypeOf'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "catch",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

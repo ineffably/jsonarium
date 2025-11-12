@@ -1,0 +1,1466 @@
+{
+  "type": "class",
+  "name": "used",
+  "sourcePath": "renderer/webgl/WebGLPipeline.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "render",
+      "params": [
+        {
+          "name": "so can be multiple times per render step",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "only called if a Game Object is using this pipeline and it's not currently active",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onBind",
+      "params": [
+        {
+          "name": "called for every Game Object that uses this pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [
+        {
+          "name": "can be called by a Game Object",
+          "type": null
+        },
+        {
+          "name": "internal method or from outside by changing pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "EventEmitter",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function WebGLPipeline (config",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'name'",
+          "type": null
+        },
+        {
+          "name": "'WebGLPipeline'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'topology'",
+          "type": null
+        },
+        {
+          "name": "gl.TRIANGLES",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "zero",
+      "params": [
+        {
+          "name": "like the light pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'forceZero'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'resizeUniform'",
+          "type": null
+        },
+        {
+          "name": "''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.isPostFX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Matrix4",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "identity",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'renderTarget'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof(targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof(targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < targets; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "new RenderTarget(renderer",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < targets.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "targets[i]",
+          "type": null
+        },
+        {
+          "name": "'scale'",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "targets[i]",
+          "type": null
+        },
+        {
+          "name": "'minFilter'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "targets[i]",
+          "type": null
+        },
+        {
+          "name": "'autoClear'",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "targets[i]",
+          "type": null
+        },
+        {
+          "name": "'autoResize'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "targets[i]",
+          "type": null
+        },
+        {
+          "name": "'width'",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "targets[i]",
+          "type": null
+        },
+        {
+          "name": "'height'",
+          "type": null
+        },
+        {
+          "name": "targetWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "targetWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "new RenderTarget(renderer",
+          "type": null
+        },
+        {
+          "name": "targetWidth",
+          "type": null
+        },
+        {
+          "name": "targetHeight",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "minFilter",
+          "type": null
+        },
+        {
+          "name": "autoClear",
+          "type": null
+        },
+        {
+          "name": "autoResize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "new RenderTarget(renderer",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "scale",
+          "type": null
+        },
+        {
+          "name": "minFilter",
+          "type": null
+        },
+        {
+          "name": "autoClear",
+          "type": null
+        },
+        {
+          "name": "autoResize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderTargets.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setShadersFromConfig",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < shaders.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "shaders[i].vertexSize > vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'batchSize'",
+          "type": null
+        },
+        {
+          "name": "renderer.config.batchSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ArrayBuffer",
+      "params": [
+        {
+          "name": "this.vertexCapacity * vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint8Array",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint32Array",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'vertices'",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "configVerts",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "configVerts",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createVertexBuffer",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "gl.STATIC_DRAW",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createVertexBuffer",
+      "params": [
+        {
+          "name": "data.byteLength",
+          "type": null
+        },
+        {
+          "name": "gl.DYNAMIC_DRAW",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setVertexBuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = shaders.length - 1; i >= 0; i--",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rebind",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "RendererEvents.RESIZE",
+          "type": null
+        },
+        {
+          "name": "this.resize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "RendererEvents.PRE_RENDER",
+          "type": null
+        },
+        {
+          "name": "this.onPreRender",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "RendererEvents.RENDER",
+          "type": null
+        },
+        {
+          "name": "this.onRender",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "RendererEvents.POST_RENDER",
+          "type": null
+        },
+        {
+          "name": "this.onPostRender",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.BOOT",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onBoot",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "shader",
+          "type": null
+        },
+        {
+          "name": "setAttributes",
+          "type": null
+        },
+        {
+          "name": "vertexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "shader !== this.currentShader || renderer.currentProgram !== this.currentShader.program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setVertexBuffer",
+      "params": [
+        {
+          "name": "vertexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "wasBound && !setAttributes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "setAttributes",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "name",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < shaders.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "shaders[i].name === name",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < shaders.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "vName",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFragmentShaderMaxTextures",
+      "params": [
+        {
+          "name": "GetFastValue(config",
+          "type": null
+        },
+        {
+          "name": "fName",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "aName",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'shaders'",
+          "type": null
+        },
+        {
+          "name": "[]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "len === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "defaultVertShader && defaultFragShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "WebGLShader",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'default'",
+          "type": null
+        },
+        {
+          "name": "defaultVertShader",
+          "type": null
+        },
+        {
+          "name": "defaultFragShader",
+          "type": null
+        },
+        {
+          "name": "DeepCopy(defaultAttribs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < len; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof shaderEntry === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFragmentShaderMaxTextures",
+      "params": [
+        {
+          "name": "shaderEntry",
+          "type": null
+        },
+        {
+          "name": "renderer.maxTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "shaderEntry",
+          "type": null
+        },
+        {
+          "name": "'name'",
+          "type": null
+        },
+        {
+          "name": "'default'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "shaderEntry",
+          "type": null
+        },
+        {
+          "name": "vName",
+          "type": null
+        },
+        {
+          "name": "defaultVertShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFragmentShaderMaxTextures",
+      "params": [
+        {
+          "name": "GetFastValue(shaderEntry",
+          "type": null
+        },
+        {
+          "name": "fName",
+          "type": null
+        },
+        {
+          "name": "defaultFragShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "shaderEntry",
+          "type": null
+        },
+        {
+          "name": "aName",
+          "type": null
+        },
+        {
+          "name": "defaultAttribs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "name === 'default'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "'\\n'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trim",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "test.indexOf('#define SHADER_NAME'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "substring",
+      "params": [
+        {
+          "name": "20",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "vertShader && fragShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "new WebGLShader(this",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": null
+        },
+        {
+          "name": "vertShader",
+          "type": null
+        },
+        {
+          "name": "fragShader",
+          "type": null
+        },
+        {
+          "name": "DeepCopy(attributes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.shaders.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "Pipeline",
+          "type": "' + this.name + ' - Invalid shader config'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "this.currentBatch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batch",
+      "params": [
+        {
+          "name": "i.e. after a flush",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.currentBatch || (this.forceZero && texture !== this.currentTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBatch",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "texture === this.currentTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "indexOf",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "idx === -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "current.texture.length === this.renderer.maxTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBatch",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

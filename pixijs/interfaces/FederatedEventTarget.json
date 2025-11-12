@@ -1,0 +1,33 @@
+{
+  "type": "interface",
+  "name": "FederatedEventTarget",
+  "sourcePath": "events/deprecatedTypes.ts",
+  "extends": [
+    "EventEmitter",
+    "EventTarget",
+    "Required"
+  ],
+  "description": "A simplified shape of an interactive object for the `eventTarget` property of a {@link FederatedEvent}",
+  "category": "events",
+  "deprecated": true,
+  "properties": [
+    {
+      "name": "isInteractive",
+      "type": "() => boolean",
+      "optional": false,
+      "description": "The parent of this event target. */ readonly parent?: FederatedEventTarget; /** The children of this event target. */ readonly children?: ReadonlyArray<FederatedEventTarget>; _internalEventMode: EventMode; /** Returns true if the Container has interactive 'static' or 'dynamic'"
+    },
+    {
+      "name": "event",
+      "type": "string): void",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//github.com/pixijs/pixijs/issues/8794\n\n    /** Remove all listeners, or those of the specified event. */\n    removeAllListeners(event?: string | symbol): this",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

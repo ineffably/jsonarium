@@ -1,0 +1,189 @@
+{
+  "type": "class",
+  "name": "Ellipse",
+  "sourcePath": "maths/shapes/Ellipse.ts",
+  "extends": null,
+  "implements": [
+    "ShapePrimitive"
+  ],
+  "description": "The Ellipse object is used to help draw graphics and can also be used to specify a hit area for containers. ```ts // Basic ellipse creation const ellipse = new Ellipse(100, 100, 20, 10); // Use as a hit area container.hitArea = new Ellipse(0, 0, 50, 25); // Check point containment const isInside = ellipse.contains(mouseX, mouseY); // Get bounding box const bounds = ellipse.getBounds(); ``` - Defined by center (x,y) and half dimensions - Total width = halfWidth * 2 - Total height = halfHeight * 2",
+  "category": "maths",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": "Ellipse",
+      "description": "Creates a clone of this Ellipse instance. ```ts // Basic cloning const original = new Ellipse(100, 100, 50, 25); const copy = original.clone(); // Clone and modify const modified = original.clone(); modified.halfWidth *= 2; modified.halfHeight *= 2; // Verify independence console.log(original.halfWidth);  // 50 console.log(modified.halfWidth);  // 100 ```"
+    },
+    {
+      "name": "Ellipse",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.halfWidth",
+          "type": null
+        },
+        {
+          "name": "this.halfHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contains",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks whether the x and y coordinates given are contained within this ellipse. Uses normalized coordinates and the ellipse equation to determine containment. ```ts // Basic containment check const ellipse = new Ellipse(100, 100, 50, 25); const isInside = ellipse.contains(120, 110); ``` - Uses ellipse equation (x²/a² + y²/b² ≤ 1) - Returns false if dimensions are 0 or negative - Normalized to center (0,0) for calculation"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.halfWidth <= 0 || this.halfHeight <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "normx + normy <= 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeContains",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "strokeWidth",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "alignment",
+          "type": "number",
+          "optional": true,
+          "default": "0.5"
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks whether the x and y coordinates given are contained within this ellipse including stroke. ```ts // Basic stroke check const ellipse = new Ellipse(100, 100, 50, 25); const isOnStroke = ellipse.strokeContains(150, 100, 4); // 4px line width // Check with different alignments const innerStroke = ellipse.strokeContains(150, 100, 4, 1);   // Inside const centerStroke = ellipse.strokeContains(150, 100, 4, 0.5); // Centered const outerStroke = ellipse.strokeContains(150, 100, 4, 0);   // Outside ``` - Uses normalized ellipse equations - Considers stroke alignment - Returns false if dimensions are 0"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "halfWidth <= 0 || halfHeight <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBounds",
+      "params": [
+        {
+          "name": "out",
+          "type": "Rectangle",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Rectangle",
+      "description": "Returns the framing rectangle of the ellipse as a Rectangle object. ```ts // Basic bounds calculation const ellipse = new Ellipse(100, 100, 50, 25); const bounds = ellipse.getBounds(); // bounds: x=50, y=75, width=100, height=50 // Reuse existing rectangle const rect = new Rectangle(); ellipse.getBounds(rect); ``` - Creates Rectangle if none provided - Top-left is (x-halfWidth, y-halfHeight) - Width is halfWidth * 2 - Height is halfHeight * 2"
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "ellipse",
+          "type": "Ellipse",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Copies another ellipse to this one. ```ts // Basic copying const source = new Ellipse(100, 100, 50, 25); const target = new Ellipse(); target.copyFrom(source); ```"
+    },
+    {
+      "name": "copyTo",
+      "params": [
+        {
+          "name": "ellipse",
+          "type": "Ellipse",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Ellipse",
+      "description": "Copies this ellipse to another one. ```ts // Basic copying const source = new Ellipse(100, 100, 50, 25); const target = new Ellipse(); source.copyTo(target); ```"
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": "string",
+      "description": null
+    }
+  ],
+  "properties": []
+}

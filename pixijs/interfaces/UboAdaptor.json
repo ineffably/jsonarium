@@ -1,0 +1,95 @@
+{
+  "type": "interface",
+  "name": "UboAdaptor",
+  "sourcePath": "rendering/renderers/shared/shader/UboSystem.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "createUboElements",
+      "type": "(uniformData: UniformData[]) => UboLayout",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "generateUboSync",
+      "type": "(uboElements: UboElement[]) => UniformsSyncCallback",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_syncFunctionHash",
+      "type": "Record<string, {\n        layout: UboLayout,\n        syncFunction: (uniforms: Record<string, any>, data: Float32Array, dataInt32: Int32Array, offset: number) => void\n    }> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_adaptor",
+      "type": "UboAdaptor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "adaptor",
+      "type": "UboAdaptor)\n    {\n        this._adaptor = adaptor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uniformGroup",
+      "type": "UniformGroup): void\n    {\n        const uniformData = this.getUniformGroupData(uniformGroup)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "new Float32Array(uniformData.layout.size / 4),\n            usage: BufferUsage.UNIFORM | BufferUsage.COPY_DST,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uniformGroup",
+      "type": "UniformGroup)\n    {\n        return this._syncFunctionHash[uniformGroup._signature] || this._initUniformGroup(uniformGroup)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uniformGroup",
+      "type": "UniformGroup)\n    {\n        const uniformGroupSignature = uniformGroup._signature",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uboElements",
+      "type": "UboElement[],\n    ): UniformsSyncCallback\n    {\n        return this._adaptor.generateUboSync(uboElements)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uniformGroup",
+      "type": "UniformGroup, data?: Float32Array, offset?: number): boolean\n    {\n        const uniformGroupData = this.getUniformGroupData(uniformGroup)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "new Float32Array(uniformGroupData.layout.size / 4),\n            usage: BufferUsage.UNIFORM | BufferUsage.COPY_DST,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dataInt32",
+      "type": "Int32Array = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uniformGroup",
+      "type": "UniformGroup): boolean\n    {\n        if (uniformGroup.isStatic && !uniformGroup._dirtyId) return false",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

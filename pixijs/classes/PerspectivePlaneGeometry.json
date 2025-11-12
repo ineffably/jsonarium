@@ -1,0 +1,189 @@
+{
+  "type": "class",
+  "name": "PerspectivePlaneGeometry",
+  "sourcePath": "scene/mesh-perspective/PerspectivePlaneGeometry.ts",
+  "extends": "PlaneGeometry",
+  "implements": [],
+  "description": "Constructor options used for `PerspectivePlaneGeometry` instances. / export interface PerspectivePlaneGeometryOptions extends PlaneGeometryOptions { /** The width of the plane */ width: number; /** The height of the plane */ height: number; } /** A PerspectivePlaneGeometry allows you to draw a 2d plane with perspective. Where ever you move the corners the texture will be projected to look like it is in 3d space. Great for mapping a 2D mesh into a 3D scene. IMPORTANT: This is not a full 3D mesh, it is a 2D mesh with a perspective projection applied to it :) ```js const perspectivePlaneGeometry = new PerspectivePlaneGeometry({ width: 100, height: 100, verticesX: 10, verticesY: 10, }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCorners",
+      "params": [
+        {
+          "name": "x0",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y0",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x3",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y3",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Will set the corners of the quad to the given coordinates Calculating the perspective so it looks correct!"
+    },
+    {
+      "name": "updateProjection",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateProjection",
+      "params": [],
+      "returnType": null,
+      "description": "Update the projection matrix based on the corners"
+    },
+    {
+      "name": "compute2DProjection",
+      "params": [
+        {
+          "name": "this._projectionMatrix",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "// top-left source\n            corners[0]",
+          "type": null
+        },
+        {
+          "name": "corners[1]",
+          "type": null
+        },
+        {
+          "name": "// top-left dest\n            width",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "// top-right source\n            corners[2]",
+          "type": null
+        },
+        {
+          "name": "corners[3]",
+          "type": null
+        },
+        {
+          "name": "// top-right dest\n            width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "// bottom-right source\n            corners[4]",
+          "type": null
+        },
+        {
+          "name": "corners[5]",
+          "type": null
+        },
+        {
+          "name": "// bottom-right dest\n            0",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "// bottom-left source\n            corners[6]",
+          "type": null
+        },
+        {
+          "name": "corners[7] // bottom-left dest",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyProjectiveTransformationToPlane",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "projectionMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

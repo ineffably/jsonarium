@@ -1,0 +1,265 @@
+{
+  "type": "class",
+  "name": "HardLightBlend",
+  "sourcePath": "advanced-blend-modes/HardLightBlend.ts",
+  "extends": "BlendModeFilter",
+  "implements": [],
+  "description": "The final color is the result of multiply if the top color is darker, or screen if the top color is lighter. This blend mode is equivalent to overlay but with the layers swapped. The effect is similar to shining a harsh spotlight on the backdrop. Available as `container.blendMode = 'hard-light'` after importing `pixi.js/advanced-blend-modes`. import 'pixi.js/advanced-blend-modes'; import { Sprite } from 'pixi.js'; const sprite = Sprite.from('something.png'); sprite.blendMode = 'hard-light'",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "gl",
+          "type": "{\n                functions: `\n                float hardLight(float base",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "float blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blend < 0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendHardLight",
+      "params": [
+        {
+          "name": "vec3 base",
+          "type": null
+        },
+        {
+          "name": "vec3 blend",
+          "type": null
+        },
+        {
+          "name": "float opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec3",
+      "params": [
+        {
+          "name": "hardLight(base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hardLight",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hardLight",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec4",
+      "params": [
+        {
+          "name": "blendHardLight(back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hardLight",
+      "params": [
+        {
+          "name": "base",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "select",
+      "params": [
+        {
+          "name": "1.0 - 2.0 * (1.0 - base",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendHardLight",
+      "params": [
+        {
+          "name": "base",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "opacity",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hardLight",
+      "params": [
+        {
+          "name": "base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hardLight",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hardLight",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendHardLight",
+      "params": [
+        {
+          "name": "back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

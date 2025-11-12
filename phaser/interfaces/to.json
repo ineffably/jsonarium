@@ -1,0 +1,233 @@
+{
+  "type": "interface",
+  "name": "to",
+  "sourcePath": "scene/ScenePlugin.js",
+  "extends": [],
+  "description": null,
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "initialize",
+      "type": "function ScenePlugin (scene)\n    {\n        /**\n         * The Scene that this ScenePlugin belongs to.\n         *\n         * @name Phaser.Scenes.ScenePlugin#scene\n         * @type {Phaser.Scene}\n         * @since 3.0.0\n         */\n        this.scene = scene",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "boot",
+      "type": "function ()\n    {\n        this.systems.events.once(Events.DESTROY, this.destroy, this)",
+      "optional": false,
+      "description": "The Scene Systems instance of the Scene that this ScenePlugin belongs to. / this.systems = scene.sys; /** The settings of the Scene this ScenePlugin belongs to. / this.settings = scene.sys.settings; /** The key of the Scene this ScenePlugin belongs to. / this.key = scene.sys.settings.key; /** The Game's SceneManager. / this.manager = scene.sys.game.scene; /** If this Scene is currently transitioning to another, this holds the current percentage of the transition progress, between 0 and 1. / this.transitionProgress = 0; /** Transition elapsed timer. / this._elapsed = 0; /** Transition elapsed timer. / this._target = null; /** Transition duration. / this._duration = 0; /** Transition callback. / this._onUpdate; /** Transition callback scope. / this._onUpdateScope; /** Will this Scene sleep (true) after the transition, or stop (false) / this._willSleep = false; /** Will this Scene be removed from the Scene Manager after the transition completes? / this._willRemove = false; scene.sys.events.once(Events.BOOT, this.boot, this); scene.sys.events.on(Events.START, this.pluginStart, this); }, /** This method is called automatically, only once, when the Scene is first created. Do not invoke it directly."
+    },
+    {
+      "name": "pluginStart",
+      "type": "function ()\n    {\n        this._target = null",
+      "optional": false,
+      "description": "This method is called automatically by the Scene when it is starting up. It is responsible for creating local systems, properties and listening for Scene events. Do not invoke it directly."
+    },
+    {
+      "name": "start",
+      "type": "function (key, data)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Shutdown this Scene and run the given one. This will happen at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "restart",
+      "type": "function (data)\n    {\n        var key = this.key",
+      "optional": false,
+      "description": "Restarts this Scene. This will happen at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "transition",
+      "type": "function (config)\n    {\n        if (config === undefined) { config = {}",
+      "optional": false,
+      "description": "This will start a transition from the current Scene to the target Scene given. The target Scene cannot be the same as the current Scene. The transition will last for the duration specified in milliseconds. You can have the target Scene moved above or below this one in the display list. You can specify an update callback. This callback will be invoked _every frame_ for the duration of the transition. This Scene can either be sent to sleep at the end of the transition, or stopped. The default is to stop. There are also 5 transition related events: This scene will emit the event `transitionout` when the transition begins, which is typically the frame after calling this method. The target Scene will emit the event `transitioninit` when that Scene's `init` method is called. It will then emit the event `transitionstart` when its `create` method is called. If the Scene was sleeping and has been woken up, it will emit the event `transitionwake` instead of these two, as the Scenes `init` and `create` methods are not invoked when a Scene wakes up. When the duration of the transition has elapsed it will emit the event `transitioncomplete`. These events are cleared of all listeners when the Scene shuts down, but not if it is sent to sleep. It's important to understand that the duration of the transition begins the moment you call this method. If the Scene you are transitioning to includes delayed processes, such as waiting for files to load, the time still counts down even while that is happening. If the game itself pauses, or something else causes this Scenes update loop to stop, then the transition will also pause for that duration. There are checks in place to prevent you accidentally stopping a transitioning Scene but if you've got code to override this understand that until the target Scene completes it might never be unlocked for input events."
+    },
+    {
+      "name": "checkValidTransition",
+      "type": "function (target)\n    {\n        //  Not a valid target if it doesn't exist, isn't active or is already transitioning in or out\n        if (!target || target.sys.isActive() || target.sys.isTransitioning() || target === this.scene || this.systems.isTransitioning())\n        {\n            return false",
+      "optional": false,
+      "description": "Checks to see if this Scene can transition to the target Scene or not."
+    },
+    {
+      "name": "step",
+      "type": "function (time, delta)\n    {\n        this._elapsed += delta",
+      "optional": false,
+      "description": "A single game step. This is only called if the parent Scene is transitioning out to another Scene."
+    },
+    {
+      "name": "transitionComplete",
+      "type": "function ()\n    {\n        var targetSys = this._target.sys",
+      "optional": false,
+      "description": "Called by `step` when the transition out of this scene to another is over."
+    },
+    {
+      "name": "add",
+      "type": "function (key, sceneConfig, autoStart, data)\n    {\n        return this.manager.add(key, sceneConfig, autoStart, data)",
+      "optional": false,
+      "description": "Add the Scene into the Scene Manager and start it if 'autoStart' is true or the Scene config 'active' property is set."
+    },
+    {
+      "name": "launch",
+      "type": "function (key, data)\n    {\n        if (key && key !== this.key)\n        {\n            this.manager.queueOp('start', key, data)",
+      "optional": false,
+      "description": "Launch the given Scene and run it in parallel with this one. This will happen at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "run",
+      "type": "function (key, data)\n    {\n        if (key && key !== this.key)\n        {\n            this.manager.queueOp('run', key, data)",
+      "optional": false,
+      "description": "Runs the given Scene, but does not change the state of this Scene. This will happen at the next Scene Manager update, not immediately. If the given Scene is paused, it will resume it. If sleeping, it will wake it. If not running at all, it will be started. Use this if you wish to open a modal Scene by calling `pause` on the current Scene, then `run` on the modal Scene."
+    },
+    {
+      "name": "pause",
+      "type": "function (key, data)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Pause the Scene - this stops the update step from happening but it still renders. This will happen at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "resume",
+      "type": "function (key, data)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Resume the Scene - starts the update loop again. This will happen at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "sleep",
+      "type": "function (key, data)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Makes the Scene sleep (no update, no render) but doesn't shutdown. This will happen at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "wake",
+      "type": "function (key, data)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Makes the Scene wake-up (starts update and render) This will happen at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "switch",
+      "type": "function (key, data)\n    {\n        if (key !== this.key)\n        {\n            this.manager.queueOp('switch', this.key, key, data)",
+      "optional": false,
+      "description": "Makes this Scene sleep then starts the Scene given. This will happen at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "stop",
+      "type": "function (key, data)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Shutdown the Scene, clearing display list, timers, etc. This happens at the next Scene Manager update, not immediately."
+    },
+    {
+      "name": "setActive",
+      "type": "function (value, key, data)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Sets the active state of the given Scene."
+    },
+    {
+      "name": "setVisible",
+      "type": "function (value, key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Sets the visible state of the given Scene."
+    },
+    {
+      "name": "isSleeping",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Checks if the given Scene is sleeping or not?"
+    },
+    {
+      "name": "isActive",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Checks if the given Scene is running or not?"
+    },
+    {
+      "name": "isPaused",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Checks if the given Scene is paused or not?"
+    },
+    {
+      "name": "isVisible",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Checks if the given Scene is visible or not?"
+    },
+    {
+      "name": "swapPosition",
+      "type": "function (keyA, keyB)\n    {\n        if (keyB === undefined) { keyB = this.key",
+      "optional": false,
+      "description": "Swaps the position of two scenes in the Scenes list. This controls the order in which they are rendered and updated."
+    },
+    {
+      "name": "moveAbove",
+      "type": "function (keyA, keyB)\n    {\n        if (keyB === undefined) { keyB = this.key",
+      "optional": false,
+      "description": "Moves a Scene so it is immediately above another Scene in the Scenes list. If the Scene is already above the other, it isn't moved. This means it will render over the top of the other Scene."
+    },
+    {
+      "name": "moveBelow",
+      "type": "function (keyA, keyB)\n    {\n        if (keyB === undefined) { keyB = this.key",
+      "optional": false,
+      "description": "Moves a Scene so it is immediately below another Scene in the Scenes list. If the Scene is already below the other, it isn't moved. This means it will render behind the other Scene."
+    },
+    {
+      "name": "remove",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Removes a Scene from the SceneManager. The Scene is removed from the local scenes array, it's key is cleared from the keys cache and Scene.Systems.destroy is then called on it. If the SceneManager is processing the Scenes when this method is called it will queue the operation for the next update sequence."
+    },
+    {
+      "name": "moveUp",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Moves a Scene up one position in the Scenes list."
+    },
+    {
+      "name": "moveDown",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Moves a Scene down one position in the Scenes list."
+    },
+    {
+      "name": "bringToTop",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Brings a Scene to the top of the Scenes list. This means it will render above all other Scenes."
+    },
+    {
+      "name": "sendToBack",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Sends a Scene to the back of the Scenes list. This means it will render below all other Scenes."
+    },
+    {
+      "name": "get",
+      "type": "function (key)\n    {\n        return this.manager.getScene(key)",
+      "optional": false,
+      "description": "Retrieves a Scene based on the given key. If an actual Scene is passed to this method, it can be used to check if its currently within the Scene Manager, or not."
+    },
+    {
+      "name": "getStatus",
+      "type": "function (key)\n    {\n        var scene = this.manager.getScene(key)",
+      "optional": false,
+      "description": "Return the status of the Scene."
+    },
+    {
+      "name": "getIndex",
+      "type": "function (key)\n    {\n        if (key === undefined) { key = this.key",
+      "optional": false,
+      "description": "Retrieves the numeric index of a Scene in the Scenes list."
+    },
+    {
+      "name": "shutdown",
+      "type": "function ()\n    {\n        var eventEmitter = this.systems.events",
+      "optional": false,
+      "description": "The Scene that owns this plugin is shutting down. We need to kill and reset all internal properties as well as stop listening to Scene events."
+    },
+    {
+      "name": "destroy",
+      "type": "function ()\n    {\n        this.shutdown()",
+      "optional": false,
+      "description": "The Scene that owns this plugin is being destroyed. We need to shutdown and then kill off all external references."
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "type": "interface",
+  "name": "HTMLTextOptions",
+  "sourcePath": "scene/text-html/HTMLText.ts",
+  "extends": [
+    "TextOptions"
+  ],
+  "description": "Constructor options used for `HTMLText` instances. Extends the base text options with HTML-specific features and texture styling capabilities. ```ts // Basic HTML text const basicText = new HTMLText({ text: '<b>Bold</b> and <i>Italic</i> text', style: { fontSize: 24, fill: 0xff1010 } }); // Rich HTML text with styling const richText = new HTMLText({ text: '<custom>Custom Tag</custom>', style: { fontFamily: 'Arial', fontSize: 32, fill: 0x4a4a4a, align: 'center', tagStyles: { custom: { fontSize: 32, fill: '#00ff00', fontStyle: 'italic' } } } textureStyle: { scaleMode: 'linear', } }); ```",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "textureStyle",
+      "type": "TextureStyle | TextureStyleOptions",
+      "optional": true,
+      "description": "Optional texture style to use for the text texture. This allows fine control over how the text is rendered to a texture before being displayed. The texture style can affect: - Scale mode (nearest/linear) - Resolution - Format (rgb/rgba) - Alpha handling ```ts const text = new HTMLText({ text: 'Crisp Text', textureStyle: { scaleMode: 'nearest', // Pixel-perfect scaling } }); ```"
+    },
+    {
+      "name": "features",
+      "type": "* - HTML tag support (<strong>, <em>, etc.)\n * - CSS styling and custom style overrides\n * - Emoji and special character support\n * - Line breaking and word wrapping\n * - SVG-based rendering\n * @example\n * ```ts\n * import { HTMLText } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'<h1>Title</h1><p>This is a <strong>bold</strong> and <em>italic</em> text.</p>',\n *     style: {\n *         fontFamily: 'Arial',\n *         fontSize: 24,\n *         fill: 0xff1010,\n *         align: 'center',\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "`\n *         <div class=\"title\">Welcome</div>\n *         <div class=\"content\">\n *             This text supports:\n *             <ul>\n *                 <li>✨ Emojis</li>\n *                 <li>🎨 Custom CSS</li>\n *                 <li>📏 Auto-sizing</li>\n *             </ul>\n *         </div>\n *     `,\n *     style: {\n *         fontSize: 24,\n *         fill: '#334455',\n *         cssOverrides: [\n *             '.title { font-size: 32px",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "red",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "1.5",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "wordWrap",
+      "type": "true,\n *         wordWrapWidth: 300,\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'<div style=\"padding: 10px\">High Quality Text</div>',\n *     style: {\n *         fontSize: 24,\n *         fill: '#4a4a4a',\n *     },\n *     textureStyle: {\n *         scaleMode: 'nearest',\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Considerations",
+      "type": "* - Rendering may vary slightly between browsers\n * - Requires browser support for foreignObject\n * - Performance similar to Canvas text\n * - Memory usage comparable to Canvas text\n * @category text\n * @standard\n * @see {@link HTMLTextStyle} For detailed style options\n * @see {@link Text} For canvas-based text rendering\n * @see {@link BitmapText} For high-performance static text\n */\nexport class HTMLText extends AbstractText<\n    HTMLTextStyle,\n    HTMLTextStyleOptions,\n    HTMLTextOptions,\n    BatchableHTMLText\n> implements View\n{\n    /** @internal */\n    public override readonly renderPipeId: string = 'htmlText'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureStyle",
+      "type": "TextureStyle",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "HTMLTextOptions)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "TextString, options?: Partial<HTMLTextStyle>)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[HTMLTextOptions?] | [TextString, Partial<HTMLTextStyle>])\n    {\n        const options = ensureTextOptions<HTMLTextOptions>(args, 'HtmlText')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Line 1\\nLine 2\\nLine 3',\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "12345, // Will be converted to '12345'\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "{ toString: () => 'Object Text' }, // Custom toString\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "type": "() => 'Dynamic Text' }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "TextString)\n    {\n        // Sanitise the text to ensure it is valid HTML\n        const sanitisedText = this._sanitiseText(text.toString())",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//www.sitepoint.com/community/t/xhtml-1-0-transitional-xml-parsing-error-entity-nbsp-not-defined/3392/3\n     */\n    private _sanitiseText(text: string): string\n    {\n        return this._removeInvalidHtmlTags(text\n            .replace(/<br>/gi, '<br/>')\n            .replace(/<hr>/gi, '<hr/>')\n            .replace(/&nbsp",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "input",
+      "type": "string): string\n    {\n        // This regex finds \"<\" followed by anything except \">\" until the next \"<\" or end-of-string\n        // i.e., it finds broken tags like \"<br\" or \"<div id='x'\" that never close\n        const brokenTagPattern = /<[^>]*?(?=<|$)/g",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

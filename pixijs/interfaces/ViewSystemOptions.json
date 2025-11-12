@@ -1,0 +1,143 @@
+{
+  "type": "interface",
+  "name": "ViewSystemOptions",
+  "sourcePath": "rendering/renderers/shared/view/ViewSystem.ts",
+  "extends": [],
+  "description": "Options passed to the ViewSystem",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": true,
+      "description": "The width of the screen."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": true,
+      "description": "The height of the screen."
+    },
+    {
+      "name": "canvas",
+      "type": "ICanvas",
+      "optional": true,
+      "description": "The canvas to use as a view, optional."
+    },
+    {
+      "name": "view",
+      "type": "ICanvas",
+      "optional": true,
+      "description": "Alias for `canvas`."
+    },
+    {
+      "name": "autoDensity",
+      "type": "boolean",
+      "optional": true,
+      "description": "Resizes renderer view in CSS pixels to allow for resolutions other than 1. This is only supported for HTMLCanvasElement and will be ignored if the canvas is an OffscreenCanvas."
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "optional": true,
+      "description": "The resolution / device pixel ratio of the renderer."
+    },
+    {
+      "name": "antialias",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to enable anti-aliasing. This may affect performance."
+    },
+    {
+      "name": "depth",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to ensure the main view has can make use of the depth buffer. Always true for WebGL renderer."
+    },
+    {
+      "name": "removeView",
+      "type": "boolean",
+      "optional": true,
+      "description": "Options for destroying the ViewSystem. / export interface ViewSystemDestroyOptions { /** Whether to remove the view element from the DOM. Defaults to `false`."
+    },
+    {
+      "name": "width",
+      "type": "800,\n        /**\n         * {@link WebGLOptions.height}\n         * @default 600\n         */\n        height: 600,\n        /**\n         * {@link WebGLOptions.autoDensity}\n         * @default false\n         */\n        autoDensity: false,\n        /**\n         * {@link WebGLOptions.antialias}\n         * @default false\n         */\n        antialias: false,\n    }",
+      "optional": false,
+      "description": "The view system manages the main canvas that is attached to the DOM. This main role is to deal with how the holding the view reference and dealing with how it is resized. / export class ViewSystem implements System<ViewSystemOptions, TypeOrBool<ViewSystemDestroyOptions> > { /** @ignore */ public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'view', priority: 0, } as const; /** The default options for the view system. */ public static defaultOptions: ViewSystemOptions = { /** {@link WebGLOptions.width}"
+    },
+    {
+      "name": "texture",
+      "type": "Texture<CanvasSource>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        this.texture.source.autoDensity = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "antialias",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "screen",
+      "type": "Rectangle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderTarget",
+      "type": "RenderTarget",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.texture.source.resize(\n            this.texture.source.width,\n            this.texture.source.height,\n            value\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ViewSystemOptions): void\n    {\n        options = {\n            ...ViewSystem.defaultOptions,\n            ...options,\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "colorTextures",
+      "type": "[this.texture],\n            depth: !!options.depth,\n            isRoot: true,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "desiredScreenWidth",
+      "type": "number, desiredScreenHeight: number, resolution: number): void\n    {\n        this.texture.source.resize(desiredScreenWidth, desiredScreenHeight, resolution)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "removeView",
+      "type": "true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "TypeOrBool<ViewSystemDestroyOptions> = false): void\n    {\n        const removeView = typeof options === 'boolean' ? options : !!options?.removeView",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "note",
+      "type": "don't nullify the element\n        //       other systems may need to unbind from it during the destroy iteration (eg. GLContextSystem)\n    }\n}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

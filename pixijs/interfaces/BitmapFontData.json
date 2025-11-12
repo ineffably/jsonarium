@@ -1,0 +1,119 @@
+{
+  "type": "interface",
+  "name": "BitmapFontData",
+  "sourcePath": "scene/text-bitmap/AbstractBitmapFont.ts",
+  "extends": [],
+  "description": "The page of the font texture that the character is on. */ page: number; /** The x position of the character in the page. */ x: number; /** The y position of the character in the page. */ y: number; /** The width of the character in the page. */ width: number; /** The height of the character in the page. */ height: number; /** The letter of the character. */ letter: string; } /** The raw data of a bitmap font.",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "baseLineOffset",
+      "type": "number",
+      "optional": false,
+      "description": "The offset of the font face from the baseline."
+    },
+    {
+      "name": "chars",
+      "type": "Record<string, RawCharData>",
+      "optional": false,
+      "description": "The map of characters by character code."
+    },
+    {
+      "name": "pages",
+      "type": "{\n        /** Unique id for bitmap texture */\n        id: number",
+      "optional": false,
+      "description": "The map of base page textures (i.e., sheets of glyphs)."
+    },
+    {
+      "name": "file",
+      "type": "string\n    }[]",
+      "optional": false,
+      "description": "File name"
+    },
+    {
+      "name": "lineHeight",
+      "type": "number",
+      "optional": false,
+      "description": "The line-height of the font face in pixels."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "optional": false,
+      "description": "The size of the font face in pixels."
+    },
+    {
+      "name": "fontFamily",
+      "type": "string",
+      "optional": false,
+      "description": "The name of the font face."
+    },
+    {
+      "name": "distanceField",
+      "type": "{\n        /** Type of distance field */\n        type: 'sdf' | 'msdf' | 'none'",
+      "optional": true,
+      "description": "The range and type of the distance field for this font."
+    },
+    {
+      "name": "range",
+      "type": "number",
+      "optional": false,
+      "description": "Range of the distance field in pixels"
+    },
+    {
+      "name": "destroy",
+      "type": "[Type]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "chars",
+      "type": "Record<string, CharData> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "lineHeight",
+      "type": "BitmapFontData['lineHeight'] = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontFamily",
+      "type": "BitmapFontData['fontFamily'] = ''",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontMetrics",
+      "type": "FontMetrics = { fontSize: 0, ascent: 0, descent: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "baseLineOffset",
+      "type": "BitmapFontData['baseLineOffset'] = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "distanceField",
+      "type": "BitmapFontData['distanceField'] = { type: 'none', range: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "pages",
+      "type": "{ texture: Texture }[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "baseMeasurementFontSize",
+      "type": "number = 100",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

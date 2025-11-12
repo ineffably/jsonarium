@@ -1,0 +1,2616 @@
+{
+  "type": "class",
+  "name": "LoaderPlugin",
+  "sourcePath": "loader/LoaderPlugin.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "loader",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "EventEmitter",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function LoaderPlugin (scene",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "install",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPrefix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "\"ball\"",
+          "type": null
+        },
+        {
+          "name": "\"ball.png\"",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "\"tree\"",
+          "type": null
+        },
+        {
+          "name": "\"level1/oaktree.png\"",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "\"boom\"",
+          "type": null
+        },
+        {
+          "name": "http",
+          "type": "//server.com/explode.png\"",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "baseURL",
+      "params": [
+        {
+          "name": "if set.",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBaseURL",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBaseURL",
+      "params": [
+        {
+          "name": "GetFastValue(sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'baseURL'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderBaseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPath",
+      "params": [
+        {
+          "name": "GetFastValue(sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'path'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderPath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPrefix",
+      "params": [
+        {
+          "name": "GetFastValue(sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'prefix'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderPrefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'maxParallelDownloads'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderMaxParallelDownloads",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "settings",
+      "params": [
+        {
+          "name": "can be overridden on a per-file basis",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "XHRSettings",
+      "params": [
+        {
+          "name": "GetFastValue(sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'responseType'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderResponseType",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'async'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderAsync",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'user'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderUser",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'password'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderPassword",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'timeout'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderTimeout",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'withCredentials'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderWithCredentials",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'crossOrigin'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderCrossOrigin",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'imageLoadType'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderImageLoadType",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'localScheme'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderLocalScheme",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CustomSet",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CustomSet",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CustomSet",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CustomSet",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'maxRetries'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderMaxRetries",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "SceneEvents.BOOT",
+          "type": null
+        },
+        {
+          "name": "this.boot",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "SceneEvents.START",
+          "type": null
+        },
+        {
+          "name": "this.pluginStart",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "SceneEvents.DESTROY",
+          "type": null
+        },
+        {
+          "name": "this.destroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "SceneEvents.SHUTDOWN",
+          "type": null
+        },
+        {
+          "name": "this.shutdown",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "url",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "url === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "url !== '' && url.substr(-1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "concat",
+      "params": [
+        {
+          "name": "'/'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPath",
+      "params": [
+        {
+          "name": "\"images/sprites/\"",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "\"ball\"",
+          "type": null
+        },
+        {
+          "name": "\"ball.png\"",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "\"tree\"",
+          "type": null
+        },
+        {
+          "name": "\"level1/oaktree.png\"",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "\"boom\"",
+          "type": null
+        },
+        {
+          "name": "http",
+          "type": "//server.com/explode.png\"",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "baseURL",
+      "params": [
+        {
+          "name": "if set.",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "path",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "path === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "path !== '' && path.substr(-1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "concat",
+      "params": [
+        {
+          "name": "'/'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "prefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "prefix === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "crossOrigin",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!Array.isArray(file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < file.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.keyExists(item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.ADD",
+          "type": null
+        },
+        {
+          "name": "item.key",
+          "type": null
+        },
+        {
+          "name": "item.type",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isLoading(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateProgress",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hasCacheConflict",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!keyConflict",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "iterate",
+      "params": [
+        {
+          "name": "function (item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item.type === file.type && item.key === file.key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!keyConflict && this.isLoading(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "iterate",
+      "params": [
+        {
+          "name": "function (item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item.type === file.type && item.key === file.key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "iterate",
+      "params": [
+        {
+          "name": "function (item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item.type === file.type && item.key === file.key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "pack",
+          "type": null
+        },
+        {
+          "name": "packKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof(packKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetValue",
+      "params": [
+        {
+          "name": "pack",
+          "type": null
+        },
+        {
+          "name": "packKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "subPack",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var key in pack",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!Object.prototype.hasOwnProperty.call(pack",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'baseURL'",
+          "type": null
+        },
+        {
+          "name": "currentBaseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'path'",
+          "type": null
+        },
+        {
+          "name": "currentPath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'prefix'",
+          "type": null
+        },
+        {
+          "name": "currentPrefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'files'",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'defaultType'",
+          "type": null
+        },
+        {
+          "name": "'void'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(files",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBaseURL",
+      "params": [
+        {
+          "name": "baseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPath",
+      "params": [
+        {
+          "name": "path",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPrefix",
+      "params": [
+        {
+          "name": "prefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < files.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hasOwnProperty",
+      "params": [
+        {
+          "name": "'type'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this[type]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBaseURL",
+      "params": [
+        {
+          "name": "currentBaseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPath",
+      "params": [
+        {
+          "name": "currentPath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPrefix",
+      "params": [
+        {
+          "name": "currentPrefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "total > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "packKey",
+          "type": null
+        },
+        {
+          "name": "dataKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "IsPlainObject(packKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "packKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pack",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "cache",
+          "type": "'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "packKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "dataKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var configKey in pack",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'prefix'",
+          "type": null
+        },
+        {
+          "name": "''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'files'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'defaultType'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(files",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < files.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hasOwnProperty",
+      "params": [
+        {
+          "name": "'type'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "type",
+          "type": "'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "type === 'animation'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "fileKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "type === 'aseprite' || type === 'atlas' || type === 'atlasXML' || type === 'htmlTexture' || type === 'image' || type === 'multiatlas' || type === 'spritesheet' || type === 'svg' || type === 'texture' || type === 'unityAtlas'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "fileKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!cacheMap[type]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "type === 'pack'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removePack",
+      "params": [
+        {
+          "name": "fileKey",
+          "type": null
+        },
+        {
+          "name": "file.dataKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "type === 'spine'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "fileKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!spineAtlas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "fileKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "fileKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!spineTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "fileKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 0; j < spineTexture.pages.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureManager.exists(altTextureKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "altTextureKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "textureKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "cacheName === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!cacheName",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "type",
+          "type": "'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "fileKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.state === CONST.LOADER_LOADING || this.state === CONST.LOADER_PROCESSING",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.state === CONST.LOADER_IDLE || this.state === CONST.LOADER_COMPLETE",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.isReady(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.START",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.list.size === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "loadComplete",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateProgress",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "checkLoadQueue",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "SceneEvents.UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.update",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.PROGRESS",
+          "type": null
+        },
+        {
+          "name": "this.progress",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.state === CONST.LOADER_LOADING && this.list.size > 0 && this.inflight.size < this.maxParallelDownloads",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "checkLoadQueue",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "each",
+      "params": [
+        {
+          "name": "function (file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.state === CONST.FILE_POPULATED || (file.state === CONST.FILE_PENDING && this.inflight.size < this.maxParallelDownloads",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "delete",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Loaders",
+      "params": [
+        {
+          "name": "which is undefined by default",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!file.crossOrigin",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "load",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.inflight.size === this.maxParallelDownloads",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        },
+        {
+          "name": "success",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.inflight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "delete",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateProgress",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "success",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.FILE_LOAD",
+          "type": null
+        },
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcess",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.FILE_LOAD_ERROR",
+          "type": null
+        },
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fileProcessComplete",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.scene || !this.systems || !this.systems.game || this.systems.game.pendingDestroy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.state === CONST.FILE_ERRORED",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.multiFile",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onFileFailed",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.state === CONST.FILE_COMPLETE",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.multiFile",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "file.multiFile.isReadyToProcess(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToCache",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pendingDestroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToCache",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pendingDestroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "delete",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.list.size === 0 && this.inflight.size === 0 && this.queue.size === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "loadComplete",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.POST_PROCESS",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.update",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "iterateLocal",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.COMPLETE",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "this.totalComplete",
+          "type": null
+        },
+        {
+          "name": "this.totalFailed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "file",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "filename",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "save",
+      "params": [
+        {
+          "name": "JSON.stringify(data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "filename",
+          "type": null
+        },
+        {
+          "name": "filetype",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filename === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filetype === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Blob",
+      "params": [
+        {
+          "name": "[ data ]",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": "filetype }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createObjectURL",
+      "params": [
+        {
+          "name": "blob",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createElement",
+      "params": [
+        {
+          "name": "'a'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "click",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBaseURL",
+      "params": [
+        {
+          "name": "GetFastValue(sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'baseURL'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderBaseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPath",
+      "params": [
+        {
+          "name": "GetFastValue(sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'path'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderPath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPrefix",
+      "params": [
+        {
+          "name": "GetFastValue(sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'prefix'",
+          "type": null
+        },
+        {
+          "name": "gameConfig.loaderPrefix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeAllListeners",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.update",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.SHUTDOWN",
+          "type": null
+        },
+        {
+          "name": "this.shutdown",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shutdown",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.update",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.START",
+          "type": null
+        },
+        {
+          "name": "this.pluginStart",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'Loader'",
+          "type": null
+        },
+        {
+          "name": "LoaderPlugin",
+          "type": null
+        },
+        {
+          "name": "'load'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

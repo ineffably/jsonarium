@@ -1,0 +1,17 @@
+{
+  "type": "interface",
+  "name": "PipeConstructor",
+  "sourcePath": "rendering/renderers/shared/instructions/RenderPipe.ts",
+  "extends": [],
+  "description": "Add a add a batchable object to the batch. / addToBatch: (renderable: BatchableElement, instructionSet: InstructionSet) => void; /** Forces the batch to break. This can happen if for example you need to render everything and then change the render target. / break: (instructionSet: InstructionSet) => void; } /** A helpful type that can be used to create a new RenderPipe, BatchPipe or InstructionPipe",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderer",
+      "type": "Renderer, adaptor?: any): RenderPipe | BatchPipe | InstructionPipe<any>",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

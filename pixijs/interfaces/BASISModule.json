@@ -1,0 +1,47 @@
+{
+  "type": "interface",
+  "name": "BASISModule",
+  "sourcePath": "compressed-textures/basis/types.ts",
+  "extends": [],
+  "description": "export type BASISModuleCreator = (config: { locateFile: (file: string) => string }) => { then: (result: (libktx: BASISModule) => void) => void }; /** @internal */ export type BasisTextureConstructor = new (data: Uint8Array) => BasisTexture; /** @internal",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "BasisFile",
+      "type": "BasisTextureConstructor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "imageIndex",
+      "type": "number): number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "imageIndex",
+      "type": "number, levelIndex: number): number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "imageIndex",
+      "type": "number, levelIndex: number): number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "imageIndex",
+      "type": "number,\n        levelIndex: number,\n        format: number\n    ): number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "buffer",
+      "type": "Uint8Array,\n        imageIndex: number,\n        levelIndex: number,\n        format: number,\n        unused: number,\n        getAlphaForOpaqueFormats: number\n    ): boolean",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

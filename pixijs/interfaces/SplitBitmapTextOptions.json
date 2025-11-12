@@ -1,0 +1,73 @@
+{
+  "type": "interface",
+  "name": "SplitBitmapTextOptions",
+  "sourcePath": "scene/text-split/SplitBitmapText.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": "Configuration options for BitmapText splitting. / // eslint-disable-next-line @typescript-eslint/no-empty-object-type export interface SplitBitmapOptions extends AbstractSplitOptions {} /** Configuration options for SplitBitmapText, combining container properties with text splitting settings. ```ts const options: SplitBitmapTextOptions = { text: 'Hello World', style: { fontSize: 32, fill: 0xffffff }, // Transform origins lineAnchor: 0.5,                // Center each line wordAnchor: { x: 0, y: 0.5 },  // Left-center each word charAnchor: { x: 0.5, y: 1 },  // Bottom-center each char }; ``` ```ts const options: SplitBitmapTextOptions = { // Text content and style text: 'Multi\\nLine Text', style: new TextStyle({ fontSize: 24, fill: 'white', strokeThickness: 2, }), // Container properties x: 100, y: 100, alpha: 0.8, // Splitting settings autoSplit: true, // Transform origins (normalized 0-1) lineAnchor: { x: 1, y: 0 },    // Top-right wordAnchor: 0.5,               // Center charAnchor: { x: 0, y: 1 },    // Bottom-left }; ``` Properties: - Container options from {@link ContainerOptions} - Text splitting options from {@link SplitBitmapOptions} - Additional PixiJS-specific options from PixiMixins.SplitBitmapText",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "text",
+      "type": "\"Hello World\",\n *   style: { fontSize: 24 },\n *   // Origin points for transformations (0-1 range)\n *   lineAnchor: 0.5,  // Center of each line\n *   wordAnchor: { x: 0, y: 0.5 },  // Left-center of each word\n *   charAnchor: { x: 0.5, y: 1 },  // Bottom-center of each character\n *   autoSplit: true  // Auto-update segments on text/style changes\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Features",
+      "type": "* - Hierarchical text segmentation (lines → words → characters)\n * - Independent transformation origins for each segment level\n * - Automatic or manual segment updates\n * @example Animation Example\n * ```ts\n * // Character fade-in sequence\n * text.chars.forEach((char, i) => {\n *   gsap.from(char, {\n *     alpha: 0,\n *     delay: i * 0.1\n *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1.2, y: 1.2,\n *     yoyo: true,\n *     repeat: -1,\n *     delay: i * 0.2\n *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "-200,\n *     delay: i * 0.3\n *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Options",
+      "type": "* - `text`: The string to render and segment\n * - `style`: TextStyle instance or configuration object\n * - `autoSplit`: Automatically update segments on changes (default: true)\n * - `lineAnchor`: Transform origin for lines (default: 0)\n * - `wordAnchor`: Transform origin for words (default: 0)\n * - `charAnchor`: Transform origin for characters (default: 0)\n *\n * > [!NOTE] Anchor points are normalized (0-1):\n * > - 0,0: Top-left\n * > - 0.5,0.5: Center\n * > - 1,1: Bottom-right\n *\n * > [!WARNING] Limitations\n * > - Character spacing may differ slightly from standard text due to browser\n * >   kerning being lost when characters are separated\n * @category text\n * @standard\n */\nexport class SplitBitmapText extends AbstractSplitText<BitmapText>\n{\n    /**\n     * Default configuration options for SplitBitmapText instances.\n     * @example\n     * ```ts\n     * // Override defaults globally\n     * SplitBitmapText.defaultOptions = {\n     *   autoSplit: false,\n     *   lineAnchor: 0.5,  // Center alignment\n     *   wordAnchor: { x: 0, y: 0.5 },  // Left-center\n     *   charAnchor: { x: 0.5, y: 1 }   // Bottom-center\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultOptions",
+      "type": "Partial<SplitBitmapTextOptions> = {\n        autoSplit: true, // Auto-update on text/style changes\n        lineAnchor: 0, // Top-left alignment\n        wordAnchor: 0, // Top-left alignment\n        charAnchor: 0, // Top-left alignment\n    } as Partial<SplitBitmapTextOptions>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "config",
+      "type": "SplitBitmapTextOptions)\n    {\n        const completeOptions: SplitBitmapTextOptions = {\n            ...SplitBitmapText.defaultOptions,\n            ...config,\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Bitmap Text',\n     *   style: { fontFamily: 'Arial' }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoSplit",
+      "type": "false,\n     *   lineAnchor: 0.5,\n     *   wordAnchor: { x: 0, y: 0.5 },\n     * })\n     * ```\n     */\n    public static from(\n        text: BitmapText,\n        options?: Omit<SplitBitmapTextOptions, 'text' | 'style'>,\n    ): SplitBitmapText\n    {\n        const completeOptions: SplitBitmapTextOptions = {\n            ...SplitBitmapText.defaultOptions,\n            ...options,\n            text: text.text,\n            style: new TextStyle(text.style),\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "this._originalText,\n            style: this._style,\n            chars: this._canReuseChars ? this.chars : [],\n        })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,1021 @@
+{
+  "type": "class",
+  "name": "GpuTextureSystem",
+  "sourcePath": "rendering/renderers/gpu/texture/GpuTextureSystem.ts",
+  "extends": null,
+  "implements": [
+    "System",
+    "CanvasGenerator"
+  ],
+  "description": "The system that handles textures for the GPU.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "initSource",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GPUTexture",
+      "description": "public static extension = { type: [ ExtensionType.WebGPUSystem, ], name: 'texture', } as const; public readonly managedTextures: TextureSource[] = []; protected CONTEXT_UID: number; private _gpuSources: Record<number, GPUTexture> = Object.create(null); private _gpuSamplers: Record<string, GPUSampler> = Object.create(null); private _bindGroupHash: Record<string, BindGroup> = Object.create(null); private _textureViewHash: Record<string, GPUTextureView> = Object.create(null); private readonly _uploads: Record<string, GpuTextureUploader> = { image: gpuUploadImageResource, buffer: gpuUploadBufferImageResource, video: gpuUploadVideoResource, compressed: gpuUploadCompressedTextureResource }; private _gpu: GPU; private _mipmapGenerator?: GpuMipmapGenerator; private readonly _renderer: WebGPURenderer; constructor(renderer: WebGPURenderer) { this._renderer = renderer; renderer.renderableGC.addManagedHash(this, '_gpuSources'); renderer.renderableGC.addManagedHash(this, '_gpuSamplers'); renderer.renderableGC.addManagedHash(this, '_bindGroupHash'); renderer.renderableGC.addManagedHash(this, '_textureViewHash'); } protected contextChange(gpu: GPU): void { this._gpu = gpu; } /** Initializes a texture source, if it has already been initialized nothing will happen."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._gpuSources[source.uid]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source.autoGenerateMipmaps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "source.pixelWidth",
+          "type": null
+        },
+        {
+          "name": "source.pixelHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "Math.log2(biggestDimension",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source.uploadMethodId !== 'compressed'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "source.pixelWidth / blockData.blockWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "source.pixelHeight / blockData.blockHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createTexture",
+      "params": [
+        {
+          "name": "textureDescriptor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.managedTextures.includes(source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceResize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'unload'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUnload",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'updateMipmaps'",
+          "type": null
+        },
+        {
+          "name": "this.onUpdateMipmaps",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUpdate",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUpdate",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getGpuSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gpuTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._uploads[source.uploadMethodId]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "upload",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "gpuTexture",
+          "type": null
+        },
+        {
+          "name": "this._gpu",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source.autoGenerateMipmaps && source.mipLevelCount > 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdateMipmaps",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUnload",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdateMipmaps",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._mipmapGenerator",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GpuMipmapGenerator",
+      "params": [
+        {
+          "name": "this._gpu.device",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateMipmap",
+      "params": [
+        {
+          "name": "gpuTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceDestroy",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'unload'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUnload",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceResize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'updateMipmaps'",
+          "type": null
+        },
+        {
+          "name": "this.onUpdateMipmaps",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "this.managedTextures.indexOf(source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUnload",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceResize",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gpuTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuTexture.width !== source.pixelWidth || gpuTexture.height !== source.pixelHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUnload",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createSampler",
+      "params": [
+        {
+          "name": "sampler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuSampler",
+      "params": [
+        {
+          "name": "sampler",
+          "type": "TextureStyle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GPUSampler",
+      "description": null
+    },
+    {
+      "name": "getGpuSource",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GPUTexture",
+      "description": null
+    },
+    {
+      "name": "initSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTextureBindGroup",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "this returns s bind group for a specific texture, the bind group contains - the texture source - the texture style - the texture matrix This is cached so the bind group should only be created once per texture"
+    },
+    {
+      "name": "BindGroup",
+      "params": [
+        {
+          "name": "0",
+          "type": "source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "1",
+          "type": "source.style",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "2",
+          "type": "new UniformGroup({\n                uTextureMatrix: { type: 'mat3x3<f32>'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "value",
+          "type": "texture.textureMatrix.mapCoord }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTextureView",
+      "params": [
+        {
+          "name": "texture",
+          "type": "BindableTexture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuSource",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createView",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateCanvas",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "ICanvas",
+      "description": null
+    },
+    {
+      "name": "createCommandEncoder",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createCanvas",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getContext",
+      "params": [
+        {
+          "name": "'webgpu'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "configure",
+      "params": [
+        {
+          "name": "device",
+          "type": "renderer.gpu.device",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "usage",
+          "type": "GPUTextureUsage.COPY_DST | GPUTextureUsage.COPY_SRC",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "DOMAdapter.get(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getNavigator",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPreferredCanvasFormat",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyTextureToTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "renderer.texture.getGpuSource(texture.source",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCurrentTexture",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "submit",
+      "params": [
+        {
+          "name": "[commandEncoder.finish(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPixels",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GetPixelsOutput",
+      "description": null
+    },
+    {
+      "name": "generateCanvas",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getOptimalCanvasAndContext",
+      "params": [
+        {
+          "name": "webGPUCanvas.width",
+          "type": null
+        },
+        {
+          "name": "webGPUCanvas.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawImage",
+      "params": [
+        {
+          "name": "webGPUCanvas",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getImageData",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint8ClampedArray",
+      "params": [
+        {
+          "name": "imageData.data.buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnCanvasAndContext",
+      "params": [
+        {
+          "name": "canvasAndContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceDestroy",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const k of Object.keys(this._bindGroupHash",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Number",
+      "params": [
+        {
+          "name": "k",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

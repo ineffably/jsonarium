@@ -1,0 +1,23 @@
+{
+  "type": "interface",
+  "name": "HighShaderSource",
+  "sourcePath": "rendering/high-shader/compiler/types.ts",
+  "extends": [],
+  "description": "used to make the shader easier to understand! */ name?: string; /** the snippets of vertex code */ vertex?: Vertex; /** the snippets of fragment code */ fragment?: Fragment; } /** source code to compile a shader. this can be directly used by pixi and should be good to go! It contains the vertex and fragment source code. This is the final output of the HighShader compiler. It is used to create a shader program.",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "fragment",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "string",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

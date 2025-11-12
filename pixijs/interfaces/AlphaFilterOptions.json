@@ -1,0 +1,67 @@
+{
+  "type": "interface",
+  "name": "AlphaFilterOptions",
+  "sourcePath": "filters/defaults/alpha/AlphaFilter.ts",
+  "extends": [
+    "FilterOptions"
+  ],
+  "description": "Options for AlphaFilter",
+  "category": "filters",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "alpha",
+      "type": "number",
+      "optional": false,
+      "description": "Amount of alpha from 0 to 1, where 0 is transparent"
+    },
+    {
+      "name": "alpha",
+      "type": "1,\n    }",
+      "optional": false,
+      "description": "Simplest filter - applies alpha. Use this instead of Container's alpha property to avoid visual layering of individual elements. AlphaFilter applies alpha evenly across the entire display object and any opaque elements it contains. If elements are not opaque, they will blend with each other anyway. Very handy if you want to use common features of all filters: 1. Assign a blendMode to this filter, blend all elements inside display object with background. 2. To use clipping in display coordinates, assign a filterArea to the same container that has this filter. import { AlphaFilter } from 'pixi.js'; const filter = new AlphaFilter({ alpha: 0.5 }); sprite.filters = filter; // update alpha filter.alpha = 0.8; / export class AlphaFilter extends Filter { /** Default options for the AlphaFilter. ```ts AlphaFilter.defaultOptions = { alpha: 0.5, // Default alpha value }; // Use default options const filter = new AlphaFilter(); // Uses default alpha of 0.5 ``` / public static defaultOptions: AlphaFilterOptions = { /** Amount of alpha transparency to apply. - 0 = fully transparent - 1 = fully opaque (default)"
+    },
+    {
+      "name": "options",
+      "type": "AlphaFilterOptions)\n    {\n        options = { ...AlphaFilter.defaultOptions, ...options }",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "{\n                source,\n                entryPoint: 'mainVertex',\n            },\n            fragment: {\n                source,\n                entryPoint: 'mainFragment',\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'alpha-filter'\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uAlpha",
+      "type": "{ value: alpha, type: 'f32' },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resources",
+      "type": "{\n                alphaUniforms\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alpha",
+      "type": "0.5 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number) { this.resources.alphaUniforms.uniforms.uAlpha = value",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

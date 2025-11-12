@@ -1,0 +1,73 @@
+{
+  "type": "interface",
+  "name": "MaskFilterOptions",
+  "sourcePath": "filters/mask/MaskFilter.ts",
+  "extends": [
+    "FilterOptions"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "sprite",
+      "type": "Sprite,\n    inverse?: boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "type": "number | { x: number, y: number },\n}\n\n/** @internal */\nexport class MaskFilter extends Filter\n{\n    public sprite: Sprite",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "_textureMatrix",
+      "type": "TextureMatrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "MaskFilterOptions)\n    {\n        const { sprite, ...rest } = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uFilterMatrix",
+      "type": "{ value: new Matrix(), type: 'mat3x3<f32>' },\n            uMaskClamp: { value: textureMatrix.uClampFrame, type: 'vec4<f32>' },\n            uAlpha: { value: 1, type: 'f32' },\n            uInverse: { value: options.inverse ? 1 : 0, type: 'f32' },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "{\n                source,\n                entryPoint: 'mainVertex',\n            },\n            fragment: {\n                source,\n                entryPoint: 'mainFragment',\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'mask-filter',\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "clipToViewport",
+      "type": "false,\n            resources: {\n                filterUniforms,\n                uMaskTexture: sprite.texture.source,\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        this.resources.filterUniforms.uniforms.uInverse = value ? 1 : 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filterManager",
+      "type": "FilterSystem,\n        input: Texture,\n        output: Texture,\n        clearMode: boolean\n    ): void\n    {\n        // will trigger an update if the texture changed..\n        this._textureMatrix.texture = this.sprite.texture",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

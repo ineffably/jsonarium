@@ -1,0 +1,65 @@
+{
+  "type": "interface",
+  "name": "WebGLContextEventMap",
+  "sourcePath": "environment/canvas/ICanvas.ts",
+  "extends": [],
+  "description": "The x-coordinate of the rectangle's top-left corner. */ x: number; /** The y-coordinate of the rectangle's top-left corner. */ y: number; /** The width of the rectangle. */ width: number; /** The height of the rectangle. */ height: number; } /** WebGL context events.",
+  "category": "environment",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": "Common interface for HTMLCanvasElement, OffscreenCanvas, and other custom canvas classes. / export interface ICanvas extends PixiMixins.ICanvas, Partial<EventTarget> { /** Width of the canvas."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": "Height of the canvas."
+    },
+    {
+      "name": "addEventListener",
+      "type": "{\n        (\n            type: string,\n            listener: EventListenerOrEventListenerObject,\n            options?: boolean | AddEventListenerOptions): void",
+      "optional": true,
+      "description": "Get rendering context of the canvas. / getContext( contextId: '2d', options?: ICanvasRenderingContext2DSettings, ): ICanvasRenderingContext2D | null; getContext( contextId: 'bitmaprenderer', options?: ImageBitmapRenderingContextSettings, ): ImageBitmapRenderingContext | null; getContext( contextId: 'webgl' | 'experimental-webgl', options?: WebGLContextAttributes, ): WebGLRenderingContext | null; getContext( contextId: 'webgl2' | 'experimental-webgl2', options?: WebGLContextAttributes, ): WebGL2RenderingContext | null; getContext( contextId: 'webgpu', ): GPUCanvasContext | null; getContext( contextId: ContextIds, options?: ContextSettings, ): RenderingContext | null; /** Get the content of the canvas as data URL. that type is also used if the given type isn't supported. creating images using file formats that support lossy compression (such as `image/jpeg` or `image/webp`). A user agent will use its default quality value if this option is not specified, or if the number is outside the allowed range. / toDataURL?(type?: string, quality?: number): string; /** Creates a Blob from the content of the canvas. as a single argument. `null` may be passed if the image cannot be created for any reason. that type is also used if the given type isn't supported. creating images using file formats that support lossy compression (such as `image/jpeg` or `image/webp`). A user agent will use its default quality value if this option is not specified, or if the number is outside the allowed range. / toBlob?(callback: (blob: Blob | null) => void, type?: string, quality?: number): void; /** Get the content of the canvas as Blob. that type is also used if the given type isn't supported. creating images using file formats that support lossy compression (such as `image/jpeg` or `image/webp`). A user agent will use its default quality value if this option is not specified, or if the number is outside the allowed range. / convertToBlob?(options?: { type?: string, quality?: number }): Promise<Blob>; /** Adds the listener for the specified event."
+    },
+    {
+      "name": "type",
+      "type": "K,\n            listener: (this: ICanvas, ev: WebGLContextEventMap[K]) => any,\n            options?: boolean | AddEventListenerOptions): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "removeEventListener",
+      "type": "{\n        (\n            type: string,\n            listener: EventListenerOrEventListenerObject,\n            options?: boolean | EventListenerOptions): void",
+      "optional": true,
+      "description": "Removes the listener for the specified event."
+    },
+    {
+      "name": "type",
+      "type": "K,\n            listener: (this: ICanvas, ev: WebGLContextEventMap[K]) => any,\n            options?: boolean | EventListenerOptions): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "event",
+      "type": "Event): boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parentNode",
+      "type": "ICanvasParentNode | null",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "style",
+      "type": "ICanvasStyle",
+      "optional": true,
+      "description": null
+    }
+  ]
+}

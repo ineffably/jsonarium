@@ -1,0 +1,65 @@
+{
+  "type": "interface",
+  "name": "GetGlobalMixin",
+  "sourcePath": "scene/container/container-mixins/getGlobalMixin.ts",
+  "extends": [],
+  "description": "Converts a color from BGR format to RGB format. / export function bgr2rgb(color: number): number { return ((color & 0xFF) << 16) + (color & 0xFF00) + ((color >> 16) & 0xFF); } /** Interface for a mixin that provides methods to retrieve global properties of a container. This mixin allows you to get the global alpha, transform matrix, and tint color of a container, taking into account its parent containers and render groups. It includes methods to optimize performance by using cached values when available.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "flag",
+      "type": "*   - If false (default): Recalculates the entire alpha chain through parents for accuracy\n     *   - If true: Uses cached worldAlpha from the last render pass for better performance\n     * @returns The resulting alpha value (between 0 and 1)\n     * @example\n     * ```ts\n     * // Accurate but slower - recalculates entire alpha chain\n     * const preciseAlpha = container.getGlobalAlpha()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "skipUpdate",
+      "type": "boolean): number",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "flag",
+      "type": "*   - If false (default): Recalculates the entire transform chain for accuracy\n     *   - If true: Uses cached worldTransform from the last render pass for better performance\n     * @returns The resulting transformation matrix (either the input matrix or a new one)\n     * @example\n     * ```ts\n     * // Accurate but slower - recalculates entire transform chain\n     * const preciseTransform = container.getGlobalTransform()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matrix",
+      "type": "Matrix, skipUpdate?: boolean): Matrix",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "flag",
+      "type": "*   - If false (default): Recalculates the entire tint chain through parents for accuracy\n     *   - If true: Uses cached worldColor from the last render pass for better performance\n     * @returns The resulting tint color as a 24-bit RGB number (0xRRGGBB)\n     * @example\n     * ```ts\n     * // Accurate but slower - recalculates entire tint chain\n     * const preciseTint = container.getGlobalTint()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "skipUpdate",
+      "type": "boolean): number",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "getGlobalMixin",
+      "type": "Partial<Container> = {\n    getGlobalAlpha(skipUpdate?: boolean): number\n    {\n        if (skipUpdate)\n        {\n            if (this.renderGroup)\n            {\n                return this.renderGroup.worldAlpha",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "skipUpdate",
+      "type": "boolean): Matrix\n    {\n        if (skipUpdate)\n        {\n            return matrix.copyFrom(this.worldTransform)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "skipUpdate",
+      "type": "boolean): number\n    {\n        if (skipUpdate)\n        {\n            if (this.renderGroup)\n            {\n                return bgr2rgb(this.renderGroup.worldColor)",
+      "optional": true,
+      "description": null
+    }
+  ]
+}

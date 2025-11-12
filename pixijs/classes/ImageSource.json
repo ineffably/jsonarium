@@ -1,0 +1,48 @@
+{
+  "type": "class",
+  "name": "ImageSource",
+  "sourcePath": "rendering/renderers/shared/texture/sources/ImageSource.ts",
+  "extends": "TextureSource",
+  "implements": [],
+  "description": "The type of image-like resource that can be used as a texture source. - `ImageBitmap` is used for bitmap images. - `HTMLCanvasElement` and `OffscreenCanvas` are used for canvas elements. - `ICanvas` is an interface for canvas-like objects. - `VideoFrame` is used for video frames. - `HTMLImageElement` is used for HTML image elements. - `HTMLVideoElement` is used for HTML video elements. / export type ImageResource = ImageBitmap | HTMLCanvasElement | OffscreenCanvas | ICanvas | VideoFrame | HTMLImageElement | HTMLVideoElement; /** A texture source that uses an image-like resource as its resource. It can handle HTMLImageElement, ImageBitmap, VideoFrame, and HTMLVideoElement. It is used for textures that can be uploaded to the GPU.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "resource",
+          "type": "any",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "resource is ImageResource",
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "globalThis.HTMLImageElement && resource instanceof HTMLImageElement",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

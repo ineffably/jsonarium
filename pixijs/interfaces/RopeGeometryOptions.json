@@ -1,0 +1,65 @@
+{
+  "type": "interface",
+  "name": "RopeGeometryOptions",
+  "sourcePath": "scene/mesh-simple/RopeGeometry.ts",
+  "extends": [],
+  "description": "Constructor options used for `RopeGeometry` instances. ```js const ropeGeometry = new RopeGeometry({ points: [new Point(0, 0), new Point(100, 0)], width: 10, textureScale: 0, }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": true,
+      "description": "The width (i.e., thickness) of the rope."
+    },
+    {
+      "name": "points",
+      "type": "PointData[]",
+      "optional": true,
+      "description": "An array of points that determine the rope."
+    },
+    {
+      "name": "textureScale",
+      "type": "number",
+      "optional": true,
+      "description": "Rope texture scale, if zero then the rope texture is stretched. By default the rope texture will be stretched to match rope length. If textureScale is positive this value will be treated as a scaling factor and the texture will preserve its aspect ratio instead. To create a tiling rope set baseTexture.wrapMode to 'repeat' and use a power of two texture, then set textureScale=1 to keep the original texture pixel size. In order to reduce alpha channel artifacts provide a larger texture and downsample - i.e. set textureScale=0.5 to scale it down twice."
+    },
+    {
+      "name": "width",
+      "type": "200,\n        /** An array of points that determine the rope. */\n        points: [],\n        /** Rope texture scale, if zero then the rope texture is stretched. */\n        textureScale: 0,\n    }",
+      "optional": false,
+      "description": "RopeGeometry allows you to draw a geometry across several points and then manipulate these points. import { Point, RopeGeometry } from 'pixi.js'; for (let i = 0; i < 20; i++) { points.push(new Point(i * 50, 0)); }; const rope = new RopeGeometry(100, points); / export class RopeGeometry extends MeshGeometry { /** Default options for RopeGeometry constructor. */ public static defaultOptions: RopeGeometryOptions & MeshGeometryOptions = { /** The width (i.e., thickness) of the rope."
+    },
+    {
+      "name": "points",
+      "type": "PointData[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureScale",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "RopeGeometryOptions)\n    {\n        const { width, points, textureScale } = { ...RopeGeometry.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "positions",
+      "type": "new Float32Array(points.length * 4),\n            uvs: new Float32Array(points.length * 4),\n            indices: new Uint32Array((points.length - 1) * 6),\n        })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

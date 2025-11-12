@@ -1,0 +1,72 @@
+{
+  "type": "class",
+  "name": "State",
+  "sourcePath": "rendering/renderers/shared/state/State.ts",
+  "extends": null,
+  "implements": [],
+  "description": "This is a WebGL state, and is is passed to {@link GlStateSystem}. Each mesh rendered may require WebGL to be in a different state. For example you may want different blend mode or to enable polygon offsets",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "for2d",
+      "params": [],
+      "returnType": "State",
+      "description": "The data is a unique number based on the states settings. This lets us quickly compare states with a single number rather than looking at all the individual settings. / public data: number; /** @internal */ public _blendModeId: number; private _blendMode: BLEND_MODES; private _polygonOffset: number; constructor() { this.data = 0; this.blendMode = 'normal'; this.polygonOffset = 0; this.blend = true; this.depthMask = true; } /** Activates blending of the computed fragment color values. / get blend(): boolean { return !!(this.data & (1 << BLEND)); } set blend(value: boolean) { if (!!(this.data & (1 << BLEND)) !== value) { this.data ^= (1 << BLEND); } } /** Activates adding an offset to depth values of polygon's fragments / get offsets(): boolean { return !!(this.data & (1 << OFFSET)); } set offsets(value: boolean) { if (!!(this.data & (1 << OFFSET)) !== value) { this.data ^= (1 << OFFSET); } } /** The culling settings for this state none - No culling back - Back face culling front - Front face culling */ set cullMode(value: CULL_MODES) { if (value === 'none') { this.culling = false; return; } this.culling = true; this.clockwiseFrontFace = value === 'front'; } get cullMode(): CULL_MODES { if (!this.culling) { return 'none'; } return this.clockwiseFrontFace ? 'front' : 'back'; } /** Activates culling of polygons. / get culling(): boolean { return !!(this.data & (1 << CULLING)); } set culling(value: boolean) { if (!!(this.data & (1 << CULLING)) !== value) { this.data ^= (1 << CULLING); } } /** Activates depth comparisons and updates to the depth buffer. / get depthTest(): boolean { return !!(this.data & (1 << DEPTH_TEST)); } set depthTest(value: boolean) { if (!!(this.data & (1 << DEPTH_TEST)) !== value) { this.data ^= (1 << DEPTH_TEST); } } /** Enables or disables writing to the depth buffer. / get depthMask(): boolean { return !!(this.data & (1 << DEPTH_MASK)); } set depthMask(value: boolean) { if (!!(this.data & (1 << DEPTH_MASK)) !== value) { this.data ^= (1 << DEPTH_MASK); } } /** Specifies whether or not front or back-facing polygons can be culled. / get clockwiseFrontFace(): boolean { return !!(this.data & (1 << WINDING)); } set clockwiseFrontFace(value: boolean) { if (!!(this.data & (1 << WINDING)) !== value) { this.data ^= (1 << WINDING); } } /** The blend mode to be applied when this state is set. Apply a value of `normal` to reset the blend mode. Setting this mode to anything other than NO_BLEND will automatically switch blending on. / get blendMode(): BLEND_MODES { return this._blendMode; } set blendMode(value: BLEND_MODES) { this.blend = (value !== 'none'); this._blendMode = value; this._blendModeId = blendModeIds[value as keyof typeof blendModeIds] || 0; } /** The polygon offset. Setting this property to anything other than 0 will automatically enable polygon offset fill. / get polygonOffset(): number { return this._polygonOffset; } set polygonOffset(value: number) { this.offsets = !!value; this._polygonOffset = value; } // #if _DEBUG public toString(): string { return `[pixi.js/core:State ` + `blendMode=${this.blendMode} ` + `clockwiseFrontFace=${this.clockwiseFrontFace} ` + `culling=${this.culling} ` + `depthMask=${this.depthMask} ` + `polygonOffset=${this.polygonOffset}` + `]`; } // #endif /** A quickly getting an instance of a State that is configured for 2d rendering."
+    },
+    {
+      "name": "State",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for2d",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "blend",
+      "type": "boolean",
+      "description": "Activates blending of the computed fragment color values."
+    },
+    {
+      "name": "offsets",
+      "type": "boolean",
+      "description": "Activates adding an offset to depth values of polygon's fragments"
+    },
+    {
+      "name": "culling",
+      "type": "boolean",
+      "description": "Activates culling of polygons."
+    },
+    {
+      "name": "depthTest",
+      "type": "boolean",
+      "description": "Activates depth comparisons and updates to the depth buffer."
+    },
+    {
+      "name": "depthMask",
+      "type": "boolean",
+      "description": "Enables or disables writing to the depth buffer."
+    },
+    {
+      "name": "clockwiseFrontFace",
+      "type": "boolean",
+      "description": "Specifies whether or not front or back-facing polygons can be culled."
+    },
+    {
+      "name": "blendMode",
+      "type": "BLEND_MODES",
+      "description": "The blend mode to be applied when this state is set. Apply a value of `normal` to reset the blend mode. Setting this mode to anything other than NO_BLEND will automatically switch blending on."
+    },
+    {
+      "name": "polygonOffset",
+      "type": "number",
+      "description": "The polygon offset. Setting this property to anything other than 0 will automatically enable polygon offset fill."
+    }
+  ]
+}

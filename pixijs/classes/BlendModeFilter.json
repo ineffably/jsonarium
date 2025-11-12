@@ -1,0 +1,216 @@
+{
+  "type": "class",
+  "name": "BlendModeFilter",
+  "sourcePath": "filters/blend-modes/BlendModeFilter.ts",
+  "extends": "Filter",
+  "implements": [],
+  "description": "export interface BlendModeFilterOptions { source?: string; gpu?: { functions?: string; main?: string; } gl?: { functions?: string; main?: string; } } /** @internal",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "compileBlendModeShader",
+      "params": [
+        {
+          "name": "source",
+          "type": "blendTemplate",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "...gpuOptions }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "vertex",
+          "type": "{\n                source: gpuSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainVertex'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": "{\n                source: gpuSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainFragment'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compileBlendModeShader",
+      "params": [
+        {
+          "name": "source",
+          "type": "blendTemplateFrag",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "...glOptions }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "vertex",
+          "type": "blendTemplateVert",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fragment",
+          "type": "glSource\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uBlend",
+          "type": "{\n                value: 1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'f32'\n            }\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            gpuProgram",
+          "type": null
+        },
+        {
+          "name": "glProgram",
+          "type": null
+        },
+        {
+          "name": "blendRequired",
+          "type": "true",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                blendUniforms: uniformGroup",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "uBackTexture",
+          "type": "Texture.EMPTY\n            }\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compileBlendModeShader",
+      "params": [
+        {
+          "name": "options",
+          "type": "{source: string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "functions",
+          "type": "string",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "main",
+          "type": "string}",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "string",
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "'{FUNCTIONS}'",
+          "type": null
+        },
+        {
+          "name": "functions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "'{MAIN}'",
+          "type": null
+        },
+        {
+          "name": "main",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

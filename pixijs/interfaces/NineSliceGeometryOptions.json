@@ -1,0 +1,83 @@
+{
+  "type": "interface",
+  "name": "NineSliceGeometryOptions",
+  "sourcePath": "scene/sprite-nine-slice/NineSliceGeometry.ts",
+  "extends": [],
+  "description": "Options for the NineSliceGeometry.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number\n    /** The height of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */\n    height?: number\n    /** The original width of the texture */\n    originalWidth?: number\n    /** The original height of the texture */\n    originalHeight?: number\n    /** The width of the left column. */\n    leftWidth?: number\n    /** The height of the top row. */\n    topHeight?: number\n    /** The width of the right column. */\n    rightWidth?: number\n    /** The height of the bottom row. */\n    bottomHeight?: number\n\n    /** The anchor point of the NineSliceSprite. */\n    anchor?: PointData\n}\n\n/**\n * The NineSliceGeometry class allows you to create a NineSlicePlane object.\n * @category scene\n * @advanced\n */\nexport class NineSliceGeometry extends PlaneGeometry\n{\n    /** The default options for the NineSliceGeometry. */\n    public static defaultOptions: NineSliceGeometryOptions = {\n        /** The width of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */\n        width: 100,\n        /** The height of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */\n        height: 100,\n        /** The width of the left column. */\n        leftWidth: 10,\n        /** The height of the top row. */\n        topHeight: 10,\n        /** The width of the right column. */\n        rightWidth: 10,\n        /** The height of the bottom row. */\n        bottomHeight: 10,\n\n        /** The original width of the texture */\n        originalWidth: 100,\n        /** The original height of the texture */\n        originalHeight: 100,\n    }",
+      "optional": true,
+      "description": "The width of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane."
+    },
+    {
+      "name": "_leftWidth",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_rightWidth",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_topHeight",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_bottomHeight",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_originalWidth",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_originalHeight",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_anchorX",
+      "type": "any",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_anchorY",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "NineSliceGeometryOptions = {})\n    {\n        options = { ...NineSliceGeometry.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "options.width,\n            height: options.height,\n            verticesX: 4,\n            verticesY: 4,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "NineSliceGeometryOptions)\n    {\n        this.width = options.width ?? this.width",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

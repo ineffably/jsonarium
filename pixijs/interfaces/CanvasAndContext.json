@@ -1,0 +1,65 @@
+{
+  "type": "interface",
+  "name": "CanvasAndContext",
+  "sourcePath": "rendering/renderers/shared/texture/CanvasPool.ts",
+  "extends": [],
+  "description": "A utility type that represents a canvas and its rendering context.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "canvas",
+      "type": "ICanvas",
+      "optional": false,
+      "description": "The canvas element."
+    },
+    {
+      "name": "context",
+      "type": "ICanvasRenderingContext2D",
+      "optional": false,
+      "description": "The rendering context of the canvas."
+    },
+    {
+      "name": "canvasOptions",
+      "type": "ICanvasRenderingContext2DSettings",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "enableFullScreen",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_canvasPool",
+      "type": "{[x in string | number]: CanvasAndContext[]}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "canvasOptions",
+      "type": "ICanvasRenderingContext2DSettings)\n    {\n        this._canvasPool = Object.create(null)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "pixelWidth",
+      "type": "number, pixelHeight: number): CanvasAndContext\n    {\n        const canvas = DOMAdapter.get().createCanvas()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "minWidth",
+      "type": "number, minHeight: number, resolution = 1): CanvasAndContext\n    {\n        minWidth = Math.ceil((minWidth * resolution) - 1e-6)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "canvasAndContext",
+      "type": "CanvasAndContext): void\n    {\n        const canvas = canvasAndContext.canvas",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

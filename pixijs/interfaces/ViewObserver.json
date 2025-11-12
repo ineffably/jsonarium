@@ -1,0 +1,47 @@
+{
+  "type": "interface",
+  "name": "ViewObserver",
+  "sourcePath": "rendering/renderers/shared/view/View.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "onViewUpdate",
+      "type": "() => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "batched",
+      "type": "boolean",
+      "optional": false,
+      "description": "A view is something that is able to be rendered by the renderer. / export interface View { /** a unique id for this view */ readonly uid: number; /** whether or not this view should be batched"
+    },
+    {
+      "name": "_roundPixels",
+      "type": "0 | 1",
+      "optional": false,
+      "description": "an identifier that is used to identify the type of system that will be used to render this renderable eg, 'sprite' will use the sprite system (based on the systems name / readonly renderPipeId: string; /** this is an int because it is packed directly into an attribute in the shader"
+    },
+    {
+      "name": "_lastUsed",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bounds",
+      "type": "BoundsData",
+      "optional": false,
+      "description": "Whether or not to round the x/y position of the object. / get roundPixels(): boolean; /** if true, the view will have its position rounded to the nearest whole number */ set roundPixels(value: boolean); /** this is the AABB rectangle bounds of the view in local untransformed space."
+    },
+    {
+      "name": "containsPoint",
+      "type": "(point: Point) => boolean",
+      "optional": false,
+      "description": "Checks if the point is within the view"
+    }
+  ]
+}

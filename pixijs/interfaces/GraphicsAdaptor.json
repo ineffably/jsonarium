@@ -1,0 +1,125 @@
+{
+  "type": "interface",
+  "name": "GraphicsAdaptor",
+  "sourcePath": "scene/graphics/shared/GraphicsPipe.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "shader",
+      "type": "Shader",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphicsPipe",
+      "type": "GraphicsPipe, renderable: Graphics): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "batches",
+      "type": "BatchableGraphics[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "[\n            ExtensionType.WebGLPipes,\n            ExtensionType.WebGPUPipes,\n            ExtensionType.CanvasPipes,\n        ],\n        name: 'graphics',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "state",
+      "type": "State = State.for2d()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_adaptor",
+      "type": "GraphicsAdaptor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer, adaptor: GraphicsAdaptor)\n    {\n        this.renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics): boolean\n    {\n        // assume context is dirty..\n        const context = graphics.context",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics, instructionSet: InstructionSet)\n    {\n        const gpuContext = this.renderer.graphicsContext.updateGpuContext(graphics.context)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics)\n    {\n        const gpuData = this._getGpuDataForRenderable(graphics)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics)\n    {\n        if (!graphics.isRenderable) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics)\n    {\n        const gpuData = this._getGpuDataForRenderable(graphics)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics, instructionSet: InstructionSet)\n    {\n        const batchPipe = this.renderer.renderPipes.batch",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics): GraphicsGpuData\n    {\n        return graphics._gpuData[this.renderer.uid] || this._initGpuDataForRenderable(graphics)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics): GraphicsGpuData\n    {\n        const gpuData = new GraphicsGpuData()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "type": "Graphics, gpuData: GraphicsGpuData)\n    {\n        const context = graphics.context",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "gpuContext",
+      "type": "GpuGraphicsContext = this.renderer.graphicsContext.getGpuContext(context)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

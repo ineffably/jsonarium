@@ -1,0 +1,2089 @@
+{
+  "type": "class",
+  "name": "SceneManager",
+  "sourcePath": "scene/SceneManager.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function SceneManager (game",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sceneConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "sceneConfig.hasOwnProperty('extend'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": "The Game that this SceneManager belongs to. / this.game = game; /** An object that maps the keys to the scene so we can quickly get a scene from a key without iteration. / this.keys = {}; /** The array in which all of the scenes are kept. / this.scenes = []; /** Scenes pending to be added are stored in here until the manager has time to add it. / this._pending = []; /** An array of scenes waiting to be started once the game has booted. / this._start = []; /** An operations queue, because we don't manipulate the scenes array during processing. / this._queue = []; /** Boot time data to merge. / this._data = {}; /** Is the Scene Manager actively processing the Scenes list? / this.isProcessing = false; /** Has the Scene Manager properly started? / this.isBooted = false; /** Do any of the Cameras in any of the Scenes require a custom viewport? If not we can skip scissor tests. / this.customViewports = 0; /** This system Scene is created during `bootQueue` and is a default empty Scene that lives outside of the Scene list, but can be used by plugins and managers that need access to a live Scene, without being tied to one. / this.systemScene; if (sceneConfig) { if (!Array.isArray(sceneConfig)) { sceneConfig = [ sceneConfig ]; } for (var i = 0; i < sceneConfig.length; i++) { //  The i === 0 part just autostarts the first Scene given (unless it says otherwise in its config) this._pending.push({ key: 'default', scene: sceneConfig[i], autoStart: (i === 0), data: {} }); } } game.events.once(GameEvents.READY, this.bootQueue, this); }, /** Internal first-time Scene boot handler. / bootQueue: function () { if (this.isBooted) { return; } //  Create the system Scene this.systemScene = this.createSceneFromInstance('__SYSTEM', new Scene()); this.game.events.emit(GameEvents.SYSTEM_READY, this.systemScene, this); var i; var entry; var key; var sceneConfig; for (i = 0; i < this._pending.length; i++) { entry = this._pending[i]; key = entry.key; sceneConfig = entry.scene; var newScene; if (sceneConfig instanceof Scene) { newScene = this.createSceneFromInstance(key, sceneConfig); } else if (typeof sceneConfig === 'object') { newScene = this.createSceneFromObject(key, sceneConfig); } else if (typeof sceneConfig === 'function') { newScene = this.createSceneFromFunction(key, sceneConfig); } //  Replace key in case the scene changed it key = newScene.sys.settings.key; this.keys[key] = newScene; this.scenes.push(newScene); //  Any data to inject? if (this._data[key]) { newScene.sys.settings.data = this._data[key].data; if (this._data[key].autoStart) { entry.autoStart = true; } } if (entry.autoStart || newScene.sys.settings.active) { this._start.push(key); } } //  Clear the pending lists this._pending.length = 0; this._data = {}; this.isBooted = true; //  _start might have been populated by the above for (i = 0; i < this._start.length; i++) { entry = this._start[i]; this.start(entry); } this._start.length = 0; }, /** Process the Scene operations queue. / processQueue: function () { var pendingLength = this._pending.length; var queueLength = this._queue.length; if (pendingLength === 0 && queueLength === 0) { return; } var i; var entry; if (pendingLength) { for (i = 0; i < pendingLength; i++) { entry = this._pending[i]; this.add(entry.key, entry.scene, entry.autoStart, entry.data); } //  _start might have been populated by this.add for (i = 0; i < this._start.length; i++) { entry = this._start[i]; this.start(entry); } //  Clear the pending lists this._start.length = 0; this._pending.length = 0; } for (i = 0; i < this._queue.length; i++) { entry = this._queue[i]; this[entry.op](entry.keyA, entry.keyB, entry.data); } this._queue.length = 0; }, /** Adds a new Scene into the SceneManager. You must give each Scene a unique key by which you'll identify it. The `sceneConfig` can be: * A `Phaser.Scene` object, or an object that extends it. * A plain JavaScript object * A JavaScript ES6 Class that extends `Phaser.Scene` * A JavaScript ES5 prototype based Class * A JavaScript function If a function is given then a new Scene will be created by calling it. / add: function (key, sceneConfig, autoStart, data) { if (autoStart === undefined) { autoStart = false; } if (data === undefined) { data = {}; } //  If processing or not booted then put scene into a holding pattern if (this.isProcessing || !this.isBooted) { this._pending.push({ key: key, scene: sceneConfig, autoStart: autoStart, data: data }); if (!this.isBooted) { this._data[key] = { data: data }; } return null; } key = this.getKey(key, sceneConfig); var newScene; if (sceneConfig instanceof Scene) { newScene = this.createSceneFromInstance(key, sceneConfig); } else if (typeof sceneConfig === 'object') { sceneConfig.key = key; newScene = this.createSceneFromObject(key, sceneConfig); } else if (typeof sceneConfig === 'function') { newScene = this.createSceneFromFunction(key, sceneConfig); } //  Any data to inject? newScene.sys.settings.data = data; //  Replace key in case the scene changed it key = newScene.sys.settings.key; this.keys[key] = newScene; this.scenes.push(newScene); if (autoStart || newScene.sys.settings.active) { if (this._pending.length) { this._start.push(key); } else { this.start(key); } } return newScene; }, /** Removes a Scene from the SceneManager. The Scene is removed from the local scenes array, it's key is cleared from the keys cache and Scene.Systems.destroy is then called on it. If the SceneManager is processing the Scenes when this method is called it will queue the operation for the next update sequence. / remove: function (key) { if (this.isProcessing) { return this.queueOp('remove', key); } var sceneToRemove = this.getScene(key); if (!sceneToRemove || sceneToRemove.sys.isTransitioning()) { return this; } var index = this.scenes.indexOf(sceneToRemove); var sceneKey = sceneToRemove.sys.settings.key; if (index > -1) { delete this.keys[sceneKey]; this.scenes.splice(index, 1); if (this._start.indexOf(sceneKey) > -1) { index = this._start.indexOf(sceneKey); this._start.splice(index, 1); } sceneToRemove.sys.destroy(); } return this; }, /** Boot the given Scene. / bootScene: function (scene) { var sys = scene.sys; var settings = sys.settings; sys.sceneUpdate = NOOP; if (scene.init) { scene.init.call(scene, settings.data); settings.status = CONST.INIT; if (settings.isTransition) { sys.events.emit(Events.TRANSITION_INIT, settings.transitionFrom, settings.transitionDuration); } } var loader; if (sys.load) { loader = sys.load; loader.reset(); } if (loader && scene.preload) { scene.preload.call(scene); settings.status = CONST.LOADING; //  Start the loader going as we have something in the queue loader.once(LoaderEvents.COMPLETE, this.loadComplete, this); loader.start(); } else { //  No preload? Then there was nothing to load either this.create(scene); } }, /** Handles load completion for a Scene's Loader. Starts the Scene that the Loader belongs to. / loadComplete: function (loader) { this.create(loader.scene); }, /** Handle payload completion for a Scene. / payloadComplete: function (loader) { this.bootScene(loader.scene); }, /** Updates the Scenes. / update: function (time, delta) { this.processQueue(); this.isProcessing = true; //  Loop through the active scenes in reverse order for (var i = this.scenes.length - 1; i >= 0; i--) { var sys = this.scenes[i].sys; if (sys.settings.status > CONST.START && sys.settings.status <= CONST.RUNNING) { sys.step(time, delta); } if (sys.scenePlugin && sys.scenePlugin._target) { sys.scenePlugin.step(time, delta); } } }, /** Renders the Scenes. / render: function (renderer) { //  Loop through the scenes in forward order for (var i = 0; i < this.scenes.length; i++) { var sys = this.scenes[i].sys; if (sys.settings.visible && sys.settings.status >= CONST.LOADING && sys.settings.status < CONST.SLEEPING) { sys.render(renderer); } } this.isProcessing = false; }, /** Calls the given Scene's {@link Phaser.Scene#create} method and updates its status. / create: function (scene) { var sys = scene.sys; var settings = sys.settings; if (scene.create) { settings.status = CONST.CREATING; scene.create.call(scene, settings.data); if (settings.status === CONST.DESTROYED) { return; } } if (settings.isTransition) { sys.events.emit(Events.TRANSITION_START, settings.transitionFrom, settings.transitionDuration); } //  If the Scene has an update function we'll set it now, otherwise it'll remain as NOOP if (scene.update) { sys.sceneUpdate = scene.update; } settings.status = CONST.RUNNING; sys.events.emit(Events.CREATE, scene); }, /** Creates and initializes a Scene from a function. / createSceneFromFunction: function (key, scene) { var newScene = new scene(); if (newScene instanceof Scene) { var configKey = newScene.sys.settings.key; if (configKey !== '') { key = configKey; } if (this.keys.hasOwnProperty(key)) { throw new Error('Cannot add Scene with duplicate key: ' + key); } return this.createSceneFromInstance(key, newScene); } else { newScene.sys = new Systems(newScene); newScene.sys.settings.key = key; newScene.sys.init(this.game); return newScene; } }, /** Creates and initializes a Scene instance. / createSceneFromInstance: function (key, newScene) { var configKey = newScene.sys.settings.key; if (configKey === '') { newScene.sys.settings.key = key; } newScene.sys.init(this.game); return newScene; }, /** Creates and initializes a Scene from an Object definition. / createSceneFromObject: function (key, sceneConfig) { var newScene = new Scene(sceneConfig); var configKey = newScene.sys.settings.key; if (configKey !== '') { key = configKey; } else { newScene.sys.settings.key = key; } newScene.sys.init(this.game); //  Extract callbacks var defaults = [ 'init', 'preload', 'create', 'update', 'render' ]; for (var i = 0; i < defaults.length; i++) { var sceneCallback = GetValue(sceneConfig, defaults[i], null); if (sceneCallback) { newScene[defaults[i]] = sceneCallback; } } //  Now let's move across any other functions or properties that may exist in the extend object: /* scene: { preload: preload, create: create, extend: { hello: 1, test: 'atari', addImage: addImage } }"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var propertyKey in sceneConfig.extend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!sceneConfig.extend.hasOwnProperty(propertyKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "propertyKey === 'data' && newScene.hasOwnProperty('data'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "merge",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "propertyKey !== 'sys'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "sceneConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof sceneConfig === 'function'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "sceneConfig instanceof Scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof sceneConfig === 'object' && sceneConfig.hasOwnProperty('key'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.keys.hasOwnProperty(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "key",
+          "type": "' + key",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "isActive",
+          "type": null
+        },
+        {
+          "name": "inReverse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isActive === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "inReverse === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < scenes.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene && (!isActive || (isActive && scene.sys.isActive(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "inReverse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reverse",
+      "params": [],
+      "returnType": "out",
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof key === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.keys[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < this.scenes.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "key === this.scenes[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isActive",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isPaused",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isVisible",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isSleeping",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pause",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resume",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene && !scene.sys.isTransitioning(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sleep",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "wake",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < this._pending.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._pending[i].key === key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "queueOp",
+      "params": [
+        {
+          "name": "'start'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene.sys.isSleeping(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "wake",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene.sys.isPaused(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resume",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.isBooted",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "found",
+          "type": "' + key",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "status >= CONST.START && status <= CONST.CREATING",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "status >= CONST.RUNNING && status <= CONST.SLEEPING",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shutdown",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "sys.load",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "loader && sys.settings.hasOwnProperty('pack'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "payload",
+          "type": "sys.settings.pack }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "LoaderEvents.COMPLETE",
+          "type": null
+        },
+        {
+          "name": "this.payloadComplete",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bootScene",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scene && !scene.sys.isTransitioning(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "LoaderEvents.COMPLETE",
+          "type": null
+        },
+        {
+          "name": "this.loadComplete",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "LoaderEvents.COMPLETE",
+          "type": null
+        },
+        {
+          "name": "this.payloadComplete",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shutdown",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "to",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "to",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "sceneA && sceneB && sceneA !== sceneB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sleep",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isSleeping(to",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "wake",
+      "params": [
+        {
+          "name": "to",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "to",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "indexOf",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isProcessing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "queueOp",
+      "params": [
+        {
+          "name": "'bringToTop'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "index !== -1 && index < scenes.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isProcessing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "queueOp",
+      "params": [
+        {
+          "name": "'sendToBack'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "index !== -1 && index > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unshift",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isProcessing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "queueOp",
+      "params": [
+        {
+          "name": "'moveDown'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "indexA > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAt",
+      "params": [
+        {
+          "name": "indexB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isProcessing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "queueOp",
+      "params": [
+        {
+          "name": "'moveUp'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "indexA < this.scenes.length - 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getScene",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAt",
+      "params": [
+        {
+          "name": "indexB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "keyA",
+          "type": null
+        },
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "keyA === keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isProcessing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "queueOp",
+      "params": [
+        {
+          "name": "'moveAbove'",
+          "type": null
+        },
+        {
+          "name": "keyA",
+          "type": null
+        },
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "keyA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "indexA !== -1 && indexB !== -1 && indexB < indexA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAt",
+      "params": [
+        {
+          "name": "indexB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "indexB",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "indexA + (indexB > indexA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "keyA",
+          "type": null
+        },
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "keyA === keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isProcessing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "queueOp",
+      "params": [
+        {
+          "name": "'moveBelow'",
+          "type": null
+        },
+        {
+          "name": "keyA",
+          "type": null
+        },
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "keyA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "indexA !== -1 && indexB !== -1 && indexB > indexA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAt",
+      "params": [
+        {
+          "name": "indexB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "indexB",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "indexA === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unshift",
+      "params": [
+        {
+          "name": "tempScene",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "indexA - (indexB < indexA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "op",
+          "type": null
+        },
+        {
+          "name": "keyA",
+          "type": null
+        },
+        {
+          "name": "keyB",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "op",
+          "type": "op",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "keyA",
+          "type": "keyA",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "keyB",
+          "type": "keyB",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "data }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "keyA",
+          "type": null
+        },
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "keyA === keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isProcessing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "queueOp",
+      "params": [
+        {
+          "name": "'swapPosition'",
+          "type": null
+        },
+        {
+          "name": "keyA",
+          "type": null
+        },
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "keyA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getIndex",
+      "params": [
+        {
+          "name": "keyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "indexA !== indexB && indexA !== -1 && indexB !== -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAt",
+      "params": [
+        {
+          "name": "indexA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < this.scenes.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "out.join('\\n'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < this.scenes.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

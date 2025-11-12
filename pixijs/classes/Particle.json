@@ -1,0 +1,344 @@
+{
+  "type": "class",
+  "name": "Particle",
+  "sourcePath": "scene/particle-container/shared/Particle.ts",
+  "extends": null,
+  "implements": [
+    "IParticle"
+  ],
+  "description": "Represents a particle with properties for position, scale, rotation, color, and texture. Particles are lightweight alternatives to sprites, optimized for use in particle systems. ```ts // Create a basic particle const particle = new Particle({ texture: Texture.from('particle.png'), x: 100, y: 100, scaleX: 0.5, scaleY: 0.5, rotation: Math.PI / 4,  // 45 degrees tint: 0xff0000,        // Red tint alpha: 0.8             // Slightly transparent }); // Modify particle properties particle.x += 10;          // Move right particle.rotation += 0.1;   // Rotate slightly particle.alpha = 0.5;      // Change transparency // Use anchor points (0-1 range) particle.anchorX = 0.5;    // Center horizontally particle.anchorY = 0.5;    // Center vertically ``` / export interface IParticle { /** The x-coordinate of the particle position */ x: number; /** The y-coordinate of the particle position */ y: number; /** The horizontal scale factor of the particle / scaleX: number; /** The vertical scale factor of the particle / scaleY: number; /** The x-coordinate of the particle's anchor point (0-1 range) / anchorX: number; /** The y-coordinate of the particle's anchor point (0-1 range) / anchorY: number; /** The rotation of the particle in radians / rotation: number; /** The color of the particle as a 32-bit RGBA value / color: number; /** The texture used to render this particle */ texture: Texture; } /** Configuration options for creating a new particle. All properties except texture are optional and will use default values if not specified. ```ts // Create a basic red particle const particle = new Particle({ texture: Texture.from('particle.png'), tint: 0xff0000, alpha: 0.8 }); // Create a scaled and rotated particle const rotatedParticle = new Particle({ texture: Texture.from('star.png'), x: 100, y: 100, scaleX: 2, scaleY: 2, rotation: Math.PI / 4, anchorX: 0.5, anchorY: 0.5 }); // Use color strings for tint const coloredParticle = new Particle({ texture: Texture.from('circle.png'), tint: '#ff00ff',     // Magenta alpha: 0.5,          // Half transparent x: 200, y: 200 }); ``` / export type ParticleOptions = Omit<Partial<IParticle>, 'color'> & { /** The texture used to render this particle */ texture: Texture; /** The tint color as a hex number or CSS color string */ tint?: ColorSource; /** The alpha transparency (0-1) */ alpha?: number; }; /** Represents a single particle within a particle container. This class implements the IParticle interface, providing properties and methods to manage the particle's position, scale, rotation, color, and texture. The reason we use a particle over a sprite is that these are much lighter weight and we can create a lot of them without taking on the overhead of a full sprite. ```javascript const particle = new Particle({ texture, x: 100, y: 100, scaleX: 0.5, scaleY: 0.5, rotation: Math.PI / 2, color: 0xff0000, }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Particle",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "centeredParticle.anchorX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "centeredParticle.alpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "point",
+      "params": [
+        {
+          "name": "0-1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "point",
+      "params": [
+        {
+          "name": "0-1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cos",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "particle.color",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "'particle.png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options instanceof Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "assignWithIgnore",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "Particle.defaultOptions",
+          "type": null
+        },
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "assignWithIgnore",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "combined",
+          "type": null
+        },
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "0",
+      "params": [
+        {
+          "name": "fully transparent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "1",
+      "params": [
+        {
+          "name": "fully opaque",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Particle",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture.from('particle.png'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "particle.alpha + 0.1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "(delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "Math.max(value",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Particle",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture.from('particle.png'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hsl",
+      "params": [
+        {
+          "name": "${hue}",
+          "type": null
+        },
+        {
+          "name": "100%",
+          "type": null
+        },
+        {
+          "name": "50%",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bgr2rgb",
+      "params": [
+        {
+          "name": "this._tint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setValue",
+      "params": [
+        {
+          "name": "value ?? 0xFFFFFF",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toBgrNumber",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "alpha",
+      "type": "number",
+      "description": "The transparency of the particle. Values range from 0 (fully transparent) to 1 (fully opaque). Values outside this range are clamped. ```ts // Create a semi-transparent particle const particle = new Particle({ texture: Texture.from('particle.png'), alpha: 0.5 }); // Fade out particle.alpha *= 0.9; // Fade in particle.alpha = Math.min(particle.alpha + 0.1, 1); // Values are clamped to valid range particle.alpha = 1.5; // Becomes 1.0 particle.alpha = -0.5; // Becomes 0.0 // Animate transparency app.ticker.add((delta) => { const time = performance.now() / 1000; particle.alpha = 0.5 + Math.sin(time) * 0.5; // Pulse between 0-1 }); ```"
+    },
+    {
+      "name": "tint",
+      "type": "number",
+      "description": "The tint color of the particle. Can be set using hex numbers or CSS color strings. The tint is multiplied with the texture color to create the final particle color. ```ts // Create a red particle const particle = new Particle({ texture: Texture.from('particle.png'), tint: 0xff0000 }); // Use CSS color strings particle.tint = '#00ff00';  // Green particle.tint = 'blue';     // Blue // Animate tint color app.ticker.add(() => { const time = performance.now() / 1000; // Cycle through hues const hue = (time * 50) % 360; particle.tint = `hsl(${hue}, 100%, 50%)`; }); // Reset to white (no tint) particle.tint = 0xffffff; ```"
+    }
+  ]
+}

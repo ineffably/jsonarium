@@ -1,0 +1,119 @@
+{
+  "type": "interface",
+  "name": "GlobalUniformRenderer",
+  "sourcePath": "rendering/renderers/shared/renderTarget/GlobalUniformSystem.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderTarget",
+      "type": "GlRenderTargetSystem | GpuRenderTargetSystem\n    renderPipes: Renderer['renderPipes']",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "ubo",
+      "type": "UboSystem",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "RendererType",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "[\n            ExtensionType.WebGLSystem,\n            ExtensionType.WebGPUSystem,\n            ExtensionType.CanvasSystem,\n        ],\n        name: 'globalUniforms',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "GlobalUniformRenderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_globalUniformDataStack",
+      "type": "GlobalUniformData[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_uniformsPool",
+      "type": "GlobalUniformGroup[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_activeUniforms",
+      "type": "GlobalUniformGroup[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_bindGroupPool",
+      "type": "BindGroup[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_activeBindGroups",
+      "type": "BindGroup[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_currentGlobalUniformData",
+      "type": "GlobalUniformData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "GlobalUniformRenderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GlobalUniformOptions): void\n    {\n        this.reset()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "projectionData",
+      "type": "renderTarget,\n            worldTransformMatrix: new Matrix(),\n            worldColor: 0xFFFFFFFF,\n            offset: new Point(),\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "globalUniformData",
+      "type": "GlobalUniformData = {\n            projectionMatrix: projectionMatrix || this._renderer.renderTarget.projectionMatrix,\n            resolution: size || renderTarget.size,\n            worldTransformMatrix: worldTransformMatrix || currentGlobalUniformData.worldTransformMatrix,\n            worldColor: worldColor || currentGlobalUniformData.worldColor,\n            offset: offset || currentGlobalUniformData.offset,\n            bindGroup: null,\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bindGroup",
+      "type": "BindGroup",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GlobalUniformOptions)\n    {\n        this.bind(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uProjectionMatrix",
+      "type": "{ value: new Matrix(), type: 'mat3x3<f32>' },\n            uWorldTransformMatrix: { value: new Matrix(), type: 'mat3x3<f32>' },\n            // TODO - someone smart - set this to be a unorm8x4 rather than a vec4<f32>\n            uWorldColorAlpha: { value: new Float32Array(4), type: 'vec4<f32>' },\n            uResolution: { value: [0, 0], type: 'vec2<f32>' },\n        }, {\n            isStatic: true,\n        })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

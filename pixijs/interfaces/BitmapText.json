@@ -1,0 +1,103 @@
+{
+  "type": "interface",
+  "name": "BitmapText",
+  "sourcePath": "scene/text-bitmap/BitmapText.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "Features",
+      "type": "* - High-performance text rendering using pre-generated textures\n * - Support for both pre-loaded and dynamic bitmap fonts\n * - Compatible with MSDF/SDF fonts for crisp scaling\n * - Automatic font reuse and optimization\n *\n * Performance Benefits:\n * - Faster rendering compared to Canvas/HTML text\n * - Lower memory usage for repeated characters\n * - More efficient text changes\n * - Better batching capabilities\n *\n * Limitations:\n * - Full character set support is impractical due to the number of chars (mainly affects CJK languages)\n * - Initial font generation/loading overhead\n * - Less flexible styling compared to Canvas/HTML text\n * @example\n * ```ts\n * import { BitmapText, BitmapFont } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n *     style: {\n *         fontFamily: 'Arial',\n *         fontSize: 24,\n *         fill: 0xff1010,\n *         align: 'center',\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'myFont',\n *    style: {\n *        fontFamily: 'Arial',\n *    }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n *     style: {\n *        fontFamily: 'myFont',\n *        fontSize: 24,\n *        fill: 0xff1010,\n *        align: 'center',\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n *     style: {\n *        fontFamily: 'myLoadedFont', // Name from .fnt file\n *        fontSize: 24,\n *        fill: 0xff1010,\n *        align: 'center',\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'This is a long text that will wrap automatically',\n *     style: {\n *         fontFamily: 'Arial',\n *         fontSize: 24,\n *         wordWrap: true,\n *         wordWrapWidth: 200,\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Types",
+      "type": "* 1. Pre-loaded Bitmap Fonts:\n *    - Load via Asset Manager (XML/FNT formats)\n *    - Support for MSDF/SDF fonts\n *    - Create using tools like https://msdf-bmfont.donmccurdy.com/\n *\n * 2. Dynamic Bitmap Fonts:\n *    - Generated at runtime from system fonts\n *    - Automatic font reuse and optimization\n *    - Smart scaling for similar font sizes\n *\n * Font Management:\n * - Automatic font generation when needed\n * - Manual pre-installation via `BitmapFont.install`\n * - Smart font reuse to optimize memory\n * - Scale existing fonts instead of generating new ones when possible\n * @category text\n * @standard\n * @see {@link BitmapFont} For font installation and management\n * @see {@link Text} For canvas-based text rendering\n * @see {@link HTMLText} For HTML/CSS-based text rendering\n */\nexport class BitmapText extends AbstractText<\n    TextStyle,\n    TextStyleOptions,\n    TextOptions,\n    BitmapTextGraphics\n> implements View\n{\n    /** @internal */\n    public override readonly renderPipeId: string = 'bitmapText'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Note",
+      "type": "** Our docs parser struggles to properly understand the constructor signature.\n     * This is the correct signature.\n     * ```ts\n     * new BitmapText(options?: TextOptions)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "TextOptions)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "TextString, options?: Partial<TextStyle>)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[TextOptions?] | [TextString, Partial<TextStyle>])\n    {\n        const options = ensureTextOptions(args, 'BitmapText')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Incorrect",
+      "type": "Setting resolution directly (will trigger warning)\n     * const text = new BitmapText({\n     *     text: 'Hello',\n     *     resolution: 2 // This will be ignored\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Correct",
+      "type": "Set resolution when installing the font\n     * BitmapFont.install({\n     *     name: 'MyFont',\n     *     style: {\n     *         fontFamily: 'Arial',\n     *     },\n     *     resolution: 2 // Resolution is set here\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello',\n     *     style: {\n     *         fontFamily: 'MyFont' // Uses font's resolution\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        // #if _DEBUG\n        if (value !== null)\n        {\n            warn(\n            // eslint-disable-next-line max-len\n                '[BitmapText] dynamically updating the resolution is not supported. Resolution should be managed by the BitmapFont.'\n            )",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

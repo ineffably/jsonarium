@@ -1,0 +1,276 @@
+{
+  "type": "class",
+  "name": "RenderableGCSystem",
+  "sourcePath": "rendering/renderers/shared/texture/RenderableGCSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "Options for the {@link RenderableGCSystem}. The maximum idle frames before a texture is destroyed by garbage collection. / export interface RenderableGCSystemOptions { /** If set to true, this will enable the garbage collector on the GPU. / renderableGCActive: boolean; /** The maximum idle frames before a texture is destroyed by garbage collection. / renderableGCMaxUnusedTime: number; /** Frames between two garbage collections. / renderableGCFrequency: number; } /** The RenderableGCSystem is responsible for cleaning up GPU resources that are no longer being used. When rendering objects like sprites, text, etc - GPU resources are created and managed by the renderer. If these objects are no longer needed but not properly destroyed (via sprite.destroy()), their GPU resources would normally leak. This system prevents that by automatically cleaning up unused GPU resources. Key features: - Runs every 30 seconds by default to check for unused resources - Cleans up resources not rendered for over 1 minute - Works independently of rendering - will clean up even when not actively rendering - When cleaned up resources are needed again, new GPU objects are quickly assigned from a pool - Can be disabled with renderableGCActive:false for manual control Best practices: - Always call destroy() explicitly when done with renderables (e.g. sprite.destroy()) - This system is a safety net, not a replacement for proper cleanup - Adjust frequency and timeouts via options if needed ```js // Sprite created but reference lost without destroy let sprite = new Sprite(texture); // internally the renderer will assign a resource to the sprite renderer.render(sprite); sprite = null; // Reference lost but GPU resources still exist // After 1 minute of not being rendered: // - RenderableGC will clean up the sprite's GPU resources // - JS garbage collector can then clean up the sprite itself ```",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "options",
+          "type": "RenderableGCSystemOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Initializes the garbage collection system with the provided options."
+    },
+    {
+      "name": "prerender",
+      "params": [
+        {
+          "name": "{\n        container\n    }: RenderOptions",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Gets whether the garbage collection system is currently enabled. / get enabled(): boolean { return !!this._handler; } /** Enables or disables the garbage collection system. When enabled, schedules periodic cleanup of resources. When disabled, cancels all scheduled cleanups. / set enabled(value: boolean) { if (this.enabled === value) return; if (value) { // Schedule periodic garbage collection this._handler = this._renderer.scheduler.repeat( () => this.run(), this._frequency, false ); // Schedule periodic hash table cleanup this._hashHandler = this._renderer.scheduler.repeat( () => { for (const hash of this._managedHashes) { hash.context[hash.hash] = cleanHash(hash.context[hash.hash]); } }, this._frequency ); // Schedule periodic array cleanup this._arrayHandler = this._renderer.scheduler.repeat( () => { for (const array of this._managedArrays) { cleanArray(array.context[array.hash]); } }, this._frequency ); } else { // Cancel all scheduled cleanups this._renderer.scheduler.cancel(this._handler); this._renderer.scheduler.cancel(this._hashHandler); this._renderer.scheduler.cancel(this._arrayHandler); } } /** Adds a hash table to be managed by the garbage collector. / public addManagedHash<T>(context: T, hash: string): void { this._managedHashes.push({ context, hash: hash as string }); } /** Adds an array to be managed by the garbage collector. / public addManagedArray<T>(context: T, hash: string): void { this._managedArrays.push({ context, hash: hash as string }); } /** Updates the GC timestamp and tracking before rendering."
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "renderable",
+          "type": "Renderable",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Starts tracking a renderable for garbage collection."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.enabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderable._lastUsed === -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "'destroyed'",
+          "type": null
+        },
+        {
+          "name": "this._removeRenderable",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "run",
+      "params": [],
+      "returnType": "void",
+      "description": "Performs garbage collection by cleaning up unused renderables. Removes renderables that haven't been used for longer than maxUnusedTime."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < managedRenderables.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderable === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(renderGroup?.gcTick ?? 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "now - renderable._lastUsed > this.maxUnusedTime",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderable.destroyed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroyRenderable",
+      "params": [
+        {
+          "name": "renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'destroyed'",
+          "type": null
+        },
+        {
+          "name": "this._removeRenderable",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": "Cleans up the garbage collection system. Disables GC and removes all tracked resources."
+    },
+    {
+      "name": "indexOf",
+      "params": [
+        {
+          "name": "renderable as Renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "index >= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'destroyed'",
+          "type": null
+        },
+        {
+          "name": "this._removeRenderable",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const child of renderGroup.renderGroupChildren",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "description": "Gets whether the garbage collection system is currently enabled."
+    }
+  ]
+}

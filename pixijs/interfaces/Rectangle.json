@@ -1,0 +1,139 @@
+{
+  "type": "interface",
+  "name": "Rectangle",
+  "sourcePath": "maths/shapes/Rectangle.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "type",
+      "type": "SHAPE_PRIMITIVE = 'rectangle'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "string | number = 0, y: string | number = 0, width: string | number = 0, height: string | number = 0)\n    {\n        this.x = Number(x)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bounds",
+      "type": "Bounds): this\n    {\n        this.x = bounds.minX",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "type": "Rectangle): Rectangle\n    {\n        this.x = rectangle.x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "type": "Rectangle): Rectangle\n    {\n        rectangle.copyFrom(this)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): boolean\n    {\n        if (this.width <= 0 || this.height <= 0)\n        {\n            return false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, strokeWidth: number, alignment: number = 0.5): boolean\n    {\n        const { width, height } = this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "other",
+      "type": "Rectangle, transform?: Matrix): boolean\n    {\n        if (!transform)\n        {\n            const x0 = this.x < other.x ? other.x : this.x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "type": "Rectangle): this\n    {\n        const x1 = Math.max(this.x, rectangle.x)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "now",
+      "type": "x=25, y=25, width=50, height=50\n     *\n     * // non-uniformly\n     * rect.scale(0.5, 1)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "now",
+      "type": "x=25, y=50, width=50, height=100\n     * ```\n     * @param x - The factor by which to scale the horizontal properties (x, width).\n     * @param y - The factor by which to scale the vertical properties (y, height).\n     * @returns Returns itself\n     */\n    public scale(x: number, y: number = x): this\n    {\n        this.x *= x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "now",
+      "type": "x=0, y=0, width=200, height=150\n     *\n     * // Use for bounding box calculation\n     * const bounds = new Rectangle()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "type": "Rectangle): this\n    {\n        const x1 = Math.min(this.x, rectangle.x)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Rectangle): Rectangle\n    {\n        out ||= new Rectangle()",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "other",
+      "type": "Rectangle): boolean\n    {\n        if (this.width <= 0 || this.height <= 0) return false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, width: number, height: number): this\n    {\n        this.x = x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "math",
+      "type": "Rectangle x=${this.x} y=${this.y} width=${this.width} height=${this.height}]`",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

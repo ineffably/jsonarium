@@ -1,0 +1,472 @@
+{
+  "type": "class",
+  "name": "BatcherPipe",
+  "sourcePath": "rendering/batcher/shared/BatcherPipe.ts",
+  "extends": null,
+  "implements": [
+    "InstructionPipe"
+  ],
+  "description": "export interface BatcherAdaptor { start(batchPipe: BatcherPipe, geometry: Geometry, shader: Shader): void init?(batchPipe: BatcherPipe): void; execute(batchPipe: BatcherPipe, batch: Batch): void contextChange?(): void; } /** A pipe that batches elements into batches and sends them to the renderer. You can install new Batchers using ExtensionType.Batcher. Each render group will have a default batcher and any required ones will be created on demand.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "for2d",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "new",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBatcher",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Batcher",
+      "description": null
+    },
+    {
+      "name": "buildStart",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!batchers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DefaultBatcher",
+      "params": [
+        {
+          "name": "maxTextures",
+          "type": "this.renderer.limits.maxBatchableTextures",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this._activeBatches",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "begin",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToBatch",
+      "params": [
+        {
+          "name": "batchableObject",
+          "type": "BatchableElement",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeBatch.name !== batchableObject.batcherName",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!batch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBatcher",
+      "params": [
+        {
+          "name": "batchableObject.batcherName",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "begin",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "batchableObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildEnd",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in batches",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDataWithSize",
+      "params": [
+        {
+          "name": "batch.indexBuffer",
+          "type": null
+        },
+        {
+          "name": "batch.indexSize",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDataWithSize",
+      "params": [
+        {
+          "name": "batch.attributeBuffer.float32View",
+          "type": null
+        },
+        {
+          "name": "batch.attributeSize",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "upload",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in batchers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batcher.dirty",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "batcher.attributeSize * 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "batch",
+          "type": "Batch",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batch.action === 'startBatch'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "batch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this._activeBatches",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "handleByMap",
+      "params": [
+        {
+          "name": "ExtensionType.Batcher",
+          "type": null
+        },
+        {
+          "name": "BatcherPipe._availableBatchers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "DefaultBatcher",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

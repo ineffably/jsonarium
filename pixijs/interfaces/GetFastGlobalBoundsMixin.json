@@ -1,0 +1,35 @@
+{
+  "type": "interface",
+  "name": "GetFastGlobalBoundsMixin",
+  "sourcePath": "scene/container/container-mixins/getFastGlobalBoundsMixin.ts",
+  "extends": [],
+  "description": "Interface for the GetFastGlobalBoundsMixin, which provides methods to compute an approximate global bounding box for a container and its children.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "factorRenderLayers",
+      "type": "boolean, bounds?: Bounds): Bounds",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "factorRenderLayers",
+      "type": "boolean,\n        bounds: Bounds,\n        currentLayer: RenderLayer,\n    ): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "getFastGlobalBoundsMixin",
+      "type": "Partial<Container> = {\n    getFastGlobalBounds(factorRenderLayers?: boolean, bounds?: Bounds): Bounds\n    {\n        bounds ||= new Bounds()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "factorRenderLayers",
+      "type": "boolean,\n        bounds: Bounds,\n        currentLayer: RenderLayer,\n    )\n    {\n        let localBounds = bounds",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

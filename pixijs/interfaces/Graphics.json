@@ -1,0 +1,1093 @@
+{
+  "type": "interface",
+  "name": "Graphics",
+  "sourcePath": "scene/graphics/shared/Graphics.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "color",
+      "type": "0xff0000 }) // Fill with red\n *     .stroke({ width: 2, color: 0x000000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00, alpha: 0.5 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "string = 'graphics'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "batched",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_context",
+      "type": "GraphicsContext",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_ownedContext",
+      "type": "GraphicsContext",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GraphicsOptions | GraphicsContext)\n    {\n        if (options instanceof GraphicsContext)\n        {\n            options = { context: options }",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "'Graphics',\n            ...rest\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "GraphicsContext)\n    {\n        if (context === this._context) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "50, y: 50 })) {\n     *     console.log('Point is inside rectangle!')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "PointData)\n    {\n        return this._context.containsPoint(point)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "false })\n     *\n     * If the context was passed in as an argument to the constructor then it will not be destroyed\n     * @example\n     * ```ts\n     * // Destroy the graphics and its context\n     * graphics.destroy()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "true, texture: true, textureSource: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions): void\n    {\n        if (this._ownedContext && !options)\n        {\n            this._ownedContext.destroy(options)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "method",
+      "type": "keyof GraphicsContext, args: any[]): this\n    {\n        (this.context as any)[method](...args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 }) // Red fill\n     *     .rect(0, 0, 100, 100)\n     *     .fill()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 1, y: 0 },\n     *    colorStops: [\n     *         { offset: 0, color: 0xff0000 }, // Red at start\n     *         { offset: 0.5, color: 0x00ff00 }, // Green at middle\n     *         { offset: 1, color: 0x0000ff }, // Blue at end\n     *    ],\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "pattern,\n     *         alpha: 0.5\n     *     })\n     *     .rect(0, 0, 200, 200)\n     *     .fill()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['setFillStyle']>): this\n    {\n        return this._callContextMethod('setFillStyle', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2,\n     *         color: 0x000000\n     *     })\n     *     .rect(0, 0, 100, 100)\n     *     .stroke()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "4,\n     *         color: 0xff0000,\n     *         alpha: 0.5,\n     *         join: 'round',\n     *         cap: 'round',\n     *         alignment: 0.5\n     *     })\n     *     .circle(100, 100, 50)\n     *     .stroke()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 1, y: 0 },\n     *    colorStops: [\n     *         { offset: 0, color: 0xff0000 }, // Red at start\n     *         { offset: 0.5, color: 0x00ff00 }, // Green at middle\n     *         { offset: 1, color: 0x0000ff }, // Blue at end\n     *    ],\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "10,\n     *         fill: gradient\n     *     })\n     *     .poly([0,0, 100,50, 0,100])\n     *     .stroke()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['setStrokeStyle']>): this\n    {\n        return this._callContextMethod('setStrokeStyle', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00,\n     *         alpha: 0.5,\n     *         texture: myTexture,\n     *         matrix: new Matrix()\n     *     })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 1, y: 0 },\n     *     colorStops: [\n     *         { offset: 0, color: 0xff0000 },\n     *         { offset: 0.5, color: 0x00ff00 },\n     *         { offset: 1, color: 0x0000ff },\n     *     ],\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "be",
+      "type": "* - A ColorSource\n     * - A gradient\n     * - A pattern\n     * - A complex style object\n     * If omitted, uses current fill style.\n     * @returns The Graphics instance for chaining\n     * @see {@link FillStyle} For fill style options\n     * @see {@link FillGradient} For gradient fills\n     * @see {@link FillPattern} For pattern fills\n     */\n    public fill(style?: FillInput): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "ColorSource, alpha?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[FillStyle | ColorSource, number?]): this\n    {\n        return this._callContextMethod('fill', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2,\n     *         color: 0xff0000\n     *     })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 1, y: 0 },\n     *     colorStops: [\n     *         { offset: 0, color: 0xff0000 },\n     *         { offset: 0.5, color: 0x00ff00 },\n     *         { offset: 1, color: 0x0000ff },\n     *     ],\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "4,\n     *         fill: gradient,\n     *         alignment: 0.5,\n     *         join: 'round'\n     *     })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "be",
+      "type": "* - A stroke style object with width, color, etc.\n     * - A gradient\n     * - A pattern\n     * If omitted, uses current stroke style.\n     * @returns The Graphics instance for chaining\n     * @see {@link StrokeStyle} For stroke style options\n     * @see {@link FillGradient} For gradient strokes\n     * @see {@link setStrokeStyle} For setting default stroke style\n     */\n    public stroke(...args: Parameters<GraphicsContext['stroke']>): this\n    {\n        return this._callContextMethod('stroke', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "drawing",
+      "type": "* @param texture - The Texture object to use.\n     * @returns The instance of the current Graphics for chaining.\n     *\n     * Extended texture drawing:\n     * @param texture - The Texture object to use.\n     *        tint - A ColorSource to tint the texture (defaults to white).\n     *        dx - The x-coordinate for the texture placement.\n     *        dy - The y-coordinate for the texture placement.\n     *        dw - The width to draw the texture (defaults to texture width).\n     *        dh - The height to draw the texture (defaults to texture height).\n     * @returns The instance of the current Graphics for chaining.\n     * @see {@link Texture} For texture creation\n     * @see {@link FillPattern} For pattern fills\n     */\n    public texture(texture: Texture): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture, tint?: ColorSource, dx?: number, dy?: number, dw?: number, dh?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[Texture, number?, number?, number?, number?, number?]): this\n    {\n        return this._callContextMethod('texture', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })\n     *     .beginPath() // Starts a new path\n     *     .circle(250, 150, 50)\n     *     .fill({ color: 0x0000ff })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0x0000ff })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['arc']>): this\n    {\n        return this._callContextMethod('arc', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x1",
+      "type": "number, y1: number, x2: number, y2: number, radius: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['arcTo']>): this\n    {\n        return this._callContextMethod('arcTo', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "4, color: 0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x0000ff, alpha: 0.5 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rx",
+      "type": "number, ry: number, xAxisRotation: number, largeArcFlag: number, sweepFlag: number, x: number, y: number\n    ): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['arcToSvg']>): this\n    {\n        return this._callContextMethod('arcToSvg', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "4, color: 0x0000ff })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "cp1x",
+      "type": "number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number, smoothness?: number\n    ): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['bezierCurveTo']>): this\n    {\n        return this._callContextMethod('bezierCurveTo', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, radiusX: number, radiusY: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['ellipse']>): this\n    {\n        return this._callContextMethod('ellipse', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 1, y: 0 },\n     *     colorStops: [\n     *           { offset: 0, color: 0xff0000 }, // Red at start\n     *           { offset: 0.5, color: 0x00ff00 }, // Green at middle\n     *           { offset: 1, color: 0x0000ff }, // Blue at end\n     *     ],\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "gradient })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, radius: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['circle']>): this\n    {\n        return this._callContextMethod('circle', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })\n     *     .translateTransform(200, 200)\n     *     .path(heartPath)\n     *     .fill({ color: 0xff0000, alpha: 0.5 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "GraphicsPath): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['path']>): this\n    {\n        return this._callContextMethod('path', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['lineTo']>): this\n    {\n        return this._callContextMethod('lineTo', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })\n     *     .moveTo(250, 50)    // Start a new shape\n     *     .circle(250, 75, 25)\n     *     .fill({ color: 0x0000ff })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "3, color: 0xff00ff })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['moveTo']>): this\n    {\n        return this._callContextMethod('moveTo', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "points",
+      "type": "the control point and the end point.\n     * The starting point is the last point in the current path.\n     * @example\n     * ```ts\n     * const graphics = new Graphics()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "4,\n     *         color: 0x0000ff,\n     *         alpha: 0.7\n     *     })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "cpx",
+      "type": "number, cpy: number, x: number, y: number, smoothness?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['quadraticCurveTo']>): this\n    {\n        return this._callContextMethod('quadraticCurveTo', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, w: number, h: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['rect']>): this\n    {\n        return this._callContextMethod('rect', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, w: number, h: number, radius?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['roundRect']>): this\n    {\n        return this._callContextMethod('roundRect', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "200, y: 50 },\n     *         { x: 250, y: 100 },\n     *         { x: 200, y: 150 },\n     *         { x: 150, y: 100 }\n     *     ])\n     *     .fill({ color: 0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2,\n     *         color: 0x0000ff,\n     *         join: 'round'\n     *     })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "points",
+      "type": "number[] | PointData[], close?: boolean): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['poly']>): this\n    {\n        return this._callContextMethod('poly', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })\n     *     .stroke({ width: 2, color: 0x000000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x0000ff, alpha: 0.5 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "default",
+      "type": "0)\n     * @param transform - Optional Matrix to transform the polygon's shape\n     * @returns The Graphics instance for method chaining\n     * @see {@link Graphics#poly} For drawing custom polygons\n     * @see {@link Graphics#roundPoly} For drawing polygons with rounded corners\n     * @see {@link Graphics#star} For drawing star shapes\n     */\n    public regularPoly(x: number, y: number, radius: number, sides: number, rotation?: number, transform?: Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['regularPoly']>): this\n    {\n        return this._callContextMethod('regularPoly', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })\n     *     .stroke({ width: 2, color: 0x000000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "default",
+      "type": "0)\n     * @returns The Graphics instance for method chaining\n     * @see {@link Graphics#regularPoly} For drawing polygons without rounded corners\n     * @see {@link Graphics#poly} For drawing custom polygons\n     * @see {@link Graphics#roundRect} For drawing rectangles with rounded corners\n     */\n    public roundPoly(x: number, y: number, radius: number, sides: number, corner: number, rotation?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['roundPoly']>): this\n    {\n        return this._callContextMethod('roundPoly', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "100, y: 100, radius: 20 },\n     *         { x: 200, y: 100, radius: 10 },\n     *         { x: 200, y: 200, radius: 15 },\n     *         { x: 100, y: 200, radius: 5 }\n     *     ], 10)\n     *     .fill({ color: 0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "250, y: 100 },\n     *         { x: 350, y: 100 },\n     *         { x: 350, y: 200 },\n     *         { x: 250, y: 200 }\n     *     ], 15, true, 0.5)\n     *     .fill({ color: 0x00ff00 })\n     *     .stroke({ width: 2, color: 0x000000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "400, y: 100, radius: 30 },\n     *         { x: 500, y: 100, radius: 5 },\n     *         { x: 450, y: 200, radius: 15 }\n     *     ], 10)\n     *     .fill({ color: 0x0000ff, alpha: 0.5 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "points",
+      "type": "RoundedPoint[], radius: number, useQuadratic?: boolean, smoothness?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['roundShape']>): this\n    {\n        return this._callContextMethod('roundShape', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })\n     *     .stroke({ width: 2, color: 0x000000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, width: number, height: number, fillet: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['filletRect']>): this\n    {\n        return this._callContextMethod('filletRect', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })\n     *     .stroke({ width: 2, color: 0x000000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, width: number, height: number, chamfer: number, transform?: Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['chamferRect']>): this\n    {\n        return this._callContextMethod('chamferRect', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })\n     *     .stroke({ width: 2, color: 0x000000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, points: number, radius: number, innerRadius?: number, rotation?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['star']>): this\n    {\n        return this._callContextMethod('star', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2, color: 0x000000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "type": "string): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['svg']>): this\n    {\n        return this._callContextMethod('svg', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })\n     *     .circle(0, 0, 50)\n     *     .fill()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['restore']>): this\n    {\n        return this._callContextMethod('restore', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "type": "* - Current transformation matrix\n     * - Current fill style\n     * - Current stroke style\n     * @example\n     * ```ts\n     * const graphics = new Graphics()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000,\n     *         alpha: 0.5\n     *     })\n     *     .rect(-25, -25, 50, 50)\n     *     .fill()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "type": "number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['rotate']>): this\n    {\n        return this._callContextMethod('rotate', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['scale']>): this\n    {\n        return this._callContextMethod('scale', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "transform",
+      "type": "Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "a",
+      "type": "number, b: number, c: number, d: number, dx: number, dy: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "a",
+      "type": "number | Matrix, b?: number, c?: number, d?: number, dx?: number, dy?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[Matrix] | [number, number, number, number, number, number]): this\n    {\n        return this._callContextMethod('setTransform', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "transform",
+      "type": "Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "a",
+      "type": "number, b: number, c: number, d: number, dx: number, dy: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "a",
+      "type": "number | Matrix, b?: number, c?: number, d?: number, dx?: number, dy?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[Matrix] | [number, number, number, number, number, number]): this\n    {\n        return this._callContextMethod('transform', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['translate']>): this\n    {\n        return this._callContextMethod('translate', args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })\n     *     .rect(200, 100, 100, 50)\n     *     .fill({ color: 0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x0000ff })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000,  // Red\n     *     alpha: 1\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 0, y: 1 }, // Vertical gradient\n     *     stops: [\n     *         { offset: 0, color: 0xff0000, alpha: 1 }, // Start color\n     *         { offset: 1, color: 0x0000ff, alpha: 1 }  // End color\n     *     ]\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "gradient,\n     *     alpha: 0.8\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "myTexture,\n     *     alpha: 1,\n     *     matrix: new Matrix()\n     *         .scale(0.5, 0.5)\n     *         .rotate(Math.PI / 4)\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "FillInput)\n    {\n        this._context.fillStyle = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "2,\n     *     color: 0xff0000,\n     *     alpha: 1\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "{ x: 0, y: 1 },\n     *   stops: [\n     *       { offset: 0, color: 0xff0000, alpha: 1 },\n     *       { offset: 1, color: 0x0000ff, alpha: 1 }\n     *   ]\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "4,\n     *     fill: gradient,\n     *     alignment: 0.5,\n     *     join: 'round',\n     *     cap: 'round'\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "6,\n     *     color: 0x00ff00,\n     *     alpha: 0.5,\n     *     join: 'miter',\n     *     miterLimit: 10,\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "StrokeStyle)\n    {\n        this._context.strokeStyle = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x00ff00 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0x0000ff })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number, color?: ColorSource, alpha?: number): this\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Graphics#lineStyle is no longer needed. Use Graphics#setStrokeStyle to set the stroke style.')",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "strokeStyle",
+      "type": "Partial<StrokeStyle> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "ColorSource, alpha?: number)\n    {\n        // #if _DEBUG\n        // eslint-disable-next-line max-len\n        deprecation(v8_0_0, 'Graphics#beginFill is no longer needed. Use Graphics#fill to fill the shape with the desired style.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fillStyle",
+      "type": "Partial<FillStyle> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['circle']>): this\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Graphics#drawCircle has been renamed to Graphics#circle')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['ellipse']>): this\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Graphics#drawEllipse has been renamed to Graphics#ellipse')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['poly']>): this\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Graphics#drawPolygon has been renamed to Graphics#poly')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['rect']>): this\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Graphics#drawRect has been renamed to Graphics#rect')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['roundRect']>): this\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Graphics#drawRoundedRect has been renamed to Graphics#roundRect')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "Parameters<GraphicsContext['star']>): this\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Graphics#drawStar has been renamed to Graphics#star')",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

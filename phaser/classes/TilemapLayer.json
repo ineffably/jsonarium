@@ -1,0 +1,3905 @@
+{
+  "type": "class",
+  "name": "TilemapLayer",
+  "sourcePath": "tilemaps/TilemapLayer.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "tilemaps",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "GameObject",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Mixins",
+          "type": "[\n        Components.Alpha",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Components.BlendMode",
+          "type": null
+        },
+        {
+          "name": "Components.ComputedSize",
+          "type": null
+        },
+        {
+          "name": "Components.Depth",
+          "type": null
+        },
+        {
+          "name": "Components.Flip",
+          "type": null
+        },
+        {
+          "name": "Components.GetBounds",
+          "type": null
+        },
+        {
+          "name": "Components.Mask",
+          "type": null
+        },
+        {
+          "name": "Components.Origin",
+          "type": null
+        },
+        {
+          "name": "Components.Pipeline",
+          "type": null
+        },
+        {
+          "name": "Components.PostPipeline",
+          "type": null
+        },
+        {
+          "name": "Components.Transform",
+          "type": null
+        },
+        {
+          "name": "Components.Visible",
+          "type": null
+        },
+        {
+          "name": "Components.ScrollFactor",
+          "type": null
+        },
+        {
+          "name": "CollisionComponent",
+          "type": null
+        },
+        {
+          "name": "TilemapLayerRender\n    ]",
+          "type": null
+        },
+        {
+          "name": "initialize",
+          "type": "function TilemapLayer (scene",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "tilemap",
+          "type": null
+        },
+        {
+          "name": "layerIndex",
+          "type": null
+        },
+        {
+          "name": "tileset",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "'TilemapLayer'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Orthogonal",
+      "params": [
+        {
+          "name": "the default",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetCullTilesFunction",
+      "params": [
+        {
+          "name": "this.layer.orientation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rendering",
+      "params": [
+        {
+          "name": "draw",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTilesets",
+      "params": [
+        {
+          "name": "tileset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setAlpha",
+      "params": [
+        {
+          "name": "this.layer.alpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPosition",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setOrigin",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "tilemap.tileWidth * this.layer.width",
+          "type": null
+        },
+        {
+          "name": "tilemap.tileHeight * this.layer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initPipeline",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initPostPipeline",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tilesets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!Array.isArray(tilesets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < tilesets.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof tileset === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tileset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "tileset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var t = 0; t < tileset.total; t++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rendering",
+      "params": [
+        {
+          "name": "draw",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "integer",
+      "params": [
+        {
+          "name": "0 to 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "render",
+      "params": [
+        {
+          "name": "draw",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "renderOrder",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof renderOrder === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "indexOf",
+      "params": [
+        {
+          "name": "renderOrder",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderOrder >= 0 && renderOrder < 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CalculateFacesAt",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "specified",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CalculateFacesWithin",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "creator",
+      "params": [
+        {
+          "name": "i.e.\n     * scene.make.sprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "replacements",
+          "type": null
+        },
+        {
+          "name": "spriteConfig",
+          "type": null
+        },
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CreateFromTiles",
+      "params": [
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "replacements",
+          "type": null
+        },
+        {
+          "name": "spriteConfig",
+          "type": null
+        },
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cullCallback",
+      "params": [
+        {
+          "name": "this.layer",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.culledTiles",
+          "type": null
+        },
+        {
+          "name": "this._renderOrder",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destination",
+      "params": [
+        {
+          "name": "all specified in tile\n     * coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "srcTileX",
+          "type": null
+        },
+        {
+          "name": "srcTileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "destTileX",
+          "type": null
+        },
+        {
+          "name": "destTileY",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Copy",
+      "params": [
+        {
+          "name": "srcTileX",
+          "type": null
+        },
+        {
+          "name": "srcTileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "destTileX",
+          "type": null
+        },
+        {
+          "name": "destTileY",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Fill",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "i.e. where the callback returns\n     * true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FilterTiles",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "findIndex",
+          "type": null
+        },
+        {
+          "name": "skip",
+          "type": null
+        },
+        {
+          "name": "reverse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FindByIndex",
+      "params": [
+        {
+          "name": "findIndex",
+          "type": null
+        },
+        {
+          "name": "skip",
+          "type": null
+        },
+        {
+          "name": "reverse",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FindTile",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ForEachTile",
+      "params": [
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "white",
+      "params": [
+        {
+          "name": "`0xffffff`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tint === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tile",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEachTile",
+      "params": [
+        {
+          "name": "tintTile",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "white",
+      "params": [
+        {
+          "name": "`0xffffff`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tint === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tile",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEachTile",
+      "params": [
+        {
+          "name": "tintTile",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "given in tile units",
+          "type": null
+        },
+        {
+          "name": "not pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "given in tile units",
+          "type": null
+        },
+        {
+          "name": "not pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "nonNull",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetTileAt",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "nonNull",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "given in pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "given in pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "nonNull",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetTileAtWorldXY",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "nonNull",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "given in pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "given in pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "top",
+      "params": [
+        {
+          "name": "default",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "originTop",
+          "type": null
+        },
+        {
+          "name": "nonNull",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "originTop === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "IsometricWorldToTileXY",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        },
+        {
+          "name": "originTop",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTileAt",
+      "params": [
+        {
+          "name": "point.x",
+          "type": null
+        },
+        {
+          "name": "point.y",
+          "type": null
+        },
+        {
+          "name": "nonNull",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetTilesWithin",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "world",
+      "params": [
+        {
+          "name": "pixel",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "shape",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetTilesWithinShape",
+      "params": [
+        {
+          "name": "shape",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "in world coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetTilesWithinWorldXY",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "filteringOptions",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "location",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "HasTileAt",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "location",
+      "params": [
+        {
+          "name": "in world coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "HasTileAtWorldXY",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tile",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "PutTileAt",
+      "params": [
+        {
+          "name": "tile",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tile",
+          "type": null
+        },
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "PutTileAtWorldXY",
+      "params": [
+        {
+          "name": "tile",
+          "type": null
+        },
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "row",
+      "params": [
+        {
+          "name": "array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "grid",
+      "params": [
+        {
+          "name": "2D array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tilesArray",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "PutTilesAt",
+      "params": [
+        {
+          "name": "tilesArray",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tiles",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "region",
+      "params": [
+        {
+          "name": "excluding -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "indexes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Randomize",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "replaceWithNull",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RemoveTileAt",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "replaceWithNull",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "replaceWithNull",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RemoveTileAtWorldXY",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "replaceWithNull",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "at",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "styleConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RenderDebug",
+      "params": [
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "styleConfig",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "given in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "findIndex",
+          "type": null
+        },
+        {
+          "name": "newIndex",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ReplaceByIndex",
+      "params": [
+        {
+          "name": "findIndex",
+          "type": null
+        },
+        {
+          "name": "newIndex",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "params": [
+        {
+          "name": "adjusted for scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "paddingX",
+          "type": null
+        },
+        {
+          "name": "paddingY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "paddingX === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "paddingY === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enabled",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disabled",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "updateLayer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetCollision",
+      "params": [
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        },
+        {
+          "name": "updateLayer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enabled",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disabled",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "start",
+          "type": null
+        },
+        {
+          "name": "stop",
+          "type": null
+        },
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetCollisionBetween",
+      "params": [
+        {
+          "name": "start",
+          "type": null
+        },
+        {
+          "name": "stop",
+          "type": null
+        },
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enabled",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disabled",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "properties",
+          "type": null
+        },
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetCollisionByProperty",
+      "params": [
+        {
+          "name": "properties",
+          "type": null
+        },
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enabled",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disabled",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetCollisionByExclusion",
+      "params": [
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enabled",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disabled",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetCollisionFromCollisionGroup",
+      "params": [
+        {
+          "name": "collides",
+          "type": null
+        },
+        {
+          "name": "recalculateFaces",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetTileIndexCallback",
+      "params": [
+        {
+          "name": "indexes",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetTileLocationCallback",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "region",
+      "params": [
+        {
+          "name": "specified in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Shuffle",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "area",
+      "params": [
+        {
+          "name": "given in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "indexA",
+          "type": null
+        },
+        {
+          "name": "indexB",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SwapByIndex",
+      "params": [
+        {
+          "name": "indexA",
+          "type": null
+        },
+        {
+          "name": "indexB",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "tile units",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tileToWorldX",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "tile units",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tileToWorldY",
+      "params": [
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "tile units",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tileToWorldXY",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTileCorners",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "tiles",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "is",
+      "params": [
+        {
+          "name": "the index's weight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "index",
+      "params": [
+        {
+          "name": "in tile coordinates",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "weightedIndexes",
+          "type": null
+        },
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "WeightedRandomize",
+      "params": [
+        {
+          "name": "tileX",
+          "type": null
+        },
+        {
+          "name": "tileY",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "weightedIndexes",
+          "type": null
+        },
+        {
+          "name": "this.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "tile units",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "snapToFloor",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "worldToTileX",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "snapToFloor",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "tile units",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "snapToFloor",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "worldToTileY",
+      "params": [
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "snapToFloor",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "coordinates",
+      "params": [
+        {
+          "name": "tile units",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "snapToFloor",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "worldToTileXY",
+      "params": [
+        {
+          "name": "worldX",
+          "type": null
+        },
+        {
+          "name": "worldY",
+          "type": null
+        },
+        {
+          "name": "snapToFloor",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "removeFromTilemap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "removeFromTilemap === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.tilemap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.layer.tilemapLayer === this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "removeFromTilemap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeLayer",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

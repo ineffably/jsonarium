@@ -1,0 +1,79 @@
+{
+  "type": "interface",
+  "name": "RenderContainerOptions",
+  "sourcePath": "scene/container/RenderContainer.ts",
+  "extends": [
+    "ContainerOptions"
+  ],
+  "description": "A function that takes a renderer and does the custom rendering logic. This is the function that will be called each frame. ```js import { RenderContainer } from 'pixi.js'; // create a new render container const renderContainer = new RenderContainer((renderer) => { // custom render logic here renderer.clear({ clearColor: 'green', // clear the screen to green when rendering this item }); }); ``` / export type RenderFunction = (renderer: Renderer) => void; /** Options for the {@link RenderContainer} constructor.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "render",
+      "type": "RenderFunction",
+      "optional": true,
+      "description": "the optional custom render function if you want to inject the function via the constructor"
+    },
+    {
+      "name": "containsPoint",
+      "type": "(point: Point) => boolean",
+      "optional": true,
+      "description": "how to know if the custom render logic contains a point or not, used for interaction"
+    },
+    {
+      "name": "addBounds",
+      "type": "(bounds: BoundsData) => void",
+      "optional": true,
+      "description": "how to add the bounds of this object when measuring"
+    },
+    {
+      "name": "clearColor",
+      "type": "'green', // clear the screen to green when rendering this item\n *      })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "type": "'green', // clear the screen to green when rendering this item\n *     })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "string = 'customRender'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "addBounds",
+      "type": "(bounds: Bounds) => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "RenderContainerOptions | RenderFunction)\n    {\n        if (typeof options === 'function')\n        {\n            options = { render: options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "'RenderContainer',\n            ...rest,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "NOTE",
+      "type": "this is for backwards compatibility with the old bounds system\n        this._bounds.clear()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer): void\n    {\n        // override me!\n    }\n}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

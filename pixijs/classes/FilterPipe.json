@@ -1,0 +1,211 @@
+{
+  "type": "class",
+  "name": "FilterPipe",
+  "sourcePath": "filters/FilterPipe.ts",
+  "extends": null,
+  "implements": [
+    "InstructionPipe"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "filterEffect",
+          "type": "Effect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'filter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'pushFilter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "container",
+          "type": null
+        },
+        {
+          "name": "filterEffect",
+          "type": null
+        },
+        {
+          "name": "} as FilterInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [
+        {
+          "name": "_filterEffect",
+          "type": "Effect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'filter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'popFilter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "instruction",
+          "type": "FilterInstruction",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'pushFilter'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "instruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'popFilter'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

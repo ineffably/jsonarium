@@ -1,0 +1,338 @@
+{
+  "type": "class",
+  "name": "GlobalUniformSystem",
+  "sourcePath": "rendering/renderers/shared/renderTarget/GlobalUniformSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "Type definition for the global uniforms used in the renderer. This includes projection matrix, world transform matrix, world color, and resolution. / export type GlobalUniformGroup = UniformGroup<{ uProjectionMatrix: { value: Matrix; type: 'mat3x3<f32>' } uWorldTransformMatrix: { value: Matrix; type: 'mat3x3<f32>' } uWorldColorAlpha: { value: Float32Array; type: 'vec4<f32>' } uResolution: { value: number[]; type: 'vec2<f32>' } }>; /** Options for the global uniforms system. This includes size, projection matrix, world transform matrix, world color, and offset. / export interface GlobalUniformOptions { size?: number[], projectionMatrix?: Matrix, worldTransformMatrix?: Matrix worldColor?: number offset?: PointData } /** Data structure for the global uniforms used in the renderer. This includes the projection matrix, world transform matrix, world color, resolution, and bind group. / export interface GlobalUniformData { projectionMatrix: Matrix worldTransformMatrix: Matrix worldColor: number resolution: number[] offset: PointData bindGroup: BindGroup } /** @internal */ export interface GlobalUniformRenderer { renderTarget: GlRenderTargetSystem | GpuRenderTargetSystem renderPipes: Renderer['renderPipes']; ubo: UboSystem; type: RendererType; } /** System plugin to the renderer to manage global uniforms for the renderer.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._activeUniforms.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "this._activeUniforms[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._activeBindGroups.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "this._activeBindGroups[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "options",
+          "type": "GlobalUniformOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "{\n        size",
+          "type": null
+        },
+        {
+          "name": "projectionMatrix",
+          "type": null
+        },
+        {
+          "name": "worldTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "worldColor",
+          "type": null
+        },
+        {
+          "name": "offset",
+          "type": null
+        },
+        {
+          "name": "}: GlobalUniformOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Point",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "globalUniformData.worldTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "color32BitToUniform",
+      "params": [
+        {
+          "name": "globalUniformData.worldColor",
+          "type": null
+        },
+        {
+          "name": "uniforms.uWorldColorAlpha",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(this._renderer as WebGPURenderer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUniformBindGroup",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BindGroup",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "bindGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "options",
+          "type": "GlobalUniformOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._renderer.type === RendererType.WEBGL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uProjectionMatrix",
+          "type": "{ value: new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,577 @@
+{
+  "type": "class",
+  "name": "FontFile",
+  "sourcePath": "loader/filetypes/FontFile.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "loader",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "File",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function FontFile (loader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "descriptors",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "IsPlainObject(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'key'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'url'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'format'",
+          "type": null
+        },
+        {
+          "name": "'truetype'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'descriptors'",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'xhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'extension'",
+          "type": null
+        },
+        {
+          "name": "extension",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "format === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "fileConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetURL",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "this.loader.baseURL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "url",
+      "params": [
+        {
+          "name": "' + this.src + '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "format",
+      "params": [
+        {
+          "name": "\"' + this.data.format + '\"",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.data.descriptors",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FontFace",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "this.data.descriptors",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FontFace",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "load",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "then",
+      "params": [
+        {
+          "name": "function (",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "font",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "\"fonts-loaded\"",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcessComplete",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "catch",
+      "params": [
+        {
+          "name": "function (",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'Font failed to load'",
+          "type": null
+        },
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcessComplete",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "font",
+      "params": [
+        {
+          "name": "'Nokia'",
+          "type": null
+        },
+        {
+          "name": "'assets/nokia.ttf'",
+          "type": null
+        },
+        {
+          "name": "'truetype'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "font",
+      "params": [
+        {
+          "name": "'Nokia'",
+          "type": null
+        },
+        {
+          "name": "'assets/nokia.otf'",
+          "type": null
+        },
+        {
+          "name": "'opentype'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "font",
+      "params": [
+        {
+          "name": "key",
+          "type": "'Nokia'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "'assets/nokia.ttf'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "'truetype'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "descriptors",
+          "type": "{ style: 'normal'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "weight",
+          "type": "'400' }\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "text",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "'Hello World'",
+          "type": null
+        },
+        {
+          "name": "fontFamily",
+          "type": "'Nokia'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontSize",
+          "type": "48 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'font'",
+          "type": null
+        },
+        {
+          "name": "function (key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "descriptors",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < key.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "new FontFile(this",
+          "type": null
+        },
+        {
+          "name": "key[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "new FontFile(this",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "descriptors",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

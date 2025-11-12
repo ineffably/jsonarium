@@ -1,0 +1,449 @@
+{
+  "type": "class",
+  "name": "GraphicsContextSystem",
+  "sourcePath": "scene/graphics/shared/GraphicsContextSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "Use `batcher.geometry` instead. / get geometry() { // #if _DEBUG deprecation(v8_3_4, 'GraphicsContextRenderData#geometry is deprecated, please use batcher.geometry instead.'); // #endif return this.batcher.geometry; } public destroy() { this.batcher.destroy(); this.instructions.destroy(); this.batcher = null; this.instructions = null; } } /** Options for the GraphicsContextSystem. / export interface GraphicsContextSystemOptions { /** A value from 0 to 1 that controls the smoothness of bezier curves (the higher the smoother) */ bezierSmoothness?: number; } /** A system that manages the rendering of GraphicsContexts.",
+  "category": "rendering",
+  "deprecated": true,
+  "methods": [
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "options",
+          "type": "GraphicsContextSystemOptions",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'graphicsContext' } as const; /** The default options for the GraphicsContextSystem. */ public static readonly defaultOptions: GraphicsContextSystemOptions = { /** A value from 0 to 1 that controls the smoothness of bezier curves (the higher the smoother) / bezierSmoothness: 0.5, }; // the root context batches, used to either make a batch or geometry // all graphics use this as a base private _gpuContextHash: Record<number, GpuGraphicsContext> = {}; // used for non-batchable graphics private _graphicsDataContextHash: Record<number, GraphicsContextRenderData> = Object.create(null); private readonly _renderer: Renderer; constructor(renderer: Renderer) { this._renderer = renderer; renderer.renderableGC.addManagedHash(this, '_gpuContextHash'); renderer.renderableGC.addManagedHash(this, '_graphicsDataContextHash'); } /** Runner init called, update the default options"
+    },
+    {
+      "name": "getContextRenderData",
+      "params": [
+        {
+          "name": "context",
+          "type": "GraphicsContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GraphicsContextRenderData",
+      "description": "Returns the render data for a given GraphicsContext."
+    },
+    {
+      "name": "updateGpuContext",
+      "params": [
+        {
+          "name": "context",
+          "type": "GraphicsContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Updates the GPU context for a given GraphicsContext. If the context is dirty, it will rebuild the batches and geometry data."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "context.dirty",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildContextBatches",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        },
+        {
+          "name": "gpuContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "context.customShader || batchMode === 'no-batch'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batchMode === 'auto'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuContext",
+      "params": [
+        {
+          "name": "context",
+          "type": "GraphicsContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GpuGraphicsContext",
+      "description": "Returns the GpuGraphicsContext for a given GraphicsContext. If it does not exist, it will initialize a new one."
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "GraphicsContextRenderData",
+          "type": null
+        },
+        {
+          "name": "maxTextures",
+          "type": "this._renderer.limits.maxBatchableTextures",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < batches.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureAttributeBuffer",
+      "params": [
+        {
+          "name": "vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureIndexBuffer",
+      "params": [
+        {
+          "name": "indexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "begin",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < batches.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "batch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finish",
+      "params": [
+        {
+          "name": "graphicsData.instructions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDataWithSize",
+      "params": [
+        {
+          "name": "batcher.indexBuffer",
+          "type": null
+        },
+        {
+          "name": "batcher.indexSize",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDataWithSize",
+      "params": [
+        {
+          "name": "batcher.attributeBuffer.float32View",
+          "type": null
+        },
+        {
+          "name": "batcher.attributeSize",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < drawBatches.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTextureBatchBindGroup",
+      "params": [
+        {
+          "name": "batch.textures.textures",
+          "type": null
+        },
+        {
+          "name": "batch.textures.count",
+          "type": null
+        },
+        {
+          "name": "this._renderer.limits.maxBatchableTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GpuGraphicsContext",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onGraphicsContextDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onGraphicsContextDestroy",
+      "params": [
+        {
+          "name": "context",
+          "type": "GraphicsContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onGraphicsContextDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gpuContext.isBatchable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._graphicsDataContextHash[context.uid]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.getContextRenderData(context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuContext.batches",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(batch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "batch as PoolItem",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this._gpuContextHash",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._gpuContextHash[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onGraphicsContextDestroy",
+      "params": [
+        {
+          "name": "this._gpuContextHash[i].context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

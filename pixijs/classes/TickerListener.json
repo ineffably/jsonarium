@@ -1,0 +1,172 @@
+{
+  "type": "class",
+  "name": "TickerListener",
+  "sourcePath": "ticker/TickerListener.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Internal class for handling the priority sorting of ticker handlers.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "match",
+      "params": [
+        {
+          "name": "fn",
+          "type": "TickerCallback<T>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "context",
+          "type": "any",
+          "optional": true,
+          "default": "null"
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Simple compare function to figure out if a function and context match."
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "ticker",
+          "type": "Ticker",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "TickerListener",
+      "description": "Emit by calling the current function."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._fn",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this._context",
+          "type": null
+        },
+        {
+          "name": "ticker",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._once",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._destroyed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "connect",
+      "params": [
+        {
+          "name": "previous",
+          "type": "TickerListener",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Connect to the list."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "previous.next",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "hard = false",
+          "type": null
+        }
+      ],
+      "returnType": "TickerListener",
+      "description": "Destroy and don't use after this. is considered a hard destroy. Soft destroy maintains the next reference."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.previous",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.next",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

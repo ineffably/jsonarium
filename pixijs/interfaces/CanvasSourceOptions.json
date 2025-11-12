@@ -1,0 +1,61 @@
+{
+  "type": "interface",
+  "name": "CanvasSourceOptions",
+  "sourcePath": "rendering/renderers/shared/texture/sources/CanvasSource.ts",
+  "extends": [
+    "TextureSourceOptions"
+  ],
+  "description": "Options for creating a CanvasSource.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "autoDensity",
+      "type": "boolean",
+      "optional": true,
+      "description": "Should the canvas be resized to preserve its screen width and height regardless of the resolution of the renderer, this is only supported for HTMLCanvasElement and will be ignored if the canvas is an OffscreenCanvas."
+    },
+    {
+      "name": "transparent",
+      "type": "boolean",
+      "optional": true,
+      "description": "if true, this canvas will be set up to be transparent where possible"
+    },
+    {
+      "name": "extension",
+      "type": "ExtensionMetadata = ExtensionType.TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoDensity",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "transparent",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_context2D",
+      "type": "CanvasRenderingContext2D",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "CanvasSourceOptions)\n    {\n        if (!options.resource)\n        {\n            options.resource = DOMAdapter.get().createCanvas()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resource",
+      "type": "any): resource is ICanvas\n    {\n        return (globalThis.HTMLCanvasElement && resource instanceof HTMLCanvasElement)\n        || (globalThis.OffscreenCanvas && resource instanceof OffscreenCanvas)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

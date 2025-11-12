@@ -1,0 +1,29 @@
+{
+  "type": "interface",
+  "name": "WebGLRenderer",
+  "sourcePath": "rendering/renderers/gl/WebGLRenderer.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "preference",
+      "type": "'webgl',\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "*\n * | WebGL Core Systems                          | Systems that are specific to the WebGL renderer                               |\n * | ------------------------------------------- | ----------------------------------------------------------------------------- |\n * | {@link GlUboSystem}               | This manages WebGL2 uniform buffer objects feature for shaders                |\n * | {@link GlBackBufferSystem}        | manages the back buffer, used so that we can pixi can pixels from the screen  |\n * | {@link GlContextSystem}           | This manages the WebGL context and its extensions                             |\n * | {@link GlBufferSystem}            | This manages buffers and their GPU resources, keeps everything in sync        |\n * | {@link GlTextureSystem}           | This manages textures and their GPU resources, keeps everything in sync       |\n * | {@link GlRenderTargetSystem}      | This manages what we render too. For example the screen, or another texture   |\n * | {@link GlGeometrySystem}          | This manages geometry, used for drawing meshes via the GPU                    |\n * | {@link GlUniformGroupSystem}      | This manages uniform groups. Syncing shader properties with the GPU           |\n * | {@link GlShaderSystem}            | This manages shaders, programs that run on the GPU to output lovely pixels    |\n * | {@link GlEncoderSystem}           | This manages encoders, a WebGPU Paradigm, use it to draw a mesh + shader      |\n * | {@link GlStateSystem}             | This manages the state of the WebGL context. eg the various flags that can be set blend modes / depthTesting etc |\n * | {@link GlStencilSystem}           | This manages the stencil buffer. Used primarily for masking                   |\n * | {@link GlColorMaskSystem}         | This manages the color mask. Used for color masking                           |\n *\n * The breadth of the API surface provided by the renderer is contained within these systems.\n * @category rendering\n * @property {GlUboSystem} ubo - UboSystem instance.\n * @property {GlBackBufferSystem} backBuffer - BackBufferSystem instance.\n * @property {GlContextSystem} context - ContextSystem instance.\n * @property {GlBufferSystem} buffer - BufferSystem instance.\n * @property {GlTextureSystem} texture - TextureSystem instance.\n * @property {GlRenderTargetSystem} renderTarget - RenderTargetSystem instance.\n * @property {GlGeometrySystem} geometry - GeometrySystem instance.\n * @property {GlUniformGroupSystem} uniformGroup - UniformGroupSystem instance.\n * @property {GlShaderSystem} shader - ShaderSystem instance.\n * @property {GlEncoderSystem} encoder - EncoderSystem instance.\n * @property {GlStateSystem} state - StateSystem instance.\n * @property {GlStencilSystem} stencil - StencilSystem instance.\n * @property {GlColorMaskSystem} colorMask - ColorMaskSystem instance.\n * @extends AbstractRenderer\n * @standard\n */\nexport class WebGLRenderer<T extends ICanvas = HTMLCanvasElement>\n    extends AbstractRenderer<WebGLPipes, WebGLOptions, T>\n    implements WebGLSystems\n{\n    public gl: GlRenderingContext",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'webgl',\n            type: RendererType.WEBGL,\n            systems,\n            renderPipes,\n            renderPipeAdaptors,\n        }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

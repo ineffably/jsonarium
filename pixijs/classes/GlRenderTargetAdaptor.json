@@ -1,0 +1,1375 @@
+{
+  "type": "class",
+  "name": "GlRenderTargetAdaptor",
+  "sourcePath": "rendering/renderers/gl/renderTarget/GlRenderTargetAdaptor.ts",
+  "extends": null,
+  "implements": [
+    "RenderTargetAdaptor"
+  ],
+  "description": "The WebGL adaptor for the render target system. Allows the Render Target System to be used with the WebGL renderer",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "renderer",
+          "type": "WebGLRenderer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "renderTargetSystem",
+          "type": "RenderTargetSystem<GlRenderTarget>",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contextChange",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyToTexture",
+      "params": [
+        {
+          "name": "sourceRenderSurfaceTexture",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "destinationTexture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "originSrc",
+          "type": "{ x: number; y: number; }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "{ width: number; height: number; }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "originDest",
+          "type": "{ x: number; y: number; }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuRenderTarget",
+      "params": [
+        {
+          "name": "sourceRenderSurfaceTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [
+        {
+          "name": "sourceRenderSurfaceTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.resolveTargetFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "destinationTexture",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyTexSubImage2D",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "originDest.x",
+          "type": null
+        },
+        {
+          "name": "originDest.y",
+          "type": null
+        },
+        {
+          "name": "originSrc.x",
+          "type": null
+        },
+        {
+          "name": "originSrc.y",
+          "type": null
+        },
+        {
+          "name": "size.width",
+          "type": null
+        },
+        {
+          "name": "size.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "startRenderPass",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "clear",
+          "type": "CLEAR_OR_BOOL",
+          "optional": true,
+          "default": "true"
+        },
+        {
+          "name": "clearColor",
+          "type": "RgbaArray",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "viewport",
+          "type": "Rectangle",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuRenderTarget",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderTarget.isRoot",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unbind",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gpuRenderTarget.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "viewPortCache.x !== viewport.x\n            || viewPortCache.y !== viewPortY\n            || viewPortCache.width !== viewport.width\n            || viewPortCache.height !== viewport.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "viewport",
+      "params": [
+        {
+          "name": "viewport.x",
+          "type": null
+        },
+        {
+          "name": "viewPortY",
+          "type": null
+        },
+        {
+          "name": "viewport.width",
+          "type": null
+        },
+        {
+          "name": "viewport.height",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gpuRenderTarget.depthStencilRenderBuffer && (renderTarget.stencil || renderTarget.depth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": null
+        },
+        {
+          "name": "clear",
+          "type": null
+        },
+        {
+          "name": "clearColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": "RenderTarget",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuRenderTarget",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!glRenderTarget.msaa",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.resolveTargetFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.READ_FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blitFramebuffer",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.width",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.height",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.width",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.height",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        },
+        {
+          "name": "gl.NEAREST",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.READ_FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initGpuRenderTarget",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GlRenderTarget",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "colorTexture instanceof CanvasSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureCanvasSize",
+      "params": [
+        {
+          "name": "renderTarget.colorTexture.resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroyGpuRenderTarget",
+      "params": [
+        {
+          "name": "gpuRenderTarget",
+          "type": "GlRenderTarget",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuRenderTarget.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteFramebuffer",
+      "params": [
+        {
+          "name": "gpuRenderTarget.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuRenderTarget.resolveTargetFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteFramebuffer",
+      "params": [
+        {
+          "name": "gpuRenderTarget.resolveTargetFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuRenderTarget.depthStencilRenderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteRenderbuffer",
+      "params": [
+        {
+          "name": "gpuRenderTarget.depthStencilRenderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(renderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteRenderbuffer",
+      "params": [
+        {
+          "name": "renderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "_renderTarget",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "clear",
+          "type": "CLEAR_OR_BOOL",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "clearColor",
+          "type": "RgbaArray",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof clear === 'boolean'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clear & CLEAR.COLOR",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clearColorCache[0] !== clearColorArray[0]\n                || clearColorCache[1] !== clearColorArray[1]\n                || clearColorCache[2] !== clearColorArray[2]\n                || clearColorCache[3] !== clearColorArray[3]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "clearColorArray[0]",
+          "type": null
+        },
+        {
+          "name": "clearColorArray[1]",
+          "type": null
+        },
+        {
+          "name": "clearColorArray[2]",
+          "type": null
+        },
+        {
+          "name": "clearColorArray[3]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resizeGpuRenderTarget",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderTarget.isRoot",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuRenderTarget",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderTarget.stencil || renderTarget.depth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createFramebuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "resolveTargetFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(colorTexture",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source.antialias",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer.context.supports.msaa",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'[RenderTexture] Antialiasing on textures is not supported in WebGL1'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0 + i",
+          "type": null
+        },
+        {
+          "name": "3553",
+          "type": null
+        },
+        {
+          "name": "// texture.target",
+          "type": null
+        },
+        {
+          "name": "glTexture",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "glRenderTarget.msaa",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createFramebuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "viewFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(_",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createRenderbuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(colorTexture",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "i === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "source.width",
+          "type": null
+        },
+        {
+          "name": "source.height",
+          "type": null
+        },
+        {
+          "name": "source._resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "glRenderTarget.msaa",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "viewFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(colorTexture",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindRenderbuffer",
+      "params": [
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "msaaRenderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderbufferStorageMultisample",
+      "params": [
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        },
+        {
+          "name": "glInternalFormat",
+          "type": null
+        },
+        {
+          "name": "source.pixelWidth",
+          "type": null
+        },
+        {
+          "name": "source.pixelHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferRenderbuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0 + i",
+          "type": null
+        },
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "msaaRenderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "glRenderTarget.framebuffer === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createRenderbuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindRenderbuffer",
+      "params": [
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "depthStencilRenderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferRenderbuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.DEPTH_STENCIL_ATTACHMENT",
+          "type": null
+        },
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "depthStencilRenderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindRenderbuffer",
+      "params": [
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.depthStencilRenderBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "glRenderTarget.msaa",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderbufferStorageMultisample",
+      "params": [
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        },
+        {
+          "name": "gl.DEPTH24_STENCIL8",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.width",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderbufferStorage",
+      "params": [
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "this._renderer.context.webGLVersion === 2\n                    ? gl.DEPTH24_STENCIL8\n                    : gl.DEPTH_STENCIL",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.width",
+          "type": null
+        },
+        {
+          "name": "glRenderTarget.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prerender",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._renderer.context.multiView && CanvasSource.test(resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureCanvasSize",
+      "params": [
+        {
+          "name": "resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "postrender",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._renderer.context.multiView",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "CanvasSource.test(renderTarget.colorTexture.resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawImage",
+      "params": [
+        {
+          "name": "contextCanvas as CanvasImageSource",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "canvasSource.pixelHeight - contextCanvas.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

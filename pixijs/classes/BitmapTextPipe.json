@@ -1,0 +1,480 @@
+{
+  "type": "class",
+  "name": "BitmapTextPipe",
+  "sourcePath": "scene/text-bitmap/BitmapTextPipe.ts",
+  "extends": null,
+  "implements": [
+    "RenderPipe"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "validateRenderable",
+      "params": [
+        {
+          "name": "bitmapText",
+          "type": "BitmapText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "validateRenderable",
+      "params": [
+        {
+          "name": "graphicsRenderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "bitmapText",
+          "type": "BitmapText",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncWithProxy",
+      "params": [
+        {
+          "name": "bitmapText",
+          "type": null
+        },
+        {
+          "name": "graphicsRenderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bitmapText._didTextUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "graphicsRenderable",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "graphicsRenderable.context.customShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateRenderable",
+      "params": [
+        {
+          "name": "bitmapText",
+          "type": "BitmapText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncWithProxy",
+      "params": [
+        {
+          "name": "bitmapText",
+          "type": null
+        },
+        {
+          "name": "graphicsRenderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateRenderable",
+      "params": [
+        {
+          "name": "graphicsRenderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "graphicsRenderable.context.customShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFont",
+      "params": [
+        {
+          "name": "bitmapText.text",
+          "type": null
+        },
+        {
+          "name": "bitmapText._style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bitmapFont.distanceField.type !== 'none'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!context.customShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SdfShader",
+      "params": [
+        {
+          "name": "this._renderer.limits.maxBatchableTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "graphemeSegmenter",
+      "params": [
+        {
+          "name": "bitmapText.text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBitmapTextLayout",
+      "params": [
+        {
+          "name": "chars",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "bitmapFont",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style._stroke",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "(-bitmapText._anchor._x * tx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "scale",
+          "type": null
+        },
+        {
+          "name": "scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.lineHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "linePositionYShift - bitmapFont.baseLineOffset < 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < bitmapTextLayout.lines.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let j = 0; j < line.charPositions.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "charData?.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "tint ? tint : 'black'",
+          "type": null
+        },
+        {
+          "name": "Math.round(line.charPositions[j] + charData.xOffset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "currentY + charData.yOffset + linePositionYShift",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initGpuText",
+      "params": [
+        {
+          "name": "bitmapText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initGpuText",
+      "params": [
+        {
+          "name": "bitmapText",
+          "type": "BitmapText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BitmapTextGraphics",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "`${fontFamily as string}-bitmap`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "(a * a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "(c * c",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "dx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "dy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncWithProxy",
+      "params": [
+        {
+          "name": "container",
+          "type": "Renderable",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "Renderable",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

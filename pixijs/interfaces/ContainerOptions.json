@@ -1,0 +1,527 @@
+{
+  "type": "interface",
+  "name": "ContainerOptions",
+  "sourcePath": "scene/container/Container.ts",
+  "extends": [],
+  "description": "Constructor options used for `Container` instances. ```js const container = new Container({ position: new Point(100, 200), scale: new Point(2, 2), rotation: Math.PI / 2, }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "isRenderGroup",
+      "type": "boolean",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "blendMode",
+      "type": "BLEND_MODES",
+      "optional": true,
+      "description": "The blend mode to be applied to the sprite. Controls how pixels are blended when rendering. Setting to 'normal' will reset to default blending. > [!NOTE] More blend modes are available after importing the `pixi.js/advanced-blend-modes` sub-export. ```ts // Basic blend modes new Container({ blendMode: 'normal' }); // Default blending new Container({ blendMode: 'add' });    // Additive blending new Container({ blendMode: 'multiply' }); // Multiply colors new Container({ blendMode: 'screen' }); // Screen blend ```"
+    },
+    {
+      "name": "tint",
+      "type": "ColorSource",
+      "optional": true,
+      "description": "The tint applied to the sprite. This can be any valid {@link ColorSource}. ```ts new Container({ tint: 0xff0000 }); // Red tint new Container({ tint: 'blue' }); // Blue tint new Container({ tint: '#00ff00' }); // Green tint new Container({ tint: 'rgb(0,0,255)' }); // Blue tint ```"
+    },
+    {
+      "name": "alpha",
+      "type": "number",
+      "optional": true,
+      "description": "The opacity of the object relative to its parent's opacity. Value ranges from 0 (fully transparent) to 1 (fully opaque). ```ts new Container({ alpha: 0.5 }); // 50% opacity new Container({ alpha: 1 }); // Fully opaque ```"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "optional": true,
+      "description": "The angle of the object in degrees. > [!NOTE] 'rotation' and 'angle' have the same effect on a display object; > rotation is in radians, angle is in degrees. ```ts new Container({ angle: 45 }); // Rotate 45 degrees new Container({ angle: 90 }); // Rotate 90 degrees ```"
+    },
+    {
+      "name": "children",
+      "type": "C[]",
+      "optional": true,
+      "description": "The array of children of this container. Each child must be a Container or extend from it. The array is read-only, but its contents can be modified using Container methods. ```ts new Container({ children: [ new Container(), // First child new Container(), // Second child ], }); ```"
+    },
+    {
+      "name": "parent",
+      "type": "Container",
+      "optional": true,
+      "description": "The display object container that contains this display object. This represents the parent-child relationship in the display tree."
+    },
+    {
+      "name": "renderable",
+      "type": "boolean",
+      "optional": true,
+      "description": "Controls whether this object can be rendered. If false the object will not be drawn, but the transform will still be updated. This is different from visible, which skips transform updates. ```ts new Container({ renderable: false }); // Will not be drawn, but transforms will update ```"
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "optional": true,
+      "description": "The rotation of the object in radians. > [!NOTE] 'rotation' and 'angle' have the same effect on a display object; > rotation is in radians, angle is in degrees. ```ts new Container({ rotation: Math.PI / 4 }); // Rotate 45 degrees new Container({ rotation: Math.PI / 2 }); // Rotate 90 degrees ```"
+    },
+    {
+      "name": "scale",
+      "type": "PointData | number",
+      "optional": true,
+      "description": "The scale factors of this object along the local coordinate axes. The default scale is (1, 1). ```ts new Container({ scale: new Point(2, 2) }); // Scale by 2x new Container({ scale: 0.5 }); // Scale by 0.5x new Container({ scale: { x: 1.5, y: 1.5 } }); // Scale by 1.5x ```"
+    },
+    {
+      "name": "pivot",
+      "type": "PointData | number",
+      "optional": true,
+      "description": "The center of rotation, scaling, and skewing for this display object in its local space. The `position` is the projection of `pivot` in the parent's local space. By default, the pivot is the origin (0, 0). ```ts new Container({ pivot: new Point(100, 200) }); // Set pivot to (100, 200) new Container({ pivot: 50 }); // Set pivot to (50, 50) new Container({ pivot: { x: 150, y: 150 } }); // Set pivot to (150, 150) ```"
+    },
+    {
+      "name": "origin",
+      "type": "PointData | number",
+      "optional": true,
+      "description": "The origin point around which the container rotates and scales. Unlike pivot, changing origin will not move the container's position. ```ts new Container({ origin: new Point(100, 100) }); // Rotate around point (100,100) new Container({ origin: 50 }); // Rotate around point (50, 50) new Container({ origin: { x: 150, y: 150 } }); // Rotate around point (150, 150) ```"
+    },
+    {
+      "name": "position",
+      "type": "PointData",
+      "optional": true,
+      "description": "The coordinate of the object relative to the local coordinates of the parent. ```ts new Container({ position: new Point(100, 200) }); // Set position to (100, 200) new Container({ position: { x: 150, y: 150 } }); // Set position to (150, 150) ```"
+    },
+    {
+      "name": "skew",
+      "type": "PointData",
+      "optional": true,
+      "description": "The skew factor for the object in radians. Skewing is a transformation that distorts the object by rotating it differently at each point, creating a non-uniform shape. ```ts new Container({ skew: new Point(0.1, 0.2) }); // Skew by 0.1 radians on x and 0.2 radians on y new Container({ skew: { x: 0.1, y: 0.2 } }); // Skew by 0.1 radians on x and 0.2 radians on y ```"
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "optional": true,
+      "description": "The visibility of the object. If false the object will not be drawn, and the transform will not be updated. ```ts new Container({ visible: false }); // Will not be drawn and transforms will not update new Container({ visible: true }); // Will be drawn and transforms will update ```"
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "optional": true,
+      "description": "The position of the container on the x axis relative to the local coordinates of the parent. An alias to position.x ```ts new Container({ x: 100 }); // Set x position to 100 ```"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "optional": true,
+      "description": "The position of the container on the y axis relative to the local coordinates of the parent. An alias to position.y ```ts new Container({ y: 200 }); // Set y position to 200 ```"
+    },
+    {
+      "name": "boundsArea",
+      "type": "Rectangle",
+      "optional": true,
+      "description": "An optional bounds area for this container. Setting this rectangle will stop the renderer from recursively measuring the bounds of each children and instead use this single boundArea. > [!IMPORTANT] This is great for optimisation! If for example you have a > 1000 spinning particles and you know they all sit within a specific bounds, > then setting it will mean the renderer will not need to measure the > 1000 children to find the bounds. Instead it will just use the bounds you set. ```ts const container = new Container({ boundsArea: new Rectangle(0, 0, 500, 500) // Set a fixed bounds area }); ```"
+    },
+    {
+      "name": "transform",
+      "type": "*\n * <table>\n *   <thead>\n *     <tr>\n *       <th>Property</th>\n *       <th>Description</th>\n *     </tr>\n *   </thead>\n *   <tbody>\n *     <tr>\n *       <td>[pivot]{@link Container#pivot}</td>\n *       <td>\n *         Invariant under rotation, scaling, and skewing. The projection of into the parent's space of the pivot\n *         is equal to position, regardless of the other three transformations. In other words, It is the center of\n *         rotation, scaling, and skewing.\n *       </td>\n *     </tr>\n *     <tr>\n *       <td>[position]{@link Container#position}</td>\n *       <td>\n *         Translation. This is the position of the [pivot]{@link Container#pivot} in the parent's local\n *         space. The default value of the pivot is the origin (0,0). If the top-left corner of your display object\n *         is (0,0) in its local space, then the position will be its top-left corner in the parent's local space.\n *       </td>\n *     </tr>\n *     <tr>\n *       <td>[scale]{@link Container#scale}</td>\n *       <td>\n *         Scaling. This will stretch (or compress) the display object's projection. The scale factors are along the\n *         local coordinate axes. In other words, the display object is scaled before rotated or skewed. The center\n *         of scaling is the [pivot]{@link Container#pivot}.\n *       </td>\n *     </tr>\n *     <tr>\n *       <td>[rotation]{@link Container#rotation}</td>\n *       <td>\n *          Rotation. This will rotate the display object's projection by this angle (in radians).\n *       </td>\n *     </tr>\n *     <tr>\n *       <td>[skew]{@link Container#skew}</td>\n *       <td>\n *         <p>Skewing. This can be used to deform a rectangular display object into a parallelogram.</p>\n *         <p>\n *         In PixiJS, skew has a slightly different behaviour than the conventional meaning. It can be\n *         thought of the net rotation applied to the coordinate axes (separately). For example, if \"skew.x\" is\n *         ⍺ and \"skew.y\" is β, then the line x = 0 will be rotated by ⍺ (y = -x*cot⍺) and the line y = 0 will be\n *         rotated by β (y = x*tanβ). A line y = x*tanϴ (i.e. a line at angle ϴ to the x-axis in local-space) will\n *         be rotated by an angle between ⍺ and β.\n *         </p>\n *         <p>\n *         It can be observed that if skew is applied equally to both axes, then it will be equivalent to applying\n *         a rotation. Indeed, if \"skew.x\" = -ϴ and \"skew.y\" = ϴ, it will produce an equivalent of \"rotation\" = ϴ.\n *         </p>\n *         <p>\n *         Another quite interesting observation is that \"skew.x\", \"skew.y\", rotation are commutative operations. Indeed,\n *         because rotation is essentially a careful combination of the two.\n *         </p>\n *       </td>\n *     </tr>\n *     <tr>\n *       <td>[angle]{@link Container#angle}</td>\n *       <td>Rotation. This is an alias for [rotation]{@link Container#rotation}, but in degrees.</td>\n *     </tr>\n *     <tr>\n *       <td>[x]{@link Container#x}</td>\n *       <td>Translation. This is an alias for position.x!</td>\n *     </tr>\n *     <tr>\n *       <td>[y]{@link Container#y}</td>\n *       <td>Translation. This is an alias for position.y!</td>\n *     </tr>\n *     <tr>\n *       <td>[width]{@link Container#width}</td>\n *       <td>\n *         Implemented in [Container]{@link Container}. Scaling. The width property calculates scale.x by dividing\n *         the \"requested\" width by the local bounding box width. It is indirectly an abstraction over scale.x, and there\n *         is no concept of user-defined width.\n *       </td>\n *     </tr>\n *     <tr>\n *       <td>[height]{@link Container#height}</td>\n *       <td>\n *         Implemented in [Container]{@link Container}. Scaling. The height property calculates scale.y by dividing\n *         the \"requested\" height by the local bounding box height. It is indirectly an abstraction over scale.y, and there\n *         is no concept of user-defined height.\n *       </td>\n *     </tr>\n *   </tbody>\n * </table>\n * </details>\n *\n * <details id=\"alpha\">\n * <summary>Alpha</summary>\n *\n * This alpha sets a display object's **relative opacity** w.r.t its parent. For example, if the alpha of a display\n * object is 0.5 and its parent's alpha is 0.5, then it will be rendered with 25% opacity (assuming alpha is not\n * applied on any ancestor further up the chain).\n * </details>\n *\n * <details id=\"visible\">\n * <summary>Renderable vs Visible</summary>\n *\n * The `renderable` and `visible` properties can be used to prevent a display object from being rendered to the\n * screen. However, there is a subtle difference between the two. When using `renderable`, the transforms  of the display\n * object (and its children subtree) will continue to be calculated. When using `visible`, the transforms will not\n * be calculated.\n * ```ts\n * import { BlurFilter, Container, Graphics, Sprite } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//s3-us-west-2.amazonaws.com/s.cdpn.io/693612/IaUrttj.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "isRenderGroup",
+      "type": "true})).\n *  The method you choose depends on your specific use case and setup requirements.\n *\n * An important aspect of PixiJS’s rendering process is the automatic treatment of rendered scenes as render groups.\n * This conversion streamlines the rendering process, but understanding when and how this happens is crucial\n * to fully leverage its benefits.\n *\n * One of the key advantages of using render groups is the performance efficiency in moving them. Since transformations\n *  are applied at the GPU level, moving a render group, even one with complex and numerous children,\n * doesn't require recalculating the rendering instructions or performing transformations on each child.\n * This makes operations like panning a large game world incredibly efficient.\n *\n * However, it's crucial to note that render groups do not batch together.\n * This means that turning every container into a render group could actually slow things down,\n * as each render group is processed separately. It's best to use render groups judiciously, at a broader level,\n * rather than on a per-child basis.\n * This approach ensures you get the performance benefits without overburdening the rendering process.\n *\n * RenderGroups maintain their own set of rendering instructions,\n * ensuring that changes or updates within a render group don't affect the rendering\n * instructions of its parent or other render groups.\n *  This isolation ensures more stable and predictable rendering behavior.\n *\n * Additionally, renderGroups can be nested, allowing for powerful options in organizing different aspects of your scene.\n * This feature is particularly beneficial for separating complex game graphics from UI elements,\n * enabling intricate and efficient scene management in complex applications.\n *\n * This means that Containers have 3 levels of matrix to be mindful of:\n *\n * 1. localTransform, this is the transform of the container based on its own properties\n * 2. groupTransform, this it the transform of the container relative to the renderGroup it belongs too\n * 3. worldTransform, this is the transform of the container relative to the Scene being rendered\n * </details>\n * @category scene\n * @standard\n */\nexport class Container<C extends ContainerChild = ContainerChild> extends EventEmitter<ContainerEvents<C> & AnyEvent>\n{\n    /**\n     * Mixes all enumerable properties and methods from a source object to Container.\n     * @param source - The source of properties and methods to mix in.\n     * @deprecated since 8.8.0\n     */\n    public static mixin(source: Dict<any>): void\n    {\n        // #if _DEBUG\n        deprecation('8.8.0', 'Container.mixin is deprecated, please use extensions.mixin instead.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uid",
+      "type": "number = uid('renderable')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderGroup",
+      "type": "RenderGroup = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parentRenderGroup",
+      "type": "RenderGroup = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parentRenderGroupIndex",
+      "type": "number = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "C[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "up",
+      "type": "', current.parent.constructor.name)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parent",
+      "type": "Container | null = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parentRenderLayer",
+      "type": "RenderLayer | null = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "factors",
+      "type": "position, scale, other stuff.\n     * This matrix represents the local transformation without any parent influence.\n     * @example\n     * ```ts\n     * // Basic transform access\n     * const localMatrix = sprite.localTransform",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "localTransform",
+      "type": "Matrix = new Matrix()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "relativeGroupTransform",
+      "type": "Matrix = new Matrix()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "groupTransform",
+      "type": "Matrix = this.relativeGroupTransform",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_worldTransform",
+      "type": "Matrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_position",
+      "type": "ObservablePoint = new ObservablePoint(this, 0, 0)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_scale",
+      "type": "ObservablePoint = defaultScale",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_pivot",
+      "type": "ObservablePoint = defaultPivot",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_origin",
+      "type": "ObservablePoint = defaultOrigin",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_skew",
+      "type": "ObservablePoint = defaultSkew",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "localBlendMode",
+      "type": "BLEND_MODES = 'inherit'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "groupBlendMode",
+      "type": "BLEND_MODES = 'normal'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bits",
+      "type": "culled, visible, renderable\n     * the third bit represents culling (0 = culled, 1 = not culled) 0b100\n     * the second bit represents visibility (0 = not visible, 1 = visible) 0b010\n     * the first bit represents renderable (0 = not renderable, 1 = renderable) 0b001\n     * @internal\n     */\n    public localDisplayStatus = 0b111",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "boundsArea",
+      "type": "Rectangle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "layerParentId",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._didViewChangeTick = (value >> 12) & 0xFFF",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ContainerOptions<C> = {})\n    {\n        super()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "true,\n            parent: true,\n            effects: true,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "U): U[0]\n    {\n        // #if _DEBUG\n        if (!this.allowChildren)\n        {\n            deprecation(v8_0_0, 'addChild: Only Containers will be allowed to add children in v8.0.0')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "U): U[0]\n    {\n        // if there is only one argument we can bypass looping through the them\n        if (children.length > 1)\n        {\n            // loop through the arguments property and remove all children\n            for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "ObservablePoint)\n    {\n        if (point)\n        {\n            //   this.updateFlags |= UPDATE_TRANSFORM",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        if (!!this.renderGroup === value) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "position",
+      "type": "(${worldPos.tx}, ${worldPos.ty})`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._position.x = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._position.y = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "50, y: 75 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData)\n    {\n        this._position.copyFrom(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        if (this._rotation !== value)\n        {\n            this._rotation = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.rotation = value * DEG_TO_RAD",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData | number)\n    {\n        if (this._pivot === defaultPivot)\n        {\n            this._pivot = new ObservablePoint(this, 0, 0)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0.3, y: 0.3 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0, y: 0}\n     */\n    get skew(): ObservablePoint\n    {\n        if (this._skew === defaultSkew)\n        {\n            this._skew = new ObservablePoint(this, 0, 0)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData)\n    {\n        if (this._skew === defaultSkew)\n        {\n            this._skew = new ObservablePoint(this, 0, 0)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData | number | string)\n    {\n        if (this._scale === defaultScale)\n        {\n            this._scale = new ObservablePoint(this, 0, 0)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData | number)\n    {\n        if (this._origin === defaultOrigin)\n        {\n            this._origin = new ObservablePoint(this, 0, 0)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        const localWidth = this.getLocalBounds().width",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        const localHeight = this.getLocalBounds().height",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Size",
+      "type": "${size.width}x${size.height}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "0, height: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Size): Size\n    {\n        if (!out)\n        {\n            out = {} as Size",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | Optional<Size, 'height'>, height?: number)\n    {\n        const size = this.getLocalBounds()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "100,\n     *     y: 200,\n     *     rotation: Math.PI / 4\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "pivotX",
+      "type": "sprite.width / 2,\n     *     pivotY: sprite.height / 2,\n     *     scaleX: 2,\n     *     scaleY: 2,\n     *     rotation: Math.PI\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "button.x + 10, // Move right\n     *     y: button.y      // Keep same y\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "opts",
+      "type": "Partial<UpdateTransformOptions>): this\n    {\n        this.position.set(\n            typeof opts.x === 'number' ? opts.x : this.position.x,\n            typeof opts.y === 'number' ? opts.y : this.position.y\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matrix",
+      "type": "Matrix): void\n    {\n        matrix.decompose(this)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        if (value === this.localAlpha) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "ColorSource)\n    {\n        const tempColor = Color.shared.setValue(value ?? 0xFFFFFF)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "BLEND_MODES)\n    {\n        if (this.localBlendMode === value) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        const valueNumber = value ? 0b010 : 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        const valueNumber = value ? 0 : 0b100",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        const valueNumber = value ? 0b001 : 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "true, texture: true, textureSource: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions = false): void\n    {\n        if (this.destroyed) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "oldChildren",
+      "type": "ContainerChild[]",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

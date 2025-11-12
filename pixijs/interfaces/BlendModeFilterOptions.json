@@ -1,0 +1,89 @@
+{
+  "type": "interface",
+  "name": "BlendModeFilterOptions",
+  "sourcePath": "filters/blend-modes/BlendModeFilter.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "source",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "gpu",
+      "type": "{\n        functions?: string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "main",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "gl",
+      "type": "{\n        functions?: string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "main",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "BlendModeFilterOptions)\n    {\n        const gpuOptions = options.gpu",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "blendTemplate, ...gpuOptions })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "{\n                source: gpuSource,\n                entryPoint: 'mainVertex',\n            },\n            fragment: {\n                source: gpuSource,\n                entryPoint: 'mainFragment',\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "blendTemplateFrag, ...glOptions })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "blendTemplateVert,\n            fragment: glSource\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uBlend",
+      "type": "{\n                value: 1,\n                type: 'f32'\n            }\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "blendRequired",
+      "type": "true,\n            resources: {\n                blendUniforms: uniformGroup,\n                uBackTexture: Texture.EMPTY\n            }\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "{source: string, functions?: string, main?: string}): string\n{\n    const { source, functions, main } = options",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "interface",
+  "name": "AssetsManifest",
+  "sourcePath": "assets/types.ts",
+  "extends": [],
+  "description": "Unique identifier for the bundle */ name: string; /** Assets contained in the bundle. Can be an array of assets or a record mapping aliases to sources. */ assets: UnresolvedAsset[] | Record<string, ArrayOr<string> | UnresolvedAsset>; } /** The manifest format for defining all assets in your application. Manifests provide a structured way to organize and manage your assets through bundles. ```ts const manifest: AssetsManifest = { bundles: [ { name: 'loading', assets: [ { alias: 'logo', src: 'logo.{webp,png}', data: { scaleMode: 'nearest' } }, { alias: 'progress-bar', src: 'progress.png' } ] }, { name: 'game', assets: { background: ['bg.webp', 'bg.png'], character: 'hero.json', music: 'theme.mp3' } } ] }; // Initialize with manifest await Assets.init({ manifest }); // Load bundles as needed await Assets.loadBundle('loading'); await Assets.loadBundle('game'); ```",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "bundles",
+      "type": "AssetsBundle[]",
+      "optional": false,
+      "description": "Array of asset bundles that make up the manifest"
+    }
+  ]
+}

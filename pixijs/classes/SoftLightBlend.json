@@ -1,0 +1,287 @@
+{
+  "type": "class",
+  "name": "SoftLightBlend",
+  "sourcePath": "advanced-blend-modes/SoftLightBlend.ts",
+  "extends": "BlendModeFilter",
+  "implements": [],
+  "description": "The final color is similar to hard-light, but softer. This blend mode behaves similar to hard-light. The effect is similar to shining a diffused spotlight on the backdrop. Available as `container.blendMode = 'soft-light'` after importing `pixi.js/advanced-blend-modes`. import 'pixi.js/advanced-blend-modes'; import { Sprite } from 'pixi.js'; const sprite = Sprite.from('something.png'); sprite.blendMode = 'soft-light'",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "gl",
+          "type": "{\n                functions: `\n                float softLight(float base",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "float blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blend < 0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "base",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendSoftLight",
+      "params": [
+        {
+          "name": "vec3 base",
+          "type": null
+        },
+        {
+          "name": "vec3 blend",
+          "type": null
+        },
+        {
+          "name": "float opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec3",
+      "params": [
+        {
+          "name": "softLight(base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "softLight",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "softLight",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec4",
+      "params": [
+        {
+          "name": "blendSoftLight(back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "softLight",
+      "params": [
+        {
+          "name": "base",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "select",
+      "params": [
+        {
+          "name": "2.0 * base * blend + base * base * (1.0 - 2.0 * blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "base",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendSoftLight",
+      "params": [
+        {
+          "name": "base",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "opacity",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "softLight",
+      "params": [
+        {
+          "name": "base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "softLight",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "softLight",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendSoftLight",
+      "params": [
+        {
+          "name": "back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

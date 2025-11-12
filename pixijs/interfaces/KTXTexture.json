@@ -1,0 +1,77 @@
+{
+  "type": "interface",
+  "name": "KTXTexture",
+  "sourcePath": "compressed-textures/ktx2/types.ts",
+  "extends": [],
+  "description": "export type LIBKTXModuleCreator = (config: { locateFile: (file: string) => string }) => { then: (result: (libktx: LIBKTXModule) => void) => void }; /** @internal",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "level",
+      "type": "number, layer: number, face: number): Uint8Array",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "glInternalformat",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vkFormat",
+      "type": "number\n    classId: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "numLevels",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "baseHeight",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "baseWidth",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "transcodeFormat",
+      "type": "any, arg1: number): unknown",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "needsTranscoding",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "ErrorCode",
+      "type": "any",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "TranscodeTarget",
+      "type": "any",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "ktxTexture",
+      "type": "new (data: Uint8Array) => KTXTexture",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

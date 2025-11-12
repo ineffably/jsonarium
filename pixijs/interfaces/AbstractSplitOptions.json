@@ -1,0 +1,329 @@
+{
+  "type": "interface",
+  "name": "AbstractSplitOptions",
+  "sourcePath": "scene/text-split/AbstractSplitText.ts",
+  "extends": [],
+  "description": "Configuration options for text splitting.",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "text",
+      "type": "string",
+      "optional": false,
+      "description": "Text content to be split"
+    },
+    {
+      "name": "style",
+      "type": "TextStyle | Partial<TextStyleOptions>",
+      "optional": false,
+      "description": "Text styling - accepts TextStyle instance or style object"
+    },
+    {
+      "name": "autoSplit",
+      "type": "boolean",
+      "optional": true,
+      "description": "Enables automatic splitting on text/style changes"
+    },
+    {
+      "name": "lineAnchor",
+      "type": "number | PointData",
+      "optional": true,
+      "description": "Transform origin for line segments. Range: [0-1] ```ts lineAnchor: 0.5        // Center horizontally and vertically lineAnchor: { x: 0, y: 0.5 }  // Left-center alignment ```"
+    },
+    {
+      "name": "wordAnchor",
+      "type": "number | PointData",
+      "optional": true,
+      "description": "Transform origin for word segments. Range: [0-1] ```ts wordAnchor: { x: 1, y: 0 }  // Top-right alignment wordAnchor: 0.5  // Center alignment ```"
+    },
+    {
+      "name": "charAnchor",
+      "type": "number | PointData",
+      "optional": true,
+      "description": "Transform origin for character segments. Range: [0-1] ```ts charAnchor: { x: 0.5, y: 1 }  // Bottom-center alignment charAnchor: 0.5  // Center alignment ```"
+    },
+    {
+      "name": "options",
+      "type": "SplitTextOptions = {\n *   text: 'Hello World',\n *   style: { fontSize: 32, fill: 0xffffff },\n *   // Transform origins\n *   lineAnchor: 0.5,                // Center each line\n *   wordAnchor: { x: 0, y: 0.5 },  // Left-center each word\n *   charAnchor: { x: 0.5, y: 1 },  // Bottom-center each char\n * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "SplitTextOptions = {\n *   // Text content and style\n *   text: 'Multi\\nLine Text',\n *   style: new TextStyle({\n *     fontSize: 24,\n *     fill: 'white',\n *     strokeThickness: 2,\n *   }),\n *\n *   // Container properties\n *   x: 100,\n *   y: 100,\n *   alpha: 0.8,\n *\n *   // Splitting settings\n *   autoSplit: true,\n *\n *   // Transform origins (normalized 0-1)\n *   lineAnchor: { x: 1, y: 0 },    // Top-right\n *   wordAnchor: 0.5,               // Center\n *   charAnchor: { x: 0, y: 1 },    // Bottom-left\n * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Properties",
+      "type": "* - Container options from {@link ContainerOptions}\n * - Text split options from {@link AbstractSplitOptions}\n * @see {@link AbstractSplitText} For the main implementation\n * @see {@link ContainerOptions} For base container properties\n * @see {@link AbstractSplitOptions} For text splitting options\n * @category text\n * @standard\n */\nexport interface AbstractSplitTextOptions extends ContainerOptions, AbstractSplitOptions {}\n\n/**\n * @experimental\n * A container that splits text into individually manipulatable segments (lines, words, and characters)\n * for advanced text effects and animations.\n * @example Basic Usage\n * ```ts\n * const text = new SplitText({\n *   text: \"Hello World\",\n *   style: { fontSize: 24 },\n *   // Origin points for transformations (0-1 range)\n *   lineAnchor: 0.5,  // Center of each line\n *   wordAnchor: { x: 0, y: 0.5 },  // Left-center of each word\n *   charAnchor: { x: 0.5, y: 1 },  // Bottom-center of each character\n *   autoSplit: true  // Auto-update segments on text/style changes\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Features",
+      "type": "* - Hierarchical text splitting (lines → words → characters)\n * - Independent transformation origins for each segment level\n * - Automatic or manual segment updates\n * - Support for both canvas text and bitmap text\n * @example Animation Example\n * ```ts\n * // Character fade-in sequence\n * text.chars.forEach((char, i) => {\n *   gsap.from(char, {\n *     alpha: 0,\n *     delay: i * 0.1\n *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1.2, y: 1.2,\n *     yoyo: true,\n *     repeat: -1,\n *     delay: i * 0.2\n *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "-200,\n *     delay: i * 0.3\n *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Options",
+      "type": "* - `text`: The string to render and segment\n * - `style`: TextStyle instance or configuration object\n * - `autoSplit`: Automatically update segments on changes (default: true)\n * - `lineAnchor`: Transform origin for lines (default: 0)\n * - `wordAnchor`: Transform origin for words (default: 0)\n * - `charAnchor`: Transform origin for characters (default: 0)\n *\n * > [!NOTE] Anchor points are normalized (0-1):\n * > - 0,0: Top-left\n * > - 0.5,0.5: Center\n * > - 1,1: Bottom-right\n *\n * > [!WARNING] Limitations\n * > - Character spacing may differ slightly from standard text due to browser\n * >   kerning being lost when characters are separated\n * @category text\n * @standard\n */\nexport abstract class AbstractSplitText<T extends SplitableTextObject> extends Container\n{\n    /**\n     * Individual character segments of the text.\n     * @example\n     * ```ts\n     * // Fade in characters sequentially\n     * text.chars.forEach((char, i) => {\n     *   char.alpha = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alpha",
+      "type": "1,\n     *     delay: i * 0.1\n     *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "chars",
+      "type": "T[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1.2, y: 1.2 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1, y: 1 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "words",
+      "type": "Container[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0,\n     *     duration: 0.5,\n     *     delay: i * 0.2,\n     *     ease: 'back.out'\n     *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "lines",
+      "type": "Container[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_originalText",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_lineAnchor",
+      "type": "number | PointData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_wordAnchor",
+      "type": "number | PointData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_charAnchor",
+      "type": "number | PointData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_autoSplit",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_style",
+      "type": "TextStyle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_dirty",
+      "type": "boolean = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_canReuseChars",
+      "type": "boolean = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "config",
+      "type": "AbstractSplitTextOptions)\n    {\n        const {\n            text,\n            style,\n            autoSplit,\n            lineAnchor,\n            wordAnchor,\n            charAnchor,\n            ...options\n        } = config",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Manual Update',\n     *   autoSplit: false\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontSize",
+      "type": "32 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "res",
+      "type": "TextSplitOutput<T> = this.splitFn()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Original',\n     *   autoSplit: true\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "string)\n    {\n        this._originalText = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "true }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | PointData,\n        elements: Array<Container | T>,\n        property: '_lineAnchor' | '_wordAnchor' | '_charAnchor',\n    ): void\n    {\n        let originPoint: PointData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "value, y: value }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "value.x, y: value.y }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1, y: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0.2, // 20% from left\n     *   y: 0.8  // 80% from top\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | PointData)\n    {\n        this._setOrigin(value, this.lines, '_lineAnchor')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0, y: 1 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0.75,  // 75% from left\n     *   y: 0.5    // Middle vertically\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | PointData)\n    {\n        this._setOrigin(value, this.words, '_wordAnchor')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0.5, y: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1, y: 1 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rotation",
+      "type": "Math.PI * 2,\n     *     duration: 1,\n     *     delay: i * 0.1,\n     *     repeat: -1\n     *   })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | PointData)\n    {\n        this._setOrigin(value, this.chars, '_charAnchor')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Styled Text',\n     *     style: {\n     *         fontSize: 24,\n     *         fill: 0xff1010, // Red color\n     *         fontFamily: 'Arial',\n     *         align: 'center', // Center alignment\n     *         stroke: { color: '#4a1850', width: 5 }, // Purple stroke\n     *         dropShadow: {\n     *             color: '#000000', // Black shadow\n     *             blur: 4, // Shadow blur\n     *             distance: 6 // Shadow distance\n     *         }\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontSize",
+      "type": "30, // Change font size\n     *     fill: 0x00ff00, // Change color to green\n     *     align: 'right', // Change alignment to right\n     *     stroke: { color: '#000000', width: 2 }, // Add black stroke\n     * }\n     */\n    set style(style: TextStyle | Partial<TextStyle> | TextStyleOptions)\n    {\n        style ||= {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "true, texture: true, style: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "true, style: false })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions): void\n    {\n        super.destroy(options)",
+      "optional": true,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,3187 @@
+{
+  "metadata": {
+    "generatedAt": "2025-11-12T08:03:32.906Z",
+    "source": "pixijs/src",
+    "totalClasses": 253,
+    "totalInterfaces": 273,
+    "totalOverviews": 15
+  },
+  "readme": "<p align=\"center\">\n  <a href=\"https://pixijs.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <img height=\"150\" src=\"https://files.pixijs.download/branding/pixijs-logo-transparent-dark.svg?v=1\" alt=\"PixiJS logo\">\n  </a>\n</p>\n<br/>\n<p align=\"center\">\n  <a href=\"https://npmjs.com/package/pixi.js\"><img src=\"https://img.shields.io/npm/v/pixi.js.svg\" alt=\"npm package\"></a>\n  <a href=\"https://npmjs.com/package/pixi.js\"><img src=\"https://img.shields.io/npm/dm/pixi.js\" alt=\"npm downloads\"></a>\n  <a href=\"https://opencollective.com/pixijs\"><img src=\"https://opencollective.com/pixijs/tiers/badge.svg\" alt=\"open collective\"></a>\n</p>\n<p align=\"center\">\n <a href=\"https://pixijs.com/8.x/guides\">Guides</a> | <a href=\"https://pixijs.com/8.x/tutorials\">Tutorials</a> | <a href=\"https://pixijs.com/8.x/examples\">Examples</a> | <a href=\"https://pixijs.download/release/docs/index.html\">API Docs</a> | <a href=\"https://discord.gg/QrnxmQUPGV\">Discord</a> | <a href=\"https://bsky.app/profile/pixijs.com\">Bluesky</a> | <a href=\"https://x.com/pixijs\">𝕏</a>\n</p>\n\n# PixiJS ⚡️\n> Next-Generation, Fastest HTML5 Creation Engine for the Web\n\n- 🚀 [WebGL](https://en.wikipedia.org/wiki/WebGL) & [WebGPU](https://en.wikipedia.org/wiki/WebGPU) Renderers\n- ⚡️ Unmatched Performance & Speed\n- 🎨 Easy to use, yet powerful API\n- 📦 Asset Loader\n- ✋ Full Mouse & Multi-touch Support\n- ✍️ Flexible Text Rendering\n- 📐 Versatile Primitive and SVG Drawing\n- 🖼️ Dynamic Textures\n- 🎭 Masking\n- 🪄 Powerful Filters\n- 🌈 Advanced Blend Modes\n\nPixiJS is the fastest, most lightweight 2D library available for the web, working\nacross all devices and allowing you to create rich, interactive graphics and cross-platform applications using WebGL and WebGPU.\n\n### Setup\n\nIt's easy to get started with PixiJS! Just use our [PixiJS Create](https://pixijs.io/create-pixi/) CLI and get set up in just one command:\n\n<p align=\"center\">\n  <img width=\"500\" style=\"border-radius: 10px; filter: drop-shadow(0px 2px 5px #000);;\" alt=\"Screenshot from terminal\" src=\"https://pixijs.io/create-pixi/img/demo.gif\">\n</p>\n\n```\nnpm create pixi.js@latest\n```\nor to add it to an existing project:\n\n```\nnpm install pixi.js\n```\n\n### Usage\n```typescript\nimport { Application, Assets, Sprite } from 'pixi.js';\n\n(async () =>\n{\n    // Create a new application\n    const app = new Application();\n\n    // Initialize the application\n    await app.init({ background: '#1099bb', resizeTo: window });\n\n    // Append the application canvas to the document body\n    document.body.appendChild(app.canvas);\n\n    // Load the bunny texture\n    const texture = await Assets.load('https://pixijs.com/assets/bunny.png');\n\n    // Create a bunny Sprite\n    const bunny = new Sprite(texture);\n\n    // Center the sprite's anchor point\n    bunny.anchor.set(0.5);\n\n    // Move the sprite to the center of the screen\n    bunny.x = app.screen.width / 2;\n    bunny.y = app.screen.height / 2;\n\n    app.stage.addChild(bunny);\n\n    // Listen for animate update\n    app.ticker.add((time) =>\n    {\n        // Just for fun, let's rotate mr rabbit a little.\n        // * Delta is 1 if running at 100% performance *\n        // * Creates frame-independent transformation *\n        bunny.rotation += 0.1 * time.deltaTime;\n    });\n})();\n```\n### Contribute\n\nWant to be part of the PixiJS project? Great! All are welcome! We will get there quicker\ntogether :) Whether you find a bug, have a great feature request, or you fancy owning a task\nfrom the road map above, feel free to get in touch.\n\nMake sure to read the [Contributing Guide](.github/CONTRIBUTING.md)\nbefore submitting changes.\n\n### License\n\nThis content is released under the [MIT License](http://opensource.org/licenses/MIT).\n\n### Change Log\n[Releases](https://github.com/pixijs/pixijs/releases)\n\n### Support\nWe're passionate about making PixiJS the best graphics library possible. Our dedication comes from our love for the project and community. If you'd like to support our efforts, please consider contributing to our open collective.\n<div>\n  <a href=\"https://opencollective.com/pixijs\" target=\"_blank\">\n    <img src=\"https://opencollective.com/pixijs/donate/button@2x.png?color=blue\" width=200 />\n  </a>\n</div>\n",
+  "overviews": {
+    "accessibility": "---\ntitle: Accessibility Overview\ncategory: accessibility\n---\n\n# Accessibility\n\nThe accessibility system in PixiJS provides screen reader support and keyboard navigation for your application, making your content more accessible to users with disabilities. The system works by creating an accessible DOM layer over your canvas that can be navigated and interpreted by assistive technologies.\n\n## Getting Started\n\nThe accessibility module is included by default in PixiJS. However, if you're managing your own renderer, you'll need to import it explicitly:\n\n```js\nimport 'pixi.js/accessibility';\n```\n\n> [!IMPORTANT] The AccessibilitySystem is not available when used in a Web Worker. It must be used in the main thread where the DOM is accessible.\n\n## Basic Usage\n\nEnable accessibility for any container or display object:\n\n```js\nconst button = new Container();\n\n// Enable accessibility\nbutton.accessible = true;\nbutton.accessibleTitle = 'Play Game'; // Screen reader label\nbutton.accessibleHint = 'Press to start the game'; // Additional description\nbutton.accessibleType = 'button'; // DOM element type to create\n\n// Add to your scene\napp.stage.addChild(button);\n```\n\n## Configuration Options\n\nConfigure the accessibility system when creating your application:\n\n```js\nconst app = new Application();\nawait app.init({\n    accessibilityOptions: {\n        enabledByDefault: true,     // Enable immediately instead of waiting for tab\n        activateOnTab: true,        // Enable/disable tab key activation\n        debug: false,               // Show accessibility divs (for development)\n        deactivateOnMouseMove: true // Auto-disable when mouse is used\n    }\n});\n```\n\n## Advanced Features\n\n### Custom Tab Order\n\nControl the tab order of accessible elements:\n\n```js\nmenuButton.tabIndex = 1;    // First in tab order\nplayButton.tabIndex = 2;    // Second in tab order\nsettingsButton.tabIndex = 3; // Third in tab order\n```\n\n### Container Behavior\n\nControl accessibility for nested elements:\n\n```js\nconst menu = new Container();\nmenu.accessible = true;\nmenu.accessibleChildren = true; // Allow children to be accessible (default)\n```\n\n### Programmatic Control\n\nControl the accessibility system at runtime:\n\n```js\n// Enable/disable the system\napp.renderer.accessibility.setAccessibilityEnabled(true);\n\n// Check if accessibility is active\nconsole.log(app.renderer.accessibility.isActive);\n\n// Check if mobile accessibility is active\nconsole.log(app.renderer.accessibility.isMobileAccessibility);\n```\n\n## Best Practices\n\n1. **Meaningful Labels**: Always provide clear `accessibleTitle` and `accessibleHint` values:\n```js\nbutton.accessibleTitle = 'Start Game';\nbutton.accessibleHint = 'Begins a new game session';\n```\n\n2. **Logical Tab Order**: Organize `tabIndex` values in a meaningful sequence:\n```js\nheaderMenu.tabIndex = 1;\nmainContent.tabIndex = 2;\nfooterControls.tabIndex = 3;\n```\n\n3. **Testing**: Use the debug mode during development:\n```js\nawait app.init({\n    accessibilityOptions: {\n        debug: true // Shows accessibility elements\n    }\n});\n```\n\n## Related Documentation\n\n- See {@link AccessibilitySystem} for system implementation details\n- See {@link AccessibleOptions} for all available object properties\n\nFor more specific implementation details and advanced usage, refer to the API documentation of individual classes and interfaces.\n",
+    "app": "---\ntitle: Overview\ncategory: app\n---\n\n# Application\n\nThe `Application` class provides a modern, extensible entry point to set up rendering in PixiJS. It abstracts common tasks like renderer setup, display management, and automatic updates while supporting both WebGL and WebGPU rendering backends.\n\n## Creating an Application\n\nCreating an application requires two steps: constructing an instance, then initializing it asynchronously using `.init()`:\n\n```ts\nimport { Application } from 'pixi.js';\n\nconst app = new Application();\n\nawait app.init({\n    width: 800,\n    height: 600,\n    backgroundColor: 0x1099bb,\n});\n\ndocument.body.appendChild(app.canvas);\n```\n\n## Core Features\n\n### Scene Management\n\nThe application provides a root container (`stage`) where you can add all your visual elements:\n\n```ts\nimport { Sprite } from 'pixi.js';\n\nconst sprite = Sprite.from('image.png');\napp.stage.addChild(sprite);\n```\n\n### Automatic Updates\n\nBy default, the application includes the `TickerPlugin` which handles the rendering loop:\n\n```ts\n// Configure ticker on init\nawait app.init({\n    autoStart: true, // Start ticker automatically\n    sharedTicker: false, // Use dedicated ticker instance\n});\n\n// (Optional) Start/stop the rendering loop\napp.start();\napp.stop();\n\n// Access ticker properties\nconsole.log(app.ticker.FPS); // Current FPS\nconsole.log(app.ticker.deltaMS); // MS since last update\n\n// Add update callbacks\napp.ticker.add(() => {\n    // Animation logic here\n});\n\napp.ticker.addOnce(() => {\n    // Logic to run once after the next frame\n});\n```\n\n### Responsive Design\n\nThe `ResizePlugin` enables automatic resizing of the application to fit different containers or the window. You can specify a target element for resizing:\n\n```ts\n// Auto-resize to window\nawait app.init({ resizeTo: window });\n\n// Auto-resize to container element\nawait app.init({ resizeTo: document.querySelector('#game') });\n\n// Manual resize control\napp.resize(); // Immediate resize\napp.queueResize(); // Throttled resize\napp.cancelResize(); // Cancel pending resize\n```\n\n## Configuration Options\n\nThe application can be configured with various options during initialization:\n\n```ts\nawait app.init({\n    // Rendering options\n    width: 800, // Canvas width\n    height: 600, // Canvas height\n    backgroundColor: 0x1099bb, // Background color\n    antialias: true, // Enable antialiasing\n    resolution: window.devicePixelRatio, // Screen resolution\n    preference: 'webgl', // 'webgl' or 'webgpu'\n\n    // Plugin options\n    autoStart: true, // Start ticker automatically\n    sharedTicker: false, // Use dedicated ticker\n    resizeTo: window, // Auto-resize target\n});\n```\n\n## Cleanup\n\nWhen you're done with the application, make sure to clean up resources:\n\n```ts\n// Basic cleanup\napp.destroy();\n\n// Full cleanup with options\napp.destroy(\n    { removeView: true }, // Renderer options\n    {\n        // Display options\n        children: true,\n        texture: true,\n        textureSource: true,\n    },\n);\n```\n\n## Extending Functionality\n\nThe Application class is designed to be extensible through plugins. Each plugin can add new features and properties to the Application instance:\n\n```ts\nimport { Application, ExtensionType, extensions } from 'pixi.js';\n\nclass MyPlugin {\n    static extension = ExtensionType.Application;\n\n    static init(options) {\n        // Add features to Application instance\n        Object.defineProperty(this, 'myFeature', {\n            value: () => console.log('My feature!'),\n        });\n    }\n\n    static destroy() {\n        // Cleanup when application is destroyed\n    }\n}\n\n// Register the plugin\nextensions.add(MyPlugin);\n\n// Initialize the application with the plugin\nconst app = new Application();\nawait app.init({...});\n\napp.myFeature(); // Use the plugin feature\n```\n\n## Best Practices\n\n-   Always `await app.init()` before using the application\n-   Use `app.ticker` for animation updates rather than `requestAnimationFrame`\n-   Clean up resources with `app.destroy()` when the application is no longer needed\n-   Consider using `resizeTo` for responsive applications\n\n## Related Documentation\n\n- See {@link Application} for the full API reference\n- See {@link ApplicationOptions} for all available configuration options\n- See {@link ApplicationPlugin} for creating custom plugins\n- See {@link TickerPlugin} for details on the ticker system\n- See {@link ResizePlugin} for responsive design features\n- See {@link CullerPlugin} for managing visible objects\n- See {@link ExtensionType} for understanding extension types\n- See {@link Renderer} for renderer-specific options and methods\n- See {@link Container} for managing display objects\n\nFor more specific implementation details and advanced usage, refer to the API documentation of individual classes and interfaces.\n",
+    "assets": "---\ntitle: Overview\ncategory: assets\n---\n\n# Assets\n\nThe `Assets` class provides a modern, centralized system for managing and loading resources in PixiJS. It offers caching, background loading, bundle management, and smart format detection while supporting a wide range of file types.\n\n## Basic Usage\n\nLoad assets using the global `Assets` singleton:\n\n```ts\nimport { Assets, Texture } from 'pixi.js';\n\n// Initialize the asset system\nawait Assets.init({\n    basePath: 'assets/',\n});\n\n// Load a single asset\nconst texture = await Assets.load<Texture>('bunny.png');\n\n// Load multiple assets\nconst assets = await Assets.load(['bunny.png', 'spritesheet.json', 'font.ttf']);\n```\n\n## Core Features\n\n### Asset Loading\n\nThe system supports many file types out of the box:\n\n```ts\n// Load textures (avif, webp, png, jpg, gif, svg)\nconst texture = await Assets.load('sprite.{webp,png}');\n\n// Load video textures (mp4, webm, ogg)\nconst video = await Assets.load('clip.{webm,mp4}');\n\n// Load spritesheets\nconst sheet = await Assets.load('sprites.json');\n\n// Load fonts (ttf, woff, woff2)\nconst font = await Assets.load('font.ttf');\n\n// Load data files\nconst data = await Assets.load('config.json');\nconst text = await Assets.load('info.txt');\n```\n\nSupported Asset Types:\n| Type | Extensions | Loaders |\n| ------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------- |\n| Textures | `.png`, `.jpg`, `.gif`, `.webp`, `.avif`, `.svg` | {@link loadTextures}, {@link loadSvg} |\n| Video Textures | `.mp4`, `.m4v`, `.webm`, `.ogg`, `.ogv`, `.h264`, `.avi`, `.mov` | {@link loadVideoTextures} |\n| Sprite Sheets | `.json` | {@link spritesheetAsset} |\n| Bitmap Fonts | `.fnt`, `.xml`, `.txt` | {@link loadBitmapFont} |\n| Web Fonts | `.ttf`, `.otf`, `.woff`, `.woff2` | {@link loadWebFont} |\n| JSON | `.json` | {@link loadJson} |\n| Text | `.txt` | {@link loadTxt} |\n| Compressed Textures | `.basis`, `.dds`, `.ktx`, `.ktx2` | {@link loadBasis}, {@link loadDDS}, {@link loadKTX}, {@link loadKTX2} |\n\n### Load Options & Strategies\n\nAsset loading can fail for many reasons (network issues, corrupt files, unsupported formats). The loader provides configurable behavior through `LoadOptions`. These options can be supplied per call or globally (via `Assets.init` or by mutating `Loader.defaultOptions` / `loader.loadOptions`).\n\nSupported options:\n\n- `onProgress(progress: number)`: Called as each asset completes (0.0–1.0)\n- `onError(error: Error, asset)`: Called whenever an individual asset fails\n- `strategy`: 'throw' | 'skip' | 'retry'\n- `retryCount`: Number of retry attempts when strategy is 'retry' (default 3)\n- `retryDelay`: Delay in ms between retries (default 250)\n\n#### Strategies\n\n| Strategy | Behavior                                                                  | Error propagation         | Use when                          |\n| -------- | ------------------------------------------------------------------------- | ------------------------- | --------------------------------- |\n| throw    | First failure rejects the load promise                                    | Yes (immediate)           | Critical assets must all succeed  |\n| skip     | Failed assets are ignored; others continue                                | No (but onError fires)    | Optional / best-effort assets     |\n| retry    | Retries each failing asset up to retryCount, then throws if still failing | Yes (after final attempt) | Transient network/CDN instability |\n\n#### Load Options Examples\n\n```ts\nawait Assets.init({\n    loadOptions: {\n        strategy: 'retry',\n        retryCount: 4,\n        retryDelay: 400,\n        onError: (err, asset) => console.debug('Retrying:', asset.src),\n    },\n});\n\n// Later calls inherit these unless overridden\nawait Assets.load('critical.json');\n\n// Skip missing optional texture\nconst tex = await Assets.load('optional.png', {\n    strategy: 'skip',\n    onError: (err, asset) => console.warn('Skipped:', asset, err.message),\n});\n```\n\n### Asset Bundles\n\nGroup related assets into bundles for organized loading:\n\n```ts\n// Define bundles\nAssets.addBundle('loading-screen', [\n    { alias: 'background', src: 'bg.png' },\n    { alias: 'progress-bar', src: 'bar.png' },\n]);\n\nAssets.addBundle('game', [\n    { alias: 'character', src: 'hero.png' },\n    { alias: 'enemies', src: 'monsters.json' },\n]);\n\n// Load bundles\nconst loadingAssets = await Assets.loadBundle('loading-screen');\nconst gameAssets = await Assets.loadBundle('game');\n```\n\n### Background Loading\n\nLoad assets in the background while maintaining performance:\n\n```ts\n// Start background loading\nAssets.backgroundLoad(['level1.json', 'level2.json']);\n\n// Later, get the assets instantly\nconst level1 = await Assets.load('level1.json'); // Resolves immediately if loaded\nconst level2 = await Assets.load('level2.json'); // Resolves immediately if loaded\n```\n\n## Asset Configuration\n\n### Manifests\n\nDefine all your game's assets in a manifest:\n\n```ts\nconst manifest = {\n    bundles: [\n        {\n            name: 'game-essential',\n            assets: [\n                {\n                    alias: 'hero',\n                    src: 'characters/hero.{webp,png}',\n                },\n                {\n                    alias: 'ui',\n                    src: 'interface.json',\n                },\n            ],\n        },\n    ],\n};\n\nawait Assets.init({ manifest });\n// Load a bundle from the manifest\nconst gameAssets = await Assets.loadBundle('game-essential');\n// or load individual assets\nconst heroTexture = await Assets.load('hero');\n```\n\n### Format Preferences\n\nConfigure preferred asset formats and resolutions:\n\n```ts\nawait Assets.init({\n    texturePreference: {\n        format: ['webp', 'png'], // Prefer WebP over PNG\n        resolution: 2, // Prefer 2x resolution\n    },\n    defaultSearchParams: {\n        // URL parameters\n        version: '1.0.0',\n    },\n});\n```\n\n## Cache Management\n\nControl the asset cache:\n\n```ts\n// Check if asset is cached\nconst isCached = Assets.cache.has('texture.png');\n\n// Get cached asset\nconst texture = Assets.get('texture.png');\n\n// Unload specific assets\nawait Assets.unload('texture.png');\n\n// Reset entire cache\nAssets.reset();\n```\n\n## Best Practices\n\n- Use `Assets.init()` before loading any assets\n- Leverage bundles for organized loading\n- Use format fallbacks (e.g., `image.{webp,png}`)\n- Take advantage of background loading for better performance\n- Clean up unused assets with `Assets.unload()`\n- Consider using manifests for large applications\n\n## Related Documentation\n\n- See {@link Assets} for the main asset manager\n- See {@link AssetsManifest} for manifest configuration\n- See {@link LoaderParser} for custom loaders\n- See {@link CacheParser} for cache handling\n- See {@link BackgroundLoader} for background loading\n- See {@link Texture} for texture management\n- See {@link Spritesheet} for sprite sheets\n- See {@link loadTextures} for texture loading\n- See {@link loadWebFont} for font loading\n\nFor more specific implementation details and advanced usage, refer to the API documentation of individual classes and interfaces.\n",
+    "color": "---\ntitle: Overview\ncategory: color\n---\n\n# Color\n\nThe `Color` class provides a unified way to work with colors in PixiJS. It supports multiple color formats and offers powerful color manipulation features while maintaining high performance.\n\n## Color Formats\n\nPixiJS supports a wide range of color formats through the {@link ColorSource} type:\n\n```ts\nimport { Color } from 'pixi.js';\n\n// CSS Color Names\nconst red = new Color('red');\nconst blue = new Color('blue');\n\n// Hexadecimal (Hex)\nconst hexNumber = new Color(0xff0000);     // RGB integer\nconst hexString = new Color('#ff0000');    // 6-digit hex\nconst shortHex = new Color('#f00');        // 3-digit hex\nconst hexAlpha = new Color('#ff0000ff');   // 8-digit hex (with alpha)\nconst shortHexAlpha = new Color('#f00f');  // 4-digit hex (with alpha)\n\n// RGB/RGBA Values\nconst rgb = new Color({ r: 255, g: 0, b: 0 });\nconst rgba = new Color({ r: 255, g: 0, b: 0, a: 0.5 });\nconst rgbString = new Color('rgb(255, 0, 0)');\nconst rgbaString = new Color('rgba(255, 0, 0, 0.5)');\n\n// Arrays (normalized 0-1)\nconst rgbArray = new Color([1, 0, 0]);           // RGB\nconst rgbaArray = new Color([1, 0, 0, 0.5]);     // RGBA\nconst float32Array = new Color(new Float32Array([1, 0, 0, 0.5]));\n\n// HSL/HSLA Values\nconst hsl = new Color({ h: 0, s: 100, l: 50 });\nconst hsla = new Color({ h: 0, s: 100, l: 50, a: 0.5 });\nconst hslString = new Color('hsl(0, 100%, 50%)');\n```\n\n## Using Colors\n\nColors can be used throughout the PixiJS API for properties like tint, fill, and stroke:\n\n```ts\nimport { Sprite, Graphics, Text, TextStyle } from 'pixi.js';\n\n// Sprite tinting\nconst sprite = Sprite.from('image.png');\nsprite.tint = 'red';                    // CSS color name\nsprite.tint = 0xff0000;                 // Hex number\nsprite.tint = '#ff0000';                // Hex string\nsprite.tint = new Color('red');         // Color instance\n\n// Graphics fills and strokes\nconst graphics = new Graphics();\ngraphics.fill({ color: 'red' });        // CSS color name\ngraphics.fill({ color: 0xff0000 });     // Hex number\ngraphics.stroke({ color: '#ff0000' });  // Hex string\ngraphics.stroke({ color: new Color('red') }); // Color instance\n\n// Text styles\nimport { Text, TextStyle } from 'pixi.js';\nconst style = new TextStyle({\n    fill: 'red',                          // CSS color name\n    // or\n    fill: 0xff0000,                       // Hex number\n    // or\n    fill: 'rgb(255, 0, 0)',             // RGB string\n});\nconst text = new Text('Hello, PixiJS!', style);\n```\n\n## Color Components\n\nAccess and modify individual color components:\n\n```ts\nconst color = new Color('red');\n\n// Get components (normalized 0-1)\nconsole.log(color.red);   // 1\nconsole.log(color.green); // 0\nconsole.log(color.blue);  // 0\nconsole.log(color.alpha); // 1\n\n// Set alpha (transparency)\ncolor.setAlpha(0.5);     // 50% transparent\n```\n\n## Color Conversions\n\nConvert between different color formats:\n\n```ts\nconst color = new Color('red');\n\n// Different output formats\ncolor.toNumber();     // 0xff0000\ncolor.toHex();        // \"#ff0000\"\ncolor.toHexa();       // \"#ff0000ff\"\ncolor.toRgbString();  // \"rgb(255,0,0)\"\ncolor.toRgbaString(); // \"rgba(255,0,0,1)\"\n\n// Object representations\ncolor.toRgb();        // { r: 1, g: 0, b: 0 }\ncolor.toRgba();       // { r: 1, g: 0, b: 0, a: 1 }\n\n// Array formats\ncolor.toArray();      // [1, 0, 0, 1]\ncolor.toRgbArray();   // [1, 0, 0]\n```\n\n## Color Manipulation\n\nThe Color class provides methods for color manipulation:\n\n```ts\nconst color = new Color('red');\n\n// Multiply colors\ncolor.multiply([0.5, 0.5, 0.5]);    // 50% darker\ncolor.multiply(new Color('#808080')); // Same effect\n\n// Premultiply alpha\ncolor.premultiply(0.5);              // 50% transparent with RGB adjustment\ncolor.premultiply(0.5, false);       // 50% transparent, original RGB\n\n// Chain operations\ncolor\n    .setValue('#ff0000')\n    .setAlpha(0.8)\n    .multiply([0.5, 0.5, 0.5])\n    .premultiply(0.5);\n```\n\n## Static Utilities\n\nUse static methods and properties for common operations:\n\n```ts\n// Shared instance for temporary operations\nColor.shared.setValue('red').toHex();  // \"#ff0000\"\n\n// Check valid color values\nColor.isColorLike('red');          // true\nColor.isColorLike('#ff0000');      // true\nColor.isColorLike([1, 0, 0]);      // true\nColor.isColorLike({ r: 1, g: 0, b: 0 }); // true\n```\n\n## Best Practices\n\n- Use the `Color` class for consistent color handling\n- Leverage the shared instance (`Color.shared`) for temporary operations\n- Chain color operations for cleaner code\n- Use appropriate color formats for different contexts\n- Remember that color components are normalized (0-1) internally\n\n## Related Documentation\n\n- See {@link Color} for the full API reference\n- See {@link ColorSource} for all supported color formats\n\nFor more specific implementation details and advanced usage, refer to the API documentation of individual classes and interfaces.\n",
+    "environment": "---\ntitle: Overview\ncategory: environment\n---\n\n# Environment\n\nPixiJS is designed to work across different JavaScript environments through its environment adapter system. This system abstracts platform-specific APIs, allowing PixiJS to run in browsers, Web Workers, and custom environments.\n\n## Environment Types\n\n### Browser Environment (Default)\nPixiJS is primarily designed for web browsers, leveraging the `BrowserAdapter` to access native browser APIs like `CanvasRenderingContext2D` and `WebGLRenderingContext`. This is the default environment when using PixiJS.\n\n```ts\nimport { Application } from 'pixi.js';\n\nconst app = new Application();\n\nawait app.init({\n    width: 800,\n    height: 600,\n});\n\ndocument.body.appendChild(app.canvas);\n```\n\n### Web Worker Environment\nPixiJS can also run in Web Workers, which allows for parallel processing and offloading rendering tasks from the main thread. The `WebWorkerAdapter` provides the necessary APIs to create and manage an `OffscreenCanvas`.\n\n```ts\nimport { DOMAdapter, WebWorkerAdapter, Application } from 'pixi.js';\n\n// Configure the environment before creating any PixiJS objects\nDOMAdapter.set(WebWorkerAdapter);\n\nconst app = new Application();\n\nawait app.init({\n    width: 800,\n    height: 600,\n});\n\n// Returns an OffscreenCanvas\nconst canvas = app.canvas;\n\n// Post the canvas back to main thread\npostMessage({ canvas }, [canvas]);\n```\n\n> [!WARNING]\n> Accessibility and user interaction features are not available in Web Workers, as they do not have access to the DOM.\n\n## Custom Environment\nPixiJS allows you to create custom adapters for non-standard environments, such as Node.js or headless testing frameworks. This is done by implementing the `Adapter` interface, which defines methods for creating canvases, fetching resources, and accessing environment-specific APIs.\n\n```typescript\nimport { DOMAdapter } from 'pixi.js';\n\nconst CustomAdapter = {\n    createCanvas: (width, height) => {/* custom implementation */},\n    getCanvasRenderingContext2D: () => {/* custom implementation */},\n    getWebGLRenderingContext: () => {/* custom implementation */},\n    getNavigator: () => ({ userAgent: 'Custom', gpu: null }),\n    getBaseUrl: () => 'custom://',\n    fetch: async (url, options) => {/* custom fetch */},\n    parseXML: (xml) => {/* custom XML parser */},\n};\n\nDOMAdapter.set(CustomAdapter);\n```\n\n## Best Practices\n\n- Set the environment adapter before creating any PixiJS objects\n- Use environment-specific features through the adapter interface\n\n## Related Documentation\n\n- See {@link Adapter} for the adapter interface\n- See {@link BrowserAdapter} for browser-specific implementation\n- See {@link WebWorkerAdapter} for Web Worker support\n- See {@link DOMAdapter} for adapter management\n- See {@link ICanvas} for canvas interface\n- See {@link ExtensionType.Environment} for plugin system\n",
+    "events": "---\ntitle: Overview\ncategory: events\n---\n\n# Events\n\nPixiJS provides a flexible and performant event system designed for both mouse and touch input. The system uses a unified, DOM-like federated event model that supports bubbling, capturing, and delegation.\n\n## Basic Usage\n\nEnable interaction on any display object by setting its `eventMode`:\n\n```ts\nimport { Sprite } from 'pixi.js';\n\nconst sprite = Sprite.from('image.png');\nsprite.eventMode = 'static';\nsprite.on('pointerdown', (event) => {\n    console.log('Clicked at:', event.global.x, event.global.y);\n});\n\n// check if the sprite is interactive\nif (sprite.isInteractive()) {\n    console.log('Sprite is interactive');\n}\n```\n\n## Event Modes\n\nThe `eventMode` property controls how objects interact with the event system:\n\n```ts\nimport { Container } from 'pixi.js';\n\nconst container = new Container();\n\n// Different interaction modes\ncontainer.eventMode = 'none';      // No events (optimized)\ncontainer.eventMode = 'passive';   // Only children receive events\ncontainer.eventMode = 'auto';      // Events when parent is interactive\ncontainer.eventMode = 'static';    // Standard interaction events\ncontainer.eventMode = 'dynamic';   // Events + synthetic updates for moving objects\n```\n\n## Event Types\n\n### Pointer Events (Recommended)\n\n```ts\nsprite.on('pointerdown', (event) => {/* Press */});\nsprite.on('pointerup', (event) => {/* Release */});\nsprite.on('pointermove', (event) => {/* Movement */});\nsprite.on('pointerover', (event) => {/* Enter */});\nsprite.on('pointerout', (event) => {/* Exit */});\nsprite.on('globalpointermove', (event) => {/* Any movement */});\n```\n\n### Mouse Events\n\n```ts\nsprite.on('mousedown', (event) => {/* Mouse press */});\nsprite.on('mouseup', (event) => {/* Mouse release */});\nsprite.on('mousemove', (event) => {/* Mouse movement */});\nsprite.on('click', (event) => {/* Click */});\nsprite.on('rightclick', (event) => {/* Right click */});\nsprite.on('wheel', (event) => {/* Scroll */});\n```\n\n### Touch Events\n\n```ts\nsprite.on('touchstart', (event) => {/* Touch begin */});\nsprite.on('touchend', (event) => {/* Touch end */});\nsprite.on('touchmove', (event) => {/* Touch movement */});\nsprite.on('tap', (event) => {/* Quick tap */});\n```\n\n### Global Events\n\nIn previous versions of PixiJS, events such as `pointermove`, `mousemove`, and `touchmove` were fired when any move event was captured by the canvas, even if the pointer was not over a display object. This behavior changed in v8 and now these events are fired only when the pointer is over a display object.\n\nTo maintain the old behavior, you can use the `globalpointermove`, `globalmousemove`, and `globaltouchmove` events. These events are fired on every pointer/touch move, regardless of whether any display object is hit.\n\n```ts\nsprite.on('globalpointermove', (event) => {\n    console.log('Pointer moved globally!', event);\n});\n```\n\n## Event Handling\n\nMultiple ways to listen for events:\n\n```ts\n// Using EventEmitter style (recommended)\nsprite.on('pointerdown', onDown);          // Add listener\nsprite.once('pointerdown', onDown);        // One-time listener\nsprite.off('pointerdown', onDown);         // Remove listener\n\n// Using DOM style\nsprite.addEventListener('click', onClick);\nsprite.removeEventListener('click', onClick);\n\n// Using event properties\nsprite.onclick = (event) => console.log('clicked');\n```\n\n\n## Optimizations\n\nTo optimize event handling and performance, consider the following:\n- Use `eventMode = 'none'` for non-interactive objects to skip hit testing.\n- Use a `hitArea` for hit testing instead of using the objects bounding box. This can improve performance, especially for complex shapes.\n- Set `interactiveChildren = false` on containers to skip hit testing of child objects. This stops the event system from checking children for interaction, which can improve performance when you only need to interact with the container itself.\n\n```ts\nimport { Rectangle } from 'pixi.js';\n\n// Custom hit area\nsprite.hitArea = new Rectangle(0, 0, 100, 100);\nsprite.hitArea = new Circle(50, 50, 50); // Circle hit area\nsprite.hitArea = new Polygon([0, 0, 100, 0, 50, 100]); // Polygon hit area\n\n// Control child hit testing\ncontainer.interactiveChildren = false; // Skip children\n```\n\n### Event Features\n\nConfiguring different event system features through renderer options can help optimize performance and control behavior. You can enable or disable specific event features globally or per object.\n\n```ts\nawait app.init({\n    eventFeatures: {\n        // Core features\n        move: true,           // Enable movement events\n        click: true,          // Enable click events\n        wheel: true,          // Enable scroll events\n\n        // Global tracking\n        globalMove: false,    // Disable global movement\n    }\n});\n\n// Or configure after initialization\napp.renderer.events.features.globalMove = true;\n```\n\n## Cursor Management\n\nCustomize cursor appearance for interactive objects:\n\n```ts\n// Basic cursor styles\nsprite.cursor = 'pointer';    // Hand cursor\nsprite.cursor = 'grab';       // Grab cursor\nsprite.cursor = 'crosshair';  // Precise selection\n\n// Custom cursor image\nsprite.cursor = 'url(\"custom.png\"), auto';\n\n// Global cursor styles\napp.renderer.events.cursorStyles.default = 'pointer';\napp.renderer.events.cursorStyles.hover = 'url(\"hover.png\"), auto';\n```\n\n## Best Practices\n\n- Use `pointerdown/up/move` events instead of mouse/touch for better cross-device support\n- Set `eventMode = 'none'` on non-interactive elements for better performance\n- Use `static` mode for stationary interactive elements\n- Use `dynamic` mode only for moving interactive elements\n- Consider using `hitArea` for precise or optimized hit testing\n- Clean up event listeners when destroying objects\n\n## Related Documentation\n\n- See {@link EventSystem} for the event management system\n- See {@link EventMode} for interaction mode details\n- See {@link Cursor} for cursor customization options\n- See {@link FederatedEvent} for base event properties\n- See {@link FederatedPointerEvent} for pointer event details\n- See {@link FederatedMouseEvent} for mouse event details\n- See {@link FederatedWheelEvent} for wheel event details\n- See {@link Container} for display object event handling\n- See {@link EventBoundary} for event propagation control\n\nFor more specific implementation details and advanced usage, refer to the API documentation of individual classes and interfaces.\n",
+    "extensions": "---\ntitle: Overview\ncategory: extensions\n---\n\n# Extensions\n\nThe extension system is a core architecture of PixiJS that enables modularity, flexibility, and extensibility. Every major system in PixiJS is implemented as an extension, from rendering pipelines to asset loading.\n\n## Basic Usage\n\nRegister an extension using the global `extensions` object:\n\n```ts\nimport { extensions, ExtensionType } from 'pixi.js';\n\nconst customLoader = {\n    extension: {\n        type: ExtensionType.LoadParser,\n        name: 'custom-loader',\n        priority: 100, // Optional priority for ordering\n    },\n\n    test(url: string) {\n        return url.endsWith('.custom');\n    },\n\n    load(url: string) {\n        // Custom loading logic\n        return fetch(url).then(/* ... */);\n    },\n};\n\nextensions.add(customLoader);\n```\n\n## Extension Management\n\n### Adding Extensions\n\n```ts\n// Add single extension\nextensions.add(customLoader);\n\n// Add multiple extensions\nextensions.add(customLoader, customSystem, customPlugin);\n```\n\n### Removing Extensions\n\n```ts\n// Remove single extension\nextensions.remove(customLoader);\n\n// Remove multiple extensions\nextensions.remove(customLoader, customSystem);\n```\n\n### Priority System\n\nExtensions can specify a priority to control their order of execution:\n\n```ts\nconst highPriorityLoader = {\n    extension: {\n        type: ExtensionType.LoadParser,\n        name: 'priority-loader',\n        priority: 100, // Higher priority runs first\n    },\n};\n\nconst lowPriorityLoader = {\n    extension: {\n        type: ExtensionType.LoadParser,\n        name: 'fallback-loader',\n        priority: -1, // Lower priority runs last\n    },\n};\n```\n\n## Extension Types\n\n### Asset Management\n\nAsset management extensions handle loading, resolving, caching, and detecting assets. They can be combined into a single asset group extension.\n\n```ts\n// Asset group extension\nconst assetBundle = {\n    extension: {\n        type: ExtensionType.Asset,\n        name: 'bundle-loader',\n    },\n    load: {\n        /* loader config */\n    },\n    resolve: {\n        /* resolver config */\n    },\n    cache: {\n        /* cache config */\n    },\n    detection: {\n        /* detection config */\n    },\n};\n```\n\n### Rendering Pipeline\n\nRendering extensions define how objects are rendered, including systems and pipes. They can be WebGL or WebGPU based.\n\n```ts\n// Renderer system extension\nclass CustomSystem {\n    static extension = {\n        type: [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem],\n        name: 'custom-system',\n    };\n\n    init() {\n        /* ... */\n    }\n    destroy() {\n        /* ... */\n    }\n}\n\n// Render pipe extension\nconst customPipe = {\n    extension: {\n        type: ExtensionType.WebGLPipes,\n        name: 'custom-pipe',\n    },\n    render(object) {\n        /* ... */\n    },\n};\n```\n\n### Application Plugins\n\nApplication plugins extend the core application functionality, allowing for custom features and behaviors.\n\n```ts\nclass CustomPlugin {\n    static extension = {\n        type: ExtensionType.Application,\n        name: 'custom-plugin',\n    };\n\n    static init(options) {\n        // Add features to Application\n        Object.defineProperty(this, 'customFeature', {\n            value: () => console.log('Custom feature!'),\n        });\n    }\n\n    static destroy() {\n        // Cleanup\n    }\n}\n```\n\n## Best Practices\n\n-   Give extensions unique, descriptive names\n-   Use appropriate priority values for ordering\n-   Clean up resources in destroy methods\n-   Test extensions across different environments\n-   Document extension requirements and dependencies\n-   Follow the extension type's interface requirements\n-   Consider backward compatibility\n\n## Extension Types Reference\n\n### Core Systems\n\n-   `ExtensionType.Application`: Application plugins\n-   `ExtensionType.Environment`: Environment configuration\n\n### Asset Management\n\n-   `ExtensionType.Asset`: Combined asset handling\n-   `ExtensionType.LoadParser`: Resource loading\n-   `ExtensionType.ResolveParser`: URL resolution\n-   `ExtensionType.CacheParser`: Cache management\n-   `ExtensionType.DetectionParser`: Format detection\n\n### Rendering\n\n-   `ExtensionType.WebGLSystem`: WebGL systems\n-   `ExtensionType.WebGPUSystem`: WebGPU systems\n-   `ExtensionType.CanvasSystem`: Canvas systems\n-   `ExtensionType.WebGLPipes`: WebGL render pipes\n-   `ExtensionType.WebGPUPipes`: WebGPU render pipes\n-   `ExtensionType.CanvasPipes`: Canvas render pipes\n\n### Advanced Features\n\n-   `ExtensionType.MaskEffect`: Custom masking\n-   `ExtensionType.BlendMode`: Blend modes\n-   `ExtensionType.TextureSource`: Texture handling\n-   `ExtensionType.ShapeBuilder`: Graphics shapes\n-   `ExtensionType.Batcher`: Render batching\n\n## Related Documentation\n\n-   See {@link ExtensionType} for all extension types\n-   See {@link ExtensionFormatLoose} for extension metadata format\n-   See {@link extensions} for the extension registry\n-   See {@link Application} for application plugins\n-   See {@link Assets} for asset loading system\n-   See {@link Renderer} for rendering extensions\n-   See {@link LoaderParser} for asset loading\n-   See {@link ResolveURLParser} for URL resolution\n-   See {@link CacheParser} for caching behavior\n\nFor detailed implementation requirements and advanced usage, refer to the API documentation of individual extension types.\n",
+    "filters": "---\ntitle: Overview\ncategory: filters\n---\n\n# Filters\n\nPixiJS filters provide powerful post-processing effects that can be applied to any display object and its children. They enable visual effects ranging from basic color adjustments to complex shader-based operations.\n\n## Basic Usage\n\nApply filters to any display object using its `filters` property:\n\n```ts\nimport { Sprite, BlurFilter } from 'pixi.js';\n\nconst sprite = Sprite.from('image.png');\n\n// Single filter\nsprite.filters = new BlurFilter({ strength: 8 });\n\n// Multiple filters (applied in sequence)\nsprite.filters = [\n    new BlurFilter({ strength: 8 }),\n    new NoiseFilter({ noise: 0.5 })\n];\n```\n\n## Built-in Filters\n\n### Basic Filters\n\n```ts\nimport {\n    AlphaFilter,\n    BlurFilter,\n    ColorMatrixFilter,\n    DisplacementFilter,\n    NoiseFilter\n} from 'pixi.js';\n\n// Transparency\nsprite.filters = new AlphaFilter({ alpha: 0.5 });\n\n// Gaussian blur\nsprite.filters = new BlurFilter({\n    strength: 8,\n    quality: 4,\n    repeatEdgePixels: false\n});\n\n// Color transformation\nsprite.filters = new ColorMatrixFilter();\nfilter.blackAndWhite(); // Preset effect\n\n// Displacement mapping\nconst displacementSprite = Sprite.from('displacement.png');\nsprite.filters = new DisplacementFilter({\n    sprite: displacementSprite,\n    scale: 20\n});\n\n// Random noise\nsprite.filters = new NoiseFilter({ noise: 0.5 });\n```\n\n### Blend Modes\n\nAdvanced blend modes require importing the blend modes extension:\n\n```ts\nimport 'pixi.js/advanced-blend-modes';\nimport {\n    ColorBurnBlend,\n    ColorDodgeBlend,\n    HardMixBlend\n} from 'pixi.js';\n\nsprite.filters = [\n    new ColorBurnBlend(),  // Darkens base colors\n    new ColorDodgeBlend(), // Brightens base colors\n    new HardMixBlend()     // High contrast blend\n];\n```\n\n## Creating Custom Filters\n\nCreate custom filters using WebGL/WebGPU shaders:\n\n```ts\nimport { Filter, GlProgram } from 'pixi.js';\n\n// Define shader programs\nconst vertex = `\n    in vec2 aPosition;\n    out vec2 vTextureCoord;\n\n    uniform vec4 uInputSize;\n    uniform vec4 uOutputFrame;\n    uniform vec4 uOutputTexture;\n\n    void main(void) {\n        gl_Position = vec4(aPosition * 2.0 - 1.0, 0.0, 1.0);\n        vTextureCoord = aPosition;\n    }\n`;\n\nconst fragment = `\n    in vec2 vTextureCoord;\n\n    uniform sampler2D uTexture;\n    uniform float uWaveAmplitude;\n    uniform float uWaveFrequency;\n    uniform float uTime;\n\n    void main(void) {\n        vec2 coord = vTextureCoord;\n\n        // Create wave effect\n        coord.x += sin(coord.y * uWaveFrequency + uTime) * uWaveAmplitude;\n\n        gl_FragColor = texture(uTexture, coord);\n    }\n`;\n\n// Create the filter\nconst waveFilter = new Filter({\n    // Shader programs\n    glProgram: new GlProgram({ vertex, fragment }),\n\n    // Resources (uniforms, textures, etc)\n    resources: {\n        waveUniforms: {\n            uWaveAmplitude: { value: 0.05, type: 'f32' },\n            uWaveFrequency: { value: 10.0, type: 'f32' },\n            uTime: { value: 0.0, type: 'f32' }\n        }\n    }\n});\n\n// Apply the filter\nsprite.filters = [waveFilter];\n\n// Animate the effect\napp.ticker.add((time) => {\n    waveFilter.resources.waveUniforms.uniforms.uTime += 0.1;\n});\n```\n\n## Filter Performance\n\nOptimize filter performance with these techniques:\n\n```ts\n// Limit filter area\nsprite.filterArea = new Rectangle(0, 0, 100, 100);\n\n// Reuse filter instances\nconst sharedBlur = new BlurFilter({ strength: 4 });\nsprite1.filters = [sharedBlur];\nsprite2.filters = [sharedBlur];\n\n// Disable when not needed\nsprite.filters = null;\n\n// Use appropriate quality settings\nconst blur = new BlurFilter({\n    strength: 8,\n    quality: 2, // Lower quality for better performance\n});\n```\n\n## Best Practices\n\n- Apply filters sparingly - they impact performance\n- Share filter instances when possible\n- Set `filterArea` to limit processing area\n- Use appropriate quality settings for blur filters\n- Consider using sprite sheet frames instead of filters for static effects\n- Clean up filters when destroying objects\n\n## Related Documentation\n\n- See {@link Filter} for base filter class\n- See {@link FilterSystem} for rendering system\n- See {@link AlphaFilter} for transparency\n- See {@link BlurFilter} for Gaussian blur\n- See {@link ColorMatrixFilter} for color transformations\n- See {@link DisplacementFilter} for distortion effects\n- See {@link NoiseFilter} for noise effects\n- See [PixiJS Filters](https://pixijs.io/filters/docs/) for community filters\n- See [Filter Demo](https://pixijs.io/filters/examples) for examples\n\nFor detailed implementation requirements and advanced usage, refer to the API documentation of individual filter classes.\n",
+    "gif": "---\ntitle: Overview\ncategory: gif\n---\n\n# GIF\n\nPixiJS provides optional GIF support through its GIF module, enabling loading, displaying, and controlling animated GIFs. This module handles decoding, frame management, and playback control.\n\n## Basic Usage\n\nImport and use GIF support:\n\n```ts\nimport { Assets } from 'pixi.js';\nimport { GifSprite } from 'pixi.js/gif';\n\n// Load and create a GIF sprite\nconst source = await Assets.load('example.gif');\nconst gif = new GifSprite({ source });\n\n// Add to stage\napp.stage.addChild(gif);\n```\n\n## Loading GIFs\n\n### Using Assets System\n\n```ts\nimport { Assets } from 'pixi.js';\nimport { GifSource } from 'pixi.js/gif';\n\n// Load from URL\nconst gif1 = await Assets.load<GifSource>('animation.gif');\n\n// Load with options\nconst gif2 = await Assets.load<GifSource>({\n    src: 'animation.gif',\n    alias: 'myGif',\n    data: { fps: 30 }\n});\n\n// Load from base64\nconst gif3 = await Assets.load<GifSource>({\n    src: 'data:image/gif;base64,...',\n    alias: 'base64Gif'\n});\n```\n\n## Playback Control\n\nControl GIF animation playback:\n\n```ts\n// Basic playback controls\ngif.play();\ngif.stop();\ngif.gotoAndPlay(5);  // Go to frame 5 and play\ngif.gotoAndStop(2);  // Go to frame 2 and stop\n\n// Frame navigation\ngif.currentFrame = 3;        // Set current frame\nconsole.log(gif.totalFrames); // Get total frames\n\n// Animation speed\ngif.animationSpeed = 0.5;    // Half speed\ngif.animationSpeed = 2;      // Double speed\n\n// Loop control\ngif.loop = true;             // Enable looping\ngif.loop = false;            // Play once and stop\n```\n\n## Configuration Options\n\nConfigure GIF behavior during creation:\n\n```ts\nconst gif = new GifSprite({\n    source,                    // GIF source\n    autoPlay: true,           // Start playing immediately\n    loop: true,               // Loop the animation\n    animationSpeed: 1,        // Playback speed multiplier\n    autoUpdate: true,         // Update with ticker\n    currentFrame: 0,          // Starting frame\n\n    // Event callbacks\n    onComplete: () => {},     // Animation complete\n    onLoop: () => {},         // Loop complete\n    onFrameChange: () => {},  // Frame changed\n});\n```\n\n## Resource Management\n\nHandle GIF resources properly:\n\n```ts\n// Clone a GIF sprite\nconst clone = gif.clone();\n\n// Cleanup resources\ngif.destroy();               // Destroy sprite only\ngif.destroy(true);          // Destroy sprite and source\n\n// Unload from Assets system\nawait Assets.unload('animation.gif');\n```\n\n## Best Practices\n\n- Use `GifSprite` for animated GIFs, regular `Sprite` for static images\n- Set `autoUpdate = false` when managing updates manually\n- Clean up resources with `destroy()` when removing GIFs\n- Use appropriate `animationSpeed` values for smooth playback\n- Unload unused GIFs to free memory\n\n## Related Documentation\n\n- See {@link GifSprite} for sprite implementation\n- See {@link GifSource} for GIF decoding and frame management\n- See {@link GifAsset} for asset loading system integration\n- See {@link Assets} for asset management\n- See {@link GifSpriteOptions} for configuration options\n\nFor detailed implementation requirements and advanced usage, refer to the API documentation of individual classes and interfaces.\n",
+    "maths": "---\ntitle: Overview\ncategory: maths\n---\n\n# Maths\n\nPixiJS provides a robust set of math utilities for 2D graphics operations, including transformations, geometry, and shape manipulation. These utilities form the foundation for positioning, collision detection, and visual effects.\n\n## Basic Usage\n\n```ts\nimport { Matrix, Point, Rectangle } from 'pixi.js';\n\n// Create and transform a point\nconst point = new Point(100, 100);\nconst matrix = new Matrix();\n\nmatrix.rotate(Math.PI / 4) // 45 degrees\n    .scale(2, 2)\n    .translate(50, 50);\n\nconst transformed = matrix.apply(point);\n```\n\n## Core Components\n\n### Matrix\n\nThe `Matrix` class handles 2D affine transformations:\n\n```ts\nimport { Matrix } from 'pixi.js';\n\nconst matrix = new Matrix();\n\n// Chain transformations\nmatrix\n    .translate(100, 100)  // Move\n    .rotate(Math.PI / 2)  // Rotate 90 degrees\n    .scale(2, 2);        // Double size\n\n// Set transformation directly\nmatrix.set(\n    a, b,  // Scale and rotation\n    c, d,  // Shear\n    tx, ty // Translation\n);\n\n// Reset to identity\nmatrix.identity();\n```\n\n### Points and Vectors\n\n```ts\nimport { Point, ObservablePoint } from 'pixi.js';\n\n// Basic point\nconst point = new Point(10, 20);\npoint.set(30, 40);\n\n// Observable point for reactive updates\nconst observer = {\n    _onUpdate: () => console.log('Point changed!')\n};\nconst reactive = new ObservablePoint(observer, 0, 0);\n```\n\n### Shapes\n\nPixiJS includes several shape primitives for hit testing and rendering:\n\n```ts\nimport {\n    Rectangle,\n    Circle,\n    Ellipse,\n    Polygon,\n    RoundedRectangle\n} from 'pixi.js';\n\n// Rectangle\nconst rect = new Rectangle(0, 0, 100, 100);\nrect.contains(50, 50); // true\n\n// Circle\nconst circle = new Circle(0, 0, 50);\ncircle.contains(25, 25); // true\n\n// Ellipse\nconst ellipse = new Ellipse(0, 0, 100, 50);\nellipse.contains(75, 25); // true\n\n// Polygon\nconst polygon = new Polygon([0,0, 100,0, 50,100]);\npolygon.contains(50, 50); // true\n\n// Rounded Rectangle\nconst roundRect = new RoundedRectangle(0, 0, 100, 100, 20);\nroundRect.contains(10, 10); // true\n```\n\n## Advanced Features\n\n### Math Extras\n\nOptional vector math operations are available through the math-extras extension:\n\n```ts\nimport 'pixi.js/math-extras';\nimport { Point } from 'pixi.js';\n\nconst v1 = new Point(3, 4);\nconst v2 = new Point(1, 2);\n\n// Vector operations\nv1.add(v2);              // Addition\nv1.subtract(v2);         // Subtraction\nv1.multiply(v2);         // Component-wise multiplication\nv1.multiplyScalar(2);    // Scalar multiplication\nv1.normalize();          // Unit vector\n\n// Vector products\nconst dot = v1.dot(v2);   // Dot product\nconst cross = v1.cross(v2); // Cross product (z-component)\n\n// Vector analysis\nconst mag = v1.magnitude();        // Length\nconst magSq = v1.magnitudeSquared(); // Squared length\n```\n\n## Best Practices\n\n- Use `Matrix` for combining multiple transformations\n- Cache matrix operations when possible for better performance\n- Use appropriate shapes for hit testing (e.g., `Circle` for radial areas)\n- Consider using math-extras for vector operations\n- Use `ObservablePoint` for reactive position updates\n- Leverage shape methods like `contains()` for interaction detection\n\n## Related Documentation\n\n- See {@link Matrix} for transformation operations\n- See {@link Point} for basic point operations\n- See {@link ObservablePoint} for reactive points\n- See {@link Rectangle} for rectangular shapes\n- See {@link Circle} for circular shapes\n- See {@link Ellipse} for oval shapes\n- See {@link Polygon} for complex shapes\n- See {@link RoundedRectangle} for rounded corners\n- See {@link Transform} for hierarchical transformations\n\nFor detailed implementation requirements and advanced usage, refer to the API documentation of individual classes and interfaces.\n",
+    "rendering": "---\ntitle: Overview\ncategory: rendering\n---\n\n# Rendering\n\n\nPixiJS renderers are responsible for drawing your scene to a canvas using either **WebGL/WebGL2** or **WebGPU**. These renderers are high-performance GPU-accelerated engines and are composed of modular systems that manage everything from texture uploads to rendering pipelines.\n\nAll PixiJS renderers inherit from a common base, which provides consistent methods such as `.render()`, `.resize()`, and `.clear()` as well as shared systems for managing the canvas, texture GC, events, and more.\n\n## Renderer Types\n\n| Renderer         | Description                                                        | Status          |\n| ---------------- | ------------------------------------------------------------------ | --------------- |\n| `WebGLRenderer`  | Default renderer using WebGL/WebGL2. Well supported and stable.    | ✅ Recommended  |\n| `WebGPURenderer` | Modern GPU renderer using WebGPU. More performant, still maturing. | 🚧 Experimental |\n| `CanvasRenderer` | Fallback renderer using 2D canvas.                                 | ❌ Coming-soon  |\n\n>[!NOTE]\n> The WebGPU renderer is feature complete, however, inconsistencies in browser implementations may lead to unexpected behavior. It is recommended to use the WebGL renderer for production applications.\n\n## Creating a Renderer\n\nYou can use `autoDetectRenderer()` to create the best renderer for the environment:\n\n```ts\nimport { autoDetectRenderer } from 'pixi.js';\n\nconst renderer = await autoDetectRenderer({\n    preference: 'webgpu', // or 'webgl'\n});\n```\n\nOr construct one explicitly:\n\n```ts\nimport { WebGLRenderer, WebGPURenderer } from 'pixi.js';\n\nconst renderer = new WebGLRenderer();\nawait renderer.init(options);\n```\n\n## Rendering a Scene\n\nTo render a scene, you can use the `render()` method. This will draw the specified container to the screen or a texture:\n\n```ts\nimport { Container } from 'pixi.js';\n\nconst container = new Container();\nrenderer.render(container);\n\n// or provide a complete set of options\nrenderer.render({\n    target: container,\n    clear: true, // clear the screen before rendering\n    transform: new Matrix(), // optional transform to apply to the container\n});\n```\n\n## Resizing the Renderer\n\nTo resize the renderer, use the `resize()` method. This will adjust the canvas size and update the resolution:\n\n```ts\nrenderer.resize(window.innerWidth, window.innerHeight);\n```\n\n## Generating Textures\n\nYou can generate textures from containers using the `generateTexture()` method. This is useful for creating textures from dynamic content:\n\n```ts\nimport { Sprite } from 'pixi.js';\n\nconst sprite = new Sprite();\nconst texture = renderer.generateTexture(sprite);\n```\n\n## Resetting State\n\nTo reset the renderer's state, use the `resetState()` method. This is useful when mixing PixiJS with other libraries like Three.js:\n\n```ts\nfunction render() {\n    // Render the Three.js scene\n    threeRenderer.resetState();\n    threeRenderer.render(scene, camera);\n\n    // Render the PixiJS stage\n    pixiRenderer.resetState();\n    pixiRenderer.render({ container: stage });\n\n    requestAnimationFrame(render);\n}\n\nrequestAnimationFrame(render);\n```\n\n## Related Documentation\n\n- See {@link WebGLRenderer} for WebGL-specific features\n- See {@link WebGPURenderer} for WebGPU-specific features\n- See {@link autoDetectRenderer} for automatic renderer detection\n- See {@link ExtractSystem} for extracting textures from the renderer\n- See {@link GenerateTextureSystem} for creating textures from display objects\n- See {@link RenderTexture} for rendering to textures\n- See {@link Texture} for managing textures\n- See {@link Container} for managing display objects\n",
+    "scene": "---\ntitle: Overview\ncategory: scene\n---\n\n# Scene\n\nThe scene graph in PixiJS is a hierarchical tree of display objects that defines what gets rendered, how, and in what order. Every visual element in your application is part of this scene graph.\n\n## Display Objects\n\nAll display objects inherit from the `Container` class, which provides core functionality for:\n\n- Transformations (position, rotation, scale)\n- Parent-child relationships\n- Rendering properties (alpha, visible, filters)\n- Event handling\n- Bounds calculation\n\n### Available Display Objects\n\n- **Containers**\n\n    - {@link Container} - Base class for grouping objects\n    - {@link ParticleContainer} - Optimized container for particle systems\n\n- **Leaf Nodes**\n    - {@link Sprite} - Basic image display\n    - {@link AnimatedSprite} - Sprite animation support\n    - {@link TilingSprite} - Repeating texture patterns\n    - {@link NineSliceSprite} - Scalable UI elements\n    - {@link Text} - Canvas-based text rendering\n    - {@link HTMLText} - HTML/CSS-based text\n    - {@link BitmapText} - High-performance bitmap fonts\n    - {@link Graphics} - Vector shape drawing\n    - {@link Mesh} - Custom vertex-based rendering\n        - {@link MeshSimple} - Basic mesh with convenient constructor\n        - {@link MeshPlane} - Deformable textured plane\n        - {@link MeshRope} - Rope-like curved mesh\n\n> [!NOTE]\n> Leaf nodes are renderable objects that should not have children. In v8, **only containers should have children**.\n>\n> Attempting to add children to a leaf node will not result in a runtime error, however, you may run into unexpected rendering behavior. Therefore, If nesting is required, wrap leaf nodes in a `Container`.\n>\n> **Before v8 (invalid in v8):**\n>\n> ```ts\n> const sprite = new Sprite();\n> sprite.addChild(anotherSprite); // ❌ Invalid in v8\n> ```\n>\n> **v8 approach:**\n>\n> ```ts\n> const group = new Container();\n> group.addChild(sprite);\n> group.addChild(anotherSprite); // ✅ Valid\n> ```\n\n## Core Features\n\n### Transformations\n\nEvery display object supports these transform properties:\n\n```ts\nconst object = new Sprite(texture);\n\n// Position\nobject.x = 100;\nobject.y = 100;\nobject.position.set(100, 100);\n\n// Scale\nobject.scale.set(2, 2);\n\n// Rotation (in radians)\nobject.rotation = Math.PI / 4; // 45 degrees\nobject.angle = 45; // Also 45 degrees\n\n// Skew\nobject.skew.set(0.5, 0.3);\n\n// Origin point for transforms\nobject.pivot.set(32, 32);\n```\n\n### Hierarchy Management\n\n```ts\nconst parent = new Container();\nconst child = new Sprite(texture);\n\n// Add/remove children\nparent.addChild(child);\nparent.removeChild(child);\n\n// Bulk operations\nparent.addChild(spriteA, spriteB, spriteC);\nparent.removeChildren();\n\n// Check relationships\nconsole.log(child.parent === parent); // true\nconsole.log(parent.children.length); // Number of children\n```\n\n### Visual Properties\n\n```ts\nconst object = new Sprite(texture);\n\n// Visibility\nobject.visible = false;\n\n// Transparency\nobject.alpha = 0.5;\n\n// Tinting\nobject.tint = 0xff0000; // Red tint\nobject.tint = '#ff0000'; // Also red\n\n// Blend modes\nobject.blendMode = 'add';\n\n// Masking\nconst mask = new Graphics().circle(0, 0, 50).fill(0xffffff);\nobject.mask = mask;\n\n// Filters\nobject.filters = [new BlurFilter(2), new ColorMatrixFilter()];\n```\n\n### Bounds & Measurements\n\n```ts\nconst sprite = new Sprite(texture);\n\n// Get dimensions\nconst bounds = sprite.getBounds();\nconsole.log(bounds.width, bounds.height);\n\n// Local vs Global bounds\nconst localBounds = sprite.getLocalBounds();\nconst globalBounds = sprite.getBounds();\n\n// Quick size access\nsprite.width = 100;\nsprite.height = 100;\n```\n\n### Interaction\n\n```ts\nconst button = new Sprite(texture);\nbutton.interactive = true;\n\n// Event handling\nbutton.on('pointerdown', (event) => {\n    console.log('Clicked!', event);\n});\n\nbutton.on('pointhover', (event) => {\n    button.alpha = 0.8;\n});\n\n// Hit testing\nconst hit = button.containsPoint({ x: 100, y: 100 });\n```\n\n### Rendering Callbacks\n\n```ts\nconst spinner = new Container();\n\n// Run every frame\nspinner.onRender = () => {\n    spinner.rotation += 0.1;\n};\n\n// Remove callback\nspinner.onRender = null;\n```\n\n## Best Practices\n\n- Use `cacheAsBitmap` for static complex content\n- Be careful with filters and masks\n- Remove unused objects with `removeChild()`\n- Use `destroy()` to clean up resources\n- Pool and reuse objects when possible\n\n## Related Documentation\n\n- See {@link Container} for base display object functionality\n- See {@link Sprite} for image rendering\n- See {@link AnimatedSprite} for sprite animations\n- See {@link TilingSprite} for repeating textures\n- See {@link NineSliceSprite} for scalable UI elements\n- See {@link Graphics} for shape drawing\n- See {@link Text} for text rendering\n- See {@link BitmapText} for bitmap fonts\n- See {@link HTMLText} for HTML/CSS text rendering\n- See {@link Mesh} for custom rendering\n- See {@link ParticleContainer} for performance optimization\n- See {@link EventSystem} for event handling\n",
+    "text": "---\ntitle: Text Overview\ncategory: text\n---\n\n# Text Rendering in PixiJS\n\nPixiJS provides three powerful text rendering systems, each optimized for different use cases:\n\n## Text Types\n\n### Canvas Text (`Text`)\n\nHigh-quality text rendering using the browser's canvas engine.\n\n```ts\nimport { Text } from 'pixi.js';\n\n// Basic text\nconst text = new Text({\n    text: 'Hello PixiJS!',\n    style: {\n        fontFamily: 'Arial',\n        fontSize: 32,\n        fill: '#ffffff',\n    }\n});\n\n// Rich styling\nconst styledText = new Text({\n    text: 'Styled Text',\n    style: {\n        fontFamily: 'Arial',\n        fontSize: 48,\n        fill: 'white',\n        stroke: { color: '#000000', width: 4 },\n        dropShadow: {\n            color: '#000000',\n            blur: 4,\n            distance: 6,\n            angle: Math.PI / 6\n        }\n    }\n});\n```\n\n**Best for:**\n- Rich text styling\n- Dynamic content\n- Drop shadows and effects\n- Single-line or paragraph text\n\n### Bitmap Text (`BitmapText`)\n\nHigh-performance text using pre-rendered font atlases.\n\n```ts\nimport { BitmapFont, BitmapText } from 'pixi.js';\n\n// Install a bitmap font\nBitmapFont.install({\n    name: 'Game Font',\n    style: {\n        fontFamily: 'Arial',\n        fontSize: 32,\n        fill: '#ffffff'\n    }\n});\n\n// Create bitmap text\nconst text = new BitmapText({\n    text: 'High Performance!',\n    style: {\n        fontFamily: 'Game Font',\n        fontSize: 32\n    }\n});\n\n// Load external bitmap font\nconst font = await Assets.load('fonts/game.fnt');\nconst text2 = new BitmapText({\n    text: 'Using loaded font',\n    style: {\n        fontFamily: font.fontFamily\n    }\n});\n```\n\n**Best for:**\n- High-performance text\n- Game UIs with lots of text\n- Score counters and HUDs\n- Text that changes frequently\n\n### HTML Text (`HTMLText`)\n\nHTML and CSS-based text rendering within the PixiJS scene.\n\n```ts\nimport { HTMLText } from 'pixi.js';\n\n// Basic HTML text\nconst text = new HTMLText({\n    text: '<b>Bold</b> and <i>Italic</i>',\n    style: {\n        fontSize: 24,\n        fill: '#ffffff'\n    }\n});\n\n// Rich HTML text with styling\nconst richText = new HTMLText({\n    text: '<custom>Custom Tag</custom>',\n    style: {\n        fontFamily: 'Arial',\n        fontSize: 32,\n        fill: 0x4a4a4a,\n        align: 'center',\n        tagStyles: {\n            custom: {\n                fontSize: 32,\n                fill: '#00ff00',\n                fontStyle: 'italic'\n            }\n        }\n    }\n    textureStyle: {\n        scaleMode: 'linear',\n    }\n});\n```\n\n**Best for:**\n- Complex text formatting\n- HTML/CSS styling\n- Multi-line formatted content\n- Emoji and special characters\n\n## Performance Considerations\n\n### Memory Usage\n- `Text`: Medium (one texture per unique text)\n- `BitmapText`: Low (shared texture atlas)\n- `HTMLText`: High (DOM elements + textures)\n\n### Rendering Speed\n- `Text`: Medium\n- `BitmapText`: Fast\n- `HTMLText`: Slow\n\n### Update Performance\n- `Text`: Slow for frequent updates\n- `BitmapText`: Fast for any updates\n- `HTMLText`: Medium for updates\n\n## Best Practices\n\n1. **Choose the Right Type**\n   - Use `Text` for styled, occasionally updated text\n   - Use `BitmapText` for frequently updated or numerous text\n   - Use `HTMLText` for rich formatting needs\n\n2. **Performance Tips**\n   - Cache static text using `cacheAsBitmap`\n   - Reuse styles across text instances\n   - Use resolution scaling for crisp text\n   - Consider pooling for frequent text changes\n\n3. **Memory Management**\n   - Destroy unused text objects\n   - Share bitmap fonts when possible\n   - Clear text caches when appropriate\n\n## See Also\n\n- {@link Text} For canvas text rendering\n- {@link BitmapText} For high-performance text\n- {@link HTMLText} For HTML-based text\n- {@link TextStyle} For text styling options\n- {@link BitmapFont} For bitmap font management\n",
+    "ticker": "---\ntitle: Overview\ncategory: ticker\n---\n\n# Ticker\n\nThe `Ticker` class provides a powerful timing system for managing animation frames and game loops in PixiJS. It offers precise timing control, priority-based updates, and flexible callback management.\n\n## Basic Usage\n\nCreate and start a ticker with callbacks:\n\n```ts\nimport { Ticker } from 'pixi.js';\n\n// Create a new ticker\nconst ticker = new Ticker();\n\n// Add update callback\nticker.add((ticker) => {\n    sprite.rotation += 0.1 * ticker.deltaTime;\n});\n\n// Start the ticker\nticker.start();\n```\n\n## Core Features\n\n### Update Management\n\nControl how callbacks are registered and executed:\n\n```ts\n// Regular updates\nticker.add((ticker) => {\n    // Runs every frame\n    console.log(`Delta time: ${ticker.deltaTime}ms`);\n});\n\n// One-time updates\nticker.addOnce(() => {\n    // Runs on next frame only\n    console.log('Initialization complete');\n});\n\n// Remove updates\nticker.remove(callback);\n```\n\n### Priority System\n\nOrganize updates with priority levels:\n\n```ts\nimport { UPDATE_PRIORITY } from 'pixi.js';\n\n// High priority (runs first)\nticker.add(\n    (ticker) => {\n        physics.update(ticker.deltaTime);\n    },\n    null,\n    UPDATE_PRIORITY.HIGH\n);\n\n// Normal priority\nticker.add(\n    (ticker) => {\n        animations.update(ticker.deltaTime);\n    },\n    null,\n    UPDATE_PRIORITY.NORMAL\n);\n\n// Low priority (runs last)\nticker.add(\n    (ticker) => {\n        ui.update(ticker.deltaTime);\n    },\n    null,\n    UPDATE_PRIORITY.LOW\n);\n```\n\n### Frame Rate Control\n\nManage update frequency and timing:\n\n```ts\n// Limit maximum FPS\nticker.maxFPS = 60;  // Cap at 60 FPS\nticker.maxFPS = 30;  // Cap at 30 FPS\nticker.maxFPS = 0;   // No FPS limit\n\n// Set minimum FPS (affects deltaTime)\nticker.minFPS = 30;  // Prevent slow-motion below 30 FPS\n\n// Speed control\nticker.speed = 0.5;  // Half speed (slow motion)\nticker.speed = 2.0;  // Double speed (fast forward)\n```\n\n### Timing Properties\n\nAccess detailed timing information:\n\n```ts\n// Time values\nconsole.log(ticker.deltaTime);  // Scaled time since last update\nconsole.log(ticker.deltaMS);    // Raw milliseconds since last update\nconsole.log(ticker.elapsedMS);  // Time spent on last update\nconsole.log(ticker.lastTime);   // Timestamp of last update\nconsole.log(ticker.FPS);        // Current frames per second\n\n// Frame counting\nconsole.log(ticker.count);      // Number of active listeners\n```\n\n## Shared Ticker\n\nUse the global shared ticker for application-wide timing:\n\n```ts\nimport { Ticker } from 'pixi.js';\n\n// Access the shared ticker\nconst shared = Ticker.shared;\n\n// Configure shared ticker\nshared.autoStart = true;     // Start automatically\nshared.minFPS = 30;         // Set minimum FPS\nshared.maxFPS = 60;         // Set maximum FPS\n\n// Add updates to shared ticker\nshared.add((ticker) => {\n    // Global update logic\n});\n```\n\n## Context Binding\n\nMaintain proper `this` context in callbacks:\n\n```ts\nclass GameSystem {\n    update(ticker: Ticker) {\n        this.position += this.speed * ticker.deltaTime;\n    }\n}\n\nconst system = new GameSystem();\nticker.add(system.update, system);  // Bind context\n```\n\n### Cleanup\n\nProperly dispose of tickers:\n\n```ts\n// Stop updates\nticker.stop();\n\n// Remove specific listener\nticker.remove(callback);\n\n// Complete cleanup\nticker.destroy();\n```\n\n## Best Practices\n\n- Use `deltaTime` for frame-rate independent animations\n- Organize updates with appropriate priorities\n- Clean up tickers when no longer needed\n- Use `shared` ticker for application-wide timing\n\n## Related Documentation\n\n- See {@link Ticker} for the ticker class\n- See {@link TickerCallback} for callback type definition\n- See {@link UPDATE_PRIORITY} for priority constants\n- See {@link TickerPlugin} for Application integration\n- See {@link Application} for high-level usage\n- See {@link AnimatedSprite} for sprite animation\n- See {@link VideoResource} for video playback\n\nFor detailed implementation requirements and advanced usage, refer to the API documentation of individual classes and interfaces.\n",
+    "utils": "---\ntitle: Overview\ncategory: utils\n---\n\n# Utils\n\nPixiJS provides a comprehensive collection of utility functions for browser detection, device capabilities, data manipulation, and canvas operations. These utilities are designed to help with common tasks in game and application development.\n\n## Browser Detection\n\nCheck browser capabilities and features:\n\n```ts\nimport {\n    isWebGLSupported,\n    isWebGPUSupported,\n    isSafari,\n    isMobile\n} from 'pixi.js';\n\n// Graphics API support\nif (isWebGLSupported()) {\n    console.log('WebGL is available');\n}\n\nif (await isWebGPUSupported()) {\n    console.log('WebGPU is available');\n}\n\n// Browser and device detection\nif (isSafari()) {\n    console.log('Running in Safari');\n}\n\nif (isMobile.any) {\n    console.log('Running on mobile device');\n}\n```\n\n## Data Management\n\nHandle data structures and arrays efficiently:\n\n```ts\nimport { removeItems, uid, clean } from 'pixi.js';\n\n// Generate unique IDs\nconst id = uid(); // \"1\"\nconst id2 = uid(); // \"2\"\n\n// Array manipulation\nconst array = [1, 2, 3, 4, 5];\nremoveItems(array, 1, 2); // Removes 2 items starting at index 1\nconsole.log(array); // [1, 4, 5]\n\n// Clean object properties\nconst obj = { a: null, b: undefined, c: 'valid' };\nclean(obj); // Removes null/undefined properties\nconsole.log(obj); // { c: 'valid' }\n```\n\n## Path Resolution\n\nHandle file and URL paths:\n\n```ts\nimport { path } from 'pixi.js';\n\n// Join path segments\nconst fullPath = path.join('assets', 'images', 'sprite.png');\n\n// Get file information\nconst ext = path.extname('image.png');     // '.png'\nconst name = path.basename('image.png');    // 'image.png'\nconst dir = path.dirname('assets/image.png'); // 'assets'\n```\n\n## Best Practices\n\n- Use browser detection for feature-specific code paths\n- Use `uid()` for generating unique identifiers\n- Use path utilities for consistent file handling\n- Consider mobile-specific optimizations with `isMobile`\n\n## Related Documentation\n\n- See {@link isWebGLSupported} for WebGL detection\n- See {@link isWebGPUSupported} for WebGPU detection\n- See {@link isMobile} for mobile device detection\n- See {@link path} for path utilities\n\nFor detailed implementation requirements and advanced usage, refer to the API documentation of individual utilities.\n"
+  },
+  "classes": [
+    {
+      "name": "AccessibilitySystem",
+      "category": "accessibility",
+      "sourcePath": "accessibility/AccessibilitySystem.ts",
+      "metadataPath": "classes/AccessibilitySystem.json"
+    },
+    {
+      "name": "ColorBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/ColorBlend.ts",
+      "metadataPath": "classes/ColorBlend.json"
+    },
+    {
+      "name": "ColorBurnBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/ColorBurnBlend.ts",
+      "metadataPath": "classes/ColorBurnBlend.json"
+    },
+    {
+      "name": "ColorDodgeBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/ColorDodgeBlend.ts",
+      "metadataPath": "classes/ColorDodgeBlend.json"
+    },
+    {
+      "name": "DarkenBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/DarkenBlend.ts",
+      "metadataPath": "classes/DarkenBlend.json"
+    },
+    {
+      "name": "DifferenceBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/DifferenceBlend.ts",
+      "metadataPath": "classes/DifferenceBlend.json"
+    },
+    {
+      "name": "DivideBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/DivideBlend.ts",
+      "metadataPath": "classes/DivideBlend.json"
+    },
+    {
+      "name": "ExclusionBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/ExclusionBlend.ts",
+      "metadataPath": "classes/ExclusionBlend.json"
+    },
+    {
+      "name": "HardLightBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/HardLightBlend.ts",
+      "metadataPath": "classes/HardLightBlend.json"
+    },
+    {
+      "name": "HardMixBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/HardMixBlend.ts",
+      "metadataPath": "classes/HardMixBlend.json"
+    },
+    {
+      "name": "LightenBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/LightenBlend.ts",
+      "metadataPath": "classes/LightenBlend.json"
+    },
+    {
+      "name": "LinearBurnBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/LinearBurnBlend.ts",
+      "metadataPath": "classes/LinearBurnBlend.json"
+    },
+    {
+      "name": "LinearDodgeBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/LinearDodgeBlend.ts",
+      "metadataPath": "classes/LinearDodgeBlend.json"
+    },
+    {
+      "name": "LinearLightBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/LinearLightBlend.ts",
+      "metadataPath": "classes/LinearLightBlend.json"
+    },
+    {
+      "name": "LuminosityBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/LuminosityBlend.ts",
+      "metadataPath": "classes/LuminosityBlend.json"
+    },
+    {
+      "name": "NegationBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/NegationBlend.ts",
+      "metadataPath": "classes/NegationBlend.json"
+    },
+    {
+      "name": "OverlayBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/OverlayBlend.ts",
+      "metadataPath": "classes/OverlayBlend.json"
+    },
+    {
+      "name": "PinLightBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/PinLightBlend.ts",
+      "metadataPath": "classes/PinLightBlend.json"
+    },
+    {
+      "name": "SaturationBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/SaturationBlend.ts",
+      "metadataPath": "classes/SaturationBlend.json"
+    },
+    {
+      "name": "SoftLightBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/SoftLightBlend.ts",
+      "metadataPath": "classes/SoftLightBlend.json"
+    },
+    {
+      "name": "SubtractBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/SubtractBlend.ts",
+      "metadataPath": "classes/SubtractBlend.json"
+    },
+    {
+      "name": "VividLightBlend",
+      "category": "filters",
+      "sourcePath": "advanced-blend-modes/VividLightBlend.ts",
+      "metadataPath": "classes/VividLightBlend.json"
+    },
+    {
+      "name": "Application",
+      "category": "app",
+      "sourcePath": "app/Application.ts",
+      "metadataPath": "classes/Application.json"
+    },
+    {
+      "name": "ResizePlugin",
+      "category": "app",
+      "sourcePath": "app/ResizePlugin.ts",
+      "metadataPath": "classes/ResizePlugin.json"
+    },
+    {
+      "name": "TickerPlugin",
+      "category": "app",
+      "sourcePath": "app/TickerPlugin.ts",
+      "metadataPath": "classes/TickerPlugin.json"
+    },
+    {
+      "name": "AssetsClass",
+      "category": "assets",
+      "sourcePath": "assets/Assets.ts",
+      "metadataPath": "classes/AssetsClass.json"
+    },
+    {
+      "name": "BackgroundLoader",
+      "category": "assets",
+      "sourcePath": "assets/BackgroundLoader.ts",
+      "metadataPath": "classes/BackgroundLoader.json"
+    },
+    {
+      "name": "Loader",
+      "category": "assets",
+      "sourcePath": "assets/loader/Loader.ts",
+      "metadataPath": "classes/Loader.json"
+    },
+    {
+      "name": "Resolver",
+      "category": "assets",
+      "sourcePath": "assets/resolver/Resolver.ts",
+      "metadataPath": "classes/Resolver.json"
+    },
+    {
+      "name": "Color",
+      "category": "color",
+      "sourcePath": "color/Color.ts",
+      "metadataPath": "classes/Color.json"
+    },
+    {
+      "name": "Culler",
+      "category": "scene",
+      "sourcePath": "culling/Culler.ts",
+      "metadataPath": "classes/Culler.json"
+    },
+    {
+      "name": "CullerPlugin",
+      "category": "app",
+      "sourcePath": "culling/CullerPlugin.ts",
+      "metadataPath": "classes/CullerPlugin.json"
+    },
+    {
+      "name": "CanvasObserver",
+      "category": null,
+      "sourcePath": "dom/CanvasObserver.ts",
+      "metadataPath": "classes/CanvasObserver.json"
+    },
+    {
+      "name": "DOMContainer",
+      "category": "scene",
+      "sourcePath": "dom/DOMContainer.ts",
+      "metadataPath": "classes/DOMContainer.json"
+    },
+    {
+      "name": "DOMPipe",
+      "category": null,
+      "sourcePath": "dom/DOMPipe.ts",
+      "metadataPath": "classes/DOMPipe.json"
+    },
+    {
+      "name": "EventBoundary",
+      "category": "events",
+      "sourcePath": "events/EventBoundary.ts",
+      "metadataPath": "classes/EventBoundary.json"
+    },
+    {
+      "name": "EventSystem",
+      "category": "events",
+      "sourcePath": "events/EventSystem.ts",
+      "metadataPath": "classes/EventSystem.json"
+    },
+    {
+      "name": "FederatedEvent",
+      "category": "events",
+      "sourcePath": "events/FederatedEvent.ts",
+      "metadataPath": "classes/FederatedEvent.json"
+    },
+    {
+      "name": "FederatedMouseEvent",
+      "category": "events",
+      "sourcePath": "events/FederatedMouseEvent.ts",
+      "metadataPath": "classes/FederatedMouseEvent.json"
+    },
+    {
+      "name": "FederatedPointerEvent",
+      "category": "events",
+      "sourcePath": "events/FederatedPointerEvent.ts",
+      "metadataPath": "classes/FederatedPointerEvent.json"
+    },
+    {
+      "name": "FederatedWheelEvent",
+      "category": "events",
+      "sourcePath": "events/FederatedWheelEvent.ts",
+      "metadataPath": "classes/FederatedWheelEvent.json"
+    },
+    {
+      "name": "Filter",
+      "category": "filters",
+      "sourcePath": "filters/Filter.ts",
+      "metadataPath": "classes/Filter.json"
+    },
+    {
+      "name": "FilterEffect",
+      "category": null,
+      "sourcePath": "filters/FilterEffect.ts",
+      "metadataPath": "classes/FilterEffect.json"
+    },
+    {
+      "name": "FilterPipe",
+      "category": null,
+      "sourcePath": "filters/FilterPipe.ts",
+      "metadataPath": "classes/FilterPipe.json"
+    },
+    {
+      "name": "FilterSystem",
+      "category": "rendering",
+      "sourcePath": "filters/FilterSystem.ts",
+      "metadataPath": "classes/FilterSystem.json"
+    },
+    {
+      "name": "BlendModeFilter",
+      "category": null,
+      "sourcePath": "filters/blend-modes/BlendModeFilter.ts",
+      "metadataPath": "classes/BlendModeFilter.json"
+    },
+    {
+      "name": "AlphaFilter",
+      "category": "filters",
+      "sourcePath": "filters/defaults/alpha/AlphaFilter.ts",
+      "metadataPath": "classes/AlphaFilter.json"
+    },
+    {
+      "name": "BlurFilter",
+      "category": "filters",
+      "sourcePath": "filters/defaults/blur/BlurFilter.ts",
+      "metadataPath": "classes/BlurFilter.json"
+    },
+    {
+      "name": "BlurFilterPass",
+      "category": "filters",
+      "sourcePath": "filters/defaults/blur/BlurFilterPass.ts",
+      "metadataPath": "classes/BlurFilterPass.json"
+    },
+    {
+      "name": "ColorMatrixFilter",
+      "category": "filters",
+      "sourcePath": "filters/defaults/color-matrix/ColorMatrixFilter.ts",
+      "metadataPath": "classes/ColorMatrixFilter.json"
+    },
+    {
+      "name": "DisplacementFilter",
+      "category": "filters",
+      "sourcePath": "filters/defaults/displacement/DisplacementFilter.ts",
+      "metadataPath": "classes/DisplacementFilter.json"
+    },
+    {
+      "name": "NoiseFilter",
+      "category": "filters",
+      "sourcePath": "filters/defaults/noise/NoiseFilter.ts",
+      "metadataPath": "classes/NoiseFilter.json"
+    },
+    {
+      "name": "PassthroughFilter",
+      "category": "filters",
+      "sourcePath": "filters/defaults/passthrough/PassthroughFilter.ts",
+      "metadataPath": "classes/PassthroughFilter.json"
+    },
+    {
+      "name": "MaskFilter",
+      "category": null,
+      "sourcePath": "filters/mask/MaskFilter.ts",
+      "metadataPath": "classes/MaskFilter.json"
+    },
+    {
+      "name": "Matrix",
+      "category": "maths",
+      "sourcePath": "maths/matrix/Matrix.ts",
+      "metadataPath": "classes/Matrix.json"
+    },
+    {
+      "name": "ObservablePoint",
+      "category": "maths",
+      "sourcePath": "maths/point/ObservablePoint.ts",
+      "metadataPath": "classes/ObservablePoint.json"
+    },
+    {
+      "name": "Point",
+      "category": "maths",
+      "sourcePath": "maths/point/Point.ts",
+      "metadataPath": "classes/Point.json"
+    },
+    {
+      "name": "Circle",
+      "category": "maths",
+      "sourcePath": "maths/shapes/Circle.ts",
+      "metadataPath": "classes/Circle.json"
+    },
+    {
+      "name": "Ellipse",
+      "category": "maths",
+      "sourcePath": "maths/shapes/Ellipse.ts",
+      "metadataPath": "classes/Ellipse.json"
+    },
+    {
+      "name": "Polygon",
+      "category": "maths",
+      "sourcePath": "maths/shapes/Polygon.ts",
+      "metadataPath": "classes/Polygon.json"
+    },
+    {
+      "name": "Rectangle",
+      "category": "maths",
+      "sourcePath": "maths/shapes/Rectangle.ts",
+      "metadataPath": "classes/Rectangle.json"
+    },
+    {
+      "name": "RoundedRectangle",
+      "category": "maths",
+      "sourcePath": "maths/shapes/RoundedRectangle.ts",
+      "metadataPath": "classes/RoundedRectangle.json"
+    },
+    {
+      "name": "Triangle",
+      "category": "maths",
+      "sourcePath": "maths/shapes/Triangle.ts",
+      "metadataPath": "classes/Triangle.json"
+    },
+    {
+      "name": "PrepareBase",
+      "category": "rendering",
+      "sourcePath": "prepare/PrepareBase.ts",
+      "metadataPath": "classes/PrepareBase.json"
+    },
+    {
+      "name": "PrepareQueue",
+      "category": "rendering",
+      "sourcePath": "prepare/PrepareQueue.ts",
+      "metadataPath": "classes/PrepareQueue.json"
+    },
+    {
+      "name": "PrepareSystem",
+      "category": "rendering",
+      "sourcePath": "prepare/PrepareSystem.ts",
+      "metadataPath": "classes/PrepareSystem.json"
+    },
+    {
+      "name": "PrepareUpload",
+      "category": "rendering",
+      "sourcePath": "prepare/PrepareUpload.ts",
+      "metadataPath": "classes/PrepareUpload.json"
+    },
+    {
+      "name": "GlBatchAdaptor",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/gl/GlBatchAdaptor.ts",
+      "metadataPath": "classes/GlBatchAdaptor.json"
+    },
+    {
+      "name": "GpuBatchAdaptor",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/gpu/GpuBatchAdaptor.ts",
+      "metadataPath": "classes/GpuBatchAdaptor.json"
+    },
+    {
+      "name": "BatchGeometry",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/BatchGeometry.ts",
+      "metadataPath": "classes/BatchGeometry.json"
+    },
+    {
+      "name": "BatchTextureArray",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/BatchTextureArray.ts",
+      "metadataPath": "classes/BatchTextureArray.json"
+    },
+    {
+      "name": "Batch",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/Batcher.ts",
+      "metadataPath": "classes/Batch.json"
+    },
+    {
+      "name": "Batcher",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/Batcher.ts",
+      "metadataPath": "classes/Batcher.json"
+    },
+    {
+      "name": "BatcherPipe",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/BatcherPipe.ts",
+      "metadataPath": "classes/BatcherPipe.json"
+    },
+    {
+      "name": "DefaultBatcher",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/DefaultBatcher.ts",
+      "metadataPath": "classes/DefaultBatcher.json"
+    },
+    {
+      "name": "DefaultShader",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/DefaultShader.ts",
+      "metadataPath": "classes/DefaultShader.json"
+    },
+    {
+      "name": "MaskEffectManagerClass",
+      "category": "rendering",
+      "sourcePath": "rendering/mask/MaskEffectManager.ts",
+      "metadataPath": "classes/MaskEffectManagerClass.json"
+    },
+    {
+      "name": "AlphaMask",
+      "category": "rendering",
+      "sourcePath": "rendering/mask/alpha/AlphaMask.ts",
+      "metadataPath": "classes/AlphaMask.json"
+    },
+    {
+      "name": "AlphaMaskPipe",
+      "category": null,
+      "sourcePath": "rendering/mask/alpha/AlphaMaskPipe.ts",
+      "metadataPath": "classes/AlphaMaskPipe.json"
+    },
+    {
+      "name": "ColorMask",
+      "category": "rendering",
+      "sourcePath": "rendering/mask/color/ColorMask.ts",
+      "metadataPath": "classes/ColorMask.json"
+    },
+    {
+      "name": "ColorMaskPipe",
+      "category": null,
+      "sourcePath": "rendering/mask/color/ColorMaskPipe.ts",
+      "metadataPath": "classes/ColorMaskPipe.json"
+    },
+    {
+      "name": "ScissorMask",
+      "category": "rendering",
+      "sourcePath": "rendering/mask/scissor/ScissorMask.ts",
+      "metadataPath": "classes/ScissorMask.json"
+    },
+    {
+      "name": "StencilMask",
+      "category": "rendering",
+      "sourcePath": "rendering/mask/stencil/StencilMask.ts",
+      "metadataPath": "classes/StencilMask.json"
+    },
+    {
+      "name": "StencilMaskPipe",
+      "category": null,
+      "sourcePath": "rendering/mask/stencil/StencilMaskPipe.ts",
+      "metadataPath": "classes/StencilMaskPipe.json"
+    },
+    {
+      "name": "GlBackBufferSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/GlBackBufferSystem.ts",
+      "metadataPath": "classes/GlBackBufferSystem.json"
+    },
+    {
+      "name": "GlColorMaskSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/GlColorMaskSystem.ts",
+      "metadataPath": "classes/GlColorMaskSystem.json"
+    },
+    {
+      "name": "GlEncoderSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/GlEncoderSystem.ts",
+      "metadataPath": "classes/GlEncoderSystem.json"
+    },
+    {
+      "name": "GlLimitsSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/GlLimitsSystem.ts",
+      "metadataPath": "classes/GlLimitsSystem.json"
+    },
+    {
+      "name": "GlRenderTarget",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/GlRenderTarget.ts",
+      "metadataPath": "classes/GlRenderTarget.json"
+    },
+    {
+      "name": "GlStencilSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/GlStencilSystem.ts",
+      "metadataPath": "classes/GlStencilSystem.json"
+    },
+    {
+      "name": "GlUboSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/GlUboSystem.ts",
+      "metadataPath": "classes/GlUboSystem.json"
+    },
+    {
+      "name": "WebGLRenderer",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/WebGLRenderer.ts",
+      "metadataPath": "classes/WebGLRenderer.json"
+    },
+    {
+      "name": "GlBufferSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/buffer/GlBufferSystem.ts",
+      "metadataPath": "classes/GlBufferSystem.json"
+    },
+    {
+      "name": "GlContextSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/GlContextSystem.ts",
+      "metadataPath": "classes/GlContextSystem.json"
+    },
+    {
+      "name": "GlGeometrySystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/geometry/GlGeometrySystem.ts",
+      "metadataPath": "classes/GlGeometrySystem.json"
+    },
+    {
+      "name": "GlRenderTargetAdaptor",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/renderTarget/GlRenderTargetAdaptor.ts",
+      "metadataPath": "classes/GlRenderTargetAdaptor.json"
+    },
+    {
+      "name": "GlRenderTargetSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/renderTarget/GlRenderTargetSystem.ts",
+      "metadataPath": "classes/GlRenderTargetSystem.json"
+    },
+    {
+      "name": "GlProgram",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/shader/GlProgram.ts",
+      "metadataPath": "classes/GlProgram.json"
+    },
+    {
+      "name": "IGLUniformData",
+      "category": null,
+      "sourcePath": "rendering/renderers/gl/shader/GlProgramData.ts",
+      "metadataPath": "classes/IGLUniformData.json"
+    },
+    {
+      "name": "GlProgramData",
+      "category": null,
+      "sourcePath": "rendering/renderers/gl/shader/GlProgramData.ts",
+      "metadataPath": "classes/GlProgramData.json"
+    },
+    {
+      "name": "GlShaderSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/shader/GlShaderSystem.ts",
+      "metadataPath": "classes/GlShaderSystem.json"
+    },
+    {
+      "name": "GlUniformGroupSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/shader/GlUniformGroupSystem.ts",
+      "metadataPath": "classes/GlUniformGroupSystem.json"
+    },
+    {
+      "name": "GlStateSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/state/GlStateSystem.ts",
+      "metadataPath": "classes/GlStateSystem.json"
+    },
+    {
+      "name": "GlTexture",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/texture/GlTexture.ts",
+      "metadataPath": "classes/GlTexture.json"
+    },
+    {
+      "name": "GlTextureSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/texture/GlTextureSystem.ts",
+      "metadataPath": "classes/GlTextureSystem.json"
+    },
+    {
+      "name": "BindGroupSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/BindGroupSystem.ts",
+      "metadataPath": "classes/BindGroupSystem.json"
+    },
+    {
+      "name": "GpuColorMaskSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/GpuColorMaskSystem.ts",
+      "metadataPath": "classes/GpuColorMaskSystem.json"
+    },
+    {
+      "name": "GpuDeviceSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/GpuDeviceSystem.ts",
+      "metadataPath": "classes/GpuDeviceSystem.json"
+    },
+    {
+      "name": "GpuEncoderSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/GpuEncoderSystem.ts",
+      "metadataPath": "classes/GpuEncoderSystem.json"
+    },
+    {
+      "name": "GpuLimitsSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/GpuLimitsSystem.ts",
+      "metadataPath": "classes/GpuLimitsSystem.json"
+    },
+    {
+      "name": "GpuStencilSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/GpuStencilSystem.ts",
+      "metadataPath": "classes/GpuStencilSystem.json"
+    },
+    {
+      "name": "GpuUboSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/GpuUboSystem.ts",
+      "metadataPath": "classes/GpuUboSystem.json"
+    },
+    {
+      "name": "GpuUniformBatchPipe",
+      "category": null,
+      "sourcePath": "rendering/renderers/gpu/GpuUniformBatchPipe.ts",
+      "metadataPath": "classes/GpuUniformBatchPipe.json"
+    },
+    {
+      "name": "WebGPURenderer",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/WebGPURenderer.ts",
+      "metadataPath": "classes/WebGPURenderer.json"
+    },
+    {
+      "name": "GpuBufferSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/buffer/GpuBufferSystem.ts",
+      "metadataPath": "classes/GpuBufferSystem.json"
+    },
+    {
+      "name": "UboBatch",
+      "category": null,
+      "sourcePath": "rendering/renderers/gpu/buffer/UboBatch.ts",
+      "metadataPath": "classes/UboBatch.json"
+    },
+    {
+      "name": "PipelineSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/pipeline/PipelineSystem.ts",
+      "metadataPath": "classes/PipelineSystem.json"
+    },
+    {
+      "name": "GpuRenderTarget",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/renderTarget/GpuRenderTarget.ts",
+      "metadataPath": "classes/GpuRenderTarget.json"
+    },
+    {
+      "name": "GpuRenderTargetAdaptor",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/renderTarget/GpuRenderTargetAdaptor.ts",
+      "metadataPath": "classes/GpuRenderTargetAdaptor.json"
+    },
+    {
+      "name": "GpuRenderTargetSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/renderTarget/GpuRenderTargetSystem.ts",
+      "metadataPath": "classes/GpuRenderTargetSystem.json"
+    },
+    {
+      "name": "BindGroup",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/shader/BindGroup.ts",
+      "metadataPath": "classes/BindGroup.json"
+    },
+    {
+      "name": "GpuProgram",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/shader/GpuProgram.ts",
+      "metadataPath": "classes/GpuProgram.json"
+    },
+    {
+      "name": "GpuShaderSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/shader/GpuShaderSystem.ts",
+      "metadataPath": "classes/GpuShaderSystem.json"
+    },
+    {
+      "name": "GpuStateSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/state/GpuStateSystem.ts",
+      "metadataPath": "classes/GpuStateSystem.json"
+    },
+    {
+      "name": "GpuTextureSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/texture/GpuTextureSystem.ts",
+      "metadataPath": "classes/GpuTextureSystem.json"
+    },
+    {
+      "name": "GpuMipmapGenerator",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/texture/utils/GpuMipmapGenerator.ts",
+      "metadataPath": "classes/GpuMipmapGenerator.json"
+    },
+    {
+      "name": "SchedulerSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/SchedulerSystem.ts",
+      "metadataPath": "classes/SchedulerSystem.json"
+    },
+    {
+      "name": "BackgroundSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/background/BackgroundSystem.ts",
+      "metadataPath": "classes/BackgroundSystem.json"
+    },
+    {
+      "name": "BlendModePipe",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/blendModes/BlendModePipe.ts",
+      "metadataPath": "classes/BlendModePipe.json"
+    },
+    {
+      "name": "Buffer",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/buffer/Buffer.ts",
+      "metadataPath": "classes/Buffer.json"
+    },
+    {
+      "name": "BufferResource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/buffer/BufferResource.ts",
+      "metadataPath": "classes/BufferResource.json"
+    },
+    {
+      "name": "ExtractSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/extract/ExtractSystem.ts",
+      "metadataPath": "classes/ExtractSystem.json"
+    },
+    {
+      "name": "GenerateTextureSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/extract/GenerateTextureSystem.ts",
+      "metadataPath": "classes/GenerateTextureSystem.json"
+    },
+    {
+      "name": "Geometry",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/geometry/Geometry.ts",
+      "metadataPath": "classes/Geometry.json"
+    },
+    {
+      "name": "InstructionSet",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/instructions/InstructionSet.ts",
+      "metadataPath": "classes/InstructionSet.json"
+    },
+    {
+      "name": "GlobalUniformSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/renderTarget/GlobalUniformSystem.ts",
+      "metadataPath": "classes/GlobalUniformSystem.json"
+    },
+    {
+      "name": "RenderTarget",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/renderTarget/RenderTarget.ts",
+      "metadataPath": "classes/RenderTarget.json"
+    },
+    {
+      "name": "RenderTargetSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/renderTarget/RenderTargetSystem.ts",
+      "metadataPath": "classes/RenderTargetSystem.json"
+    },
+    {
+      "name": "Shader",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/Shader.ts",
+      "metadataPath": "classes/Shader.json"
+    },
+    {
+      "name": "UboSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/UboSystem.ts",
+      "metadataPath": "classes/UboSystem.json"
+    },
+    {
+      "name": "UniformGroup",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/UniformGroup.ts",
+      "metadataPath": "classes/UniformGroup.json"
+    },
+    {
+      "name": "HelloSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/startup/HelloSystem.ts",
+      "metadataPath": "classes/HelloSystem.json"
+    },
+    {
+      "name": "State",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/state/State.ts",
+      "metadataPath": "classes/State.json"
+    },
+    {
+      "name": "AbstractRenderer",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/system/AbstractRenderer.ts",
+      "metadataPath": "classes/AbstractRenderer.json"
+    },
+    {
+      "name": "SystemRunner",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/system/SystemRunner.ts",
+      "metadataPath": "classes/SystemRunner.json"
+    },
+    {
+      "name": "CanvasPoolClass",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/CanvasPool.ts",
+      "metadataPath": "classes/CanvasPoolClass.json"
+    },
+    {
+      "name": "RenderTexture",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/RenderTexture.ts",
+      "metadataPath": "classes/RenderTexture.json"
+    },
+    {
+      "name": "RenderableGCSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/RenderableGCSystem.ts",
+      "metadataPath": "classes/RenderableGCSystem.json"
+    },
+    {
+      "name": "Texture",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/Texture.ts",
+      "metadataPath": "classes/Texture.json"
+    },
+    {
+      "name": "TextureGCSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/TextureGCSystem.ts",
+      "metadataPath": "classes/TextureGCSystem.json"
+    },
+    {
+      "name": "TextureMatrix",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/TextureMatrix.ts",
+      "metadataPath": "classes/TextureMatrix.json"
+    },
+    {
+      "name": "TexturePoolClass",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/TexturePool.ts",
+      "metadataPath": "classes/TexturePoolClass.json"
+    },
+    {
+      "name": "TextureStyle",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/TextureStyle.ts",
+      "metadataPath": "classes/TextureStyle.json"
+    },
+    {
+      "name": "TextureUvs",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/TextureUvs.ts",
+      "metadataPath": "classes/TextureUvs.json"
+    },
+    {
+      "name": "BufferImageSource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/BufferImageSource.ts",
+      "metadataPath": "classes/BufferImageSource.json"
+    },
+    {
+      "name": "CanvasSource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/CanvasSource.ts",
+      "metadataPath": "classes/CanvasSource.json"
+    },
+    {
+      "name": "CompressedSource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/CompressedSource.ts",
+      "metadataPath": "classes/CompressedSource.json"
+    },
+    {
+      "name": "ImageSource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/ImageSource.ts",
+      "metadataPath": "classes/ImageSource.json"
+    },
+    {
+      "name": "TextureSource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/TextureSource.ts",
+      "metadataPath": "classes/TextureSource.json"
+    },
+    {
+      "name": "VideoSource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/VideoSource.ts",
+      "metadataPath": "classes/VideoSource.json"
+    },
+    {
+      "name": "ViewSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/view/ViewSystem.ts",
+      "metadataPath": "classes/ViewSystem.json"
+    },
+    {
+      "name": "Container",
+      "category": "scene",
+      "sourcePath": "scene/container/Container.ts",
+      "metadataPath": "classes/Container.json"
+    },
+    {
+      "name": "CustomRenderPipe",
+      "category": "rendering",
+      "sourcePath": "scene/container/CustomRenderPipe.ts",
+      "metadataPath": "classes/CustomRenderPipe.json"
+    },
+    {
+      "name": "RenderContainer",
+      "category": "scene",
+      "sourcePath": "scene/container/RenderContainer.ts",
+      "metadataPath": "classes/RenderContainer.json"
+    },
+    {
+      "name": "RenderGroup",
+      "category": "rendering",
+      "sourcePath": "scene/container/RenderGroup.ts",
+      "metadataPath": "classes/RenderGroup.json"
+    },
+    {
+      "name": "RenderGroupPipe",
+      "category": null,
+      "sourcePath": "scene/container/RenderGroupPipe.ts",
+      "metadataPath": "classes/RenderGroupPipe.json"
+    },
+    {
+      "name": "RenderGroupSystem",
+      "category": "rendering",
+      "sourcePath": "scene/container/RenderGroupSystem.ts",
+      "metadataPath": "classes/RenderGroupSystem.json"
+    },
+    {
+      "name": "Bounds",
+      "category": "rendering",
+      "sourcePath": "scene/container/bounds/Bounds.ts",
+      "metadataPath": "classes/Bounds.json"
+    },
+    {
+      "name": "GlGraphicsAdaptor",
+      "category": "rendering",
+      "sourcePath": "scene/graphics/gl/GlGraphicsAdaptor.ts",
+      "metadataPath": "classes/GlGraphicsAdaptor.json"
+    },
+    {
+      "name": "GpuGraphicsAdaptor",
+      "category": "rendering",
+      "sourcePath": "scene/graphics/gpu/GpuGraphicsAdaptor.ts",
+      "metadataPath": "classes/GpuGraphicsAdaptor.json"
+    },
+    {
+      "name": "BatchableGraphics",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/BatchableGraphics.ts",
+      "metadataPath": "classes/BatchableGraphics.json"
+    },
+    {
+      "name": "Graphics",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/Graphics.ts",
+      "metadataPath": "classes/Graphics.json"
+    },
+    {
+      "name": "GraphicsContext",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/GraphicsContext.ts",
+      "metadataPath": "classes/GraphicsContext.json"
+    },
+    {
+      "name": "GpuGraphicsContext",
+      "category": "rendering",
+      "sourcePath": "scene/graphics/shared/GraphicsContextSystem.ts",
+      "metadataPath": "classes/GpuGraphicsContext.json"
+    },
+    {
+      "name": "GraphicsContextRenderData",
+      "category": "rendering",
+      "sourcePath": "scene/graphics/shared/GraphicsContextSystem.ts",
+      "metadataPath": "classes/GraphicsContextRenderData.json"
+    },
+    {
+      "name": "GraphicsContextSystem",
+      "category": "rendering",
+      "sourcePath": "scene/graphics/shared/GraphicsContextSystem.ts",
+      "metadataPath": "classes/GraphicsContextSystem.json"
+    },
+    {
+      "name": "GraphicsGpuData",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/GraphicsPipe.ts",
+      "metadataPath": "classes/GraphicsGpuData.json"
+    },
+    {
+      "name": "GraphicsPipe",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/GraphicsPipe.ts",
+      "metadataPath": "classes/GraphicsPipe.json"
+    },
+    {
+      "name": "FillGradient",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/fill/FillGradient.ts",
+      "metadataPath": "classes/FillGradient.json"
+    },
+    {
+      "name": "FillPattern",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/fill/FillPattern.ts",
+      "metadataPath": "classes/FillPattern.json"
+    },
+    {
+      "name": "GraphicsPath",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/path/GraphicsPath.ts",
+      "metadataPath": "classes/GraphicsPath.json"
+    },
+    {
+      "name": "ShapePath",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/path/ShapePath.ts",
+      "metadataPath": "classes/ShapePath.json"
+    },
+    {
+      "name": "RenderLayer",
+      "category": "scene",
+      "sourcePath": "scene/layers/RenderLayer.ts",
+      "metadataPath": "classes/RenderLayer.json"
+    },
+    {
+      "name": "GlMeshAdaptor",
+      "category": "rendering",
+      "sourcePath": "scene/mesh/gl/GlMeshAdaptor.ts",
+      "metadataPath": "classes/GlMeshAdaptor.json"
+    },
+    {
+      "name": "GpuMeshAdapter",
+      "category": "rendering",
+      "sourcePath": "scene/mesh/gpu/GpuMeshAdapter.ts",
+      "metadataPath": "classes/GpuMeshAdapter.json"
+    },
+    {
+      "name": "BatchableMesh",
+      "category": null,
+      "sourcePath": "scene/mesh/shared/BatchableMesh.ts",
+      "metadataPath": "classes/BatchableMesh.json"
+    },
+    {
+      "name": "Mesh",
+      "category": "scene",
+      "sourcePath": "scene/mesh/shared/Mesh.ts",
+      "metadataPath": "classes/Mesh.json"
+    },
+    {
+      "name": "MeshGeometry",
+      "category": "scene",
+      "sourcePath": "scene/mesh/shared/MeshGeometry.ts",
+      "metadataPath": "classes/MeshGeometry.json"
+    },
+    {
+      "name": "MeshGpuData",
+      "category": null,
+      "sourcePath": "scene/mesh/shared/MeshPipe.ts",
+      "metadataPath": "classes/MeshGpuData.json"
+    },
+    {
+      "name": "MeshPipe",
+      "category": "scene",
+      "sourcePath": "scene/mesh/shared/MeshPipe.ts",
+      "metadataPath": "classes/MeshPipe.json"
+    },
+    {
+      "name": "PerspectiveMesh",
+      "category": "scene",
+      "sourcePath": "scene/mesh-perspective/PerspectiveMesh.ts",
+      "metadataPath": "classes/PerspectiveMesh.json"
+    },
+    {
+      "name": "PerspectivePlaneGeometry",
+      "category": "scene",
+      "sourcePath": "scene/mesh-perspective/PerspectivePlaneGeometry.ts",
+      "metadataPath": "classes/PerspectivePlaneGeometry.json"
+    },
+    {
+      "name": "MeshPlane",
+      "category": "scene",
+      "sourcePath": "scene/mesh-plane/MeshPlane.ts",
+      "metadataPath": "classes/MeshPlane.json"
+    },
+    {
+      "name": "PlaneGeometry",
+      "category": "scene",
+      "sourcePath": "scene/mesh-plane/PlaneGeometry.ts",
+      "metadataPath": "classes/PlaneGeometry.json"
+    },
+    {
+      "name": "MeshRope",
+      "category": "scene",
+      "sourcePath": "scene/mesh-simple/MeshRope.ts",
+      "metadataPath": "classes/MeshRope.json"
+    },
+    {
+      "name": "MeshSimple",
+      "category": "scene",
+      "sourcePath": "scene/mesh-simple/MeshSimple.ts",
+      "metadataPath": "classes/MeshSimple.json"
+    },
+    {
+      "name": "RopeGeometry",
+      "category": "scene",
+      "sourcePath": "scene/mesh-simple/RopeGeometry.ts",
+      "metadataPath": "classes/RopeGeometry.json"
+    },
+    {
+      "name": "GlParticleContainerAdaptor",
+      "category": null,
+      "sourcePath": "scene/particle-container/gl/GlParticleContainerAdaptor.ts",
+      "metadataPath": "classes/GlParticleContainerAdaptor.json"
+    },
+    {
+      "name": "GpuParticleContainerAdaptor",
+      "category": null,
+      "sourcePath": "scene/particle-container/gpu/GpuParticleContainerAdaptor.ts",
+      "metadataPath": "classes/GpuParticleContainerAdaptor.json"
+    },
+    {
+      "name": "GlParticleContainerPipe",
+      "category": "scene",
+      "sourcePath": "scene/particle-container/shared/GlParticleContainerPipe.ts",
+      "metadataPath": "classes/GlParticleContainerPipe.json"
+    },
+    {
+      "name": "GpuParticleContainerPipe",
+      "category": "scene",
+      "sourcePath": "scene/particle-container/shared/GpuParticleContainerPipe.ts",
+      "metadataPath": "classes/GpuParticleContainerPipe.json"
+    },
+    {
+      "name": "Particle",
+      "category": "scene",
+      "sourcePath": "scene/particle-container/shared/Particle.ts",
+      "metadataPath": "classes/Particle.json"
+    },
+    {
+      "name": "ParticleBuffer",
+      "category": null,
+      "sourcePath": "scene/particle-container/shared/ParticleBuffer.ts",
+      "metadataPath": "classes/ParticleBuffer.json"
+    },
+    {
+      "name": "ParticleContainer",
+      "category": "scene",
+      "sourcePath": "scene/particle-container/shared/ParticleContainer.ts",
+      "metadataPath": "classes/ParticleContainer.json"
+    },
+    {
+      "name": "ParticleContainerPipe",
+      "category": "scene",
+      "sourcePath": "scene/particle-container/shared/ParticleContainerPipe.ts",
+      "metadataPath": "classes/ParticleContainerPipe.json"
+    },
+    {
+      "name": "ParticleShader",
+      "category": null,
+      "sourcePath": "scene/particle-container/shared/shader/ParticleShader.ts",
+      "metadataPath": "classes/ParticleShader.json"
+    },
+    {
+      "name": "BatchableSprite",
+      "category": null,
+      "sourcePath": "scene/sprite/BatchableSprite.ts",
+      "metadataPath": "classes/BatchableSprite.json"
+    },
+    {
+      "name": "Sprite",
+      "category": "scene",
+      "sourcePath": "scene/sprite/Sprite.ts",
+      "metadataPath": "classes/Sprite.json"
+    },
+    {
+      "name": "SpritePipe",
+      "category": null,
+      "sourcePath": "scene/sprite/SpritePipe.ts",
+      "metadataPath": "classes/SpritePipe.json"
+    },
+    {
+      "name": "AnimatedSprite",
+      "category": "scene",
+      "sourcePath": "scene/sprite-animated/AnimatedSprite.ts",
+      "metadataPath": "classes/AnimatedSprite.json"
+    },
+    {
+      "name": "NineSliceGeometry",
+      "category": "scene",
+      "sourcePath": "scene/sprite-nine-slice/NineSliceGeometry.ts",
+      "metadataPath": "classes/NineSliceGeometry.json"
+    },
+    {
+      "name": "NineSliceSprite",
+      "category": "scene",
+      "sourcePath": "scene/sprite-nine-slice/NineSliceSprite.ts",
+      "metadataPath": "classes/NineSliceSprite.json"
+    },
+    {
+      "name": "NineSlicePlane",
+      "category": "scene",
+      "sourcePath": "scene/sprite-nine-slice/NineSliceSprite.ts",
+      "metadataPath": "classes/NineSlicePlane.json"
+    },
+    {
+      "name": "NineSliceSpriteGpuData",
+      "category": null,
+      "sourcePath": "scene/sprite-nine-slice/NineSliceSpritePipe.ts",
+      "metadataPath": "classes/NineSliceSpriteGpuData.json"
+    },
+    {
+      "name": "NineSliceSpritePipe",
+      "category": null,
+      "sourcePath": "scene/sprite-nine-slice/NineSliceSpritePipe.ts",
+      "metadataPath": "classes/NineSliceSpritePipe.json"
+    },
+    {
+      "name": "TilingSprite",
+      "category": "scene",
+      "sourcePath": "scene/sprite-tiling/TilingSprite.ts",
+      "metadataPath": "classes/TilingSprite.json"
+    },
+    {
+      "name": "TilingSpriteGpuData",
+      "category": null,
+      "sourcePath": "scene/sprite-tiling/TilingSpritePipe.ts",
+      "metadataPath": "classes/TilingSpriteGpuData.json"
+    },
+    {
+      "name": "TilingSpritePipe",
+      "category": null,
+      "sourcePath": "scene/sprite-tiling/TilingSpritePipe.ts",
+      "metadataPath": "classes/TilingSpritePipe.json"
+    },
+    {
+      "name": "TilingSpriteShader",
+      "category": null,
+      "sourcePath": "scene/sprite-tiling/shader/TilingSpriteShader.ts",
+      "metadataPath": "classes/TilingSpriteShader.json"
+    },
+    {
+      "name": "QuadGeometry",
+      "category": null,
+      "sourcePath": "scene/sprite-tiling/utils/QuadGeometry.ts",
+      "metadataPath": "classes/QuadGeometry.json"
+    },
+    {
+      "name": "AbstractText",
+      "category": "text",
+      "sourcePath": "scene/text/AbstractText.ts",
+      "metadataPath": "classes/AbstractText.json"
+    },
+    {
+      "name": "Text",
+      "category": "text",
+      "sourcePath": "scene/text/Text.ts",
+      "metadataPath": "classes/Text.json"
+    },
+    {
+      "name": "TextStyle",
+      "category": "text",
+      "sourcePath": "scene/text/TextStyle.ts",
+      "metadataPath": "classes/TextStyle.json"
+    },
+    {
+      "name": "BatchableText",
+      "category": null,
+      "sourcePath": "scene/text/canvas/BatchableText.ts",
+      "metadataPath": "classes/BatchableText.json"
+    },
+    {
+      "name": "CanvasTextMetrics",
+      "category": "text",
+      "sourcePath": "scene/text/canvas/CanvasTextMetrics.ts",
+      "metadataPath": "classes/CanvasTextMetrics.json"
+    },
+    {
+      "name": "CanvasTextPipe",
+      "category": null,
+      "sourcePath": "scene/text/canvas/CanvasTextPipe.ts",
+      "metadataPath": "classes/CanvasTextPipe.json"
+    },
+    {
+      "name": "CanvasTextSystem",
+      "category": "rendering",
+      "sourcePath": "scene/text/canvas/CanvasTextSystem.ts",
+      "metadataPath": "classes/CanvasTextSystem.json"
+    },
+    {
+      "name": "SdfShader",
+      "category": null,
+      "sourcePath": "scene/text/sdfShader/SdfShader.ts",
+      "metadataPath": "classes/SdfShader.json"
+    },
+    {
+      "name": "AbstractBitmapFont",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/AbstractBitmapFont.ts",
+      "metadataPath": "classes/AbstractBitmapFont.json"
+    },
+    {
+      "name": "BitmapFont",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/BitmapFont.ts",
+      "metadataPath": "classes/BitmapFont.json"
+    },
+    {
+      "name": "BitmapText",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/BitmapText.ts",
+      "metadataPath": "classes/BitmapText.json"
+    },
+    {
+      "name": "BitmapTextGraphics",
+      "category": null,
+      "sourcePath": "scene/text-bitmap/BitmapTextPipe.ts",
+      "metadataPath": "classes/BitmapTextGraphics.json"
+    },
+    {
+      "name": "BitmapTextPipe",
+      "category": null,
+      "sourcePath": "scene/text-bitmap/BitmapTextPipe.ts",
+      "metadataPath": "classes/BitmapTextPipe.json"
+    },
+    {
+      "name": "DynamicBitmapFont",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/DynamicBitmapFont.ts",
+      "metadataPath": "classes/DynamicBitmapFont.json"
+    },
+    {
+      "name": "BatchableHTMLText",
+      "category": null,
+      "sourcePath": "scene/text-html/BatchableHTMLText.ts",
+      "metadataPath": "classes/BatchableHTMLText.json"
+    },
+    {
+      "name": "HTMLText",
+      "category": "text",
+      "sourcePath": "scene/text-html/HTMLText.ts",
+      "metadataPath": "classes/HTMLText.json"
+    },
+    {
+      "name": "HTMLTextPipe",
+      "category": null,
+      "sourcePath": "scene/text-html/HTMLTextPipe.ts",
+      "metadataPath": "classes/HTMLTextPipe.json"
+    },
+    {
+      "name": "HTMLTextRenderData",
+      "category": null,
+      "sourcePath": "scene/text-html/HTMLTextRenderData.ts",
+      "metadataPath": "classes/HTMLTextRenderData.json"
+    },
+    {
+      "name": "HTMLTextStyle",
+      "category": "text",
+      "sourcePath": "scene/text-html/HTMLTextStyle.ts",
+      "metadataPath": "classes/HTMLTextStyle.json"
+    },
+    {
+      "name": "HTMLTextSystem",
+      "category": "rendering",
+      "sourcePath": "scene/text-html/HTMLTextSystem.ts",
+      "metadataPath": "classes/HTMLTextSystem.json"
+    },
+    {
+      "name": "AbstractSplitText",
+      "category": "text",
+      "sourcePath": "scene/text-split/AbstractSplitText.ts",
+      "metadataPath": "classes/AbstractSplitText.json"
+    },
+    {
+      "name": "SplitBitmapText",
+      "category": "text",
+      "sourcePath": "scene/text-split/SplitBitmapText.ts",
+      "metadataPath": "classes/SplitBitmapText.json"
+    },
+    {
+      "name": "SplitText",
+      "category": "text",
+      "sourcePath": "scene/text-split/SplitText.ts",
+      "metadataPath": "classes/SplitText.json"
+    },
+    {
+      "name": "ViewContainer",
+      "category": "scene",
+      "sourcePath": "scene/view/ViewContainer.ts",
+      "metadataPath": "classes/ViewContainer.json"
+    },
+    {
+      "name": "Spritesheet",
+      "category": "assets",
+      "sourcePath": "spritesheet/Spritesheet.ts",
+      "metadataPath": "classes/Spritesheet.json"
+    },
+    {
+      "name": "Ticker",
+      "category": "ticker",
+      "sourcePath": "ticker/Ticker.ts",
+      "metadataPath": "classes/Ticker.json"
+    },
+    {
+      "name": "TickerListener",
+      "category": null,
+      "sourcePath": "ticker/TickerListener.ts",
+      "metadataPath": "classes/TickerListener.json"
+    },
+    {
+      "name": "ViewableBuffer",
+      "category": "utils",
+      "sourcePath": "utils/data/ViewableBuffer.ts",
+      "metadataPath": "classes/ViewableBuffer.json"
+    },
+    {
+      "name": "ApplicationInitHook",
+      "category": "app",
+      "sourcePath": "utils/global/globalHooks.ts",
+      "metadataPath": "classes/ApplicationInitHook.json"
+    },
+    {
+      "name": "RendererInitHook",
+      "category": "rendering",
+      "sourcePath": "utils/global/globalHooks.ts",
+      "metadataPath": "classes/RendererInitHook.json"
+    },
+    {
+      "name": "Transform",
+      "category": "utils",
+      "sourcePath": "utils/misc/Transform.ts",
+      "metadataPath": "classes/Transform.json"
+    },
+    {
+      "name": "Pool",
+      "category": "utils",
+      "sourcePath": "utils/pool/Pool.ts",
+      "metadataPath": "classes/Pool.json"
+    },
+    {
+      "name": "PoolGroupClass",
+      "category": "utils",
+      "sourcePath": "utils/pool/PoolGroup.ts",
+      "metadataPath": "classes/PoolGroupClass.json"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "AccessibilitySystemOptions",
+      "category": "accessibility",
+      "sourcePath": "accessibility/AccessibilitySystem.ts",
+      "metadataPath": "interfaces/AccessibilitySystemOptions.json"
+    },
+    {
+      "name": "AccessibilityOptions",
+      "category": "accessibility",
+      "sourcePath": "accessibility/AccessibilitySystem.ts",
+      "metadataPath": "interfaces/AccessibilityOptions.json"
+    },
+    {
+      "name": "AccessibleOptions",
+      "category": "accessibility",
+      "sourcePath": "accessibility/accessibilityTarget.ts",
+      "metadataPath": "interfaces/AccessibleOptions.json"
+    },
+    {
+      "name": "AccessibleTarget",
+      "category": null,
+      "sourcePath": "accessibility/accessibilityTarget.ts",
+      "metadataPath": "interfaces/AccessibleTarget.json"
+    },
+    {
+      "name": "AccessibleHTMLElement",
+      "category": null,
+      "sourcePath": "accessibility/accessibilityTarget.ts",
+      "metadataPath": "interfaces/AccessibleHTMLElement.json"
+    },
+    {
+      "name": "ApplicationPlugin",
+      "category": "app",
+      "sourcePath": "app/Application.ts",
+      "metadataPath": "interfaces/ApplicationPlugin.json"
+    },
+    {
+      "name": "ApplicationOptions",
+      "category": "app",
+      "sourcePath": "app/Application.ts",
+      "metadataPath": "interfaces/ApplicationOptions.json"
+    },
+    {
+      "name": "Application",
+      "category": null,
+      "sourcePath": "app/Application.ts",
+      "metadataPath": "interfaces/Application.json"
+    },
+    {
+      "name": "ResizePluginOptions",
+      "category": "app",
+      "sourcePath": "app/ResizePlugin.ts",
+      "metadataPath": "interfaces/ResizePluginOptions.json"
+    },
+    {
+      "name": "TickerPluginOptions",
+      "category": "app",
+      "sourcePath": "app/TickerPlugin.ts",
+      "metadataPath": "interfaces/TickerPluginOptions.json"
+    },
+    {
+      "name": "AssetsPreferences",
+      "category": "assets",
+      "sourcePath": "assets/Assets.ts",
+      "metadataPath": "interfaces/AssetsPreferences.json"
+    },
+    {
+      "name": "AssetInitOptions",
+      "category": "assets",
+      "sourcePath": "assets/Assets.ts",
+      "metadataPath": "interfaces/AssetInitOptions.json"
+    },
+    {
+      "name": "CacheParser",
+      "category": "assets",
+      "sourcePath": "assets/cache/CacheParser.ts",
+      "metadataPath": "interfaces/CacheParser.json"
+    },
+    {
+      "name": "FormatDetectionParser",
+      "category": "assets",
+      "sourcePath": "assets/detections/types.ts",
+      "metadataPath": "interfaces/FormatDetectionParser.json"
+    },
+    {
+      "name": "LoadOptions",
+      "category": "assets",
+      "sourcePath": "assets/loader/Loader.ts",
+      "metadataPath": "interfaces/LoadOptions.json"
+    },
+    {
+      "name": "LoaderParserAdvanced",
+      "category": "assets",
+      "sourcePath": "assets/loader/parsers/LoaderParser.ts",
+      "metadataPath": "interfaces/LoaderParserAdvanced.json"
+    },
+    {
+      "name": "FontFaceCache",
+      "category": null,
+      "sourcePath": "assets/loader/parsers/loadWebFont.ts",
+      "metadataPath": "interfaces/FontFaceCache.json"
+    },
+    {
+      "name": "LoadSVGConfig",
+      "category": "assets",
+      "sourcePath": "assets/loader/parsers/textures/loadSVG.ts",
+      "metadataPath": "interfaces/LoadSVGConfig.json"
+    },
+    {
+      "name": "LoadTextureConfig",
+      "category": "assets",
+      "sourcePath": "assets/loader/parsers/textures/loadTextures.ts",
+      "metadataPath": "interfaces/LoadTextureConfig.json"
+    },
+    {
+      "name": "PromiseAndParser",
+      "category": "assets",
+      "sourcePath": "assets/loader/types.ts",
+      "metadataPath": "interfaces/PromiseAndParser.json"
+    },
+    {
+      "name": "BundleIdentifierOptions",
+      "category": "assets",
+      "sourcePath": "assets/resolver/Resolver.ts",
+      "metadataPath": "interfaces/BundleIdentifierOptions.json"
+    },
+    {
+      "name": "PreferOrder",
+      "category": "assets",
+      "sourcePath": "assets/resolver/types.ts",
+      "metadataPath": "interfaces/PreferOrder.json"
+    },
+    {
+      "name": "ResolveURLParser",
+      "category": "assets",
+      "sourcePath": "assets/resolver/types.ts",
+      "metadataPath": "interfaces/ResolveURLParser.json"
+    },
+    {
+      "name": "ResolvedAsset",
+      "category": "assets",
+      "sourcePath": "assets/types.ts",
+      "metadataPath": "interfaces/ResolvedAsset.json"
+    },
+    {
+      "name": "AssetsBundle",
+      "category": "assets",
+      "sourcePath": "assets/types.ts",
+      "metadataPath": "interfaces/AssetsBundle.json"
+    },
+    {
+      "name": "AssetsManifest",
+      "category": "assets",
+      "sourcePath": "assets/types.ts",
+      "metadataPath": "interfaces/AssetsManifest.json"
+    },
+    {
+      "name": "BASISModule",
+      "category": null,
+      "sourcePath": "compressed-textures/basis/types.ts",
+      "metadataPath": "interfaces/BASISModule.json"
+    },
+    {
+      "name": "BasisTexture",
+      "category": null,
+      "sourcePath": "compressed-textures/basis/types.ts",
+      "metadataPath": "interfaces/BasisTexture.json"
+    },
+    {
+      "name": "KTXTexture",
+      "category": null,
+      "sourcePath": "compressed-textures/ktx2/types.ts",
+      "metadataPath": "interfaces/KTXTexture.json"
+    },
+    {
+      "name": "LIBKTXModule",
+      "category": null,
+      "sourcePath": "compressed-textures/ktx2/types.ts",
+      "metadataPath": "interfaces/LIBKTXModule.json"
+    },
+    {
+      "name": "CullerPluginOptions",
+      "category": "app",
+      "sourcePath": "culling/CullerPlugin.ts",
+      "metadataPath": "interfaces/CullerPluginOptions.json"
+    },
+    {
+      "name": "CullingMixinConstructor",
+      "category": "scene",
+      "sourcePath": "culling/cullingMixin.ts",
+      "metadataPath": "interfaces/CullingMixinConstructor.json"
+    },
+    {
+      "name": "DOMContainerOptions",
+      "category": "scene",
+      "sourcePath": "dom/DOMContainer.ts",
+      "metadataPath": "interfaces/DOMContainerOptions.json"
+    },
+    {
+      "name": "ImageLike",
+      "category": "environment",
+      "sourcePath": "environment/ImageLike.ts",
+      "metadataPath": "interfaces/ImageLike.json"
+    },
+    {
+      "name": "Adapter",
+      "category": "environment",
+      "sourcePath": "environment/adapter.ts",
+      "metadataPath": "interfaces/Adapter.json"
+    },
+    {
+      "name": "ICanvasRenderingContext2DSettings",
+      "category": "environment",
+      "sourcePath": "environment/canvas/ICanvas.ts",
+      "metadataPath": "interfaces/ICanvasRenderingContext2DSettings.json"
+    },
+    {
+      "name": "ICanvasParentNode",
+      "category": "environment",
+      "sourcePath": "environment/canvas/ICanvas.ts",
+      "metadataPath": "interfaces/ICanvasParentNode.json"
+    },
+    {
+      "name": "ICanvasStyle",
+      "category": "environment",
+      "sourcePath": "environment/canvas/ICanvas.ts",
+      "metadataPath": "interfaces/ICanvasStyle.json"
+    },
+    {
+      "name": "ICanvasRect",
+      "category": "environment",
+      "sourcePath": "environment/canvas/ICanvas.ts",
+      "metadataPath": "interfaces/ICanvasRect.json"
+    },
+    {
+      "name": "WebGLContextEventMap",
+      "category": "environment",
+      "sourcePath": "environment/canvas/ICanvas.ts",
+      "metadataPath": "interfaces/WebGLContextEventMap.json"
+    },
+    {
+      "name": "ICanvas",
+      "category": "environment",
+      "sourcePath": "environment/canvas/ICanvas.ts",
+      "metadataPath": "interfaces/ICanvas.json"
+    },
+    {
+      "name": "ICanvasRenderingContext2D",
+      "category": "environment",
+      "sourcePath": "environment/canvas/ICanvasRenderingContext2D.ts",
+      "metadataPath": "interfaces/ICanvasRenderingContext2D.json"
+    },
+    {
+      "name": "EventSystemOptions",
+      "category": "events",
+      "sourcePath": "events/EventSystem.ts",
+      "metadataPath": "interfaces/EventSystemOptions.json"
+    },
+    {
+      "name": "EventSystemFeatures",
+      "category": "events",
+      "sourcePath": "events/EventSystem.ts",
+      "metadataPath": "interfaces/EventSystemFeatures.json"
+    },
+    {
+      "name": "PixiTouch",
+      "category": "events",
+      "sourcePath": "events/FederatedEvent.ts",
+      "metadataPath": "interfaces/PixiTouch.json"
+    },
+    {
+      "name": "IHitArea",
+      "category": "events",
+      "sourcePath": "events/FederatedEventTarget.ts",
+      "metadataPath": "interfaces/IHitArea.json"
+    },
+    {
+      "name": "FederatedOptions",
+      "category": "events",
+      "sourcePath": "events/FederatedEventTarget.ts",
+      "metadataPath": "interfaces/FederatedOptions.json"
+    },
+    {
+      "name": "IFederatedContainer",
+      "category": "events",
+      "sourcePath": "events/FederatedEventTarget.ts",
+      "metadataPath": "interfaces/IFederatedContainer.json"
+    },
+    {
+      "name": "FederatedEventTarget",
+      "category": "events",
+      "sourcePath": "events/deprecatedTypes.ts",
+      "metadataPath": "interfaces/FederatedEventTarget.json"
+    },
+    {
+      "name": "FilterOptions",
+      "category": "filters",
+      "sourcePath": "filters/Filter.ts",
+      "metadataPath": "interfaces/FilterOptions.json"
+    },
+    {
+      "name": "FilterInstruction",
+      "category": null,
+      "sourcePath": "filters/FilterSystem.ts",
+      "metadataPath": "interfaces/FilterInstruction.json"
+    },
+    {
+      "name": "BlendModeFilterOptions",
+      "category": null,
+      "sourcePath": "filters/blend-modes/BlendModeFilter.ts",
+      "metadataPath": "interfaces/BlendModeFilterOptions.json"
+    },
+    {
+      "name": "AlphaFilterOptions",
+      "category": "filters",
+      "sourcePath": "filters/defaults/alpha/AlphaFilter.ts",
+      "metadataPath": "interfaces/AlphaFilterOptions.json"
+    },
+    {
+      "name": "BlurFilterOptions",
+      "category": "filters",
+      "sourcePath": "filters/defaults/blur/BlurFilter.ts",
+      "metadataPath": "interfaces/BlurFilterOptions.json"
+    },
+    {
+      "name": "BlurFilterPassOptions",
+      "category": "filters",
+      "sourcePath": "filters/defaults/blur/BlurFilterPass.ts",
+      "metadataPath": "interfaces/BlurFilterPassOptions.json"
+    },
+    {
+      "name": "DisplacementFilterOptions",
+      "category": "filters",
+      "sourcePath": "filters/defaults/displacement/DisplacementFilter.ts",
+      "metadataPath": "interfaces/DisplacementFilterOptions.json"
+    },
+    {
+      "name": "NoiseFilterOptions",
+      "category": "filters",
+      "sourcePath": "filters/defaults/noise/NoiseFilter.ts",
+      "metadataPath": "interfaces/NoiseFilterOptions.json"
+    },
+    {
+      "name": "MaskFilterOptions",
+      "category": null,
+      "sourcePath": "filters/mask/MaskFilter.ts",
+      "metadataPath": "interfaces/MaskFilterOptions.json"
+    },
+    {
+      "name": "TransformableObject",
+      "category": "maths",
+      "sourcePath": "maths/matrix/Matrix.ts",
+      "metadataPath": "interfaces/TransformableObject.json"
+    },
+    {
+      "name": "Size",
+      "category": "maths",
+      "sourcePath": "maths/misc/Size.ts",
+      "metadataPath": "interfaces/Size.json"
+    },
+    {
+      "name": "ObservablePoint",
+      "category": null,
+      "sourcePath": "maths/point/ObservablePoint.ts",
+      "metadataPath": "interfaces/ObservablePoint.json"
+    },
+    {
+      "name": "Observer",
+      "category": "maths",
+      "sourcePath": "maths/point/ObservablePoint.ts",
+      "metadataPath": "interfaces/Observer.json"
+    },
+    {
+      "name": "Point",
+      "category": null,
+      "sourcePath": "maths/point/Point.ts",
+      "metadataPath": "interfaces/Point.json"
+    },
+    {
+      "name": "PointData",
+      "category": "maths",
+      "sourcePath": "maths/point/PointData.ts",
+      "metadataPath": "interfaces/PointData.json"
+    },
+    {
+      "name": "PointLike",
+      "category": "maths",
+      "sourcePath": "maths/point/PointLike.ts",
+      "metadataPath": "interfaces/PointLike.json"
+    },
+    {
+      "name": "Rectangle",
+      "category": null,
+      "sourcePath": "maths/shapes/Rectangle.ts",
+      "metadataPath": "interfaces/Rectangle.json"
+    },
+    {
+      "name": "ShapePrimitive",
+      "category": "maths",
+      "sourcePath": "maths/shapes/ShapePrimitive.ts",
+      "metadataPath": "interfaces/ShapePrimitive.json"
+    },
+    {
+      "name": "BatchableElement",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/Batcher.ts",
+      "metadataPath": "interfaces/BatchableElement.json"
+    },
+    {
+      "name": "BatchableQuadElement",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/Batcher.ts",
+      "metadataPath": "interfaces/BatchableQuadElement.json"
+    },
+    {
+      "name": "BatchableMeshElement",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/Batcher.ts",
+      "metadataPath": "interfaces/BatchableMeshElement.json"
+    },
+    {
+      "name": "BatcherOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/Batcher.ts",
+      "metadataPath": "interfaces/BatcherOptions.json"
+    },
+    {
+      "name": "BatcherAdaptor",
+      "category": null,
+      "sourcePath": "rendering/batcher/shared/BatcherPipe.ts",
+      "metadataPath": "interfaces/BatcherAdaptor.json"
+    },
+    {
+      "name": "DefaultBatchElements",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/DefaultBatcher.ts",
+      "metadataPath": "interfaces/DefaultBatchElements.json"
+    },
+    {
+      "name": "DefaultBatchableQuadElement",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/DefaultBatcher.ts",
+      "metadataPath": "interfaces/DefaultBatchableQuadElement.json"
+    },
+    {
+      "name": "DefaultBatchableMeshElement",
+      "category": "rendering",
+      "sourcePath": "rendering/batcher/shared/DefaultBatcher.ts",
+      "metadataPath": "interfaces/DefaultBatchableMeshElement.json"
+    },
+    {
+      "name": "HighShaderTemplate",
+      "category": null,
+      "sourcePath": "rendering/high-shader/compiler/compileHighShader.ts",
+      "metadataPath": "interfaces/HighShaderTemplate.json"
+    },
+    {
+      "name": "CompileHighShaderOptions",
+      "category": null,
+      "sourcePath": "rendering/high-shader/compiler/compileHighShader.ts",
+      "metadataPath": "interfaces/CompileHighShaderOptions.json"
+    },
+    {
+      "name": "HighShaderBit",
+      "category": null,
+      "sourcePath": "rendering/high-shader/compiler/types.ts",
+      "metadataPath": "interfaces/HighShaderBit.json"
+    },
+    {
+      "name": "HighShaderSource",
+      "category": null,
+      "sourcePath": "rendering/high-shader/compiler/types.ts",
+      "metadataPath": "interfaces/HighShaderSource.json"
+    },
+    {
+      "name": "AlphaMaskInstruction",
+      "category": null,
+      "sourcePath": "rendering/mask/alpha/AlphaMaskPipe.ts",
+      "metadataPath": "interfaces/AlphaMaskInstruction.json"
+    },
+    {
+      "name": "AlphaMaskData",
+      "category": null,
+      "sourcePath": "rendering/mask/alpha/AlphaMaskPipe.ts",
+      "metadataPath": "interfaces/AlphaMaskData.json"
+    },
+    {
+      "name": "ColorMaskInstruction",
+      "category": null,
+      "sourcePath": "rendering/mask/color/ColorMaskPipe.ts",
+      "metadataPath": "interfaces/ColorMaskInstruction.json"
+    },
+    {
+      "name": "StencilMaskInstruction",
+      "category": null,
+      "sourcePath": "rendering/mask/stencil/StencilMaskPipe.ts",
+      "metadataPath": "interfaces/StencilMaskInstruction.json"
+    },
+    {
+      "name": "AutoDetectOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/autoDetectRenderer.ts",
+      "metadataPath": "interfaces/AutoDetectOptions.json"
+    },
+    {
+      "name": "GlBackBufferOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/GlBackBufferSystem.ts",
+      "metadataPath": "interfaces/GlBackBufferOptions.json"
+    },
+    {
+      "name": "WebGLOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/WebGLRenderer.ts",
+      "metadataPath": "interfaces/WebGLOptions.json"
+    },
+    {
+      "name": "WebGLRenderer",
+      "category": null,
+      "sourcePath": "rendering/renderers/gl/WebGLRenderer.ts",
+      "metadataPath": "interfaces/WebGLRenderer.json"
+    },
+    {
+      "name": "ContextSystemOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/GlContextSystem.ts",
+      "metadataPath": "interfaces/ContextSystemOptions.json"
+    },
+    {
+      "name": "WEBGL_compressed_texture_pvrtc",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/WebGLExtensions.ts",
+      "metadataPath": "interfaces/WEBGL_compressed_texture_pvrtc.json"
+    },
+    {
+      "name": "WEBGL_compressed_texture_etc",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/WebGLExtensions.ts",
+      "metadataPath": "interfaces/WEBGL_compressed_texture_etc.json"
+    },
+    {
+      "name": "WEBGL_compressed_texture_etc1",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/WebGLExtensions.ts",
+      "metadataPath": "interfaces/WEBGL_compressed_texture_etc1.json"
+    },
+    {
+      "name": "WEBGL_compressed_texture_atc",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/WebGLExtensions.ts",
+      "metadataPath": "interfaces/WEBGL_compressed_texture_atc.json"
+    },
+    {
+      "name": "EXT_texture_compression_bptc",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/WebGLExtensions.ts",
+      "metadataPath": "interfaces/EXT_texture_compression_bptc.json"
+    },
+    {
+      "name": "EXT_texture_compression_rgtc",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/WebGLExtensions.ts",
+      "metadataPath": "interfaces/EXT_texture_compression_rgtc.json"
+    },
+    {
+      "name": "WebGLExtensions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/context/WebGLExtensions.ts",
+      "metadataPath": "interfaces/WebGLExtensions.json"
+    },
+    {
+      "name": "GlUniformData",
+      "category": null,
+      "sourcePath": "rendering/renderers/gl/shader/GlProgram.ts",
+      "metadataPath": "interfaces/GlUniformData.json"
+    },
+    {
+      "name": "GlUniformBlockData",
+      "category": null,
+      "sourcePath": "rendering/renderers/gl/shader/GlProgram.ts",
+      "metadataPath": "interfaces/GlUniformBlockData.json"
+    },
+    {
+      "name": "GlProgramOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/shader/GlProgram.ts",
+      "metadataPath": "interfaces/GlProgramOptions.json"
+    },
+    {
+      "name": "ShaderSyncData",
+      "category": null,
+      "sourcePath": "rendering/renderers/gl/shader/GlShaderSystem.ts",
+      "metadataPath": "interfaces/ShaderSyncData.json"
+    },
+    {
+      "name": "ExtractedAttributeData",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gl/shader/program/extractAttributesFromGlProgram.ts",
+      "metadataPath": "interfaces/ExtractedAttributeData.json"
+    },
+    {
+      "name": "GLTextureUploader",
+      "category": null,
+      "sourcePath": "rendering/renderers/gl/texture/uploaders/GLTextureUploader.ts",
+      "metadataPath": "interfaces/GLTextureUploader.json"
+    },
+    {
+      "name": "GPU",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/GpuDeviceSystem.ts",
+      "metadataPath": "interfaces/GPU.json"
+    },
+    {
+      "name": "GpuContextOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/GpuDeviceSystem.ts",
+      "metadataPath": "interfaces/GpuContextOptions.json"
+    },
+    {
+      "name": "WebGPUOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/WebGPURenderer.ts",
+      "metadataPath": "interfaces/WebGPUOptions.json"
+    },
+    {
+      "name": "WebGPURenderer",
+      "category": null,
+      "sourcePath": "rendering/renderers/gpu/WebGPURenderer.ts",
+      "metadataPath": "interfaces/WebGPURenderer.json"
+    },
+    {
+      "name": "BindResource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/shader/BindResource.ts",
+      "metadataPath": "interfaces/BindResource.json"
+    },
+    {
+      "name": "ProgramSource",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/shader/GpuProgram.ts",
+      "metadataPath": "interfaces/ProgramSource.json"
+    },
+    {
+      "name": "GpuProgramOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/shader/GpuProgram.ts",
+      "metadataPath": "interfaces/GpuProgramOptions.json"
+    },
+    {
+      "name": "GPUProgramData",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/shader/GpuShaderSystem.ts",
+      "metadataPath": "interfaces/GPUProgramData.json"
+    },
+    {
+      "name": "StructsAndGroups",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/shader/utils/extractStructAndGroups.ts",
+      "metadataPath": "interfaces/StructsAndGroups.json"
+    },
+    {
+      "name": "StencilState",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/gpu/state/GpuStencilModesToPixi.ts",
+      "metadataPath": "interfaces/StencilState.json"
+    },
+    {
+      "name": "GpuTextureUploader",
+      "category": null,
+      "sourcePath": "rendering/renderers/gpu/texture/uploaders/GpuTextureUploader.ts",
+      "metadataPath": "interfaces/GpuTextureUploader.json"
+    },
+    {
+      "name": "BackgroundSystemOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/background/BackgroundSystem.ts",
+      "metadataPath": "interfaces/BackgroundSystemOptions.json"
+    },
+    {
+      "name": "BufferOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/buffer/Buffer.ts",
+      "metadataPath": "interfaces/BufferOptions.json"
+    },
+    {
+      "name": "BufferDescriptor",
+      "category": null,
+      "sourcePath": "rendering/renderers/shared/buffer/Buffer.ts",
+      "metadataPath": "interfaces/BufferDescriptor.json"
+    },
+    {
+      "name": "ImageOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/extract/ExtractSystem.ts",
+      "metadataPath": "interfaces/ImageOptions.json"
+    },
+    {
+      "name": "BaseExtractOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/extract/ExtractSystem.ts",
+      "metadataPath": "interfaces/BaseExtractOptions.json"
+    },
+    {
+      "name": "Attribute",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/geometry/Geometry.ts",
+      "metadataPath": "interfaces/Attribute.json"
+    },
+    {
+      "name": "GeometryDescriptor",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/geometry/Geometry.ts",
+      "metadataPath": "interfaces/GeometryDescriptor.json"
+    },
+    {
+      "name": "Instruction",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/instructions/Instruction.ts",
+      "metadataPath": "interfaces/Instruction.json"
+    },
+    {
+      "name": "InstructionPipe",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/instructions/RenderPipe.ts",
+      "metadataPath": "interfaces/InstructionPipe.json"
+    },
+    {
+      "name": "RenderPipe",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/instructions/RenderPipe.ts",
+      "metadataPath": "interfaces/RenderPipe.json"
+    },
+    {
+      "name": "BatchPipe",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/instructions/RenderPipe.ts",
+      "metadataPath": "interfaces/BatchPipe.json"
+    },
+    {
+      "name": "PipeConstructor",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/instructions/RenderPipe.ts",
+      "metadataPath": "interfaces/PipeConstructor.json"
+    },
+    {
+      "name": "GlobalUniformOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/renderTarget/GlobalUniformSystem.ts",
+      "metadataPath": "interfaces/GlobalUniformOptions.json"
+    },
+    {
+      "name": "GlobalUniformData",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/renderTarget/GlobalUniformSystem.ts",
+      "metadataPath": "interfaces/GlobalUniformData.json"
+    },
+    {
+      "name": "GlobalUniformRenderer",
+      "category": null,
+      "sourcePath": "rendering/renderers/shared/renderTarget/GlobalUniformSystem.ts",
+      "metadataPath": "interfaces/GlobalUniformRenderer.json"
+    },
+    {
+      "name": "RenderTargetOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/renderTarget/RenderTarget.ts",
+      "metadataPath": "interfaces/RenderTargetOptions.json"
+    },
+    {
+      "name": "RenderTargetAdaptor",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/renderTarget/RenderTargetSystem.ts",
+      "metadataPath": "interfaces/RenderTargetAdaptor.json"
+    },
+    {
+      "name": "GlShaderWith",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/Shader.ts",
+      "metadataPath": "interfaces/GlShaderWith.json"
+    },
+    {
+      "name": "GpuShaderWith",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/Shader.ts",
+      "metadataPath": "interfaces/GpuShaderWith.json"
+    },
+    {
+      "name": "ShaderWithGroupsDescriptor",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/Shader.ts",
+      "metadataPath": "interfaces/ShaderWithGroupsDescriptor.json"
+    },
+    {
+      "name": "IShaderWithResources",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/Shader.ts",
+      "metadataPath": "interfaces/IShaderWithResources.json"
+    },
+    {
+      "name": "ShaderSystem",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/ShaderSystem.ts",
+      "metadataPath": "interfaces/ShaderSystem.json"
+    },
+    {
+      "name": "UboAdaptor",
+      "category": null,
+      "sourcePath": "rendering/renderers/shared/shader/UboSystem.ts",
+      "metadataPath": "interfaces/UboAdaptor.json"
+    },
+    {
+      "name": "UniformData",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/shader/types.ts",
+      "metadataPath": "interfaces/UniformData.json"
+    },
+    {
+      "name": "UboElement",
+      "category": null,
+      "sourcePath": "rendering/renderers/shared/shader/types.ts",
+      "metadataPath": "interfaces/UboElement.json"
+    },
+    {
+      "name": "UboLayout",
+      "category": null,
+      "sourcePath": "rendering/renderers/shared/shader/types.ts",
+      "metadataPath": "interfaces/UboLayout.json"
+    },
+    {
+      "name": "HelloSystemOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/startup/HelloSystem.ts",
+      "metadataPath": "interfaces/HelloSystemOptions.json"
+    },
+    {
+      "name": "RendererConfig",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/system/AbstractRenderer.ts",
+      "metadataPath": "interfaces/RendererConfig.json"
+    },
+    {
+      "name": "RenderOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/system/AbstractRenderer.ts",
+      "metadataPath": "interfaces/RenderOptions.json"
+    },
+    {
+      "name": "ClearOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/system/AbstractRenderer.ts",
+      "metadataPath": "interfaces/ClearOptions.json"
+    },
+    {
+      "name": "SharedRendererOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/system/SharedSystems.ts",
+      "metadataPath": "interfaces/SharedRendererOptions.json"
+    },
+    {
+      "name": "System",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/system/System.ts",
+      "metadataPath": "interfaces/System.json"
+    },
+    {
+      "name": "SystemConstructor",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/system/System.ts",
+      "metadataPath": "interfaces/SystemConstructor.json"
+    },
+    {
+      "name": "CanvasAndContext",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/CanvasPool.ts",
+      "metadataPath": "interfaces/CanvasAndContext.json"
+    },
+    {
+      "name": "CanvasGenerator",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/GenerateCanvas.ts",
+      "metadataPath": "interfaces/CanvasGenerator.json"
+    },
+    {
+      "name": "RenderableGCSystemOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/RenderableGCSystem.ts",
+      "metadataPath": "interfaces/RenderableGCSystemOptions.json"
+    },
+    {
+      "name": "TextureBorders",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/Texture.ts",
+      "metadataPath": "interfaces/TextureBorders.json"
+    },
+    {
+      "name": "TextureOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/Texture.ts",
+      "metadataPath": "interfaces/TextureOptions.json"
+    },
+    {
+      "name": "BindableTexture",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/Texture.ts",
+      "metadataPath": "interfaces/BindableTexture.json"
+    },
+    {
+      "name": "TextureGCSystemOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/TextureGCSystem.ts",
+      "metadataPath": "interfaces/TextureGCSystemOptions.json"
+    },
+    {
+      "name": "TextureStyleOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/TextureStyle.ts",
+      "metadataPath": "interfaces/TextureStyleOptions.json"
+    },
+    {
+      "name": "BufferSourceOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/BufferImageSource.ts",
+      "metadataPath": "interfaces/BufferSourceOptions.json"
+    },
+    {
+      "name": "CanvasSourceOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/CanvasSource.ts",
+      "metadataPath": "interfaces/CanvasSourceOptions.json"
+    },
+    {
+      "name": "TextureSourceOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/TextureSource.ts",
+      "metadataPath": "interfaces/TextureSourceOptions.json"
+    },
+    {
+      "name": "VideoSourceOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/texture/sources/VideoSource.ts",
+      "metadataPath": "interfaces/VideoSourceOptions.json"
+    },
+    {
+      "name": "ViewObserver",
+      "category": null,
+      "sourcePath": "rendering/renderers/shared/view/View.ts",
+      "metadataPath": "interfaces/ViewObserver.json"
+    },
+    {
+      "name": "View",
+      "category": "scene",
+      "sourcePath": "rendering/renderers/shared/view/View.ts",
+      "metadataPath": "interfaces/View.json"
+    },
+    {
+      "name": "ViewSystemOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/view/ViewSystem.ts",
+      "metadataPath": "interfaces/ViewSystemOptions.json"
+    },
+    {
+      "name": "ViewSystemDestroyOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/shared/view/ViewSystem.ts",
+      "metadataPath": "interfaces/ViewSystemDestroyOptions.json"
+    },
+    {
+      "name": "RendererOptions",
+      "category": "rendering",
+      "sourcePath": "rendering/renderers/types.ts",
+      "metadataPath": "interfaces/RendererOptions.json"
+    },
+    {
+      "name": "ContainerEvents",
+      "category": "scene",
+      "sourcePath": "scene/container/Container.ts",
+      "metadataPath": "interfaces/ContainerEvents.json"
+    },
+    {
+      "name": "UpdateTransformOptions",
+      "category": "scene",
+      "sourcePath": "scene/container/Container.ts",
+      "metadataPath": "interfaces/UpdateTransformOptions.json"
+    },
+    {
+      "name": "ContainerOptions",
+      "category": "scene",
+      "sourcePath": "scene/container/Container.ts",
+      "metadataPath": "interfaces/ContainerOptions.json"
+    },
+    {
+      "name": "Container",
+      "category": null,
+      "sourcePath": "scene/container/Container.ts",
+      "metadataPath": "interfaces/Container.json"
+    },
+    {
+      "name": "Effect",
+      "category": "rendering",
+      "sourcePath": "scene/container/Effect.ts",
+      "metadataPath": "interfaces/Effect.json"
+    },
+    {
+      "name": "EffectConstructor",
+      "category": "rendering",
+      "sourcePath": "scene/container/Effect.ts",
+      "metadataPath": "interfaces/EffectConstructor.json"
+    },
+    {
+      "name": "RenderContainerOptions",
+      "category": "scene",
+      "sourcePath": "scene/container/RenderContainer.ts",
+      "metadataPath": "interfaces/RenderContainerOptions.json"
+    },
+    {
+      "name": "CacheAsTextureOptions",
+      "category": "rendering",
+      "sourcePath": "scene/container/RenderGroup.ts",
+      "metadataPath": "interfaces/CacheAsTextureOptions.json"
+    },
+    {
+      "name": "BoundsData",
+      "category": "rendering",
+      "sourcePath": "scene/container/bounds/Bounds.ts",
+      "metadataPath": "interfaces/BoundsData.json"
+    },
+    {
+      "name": "CacheAsTextureMixinConstructor",
+      "category": null,
+      "sourcePath": "scene/container/container-mixins/cacheAsTextureMixin.ts",
+      "metadataPath": "interfaces/CacheAsTextureMixinConstructor.json"
+    },
+    {
+      "name": "CacheAsTextureMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/cacheAsTextureMixin.ts",
+      "metadataPath": "interfaces/CacheAsTextureMixin.json"
+    },
+    {
+      "name": "ChildrenHelperMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/childrenHelperMixin.ts",
+      "metadataPath": "interfaces/ChildrenHelperMixin.json"
+    },
+    {
+      "name": "CollectRenderablesMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/collectRenderablesMixin.ts",
+      "metadataPath": "interfaces/CollectRenderablesMixin.json"
+    },
+    {
+      "name": "EffectsMixinConstructor",
+      "category": null,
+      "sourcePath": "scene/container/container-mixins/effectsMixin.ts",
+      "metadataPath": "interfaces/EffectsMixinConstructor.json"
+    },
+    {
+      "name": "MaskOptions",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/effectsMixin.ts",
+      "metadataPath": "interfaces/MaskOptions.json"
+    },
+    {
+      "name": "MaskOptionsAndMask",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/effectsMixin.ts",
+      "metadataPath": "interfaces/MaskOptionsAndMask.json"
+    },
+    {
+      "name": "EffectsMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/effectsMixin.ts",
+      "metadataPath": "interfaces/EffectsMixin.json"
+    },
+    {
+      "name": "FindMixinConstructor",
+      "category": null,
+      "sourcePath": "scene/container/container-mixins/findMixin.ts",
+      "metadataPath": "interfaces/FindMixinConstructor.json"
+    },
+    {
+      "name": "FindMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/findMixin.ts",
+      "metadataPath": "interfaces/FindMixin.json"
+    },
+    {
+      "name": "GetFastGlobalBoundsMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/getFastGlobalBoundsMixin.ts",
+      "metadataPath": "interfaces/GetFastGlobalBoundsMixin.json"
+    },
+    {
+      "name": "GetGlobalMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/getGlobalMixin.ts",
+      "metadataPath": "interfaces/GetGlobalMixin.json"
+    },
+    {
+      "name": "MeasureMixinConstructor",
+      "category": "utils",
+      "sourcePath": "scene/container/container-mixins/measureMixin.ts",
+      "metadataPath": "interfaces/MeasureMixinConstructor.json"
+    },
+    {
+      "name": "MeasureMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/measureMixin.ts",
+      "metadataPath": "interfaces/MeasureMixin.json"
+    },
+    {
+      "name": "OnRenderMixinConstructor",
+      "category": null,
+      "sourcePath": "scene/container/container-mixins/onRenderMixin.ts",
+      "metadataPath": "interfaces/OnRenderMixinConstructor.json"
+    },
+    {
+      "name": "OnRenderMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/onRenderMixin.ts",
+      "metadataPath": "interfaces/OnRenderMixin.json"
+    },
+    {
+      "name": "SortMixinConstructor",
+      "category": null,
+      "sourcePath": "scene/container/container-mixins/sortMixin.ts",
+      "metadataPath": "interfaces/SortMixinConstructor.json"
+    },
+    {
+      "name": "SortMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/sortMixin.ts",
+      "metadataPath": "interfaces/SortMixin.json"
+    },
+    {
+      "name": "ToLocalGlobalMixin",
+      "category": "scene",
+      "sourcePath": "scene/container/container-mixins/toLocalGlobalMixin.ts",
+      "metadataPath": "interfaces/ToLocalGlobalMixin.json"
+    },
+    {
+      "name": "BaseDestroyOptions",
+      "category": "scene",
+      "sourcePath": "scene/container/destroyTypes.ts",
+      "metadataPath": "interfaces/BaseDestroyOptions.json"
+    },
+    {
+      "name": "TextureDestroyOptions",
+      "category": "scene",
+      "sourcePath": "scene/container/destroyTypes.ts",
+      "metadataPath": "interfaces/TextureDestroyOptions.json"
+    },
+    {
+      "name": "ContextDestroyOptions",
+      "category": "scene",
+      "sourcePath": "scene/container/destroyTypes.ts",
+      "metadataPath": "interfaces/ContextDestroyOptions.json"
+    },
+    {
+      "name": "TextDestroyOptions",
+      "category": "text",
+      "sourcePath": "scene/container/destroyTypes.ts",
+      "metadataPath": "interfaces/TextDestroyOptions.json"
+    },
+    {
+      "name": "FillStyle",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/FillTypes.ts",
+      "metadataPath": "interfaces/FillStyle.json"
+    },
+    {
+      "name": "StrokeAttributes",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/FillTypes.ts",
+      "metadataPath": "interfaces/StrokeAttributes.json"
+    },
+    {
+      "name": "StrokeStyle",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/FillTypes.ts",
+      "metadataPath": "interfaces/StrokeStyle.json"
+    },
+    {
+      "name": "GraphicsOptions",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/Graphics.ts",
+      "metadataPath": "interfaces/GraphicsOptions.json"
+    },
+    {
+      "name": "Graphics",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/Graphics.ts",
+      "metadataPath": "interfaces/Graphics.json"
+    },
+    {
+      "name": "FillInstruction",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/GraphicsContext.ts",
+      "metadataPath": "interfaces/FillInstruction.json"
+    },
+    {
+      "name": "StrokeInstruction",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/GraphicsContext.ts",
+      "metadataPath": "interfaces/StrokeInstruction.json"
+    },
+    {
+      "name": "TextureInstruction",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/GraphicsContext.ts",
+      "metadataPath": "interfaces/TextureInstruction.json"
+    },
+    {
+      "name": "GraphicsContextSystemOptions",
+      "category": "rendering",
+      "sourcePath": "scene/graphics/shared/GraphicsContextSystem.ts",
+      "metadataPath": "interfaces/GraphicsContextSystemOptions.json"
+    },
+    {
+      "name": "GraphicsAdaptor",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/GraphicsPipe.ts",
+      "metadataPath": "interfaces/GraphicsAdaptor.json"
+    },
+    {
+      "name": "ShapeBuildCommand",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/buildCommands/ShapeBuildCommand.ts",
+      "metadataPath": "interfaces/ShapeBuildCommand.json"
+    },
+    {
+      "name": "BaseGradientOptions",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/fill/FillGradient.ts",
+      "metadataPath": "interfaces/BaseGradientOptions.json"
+    },
+    {
+      "name": "LinearGradientOptions",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/fill/FillGradient.ts",
+      "metadataPath": "interfaces/LinearGradientOptions.json"
+    },
+    {
+      "name": "RadialGradientOptions",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/fill/FillGradient.ts",
+      "metadataPath": "interfaces/RadialGradientOptions.json"
+    },
+    {
+      "name": "PathInstruction",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/path/GraphicsPath.ts",
+      "metadataPath": "interfaces/PathInstruction.json"
+    },
+    {
+      "name": "Session",
+      "category": null,
+      "sourcePath": "scene/graphics/shared/svg/SVGParser.ts",
+      "metadataPath": "interfaces/Session.json"
+    },
+    {
+      "name": "GeometryPathOptions",
+      "category": "scene",
+      "sourcePath": "scene/graphics/shared/utils/buildGeometryFromPath.ts",
+      "metadataPath": "interfaces/GeometryPathOptions.json"
+    },
+    {
+      "name": "RenderLayerOptions",
+      "category": "scene",
+      "sourcePath": "scene/layers/RenderLayer.ts",
+      "metadataPath": "interfaces/RenderLayerOptions.json"
+    },
+    {
+      "name": "TextureShader",
+      "category": "scene",
+      "sourcePath": "scene/mesh/shared/Mesh.ts",
+      "metadataPath": "interfaces/TextureShader.json"
+    },
+    {
+      "name": "MeshOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh/shared/Mesh.ts",
+      "metadataPath": "interfaces/MeshOptions.json"
+    },
+    {
+      "name": "Mesh",
+      "category": null,
+      "sourcePath": "scene/mesh/shared/Mesh.ts",
+      "metadataPath": "interfaces/Mesh.json"
+    },
+    {
+      "name": "MeshGeometryOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh/shared/MeshGeometry.ts",
+      "metadataPath": "interfaces/MeshGeometryOptions.json"
+    },
+    {
+      "name": "MeshAdaptor",
+      "category": null,
+      "sourcePath": "scene/mesh/shared/MeshPipe.ts",
+      "metadataPath": "interfaces/MeshAdaptor.json"
+    },
+    {
+      "name": "PerspectivePlaneOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh-perspective/PerspectiveMesh.ts",
+      "metadataPath": "interfaces/PerspectivePlaneOptions.json"
+    },
+    {
+      "name": "PerspectivePlaneGeometryOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh-perspective/PerspectivePlaneGeometry.ts",
+      "metadataPath": "interfaces/PerspectivePlaneGeometryOptions.json"
+    },
+    {
+      "name": "MeshPlaneOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh-plane/MeshPlane.ts",
+      "metadataPath": "interfaces/MeshPlaneOptions.json"
+    },
+    {
+      "name": "PlaneGeometryOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh-plane/PlaneGeometry.ts",
+      "metadataPath": "interfaces/PlaneGeometryOptions.json"
+    },
+    {
+      "name": "MeshRopeOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh-simple/MeshRope.ts",
+      "metadataPath": "interfaces/MeshRopeOptions.json"
+    },
+    {
+      "name": "SimpleMeshOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh-simple/MeshSimple.ts",
+      "metadataPath": "interfaces/SimpleMeshOptions.json"
+    },
+    {
+      "name": "RopeGeometryOptions",
+      "category": "scene",
+      "sourcePath": "scene/mesh-simple/RopeGeometry.ts",
+      "metadataPath": "interfaces/RopeGeometryOptions.json"
+    },
+    {
+      "name": "IParticle",
+      "category": "scene",
+      "sourcePath": "scene/particle-container/shared/Particle.ts",
+      "metadataPath": "interfaces/IParticle.json"
+    },
+    {
+      "name": "ParticleBufferOptions",
+      "category": null,
+      "sourcePath": "scene/particle-container/shared/ParticleBuffer.ts",
+      "metadataPath": "interfaces/ParticleBufferOptions.json"
+    },
+    {
+      "name": "ParticleProperties",
+      "category": "scene",
+      "sourcePath": "scene/particle-container/shared/ParticleContainer.ts",
+      "metadataPath": "interfaces/ParticleProperties.json"
+    },
+    {
+      "name": "ParticleContainerOptions",
+      "category": "scene",
+      "sourcePath": "scene/particle-container/shared/ParticleContainer.ts",
+      "metadataPath": "interfaces/ParticleContainerOptions.json"
+    },
+    {
+      "name": "ParticleContainer",
+      "category": null,
+      "sourcePath": "scene/particle-container/shared/ParticleContainer.ts",
+      "metadataPath": "interfaces/ParticleContainer.json"
+    },
+    {
+      "name": "ParticleContainerAdaptor",
+      "category": null,
+      "sourcePath": "scene/particle-container/shared/ParticleContainerPipe.ts",
+      "metadataPath": "interfaces/ParticleContainerAdaptor.json"
+    },
+    {
+      "name": "ParticleRendererProperty",
+      "category": null,
+      "sourcePath": "scene/particle-container/shared/particleData.ts",
+      "metadataPath": "interfaces/ParticleRendererProperty.json"
+    },
+    {
+      "name": "SpriteOptions",
+      "category": "scene",
+      "sourcePath": "scene/sprite/Sprite.ts",
+      "metadataPath": "interfaces/SpriteOptions.json"
+    },
+    {
+      "name": "Sprite",
+      "category": null,
+      "sourcePath": "scene/sprite/Sprite.ts",
+      "metadataPath": "interfaces/Sprite.json"
+    },
+    {
+      "name": "AnimatedSpriteOptions",
+      "category": "scene",
+      "sourcePath": "scene/sprite-animated/AnimatedSprite.ts",
+      "metadataPath": "interfaces/AnimatedSpriteOptions.json"
+    },
+    {
+      "name": "FrameObject",
+      "category": "scene",
+      "sourcePath": "scene/sprite-animated/AnimatedSprite.ts",
+      "metadataPath": "interfaces/FrameObject.json"
+    },
+    {
+      "name": "NineSliceGeometryOptions",
+      "category": "scene",
+      "sourcePath": "scene/sprite-nine-slice/NineSliceGeometry.ts",
+      "metadataPath": "interfaces/NineSliceGeometryOptions.json"
+    },
+    {
+      "name": "NineSliceSpriteOptions",
+      "category": "scene",
+      "sourcePath": "scene/sprite-nine-slice/NineSliceSprite.ts",
+      "metadataPath": "interfaces/NineSliceSpriteOptions.json"
+    },
+    {
+      "name": "NineSliceSprite",
+      "category": null,
+      "sourcePath": "scene/sprite-nine-slice/NineSliceSprite.ts",
+      "metadataPath": "interfaces/NineSliceSprite.json"
+    },
+    {
+      "name": "TilingSpriteOptions",
+      "category": "scene",
+      "sourcePath": "scene/sprite-tiling/TilingSprite.ts",
+      "metadataPath": "interfaces/TilingSpriteOptions.json"
+    },
+    {
+      "name": "TilingSprite",
+      "category": null,
+      "sourcePath": "scene/sprite-tiling/TilingSprite.ts",
+      "metadataPath": "interfaces/TilingSprite.json"
+    },
+    {
+      "name": "TextOptions",
+      "category": "text",
+      "sourcePath": "scene/text/AbstractText.ts",
+      "metadataPath": "interfaces/TextOptions.json"
+    },
+    {
+      "name": "Text",
+      "category": null,
+      "sourcePath": "scene/text/Text.ts",
+      "metadataPath": "interfaces/Text.json"
+    },
+    {
+      "name": "CanvasTextOptions",
+      "category": "text",
+      "sourcePath": "scene/text/Text.ts",
+      "metadataPath": "interfaces/CanvasTextOptions.json"
+    },
+    {
+      "name": "TextStyleOptions",
+      "category": "text",
+      "sourcePath": "scene/text/TextStyle.ts",
+      "metadataPath": "interfaces/TextStyleOptions.json"
+    },
+    {
+      "name": "FontMetrics",
+      "category": "text",
+      "sourcePath": "scene/text/canvas/CanvasTextMetrics.ts",
+      "metadataPath": "interfaces/FontMetrics.json"
+    },
+    {
+      "name": "CharData",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/AbstractBitmapFont.ts",
+      "metadataPath": "interfaces/CharData.json"
+    },
+    {
+      "name": "RawCharData",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/AbstractBitmapFont.ts",
+      "metadataPath": "interfaces/RawCharData.json"
+    },
+    {
+      "name": "BitmapFontData",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/AbstractBitmapFont.ts",
+      "metadataPath": "interfaces/BitmapFontData.json"
+    },
+    {
+      "name": "BitmapFontOptions",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/BitmapFont.ts",
+      "metadataPath": "interfaces/BitmapFontOptions.json"
+    },
+    {
+      "name": "BitmapFontInstallOptions",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/BitmapFontManager.ts",
+      "metadataPath": "interfaces/BitmapFontInstallOptions.json"
+    },
+    {
+      "name": "BitmapText",
+      "category": null,
+      "sourcePath": "scene/text-bitmap/BitmapText.ts",
+      "metadataPath": "interfaces/BitmapText.json"
+    },
+    {
+      "name": "DynamicBitmapFontOptions",
+      "category": null,
+      "sourcePath": "scene/text-bitmap/DynamicBitmapFont.ts",
+      "metadataPath": "interfaces/DynamicBitmapFontOptions.json"
+    },
+    {
+      "name": "BitmapFontRawData",
+      "category": null,
+      "sourcePath": "scene/text-bitmap/asset/bitmapFontTextParser.ts",
+      "metadataPath": "interfaces/BitmapFontRawData.json"
+    },
+    {
+      "name": "BitmapTextLayoutData",
+      "category": "text",
+      "sourcePath": "scene/text-bitmap/utils/getBitmapTextLayout.ts",
+      "metadataPath": "interfaces/BitmapTextLayoutData.json"
+    },
+    {
+      "name": "HTMLTextOptions",
+      "category": "text",
+      "sourcePath": "scene/text-html/HTMLText.ts",
+      "metadataPath": "interfaces/HTMLTextOptions.json"
+    },
+    {
+      "name": "HTMLText",
+      "category": null,
+      "sourcePath": "scene/text-html/HTMLText.ts",
+      "metadataPath": "interfaces/HTMLText.json"
+    },
+    {
+      "name": "HTMLTextStyleOptions",
+      "category": "text",
+      "sourcePath": "scene/text-html/HTMLTextStyle.ts",
+      "metadataPath": "interfaces/HTMLTextStyleOptions.json"
+    },
+    {
+      "name": "FontCSSStyleOptions",
+      "category": "text",
+      "sourcePath": "scene/text-html/utils/loadFontCSS.ts",
+      "metadataPath": "interfaces/FontCSSStyleOptions.json"
+    },
+    {
+      "name": "AbstractSplitOptions",
+      "category": "text",
+      "sourcePath": "scene/text-split/AbstractSplitText.ts",
+      "metadataPath": "interfaces/AbstractSplitOptions.json"
+    },
+    {
+      "name": "AbstractSplitTextOptions",
+      "category": "text",
+      "sourcePath": "scene/text-split/AbstractSplitText.ts",
+      "metadataPath": "interfaces/AbstractSplitTextOptions.json"
+    },
+    {
+      "name": "SplitBitmapTextOptions",
+      "category": "text",
+      "sourcePath": "scene/text-split/SplitBitmapText.ts",
+      "metadataPath": "interfaces/SplitBitmapTextOptions.json"
+    },
+    {
+      "name": "SplitTextOptions",
+      "category": "text",
+      "sourcePath": "scene/text-split/SplitText.ts",
+      "metadataPath": "interfaces/SplitTextOptions.json"
+    },
+    {
+      "name": "TextSplitOutput",
+      "category": "text",
+      "sourcePath": "scene/text-split/types.ts",
+      "metadataPath": "interfaces/TextSplitOutput.json"
+    },
+    {
+      "name": "GPUData",
+      "category": null,
+      "sourcePath": "scene/view/ViewContainer.ts",
+      "metadataPath": "interfaces/GPUData.json"
+    },
+    {
+      "name": "ViewContainerOptions",
+      "category": "scene",
+      "sourcePath": "scene/view/ViewContainer.ts",
+      "metadataPath": "interfaces/ViewContainerOptions.json"
+    },
+    {
+      "name": "ViewContainer",
+      "category": null,
+      "sourcePath": "scene/view/ViewContainer.ts",
+      "metadataPath": "interfaces/ViewContainer.json"
+    },
+    {
+      "name": "SpritesheetFrameData",
+      "category": "assets",
+      "sourcePath": "spritesheet/Spritesheet.ts",
+      "metadataPath": "interfaces/SpritesheetFrameData.json"
+    },
+    {
+      "name": "SpritesheetData",
+      "category": "assets",
+      "sourcePath": "spritesheet/Spritesheet.ts",
+      "metadataPath": "interfaces/SpritesheetData.json"
+    },
+    {
+      "name": "SpritesheetOptions",
+      "category": "assets",
+      "sourcePath": "spritesheet/Spritesheet.ts",
+      "metadataPath": "interfaces/SpritesheetOptions.json"
+    },
+    {
+      "name": "SpriteSheetJson",
+      "category": "assets",
+      "sourcePath": "spritesheet/spritesheetAsset.ts",
+      "metadataPath": "interfaces/SpriteSheetJson.json"
+    },
+    {
+      "name": "GetCanvasBoundingBoxOptions",
+      "category": null,
+      "sourcePath": "utils/canvas/getCanvasBoundingBox.ts",
+      "metadataPath": "interfaces/GetCanvasBoundingBoxOptions.json"
+    },
+    {
+      "name": "TransformOptions",
+      "category": "utils",
+      "sourcePath": "utils/misc/Transform.ts",
+      "metadataPath": "interfaces/TransformOptions.json"
+    },
+    {
+      "name": "Path",
+      "category": "utils",
+      "sourcePath": "utils/path.ts",
+      "metadataPath": "interfaces/Path.json"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "type": "interface",
+  "name": "RenderTargetAdaptor",
+  "sourcePath": "rendering/renderers/shared/renderTarget/RenderTargetSystem.ts",
+  "extends": [],
+  "description": "A render surface is a texture, canvas, or render target / export type RenderSurface = ICanvas | BindableTexture | RenderTarget; /** stores a render target and its frame / interface RenderTargetAndFrame { /** the render target */ renderTarget: RenderTarget; /** the frame to use when using the render target */ frame: Rectangle } /** An adaptor interface for RenderTargetSystem to support WebGL and WebGPU. This is used internally by the renderer, and is not intended to be used directly.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderer",
+      "type": "Renderer,\n        /** the render target system */\n        renderTargetSystem: RenderTargetSystem<RENDER_TARGET>\n    ): void\n\n    /** A function copies the contents of a render surface to a texture */\n    copyToTexture(\n        /** the render surface to copy from  */\n        sourceRenderSurfaceTexture: RenderTarget,\n        /** the texture to copy to */\n        destinationTexture: Texture,\n        /** the origin of the copy */\n        originSrc: { x: number",
+      "optional": false,
+      "description": "the renderer"
+    },
+    {
+      "name": "y",
+      "type": "number },\n        /** the size of the copy */\n        size: { width: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number },\n        /** the destination origin (top left to paste from!) */\n        originDest?: { x: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "y",
+      "type": "number },\n    ): Texture\n\n    /** starts a render pass on the render target */\n    startRenderPass(\n        /** the render target to start the render pass on */\n        renderTarget: RenderTarget,\n        /* the clear mode to use. Can be true or a CLEAR number 'COLOR | DEPTH | STENCIL' 0b111* */\n        clear: CLEAR_OR_BOOL,\n        /** the color to clear to */\n        clearColor?: RgbaArray,\n        /** the viewport to use */\n        viewport?: Rectangle\n    ): void\n\n    /** clears the current render target to the specified color */\n    clear(\n        /** the render target to clear */\n        renderTarget: RenderTarget,\n        /** the clear mode to use. Can be true or a CLEAR number 'COLOR | DEPTH | STENCIL' 0b111 */\n        clear: CLEAR_OR_BOOL,\n        /** the color to clear to   */\n        clearColor?: RgbaArray,\n        /** the viewport to use */\n        viewport?: Rectangle\n    ): void\n\n    /** finishes the current render pass */\n    finishRenderPass(renderTarget: RenderTarget): void\n\n    /** called after the render pass is finished */\n    postrender?(renderTarget: RenderTarget): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderTarget",
+      "type": "RenderTarget\n    ): RENDER_TARGET\n\n    /** called when a render target is resized */\n    resizeGpuRenderTarget(\n        /** the render target to resize */\n        renderTarget: RenderTarget\n    ): void\n\n    /** destroys the gpu render target */\n    destroyGpuRenderTarget(\n        /** the render target to destroy */\n        gpuRenderTarget: RENDER_TARGET\n    ): void\n}\n\n/**\n * A system that manages render targets. A render target is essentially a place where the shaders can color in the pixels.\n * The render target system is responsible for binding the render target to the renderer, and managing the viewport.\n * Render targets can be pushed and popped.\n *\n * To make it easier, you can also bind textures and canvases too. This will automatically create a render target for you.\n * The render target itself is a lot more powerful than just a texture or canvas,\n * as it can have multiple textures attached to it.\n * It will also give ou fine grain control over the stencil buffer / depth texture.\n * @example\n *\n * ```js\n *\n * // create a render target\n * const renderTarget = new RenderTarget({\n *   colorTextures: [new TextureSource({ width: 100, height: 100 })],\n * })",
+      "optional": false,
+      "description": "called before the render main pass is started */ prerender?(renderTarget: RenderTarget): void; /** initializes a gpu render target. Both renderers use this function to initialize a gpu render target Its different type of object depending on the renderer. / initGpuRenderTarget( /** the render target to initialize"
+    },
+    {
+      "name": "rootRenderTarget",
+      "type": "RenderTarget",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderingToScreen",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderTarget",
+      "type": "RenderTarget",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderSurface",
+      "type": "RenderSurface",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultClearColor",
+      "type": "RgbaArray = [0, 0, 0, 0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "adaptor",
+      "type": "RenderTargetAdaptor<RENDER_TARGET>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderSurfaceToRenderTargetHash",
+      "type": "Map<RenderSurface, RenderTarget>\n        = new Map()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_gpuRenderTargetHash",
+      "type": "Record<number, RENDER_TARGET> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderTargetStack",
+      "type": "RenderTargetAndFrame[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "RenderSurface",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "type": "CLEAR_OR_BOOL",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "type": "RgbaArray",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "frame",
+      "type": "Rectangle\n    }): void\n    {\n        // TODO no need to reset this - use optimised index instead\n        this._renderTargetStack.length = 0",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "renderSurface",
+      "type": "RenderSurface,\n        clear: CLEAR_OR_BOOL = true,\n        clearColor?: RgbaArray,\n        frame?: Rectangle\n    ): RenderTarget\n    {\n        const renderTarget = this.getRenderTarget(renderSurface)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "RenderSurface,\n        clear: CLEAR_OR_BOOL = CLEAR.ALL,\n        clearColor?: RgbaArray,\n    )\n    {\n        if (!clear) return",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "renderSurface",
+      "type": "RenderSurface,\n        clear: CLEAR | boolean = CLEAR.ALL,\n        clearColor?: RgbaArray,\n        frame?: Rectangle\n    )\n    {\n        const renderTarget = this.bind(renderSurface, clear, clearColor, frame)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderSurface",
+      "type": "RenderSurface): RenderTarget\n    {\n        if (((renderSurface as Texture).isTexture))\n        {\n            renderSurface = (renderSurface as Texture).source",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "NOTE",
+      "type": "* for sourceRenderSurfaceTexture, The render target must be something that is written too by the renderer\n     *\n     * The following is not valid:\n     * @example\n     * const canvas = document.createElement('canvas')\n     * canvas.width = 200",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "200,\n     *   height: 200,\n     * })\n     * const renderTarget = renderer.renderTarget.getRenderTarget(canvas2)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0,y:0},{width:200,height:200},{x:0,y:0})",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "sourceRenderSurfaceTexture",
+      "type": "RenderTarget,\n        destinationTexture: Texture,\n        originSrc: { x: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "y",
+      "type": "number },\n        size: { width: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number },\n        originDest: { x: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderSurface",
+      "type": "RenderSurface): RenderTarget\n    {\n        let renderTarget: RenderTarget = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "colorTextures",
+      "type": "[renderSurface],\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderTarget",
+      "type": "RenderTarget)\n    {\n        return this._gpuRenderTargetHash[renderTarget.uid]\n        || (this._gpuRenderTargetHash[renderTarget.uid] = this.adaptor.initGpuRenderTarget(renderTarget))",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

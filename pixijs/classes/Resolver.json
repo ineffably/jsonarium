@@ -1,0 +1,1233 @@
+{
+  "type": "class",
+  "name": "Resolver",
+  "sourcePath": "assets/resolver/Resolver.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Options for how the resolver deals with generating bundle ids / export interface BundleIdentifierOptions { /** The character that is used to connect the bundleId and the assetId when generating a bundle asset id key */ connector?: string; /** A function that generates a bundle asset id key from a bundleId and an assetId / createBundleAssetId?: (bundleId: string, assetId: string) => string; /** A function that generates an assetId from a bundle asset id key. This is the reverse of generateBundleAssetId / extractAssetIdFromBundle?: (bundleId: string, assetBundleId: string) => string; } /** A class that is responsible for resolving mapping asset URLs to keys. At its most basic it can be used for Aliases: ```js resolver.add('foo', 'bar'); resolver.resolveUrl('foo') // => 'bar' ``` It can also be used to resolve the most appropriate asset for a given URL: ```js resolver.prefer({ params: { format: 'webp', resolution: 2, } }); resolver.add('foo', ['bar@2x.webp', 'bar@2x.png', 'bar.webp', 'bar.png']); resolver.resolveUrl('foo') // => 'bar@2x.webp' ``` Other features include: - Ability to process a manifest file to get the correct understanding of how to resolve all assets - Ability to add custom parsers for specific file types - Ability to add custom prefer rules This class only cares about the URL, not the loading of the asset itself. It is not intended that this class is created by developers - its part of the Asset class This is the third major system of PixiJS' main Assets class",
+  "category": "assets",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "setBundleIdentifier",
+      "params": [
+        {
+          "name": "bundleIdentifier",
+          "type": "BundleIdentifierOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "The prefix that denotes a URL is for a retina asset. / public static RETINA_PREFIX = /@([0-9\\.]+)x/; private readonly _defaultBundleIdentifierOptions: Required<BundleIdentifierOptions> = { connector: '-', createBundleAssetId: (bundleId, assetId) => `${bundleId}${this._bundleIdConnector}${assetId}`, extractAssetIdFromBundle: (bundleId, assetBundleId) => assetBundleId.replace(`${bundleId}${this._bundleIdConnector}`, ''), }; /** The character that is used to connect the bundleId and the assetId when generating a bundle asset id key */ private _bundleIdConnector = this._defaultBundleIdentifierOptions.connector; /** A function that generates a bundle asset id key from a bundleId and an assetId / private _createBundleAssetId: ( bundleId: string, assetId: string ) => string = this._defaultBundleIdentifierOptions.createBundleAssetId; /** A function that generates an assetId from a bundle asset id key. This is the reverse of generateBundleAssetId / private _extractAssetIdFromBundle: ( bundleId: string, assetBundleId: string ) => string = this._defaultBundleIdentifierOptions.extractAssetIdFromBundle; private _assetMap: Record<string, ResolvedAsset[]> = {}; private _preferredOrder: PreferOrder[] = []; private readonly _parsers: ResolveURLParser[] = []; private _resolverHash: Record<string, ResolvedAsset> = {}; private _rootPath: string; private _basePath: string; private _manifest: AssetsManifest; private _bundles: Record<string, string[]> = {}; private _defaultSearchParams: string; /** Override how the resolver deals with generating bundle ids. must be called before any bundles are added"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._extractAssetIdFromBundle('foo'",
+          "type": null
+        },
+        {
+          "name": "this._createBundleAssetId('foo'",
+          "type": null
+        },
+        {
+          "name": "'bar'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'[Resolver] GenerateBundleAssetId are not working correctly'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prefer",
+      "params": [
+        {
+          "name": "preferOrders",
+          "type": "PreferOrder[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Let the resolver know which assets you prefer to use when resolving assets. Multiple prefer user defined rules can be added. resolver.prefer({ // first look for something with the correct format, and then then correct resolution priority: ['format', 'resolution'], params:{ format:'webp', // prefer webp images resolution: 2, // prefer a resolution of 2 } }) resolver.add('foo', ['bar@2x.webp', 'bar@2x.png', 'bar.webp', 'bar.png']); resolver.resolveUrl('foo') // => 'bar@2x.webp'"
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(prefer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "prefer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!prefer.priority",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "keys",
+      "params": [
+        {
+          "name": "prefer.params",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": "void",
+      "description": "Set the base path to prepend to all urls when resolving resolver.basePath = 'https://home.com/'; resolver.add('foo', 'bar.ong'); resolver.resolveUrl('foo', 'bar.png'); // => 'https://home.com/bar.png' / public set basePath(basePath: string) { this._basePath = basePath; } public get basePath(): string { return this._basePath; } /** Set the root path for root-relative URLs. By default the `basePath`'s root is used. If no `basePath` is set, then the default value for browsers is `window.location.origin` // Application hosted on https://home.com/some-path/index.html resolver.basePath = 'https://home.com/some-path/'; resolver.rootPath = 'https://home.com/'; resolver.add('foo', '/bar.png'); resolver.resolveUrl('foo', '/bar.png'); // => 'https://home.com/bar.png' / public set rootPath(rootPath: string) { this._rootPath = rootPath; } public get rootPath(): string { return this._rootPath; } /** All the active URL parsers that help the parser to extract information and create an asset object-based on parsing the URL itself. Can be added using the extensions API resolver.add('foo', [ { resolution: 2, format: 'png', src: 'image@2x.png', }, { resolution:1, format:'png', src: 'image.png', }, ]); // With a url parser the information such as resolution and file format could extracted from the url itself: extensions.add({ extension: ExtensionType.ResolveParser, test: loadTextures.test, // test if url ends in an image parse: (value: string) => ({ resolution: parseFloat(Resolver.RETINA_PREFIX.exec(value)?.[1] ?? '1'), format: value.split('.').pop(), src: value, }), }); // Now resolution and format can be extracted from the url resolver.add('foo', [ 'image@2x.png', 'image.png', ]); / public get parsers(): ResolveURLParser[] { return this._parsers; } /** Used for testing, this resets the resolver to its initial state"
+    },
+    {
+      "name": "setBundleIdentifier",
+      "params": [
+        {
+          "name": "this._defaultBundleIdentifierOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDefaultSearchParams",
+      "params": [
+        {
+          "name": "searchParams",
+          "type": "string | Record<string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "unknown>",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Sets the default URL search parameters for the URL resolver. The urls can be specified as a string or an object."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof searchParams === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "keys",
+      "params": [
+        {
+          "name": "queryValues",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "encodeURIComponent",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "encodeURIComponent",
+      "params": [
+        {
+          "name": "queryValues[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "join",
+      "params": [
+        {
+          "name": "'&'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAlias",
+      "params": [
+        {
+          "name": "asset",
+          "type": "UnresolvedAsset",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "string[]",
+      "description": "Returns the aliases for a given asset"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof value === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "(v",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value?.src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addManifest",
+      "params": [
+        {
+          "name": "manifest",
+          "type": "AssetsManifest",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Add a manifest to the asset resolver. This is a nice way to add all the asset information in one go. generally a manifest would be built using a tool."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._manifest",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'[Resolver] Manifest already exists",
+          "type": null
+        },
+        {
+          "name": "this will be overwritten'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(bundle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBundle",
+      "params": [
+        {
+          "name": "bundle.name",
+          "type": null
+        },
+        {
+          "name": "bundle.assets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBundle",
+      "params": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "assets",
+          "type": "AssetsBundle['assets']",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "This adds a bundle of assets in one go so that you can resolve them as a group. For example you could add a bundle for each screen in you pixi app resolver.addBundle('animals', [ { alias: 'bunny', src: 'bunny.png' }, { alias: 'chicken', src: 'chicken.png' }, { alias: 'thumper', src: 'thumper.png' }, ]); // or resolver.addBundle('animals', { bunny: 'bunny.png', chicken: 'chicken.png', thumper: 'thumper.png', }); const resolvedAssets = await resolver.resolveBundle('animals');"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!Array.isArray(assets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "entries",
+      "params": [
+        {
+          "name": "assets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "([alias",
+          "type": null
+        },
+        {
+          "name": "src]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof src === 'string' || Array.isArray(src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(asset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof aliases === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "bundleAssetId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "(name",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "...bundleIds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "{\n                ...asset",
+          "type": null
+        },
+        {
+          "name": "alias",
+          "type": "ids",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "src",
+          "type": "srcs",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}\n            }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "aliases",
+          "type": "ArrayOr<UnresolvedAsset>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Tells the resolver what keys are associated with witch asset. The most important thing the resolver does // Single key, single asset: resolver.add({alias: 'foo', src: 'bar.png'); resolver.resolveUrl('foo') // => 'bar.png' // Multiple keys, single asset: resolver.add({alias: ['foo', 'boo'], src: 'bar.png'}); resolver.resolveUrl('foo') // => 'bar.png' resolver.resolveUrl('boo') // => 'bar.png' // Multiple keys, multiple assets: resolver.add({alias: ['foo', 'boo'], src: ['bar.png', 'bar.webp']}); resolver.resolveUrl('foo') // => 'bar.png' // Add custom data attached to the resolver Resolver.add({ alias: 'bunnyBooBooSmooth', src: 'bunny{png,webp}', data: { scaleMode:SCALE_MODES.NEAREST }, // Base texture options }); resolver.resolve('bunnyBooBooSmooth') // => { src: 'bunny.png', data: { scaleMode: SCALE_MODES.NEAREST } }"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(aliases",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "...(aliases as UnresolvedAsset[]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "aliases as UnresolvedAsset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.hasKey(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "key",
+          "type": "${key} overwriting`",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "convertToList",
+      "params": [
+        {
+          "name": "assets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(asset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "(src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof src === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createStringVariations",
+      "params": [
+        {
+          "name": "src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isArray",
+      "params": [
+        {
+          "name": "src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAlias",
+      "params": [
+        {
+          "name": "asset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isArray",
+      "params": [
+        {
+          "name": "aliasesToUse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "keyCheck",
+          "type": null
+        }
+      ],
+      "returnType": "keyCheck(aliasesToUse)",
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(srcs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof src !== 'object'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._parsers.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parser.test(src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parse",
+      "params": [
+        {
+          "name": "src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "src.loadParser || src.parser",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!aliasesToUse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "asset",
+          "type": "${formattedAsset.src}`",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "formattedAsset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(alias",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolveBundle",
+      "params": [
+        {
+          "name": "bundleIds",
+          "type": "ArrayOr<string>",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Record<string, ResolvedAsset> | Record<string, Record<string, ResolvedAsset>>",
+      "description": "If the resolver has had a manifest set via setManifest, this will return the assets urls for a given bundleId or bundleIds. // Manifest Example const manifest = { bundles: [ { name: 'load-screen', assets: [ { alias: 'background', src: 'sunset.png', }, { alias: 'bar', src: 'load-bar.{png,webp}', }, ], }, { name: 'game-screen', assets: [ { alias: 'character', src: 'robot.png', }, { alias: 'enemy', src: 'bad-guy.png', }, ], }, ] }; resolver.setManifest(manifest); const resolved = resolver.resolveBundle('load-screen');"
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(bundleId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "assetNames",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolve",
+      "params": [
+        {
+          "name": "assetNames",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const key in results",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolveUrl",
+      "params": [
+        {
+          "name": "key",
+          "type": "ArrayOr<string>",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "string | Record<string, string>",
+      "description": "Does exactly what resolve does, but returns just the URL rather than the whole asset object"
+    },
+    {
+      "name": "resolve",
+      "params": [
+        {
+          "name": "key as string",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof key !== 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in result",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "result as ResolvedAsset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolve",
+      "params": [
+        {
+          "name": "keys",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "ResolvedAsset",
+      "description": "Resolves each key in the list to an asset object. Another key function of the resolver! After adding all the various key/asset pairs. this will run the logic of finding which asset to return based on any preferences set using the `prefer` function by default the same key passed in will be returned if nothing is matched by the resolver. resolver.add('boo', 'bunny.png'); resolver.resolve('boo') // => { src: 'bunny.png' } // Will return the same string as no key was added for this value.. resolver.resolve('another-thing.png') // => { src: 'another-thing.png' }"
+    },
+    {
+      "name": "resolve",
+      "params": [
+        {
+          "name": "keys",
+          "type": "string[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Record<string, ResolvedAsset>",
+      "description": null
+    },
+    {
+      "name": "resolve",
+      "params": [
+        {
+          "name": "keys",
+          "type": "ArrayOr<string>",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "ResolvedAsset | Record<string, ResolvedAsset>",
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._resolverHash[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._assetMap[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(priorityKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "value",
+          "type": "unknown",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "filter",
+      "params": [
+        {
+          "name": "(asset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "asset[priorityKey as keyof ResolvedAsset]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "filteredAssets.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hasKey",
+      "params": [
+        {
+          "name": "key",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks if an asset with a given key exists in the resolver"
+    },
+    {
+      "name": "hasBundle",
+      "params": [
+        {
+          "name": "key",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks if a bundle with the given key exists in the resolver"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < assets.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "find",
+      "params": [
+        {
+          "name": "preference",
+          "type": "PreferOrder",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "asset.format",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "preferred",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._defaultSearchParams",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "url",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._basePath || this._rootPath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toAbsolute",
+      "params": [
+        {
+          "name": "formattedAsset.src",
+          "type": null
+        },
+        {
+          "name": "this._basePath",
+          "type": null
+        },
+        {
+          "name": "this._rootPath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUrlExtension",
+      "params": [
+        {
+          "name": "formattedAsset.src",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "progressSize !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUrlExtension",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "'.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "'?'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shift",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "'#'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shift",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

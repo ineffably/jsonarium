@@ -1,0 +1,125 @@
+{
+  "type": "interface",
+  "name": "GpuProgramOptions",
+  "sourcePath": "rendering/renderers/gpu/shader/GpuProgram.ts",
+  "extends": [],
+  "description": "The wgsl source code of the shader. */ source: string; /** The main function to run in this shader */ entryPoint?: string; } /** The options for the gpu program",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "name",
+      "type": "string",
+      "optional": true,
+      "description": "the name of the program, this is added to the label of the GPU Program created under the hood. Makes it much easier to debug!"
+    },
+    {
+      "name": "fragment",
+      "type": "ProgramSource",
+      "optional": true,
+      "description": "The fragment glsl shader source."
+    },
+    {
+      "name": "vertex",
+      "type": "ProgramSource",
+      "optional": true,
+      "description": "The vertex glsl shader source."
+    },
+    {
+      "name": "layout",
+      "type": "ProgramLayout",
+      "optional": true,
+      "description": "The layout of the program. If not provided, it will be generated from the shader sources."
+    },
+    {
+      "name": "gpuLayout",
+      "type": "ProgramPipelineLayoutDescription",
+      "optional": true,
+      "description": "The gpu layout of the program. If not provided, it will be generated from the shader sources."
+    },
+    {
+      "name": "programCache",
+      "type": "Record<string, GpuProgram> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//gpuweb.github.io/gpuweb/#index\n * @example\n *\n * // Create a new program\n * const program = new GpuProgram({\n *   vertex: {\n *    source: '...',\n *    entryPoint: 'main',\n *   },\n *   fragment:{\n *    source: '...',\n *    entryPoint: 'main',\n *   },\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Note",
+      "type": "Both fragment and vertex shader sources can coexist within a single WGSL source file\n * this can make things a bit simpler.\n *\n * For optimal usage and best performance, it help to reuse programs whenever possible.\n * The {@link GpuProgram.from} helper function is designed for this purpose, utilizing an\n * internal cache to efficiently manage and retrieve program instances.\n * By leveraging this function, you can significantly reduce overhead and enhance the performance of your rendering pipeline.\n *\n * An important distinction between WebGL and WebGPU regarding program data retrieval:\n * While WebGL allows extraction of program information directly from its compiled state,\n * WebGPU does not offer such a capability. Therefore, in the context of WebGPU, we're required\n * to manually extract the program layout information from the source code itself.\n * @category rendering\n * @advanced\n */\nexport class GpuProgram\n{\n    /** The fragment glsl shader source. */\n    public readonly fragment?: ProgramSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "ProgramSource",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "respectively",
+      "type": "* [\n     *   { \"u_time\": 0 },\n     *   { \"u_resolution\": 1 }\n     * ]\n     */\n    public readonly layout: ProgramLayout",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "groups",
+      "type": "* [\n     *   // First bind group layout entries\n     *   [{ binding: 0, visibility: GPUShaderStage.VERTEX, type: \"uniform-buffer\" }],\n     *   // Second bind group layout entries\n     *   [{ binding: 1, visibility: GPUShaderStage.FRAGMENT, type: \"sampler\" },\n     *    { binding: 2, visibility: GPUShaderStage.FRAGMENT, type: \"sampled-texture\" }]\n     * ]\n     */\n    public readonly gpuLayout: ProgramPipelineLayoutDescription",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_cacheKey",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "structsAndGroups",
+      "type": "StructsAndGroups",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_attributeData",
+      "type": "Record<string, ExtractedAttributeData>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoAssignGlobalUniforms",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoAssignLocalUniforms",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GpuProgramOptions)\n    {\n        const { fragment, vertex, layout, gpuLayout, name } = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GpuProgramOptions): GpuProgram\n    {\n        // eslint-disable-next-line max-len\n        const key = `${options.vertex.source}:${options.fragment.source}:${options.fragment.entryPoint}:${options.vertex.entryPoint}`",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

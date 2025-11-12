@@ -1,0 +1,55 @@
+{
+  "type": "interface",
+  "name": "CacheAsTextureMixin",
+  "sourcePath": "scene/container/container-mixins/cacheAsTextureMixin.ts",
+  "extends": [
+    "Required"
+  ],
+  "description": "The CacheAsTextureMixin interface provides methods and properties for caching a container as a texture. This can improve rendering performance for complex static containers by allowing them to be rendered as a single texture. It includes methods to enable or disable caching, update the cached texture, and check 1if the container is currently cached.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "cacheAsTexture",
+      "type": "(val: boolean | CacheAsTextureOptions) => void",
+      "optional": false,
+      "description": "Caches this container as a texture. This allows the container to be rendered as a single texture, which can improve performance for complex static containers. ```ts // Basic caching container.cacheAsTexture(true); // With custom options container.cacheAsTexture({ resolution: 2, antialias: true, }); // Disable caching container.cacheAsTexture(false); // Cache a complex UI const ui = new Container(); // Add multiple children... ui.cacheAsTexture(true); ui.updateCacheTexture(); // Update if contents change ``` If false, disables caching. Can also pass options object to configure caching behavior."
+    },
+    {
+      "name": "updateCacheTexture",
+      "type": "() => void",
+      "optional": false,
+      "description": "Updates the cached texture of this container. This will flag the container's cached texture to be redrawn on the next render. ```ts // Basic update after changes container.updateCacheTexture(); ```"
+    },
+    {
+      "name": "cacheAsBitmap",
+      "type": "boolean",
+      "optional": false,
+      "description": "Legacy property for backwards compatibility with PixiJS v7 and below. Use `cacheAsTexture` instead."
+    },
+    {
+      "name": "isCachedAsTexture",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "cacheAsTextureMixin",
+      "type": "Partial<Container> = {\n    get isCachedAsTexture(): boolean\n    {\n        return !!this.renderGroup?.isCachedAsTexture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "val",
+      "type": "boolean | CacheAsTextureOptions): void\n    {\n        if (typeof val === 'boolean' && val === false)\n        {\n            this.disableRenderGroup()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "val",
+      "type": "boolean)\n    {\n        // #if _DEBUG\n        deprecation('v8.6.0', 'cacheAsBitmap is deprecated, use cacheAsTexture instead.')",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "type": "class",
+  "name": "TextureGCSystem",
+  "sourcePath": "rendering/renderers/shared/texture/TextureGCSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "Options for the {@link TextureGCSystem}. / export interface TextureGCSystemOptions { /** If set to true, this will enable the garbage collector on the GPU. / textureGCActive: boolean; /** / textureGCAMaxIdle: number; /** The maximum idle frames before a texture is destroyed by garbage collection. / textureGCMaxIdle: number; /** Frames between two garbage collections. / textureGCCheckCountMax: number; } /** System plugin to the renderer to manage texture garbage collection on the GPU, ensuring that it does not get clogged up with textures that are no longer being used.",
+  "category": "rendering",
+  "deprecated": true,
+  "methods": [
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "options",
+          "type": "TextureGCSystemOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "run",
+      "params": [],
+      "returnType": "void",
+      "description": "Checks to see when the last time a texture was used. If the texture has not been used for a specified amount of time, it will be removed from the GPU. / protected postrender(): void { if (!this._renderer.renderingToScreen) { return; } this.count++; if (!this.active) return; this.checkCount++; if (this.checkCount > this.checkCountMax) { this.checkCount = 0; this.run(); } } /** Checks to see when the last time a texture was used. If the texture has not been used for a specified amount of time, it will be removed from the GPU."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < managedTextures.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "texture.autoGarbageCollect\n                && texture.resource\n                && texture._touched > -1\n                && this.count - texture._touched > this.maxIdle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

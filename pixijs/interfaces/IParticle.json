@@ -1,0 +1,197 @@
+{
+  "type": "interface",
+  "name": "IParticle",
+  "sourcePath": "scene/particle-container/shared/Particle.ts",
+  "extends": [],
+  "description": "Represents a particle with properties for position, scale, rotation, color, and texture. Particles are lightweight alternatives to sprites, optimized for use in particle systems. ```ts // Create a basic particle const particle = new Particle({ texture: Texture.from('particle.png'), x: 100, y: 100, scaleX: 0.5, scaleY: 0.5, rotation: Math.PI / 4,  // 45 degrees tint: 0xff0000,        // Red tint alpha: 0.8             // Slightly transparent }); // Modify particle properties particle.x += 10;          // Move right particle.rotation += 0.1;   // Rotate slightly particle.alpha = 0.5;      // Change transparency // Use anchor points (0-1 range) particle.anchorX = 0.5;    // Center horizontally particle.anchorY = 0.5;    // Center vertically ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "x",
+      "type": "number",
+      "optional": false,
+      "description": "The x-coordinate of the particle position"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "optional": false,
+      "description": "The y-coordinate of the particle position"
+    },
+    {
+      "name": "scaleX",
+      "type": "number",
+      "optional": false,
+      "description": "The horizontal scale factor of the particle"
+    },
+    {
+      "name": "scaleY",
+      "type": "number",
+      "optional": false,
+      "description": "The vertical scale factor of the particle"
+    },
+    {
+      "name": "anchorX",
+      "type": "number",
+      "optional": false,
+      "description": "The x-coordinate of the particle's anchor point (0-1 range)"
+    },
+    {
+      "name": "anchorY",
+      "type": "number",
+      "optional": false,
+      "description": "The y-coordinate of the particle's anchor point (0-1 range)"
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "optional": false,
+      "description": "The rotation of the particle in radians"
+    },
+    {
+      "name": "color",
+      "type": "number",
+      "optional": false,
+      "description": "The color of the particle as a 32-bit RGBA value"
+    },
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": false,
+      "description": "The texture used to render this particle"
+    },
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": false,
+      "description": "Configuration options for creating a new particle. All properties except texture are optional and will use default values if not specified. ```ts // Create a basic red particle const particle = new Particle({ texture: Texture.from('particle.png'), tint: 0xff0000, alpha: 0.8 }); // Create a scaled and rotated particle const rotatedParticle = new Particle({ texture: Texture.from('star.png'), x: 100, y: 100, scaleX: 2, scaleY: 2, rotation: Math.PI / 4, anchorX: 0.5, anchorY: 0.5 }); // Use color strings for tint const coloredParticle = new Particle({ texture: Texture.from('circle.png'), tint: '#ff00ff',     // Magenta alpha: 0.5,          // Half transparent x: 200, y: 200 }); ``` / export type ParticleOptions = Omit<Partial<IParticle>, 'color'> & { /** The texture used to render this particle"
+    },
+    {
+      "name": "tint",
+      "type": "ColorSource",
+      "optional": true,
+      "description": "The tint color as a hex number or CSS color string"
+    },
+    {
+      "name": "alpha",
+      "type": "number",
+      "optional": true,
+      "description": "The alpha transparency (0-1)"
+    },
+    {
+      "name": "x",
+      "type": "100,\n *   y: 100,\n *   scaleX: 0.5,\n *   scaleY: 0.5,\n *   rotation: Math.PI / 2,\n *   color: 0xff0000,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "anchorX",
+      "type": "0.5,\n     *     anchorY: 0.5,\n     *     alpha: 0.8\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultOptions",
+      "type": "Partial<ParticleOptions> = {\n        anchorX: 0,\n        anchorY: 0,\n        x: 0,\n        y: 0,\n        scaleX: 1,\n        scaleY: 1,\n        rotation: 0,\n        tint: 0xffffff,\n        alpha: 1,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "anchorX",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "anchorY",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "scaleX",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "scaleY",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_alpha",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_tint",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "Texture | ParticleOptions)\n    {\n        if (options instanceof Texture)\n        {\n            this.texture = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('particle.png'),\n     *     alpha: 0.5\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._alpha = Math.min(Math.max(value, 0), 1)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('particle.png'),\n     *     tint: 0xff0000\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "ColorSource)\n    {\n        this._tint = Color.shared.setValue(value ?? 0xFFFFFF).toBgrNumber()",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

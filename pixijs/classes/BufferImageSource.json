@@ -1,0 +1,139 @@
+{
+  "type": "class",
+  "name": "BufferImageSource",
+  "sourcePath": "rendering/renderers/shared/texture/sources/BufferImageSource.ts",
+  "extends": "TextureSource",
+  "implements": [],
+  "description": "Options for creating a BufferImageSource. / export interface BufferSourceOptions extends TextureSourceOptions<TypedArray | ArrayBuffer> { width: number; height: number; } /** A texture source that uses a TypedArray or ArrayBuffer as its resource. It automatically determines the format based on the type of TypedArray provided.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "options.width * options.height * 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!format",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "buffer instanceof Float32Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "buffer instanceof Int32Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "buffer instanceof Uint32Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "buffer instanceof Int16Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "buffer instanceof Uint16Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "buffer instanceof Int8Array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            ...options",
+          "type": null
+        },
+        {
+          "name": "resource",
+          "type": "buffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "resource",
+          "type": "any",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "resource is TypedArray | ArrayBuffer",
+      "description": null
+    }
+  ],
+  "properties": []
+}

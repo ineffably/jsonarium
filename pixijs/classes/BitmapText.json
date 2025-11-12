@@ -1,0 +1,175 @@
+{
+  "type": "class",
+  "name": "BitmapText",
+  "sourcePath": "scene/text-bitmap/BitmapText.ts",
+  "extends": "AbstractText",
+  "implements": [],
+  "description": "A BitmapText object creates text using pre-rendered bitmap fonts. It supports both loaded bitmap fonts (XML/FNT) and dynamically generated ones. To split a line you can use '\\n' in your text string, or use the `wordWrap` and `wordWrapWidth` style properties. Key Features: - High-performance text rendering using pre-generated textures - Support for both pre-loaded and dynamic bitmap fonts - Compatible with MSDF/SDF fonts for crisp scaling - Automatic font reuse and optimization Performance Benefits: - Faster rendering compared to Canvas/HTML text - Lower memory usage for repeated characters - More efficient text changes - Better batching capabilities Limitations: - Full character set support is impractical due to the number of chars (mainly affects CJK languages) - Initial font generation/loading overhead - Less flexible styling compared to Canvas/HTML text ```ts import { BitmapText, BitmapFont } from 'pixi.js'; // Dynamic font generation const dynamicText = new BitmapText({ text: 'Hello Pixi!', style: { fontFamily: 'Arial', fontSize: 24, fill: 0xff1010, align: 'center', } }); // Pre-installed font usage BitmapFont.install({ name: 'myFont', style: { fontFamily: 'Arial', } }); const preinstalledText = new BitmapText({ text: 'Hello Pixi!', style: { fontFamily: 'myFont', fontSize: 24, fill: 0xff1010, align: 'center', } }); // Load and use external bitmap font, if the font supports MSDF/SDF then it will be used const font = await Assets.load('fonts/myFont.fnt'); const loadedFontText = new BitmapText({ text: 'Hello Pixi!', style: { fontFamily: 'myLoadedFont', // Name from .fnt file fontSize: 24, fill: 0xff1010, align: 'center', } }); // Multiline text with word wrap const wrappedText = new BitmapText({ text: 'This is a long text that will wrap automatically', style: { fontFamily: 'Arial', fontSize: 24, wordWrap: true, wordWrapWidth: 200, } }); ``` Font Types: 1. Pre-loaded Bitmap Fonts: - Load via Asset Manager (XML/FNT formats) - Support for MSDF/SDF fonts - Create using tools like https://msdf-bmfont.donmccurdy.com/ 2. Dynamic Bitmap Fonts: - Generated at runtime from system fonts - Automatic font reuse and optimization - Smart scaling for similar font sizes Font Management: - Automatic font generation when needed - Manual pre-installation via `BitmapFont.install` - Smart font reuse to optimize memory - Scale existing fonts instead of generating new ones when possible",
+  "category": "text",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "ensureTextOptions",
+      "params": [
+        {
+          "name": "args",
+          "type": null
+        },
+        {
+          "name": "'BitmapText'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        },
+        {
+          "name": "TextStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBounds",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "this.text",
+          "type": null
+        },
+        {
+          "name": "this._style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "stroke",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "directly",
+      "params": [
+        {
+          "name": "will trigger warning",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BitmapText",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "2 // This will be ignored\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "install",
+      "params": [
+        {
+          "name": "name",
+          "type": "'MyFont'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{\n     *         fontFamily: 'Arial'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "*     }",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": "2 // Resolution is set here\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BitmapText",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{\n     *         fontFamily: 'MyFont' // Uses font's resolution\n     *     }\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "// eslint-disable-next-line max-len\n                '[BitmapText] dynamically updating the resolution is not supported. Resolution should be managed by the BitmapFont.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,600 @@
+{
+  "type": "class",
+  "name": "HTMLTextureFile",
+  "sourcePath": "loader/filetypes/HTMLTextureFile.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "loader",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "File",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function HTMLTextureFile (loader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "height === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "IsPlainObject(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'key'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'url'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'xhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'extension'",
+          "type": null
+        },
+        {
+          "name": "extension",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'width'",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'height'",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "fileConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "http",
+          "type": "//www.w3.org/2000/svg\">'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "'<foreignObject width=\"100%\" height=\"100%\">'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "http",
+          "type": "//www.w3.org/1999/xhtml\">'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "this.xhrLoader.responseText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "'</body>'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "'</foreignObject>'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "'</svg>'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "join",
+      "params": [
+        {
+          "name": "'\\n'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Blob",
+      "params": [
+        {
+          "name": "svg",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": "'image/svg+xml;charset",
+          "optional": true,
+          "default": "utf-8' }"
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "catch",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcessComplete",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Image",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "revokeObjectURL",
+      "params": [
+        {
+          "name": "_this.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcessComplete",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "revokeObjectURL",
+      "params": [
+        {
+          "name": "_this.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcessError",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createObjectURL",
+      "params": [
+        {
+          "name": "this.data",
+          "type": null
+        },
+        {
+          "name": "blob",
+          "type": null
+        },
+        {
+          "name": "'image/svg+xml'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addImage",
+      "params": [
+        {
+          "name": "this.key",
+          "type": null
+        },
+        {
+          "name": "this.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "htmlTexture",
+      "params": [
+        {
+          "name": "'instructions'",
+          "type": null
+        },
+        {
+          "name": "'content/intro.html'",
+          "type": null
+        },
+        {
+          "name": "256",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "htmlTexture",
+      "params": [
+        {
+          "name": "key",
+          "type": "'instructions'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "'content/intro.html'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "256",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "512\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "htmlTexture",
+      "params": [
+        {
+          "name": "'instructions'",
+          "type": null
+        },
+        {
+          "name": "'content/intro.html'",
+          "type": null
+        },
+        {
+          "name": "256",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "'instructions'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'htmlTexture'",
+          "type": null
+        },
+        {
+          "name": "function (key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < key.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "new HTMLTextureFile(this",
+          "type": null
+        },
+        {
+          "name": "key[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

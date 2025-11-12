@@ -1,0 +1,121 @@
+{
+  "type": "interface",
+  "name": "SpriteSheetJson",
+  "sourcePath": "spritesheet/spritesheetAsset.ts",
+  "extends": [
+    "SpritesheetData"
+  ],
+  "description": "Interface for the JSON data structure of a spritesheet. This is used to define the structure of the JSON file that describes a spritesheet. It includes metadata about the spritesheet and the frames it contains.",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "meta",
+      "type": "{\n        image: string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "related_multi_packs",
+      "type": "string[]",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "keys",
+      "type": "string[], asset: Spritesheet, ignoreMultiPack: boolean)\n{\n    const out: Record<string, any> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "key",
+      "type": "string) =>\n    {\n        out[key] = asset",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "item",
+      "type": "Spritesheet, i) =>\n        {\n            const out2 = getCacheableAssets([`${basePath}/${asset.data.meta.related_multi_packs[i]}`], item, true)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "cache",
+      "type": "{\n        test: (asset: Spritesheet) => asset instanceof Spritesheet,\n        getCacheableAssets: (keys: string[], asset: Spritesheet) => getCacheableAssets(keys, asset, false),\n    },\n    /** Resolve the resolution of the asset. */\n    resolver: {\n        extension: {\n            type: ExtensionType.ResolveParser,\n            name: 'resolveSpritesheet',\n        },\n        test: (value: string): boolean =>\n        {\n            const tempURL = value.split('?')[0]",
+      "optional": false,
+      "description": "Asset extension for loading spritesheets import { Assets } from 'pixi.js'; Assets.load({ alias: 'spritesheet', src: 'path/to/spritesheet.json', data: { ignoreMultiPack: true, textureOptions: { scaleMode: \"nearest\" } } }) / export const spritesheetAsset = { extension: ExtensionType.Asset, /** Handle the caching of the related Spritesheet Textures"
+    },
+    {
+      "name": "parse",
+      "type": "(value: string) =>\n        {\n            const split = value.split('.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resolution",
+      "type": "parseFloat(Resolver.RETINA_PREFIX.exec(value)?.[1] ?? '1'),\n                format: split[split.length - 2],\n                src: value,\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "loader",
+      "type": "{\n        /** used for deprecation purposes */\n        name: 'spritesheetLoader',\n        id: 'spritesheet',\n\n        extension: {\n            type: ExtensionType.LoadParser,\n            priority: LoaderParserPriority.Normal,\n            name: 'spritesheetLoader',\n        },\n\n        async testParse(asset: SpriteSheetJson, options: ResolvedAsset): Promise<boolean>\n        {\n            return (path.extname(options.src).toLowerCase() === '.json' && !!asset.frames)",
+      "optional": false,
+      "description": "Loader plugin that parses sprite sheets! once the JSON has been loaded this checks to see if the JSON is spritesheet data. If it is, we load the spritesheets image and parse the data into Spritesheet All textures in the sprite sheet are then added to the cache"
+    },
+    {
+      "name": "asset",
+      "type": "SpriteSheetJson,\n            options: ResolvedAsset<{\n                texture?: Texture,\n                imageFilename?: string,\n                ignoreMultiPack?: boolean,\n                textureOptions?: TextureSourceOptions,\n                cachePrefix?: string,\n            }>,\n            loader?: Loader\n        ): Promise<Spritesheet>\n        {\n            const {\n                texture: imageTexture, // if user need to use preloaded texture\n                imageFilename, // if user need to use custom filename (not from jsonFile.meta.image)\n                textureOptions, // if user need to set texture options on texture\n                cachePrefix, // if user need to use custom cache prefix\n            } = options?.data ?? {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "src",
+      "type": "imagePath, data: textureOptions }])",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "texture.source,\n                data: asset,\n                cachePrefix\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//github.com/rocket-ua/pixi-tps-loader/blob/master/src/ResourceLoader.js\n            const multiPacks = asset?.meta?.related_multi_packs",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "promises",
+      "type": "Promise<Spritesheet<SpriteSheetJson>>[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "src",
+      "type": "itemUrl,\n                        data: {\n                            textureOptions,\n                            ignoreMultiPack: true,\n                        }\n                    }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "spritesheet",
+      "type": "Spritesheet, _resolvedAsset, loader)\n        {\n            await loader.unload(spritesheet.textureSource._sourceOrigin)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

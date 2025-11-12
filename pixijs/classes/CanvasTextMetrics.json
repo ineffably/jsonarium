@@ -1,0 +1,551 @@
+{
+  "type": "class",
+  "name": "CanvasTextMetrics",
+  "sourcePath": "scene/text/canvas/CanvasTextMetrics.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Creates a new Intl.Segmenter object. / new(): ISegmenter; }; } /** A number, or a string containing a number. / export interface FontMetrics { ascent: number; descent: number; fontSize: number; } type CharacterWidthCache = Record<string, number>; // Default settings used for all getContext calls const contextSettings: ICanvasRenderingContext2DSettings = { // TextMetrics requires getImageData readback for measuring fonts. willReadFrequently: true, }; /** The TextMetrics object represents the measurement of a block of text with a specified style. import { CanvasTextMetrics, TextStyle } from 'pixi.js'; const style = new TextStyle({ fontFamily: 'Arial', fontSize: 24, fill: 0xff1010, align: 'center', }); const textMetrics = CanvasTextMetrics.measureText('Your text', style);",
+  "category": "text",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "text = ' '",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": "TextStyle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canvas",
+          "type": "ICanvas",
+          "optional": true,
+          "default": "CanvasTextMetrics._canvas"
+        },
+        {
+          "name": "wordWrap",
+          "type": "boolean",
+          "optional": true,
+          "default": "style.wordWrap"
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": "CanvasTextMetrics",
+      "description": "Measures the supplied string of text and returns a Rectangle."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "CanvasTextMetrics._measurementCache.has(textKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "textKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fontStringFromTextStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureFont",
+      "params": [
+        {
+          "name": "font",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fontProperties.fontSize === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getContext",
+      "params": [
+        {
+          "name": "'2d'",
+          "type": null
+        },
+        {
+          "name": "contextSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "/(?:\\r\\n|\\r|\\n",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < lines.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "maxLineWidth",
+          "type": null
+        },
+        {
+          "name": "lineWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.dropShadow",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "lineHeight",
+          "type": null
+        },
+        {
+          "name": "fontProperties.fontSize + (strokeWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.dropShadow",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CanvasTextMetrics",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "lines",
+          "type": null
+        },
+        {
+          "name": "lineWidths",
+          "type": null
+        },
+        {
+          "name": "lineHeight + style.leading",
+          "type": null
+        },
+        {
+          "name": "maxLineWidth",
+          "type": null
+        },
+        {
+          "name": "fontProperties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "textKey",
+          "type": null
+        },
+        {
+          "name": "measurements",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "CanvasTextMetrics.experimentalLetterSpacingSupported",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "CanvasTextMetrics.experimentalLetterSpacing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "metricWidth > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "useExperimentalLetterSpacing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "graphemeSegmenter",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "metricWidth",
+          "type": null
+        },
+        {
+          "name": "boundsWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getContext",
+      "params": [
+        {
+          "name": "'2d'",
+          "type": null
+        },
+        {
+          "name": "contextSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < tokens.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "CanvasTextMetrics._isNewline(token",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!collapseNewlines",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "collapseSpaces",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isBreakingSpace",
+      "params": [
+        {
+          "name": "token",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isBreakingSpace",
+      "params": [
+        {
+          "name": "line[line.length - 1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currIsBreakingSpace && lastIsBreakingSpace",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tokenWidth > wordWrapWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "line !== ''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "CanvasTextMetrics.canBreakWords(token",
+          "type": null
+        },
+        {
+          "name": "style.breakWords",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "wordWrapSplit",
+      "params": [
+        {
+          "name": "token",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let j = 0; j < characters.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "characters[j + k]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!CanvasTextMetrics.canBreakChars(lastChar",
+          "type": null
+        },
+        {
+          "name": "nextChar",
+          "type": null
+        },
+        {
+          "name": "token",
+          "type": null
+        },
+        {
+          "name": "j",
+          "type": null
+        },
+        {
+          "name": "style.breakWords",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "characterWidth + width > wordWrapWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "line.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

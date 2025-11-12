@@ -1,0 +1,299 @@
+{
+  "type": "interface",
+  "name": "AccessibilitySystemOptions",
+  "sourcePath": "accessibility/AccessibilitySystem.ts",
+  "extends": [],
+  "description": "const KEY_CODE_TAB = 9; const DIV_TOUCH_SIZE = 100; const DIV_TOUCH_POS_X = 0; const DIV_TOUCH_POS_Y = 0; const DIV_TOUCH_ZINDEX = 2; const DIV_HOOK_SIZE = 1; const DIV_HOOK_POS_X = -1000; const DIV_HOOK_POS_Y = -1000; const DIV_HOOK_ZINDEX = 2; /** Initialisation options for the accessibility system when used with an Application.",
+  "category": "accessibility",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "accessibilityOptions",
+      "type": "AccessibilityOptions",
+      "optional": true,
+      "description": "Options for the accessibility system"
+    },
+    {
+      "name": "enabledByDefault",
+      "type": "boolean",
+      "optional": true,
+      "description": "The options for the accessibility system. / export interface AccessibilityOptions { /** Whether to enable accessibility features on initialization instead of waiting for tab key"
+    },
+    {
+      "name": "debug",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to visually show the accessibility divs for debugging"
+    },
+    {
+      "name": "activateOnTab",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to allow tab key press to activate accessibility features"
+    },
+    {
+      "name": "deactivateOnMouseMove",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to deactivate accessibility when mouse moves"
+    },
+    {
+      "name": "enabledByDefault",
+      "type": "false,\n        /**\n         * Whether to visually show the accessibility divs for debugging\n         * @default false\n         */\n        debug: false,\n        /**\n         * Whether to activate accessibility when tab key is pressed\n         * @default true\n         */\n        activateOnTab: true,\n        /**\n         * Whether to deactivate accessibility when mouse moves\n         * @default true\n         */\n        deactivateOnMouseMove: true,\n    }",
+      "optional": false,
+      "description": "The Accessibility system provides screen reader and keyboard navigation support for PixiJS content. It creates an accessible DOM layer over the canvas that can be controlled programmatically or through user interaction. By default, the system activates when users press the tab key. This behavior can be customized through options: ```js const app = new Application({ accessibilityOptions: { // Enable immediately instead of waiting for tab enabledByDefault: true, // Disable tab key activation activateOnTab: false, // Show/hide accessibility divs debug: false, // Prevent accessibility from being deactivated when mouse moves deactivateOnMouseMove: false, } }); ``` The system can also be controlled programmatically by accessing the `renderer.accessibility` property: ```js app.renderer.accessibility.setAccessibilityEnabled(true); ``` To make individual containers accessible: ```js container.accessible = true; ``` There are several properties that can be set on a Container to control its accessibility which can be found here: {@link AccessibleOptions}. / export class AccessibilitySystem implements System<AccessibilitySystemOptions> { /** @ignore */ public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ], name: 'accessibility', } as const; /** The default options used by the system. You can set these before initializing the {@link Application} to change the default behavior. ```js import { AccessibilitySystem } from 'pixi.js'; AccessibilitySystem.defaultOptions.enabledByDefault = true; const app = new Application() app.init() ``` / public static defaultOptions: AccessibilityOptions = { /** Whether to enable accessibility features on initialization"
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_hookDiv",
+      "type": "HTMLElement | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_div",
+      "type": "HTMLElement | null = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_pools",
+      "type": "Record<string, AccessibleHTMLElement[]> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_children",
+      "type": "Container[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_canvasObserver",
+      "type": "CanvasObserver",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_isRunningTests",
+      "type": "boolean = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_boundOnKeyDown",
+      "type": "(e: KeyboardEvent) => void = this._onKeyDown.bind(this)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_boundOnMouseMove",
+      "type": "(e: MouseEvent) => void = this._onMouseMove.bind(this)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer, private readonly _mobileInfo: isMobileResult = isMobile)\n    {\n        this._hookDiv = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "domElement",
+      "type": "this._div,\n                renderer: this._renderer,\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "childList",
+      "type": "true, subtree: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container): void\n    {\n        if (!container.visible || !container.accessibleChildren)\n        {\n            return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "AccessibilitySystemOptions): void\n    {\n        // Ensure we have the accessibilityOptions object\n        const defaultOpts = AccessibilitySystem.defaultOptions",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "accessibilityOptions",
+      "type": "{\n                ...defaultOpts,\n                ...(options?.accessibilityOptions || {})\n            }\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "div",
+      "type": "AccessibleHTMLElement): void\n    {\n        div.innerHTML = `type: ${div.type}</br> title : ${div.title}</br> tabIndex: ${div.tabIndex}`",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "hitArea",
+      "type": "Rectangle): void\n    {\n        if (hitArea.x < 0)\n        {\n            hitArea.width += hitArea.x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "viewWidth, height: viewHeight } = this._renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "T): void\n    {\n        const pool = this._getPool(container.accessibleType)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "with",
+      "type": "* - the old tabIndex if container.interactive is false\n             * - the old aria-label if container.accessibleHint is not set\n             */\n            div.innerHTML = ''",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "transparent",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "events",
+      "type": "none",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "padding",
+      "type": "0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "margin",
+      "type": "0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "border",
+      "type": "0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "outline",
+      "type": "0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "background",
+      "type": "transparent",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "sizing",
+      "type": "border-box",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "select",
+      "type": "none",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "select",
+      "type": "none",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "select",
+      "type": "none",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "select",
+      "type": "none",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rv",
+      "type": ".*Gecko\\//))\n            {\n                // FireFox needs this to announce only the new button name\n                div.setAttribute('aria-relevant', 'additions')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "e",
+      "type": "UIEvent, type: string[]): void\n    {\n        const { container: target } = e.target as AccessibleHTMLElement",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "event",
+      "type": "FederatedEvent = Object.assign(new FederatedEvent(boundary), { target })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "e",
+      "type": "MouseEvent): void\n    {\n        this._dispatchEvent(e, ['click', 'pointertap', 'tap'])",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "e",
+      "type": "FocusEvent): void\n    {\n        if (!(e.target as Element).getAttribute('aria-live'))\n        {\n            (e.target as Element).setAttribute('aria-live', 'assertive')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "e",
+      "type": "FocusEvent): void\n    {\n        if (!(e.target as Element).getAttribute('aria-live'))\n        {\n            (e.target as Element).setAttribute('aria-live', 'polite')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "e",
+      "type": "KeyboardEvent): void\n    {\n        if (e.keyCode !== KEY_CODE_TAB || !this._activateOnTab)\n        {\n            return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "e",
+      "type": "MouseEvent): void\n    {\n        if (e.movementX === 0 && e.movementY === 0)\n        {\n            return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "enabled",
+      "type": "boolean): void\n    {\n        if (enabled)\n        {\n            this._activate()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "accessibleType",
+      "type": "string): AccessibleHTMLElement[]\n    {\n        if (!this._pools[accessibleType])\n        {\n            this._pools[accessibleType] = []",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

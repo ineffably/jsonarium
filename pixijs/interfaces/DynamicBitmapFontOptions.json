@@ -1,0 +1,125 @@
+{
+  "type": "interface",
+  "name": "DynamicBitmapFontOptions",
+  "sourcePath": "scene/text-bitmap/DynamicBitmapFont.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "style",
+      "type": "TextStyle\n    skipKerning?: boolean\n    resolution?: number\n    padding?: number\n    overrideFill?: boolean\n    overrideSize?: boolean\n    textureSize?: number\n    mipmap?: boolean\n    textureStyle?: TextureStyle | TextureStyleOptions\n}\n\n/**\n * A BitmapFont that generates its glyphs dynamically.\n * @category text\n * @internal\n */\nexport class DynamicBitmapFont extends AbstractBitmapFont<DynamicBitmapFont>\n{\n    public static defaultOptions: DynamicBitmapFontOptions = {\n        textureSize: 512,\n        style: new TextStyle(),\n        mipmap: true,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "pages",
+      "type": "{canvasAndContext?: CanvasAndContext, texture: Texture}[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_padding",
+      "type": "number = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_measureCache",
+      "type": "Record<string, number> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_currentChars",
+      "type": "string[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_style",
+      "type": "TextStyle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_skipKerning",
+      "type": "boolean = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_textureSize",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_mipmap",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_textureStyle",
+      "type": "TextureStyle",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DynamicBitmapFontOptions)\n    {\n        super()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "chars",
+      "type": "string): void\n    {\n        const charList = CanvasTextMetrics.graphemeSegmenter(chars)\n            .filter((char) => !this._currentChars.includes(char))\n            .filter((char, index, self) => self.indexOf(char) === index)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "id",
+      "type": "char.codePointAt(0),\n                xOffset: -this._padding,\n                yOffset: -this._padding,\n                xAdvance,\n                kerning: {},\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "textureSource,\n                    frame,\n                })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "newChars",
+      "type": "string[], context: ICanvasRenderingContext2D): void\n    {\n        const measureCache = this._measureCache",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "canvasAndContext",
+      "type": "CanvasAndContext, texture: Texture}\n    {\n        this._currentPageIndex++",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "new ImageSource({\n                resource: canvasAndContext.canvas,\n                resolution,\n                alphaMode: 'premultiply-alpha-on-upload',\n                autoGenerateMipmaps: this._mipmap,\n            }),\n\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "ICanvasRenderingContext2D, style: TextStyle, resolution: number): void\n    {\n        style.fontSize = this.baseRenderedFontSize",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "ICanvasRenderingContext2D,\n        metrics: CanvasTextMetrics,\n        x: number,\n        y: number,\n        fontScale: number,\n        style: TextStyle\n    ): void\n    {\n        const char = metrics.text",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

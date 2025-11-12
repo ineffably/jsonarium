@@ -1,0 +1,253 @@
+{
+  "type": "interface",
+  "name": "PixiTouch",
+  "sourcePath": "events/FederatedEvent.ts",
+  "extends": [
+    "Touch"
+  ],
+  "description": "A PixiJS compatible touch event interface that extends the standard DOM Touch interface. Provides additional properties to normalize touch input with mouse/pointer events. ```ts // Access touch information sprite.on('touchstart', (event) => { // Standard touch properties console.log('Touch position:', event.clientX, event.clientY); console.log('Touch ID:', event.pointerId); // Additional PixiJS properties console.log('Pressure:', event.pressure); console.log('Size:', event.width, event.height); console.log('Tilt:', event.tiltX, event.tiltY); }); ```",
+  "category": "events",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "button",
+      "type": "number",
+      "optional": false,
+      "description": "The button being pressed (0: left, 1: middle, 2: right)"
+    },
+    {
+      "name": "buttons",
+      "type": "number",
+      "optional": false,
+      "description": "Bitmap of currently pressed buttons"
+    },
+    {
+      "name": "isPrimary",
+      "type": "boolean",
+      "optional": false,
+      "description": "Whether this is the primary touch point"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": "The width of the touch contact area"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": "The height of the touch contact area"
+    },
+    {
+      "name": "tiltX",
+      "type": "number",
+      "optional": false,
+      "description": "The angle of tilt along the x-axis (in degrees)"
+    },
+    {
+      "name": "tiltY",
+      "type": "number",
+      "optional": false,
+      "description": "The angle of tilt along the y-axis (in degrees)"
+    },
+    {
+      "name": "pointerType",
+      "type": "string",
+      "optional": false,
+      "description": "The type of pointer that triggered this event"
+    },
+    {
+      "name": "pointerId",
+      "type": "number",
+      "optional": false,
+      "description": "Unique identifier for this touch point"
+    },
+    {
+      "name": "pressure",
+      "type": "number",
+      "optional": false,
+      "description": "The normalized pressure of the pointer (0 to 1)"
+    },
+    {
+      "name": "twist",
+      "type": "number",
+      "optional": false,
+      "description": "The rotation angle of the pointer (e.g., pen)"
+    },
+    {
+      "name": "tangentialPressure",
+      "type": "number",
+      "optional": false,
+      "description": "The normalized tangential pressure of the pointer"
+    },
+    {
+      "name": "layerX",
+      "type": "number",
+      "optional": false,
+      "description": "The x coordinate relative to the current layer"
+    },
+    {
+      "name": "layerY",
+      "type": "number",
+      "optional": false,
+      "description": "The y coordinate relative to the current layer"
+    },
+    {
+      "name": "offsetX",
+      "type": "number",
+      "optional": false,
+      "description": "The x coordinate relative to the target's offset parent"
+    },
+    {
+      "name": "offsetY",
+      "type": "number",
+      "optional": false,
+      "description": "The y coordinate relative to the target's offset parent"
+    },
+    {
+      "name": "isNormalized",
+      "type": "boolean",
+      "optional": false,
+      "description": "Whether the event was normalized by PixiJS"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "optional": false,
+      "description": "The type of touch event"
+    },
+    {
+      "name": "event",
+      "type": "FederatedEvent) => {\n *     // Access standard DOM event properties\n *     console.log('Target:', event.target)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Phase",
+      "type": "', event.eventPhase)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Type",
+      "type": "', event.type)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//dom.spec.whatwg.org/#event} DOM Event Specification\n * @see {@link FederatedPointerEvent} For pointer-specific events\n * @see {@link FederatedMouseEvent} For mouse-specific events\n * @see {@link FederatedWheelEvent} For wheel-specific events\n * @category events\n * @standard\n */\nexport class FederatedEvent<N extends UIEvent | PixiTouch = UIEvent | PixiTouch> implements UIEvent\n{\n    /** Flags whether this event bubbles. This will take effect only if it is set before propagation. */\n    public bubbles = true",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//dom.spec.whatwg.org/#dom-event-composed\n     * @ignore\n     */\n    public readonly composed = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "currentTarget",
+      "type": "Container",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "isTrusted",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "returnValue",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "srcElement",
+      "type": "EventTarget",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "Container",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "timeStamp",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "nativeEvent",
+      "type": "N",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "originalEvent",
+      "type": "FederatedEvent<N>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "Container[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "manager",
+      "type": "EventBoundary",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "detail",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "view",
+      "type": "WindowProxy",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "which",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "layer",
+      "type": "Point = new Point()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "page",
+      "type": "Point = new Point()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "manager",
+      "type": "EventBoundary)\n    {\n        this.manager = manager",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "type": "class",
+  "name": "MeshPlane",
+  "sourcePath": "scene/mesh-plane/MeshPlane.ts",
+  "extends": "Mesh",
+  "implements": [],
+  "description": "Constructor options used for `MeshPlane` instances. Defines how a texture is mapped onto a plane with configurable vertex density. ```ts // Basic plane with default vertex density const plane = new MeshPlane({ texture: Assets.get('background.png') }); // High-detail plane for complex deformations const detailedPlane = new MeshPlane({ texture: Assets.get('landscape.jpg'), verticesX: 20, verticesY: 20 }); ``` / export interface MeshPlaneOptions extends Omit<MeshOptions, 'geometry'> { /** The texture to use on the plane. */ texture: Texture; /** Number of vertices along the X axis. More vertices allow for more detailed deformations. / verticesX?: number; /** Number of vertices along the Y axis. More vertices allow for more detailed deformations. / verticesY?: number; } /** A mesh that renders a texture mapped to a plane with configurable vertex density. Useful for creating distortion effects, bent surfaces, and animated deformations. ```ts // Create a basic plane const plane = new MeshPlane({ texture: Assets.get('background.png'), verticesX: 10, verticesY: 10 }); // Get the buffer for vertex positions. const { buffer } = plane.geometry.getAttribute('aPosition'); // Listen for animate update let timer = 0; app.ticker.add(() => { // Randomize the vertices positions a bit to create movement. for (let i = 0; i < buffer.data.length; i++) { buffer.data[i] += Math.sin(timer / 10 + i) * 0.5; } buffer.update(); timer++; }); // Change texture dynamically plane.texture = Assets.get('newTexture.png'); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "PlaneGeometry",
+      "params": [
+        {
+          "name": "width",
+          "type": "texture.width",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "texture.height",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "verticesX",
+          "type": null
+        },
+        {
+          "name": "verticesY",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "definedProps({ ...rest",
+          "type": null
+        },
+        {
+          "name": "geometry",
+          "type": "planeGeometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "texture }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "textureUpdated",
+      "params": [],
+      "returnType": "void",
+      "description": "Method used for overrides, to do something in case texture frame was changed. Meshes based on plane can override it and change more details based on texture."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.autoResize && (geometry.width !== width || geometry.height !== height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "build",
+      "params": [
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.textureUpdated",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.textureUpdated",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "textureUpdated",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": "DestroyOptions",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "The texture that the mesh plane uses for rendering. When changed, automatically updates geometry dimensions if autoResize is true and manages texture update event listeners. ```ts const plane = new MeshPlane({ texture: Assets.get('initial.png'), verticesX: 10, verticesY: 10 }); // Update texture and auto-resize geometry plane.texture = Assets.get('larger.png'); ``` / get texture(): Texture { return this._texture; } /** Destroys this sprite renderable and optionally its texture. have been set to that value meshPlane.destroy(); meshPlane.destroy(true); meshPlane.destroy({ texture: true, textureSource: true });"
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.textureUpdated",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "texture",
+      "type": "Texture",
+      "description": "The texture that the mesh plane uses for rendering. When changed, automatically updates geometry dimensions if autoResize is true and manages texture update event listeners. ```ts const plane = new MeshPlane({ texture: Assets.get('initial.png'), verticesX: 10, verticesY: 10 }); // Update texture and auto-resize geometry plane.texture = Assets.get('larger.png'); ```"
+    }
+  ]
+}

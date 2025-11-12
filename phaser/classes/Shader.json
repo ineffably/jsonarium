@@ -1,0 +1,2809 @@
+{
+  "type": "class",
+  "name": "Shader",
+  "sourcePath": "gameobjects/shader/Shader.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "gameobjects",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "GameObject",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Mixins",
+          "type": "[\n        Components.ComputedSize",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Components.Depth",
+          "type": null
+        },
+        {
+          "name": "Components.GetBounds",
+          "type": null
+        },
+        {
+          "name": "Components.Mask",
+          "type": null
+        },
+        {
+          "name": "Components.Origin",
+          "type": null
+        },
+        {
+          "name": "Components.ScrollFactor",
+          "type": null
+        },
+        {
+          "name": "Components.Transform",
+          "type": null
+        },
+        {
+          "name": "Components.Visible",
+          "type": null
+        },
+        {
+          "name": "ShaderRender\n    ]",
+          "type": null
+        },
+        {
+          "name": "initialize",
+          "type": "function Shader (scene",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "textures",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "height === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "'Shader'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ArrayBuffer",
+      "params": [
+        {
+          "name": "6 * (Float32Array.BYTES_PER_ELEMENT * 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createVertexBuffer",
+      "params": [
+        {
+          "name": "this.vertexData.byteLength",
+          "type": null
+        },
+        {
+          "name": "this.gl.STREAM_DRAW",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint8Array",
+      "params": [
+        {
+          "name": "this.vertexData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "this.vertexData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[ 1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1 ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[ 1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1 ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "to",
+      "params": [
+        {
+          "name": "or replaced",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bound",
+      "params": [
+        {
+          "name": "with `setPointer`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPosition",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setOrigin",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setShader",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textures",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "RenderEvents.RESTORE_WEBGL",
+          "type": null
+        },
+        {
+          "name": "this.onContextRestored",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderToTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shader",
+      "params": [
+        {
+          "name": "'myShader'",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setRenderToTexture",
+      "params": [
+        {
+          "name": "'doodle'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "400",
+          "type": null
+        },
+        {
+          "name": "300",
+          "type": null
+        },
+        {
+          "name": "'doodle'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flipY === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.renderToTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createTextureFromSource",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createFramebuffer",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "this.glTexture",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "projOrtho",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "this.width",
+          "type": null
+        },
+        {
+          "name": "this.height",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addGLTexture",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "this.glTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "load",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rebind",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textures",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderer.contextLost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textures === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof key === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!cache.has(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "missing",
+          "type": "' + key",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteProgram",
+      "params": [
+        {
+          "name": "this.program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createProgram",
+      "params": [
+        {
+          "name": "this.shader.vertexSrc",
+          "type": null
+        },
+        {
+          "name": "this.shader.fragmentSrc",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniformMatrix4fv",
+      "params": [
+        {
+          "name": "gl.getUniformLocation(program.webGLProgram",
+          "type": null
+        },
+        {
+          "name": "'uViewMatrix'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniformMatrix4fv",
+      "params": [
+        {
+          "name": "gl.getUniformLocation(program.webGLProgram",
+          "type": null
+        },
+        {
+          "name": "'uProjectionMatrix'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniform2f",
+      "params": [
+        {
+          "name": "gl.getUniformLocation(program.webGLProgram",
+          "type": null
+        },
+        {
+          "name": "'uResolution'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Date",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFullYear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getMonth",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getDate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getHours",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getMinutes",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSeconds",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.shader.uniforms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Extend",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "{}",
+          "type": null
+        },
+        {
+          "name": "this.shader.uniforms",
+          "type": null
+        },
+        {
+          "name": "defaultUniforms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < 4; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textures[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSampler2D",
+      "params": [
+        {
+          "name": "'iChannel' + i",
+          "type": null
+        },
+        {
+          "name": "textures[i]",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initUniforms",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "projOrtho",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "this._rendererWidth",
+          "type": null
+        },
+        {
+          "name": "this._rendererHeight",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "left",
+          "type": null
+        },
+        {
+          "name": "right",
+          "type": null
+        },
+        {
+          "name": "bottom",
+          "type": null
+        },
+        {
+          "name": "top",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderer.contextLost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setProgram",
+      "params": [
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniformMatrix4fv",
+      "params": [
+        {
+          "name": "gl.getUniformLocation(program.webGLProgram",
+          "type": null
+        },
+        {
+          "name": "'uProjectionMatrix'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var key in this.uniforms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createUniformLocation",
+      "params": [
+        {
+          "name": "program",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "type !== 'sampler2D'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shader",
+      "params": [
+        {
+          "name": "baseShader1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setRenderToTexture",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shader",
+      "params": [
+        {
+          "name": "baseShader2",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setRenderToTexture",
+      "params": [
+        {
+          "name": "'output'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSampler2DBuffer",
+      "params": [
+        {
+          "name": "'iChannel0'",
+          "type": null
+        },
+        {
+          "name": "shader2.glTexture",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSampler2DBuffer",
+      "params": [
+        {
+          "name": "'iChannel0'",
+          "type": null
+        },
+        {
+          "name": "shader1.glTexture",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "uniformKey",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "textureIndex",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureIndex === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureData === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initSampler2D",
+      "params": [
+        {
+          "name": "uniform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "uniformKey",
+          "type": null
+        },
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "textureIndex",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureIndex === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureManager.exists(textureKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFrame",
+      "params": [
+        {
+          "name": "textureKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "frame.glTexture && frame.glTexture.isRenderTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSampler2DBuffer",
+      "params": [
+        {
+          "name": "uniformKey",
+          "type": null
+        },
+        {
+          "name": "frame.glTexture",
+          "type": null
+        },
+        {
+          "name": "frame.width",
+          "type": null
+        },
+        {
+          "name": "frame.height",
+          "type": null
+        },
+        {
+          "name": "textureIndex",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source.isGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initSampler2D",
+      "params": [
+        {
+          "name": "uniform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setUniform",
+      "params": [
+        {
+          "name": "'size.value'",
+          "type": null
+        },
+        {
+          "name": "16",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setUniform",
+      "params": [
+        {
+          "name": "'resolution.value.x'",
+          "type": null
+        },
+        {
+          "name": "512",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SetValue",
+      "params": [
+        {
+          "name": "this.uniforms",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "this.uniforms",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSampler2D",
+      "params": [
+        {
+          "name": "'iChannel0'",
+          "type": null
+        },
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSampler2D",
+      "params": [
+        {
+          "name": "'iChannel1'",
+          "type": null
+        },
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSampler2D",
+      "params": [
+        {
+          "name": "'iChannel2'",
+          "type": null
+        },
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSampler2D",
+      "params": [
+        {
+          "name": "'iChannel3'",
+          "type": null
+        },
+        {
+          "name": "textureKey",
+          "type": null
+        },
+        {
+          "name": "3",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "uniform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!uniform.value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "data && !uniform.value.isRenderTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'magFilter'",
+          "type": null
+        },
+        {
+          "name": "'linear'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toUpperCase",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'minFilter'",
+          "type": null
+        },
+        {
+          "name": "'linear'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toUpperCase",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'wrapS'",
+          "type": null
+        },
+        {
+          "name": "'repeat'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toUpperCase",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'wrapT'",
+          "type": null
+        },
+        {
+          "name": "'repeat'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toUpperCase",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'format'",
+          "type": null
+        },
+        {
+          "name": "'rgba'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toUpperCase",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'flipY'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'width'",
+          "type": null
+        },
+        {
+          "name": "wrapper.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'height'",
+          "type": null
+        },
+        {
+          "name": "wrapper.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "'source'",
+          "type": null
+        },
+        {
+          "name": "wrapper.pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "data.repeat",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "data.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        },
+        {
+          "name": "wrapS",
+          "type": null
+        },
+        {
+          "name": "wrapT",
+          "type": null
+        },
+        {
+          "name": "minFilter",
+          "type": null
+        },
+        {
+          "name": "magFilter",
+          "type": null
+        },
+        {
+          "name": "format",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setProgram",
+      "params": [
+        {
+          "name": "this.program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var key in uniforms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "length === 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "uniform.glMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "gl",
+          "type": null
+        },
+        {
+          "name": "location.webGLUniformLocation",
+          "type": null
+        },
+        {
+          "name": "uniform.transpose",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "gl",
+          "type": null
+        },
+        {
+          "name": "location.webGLUniformLocation",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "length === 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "gl",
+          "type": null
+        },
+        {
+          "name": "location.webGLUniformLocation",
+          "type": null
+        },
+        {
+          "name": "value.x",
+          "type": null
+        },
+        {
+          "name": "value.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "length === 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "gl",
+          "type": null
+        },
+        {
+          "name": "location.webGLUniformLocation",
+          "type": null
+        },
+        {
+          "name": "value.x",
+          "type": null
+        },
+        {
+          "name": "value.y",
+          "type": null
+        },
+        {
+          "name": "value.z",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "length === 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "gl",
+          "type": null
+        },
+        {
+          "name": "location.webGLUniformLocation",
+          "type": null
+        },
+        {
+          "name": "value.x",
+          "type": null
+        },
+        {
+          "name": "value.y",
+          "type": null
+        },
+        {
+          "name": "value.z",
+          "type": null
+        },
+        {
+          "name": "value.w",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "uniform.type === 'sampler2D'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE0 + textureCount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "value.webGLTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniform1i",
+      "params": [
+        {
+          "name": "location.webGLUniformLocation",
+          "type": null
+        },
+        {
+          "name": "textureCount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "matrix2D",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.renderToTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "useProgram",
+      "params": [
+        {
+          "name": "program.webGLProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniformMatrix4fv",
+      "params": [
+        {
+          "name": "gl.getUniformLocation(program.webGLProgram",
+          "type": null
+        },
+        {
+          "name": "'uViewMatrix'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniformMatrix4fv",
+      "params": [
+        {
+          "name": "gl.getUniformLocation(program.webGLProgram",
+          "type": null
+        },
+        {
+          "name": "'uProjectionMatrix'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniform2f",
+      "params": [
+        {
+          "name": "gl.getUniformLocation(program.webGLProgram",
+          "type": null
+        },
+        {
+          "name": "'uResolution'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getDuration",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pointer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toFixed",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toFixed",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncUniforms",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderToTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setFramebuffer",
+      "params": [
+        {
+          "name": "this.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearColor",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "gl.COLOR_BUFFER_BIT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBuffer",
+      "params": [
+        {
+          "name": "gl.ARRAY_BUFFER",
+          "type": null
+        },
+        {
+          "name": "vertexBuffer.webGLBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAttribLocation",
+      "params": [
+        {
+          "name": "program.webGLProgram",
+          "type": null
+        },
+        {
+          "name": "'inPosition'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "location !== -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enableVertexAttribArray",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vertexAttribPointer",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        },
+        {
+          "name": "gl.FLOAT",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "vertexSize",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferSubData",
+      "params": [
+        {
+          "name": "gl.ARRAY_BUFFER",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "this.bytes.subarray(0",
+          "type": null
+        },
+        {
+          "name": "vertexCount * vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawArrays",
+      "params": [
+        {
+          "name": "gl.TRIANGLES",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "vertexCount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderToTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setFramebuffer",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._deferSetShader !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setShader",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textures",
+          "type": null
+        },
+        {
+          "name": "textureData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._deferProjOrtho !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "projOrtho",
+      "params": [
+        {
+          "name": "left",
+          "type": null
+        },
+        {
+          "name": "right",
+          "type": null
+        },
+        {
+          "name": "bottom",
+          "type": null
+        },
+        {
+          "name": "top",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "RenderEvents.RESTORE_WEBGL",
+          "type": null
+        },
+        {
+          "name": "this.onContextRestored",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteProgram",
+      "params": [
+        {
+          "name": "this.program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteBuffer",
+      "params": [
+        {
+          "name": "this.vertexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderToTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteFramebuffer",
+      "params": [
+        {
+          "name": "this.framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ArrayEach",
+      "params": [
+        {
+          "name": "this.uniforms",
+          "type": null
+        },
+        {
+          "name": "function (uniform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteUniformLocation",
+      "params": [
+        {
+          "name": "uniform.uniformLocation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,77 @@
+{
+  "type": "interface",
+  "name": "StencilState",
+  "sourcePath": "rendering/renderers/gpu/state/GpuStencilModesToPixi.ts",
+  "extends": [],
+  "description": "The stencil state for the GPU renderer. This is used to define how the stencil buffer should be configured.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "stencilWriteMask",
+      "type": "number\n    stencilReadMask?: number",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "stencilFront",
+      "type": "{\n        compare: 'always' | 'equal' | 'not-equal'",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "passOp",
+      "type": "'increment-clamp' | 'decrement-clamp' | 'keep' | 'replace'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stencilBack",
+      "type": "{\n        compare: 'always' | 'equal' | 'not-equal'",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "passOp",
+      "type": "'increment-clamp' | 'decrement-clamp' | 'keep' | 'replace'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "GpuStencilModesToPixi",
+      "type": "StencilState[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stencilWriteMask",
+      "type": "0,\n    stencilReadMask: 0,\n}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stencilFront",
+      "type": "{\n        compare: 'equal',\n        passOp: 'increment-clamp',\n    },\n    stencilBack: {\n        compare: 'equal',\n        passOp: 'increment-clamp',\n    },\n}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stencilFront",
+      "type": "{\n        compare: 'equal',\n        passOp: 'decrement-clamp',\n    },\n    stencilBack: {\n        compare: 'equal',\n        passOp: 'decrement-clamp',\n    },\n}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stencilWriteMask",
+      "type": "0,\n    stencilFront: {\n        compare: 'equal',\n        passOp: 'keep',\n    },\n    stencilBack: {\n        compare: 'equal',\n        passOp: 'keep',\n    },\n}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stencilWriteMask",
+      "type": "0,\n    stencilFront: {\n        compare: 'not-equal',\n        passOp: 'keep',\n    },\n    stencilBack: {\n        compare: 'not-equal',\n        passOp: 'keep',\n    },\n}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

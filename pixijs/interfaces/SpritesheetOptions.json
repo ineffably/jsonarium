@@ -1,0 +1,179 @@
+{
+  "type": "interface",
+  "name": "SpritesheetOptions",
+  "sourcePath": "spritesheet/Spritesheet.ts",
+  "extends": [],
+  "description": "The frames of the atlas. */ frames: Dict<SpritesheetFrameData>; /** The animations of the atlas. */ animations?: Dict<string[]>; /** The meta data of the atlas. */ meta: { app?: string; format?: string; frameTags?: { from: number; name: string; to: number; direction: string; }[]; image?: string; layers?: { blendMode: string; name: string; opacity: number; }[]; scale: number | string; size?: { h: number; w: number; }; slices?: { color: string; name: string; keys: { frame: number, bounds: { x: number; y: number; w: number; h: number; }; }[]; }[]; related_multi_packs?: string[]; version?: string; }; } /** Options for loading a spritesheet from an atlas.",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "texture",
+      "type": "BindableTexture",
+      "optional": false,
+      "description": "Reference to Texture"
+    },
+    {
+      "name": "data",
+      "type": "S",
+      "optional": false,
+      "description": "JSON data for the atlas."
+    },
+    {
+      "name": "resolutionFilename",
+      "type": "string",
+      "optional": true,
+      "description": "The filename to consider when determining the resolution of the spritesheet."
+    },
+    {
+      "name": "cachePrefix",
+      "type": "string",
+      "optional": true,
+      "description": "Prefix to add to texture names when adding to global TextureCache, using this option can be helpful if you have multiple texture atlases that share texture names and you need to disambiguate them."
+    },
+    {
+      "name": "loader",
+      "type": "*\n * ```js\n * import { Assets } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "directly",
+      "type": "*\n * ```js\n * import { Spritesheet } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "file",
+      "type": "* ```json\n * {\n *     \"frames\": {\n *         \"enemy1.png\":\n *         {\n *             \"frame\": {\"x\":103,\"y\":1,\"w\":32,\"h\":32},\n *             \"spriteSourceSize\": {\"x\":0,\"y\":0,\"w\":32,\"h\":32},\n *             \"sourceSize\": {\"w\":32,\"h\":32},\n *             \"anchor\": {\"x\":0.5,\"y\":0.5}\n *         },\n *         \"enemy2.png\":\n *         {\n *             \"frame\": {\"x\":103,\"y\":35,\"w\":32,\"h\":32},\n *             \"spriteSourceSize\": {\"x\":0,\"y\":0,\"w\":32,\"h\":32},\n *             \"sourceSize\": {\"w\":32,\"h\":32},\n *             \"anchor\": {\"x\":0.5,\"y\":0.5}\n *         },\n *         \"button.png\":\n *         {\n *             \"frame\": {\"x\":1,\"y\":1,\"w\":100,\"h\":100},\n *             \"spriteSourceSize\": {\"x\":0,\"y\":0,\"w\":100,\"h\":100},\n *             \"sourceSize\": {\"w\":100,\"h\":100},\n *             \"anchor\": {\"x\":0,\"y\":0},\n *             \"borders\": {\"left\":35,\"top\":35,\"right\":35,\"bottom\":35}\n *         }\n *     },\n *\n *     \"animations\": {\n *         \"enemy\": [\"enemy1.png\",\"enemy2.png\"]\n *     },\n *\n *     \"meta\": {\n *         \"image\": \"sheet.png\",\n *         \"format\": \"RGBA8888\",\n *         \"size\": {\"w\":136,\"h\":102},\n *         \"scale\": \"1\"\n *     }\n * }\n * ```\n * Sprite sheets can be packed using tools like {@link https://codeandweb.com/texturepacker|TexturePacker},\n * {@link https://renderhjs.net/shoebox/|Shoebox} or {@link https://github.com/krzysztof-o/spritesheet.js|Spritesheet.js}.\n * Default anchor points (see {@link Texture#defaultAnchor}), default 9-slice borders\n * (see {@link Texture#defaultBorders}) and grouping of animation sprites are currently only\n * supported by TexturePacker.\n *\n * Alternative ways for loading spritesheet image if you need more control:\n *\n * ```js\n * import { Assets } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alias",
+      "type": "'atlas',\n *     src: 'images/spritesheet.json',\n *     data: {texture: sheetTexture} // using of preloaded texture\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "or",
+      "type": "*\n * ```js\n * import { Assets } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alias",
+      "type": "'atlas',\n *     src: 'images/spritesheet.json',\n *     data: {imageFilename: 'my-spritesheet.2x.avif'} // using of custom filename located in \"images/my-spritesheet.2x.avif\"\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "linkedSheets",
+      "type": "Spritesheet<S>[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureSource",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textures",
+      "type": "Record<keyof S['frames'], Texture>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "animations",
+      "type": "Record<keyof NonNullable<S['animations']>, Texture[]>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "S",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_texture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_frames",
+      "type": "S['frames']",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_frameKeys",
+      "type": "(keyof S['frames'])[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_batchIndex",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_callback",
+      "type": "(textures: Dict<Texture>) => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "cachePrefix",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "SpritesheetOptions<S>)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "BindableTexture, data: S)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "optionsOrTexture",
+      "type": "SpritesheetOptions<S> | BindableTexture, arg1?: S)\n    {\n        let options = optionsOrTexture as SpritesheetOptions<S>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "optionsOrTexture as BindableTexture,\n                data: arg1,\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "initialFrameIndex",
+      "type": "number): void\n    {\n        let frameIndex = initialFrameIndex",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "this.textureSource,\n\n                    frame,\n                    orig,\n                    trim,\n                    rotate: data.rotated ? 2 : 0,\n                    defaultAnchor: data.anchor,\n                    defaultBorders: data.borders,\n\n                    label: i.toString(),\n                })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

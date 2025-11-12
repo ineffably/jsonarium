@@ -1,0 +1,1887 @@
+{
+  "type": "class",
+  "name": "ArcadePhysics",
+  "sourcePath": "physics/arcade/ArcadePhysics.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function ArcadePhysics (scene",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getConfig",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "SceneEvents.BOOT",
+          "type": null
+        },
+        {
+          "name": "this.boot",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "SceneEvents.START",
+          "type": null
+        },
+        {
+          "name": "this.start",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "World",
+      "params": [
+        {
+          "name": "this.scene",
+          "type": null
+        },
+        {
+          "name": "this.config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Factory",
+      "params": [
+        {
+          "name": "this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "SceneEvents.DESTROY",
+          "type": null
+        },
+        {
+          "name": "this.destroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "World",
+      "params": [
+        {
+          "name": "this.scene",
+          "type": null
+        },
+        {
+          "name": "this.config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Factory",
+      "params": [
+        {
+          "name": "this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!GetFastValue(this.config",
+          "type": null
+        },
+        {
+          "name": "'customUpdate'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "SceneEvents.UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.world.update",
+          "type": null
+        },
+        {
+          "name": "this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "SceneEvents.POST_UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.world.postUpdate",
+          "type": null
+        },
+        {
+          "name": "this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "once",
+      "params": [
+        {
+          "name": "SceneEvents.SHUTDOWN",
+          "type": null
+        },
+        {
+          "name": "this.shutdown",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "SceneEvents.UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.world.update",
+          "type": null
+        },
+        {
+          "name": "this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.world.update",
+          "type": null
+        },
+        {
+          "name": "this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Merge",
+      "params": [
+        {
+          "name": "GetFastValue(sceneConfig",
+          "type": null
+        },
+        {
+          "name": "'arcade'",
+          "type": null
+        },
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "gameConfig",
+          "type": null
+        },
+        {
+          "name": "'arcade'",
+          "type": null
+        },
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCollisionCategory",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCollidesWith",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "object1",
+          "type": null
+        },
+        {
+          "name": "object2",
+          "type": null
+        },
+        {
+          "name": "overlapCallback",
+          "type": null
+        },
+        {
+          "name": "processCallback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "overlapCallback === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "processCallback === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "callbackContext === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collideObjects",
+      "params": [
+        {
+          "name": "object1",
+          "type": null
+        },
+        {
+          "name": "object2",
+          "type": null
+        },
+        {
+          "name": "overlapCallback",
+          "type": null
+        },
+        {
+          "name": "processCallback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "passed",
+      "params": [
+        {
+          "name": "as `object1`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "object1",
+          "type": null
+        },
+        {
+          "name": "object2",
+          "type": null
+        },
+        {
+          "name": "collideCallback",
+          "type": null
+        },
+        {
+          "name": "processCallback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "collideCallback === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "processCallback === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "callbackContext === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collideObjects",
+      "params": [
+        {
+          "name": "object1",
+          "type": null
+        },
+        {
+          "name": "object2",
+          "type": null
+        },
+        {
+          "name": "collideCallback",
+          "type": null
+        },
+        {
+          "name": "processCallback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "overlap",
+      "params": [
+        {
+          "name": "with `overlapOnly`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "sprite",
+          "type": null
+        },
+        {
+          "name": "tiles",
+          "type": null
+        },
+        {
+          "name": "collideCallback",
+          "type": null
+        },
+        {
+          "name": "processCallback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collideTiles",
+      "params": [
+        {
+          "name": "sprite",
+          "type": null
+        },
+        {
+          "name": "tiles",
+          "type": null
+        },
+        {
+          "name": "collideCallback",
+          "type": null
+        },
+        {
+          "name": "processCallback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "overlap",
+      "params": [
+        {
+          "name": "with `overlapOnly`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "sprite",
+          "type": null
+        },
+        {
+          "name": "tiles",
+          "type": null
+        },
+        {
+          "name": "overlapCallback",
+          "type": null
+        },
+        {
+          "name": "processCallback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "overlapTiles",
+      "params": [
+        {
+          "name": "sprite",
+          "type": null
+        },
+        {
+          "name": "tiles",
+          "type": null
+        },
+        {
+          "name": "overlapCallback",
+          "type": null
+        },
+        {
+          "name": "processCallback",
+          "type": null
+        },
+        {
+          "name": "callbackContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pause",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "simulation",
+      "params": [
+        {
+          "name": "if paused",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resume",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rate",
+      "params": [
+        {
+          "name": "in pixels per second squared",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "acceleration",
+      "params": [
+        {
+          "name": "change in speed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "params": [
+        {
+          "name": "in radians",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "xSpeedMax",
+          "type": null
+        },
+        {
+          "name": "ySpeedMax",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "speed === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "atan2",
+      "params": [
+        {
+          "name": "y - gameObject.y",
+          "type": null
+        },
+        {
+          "name": "x - gameObject.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setToPolar",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "xSpeedMax !== undefined && ySpeedMax !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "xSpeedMax",
+          "type": null
+        },
+        {
+          "name": "ySpeedMax",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rate",
+      "params": [
+        {
+          "name": "in pixels per second squared",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "acceleration",
+      "params": [
+        {
+          "name": "change in speed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "params": [
+        {
+          "name": "in radians",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "destination",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "xSpeedMax",
+          "type": null
+        },
+        {
+          "name": "ySpeedMax",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "accelerateTo",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "destination.x",
+          "type": null
+        },
+        {
+          "name": "destination.y",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "xSpeedMax",
+          "type": null
+        },
+        {
+          "name": "ySpeedMax",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < len; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source === target || source === body || source === body.gameObject || source === body.center",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DistanceSquared",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "body.center.x",
+          "type": null
+        },
+        {
+          "name": "body.center.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "distance < min",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!targets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < len; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source === target || source === body || source === body.gameObject || source === body.center",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DistanceSquared",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "body.center.x",
+          "type": null
+        },
+        {
+          "name": "body.center.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "distance > max",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "speed",
+      "params": [
+        {
+          "name": "over-writing what you set",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drag",
+      "params": [
+        {
+          "name": "if you've set drag or acceleration too high this object may not move at all",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "second",
+      "params": [
+        {
+          "name": "default is 60 pixels/sec",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "milliseconds",
+      "params": [
+        {
+          "name": "1000 = 1 sec",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "params": [
+        {
+          "name": "in radians",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "maxTime",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "speed === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "maxTime === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "atan2",
+      "params": [
+        {
+          "name": "y - gameObject.y",
+          "type": null
+        },
+        {
+          "name": "x - gameObject.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "maxTime > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DistanceBetween",
+      "params": [
+        {
+          "name": "gameObject.x",
+          "type": null
+        },
+        {
+          "name": "gameObject.y",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setToPolar",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "speed",
+      "params": [
+        {
+          "name": "overwriting what you set",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drag",
+      "params": [
+        {
+          "name": "if you've set drag or acceleration too high this object may not move at all",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "second",
+      "params": [
+        {
+          "name": "default is 60 pixels/sec",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "milliseconds",
+      "params": [
+        {
+          "name": "1000 = 1 sec",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "params": [
+        {
+          "name": "in radians",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "destination",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "maxTime",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "destination.x",
+          "type": null
+        },
+        {
+          "name": "destination.y",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "maxTime",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "params": [
+        {
+          "name": "in degrees",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "velocityFromAngle",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        },
+        {
+          "name": "200",
+          "type": null
+        },
+        {
+          "name": "sprite.body.velocity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "direction",
+      "params": [
+        {
+          "name": "down = 90 degrees positive",
+          "type": null
+        },
+        {
+          "name": "right = 0 degrees positive",
+          "type": null
+        },
+        {
+          "name": "up = 90 degrees negative",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "vec2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "speed === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "vec2 === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setToPolar",
+      "params": [
+        {
+          "name": "DegToRad(angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotation",
+      "params": [
+        {
+          "name": "in radians",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "velocityFromRotation",
+      "params": [
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "200",
+          "type": null
+        },
+        {
+          "name": "sprite.body.velocity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "vec2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "speed === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "vec2 === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setToPolar",
+      "params": [
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RTree",
+      "params": [
+        {
+          "name": "which it is by default",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "O",
+      "params": [
+        {
+          "name": "N",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "includeDynamic",
+          "type": null
+        },
+        {
+          "name": "includeStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "OverlapRect",
+      "params": [
+        {
+          "name": "this.world",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "includeDynamic",
+          "type": null
+        },
+        {
+          "name": "includeStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RTree",
+      "params": [
+        {
+          "name": "which it is by default",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "O",
+      "params": [
+        {
+          "name": "N",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "includeDynamic",
+          "type": null
+        },
+        {
+          "name": "includeStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "OverlapCirc",
+      "params": [
+        {
+          "name": "this.world",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "includeDynamic",
+          "type": null
+        },
+        {
+          "name": "includeStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.world.update",
+          "type": null
+        },
+        {
+          "name": "this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.POST_UPDATE",
+          "type": null
+        },
+        {
+          "name": "this.world.postUpdate",
+          "type": null
+        },
+        {
+          "name": "this.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.SHUTDOWN",
+          "type": null
+        },
+        {
+          "name": "this.shutdown",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shutdown",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "SceneEvents.START",
+          "type": null
+        },
+        {
+          "name": "this.start",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'ArcadePhysics'",
+          "type": null
+        },
+        {
+          "name": "ArcadePhysics",
+          "type": null
+        },
+        {
+          "name": "'arcadePhysics'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

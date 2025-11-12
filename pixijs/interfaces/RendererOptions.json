@@ -1,0 +1,13 @@
+{
+  "type": "interface",
+  "name": "RendererOptions",
+  "sourcePath": "rendering/renderers/types.ts",
+  "extends": [
+    "WebGLOptions",
+    "WebGPUOptions"
+  ],
+  "description": "A generic renderer that can be either a WebGL or WebGPU renderer. / export type Renderer<T extends ICanvas = HTMLCanvasElement> = WebGLRenderer<T> | WebGPURenderer<T>; /** Generic pipes for the renderer. / export type RenderPipes = WebGLPipes | WebGPUPipes; /** Options for the renderer.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": []
+}

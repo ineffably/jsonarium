@@ -1,0 +1,83 @@
+{
+  "type": "interface",
+  "name": "CullerPluginOptions",
+  "sourcePath": "culling/CullerPlugin.ts",
+  "extends": [],
+  "description": "Application options for the {@link CullerPlugin}. These options control how your application handles culling of display objects. ```ts import { Application } from 'pixi.js'; // Create application const app = new Application(); await app.init({ culler: { updateTransform: false // Skip updating transforms for culled objects } }); ```",
+  "category": "app",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "culler",
+      "type": "{\n        /**\n         * Update the transform of culled objects.\n         *\n         * > [!IMPORTANT] Keeping this as `false` can improve performance by avoiding unnecessary calculations,\n         * > however, the transform used for culling may not be up-to-date if the object has moved since the last render.\n         * @default true\n         * @example\n         * ```ts\n         * const app = new Application()",
+      "optional": true,
+      "description": "Options for the culler behavior. ```ts // Basic culling options const app = new Application(); await app.init({ culler: {...} }); ```"
+    },
+    {
+      "name": "culler",
+      "type": "{\n         *         updateTransform: false // Skip updating transforms for culled objects\n         *     }\n         * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "updateTransform",
+      "type": "boolean",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "Features",
+      "type": "* - Automatic culling based on screen boundaries\n * - Configurable culling areas and behavior per container\n * - Can improve rendering performance\n * @example\n * ```ts\n * import { Application, CullerPlugin, Container, Rectangle } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Optional",
+      "type": "Set custom cull area to avoid expensive bounds calculations\n * container.cullArea = new Rectangle(0, 0, app.screen.width, app.screen.height)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "containers",
+      "type": "* - `cullable`: Set to `true` to enable culling for the container\n * - `cullableChildren`: Set to `true` to enable culling for children (default)\n * - `cullArea`: Optional custom Rectangle for culling bounds\n *\n * Performance Tips:\n * - Group objects that are spatially related\n * - Use `cullArea` for containers with many children to avoid bounds calculations\n * - Set `cullableChildren = false` for containers that are always fully visible\n * @category app\n * @standard\n * @see {@link Culler} For the underlying culling implementation\n * @see {@link CullingMixinConstructor} For culling properties documentation\n */\nexport class CullerPlugin\n{\n    /** @ignore */\n    public static extension: ExtensionMetadata = {\n        priority: 10,\n        type: ExtensionType.Application,\n        name: 'culler',\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stage",
+      "type": "Container",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "render",
+      "type": "() => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderRef",
+      "type": "() => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "PixiMixins.ApplicationOptions): void\n    {\n        this._renderRef = this.render.bind(this)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "this.stage })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

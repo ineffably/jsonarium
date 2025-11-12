@@ -1,0 +1,401 @@
+{
+  "type": "class",
+  "name": "MeshPipe",
+  "sourcePath": "scene/mesh/shared/MeshPipe.ts",
+  "extends": null,
+  "implements": [
+    "RenderPipe"
+  ],
+  "description": "The data for the mesh / interface MeshData { /** if the mesh is batched or not */ batched: boolean; /** the size of the index buffer */ indexSize: number; /** the size of the vertex buffer */ vertexSize: number; } /** @internal */ export interface MeshAdaptor { init(): void; execute(meshPipe: MeshPipe, mesh: Mesh): void; destroy(): void; } /** The MeshPipe is responsible for handling the rendering of Mesh objects. It manages the batching of meshes, updates their GPU data, and executes the rendering instructions. It also handles the local uniforms for each mesh, such as transformation matrices and colors.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uTransformMatrix",
+          "type": "{ value: new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BindGroup",
+      "params": [
+        {
+          "name": "0",
+          "type": "this.localUniforms",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "validateRenderable",
+      "params": [
+        {
+          "name": "mesh",
+          "type": "Mesh",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "wasBatched !== isBatched",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isBatched",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "geometry.indices.length !== meshData.indexSize\n                    || geometry.positions.length !== meshData.vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batchableMesh.texture.uid !== mesh._texture.uid",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "checkAndUpdateTexture",
+      "params": [
+        {
+          "name": "batchableMesh",
+          "type": null
+        },
+        {
+          "name": "mesh._texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "mesh",
+          "type": "Mesh",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "mesh.didViewUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "meshData.batched",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture",
+      "params": [
+        {
+          "name": "mesh._texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToBatch",
+      "params": [
+        {
+          "name": "gpuBatchableMesh",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "mesh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateRenderable",
+      "params": [
+        {
+          "name": "mesh",
+          "type": "Mesh",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "mesh.batched",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture",
+      "params": [
+        {
+          "name": "mesh._texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateElement",
+      "params": [
+        {
+          "name": "gpuBatchableMesh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "mesh",
+          "type": "Mesh",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!mesh.isRenderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAdjustedBlendModeBlend",
+      "params": [
+        {
+          "name": "mesh.groupBlendMode",
+          "type": null
+        },
+        {
+          "name": "mesh.texture._source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "color32BitToUniform",
+      "params": [
+        {
+          "name": "mesh.groupColorAlpha",
+          "type": null
+        },
+        {
+          "name": "localUniforms.uniforms.uColor",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "mesh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MeshGpuData",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MeshGpuData",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BatchableMesh",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture",
+      "params": [
+        {
+          "name": "mesh._texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,127 @@
+{
+  "type": "class",
+  "name": "ColorBlend",
+  "sourcePath": "advanced-blend-modes/ColorBlend.ts",
+  "extends": "BlendModeFilter",
+  "implements": [],
+  "description": "The final color has the hue and saturation of the top color, while using the luminosity of the bottom color. The effect preserves gray levels and can be used to colorize the foreground. Available as `container.blendMode = 'color'` after importing `pixi.js/advanced-blend-modes`. import 'pixi.js/advanced-blend-modes'; import { Sprite } from 'pixi.js'; const sprite = Sprite.from('something.png'); sprite.blendMode = 'color'",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "gl",
+          "type": "{\n                functions: `\n                ${hslgl}\n\n                vec3 blendColor(vec3 base",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "vec3 blend",
+          "type": null
+        },
+        {
+          "name": "float opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "setLuminosity(blend",
+          "type": null
+        },
+        {
+          "name": "getLuminosity(base",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec4",
+      "params": [
+        {
+          "name": "blendColor(back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendColorOpacity",
+      "params": [
+        {
+          "name": "base",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "opacity",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "setLuminosity(blend",
+          "type": null
+        },
+        {
+          "name": "getLuminosity(base",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendColorOpacity",
+      "params": [
+        {
+          "name": "back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

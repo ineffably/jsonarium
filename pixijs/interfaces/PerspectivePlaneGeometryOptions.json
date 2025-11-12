@@ -1,0 +1,55 @@
+{
+  "type": "interface",
+  "name": "PerspectivePlaneGeometryOptions",
+  "sourcePath": "scene/mesh-perspective/PerspectivePlaneGeometry.ts",
+  "extends": [
+    "PlaneGeometryOptions"
+  ],
+  "description": "Constructor options used for `PerspectivePlaneGeometry` instances.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": "The width of the plane"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": "The height of the plane"
+    },
+    {
+      "name": "IMPORTANT",
+      "type": "This is not a full 3D mesh, it is a 2D mesh with a perspective projection applied to it :)\n *\n * ```js\n * const perspectivePlaneGeometry = new PerspectivePlaneGeometry({\n *  width: 100,\n *  height: 100,\n *  verticesX: 10,\n *  verticesY: 10,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "corners",
+      "type": "[number, number, number, number, number, number, number, number]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_projectionMatrix",
+      "type": "ArrayFixed<number, 9> = [0, 0, 0, 0, 0, 0, 0, 0, 0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "PerspectivePlaneGeometryOptions)\n    {\n        super(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x0",
+      "type": "number, y0: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number)\n    {\n        const corners = this.corners",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

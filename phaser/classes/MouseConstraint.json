@@ -1,0 +1,686 @@
+{
+  "type": "class",
+  "name": "MouseConstraint",
+  "sourcePath": "physics/matter-js/lib/constraint/MouseConstraint.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Vertices'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Sleeping'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Mouse'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Events'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../collision/Detector'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'./Constraint'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../body/Composite'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Common'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../geometry/Bounds'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!mouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "engine && engine.render && engine.render.canvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "engine.render.canvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options && options.element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "options.element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "create",
+          "type": "options.mouse was undefined",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "options.element was undefined",
+          "type": null
+        },
+        {
+          "name": "may not function as expected'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "label",
+          "type": "'Mouse Constraint'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "pointA",
+          "type": "mouse.position",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "pointB",
+          "type": "{ x: 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "0 }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "length",
+          "type": "0.01",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stiffness",
+          "type": "0.1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "angularStiffness",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "render",
+          "type": "{\n                strokeStyle: '#90EE90'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "lineWidth",
+          "type": "3\n            }\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "defaults",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'beforeUpdate'",
+          "type": null
+        },
+        {
+          "name": "function(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allBodies",
+      "params": [
+        {
+          "name": "engine.world",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "mouseConstraint",
+          "type": null
+        },
+        {
+          "name": "allBodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "mouseConstraint",
+          "type": null
+        },
+        {
+          "name": "bodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "mouse.button === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!constraint.bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Bounds.contains(body.bounds",
+          "type": null
+        },
+        {
+          "name": "mouse.position",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "canCollide",
+      "params": [
+        {
+          "name": "body.collisionFilter",
+          "type": null
+        },
+        {
+          "name": "mouseConstraint.collisionFilter",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = body.parts.length > 1 ? 1 : 0; j < body.parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Vertices.contains(part.vertices",
+          "type": null
+        },
+        {
+          "name": "mouse.position",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "mouseConstraint",
+          "type": null
+        },
+        {
+          "name": "'startdrag'",
+          "type": null
+        },
+        {
+          "name": "mouse",
+          "type": "mouse",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "body",
+          "type": "body }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "constraint.bodyB",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "mouseConstraint",
+          "type": null
+        },
+        {
+          "name": "'enddrag'",
+          "type": null
+        },
+        {
+          "name": "mouse",
+          "type": "mouse",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "body",
+          "type": "body }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "mouseConstraint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "mouseEvents.mousemove",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "mouseConstraint",
+          "type": null
+        },
+        {
+          "name": "'mousemove'",
+          "type": null
+        },
+        {
+          "name": "mouse",
+          "type": "mouse }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "mouseEvents.mousedown",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "mouseConstraint",
+          "type": null
+        },
+        {
+          "name": "'mousedown'",
+          "type": null
+        },
+        {
+          "name": "mouse",
+          "type": "mouse }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "mouseEvents.mouseup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "mouseConstraint",
+          "type": null
+        },
+        {
+          "name": "'mouseup'",
+          "type": null
+        },
+        {
+          "name": "mouse",
+          "type": "mouse }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearSourceEvents",
+      "params": [
+        {
+          "name": "mouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moved",
+      "params": [
+        {
+          "name": "or a touch moves",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "down",
+      "params": [
+        {
+          "name": "or a touch has started",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "up",
+      "params": [
+        {
+          "name": "or a touch has ended",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

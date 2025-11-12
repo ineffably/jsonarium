@@ -1,0 +1,305 @@
+{
+  "type": "interface",
+  "name": "TextureSourceOptions",
+  "sourcePath": "rendering/renderers/shared/texture/sources/TextureSource.ts",
+  "extends": [],
+  "description": "options for creating a new TextureSource",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "resource",
+      "type": "T",
+      "optional": true,
+      "description": "the resource that will be uploaded to the GPU. This is where we get our pixels from eg an ImageBimt / Canvas / Video etc"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": true,
+      "description": "the pixel width of this texture source. This is the REAL pure number, not accounting resolution"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": true,
+      "description": "the pixel height of this texture source. This is the REAL pure number, not accounting resolution"
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "optional": true,
+      "description": "the resolution of the texture."
+    },
+    {
+      "name": "format",
+      "type": "TEXTURE_FORMATS",
+      "optional": true,
+      "description": "the format that the texture data has"
+    },
+    {
+      "name": "sampleCount",
+      "type": "number",
+      "optional": true,
+      "description": "Used by internal textures"
+    },
+    {
+      "name": "antialias",
+      "type": "boolean",
+      "optional": true,
+      "description": "Only really affects RenderTextures. Should we use antialiasing for this texture. It will look better, but may impact performance as a Blit operation will be required to resolve the texture."
+    },
+    {
+      "name": "dimensions",
+      "type": "TEXTURE_DIMENSIONS",
+      "optional": true,
+      "description": "how many dimensions does this texture have? currently v8 only supports 2d"
+    },
+    {
+      "name": "mipLevelCount",
+      "type": "number",
+      "optional": true,
+      "description": "The number of mip levels to generate for this texture. this is  overridden if autoGenerateMipmaps is true"
+    },
+    {
+      "name": "autoGenerateMipmaps",
+      "type": "boolean",
+      "optional": true,
+      "description": "Should we auto generate mipmaps for this texture? This will automatically generate mipmaps for this texture when uploading to the GPU. Mipmapped textures take up more memory, but can look better when scaled down. For performance reasons, it is recommended to NOT use this with RenderTextures, as they are often updated every frame. If you do, make sure to call `updateMipmaps` after you update the texture."
+    },
+    {
+      "name": "alphaMode",
+      "type": "ALPHA_MODES",
+      "optional": true,
+      "description": "the alpha mode of the texture"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "optional": true,
+      "description": "optional label, can be used for debugging"
+    },
+    {
+      "name": "autoGarbageCollect",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the Garbage Collector will unload this texture if it is not used after a period of time"
+    },
+    {
+      "name": "change",
+      "type": "BindResource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "update",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "unload",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "styleChange",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "updateMipmaps",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "error",
+      "type": "Error",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultOptions",
+      "type": "TextureSourceOptions = {\n        resolution: 1,\n        format: 'bgra8unorm',\n        alphaMode: 'premultiply-alpha-on-upload',\n        dimensions: '2d',\n        mipLevelCount: 1,\n        autoGenerateMipmaps: false,\n        sampleCount: 1,\n        antialias: false,\n        autoGarbageCollect: false,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uid",
+      "type": "number = uid('textureSource')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resource",
+      "type": "T",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "format",
+      "type": "TEXTURE_FORMATS = 'rgba8unorm'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dimension",
+      "type": "TEXTURE_DIMENSIONS = '2d'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alphaMode",
+      "type": "ALPHA_MODES",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_style",
+      "type": "TextureStyle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "destroyed",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "isPowerOfTwo",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoGarbageCollect",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_sourceOrigin",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "TextureSourceOptions<T> = {})\n    {\n        super()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "TextureStyle)\n    {\n        if (this.style === value) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._style.maxAnisotropy = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "WRAP_MODE)\n    {\n        this._style.addressMode = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "WRAP_MODE)\n    {\n        this._style.addressMode = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "SCALE_MODE)\n    {\n        this._style.magFilter = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "SCALE_MODE)\n    {\n        this._style.minFilter = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "SCALE_MODE)\n    {\n        this._style.mipmapFilter = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._style.lodMinClamp = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._style.lodMaxClamp = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resolution",
+      "type": "number)\n    {\n        if (this._resolution === resolution) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number, height?: number, resolution?: number): boolean\n    {\n        resolution ||= this._resolution",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "WRAP_MODE)\n    {\n        this._style.wrapMode = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "SCALE_MODE)\n    {\n        this._style.scaleMode = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_resource",
+      "type": "any): any\n    {\n        // this should be overridden by other sources..\n        throw new Error('Unimplemented')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "from",
+      "type": "(resource: TextureResourceOrOptions) => TextureSource",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

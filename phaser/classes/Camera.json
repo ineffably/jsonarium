@@ -1,0 +1,1839 @@
+{
+  "type": "class",
+  "name": "Camera",
+  "sourcePath": "cameras/2d/Camera.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "cameras",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "BaseCamera",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Mixins",
+          "type": "[\n        Components.PostPipeline\n    ]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function Camera (x",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initPostPipeline",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Fade",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Flash",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Shake",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Pan",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "RotateTo",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Zoom",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vector2",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.deadzone",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._follow",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "fx",
+          "type": null
+        },
+        {
+          "name": "fy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CenterOn",
+      "params": [
+        {
+          "name": "this.deadzone",
+          "type": null
+        },
+        {
+          "name": "this.midPoint.x",
+          "type": null
+        },
+        {
+          "name": "this.midPoint.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "red",
+          "type": null
+        },
+        {
+          "name": "green",
+          "type": null
+        },
+        {
+          "name": "blue",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "intensity",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "intensity",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "ease",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "ease",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "radians",
+          "type": null
+        },
+        {
+          "name": "shortestPath",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "ease",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "radians",
+          "type": null
+        },
+        {
+          "name": "shortestPath",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "ease",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "zoom",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "ease",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "zoom",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "ease",
+          "type": null
+        },
+        {
+          "name": "force",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Camera",
+      "params": [
+        {
+          "name": "such as shake",
+          "type": null
+        },
+        {
+          "name": "flash and fade",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isInteger",
+      "params": [
+        {
+          "name": "zoomX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isInteger",
+      "params": [
+        {
+          "name": "zoomY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "deadzone",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "CenterOn",
+      "params": [
+        {
+          "name": "deadzone",
+          "type": null
+        },
+        {
+          "name": "this.midPoint.x",
+          "type": null
+        },
+        {
+          "name": "this.midPoint.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "follow && !this.panEffect.isRunning",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "deadzone",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fx < deadzone.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Linear",
+      "params": [
+        {
+          "name": "sx",
+          "type": null
+        },
+        {
+          "name": "sx - (deadzone.x - fx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fx > deadzone.right",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Linear",
+      "params": [
+        {
+          "name": "sx",
+          "type": null
+        },
+        {
+          "name": "sx + (fx - deadzone.right",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fy < deadzone.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Linear",
+      "params": [
+        {
+          "name": "sy",
+          "type": null
+        },
+        {
+          "name": "sy - (deadzone.y - fy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fy > deadzone.bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Linear",
+      "params": [
+        {
+          "name": "sy",
+          "type": null
+        },
+        {
+          "name": "sy + (fy - deadzone.bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Linear",
+      "params": [
+        {
+          "name": "sx",
+          "type": null
+        },
+        {
+          "name": "fx - originX",
+          "type": null
+        },
+        {
+          "name": "lerp.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Linear",
+      "params": [
+        {
+          "name": "sy",
+          "type": null
+        },
+        {
+          "name": "fy - originY",
+          "type": null
+        },
+        {
+          "name": "lerp.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.roundPixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "sx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "sy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.useBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clampX",
+      "params": [
+        {
+          "name": "sx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clampY",
+      "params": [
+        {
+          "name": "sy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "midX",
+          "type": null
+        },
+        {
+          "name": "midY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "(width / zoomX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "(height / zoomY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "(midX - (displayWidth / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "(midY - (displayHeight / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTo",
+      "params": [
+        {
+          "name": "vwx",
+          "type": null
+        },
+        {
+          "name": "vwy",
+          "type": null
+        },
+        {
+          "name": "displayWidth",
+          "type": null
+        },
+        {
+          "name": "displayHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyITRS",
+      "params": [
+        {
+          "name": "Math.floor(this.x + originX + 0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "this.y + originY + 0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "-originX",
+          "type": null
+        },
+        {
+          "name": "-originY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preRender",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "emitFollowEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.FOLLOW_UPDATE",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "follow",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "values",
+      "params": [
+        {
+          "name": "such as 0.1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "target",
+          "type": null
+        },
+        {
+          "name": "roundPixels",
+          "type": null
+        },
+        {
+          "name": "lerpX",
+          "type": null
+        },
+        {
+          "name": "lerpY",
+          "type": null
+        },
+        {
+          "name": "offsetX",
+          "type": null
+        },
+        {
+          "name": "offsetY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "roundPixels === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lerpX === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lerpY === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "offsetX === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "offsetY === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Clamp",
+      "params": [
+        {
+          "name": "lerpX",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Clamp",
+      "params": [
+        {
+          "name": "lerpY",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "lerpX",
+          "type": null
+        },
+        {
+          "name": "lerpY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "offsetX",
+          "type": null
+        },
+        {
+          "name": "offsetY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "fx",
+          "type": null
+        },
+        {
+          "name": "fy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.useBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clampX",
+      "params": [
+        {
+          "name": "this.scrollX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clampY",
+      "params": [
+        {
+          "name": "this.scrollY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetFX",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

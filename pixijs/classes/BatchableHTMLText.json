@@ -1,0 +1,92 @@
+{
+  "type": "class",
+  "name": "BatchableHTMLText",
+  "sourcePath": "scene/text-html/BatchableHTMLText.ts",
+  "extends": "BatchableSprite",
+  "implements": [],
+  "description": "The BatchableHTMLText class extends the BatchableSprite class and is used to handle HTML text rendering. It includes a promise for the texture as generating the HTML texture takes some time.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolutionChange",
+      "params": [],
+      "returnType": null,
+      "description": "Handles resolution changes for the HTML text. If the text has auto resolution enabled, it triggers a view update."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "text._autoResolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": "Destroys the BatchableHTMLText instance. Returns the texture promise to the renderer and cleans up references."
+    },
+    {
+      "name": "getReferenceCount",
+      "params": [
+        {
+          "name": "this.currentKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexturePromise",
+      "params": [
+        {
+          "name": "this.texturePromise",
+          "type": null
+        }
+      ],
+      "returnType": "htmlText.decreaseReferenceCount(this.currentKey)",
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

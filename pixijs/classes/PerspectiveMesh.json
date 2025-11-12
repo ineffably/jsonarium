@@ -1,0 +1,200 @@
+{
+  "type": "class",
+  "name": "PerspectiveMesh",
+  "sourcePath": "scene/mesh-perspective/PerspectiveMesh.ts",
+  "extends": "Mesh",
+  "implements": [],
+  "description": "Constructor options used for `PerspectiveMesh` instances. Defines the geometry and appearance of a 2D mesh with perspective projection. ```ts // Create a perspective mesh with a texture const mesh = new PerspectiveMesh({ texture: Texture.from('myImage.png'), verticesX: 20, verticesY: 20, // Define corners clockwise from top-left x0: 0,   y0: 0,    // Top-left x1: 100, y1: 20,   // Top-right (raised) x2: 100, y2: 100,  // Bottom-right x3: 0,   y3: 80    // Bottom-left (raised) }); // Create a skewed perspective const skewedMesh = new PerspectiveMesh({ texture: Texture.from('background.jpg'), verticesX: 15,     // More vertices for smoother perspective verticesY: 15, x0: 0,   y0: 30,   // Shifted top-left x1: 128, y1: 0,    // Raised top-right x2: 128, y2: 128,  // Normal bottom-right x3: 0,   y3: 98    // Shifted bottom-left }); ``` / export interface PerspectivePlaneOptions extends MeshPlaneOptions { /** The x-coordinate of the top-left corner */ x0?: number, /** The y-coordinate of the top-left corner */ y0?: number, /** The x-coordinate of the top-right corner */ x1?: number, /** The y-coordinate of the top-right corner */ y1?: number, /** The x-coordinate of the bottom-right corner */ x2?: number, /** The y-coordinate of the bottom-right corner */ y2?: number, /** The x-coordinate of the bottom-left corner */ x3?: number, /** The y-coordinate of the bottom-left corner */ y3?: number } /** A perspective mesh that allows you to draw a 2d plane with perspective. Where ever you move the corners the texture will be projected to look like it is in 3d space. Great for mapping a 2D mesh into a 3D scene. The calculations is done at the uv level. This means that the more vertices you have the more smooth the perspective will be. If you have a low amount of vertices you may see the texture stretch. Too many vertices could be slower. It is a balance between performance and quality! We leave that to you to decide. > [!IMPORTANT] This is not a full 3D mesh, it is a 2D mesh with a perspective projection applied to it. ```ts // Create a perspective mesh with a texture const mesh = new PerspectiveMesh({ texture: Texture.from('myImage.png'), verticesX: 20, verticesY: 20, // Define corners clockwise from top-left x0: 0,   y0: 0,    // Top-left x1: 100, y1: 20,   // Top-right (raised) x2: 100, y2: 100,  // Bottom-right x3: 0,   y3: 80    // Bottom-left (raised) }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "PerspectivePlaneGeometry",
+      "params": [
+        {
+          "name": "width",
+          "type": "texture.width",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "texture.height",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "verticesX",
+          "type": null
+        },
+        {
+          "name": "verticesY",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "definedProps({ ...rest",
+          "type": null
+        },
+        {
+          "name": "geometry",
+          "type": "planeGeometry }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCorners",
+      "params": [
+        {
+          "name": "options.x0",
+          "type": null
+        },
+        {
+          "name": "options.y0",
+          "type": null
+        },
+        {
+          "name": "options.x1",
+          "type": null
+        },
+        {
+          "name": "options.y1",
+          "type": null
+        },
+        {
+          "name": "options.x2",
+          "type": null
+        },
+        {
+          "name": "options.y2",
+          "type": null
+        },
+        {
+          "name": "options.x3",
+          "type": null
+        },
+        {
+          "name": "options.y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCorners",
+      "params": [
+        {
+          "name": "x0",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y0",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x3",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y3",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Update the geometry when the texture is updated */ protected textureUpdated(): void { const geometry: PerspectivePlaneGeometry = this.geometry as any; if (!geometry) return; const { width, height } = this.texture; if (geometry.width !== width || geometry.height !== height) { geometry.width = width; geometry.height = height; geometry.updateProjection(); } } set texture(value: Texture) { if (this._texture === value) return; super.texture = value; this.textureUpdated(); } /** The texture that the mesh uses for rendering. When changed, automatically updates the geometry to match the new texture dimensions. ```ts const mesh = new PerspectiveMesh({ texture: Texture.from('initial.png'), }); // Update texture and maintain perspective mesh.texture = Texture.from('newImage.png'); ``` / get texture(): Texture { return this._texture; } /** Sets the corners of the mesh to create a perspective transformation. The corners should be specified in clockwise order starting from the top-left. The mesh automatically recalculates the UV coordinates to create the perspective effect. ```ts const mesh = new PerspectiveMesh({ texture: Texture.from('myImage.png'), }); // Create a basic perspective tilt mesh.setCorners( 0, 0,      // Top-left 100, 20,   // Top-right (raised) 100, 100,  // Bottom-right 0, 80      // Bottom-left ); // Create a skewed billboard effect mesh.setCorners( 0, 30,     // Top-left (shifted down) 128, 0,    // Top-right (raised) 128, 128,  // Bottom-right 0, 98      // Bottom-left (shifted up) ); // Animate perspective app.ticker.add((delta) => { const time = performance.now() / 1000; const wave = Math.sin(time) * 20; mesh.setCorners( 0, wave,      // Top-left 100, -wave,   // Top-right 100, 100,     // Bottom-right 0, 100        // Bottom-left ); }); ```"
+    },
+    {
+      "name": "setCorners",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "texture",
+      "type": "Texture",
+      "description": "The texture that the mesh uses for rendering. When changed, automatically updates the geometry to match the new texture dimensions. ```ts const mesh = new PerspectiveMesh({ texture: Texture.from('initial.png'), }); // Update texture and maintain perspective mesh.texture = Texture.from('newImage.png'); ```"
+    }
+  ]
+}

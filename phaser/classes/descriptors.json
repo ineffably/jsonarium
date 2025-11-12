@@ -1,0 +1,72 @@
+{
+  "type": "class",
+  "name": "descriptors",
+  "sourcePath": "utils/Class.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "utils",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "getOwnPropertyDescriptor",
+      "params": [
+        {
+          "name": "definition",
+          "type": null
+        },
+        {
+          "name": "k",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!isClassDescriptor && def.value && typeof def.value === 'object'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "def && hasGetterOrSetter(def",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof def.enumerable === 'undefined'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof def.configurable === 'undefined'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

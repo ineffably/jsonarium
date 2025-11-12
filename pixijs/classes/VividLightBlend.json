@@ -1,0 +1,434 @@
+{
+  "type": "class",
+  "name": "VividLightBlend",
+  "sourcePath": "advanced-blend-modes/VividLightBlend.ts",
+  "extends": "BlendModeFilter",
+  "implements": [],
+  "description": "Darkens values darker than 50% gray and lightens those brighter than 50% gray, creating a dramatic effect. It's essentially an extreme version of the Overlay mode, with a significant impact on midtones Available as `container.blendMode = 'vivid-light'` after importing `pixi.js/advanced-blend-modes`. import 'pixi.js/advanced-blend-modes'; import { Sprite } from 'pixi.js'; const sprite = Sprite.from('something.png'); sprite.blendMode = 'vivid-light'",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "gl",
+          "type": "{\n                functions: `\n                float colorBurn(float base",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "float blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "(1.0-((1.0-base",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "float base",
+          "type": null
+        },
+        {
+          "name": "float blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "1.0",
+          "type": null
+        },
+        {
+          "name": "base / (1.0-blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vividLight",
+      "params": [
+        {
+          "name": "float base",
+          "type": null
+        },
+        {
+          "name": "float blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blend < 0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorBurn",
+      "params": [
+        {
+          "name": "base",
+          "type": null
+        },
+        {
+          "name": "(2.0*blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "base",
+          "type": null
+        },
+        {
+          "name": "(2.0*(blend-0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendVividLight",
+      "params": [
+        {
+          "name": "vec3 base",
+          "type": null
+        },
+        {
+          "name": "vec3 blend",
+          "type": null
+        },
+        {
+          "name": "float opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec3",
+      "params": [
+        {
+          "name": "vividLight(base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vividLight",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vividLight",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec4",
+      "params": [
+        {
+          "name": "blendVividLight(back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorBurn",
+      "params": [
+        {
+          "name": "base",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "(1.0-((1.0-base",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorDodge",
+      "params": [
+        {
+          "name": "base",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "1.0",
+          "type": null
+        },
+        {
+          "name": "base / (1.0-blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vividLight",
+      "params": [
+        {
+          "name": "base",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "select",
+      "params": [
+        {
+          "name": "colorDodge(base",
+          "type": null
+        },
+        {
+          "name": "(2.0*(blend-0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorBurn",
+      "params": [
+        {
+          "name": "base",
+          "type": null
+        },
+        {
+          "name": "(2.0*blend",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendVividLight",
+      "params": [
+        {
+          "name": "base",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blend",
+          "type": "vec3<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "opacity",
+          "type": "f32",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vividLight",
+      "params": [
+        {
+          "name": "base.r",
+          "type": null
+        },
+        {
+          "name": "blend.r",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vividLight",
+      "params": [
+        {
+          "name": "base.g",
+          "type": null
+        },
+        {
+          "name": "blend.g",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vividLight",
+      "params": [
+        {
+          "name": "base.b",
+          "type": null
+        },
+        {
+          "name": "blend.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "blended * opacity + base * (1.0 - opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "blendVividLight",
+      "params": [
+        {
+          "name": "back.rgb",
+          "type": null
+        },
+        {
+          "name": "front.rgb",
+          "type": null
+        },
+        {
+          "name": "front.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

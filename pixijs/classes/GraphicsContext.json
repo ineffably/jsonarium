@@ -1,0 +1,2620 @@
+{
+  "type": "class",
+  "name": "GraphicsContext",
+  "sourcePath": "scene/graphics/shared/GraphicsContext.ts",
+  "extends": "EventEmitter",
+  "implements": [],
+  "description": "The mode for batching graphics instructions. It can be: - 'auto': Automatically determines whether to batch based on the number of instructions. - 'batch': Forces batching of all instructions. - 'no-batch': Disables batching, processing each instruction individually. / export type BatchMode = 'auto' | 'batch' | 'no-batch'; /** @internal */ export interface FillInstruction { action: 'fill' | 'cut' data: { style: ConvertedFillStyle, path: GraphicsPath, hole?: GraphicsPath } } /** @internal */ export interface StrokeInstruction { action: 'stroke' data: { style: ConvertedStrokeStyle, path: GraphicsPath, hole?: GraphicsPath } } /** @internal */ export interface TextureInstruction { action: 'texture' data: { image: Texture, dx: number dy: number dw: number dh: number transform: Matrix alpha: number style: number, } } /** @internal */ export type GraphicsInstructions = FillInstruction | StrokeInstruction | TextureInstruction; const tempMatrix = new Matrix(); /** The GraphicsContext class allows for the creation of lightweight objects that contain instructions for drawing shapes and paths. It is used internally by the Graphics class to draw shapes and paths, and can be used directly and shared between Graphics objects, This sharing of a `GraphicsContext` means that the intensive task of converting graphics instructions into GPU-ready geometry is done once, and the results are reused, much like sprites reusing textures.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": "GraphicsContext",
+      "description": "The default fill style to use when none is provided. */ public static defaultFillStyle: ConvertedFillStyle = { /** The color to use for the fill. */ color: 0xffffff, /** The alpha value to use for the fill. */ alpha: 1, /** The texture to use for the fill. */ texture: Texture.WHITE, /** The matrix to apply. */ matrix: null, /** The fill pattern to use. */ fill: null, /** Whether coordinates are 'global' or 'local' */ textureSpace: 'local', }; /** The default stroke style to use when none is provided. */ public static defaultStrokeStyle: ConvertedStrokeStyle = { /** The width of the stroke. */ width: 1, /** The color to use for the stroke. */ color: 0xffffff, /** The alpha value to use for the stroke. */ alpha: 1, /** The alignment of the stroke. */ alignment: 0.5, /** The miter limit to use. */ miterLimit: 10, /** The line cap style to use. */ cap: 'butt', /** The line join style to use. */ join: 'miter', /** The texture to use for the fill. */ texture: Texture.WHITE, /** The matrix to apply. */ matrix: null, /** The fill pattern to use. */ fill: null, /** Whether coordinates are 'global' or 'local' */ textureSpace: 'local', /** If the stroke is a pixel line. */ pixelLine: false, }; /** unique id for this graphics context / public readonly uid: number = uid('graphicsContext'); /** Indicates whether content is updated and have to be re-rendered. / public dirty = true; /** The batch mode for this graphics context. It can be 'auto', 'batch', or 'no-batch'. */ public batchMode: BatchMode = 'auto'; /** @internal */ public instructions: GraphicsInstructions[] = []; /** Custom shader to apply to the graphics when rendering. / public customShader?: Shader; private _activePath: GraphicsPath = new GraphicsPath(); private _transform: Matrix = new Matrix(); private _fillStyle: ConvertedFillStyle = { ...GraphicsContext.defaultFillStyle }; private _strokeStyle: ConvertedStrokeStyle = { ...GraphicsContext.defaultStrokeStyle }; private _stateStack: { fillStyle: ConvertedFillStyle; strokeStyle: ConvertedStrokeStyle, transform: Matrix }[] = []; private _tick = 0; private _bounds = new Bounds(); private _boundsDirty = true; /** Creates a new GraphicsContext object that is a clone of this instance, copying all properties, including the current drawing state, transformations, styles, and instructions."
+    },
+    {
+      "name": "GraphicsContext",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setFillStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": "FillInput",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "The current fill style of the graphics context. This can be a color, gradient, pattern, or a more complex style defined by a FillStyle object. / get fillStyle(): ConvertedFillStyle { return this._fillStyle; } set fillStyle(value: FillInput) { this._fillStyle = toFillStyle(value, GraphicsContext.defaultFillStyle); } /** The current stroke style of the graphics context. Similar to fill styles, stroke styles can encompass colors, gradients, patterns, or more detailed configurations via a StrokeStyle object. / get strokeStyle(): ConvertedStrokeStyle { return this._strokeStyle; } set strokeStyle(value: FillInput) { this._strokeStyle = toStrokeStyle(value, GraphicsContext.defaultStrokeStyle); } /** Sets the current fill style of the graphics context. The fill style can be a color, gradient, pattern, or a more complex style defined by a FillStyle object. or a FillStyle or ConvertedFillStyle object."
+    },
+    {
+      "name": "toFillStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "GraphicsContext.defaultFillStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStrokeStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": "StrokeInput",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Sets the current stroke style of the graphics context. Similar to fill styles, stroke styles can encompass colors, gradients, patterns, or more detailed configurations via a StrokeStyle object. or a StrokeStyle or ConvertedStrokeStyle object."
+    },
+    {
+      "name": "toFillStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "GraphicsContext.defaultStrokeStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a texture to the graphics context. This method supports multiple overloads for specifying the texture. If only a texture is provided, it uses the texture's width and height for drawing."
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "tint",
+          "type": "ColorSource",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dx",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dy",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dw",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dh",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a texture to the graphics context. This method supports multiple overloads for specifying the texture, tint, and dimensions. If only a texture is provided, it uses the texture's width and height for drawing. Additional parameters allow for specifying a tint color, and custom dimensions for the texture drawing area. the source image. the source image. If not provided, uses the texture's frame width. If not provided, uses the texture's frame height."
+    },
+    {
+      "name": "texture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "tint",
+          "type": "ColorSource",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dx",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dy",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dw",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dh",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'texture'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "{\n                image: texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dx",
+          "type": "dx || 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dy",
+          "type": "dy || 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dw",
+          "type": "dw || texture.frame.width",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dh",
+          "type": "dh || texture.frame.height",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "this._transform.clone(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setValue",
+      "params": [
+        {
+          "name": "tint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toNumber",
+      "params": [],
+      "returnType": "0xFFFFFF,\n            }\n        })",
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": "this",
+      "description": "Resets the current path. Any previous path and its commands are discarded and a new path is started. This is typically called before beginning a new shape or series of drawing commands."
+    },
+    {
+      "name": "GraphicsPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [
+        {
+          "name": "style",
+          "type": "FillInput",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Fills the current or given path with the current fill style. This method can optionally take a color and alpha for a simple fill, or a more complex FillInput object for advanced fills."
+    },
+    {
+      "name": "fill",
+      "params": [
+        {
+          "name": "color",
+          "type": "ColorSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "alpha",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [
+        {
+          "name": "style",
+          "type": "FillInput",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "alpha",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._tick === 0 && lastInstruction?.action === 'stroke'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!path",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style != null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "alpha !== undefined && typeof style === 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'GraphicsContext.fill(color",
+          "type": null
+        },
+        {
+          "name": "alpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [
+        {
+          "name": "{ color",
+          "type": null
+        },
+        {
+          "name": "alpha }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toFillStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "GraphicsContext.defaultFillStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'fill'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "{ style: this.fillStyle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "path }\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getLastPoint",
+      "params": [
+        {
+          "name": "Point.shared",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "params": [
+        {
+          "name": "style",
+          "type": "StrokeInput",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Strokes the current path with the current stroke style. This method can take an optional FillInput parameter to define the stroke's appearance, including its color, width, and other properties."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._tick === 0 && lastInstruction?.action === 'fill'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!path",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style != null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toStrokeStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "GraphicsContext.defaultStrokeStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'stroke'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "{ style: this.strokeStyle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "path }\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cut",
+      "params": [],
+      "returnType": "this",
+      "description": "Applies a cutout to the last drawn shape. This is used to create holes or complex shapes by subtracting a path from the previously drawn path. If a hole is not completely in a shape, it will fail to cut correctly!"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < 2; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lastInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lastInstruction.action === 'stroke' || lastInstruction.action === 'fill'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lastInstruction.data.hole",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addPath",
+      "params": [
+        {
+          "name": "holePath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "startAngle",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "endAngle",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "counterclockwise",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an arc to the current path, which is centered at (x, y) with the specified radius, starting and ending angles, and direction."
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "(t.a * x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "x1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an arc to the current path with the given control points and radius, connected to the previous point by a straight line if necessary."
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "(t.a * x1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcToSvg",
+      "params": [
+        {
+          "name": "rx",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "ry",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "xAxisRotation",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "largeArcFlag",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sweepFlag",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an SVG-style arc to the path, allowing for elliptical arcs based on the SVG spec. to the x-axis of the coordinate system, in degrees."
+    },
+    {
+      "name": "arcToSvg",
+      "params": [
+        {
+          "name": "rx",
+          "type": null
+        },
+        {
+          "name": "ry",
+          "type": null
+        },
+        {
+          "name": "xAxisRotation",
+          "type": null
+        },
+        {
+          "name": "// should we rotate this with transform??\n            largeArcFlag",
+          "type": null
+        },
+        {
+          "name": "sweepFlag",
+          "type": null
+        },
+        {
+          "name": "(t.a * x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bezierCurveTo",
+      "params": [
+        {
+          "name": "cp1x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp1y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp2x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp2y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a cubic Bezier curve to the path. It requires three points: the first two are control points and the third one is the end point. The starting point is the last point in the current path."
+    },
+    {
+      "name": "bezierCurveTo",
+      "params": [
+        {
+          "name": "(t.a * cp1x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": "this",
+      "description": "Closes the current path by drawing a straight line back to the start. If the shape is already closed or there are no points in the path, this method does nothing."
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ellipse",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radiusX",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radiusY",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws an ellipse at the specified location and with the given x and y radii. An optional transformation can be applied, allowing for rotation, scaling, and translation."
+    },
+    {
+      "name": "ellipse",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radiusX",
+          "type": null
+        },
+        {
+          "name": "radiusY",
+          "type": null
+        },
+        {
+          "name": "this._transform.clone(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a circle shape. This method adds a new circle path to the current drawing."
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "this._transform.clone(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "path",
+      "params": [
+        {
+          "name": "path",
+          "type": "GraphicsPath",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds another `GraphicsPath` to this path, optionally applying a transformation."
+    },
+    {
+      "name": "addPath",
+      "params": [
+        {
+          "name": "path",
+          "type": null
+        },
+        {
+          "name": "this._transform.clone(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Connects the current point to a new point with a straight line. This method updates the current path."
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "(t.a * x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Sets the starting point for a new sub-path. Any subsequent drawing commands are considered part of this path."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instructions.length === 1 && instructions[0].action === 'moveTo'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "transformedX",
+          "type": null
+        },
+        {
+          "name": "transformedY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "quadraticCurveTo",
+      "params": [
+        {
+          "name": "cpx",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cpy",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a quadratic curve to the path. It requires two points: the control point and the end point. The starting point is the last point in the current path."
+    },
+    {
+      "name": "quadraticCurveTo",
+      "params": [
+        {
+          "name": "(t.a * cpx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "w",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a rectangle shape. This method adds a new rectangle path to the current drawing."
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "w",
+          "type": null
+        },
+        {
+          "name": "h",
+          "type": null
+        },
+        {
+          "name": "this._transform.clone(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "w",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a rectangle with rounded corners. The corner radius can be specified to determine how rounded the corners should be. An optional transformation can be applied, which allows for rotation, scaling, and translation of the rectangle."
+    },
+    {
+      "name": "roundRect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "w",
+          "type": null
+        },
+        {
+          "name": "h",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "this._transform.clone(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "poly",
+      "params": [
+        {
+          "name": "points",
+          "type": "number[] | PointData[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "close",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a polygon shape by specifying a sequence of points. This method allows for the creation of complex polygons, which can be both open and closed. An optional transformation can be applied, enabling the polygon to be scaled, rotated, or translated as needed. representing the x and y coordinates, of the polygon's vertices, in sequence."
+    },
+    {
+      "name": "poly",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "close",
+          "type": null
+        },
+        {
+          "name": "this._transform.clone(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "regularPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sides",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "rotation = 0",
+          "type": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a regular polygon with a specified number of sides. All sides and angles are equal."
+    },
+    {
+      "name": "regularPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "sides",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sides",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "corner",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "rotation",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a polygon with rounded corners. Similar to `regularPoly` but with the ability to round the corners of the polygon."
+    },
+    {
+      "name": "roundPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "sides",
+          "type": null
+        },
+        {
+          "name": "corner",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundShape",
+      "params": [
+        {
+          "name": "points",
+          "type": "RoundedPoint[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "useQuadratic",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a shape with rounded corners. This function supports custom radius for each corner of the shape. Optionally, corners can be rounded using a quadratic curve instead of an arc, providing a different aesthetic. A minimum of 3 points is required. This radius is applied to all corners unless overridden in `points`. method instead of an arc method. Defaults to false. Higher values make the curve smoother."
+    },
+    {
+      "name": "roundShape",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "useQuadratic",
+          "type": null
+        },
+        {
+          "name": "smoothness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "filletRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fillet",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draw Rectangle with fillet corners. This is much like rounded rectangle however it support negative numbers as well for the corner radius."
+    },
+    {
+      "name": "filletRect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "fillet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "chamferRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "chamfer",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draw Rectangle with chamfer corners. These are angled corners."
+    },
+    {
+      "name": "chamferRect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "chamfer",
+          "type": null
+        },
+        {
+          "name": "transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "star",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "points",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "innerRadius = 0",
+          "type": null
+        },
+        {
+          "name": "rotation = 0",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a star shape centered at a specified location. This method allows for the creation of stars with a variable number of points, outer radius, optional inner radius, and rotation. The star is drawn as a closed polygon with alternating outer and inner vertices to create the star's points. An optional transformation can be applied to scale, rotate, or translate the star as needed. (distance from the center to the inner points between the outer points). If not provided, defaults to half of the `radius`. Defaults to 0, meaning one point is directly upward."
+    },
+    {
+      "name": "star",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "innerRadius",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "this._transform.clone(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "params": [
+        {
+          "name": "svg",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Parses and renders an SVG string into the graphics context. This allows for complex shapes and paths defined in SVG format to be drawn within the graphics context."
+    },
+    {
+      "name": "SVGParser",
+      "params": [
+        {
+          "name": "svg",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "restore",
+      "params": [],
+      "returnType": "this",
+      "description": "Restores the most recently saved graphics state by popping the top of the graphics state stack. This includes transformations, fill styles, and stroke styles."
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "state",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "save",
+      "params": [],
+      "returnType": "this",
+      "description": "Saves the current graphics state, including transformations, fill styles, and stroke styles, onto a stack."
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "transform",
+          "type": "this._transform.clone(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTransform",
+      "params": [],
+      "returnType": "Matrix",
+      "description": "Returns the current transformation matrix of the graphics context."
+    },
+    {
+      "name": "resetTransform",
+      "params": [],
+      "returnType": "this",
+      "description": "Resets the current transformation matrix to the identity matrix, effectively removing any transformations (rotation, scaling, translation) previously applied."
+    },
+    {
+      "name": "identity",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "angle",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Applies a rotation transformation to the graphics context around the current origin."
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": true,
+          "default": "x"
+        }
+      ],
+      "returnType": "this",
+      "description": "Applies a scaling transformation to the graphics context, scaling drawings by x horizontally and by y vertically."
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Sets the current transformation matrix of the graphics context to the specified matrix or values. This replaces the current transformation matrix."
+    },
+    {
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "a",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "b",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "c",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "d",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dx",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dy",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Sets the current transformation matrix of the graphics context to the specified matrix or values. This replaces the current transformation matrix."
+    },
+    {
+      "name": "setTransform",
+      "params": [
+        {
+          "name": "a",
+          "type": "number | Matrix",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "b",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "c",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "d",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dx",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dy",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "a instanceof Matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "a.a",
+          "type": null
+        },
+        {
+          "name": "a.b",
+          "type": null
+        },
+        {
+          "name": "a.c",
+          "type": null
+        },
+        {
+          "name": "a.d",
+          "type": null
+        },
+        {
+          "name": "a.tx",
+          "type": null
+        },
+        {
+          "name": "a.ty",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "a",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "c",
+          "type": null
+        },
+        {
+          "name": "d",
+          "type": null
+        },
+        {
+          "name": "dx",
+          "type": null
+        },
+        {
+          "name": "dy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transform",
+      "params": [
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Applies the specified transformation matrix to the current graphics context by multiplying the current matrix with the specified matrix."
+    },
+    {
+      "name": "transform",
+      "params": [
+        {
+          "name": "a",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "b",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "c",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "d",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dx",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dy",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Applies the specified transformation matrix to the current graphics context by multiplying the current matrix with the specified matrix."
+    },
+    {
+      "name": "transform",
+      "params": [
+        {
+          "name": "a",
+          "type": "number | Matrix",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "b",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "c",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "d",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dx",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "dy",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "a instanceof Matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "append",
+      "params": [
+        {
+          "name": "a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "a",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "c",
+          "type": null
+        },
+        {
+          "name": "d",
+          "type": null
+        },
+        {
+          "name": "dx",
+          "type": null
+        },
+        {
+          "name": "dy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "append",
+      "params": [
+        {
+          "name": "tempMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": true,
+          "default": "x"
+        }
+      ],
+      "returnType": "this",
+      "description": "Applies a translation transformation to the graphics context, moving the origin by the specified amounts."
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": "this",
+      "description": "Clears all drawing commands from the graphics context, effectively resetting it. This includes clearing the path, and optionally resetting transformations to the identity matrix."
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetTransform",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdate",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.dirty",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "0x10",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "point",
+          "type": "PointData",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "The bounds of the graphic shape. */ get bounds(): Bounds { if (!this._boundsDirty) return this._bounds; this._boundsDirty = false; // TODO switch to idy dirty with tick.. const bounds = this._bounds; bounds.clear(); for (let i = 0; i < this.instructions.length; i++) { const instruction = this.instructions[i]; const action = instruction.action; if (action === 'fill') { const data = instruction.data as FillInstruction['data']; bounds.addBounds(data.path.bounds); } else if (action === 'texture') { const data = instruction.data as TextureInstruction['data']; bounds.addFrame(data.dx, data.dy, data.dx + data.dw, data.dy + data.dh, data.transform); } if (action === 'stroke') { const data = instruction.data as StrokeInstruction['data']; const alignment = data.style.alignment; const outerPadding = (data.style.width * (1 - alignment)); const _bounds = data.path.bounds; bounds.addFrame( _bounds.minX - outerPadding, _bounds.minY - outerPadding, _bounds.maxX + outerPadding, _bounds.maxY + outerPadding ); } } return bounds; } /** Check to see if a point is contained within this geometry."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.bounds.containsPoint(point.x",
+          "type": null
+        },
+        {
+          "name": "point.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let k = 0; k < instructions.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!instruction.action || !path",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < shapes.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!style || !shape",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyInverse",
+      "params": [
+        {
+          "name": "point",
+          "type": null
+        },
+        {
+          "name": "tmpPoint",
+          "type": null
+        }
+      ],
+      "returnType": "point",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'fill'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contains",
+      "params": [
+        {
+          "name": "transformedPoint.x",
+          "type": null
+        },
+        {
+          "name": "transformedPoint.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeContains",
+      "params": [
+        {
+          "name": "transformedPoint.x",
+          "type": null
+        },
+        {
+          "name": "transformedPoint.y",
+          "type": null
+        },
+        {
+          "name": "strokeStyle.width",
+          "type": null
+        },
+        {
+          "name": "strokeStyle.alignment",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "holes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "holeShapes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let j = 0; j < holeShapes.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "holeShapes[j].shape.contains(transformedPoint.x",
+          "type": null
+        },
+        {
+          "name": "transformedPoint.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "hasHit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": "TypeOrBool<TextureDestroyOptions>",
+          "optional": true,
+          "default": "false"
+        }
+      ],
+      "returnType": "void",
+      "description": "Destroys the GraphicsData object. have been set to that value context.destroy(); context.destroy(true); context.destroy({ texture: true, textureSource: true });"
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeAllListeners",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._fillStyle.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "this._fillStyle.texture.destroy(destroyTextureSource)",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._strokeStyle.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "this._strokeStyle.texture.destroy(destroyTextureSource)",
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "fillStyle",
+      "type": "ConvertedFillStyle",
+      "description": "The current fill style of the graphics context. This can be a color, gradient, pattern, or a more complex style defined by a FillStyle object."
+    },
+    {
+      "name": "strokeStyle",
+      "type": "ConvertedStrokeStyle",
+      "description": "The current stroke style of the graphics context. Similar to fill styles, stroke styles can encompass colors, gradients, patterns, or more detailed configurations via a StrokeStyle object."
+    },
+    {
+      "name": "bounds",
+      "type": "Bounds",
+      "description": "The bounds of the graphic shape."
+    }
+  ]
+}

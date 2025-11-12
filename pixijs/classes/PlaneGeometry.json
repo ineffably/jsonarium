@@ -1,0 +1,220 @@
+{
+  "type": "class",
+  "name": "PlaneGeometry",
+  "sourcePath": "scene/mesh-plane/PlaneGeometry.ts",
+  "extends": "MeshGeometry",
+  "implements": [],
+  "description": "Constructor options used for `PlaneGeometry` instances. ```js const planeGeometry = new PlaneGeometry({ width: 100, height: 100, verticesX: 10, verticesY: 10, }); ``` / export interface PlaneGeometryOptions { /** Width of plane */ width?: number; /** Height of plane */ height?: number; /** Number of vertices on x-axis */ verticesX?: number; /** Number of vertices on y-axis */ verticesY?: number; } /** The PlaneGeometry allows you to draw a 2d plane",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof options === 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'PlaneGeometry constructor changed please use { width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "verticesX",
+          "type": null
+        },
+        {
+          "name": "verticesY } instead'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "build",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "build",
+      "params": [
+        {
+          "name": "options",
+          "type": "PlaneGeometryOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Refreshes plane coordinates"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < total; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "x * sizeX",
+          "type": null
+        },
+        {
+          "name": "y * sizeY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "x / verticesX",
+          "type": null
+        },
+        {
+          "name": "y / verticesY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < totalSub; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        },
+        {
+          "name": "value2",
+          "type": null
+        },
+        {
+          "name": "value3",
+          "type": null
+        },
+        {
+          "name": "value2",
+          "type": null
+        },
+        {
+          "name": "value4",
+          "type": null
+        },
+        {
+          "name": "value3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "verts",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "uvs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint32Array",
+      "params": [
+        {
+          "name": "indices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

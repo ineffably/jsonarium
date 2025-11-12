@@ -1,0 +1,292 @@
+{
+  "type": "class",
+  "name": "BindGroupSystem",
+  "sourcePath": "rendering/renderers/gpu/BindGroupSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "This manages the WebGPU bind groups. this is how data is bound to a shader when rendering",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addManagedHash",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'_hash'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contextChange",
+      "params": [
+        {
+          "name": "gpu",
+          "type": "GPU",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getBindGroup",
+      "params": [
+        {
+          "name": "bindGroup",
+          "type": "BindGroup",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "program",
+          "type": "GpuProgram",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "groupIndex",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GPUBindGroup",
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const j in groupLayout",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resource._resourceType === 'uniformGroup'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "uniformGroup as UniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGPUBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resource._resourceType === 'buffer'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGPUBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resource._resourceType === 'bufferResource'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGPUBuffer",
+      "params": [
+        {
+          "name": "bufferResource.buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resource._resourceType === 'textureSampler'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuSampler",
+      "params": [
+        {
+          "name": "sampler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resource._resourceType === 'textureSource'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuSource",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createView",
+      "params": [
+        {
+          "name": "{\n\n                }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "binding",
+          "type": "groupLayout[j]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resource",
+          "type": "gpuResource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getProgramData",
+      "params": [
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBindGroup",
+      "params": [
+        {
+          "name": "{\n            layout",
+          "type": null
+        },
+        {
+          "name": "entries",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const key of Object.keys(this._hash",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

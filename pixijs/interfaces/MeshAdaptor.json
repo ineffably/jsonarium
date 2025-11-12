@@ -1,0 +1,101 @@
+{
+  "type": "interface",
+  "name": "MeshAdaptor",
+  "sourcePath": "scene/mesh/shared/MeshPipe.ts",
+  "extends": [],
+  "description": "GPUData for Mesh / export class MeshGpuData implements GPUData { public meshData?: MeshData; public batchableMesh?: BatchableMesh; public destroy() { // BOOM! } } /** The data for the mesh / interface MeshData { /** if the mesh is batched or not */ batched: boolean; /** the size of the index buffer */ indexSize: number; /** the size of the vertex buffer */ vertexSize: number; } /** @internal",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "meshPipe",
+      "type": "MeshPipe, mesh: Mesh): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "[\n            ExtensionType.WebGLPipes,\n            ExtensionType.WebGPUPipes,\n            ExtensionType.CanvasPipes,\n        ],\n        name: 'mesh',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uTransformMatrix",
+      "type": "{ value: new Matrix(), type: 'mat3x3<f32>' },\n        uColor: { value: new Float32Array([1, 1, 1, 1]), type: 'vec4<f32>' },\n        uRound: { value: 0, type: 'f32' },\n    })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "0",
+      "type": "this.localUniforms,\n    })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_adaptor",
+      "type": "MeshAdaptor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer, adaptor: MeshAdaptor)\n    {\n        this.renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "type": "Mesh): boolean\n    {\n        const meshData = this._getMeshData(mesh)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "type": "Mesh, instructionSet: InstructionSet)\n    {\n        const batcher = this.renderer.renderPipes.batch",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "type": "Mesh)\n    {\n        if (mesh.batched)\n        {\n            const gpuBatchableMesh = this._getBatchableMesh(mesh)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "type": "Mesh)\n    {\n        if (!mesh.isRenderable) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "type": "Mesh): MeshData\n    {\n        mesh._gpuData[this.renderer.uid] ||= new MeshGpuData()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "type": "Mesh): MeshData\n    {\n        mesh._gpuData[this.renderer.uid].meshData = {\n            batched: mesh.batched,\n            indexSize: 0,\n            vertexSize: 0,\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "type": "Mesh): BatchableMesh\n    {\n        mesh._gpuData[this.renderer.uid] ||= new MeshGpuData()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "type": "Mesh): BatchableMesh\n    {\n        // TODO - make this batchable graphics??\n        const gpuMesh: BatchableMesh = new BatchableMesh()",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

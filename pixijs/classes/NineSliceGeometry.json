@@ -1,0 +1,99 @@
+{
+  "type": "class",
+  "name": "NineSliceGeometry",
+  "sourcePath": "scene/sprite-nine-slice/NineSliceGeometry.ts",
+  "extends": "PlaneGeometry",
+  "implements": [],
+  "description": "Options for the NineSliceGeometry. / export interface NineSliceGeometryOptions { /** The width of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */ width?: number /** The height of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */ height?: number /** The original width of the texture */ originalWidth?: number /** The original height of the texture */ originalHeight?: number /** The width of the left column. */ leftWidth?: number /** The height of the top row. */ topHeight?: number /** The width of the right column. */ rightWidth?: number /** The height of the bottom row. */ bottomHeight?: number /** The anchor point of the NineSliceSprite. */ anchor?: PointData } /** The NineSliceGeometry class allows you to create a NineSlicePlane object.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "options",
+          "type": "NineSliceGeometryOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "The default options for the NineSliceGeometry. */ public static defaultOptions: NineSliceGeometryOptions = { /** The width of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */ width: 100, /** The height of the NineSlicePlane, setting this will actually modify the vertices and UV's of this plane. */ height: 100, /** The width of the left column. */ leftWidth: 10, /** The height of the top row. */ topHeight: 10, /** The width of the right column. */ rightWidth: 10, /** The height of the bottom row. */ bottomHeight: 10, /** The original width of the texture */ originalWidth: 100, /** The original height of the texture */ originalHeight: 100, }; /** @internal */ public _leftWidth: number; /** @internal */ public _rightWidth: number; /** @internal */ public _topHeight: number; /** @internal */ public _bottomHeight: number; private _originalWidth: number; private _originalHeight: number; private _anchorX: any; private _anchorY: number; constructor(options: NineSliceGeometryOptions = {}) { options = { ...NineSliceGeometry.defaultOptions, ...options }; super({ width: options.width, height: options.height, verticesX: 4, verticesY: 4, }); this.update(options); } /** Updates the NineSliceGeometry with the options."
+    },
+    {
+      "name": "updateUvs",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updatePositions",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updatePositions",
+      "params": [],
+      "returnType": null,
+      "description": "Updates the positions of the vertices."
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "scaleW",
+          "type": null
+        },
+        {
+          "name": "scaleH",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBuffer",
+      "params": [
+        {
+          "name": "'aPosition'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUvs",
+      "params": [],
+      "returnType": null,
+      "description": "Updates the UVs of the vertices."
+    },
+    {
+      "name": "getBuffer",
+      "params": [
+        {
+          "name": "'aUV'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

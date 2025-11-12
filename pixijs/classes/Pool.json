@@ -1,0 +1,152 @@
+{
+  "type": "class",
+  "name": "Pool",
+  "sourcePath": "utils/pool/Pool.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A generic class for managing a pool of items.",
+  "category": "utils",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "initialSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prepopulate",
+      "params": [
+        {
+          "name": "initialSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prepopulate",
+      "params": [
+        {
+          "name": "total",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Prepopulates the pool with a given number of items."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < total; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "data",
+          "type": "unknown",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "T",
+      "description": "Gets an item from the pool. Calls the item's `init` method if it exists. If there are no items left in the pool, a new one will be created."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._index > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "item",
+          "type": "T",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Returns an item to the pool. Calls the item's `reset` method if it exists."
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": "Gets the number of items in the pool. / get totalSize(): number { return this._count; } /** Gets the number of items in the pool that are free to use without needing to create more. / get totalFree(): number { return this._index; } /** Gets the number of items in the pool that are currently in use. / get totalUsed(): number { return this._count - this._index; } /** clears the pool"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._pool.length > 0 && this._pool[0].destroy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._index; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "new",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "totalSize",
+      "type": "number",
+      "description": "Gets the number of items in the pool."
+    },
+    {
+      "name": "totalFree",
+      "type": "number",
+      "description": "Gets the number of items in the pool that are free to use without needing to create more."
+    },
+    {
+      "name": "totalUsed",
+      "type": "number",
+      "description": "Gets the number of items in the pool that are currently in use."
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "type": "class",
+  "name": "ObservablePoint",
+  "sourcePath": "maths/point/ObservablePoint.ts",
+  "extends": null,
+  "implements": [
+    "PointLike"
+  ],
+  "description": "Observer used to listen for observable point changes. Provides callback mechanism for point value updates. ```ts // Basic observer implementation const observer: Observer<ObservablePoint> = { _onUpdate: (point) => { console.log(`Point updated to (${point.x}, ${point.y})`); } }; // Create observable point with observer const point = new ObservablePoint(observer, 100, 100); // Observer will be notified on changes point.x = 200; // Logs: Point updated to (200, 100) ``` - Used internally by ObservablePoint - Triggered on x/y changes - Can track multiple points - Useful for change detection / export interface Observer<T> { /** Callback to call when the point has updated. Triggered whenever x or y coordinates change. / _onUpdate: (point?: T) => void; } /** The ObservablePoint object represents a location in a two-dimensional coordinate system. Triggers a callback when its position changes. The x and y properties represent the position on the horizontal and vertical axes, respectively. ```ts // Basic observable point usage const point = new ObservablePoint( { _onUpdate: (p) => console.log(`Updated to (${p.x}, ${p.y})`) }, 100, 100 ); // Update triggers callback point.x = 200; // Logs: Updated to (200, 100) point.y = 300; // Logs: Updated to (200, 300) // Set both coordinates point.set(50, 50); // Logs: Updated to (50, 50) ```",
+  "category": "maths",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "clone",
+      "params": [
+        {
+          "name": "observer",
+          "type": "Observer<ObservablePoint>",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "ObservablePoint",
+      "description": "Creates a clone of this point. ```ts // Basic cloning const point = new ObservablePoint(observer, 100, 200); const copy = point.clone(); // Clone with new observer const newObserver = { _onUpdate: (p) => console.log(`Clone updated: (${p.x}, ${p.y})`) }; const watched = point.clone(newObserver); // Verify independence watched.set(300, 400); // Only triggers new observer ```"
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "observer ?? this._observer",
+          "type": null
+        },
+        {
+          "name": "this._x",
+          "type": null
+        },
+        {
+          "name": "this._y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "x = 0",
+          "type": null
+        },
+        {
+          "name": "y = x",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Sets the point to a new x and y position. If y is omitted, both x and y will be set to x. ```ts // Basic position setting const point = new ObservablePoint(observer); point.set(100, 200); // Set both x and y to same value point.set(50); // x=50, y=50 ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._x !== x || this._y !== y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "p",
+          "type": "PointData",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Copies x and y from the given point into this point. ```ts // Basic copying const source = new ObservablePoint(observer, 100, 200); const target = new ObservablePoint(); target.copyFrom(source); // Copy and chain operations const point = new ObservablePoint() .copyFrom(source) .set(x + 50, y + 50); // Copy from any PointData const data = { x: 10, y: 20 }; point.copyFrom(data); ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._x !== p.x || this._y !== p.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "equals",
+      "params": [
+        {
+          "name": "p",
+          "type": "PointData",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Copies this point's x and y into the given point. ```ts // Basic copying const source = new ObservablePoint(100, 200); const target = new ObservablePoint(); source.copyTo(target); ``` / public copyTo<T extends PointLike>(p: T): T { p.set(this._x, this._y); return p; } /** Checks if another point is equal to this point. Compares x and y values using strict equality. ```ts // Basic equality check const p1 = new ObservablePoint(100, 200); const p2 = new ObservablePoint(100, 200); console.log(p1.equals(p2)); // true // Compare with PointData const data = { x: 100, y: 200 }; console.log(p1.equals(data)); // true // Check different points const p3 = new ObservablePoint(200, 300); console.log(p1.equals(p3)); // false ```"
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "p.x === this._x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": "string",
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "observer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._x !== value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "observer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._y !== value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "x",
+      "type": "number",
+      "description": "Position of the observable point on the x axis. Triggers observer callback when value changes. ```ts // Basic x position const point = new ObservablePoint(observer); point.x = 100; // Triggers observer // Use in calculations const width = rightPoint.x - leftPoint.x; ```"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "description": "Position of the observable point on the y axis. Triggers observer callback when value changes. ```ts // Basic y position const point = new ObservablePoint(observer); point.y = 200; // Triggers observer // Use in calculations const height = bottomPoint.y - topPoint.y; ```"
+    }
+  ]
+}

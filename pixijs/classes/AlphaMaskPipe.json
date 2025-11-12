@@ -1,0 +1,577 @@
+{
+  "type": "class",
+  "name": "AlphaMaskPipe",
+  "sourcePath": "rendering/mask/alpha/AlphaMaskPipe.ts",
+  "extends": null,
+  "implements": [
+    "InstructionPipe"
+  ],
+  "description": "class AlphaMaskEffect extends FilterEffect implements PoolItem { constructor() { super(); this.filters = [new MaskFilter({ sprite: new Sprite(Texture.EMPTY), inverse: false, resolution: 'inherit', antialias: 'inherit' })]; } get sprite(): Sprite { return (this.filters[0] as MaskFilter).sprite; } set sprite(value: Sprite) { (this.filters[0] as MaskFilter).sprite = value; } get inverse(): boolean { return (this.filters[0] as MaskFilter).inverse; } set inverse(value: boolean) { (this.filters[0] as MaskFilter).inverse = value; } public init: () => void; } /** @internal */ export interface AlphaMaskInstruction extends Instruction { renderPipeId: 'alphaMask', action: MaskMode, mask: AlphaMask, inverse: boolean; maskedContainer: Container, renderMask: boolean, } /** @internal */ export interface AlphaMaskData { filterEffect: AlphaMaskEffect, maskedContainer: Container, previousRenderTarget?: RenderTarget, filterTexture?: Texture, } /** @internal",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "mask",
+          "type": "Effect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "maskedContainer",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'alphaMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'pushMaskBegin'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        },
+        {
+          "name": "inverse",
+          "type": "maskedContainer._maskOptions.inverse",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "maskedContainer\n        } as AlphaMaskInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(mask as AlphaMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collectRenderables",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        },
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'alphaMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'pushMaskEnd'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        },
+        {
+          "name": "maskedContainer",
+          "type": null
+        },
+        {
+          "name": "inverse",
+          "type": "maskedContainer._maskOptions.inverse",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "} as AlphaMaskInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [
+        {
+          "name": "mask",
+          "type": "Effect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_maskedContainer",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'alphaMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'popMaskEnd'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        },
+        {
+          "name": "inverse",
+          "type": "_maskedContainer._maskOptions.inverse",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "} as AlphaMaskInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "instruction",
+          "type": "AlphaMaskInstruction",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'pushMaskBegin'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "AlphaMaskEffect",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlobalBounds",
+      "params": [
+        {
+          "name": "instruction.mask.mask",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "tempBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getOptimalTexture",
+      "params": [
+        {
+          "name": "bounds.width",
+          "type": null
+        },
+        {
+          "name": "bounds.height",
+          "type": null
+        },
+        {
+          "name": "colorTextureSource._resolution",
+          "type": null
+        },
+        {
+          "name": "colorTextureSource.antialias",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "filterTexture",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "offset",
+          "type": "bounds",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "worldColor",
+          "type": "0xFFFFFFFF\n                }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "{\n                    filterEffect",
+          "type": null
+        },
+        {
+          "name": "maskedContainer",
+          "type": "instruction.maskedContainer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "filterTexture",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "{\n                    filterEffect",
+          "type": null
+        },
+        {
+          "name": "maskedContainer",
+          "type": "instruction.maskedContainer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'pushMaskEnd'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer.type === RendererType.WEBGL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'filter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'pushFilter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "container",
+          "type": "maskData.maskedContainer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "filterEffect",
+          "type": "maskData.filterEffect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'popMaskEnd'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "maskData.filterTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "maskData.filterEffect",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

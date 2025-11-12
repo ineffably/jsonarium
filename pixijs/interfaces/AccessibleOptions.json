@@ -1,0 +1,95 @@
+{
+  "type": "interface",
+  "name": "AccessibleOptions",
+  "sourcePath": "accessibility/accessibilityTarget.ts",
+  "extends": [],
+  "description": "The type of the pointer event to listen for. / export type PointerEvents = 'auto' | 'none' | 'visiblePainted' | 'visibleFill' | 'visibleStroke' | 'visible' | 'painted' | 'fill' | 'stroke' | 'all' | 'inherit'; /** When `accessible` is enabled on any display object, these properties will affect its accessibility. const container = new Container(); container.accessible = true; container.accessibleTitle = 'My Container'; container.accessibleHint = 'This is a container'; container.tabIndex = 0;",
+  "category": "accessibility",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "accessible",
+      "type": "boolean",
+      "optional": false,
+      "description": "Flag for if the object is accessible. If true AccessibilityManager will overlay a shadow div with attributes set ```js const container = new Container(); container.accessible = true; ```"
+    },
+    {
+      "name": "accessibleTitle",
+      "type": "string | null",
+      "optional": false,
+      "description": "Sets the title attribute of the shadow div If accessibleTitle AND accessibleHint has not been this will default to 'container [tabIndex]' ```js const container = new Container(); container.accessible = true; container.accessibleTitle = 'My Container'; ```"
+    },
+    {
+      "name": "accessibleHint",
+      "type": "string | null",
+      "optional": false,
+      "description": "Sets the aria-label attribute of the shadow div ```js const container = new Container(); container.accessible = true; container.accessibleHint = 'This is a container'; ```"
+    },
+    {
+      "name": "tabIndex",
+      "type": "number",
+      "optional": false,
+      "description": "Sets the tabIndex of the shadow div. You can use this to set the order of the elements when using the tab key to navigate. ```js const container = new Container(); container.accessible = true; container.tabIndex = 0; const sprite = new Sprite(texture); sprite.accessible = true; sprite.tabIndex = 1; ```"
+    },
+    {
+      "name": "accessibleType",
+      "type": "keyof HTMLElementTagNameMap",
+      "optional": false,
+      "description": "Specify the type of div the accessible layer is. Screen readers treat the element differently depending on this type. Defaults to button. ```js const container = new Container(); container.accessible = true; container.accessibleType = 'button'; // or 'link', 'checkbox', etc. ```"
+    },
+    {
+      "name": "accessiblePointerEvents",
+      "type": "PointerEvents",
+      "optional": false,
+      "description": "Specify the pointer-events the accessible div will use Defaults to auto. ```js const container = new Container(); container.accessible = true; container.accessiblePointerEvents = 'none'; // or 'auto', 'visiblePainted', etc. ```"
+    },
+    {
+      "name": "accessibleText",
+      "type": "string | null",
+      "optional": false,
+      "description": "Sets the text content of the shadow ```js const container = new Container(); container.accessible = true; container.accessibleText = 'This is a container'; ```"
+    },
+    {
+      "name": "accessibleChildren",
+      "type": "boolean",
+      "optional": false,
+      "description": "Setting to false will prevent any children inside this container to be accessible. Defaults to true. ```js const container = new Container(); container.accessible = true; container.accessibleChildren = false; // This will prevent any children from being accessible const sprite = new Sprite(texture); sprite.accessible = true; // This will not work since accessibleChildren is false ```"
+    },
+    {
+      "name": "_accessibleActive",
+      "type": "boolean",
+      "optional": false,
+      "description": "The Accessibility object is attached to the {@link Container}. / export interface AccessibleTarget extends AccessibleOptions { /** @private"
+    },
+    {
+      "name": "_accessibleDiv",
+      "type": "AccessibleHTMLElement | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderId",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "accessibilityTarget",
+      "type": "AccessibleTarget = {\n    accessible: false,\n    accessibleTitle: null,\n    accessibleHint: null,\n    tabIndex: 0,\n    accessibleType: 'button',\n    accessibleText: null,\n    accessiblePointerEvents: 'auto',\n    accessibleChildren: true,\n    _accessibleActive: false,\n    _accessibleDiv: null,\n    _renderId: -1,\n}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

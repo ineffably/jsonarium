@@ -1,0 +1,306 @@
+{
+  "type": "class",
+  "name": "WebGLProgramWrapper",
+  "sourcePath": "renderer/webgl/wrappers/WebGLProgramWrapper.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function WebGLProgramWrapper (gl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "vertexSource",
+          "type": null
+        },
+        {
+          "name": "fragmentSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createResource",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createProgram",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createShader",
+      "params": [
+        {
+          "name": "gl.VERTEX_SHADER",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createShader",
+      "params": [
+        {
+          "name": "gl.FRAGMENT_SHADER",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shaderSource",
+      "params": [
+        {
+          "name": "vs",
+          "type": null
+        },
+        {
+          "name": "this.vertexSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shaderSource",
+      "params": [
+        {
+          "name": "fs",
+          "type": null
+        },
+        {
+          "name": "this.fragmentSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compileShader",
+      "params": [
+        {
+          "name": "vs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compileShader",
+      "params": [
+        {
+          "name": "fs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gl.getShaderParameter(vs",
+          "type": null
+        },
+        {
+          "name": "gl.COMPILE_STATUS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'Vertex ' + failed + gl.getShaderInfoLog(vs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gl.getShaderParameter(fs",
+          "type": null
+        },
+        {
+          "name": "gl.COMPILE_STATUS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'Fragment ' + failed + gl.getShaderInfoLog(fs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "attachShader",
+      "params": [
+        {
+          "name": "program",
+          "type": null
+        },
+        {
+          "name": "vs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "attachShader",
+      "params": [
+        {
+          "name": "program",
+          "type": null
+        },
+        {
+          "name": "fs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "linkProgram",
+      "params": [
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gl.getProgramParameter(program",
+          "type": null
+        },
+        {
+          "name": "gl.LINK_STATUS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'Link ' + failed + gl.getProgramInfoLog(program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "useProgram",
+      "params": [
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.webGLProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteProgram",
+      "params": [
+        {
+          "name": "this.webGLProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

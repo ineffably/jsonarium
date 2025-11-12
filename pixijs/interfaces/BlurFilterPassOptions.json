@@ -1,0 +1,73 @@
+{
+  "type": "interface",
+  "name": "BlurFilterPassOptions",
+  "sourcePath": "filters/defaults/blur/BlurFilterPass.ts",
+  "extends": [
+    "BlurFilterOptions"
+  ],
+  "description": "Options for BlurFilterPass",
+  "category": "filters",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "horizontal",
+      "type": "boolean",
+      "optional": false,
+      "description": "Do pass along the x-axis (`true`) or y-axis (`false`)."
+    },
+    {
+      "name": "strength",
+      "type": "8,\n        /** The quality of the blur filter. */\n        quality: 4,\n        /** The kernelSize of the blur filter.Options: 5, 7, 9, 11, 13, 15. */\n        kernelSize: 5,\n    }",
+      "optional": false,
+      "description": "The BlurFilterPass applies a horizontal or vertical Gaussian blur to an object. import { BlurFilterPass } from 'pixi.js'; const filter = new BlurFilterPass({ horizontal: true, strength: 8 }); sprite.filters = filter; // update blur filter.blur = 16; / export class BlurFilterPass extends Filter { /** Default blur filter pass options */ public static defaultOptions: Partial<BlurFilterPassOptions> = { /** The strength of the blur filter."
+    },
+    {
+      "name": "horizontal",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_quality",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_uniforms",
+      "type": "any",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Options",
+      "type": "5, 7, 9, 11, 13, 15.\n     */\n    constructor(options: BlurFilterPassOptions)\n    {\n        options = { ...BlurFilterPass.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resources",
+      "type": "{\n                blurUniforms: {\n                    uStrength: { value: 0, type: 'f32' },\n                }\n            },\n            ...options\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filterManager",
+      "type": "FilterSystem,\n        input: Texture,\n        output: RenderSurface,\n        clearMode: boolean\n    ): void\n    {\n        this._uniforms.uStrength = this.strength / this.passes",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.padding = 1 + (Math.abs(value) * 2)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._quality = value",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

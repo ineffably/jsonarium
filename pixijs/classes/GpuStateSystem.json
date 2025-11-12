@@ -1,0 +1,34 @@
+{
+  "type": "class",
+  "name": "GpuStateSystem",
+  "sourcePath": "rendering/renderers/gpu/state/GpuStateSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "System plugin to the renderer to manage WebGL state machines.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "getColorTargets",
+      "params": [
+        {
+          "name": "state",
+          "type": "State",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GPUColorTargetState[]",
+      "description": "public static extension = { type: [ ExtensionType.WebGPUSystem, ], name: 'state', } as const; /** State ID / public stateId: number; /** Polygon offset / public polygonOffset: number; /** Blend mode / public blendMode: BLEND_MODES; /** Whether current blend equation is different */ protected _blendEq: boolean; /** GL context / protected gpu: GPU; /** Default WebGL State / protected defaultState: State; constructor() { this.defaultState = new State(); this.defaultState.blend = true; } protected contextChange(gpu: GPU): void { this.gpu = gpu; } /** Gets the blend mode data for the current state"
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

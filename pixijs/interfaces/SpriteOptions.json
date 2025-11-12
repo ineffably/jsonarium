@@ -1,0 +1,193 @@
+{
+  "type": "interface",
+  "name": "SpriteOptions",
+  "sourcePath": "scene/sprite/Sprite.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": "Options for configuring a Sprite instance. Defines the texture, anchor point, and rendering behavior. ```ts // Create a basic sprite with texture const sprite = new Sprite({ texture: Texture.from('sprite.png') }); // Create a centered sprite with rounded position const centeredSprite = new Sprite({ texture: Texture.from('centered.png'), anchor: 0.5,        // Center point roundPixels: true,  // Crisp rendering x: 100,            // Position from ViewContainerOptions y: 100 }); // Create a sprite with specific anchor points const anchoredSprite = new Sprite({ texture: Texture.from('corner.png'), anchor: { x: 1,  // Right-aligned y: 0   // Top-aligned } }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": true,
+      "description": "The texture to use for the sprite. If not provided, uses Texture.EMPTY ```ts // Create a sprite with a texture const sprite = new Sprite({ texture: Texture.from('path/to/image.png') }); // Update the texture later sprite.texture = Texture.from('path/to/another-image.png'); ```"
+    },
+    {
+      "name": "anchor",
+      "type": "PointData | number",
+      "optional": true,
+      "description": "The anchor point of the sprite (0-1 range). Controls the origin point for rotation, scaling, and positioning. Can be a number for uniform anchor or a PointData for separate x/y values. ```ts // Centered anchor anchor: 0.5 // Separate x/y anchor anchor: { x: 0.5, y: 0.5 } // Right-aligned anchor anchor: { x: 1, y: 0 } ```"
+    },
+    {
+      "name": "roundPixels",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether or not to round the x/y position to whole pixels. Useful for crisp pixel art style rendering. ```ts const sprite = new Sprite({ texture: Texture.from('sprite.png'), roundPixels: true // Ensures crisp rendering }); ```"
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('sprite.png'),\n *     anchor: 0.5,           // Center anchor point\n *     position: { x: 100, y: 100 },\n *     scale: { x: 2, y: 2 }, // Double size\n *     rotation: Math.PI / 4   // 45 degrees\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "Texture | TextureSourceLike, skipCache = false): Sprite\n    {\n        if (source instanceof Texture)\n        {\n            return new Sprite(source)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "string = 'sprite'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_anchor",
+      "type": "ObservablePoint",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_texture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_visualBounds",
+      "type": "BoundsData = { minX: 0, maxX: 1, minY: 0, maxY: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "SpriteOptions | Texture = Texture.EMPTY)\n    {\n        if (options instanceof Texture)\n        {\n            options = { texture: options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "'Sprite',\n            ...rest\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_onUpdate",
+      "type": "() =>\n                {\n                    this.onViewUpdate()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Texture)\n    {\n        value ||= Texture.EMPTY",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('sprite.png')\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "new TextureSource({ width: 300, height: 300 }),\n     *     frame: new Rectangle(196, 66, 58, 56),\n     *     trim: new Rectangle(4, 4, 58, 56),\n     *     orig: new Rectangle(0, 0, 64, 64),\n     *     rotate: 2,\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "minX",
+      "type": "-4, maxX: 62, minY: -4, maxY: 60 }\n     */\n    get visualBounds()\n    {\n        updateQuadBounds(this._visualBounds, this._anchor, this._texture)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "true, textureSource: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions = false)\n    {\n        super.destroy(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1, // Right edge\n     *     y: 0  // Top edge\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData | number)\n    {\n        typeof value === 'number' ? this._anchor.set(value) : this._anchor.copyFrom(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._setWidth(value, this._texture.orig.width)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._setHeight(value, this._texture.orig.height)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Size",
+      "type": "${size.width}x${size.height}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "0, height: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Size): Size\n    {\n        out ||= {} as Size",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "Width",
+      "type": "100, Height: 200\n     *\n     * // Set uniform size\n     * sprite.setSize(100)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "200,\n     *     height: 300\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | Optional<Size, 'height'>, height?: number)\n    {\n        if (typeof value === 'object')\n        {\n            height = value.height ?? value.width",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

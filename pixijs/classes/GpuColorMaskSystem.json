@@ -1,0 +1,56 @@
+{
+  "type": "class",
+  "name": "GpuColorMaskSystem",
+  "sourcePath": "rendering/renderers/gpu/GpuColorMaskSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "The system that handles color masking for the GPU.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "setMask",
+      "params": [
+        {
+          "name": "colorMask",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._colorMaskCache === colorMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setColorMask",
+      "params": [
+        {
+          "name": "colorMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

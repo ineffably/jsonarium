@@ -1,0 +1,105 @@
+{
+  "type": "class",
+  "name": "GlParticleContainerAdaptor",
+  "sourcePath": "scene/particle-container/gl/GlParticleContainerAdaptor.ts",
+  "extends": null,
+  "implements": [
+    "ParticleContainerAdaptor"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "particleContainerPipe",
+          "type": "ParticleContainerPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "container",
+          "type": "ParticleContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBuffers",
+      "params": [
+        {
+          "name": "container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "state",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "buffer.geometry",
+          "type": null
+        },
+        {
+          "name": "shader.glProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawElements",
+      "params": [
+        {
+          "name": "gl.TRIANGLES",
+          "type": null
+        },
+        {
+          "name": "container.particleChildren.length * 6",
+          "type": null
+        },
+        {
+          "name": "glType",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

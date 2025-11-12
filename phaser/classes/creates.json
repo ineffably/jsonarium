@@ -1,0 +1,6739 @@
+{
+  "type": "class",
+  "name": "creates",
+  "sourcePath": "physics/matter-js/World.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "EventEmitter",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function World (scene",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'gravity'",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gravity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setGravity",
+      "params": [
+        {
+          "name": "gravity.x",
+          "type": null
+        },
+        {
+          "name": "gravity.y",
+          "type": null
+        },
+        {
+          "name": "gravity.scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gravity === false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setGravity",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'enabled'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "positionIterations",
+      "params": [
+        {
+          "name": "defaults to 6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "velocityIterations",
+      "params": [
+        {
+          "name": "defaults to 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "constraintIterations",
+      "params": [
+        {
+          "name": "defaults to 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'getDelta'",
+          "type": null
+        },
+        {
+          "name": "this.update60Hz",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'runner'",
+          "type": null
+        },
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "runnerConfig",
+          "type": null
+        },
+        {
+          "name": "'fps'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "hasFPS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "runnerConfig",
+          "type": null
+        },
+        {
+          "name": "'fps'",
+          "type": null
+        },
+        {
+          "name": "60",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "runnerConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'autoUpdate'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'debug'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "typeof",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showAxes'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showAngleIndicator'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'angleColor'",
+          "type": null
+        },
+        {
+          "name": "0xe81153",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showBroadphase'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'broadphaseColor'",
+          "type": null
+        },
+        {
+          "name": "0xffb400",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showBounds'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'boundsColor'",
+          "type": null
+        },
+        {
+          "name": "0xffffff",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showVelocity'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'velocityColor'",
+          "type": null
+        },
+        {
+          "name": "0x00aeef",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showCollisions'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'collisionColor'",
+          "type": null
+        },
+        {
+          "name": "0xf5950c",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showSeparations'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'separationColor'",
+          "type": null
+        },
+        {
+          "name": "0xffa500",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showBody'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showStaticBody'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showInternalEdges'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'renderFill'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'renderLine'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'fillColor'",
+          "type": null
+        },
+        {
+          "name": "0x106909",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'fillOpacity'",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'lineColor'",
+          "type": null
+        },
+        {
+          "name": "0x28de19",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'lineOpacity'",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'lineThickness'",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'staticFillColor'",
+          "type": null
+        },
+        {
+          "name": "0x0d177b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'staticLineColor'",
+          "type": null
+        },
+        {
+          "name": "0x1327e4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showSleeping'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'staticBodySleepOpacity'",
+          "type": null
+        },
+        {
+          "name": "0.7",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'sleepFillColor'",
+          "type": null
+        },
+        {
+          "name": "0x464646",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'sleepLineColor'",
+          "type": null
+        },
+        {
+          "name": "0x999a99",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showSensors'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'sensorFillColor'",
+          "type": null
+        },
+        {
+          "name": "0x0d177b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'sensorLineColor'",
+          "type": null
+        },
+        {
+          "name": "0x1327e4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showPositions'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'positionSize'",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'positionColor'",
+          "type": null
+        },
+        {
+          "name": "0xe042da",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showJoint'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'jointColor'",
+          "type": null
+        },
+        {
+          "name": "0xe0e042",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'jointLineOpacity'",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'jointLineThickness'",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'pinSize'",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'pinColor'",
+          "type": null
+        },
+        {
+          "name": "0x42e0e0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'springColor'",
+          "type": null
+        },
+        {
+          "name": "0xe042e0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'anchorColor'",
+          "type": null
+        },
+        {
+          "name": "0xefefef",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'anchorSize'",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'showConvexHulls'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "debugConfig",
+          "type": null
+        },
+        {
+          "name": "'hullColor'",
+          "type": null
+        },
+        {
+          "name": "0xd703d0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.drawDebug",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createDebugGraphic",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setEventsProxy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "GetFastValue(config",
+          "type": null
+        },
+        {
+          "name": "'setBounds'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof boundsConfig === 'boolean'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBounds",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'x'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'y'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'width'",
+          "type": null
+        },
+        {
+          "name": "scene.sys.scale.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'height'",
+          "type": null
+        },
+        {
+          "name": "scene.sys.scale.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'thickness'",
+          "type": null
+        },
+        {
+          "name": "64",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'left'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'right'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'top'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "boundsConfig",
+          "type": null
+        },
+        {
+          "name": "'bottom'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBounds",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "thickness",
+          "type": null
+        },
+        {
+          "name": "left",
+          "type": null
+        },
+        {
+          "name": "right",
+          "type": null
+        },
+        {
+          "name": "top",
+          "type": null
+        },
+        {
+          "name": "bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBodyRenderStyle",
+      "params": [
+        {
+          "name": "obj",
+          "type": null
+        },
+        {
+          "name": "render.lineColor",
+          "type": null
+        },
+        {
+          "name": "render.lineOpacity",
+          "type": null
+        },
+        {
+          "name": "render.lineThickness",
+          "type": null
+        },
+        {
+          "name": "render.fillColor",
+          "type": null
+        },
+        {
+          "name": "render.fillOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < constraints.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setConstraintRenderStyle",
+      "params": [
+        {
+          "name": "obj",
+          "type": null
+        },
+        {
+          "name": "render.lineColor",
+          "type": null
+        },
+        {
+          "name": "render.lineOpacity",
+          "type": null
+        },
+        {
+          "name": "render.lineThickness",
+          "type": null
+        },
+        {
+          "name": "render.pinSize",
+          "type": null
+        },
+        {
+          "name": "render.anchorColor",
+          "type": null
+        },
+        {
+          "name": "render.anchorSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < composites.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCompositeRenderStyle",
+      "params": [
+        {
+          "name": "obj",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "fillColor",
+          "type": null
+        },
+        {
+          "name": "fillOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineColor === undefined || lineColor === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineOpacity === undefined || lineOpacity === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineThickness === undefined || lineThickness === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillColor === undefined || fillColor === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillOpacity === undefined || fillOpacity === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineColor !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineOpacity !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineThickness !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillColor !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillOpacity !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraint",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "pinSize",
+          "type": null
+        },
+        {
+          "name": "anchorColor",
+          "type": null
+        },
+        {
+          "name": "anchorSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!render",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineColor === undefined || lineColor === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "type === 'line'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "type === 'pin'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "type === 'spring'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineOpacity === undefined || lineOpacity === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineThickness === undefined || lineThickness === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pinSize === undefined || pinSize === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anchorColor === undefined || anchorColor === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anchorSize === undefined || anchorSize === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineColor !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineOpacity !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineThickness !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pinSize !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anchorColor !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anchorSize !== false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.drawDebug",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        },
+        {
+          "name": "'compositeModified'",
+          "type": null
+        },
+        {
+          "name": "function (composite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCompositeRenderStyle",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        },
+        {
+          "name": "'beforeAdd'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "concat",
+      "params": [
+        {
+          "name": "event.object",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < objects.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "obj.type === 'body'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBodyRenderStyle",
+      "params": [
+        {
+          "name": "obj",
+          "type": null
+        },
+        {
+          "name": "render.lineColor",
+          "type": null
+        },
+        {
+          "name": "render.lineOpacity",
+          "type": null
+        },
+        {
+          "name": "render.lineThickness",
+          "type": null
+        },
+        {
+          "name": "render.fillColor",
+          "type": null
+        },
+        {
+          "name": "render.fillOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "obj.type === 'composite'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCompositeRenderStyle",
+      "params": [
+        {
+          "name": "obj",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "obj.type === 'constraint'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setConstraintRenderStyle",
+      "params": [
+        {
+          "name": "obj",
+          "type": null
+        },
+        {
+          "name": "render.lineColor",
+          "type": null
+        },
+        {
+          "name": "render.lineOpacity",
+          "type": null
+        },
+        {
+          "name": "render.lineThickness",
+          "type": null
+        },
+        {
+          "name": "render.pinSize",
+          "type": null
+        },
+        {
+          "name": "render.anchorColor",
+          "type": null
+        },
+        {
+          "name": "render.anchorSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        },
+        {
+          "name": "'beforeAdd'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.BEFORE_ADD",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        },
+        {
+          "name": "'afterAdd'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.AFTER_ADD",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        },
+        {
+          "name": "'beforeRemove'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.BEFORE_REMOVE",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "world",
+          "type": null
+        },
+        {
+          "name": "'afterRemove'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.AFTER_REMOVE",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'beforeUpdate'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.BEFORE_UPDATE",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'afterUpdate'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.AFTER_UPDATE",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'collisionStart'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pairs.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "function (pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'collide'",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'collide'",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "'onCollide'",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": "pair }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "'onCollide'",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": "pair }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.onCollideCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onCollideCallback",
+      "params": [
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.onCollideCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onCollideCallback",
+      "params": [
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.onCollideWith[bodyB.id]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.onCollideWith[bodyA.id]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.COLLISION_START",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'collisionActive'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pairs.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "function (pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'collideActive'",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'collideActive'",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "'onCollideActive'",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": "pair }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "'onCollideActive'",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": "pair }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.onCollideActiveCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onCollideActiveCallback",
+      "params": [
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.onCollideActiveCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onCollideActiveCallback",
+      "params": [
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.COLLISION_ACTIVE",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "'collisionEnd'",
+          "type": null
+        },
+        {
+          "name": "function (event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pairs.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "function (pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'collideEnd'",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'collideEnd'",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "'onCollideEnd'",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": "pair }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trigger",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": null
+        },
+        {
+          "name": "'onCollideEnd'",
+          "type": null
+        },
+        {
+          "name": "pair",
+          "type": "pair }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.onCollideEndCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onCollideEndCallback",
+      "params": [
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.onCollideEndCallback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onCollideEndCallback",
+      "params": [
+        {
+          "name": "pair",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.COLLISION_END",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": null
+        },
+        {
+          "name": "bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "thickness",
+          "type": null
+        },
+        {
+          "name": "left",
+          "type": null
+        },
+        {
+          "name": "right",
+          "type": null
+        },
+        {
+          "name": "top",
+          "type": null
+        },
+        {
+          "name": "bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "height === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "thickness === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "left === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "right === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "top === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bottom === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateWall",
+      "params": [
+        {
+          "name": "left",
+          "type": null
+        },
+        {
+          "name": "'left'",
+          "type": null
+        },
+        {
+          "name": "x - thickness",
+          "type": null
+        },
+        {
+          "name": "y - thickness",
+          "type": null
+        },
+        {
+          "name": "thickness",
+          "type": null
+        },
+        {
+          "name": "height + (thickness * 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateWall",
+      "params": [
+        {
+          "name": "right",
+          "type": null
+        },
+        {
+          "name": "'right'",
+          "type": null
+        },
+        {
+          "name": "x + width",
+          "type": null
+        },
+        {
+          "name": "y - thickness",
+          "type": null
+        },
+        {
+          "name": "thickness",
+          "type": null
+        },
+        {
+          "name": "height + (thickness * 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateWall",
+      "params": [
+        {
+          "name": "top",
+          "type": null
+        },
+        {
+          "name": "'top'",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y - thickness",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "thickness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateWall",
+      "params": [
+        {
+          "name": "bottom",
+          "type": null
+        },
+        {
+          "name": "'bottom'",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y + height",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "thickness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "add",
+          "type": null
+        },
+        {
+          "name": "position",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "add",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "wall",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        },
+        {
+          "name": "wall",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "isStatic",
+          "type": "true",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "friction",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "frictionStatic",
+          "type": "0 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "wall",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        },
+        {
+          "name": "wall",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "graphics",
+      "params": [
+        {
+          "name": "x",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "0 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDepth",
+      "params": [
+        {
+          "name": "Number.MAX_VALUE",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scale === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        },
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "object",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        },
+        {
+          "name": "object",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "object",
+          "type": null
+        },
+        {
+          "name": "deep",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!Array.isArray(object",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < object.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        },
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "deep",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraint",
+          "type": null
+        },
+        {
+          "name": "deep",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        },
+        {
+          "name": "constraint",
+          "type": null
+        },
+        {
+          "name": "deep",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tilemapLayer",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTilesWithin",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "layerData.width",
+          "type": null
+        },
+        {
+          "name": "layerData.height",
+          "type": null
+        },
+        {
+          "name": "isColliding",
+          "type": "true }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "convertTiles",
+      "params": [
+        {
+          "name": "tiles",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "tiles",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tiles.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < tiles.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "MatterTileBody",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "tiles[i]",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "isNonColliding",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextGroup",
+      "params": [
+        {
+          "name": "isNonColliding",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bitfield",
+      "params": [
+        {
+          "name": "starting after the initial default category 0x0001",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextCategory",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.PAUSE",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "Events.RESUME",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "1",
+      "params": [
+        {
+          "name": "no correction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "constant",
+      "params": [
+        {
+          "name": "or when no correction is desired",
+          "type": null
+        },
+        {
+          "name": "which is the default",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "time",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.enabled || !this.autoUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "values",
+      "params": [
+        {
+          "name": "e.g. 0",
+          "type": null
+        },
+        {
+          "name": "NaN",
+          "type": null
+        },
+        {
+          "name": "on first frame or long pauses",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!frameDelta || !runner.timeLastTick || frameDelta > Math.max(MatterRunner._maxFrameDelta",
+          "type": null
+        },
+        {
+          "name": "runner.maxFrameTime",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.frameDeltaSmoothing",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "frameDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "-runner.frameDeltaHistorySize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sort",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "deltaHistorySorted.length * MatterRunner._smoothingLowerBound",
+          "type": null
+        },
+        {
+          "name": "deltaHistorySorted.length * MatterRunner._smoothingUpperBound",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "runner.frameDeltaSnapping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "1000 / frameDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clamp",
+      "params": [
+        {
+          "name": "runner.timeBuffer",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "runner.frameDelta + engineDelta * MatterRunner._timeBufferMargin",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "runner.maxFrameTime / engineDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "engineDelta > 0 && runner.timeBuffer >= engineDelta * MatterRunner._timeBufferMargin",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "engine",
+          "type": null
+        },
+        {
+          "name": "engineDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "updateCount >= maxUpdates || elapsedNextEstimate > runner.maxFrameTime",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "Math.max(0",
+          "type": null
+        },
+        {
+          "name": "(runner.timeBuffer / engineDelta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "positionIterations",
+      "params": [
+        {
+          "name": "defaults to 6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "velocityIterations",
+      "params": [
+        {
+          "name": "defaults to 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "constraintIterations",
+      "params": [
+        {
+          "name": "defaults to 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "this.engine",
+          "type": null
+        },
+        {
+          "name": "delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hasOwnProperty",
+      "params": [
+        {
+          "name": "'body'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "Composite.get(this.localWorld",
+          "type": null
+        },
+        {
+          "name": "src.id",
+          "type": null
+        },
+        {
+          "name": "src.type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allBodies",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allConstraints",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allComposites",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.drawDebug",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allBodies",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showBroadphase && engine.broadphase.controller",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderGrid",
+      "params": [
+        {
+          "name": "engine.broadphase",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "config.broadphaseColor",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderBodyBounds",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "config.boundsColor",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showBody || config.showStaticBody",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderBodies",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showJoint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderJoints",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showAxes || config.showAngleIndicator",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderBodyAxes",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "config.showAxes",
+          "type": null
+        },
+        {
+          "name": "config.angleColor",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showVelocity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderBodyVelocity",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "config.velocityColor",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showSeparations",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderSeparations",
+      "params": [
+        {
+          "name": "engine.pairs.list",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "config.separationColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showCollisions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderCollisions",
+      "params": [
+        {
+          "name": "engine.pairs.list",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "config.collisionColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "grid",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "keys",
+      "params": [
+        {
+          "name": "grid.buckets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bucketKeys.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "grid.buckets[bucketId].length < 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "/C|R/",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeRect",
+      "params": [
+        {
+          "name": "parseInt(region[1]",
+          "type": null
+        },
+        {
+          "name": "10",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseInt",
+      "params": [
+        {
+          "name": "region[2]",
+          "type": null
+        },
+        {
+          "name": "10",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "pairs",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < pairs.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pair.isActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineBetween",
+      "params": [
+        {
+          "name": "posB.x",
+          "type": null
+        },
+        {
+          "name": "posB.y",
+          "type": null
+        },
+        {
+          "name": "posB.x - (penetration.x * k",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineBetween",
+      "params": [
+        {
+          "name": "posA.x",
+          "type": null
+        },
+        {
+          "name": "posA.y",
+          "type": null
+        },
+        {
+          "name": "posA.x - (penetration.x * k",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "pairs",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillStyle",
+      "params": [
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < pairs.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pair.isActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 0; j < pair.contactCount; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "vertex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "vertex.x - 2",
+          "type": null
+        },
+        {
+          "name": "vertex.y - 2",
+          "type": null
+        },
+        {
+          "name": "5",
+          "type": null
+        },
+        {
+          "name": "5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < pairs.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pair.isActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pair.contactCount > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pair.contactCount === 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "collision.bodyB === collision.supports[0].body || collision.bodyA.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineBetween",
+      "params": [
+        {
+          "name": "normalPosX - collision.normal.x * 8",
+          "type": null
+        },
+        {
+          "name": "normalPosY - collision.normal.y * 8",
+          "type": null
+        },
+        {
+          "name": "normalPosX",
+          "type": null
+        },
+        {
+          "name": "normalPosY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineBetween",
+      "params": [
+        {
+          "name": "normalPosX + collision.normal.x * 8",
+          "type": null
+        },
+        {
+          "name": "normalPosY + collision.normal.y * 8",
+          "type": null
+        },
+        {
+          "name": "normalPosX",
+          "type": null
+        },
+        {
+          "name": "normalPosY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeRect",
+      "params": [
+        {
+          "name": "bounds.min.x",
+          "type": null
+        },
+        {
+          "name": "bounds.min.y",
+          "type": null
+        },
+        {
+          "name": "bounds.max.x - bounds.min.x",
+          "type": null
+        },
+        {
+          "name": "bounds.max.y - bounds.min.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = parts.length > 1 ? 1 : 0; j < parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeRect",
+      "params": [
+        {
+          "name": "part.bounds.min.x",
+          "type": null
+        },
+        {
+          "name": "part.bounds.min.y",
+          "type": null
+        },
+        {
+          "name": "part.bounds.max.x - part.bounds.min.x",
+          "type": null
+        },
+        {
+          "name": "part.bounds.max.y - part.bounds.min.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "showAxes",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "showAxes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = parts.length > 1 ? 1 : 0; j < parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "k = 0; k < part.axes.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineBetween",
+      "params": [
+        {
+          "name": "part.position.x",
+          "type": null
+        },
+        {
+          "name": "part.position.y",
+          "type": null
+        },
+        {
+          "name": "part.position.x + axis.x * 20",
+          "type": null
+        },
+        {
+          "name": "part.position.y + axis.y * 20",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "j = parts.length > 1 ? 1 : 0; j < parts.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "k = 0; k < part.axes.length; k++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineBetween",
+      "params": [
+        {
+          "name": "part.position.x",
+          "type": null
+        },
+        {
+          "name": "part.position.y",
+          "type": null
+        },
+        {
+          "name": "(part.vertices[0].x + part.vertices[part.vertices.length - 1].x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineBetween",
+      "params": [
+        {
+          "name": "body.position.x",
+          "type": null
+        },
+        {
+          "name": "body.position.y",
+          "type": null
+        },
+        {
+          "name": "body.position.x + (body.position.x - body.positionPrev.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "bodies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body.render.visible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(!showStaticBody && body.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "showSleeping && body.isSleeping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderFill",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderLine",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderBody",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "showInternalEdges",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "fillColor",
+          "type": null
+        },
+        {
+          "name": "fillOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "showConvexHulls && partsLength > 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderConvexHull",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "hullColor",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "showInternalEdges",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "fillColor",
+          "type": null
+        },
+        {
+          "name": "fillOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineColor === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineOpacity === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineThickness === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillColor === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillOpacity === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var k = (partsLength > 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!render.visible || opacity === 0 || (part.isSensor && !config.showSensors",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "part.isSensor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillColor !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillStyle",
+      "params": [
+        {
+          "name": "sensorFillColor",
+          "type": null
+        },
+        {
+          "name": "fillOpacity * opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineColor !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "sensorLineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity * opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillColor !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillStyle",
+      "params": [
+        {
+          "name": "fillColor",
+          "type": null
+        },
+        {
+          "name": "fillOpacity * opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineColor !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity * opacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "circleRadius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "part.position.x",
+          "type": null
+        },
+        {
+          "name": "part.position.y",
+          "type": null
+        },
+        {
+          "name": "circleRadius",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "2 * Math.PI",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "vertices[0].x",
+          "type": null
+        },
+        {
+          "name": "vertices[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 1; j < vertLength; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!vertices[j - 1].isInternal || showInternalEdges",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "vert.x",
+          "type": null
+        },
+        {
+          "name": "vert.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "vert.x",
+          "type": null
+        },
+        {
+          "name": "vert.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "j < vertLength && vert.isInternal && !showInternalEdges",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "vertices[nextIndex].x",
+          "type": null
+        },
+        {
+          "name": "vertices[nextIndex].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillColor !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineColor !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "config.showPositions && !body.isStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "config.positionSize / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillStyle",
+      "params": [
+        {
+          "name": "config.positionColor",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "px - hs",
+          "type": null
+        },
+        {
+          "name": "py - hs",
+          "type": null
+        },
+        {
+          "name": "config.positionSize",
+          "type": null
+        },
+        {
+          "name": "config.positionSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "hullColor",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineThickness === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "partsLength > 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "hullColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "verts[0].x",
+          "type": null
+        },
+        {
+          "name": "verts[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var v = 1; v < verts.length; v++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "verts[v].x",
+          "type": null
+        },
+        {
+          "name": "verts[v].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "verts[0].x",
+          "type": null
+        },
+        {
+          "name": "verts[0].y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "world",
+      "params": [
+        {
+          "name": "unless they are specifically set to invisible",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "allConstraints",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < constraints.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderConstraint",
+      "params": [
+        {
+          "name": "constraints[i]",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "pinSize",
+          "type": null
+        },
+        {
+          "name": "anchorColor",
+          "type": null
+        },
+        {
+          "name": "anchorSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "constraint",
+          "type": null
+        },
+        {
+          "name": "graphics",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        },
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "pinSize",
+          "type": null
+        },
+        {
+          "name": "anchorColor",
+          "type": null
+        },
+        {
+          "name": "anchorSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!render.visible || !constraint.pointA || !constraint.pointB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineStyle",
+      "params": [
+        {
+          "name": "lineThickness",
+          "type": null
+        },
+        {
+          "name": "lineColor",
+          "type": null
+        },
+        {
+          "name": "lineOpacity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "bodyA.position",
+          "type": null
+        },
+        {
+          "name": "constraint.pointA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.type === 'pin'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeCircle",
+      "params": [
+        {
+          "name": "start.x",
+          "type": null
+        },
+        {
+          "name": "start.y",
+          "type": null
+        },
+        {
+          "name": "pinSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "bodyB.position",
+          "type": null
+        },
+        {
+          "name": "constraint.pointB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "start.x",
+          "type": null
+        },
+        {
+          "name": "start.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.type === 'spring'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sub",
+      "params": [
+        {
+          "name": "end",
+          "type": null
+        },
+        {
+          "name": "start",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "perp",
+      "params": [
+        {
+          "name": "Vector.normalise(delta",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "Common.clamp(constraint.length / 5",
+          "type": null
+        },
+        {
+          "name": "12",
+          "type": null
+        },
+        {
+          "name": "20",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var j = 1; j < coils; j += 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "start.x + delta.x * (j / coils",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "end.x",
+          "type": null
+        },
+        {
+          "name": "end.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "render.anchors && anchorSize > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillStyle",
+      "params": [
+        {
+          "name": "anchorColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillCircle",
+      "params": [
+        {
+          "name": "start.x",
+          "type": null
+        },
+        {
+          "name": "start.y",
+          "type": null
+        },
+        {
+          "name": "anchorSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillCircle",
+      "params": [
+        {
+          "name": "end.x",
+          "type": null
+        },
+        {
+          "name": "end.y",
+          "type": null
+        },
+        {
+          "name": "anchorSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "this.engine",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeAllListeners",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "this.localWorld",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "this.engine",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.drawDebug",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shutdown",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

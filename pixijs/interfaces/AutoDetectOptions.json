@@ -1,0 +1,61 @@
+{
+  "type": "interface",
+  "name": "AutoDetectOptions",
+  "sourcePath": "rendering/renderers/autoDetectRenderer.ts",
+  "extends": [
+    "RendererOptions"
+  ],
+  "description": "Options for {@link autoDetectRenderer}.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "preference",
+      "type": "'webgl' | 'webgpu'// | 'canvas'",
+      "optional": true,
+      "description": "The preferred renderer type. WebGPU is recommended as its generally faster than WebGL."
+    },
+    {
+      "name": "webgpu",
+      "type": "Partial<WebGPUOptions>",
+      "optional": true,
+      "description": "Optional WebGPUOptions to pass only to WebGPU renderer."
+    },
+    {
+      "name": "webgl",
+      "type": "Partial<WebGLOptions>",
+      "optional": true,
+      "description": "Optional WebGLOptions to pass only to the WebGL renderer"
+    },
+    {
+      "name": "width",
+      "type": "800,\n *   height: 600,\n *   antialias: true,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "800,\n *   height: 600,\n *   webgpu:{\n *     antialias: true,\n *     backgroundColor: 'red'\n *   },\n *   webgl:{\n *     antialias: true,\n *     backgroundColor: 'green'\n *   }\n *  })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "Partial<AutoDetectOptions>): Promise<Renderer>\n{\n    let preferredOrder: string[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "RendererClass",
+      "type": "new () => Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "finalOptions",
+      "type": "Partial<AutoDetectOptions> = {}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

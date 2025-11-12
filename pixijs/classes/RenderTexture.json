@@ -1,0 +1,83 @@
+{
+  "type": "class",
+  "name": "RenderTexture",
+  "sourcePath": "rendering/renderers/shared/texture/RenderTexture.ts",
+  "extends": "Texture",
+  "implements": [],
+  "description": "A render texture, extends `Texture`.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "options",
+          "type": "TextureSourceOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "RenderTexture",
+      "description": null
+    },
+    {
+      "name": "RenderTexture",
+      "params": [
+        {
+          "name": "source",
+          "type": "new TextureSource(options",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Resizes the render texture."
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

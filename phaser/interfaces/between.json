@@ -1,0 +1,107 @@
+{
+  "type": "interface",
+  "name": "between",
+  "sourcePath": "physics/matter-js/MatterPhysics.js",
+  "extends": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "website",
+      "type": "https://brm.io/matter-js/\n *\n * @class MatterPhysics\n * @memberof Phaser.Physics.Matter\n * @constructor\n * @since 3.0.0\n *\n * @param {Phaser.Scene} scene - The Phaser Scene that owns this Matter Physics instance.\n */\nvar MatterPhysics = new Class({\n\n    initialize:\n\n    function MatterPhysics (scene)\n    {\n        /**\n         * The Phaser Scene that owns this Matter Physics instance\n         *\n         * @name Phaser.Physics.Matter.MatterPhysics#scene\n         * @type {Phaser.Scene}\n         * @since 3.0.0\n         */\n        this.scene = scene",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "boot",
+      "type": "function ()\n    {\n        this.world = new World(this.scene, this.config)",
+      "optional": false,
+      "description": "A reference to the Scene Systems that belong to the Scene owning this Matter Physics instance. / this.systems = scene.sys; /** The parsed Matter Configuration object. / this.config = this.getConfig(); /** An instance of the Matter World class. This class is responsible for the updating of the Matter Physics world, as well as handling debug drawing functions. / this.world; /** An instance of the Matter Factory. This class provides lots of functions for creating a wide variety of physics objects and adds them automatically to the Matter World. You can use this class to cut-down on the amount of code required in your game, however, use of the Factory is entirely optional and should be seen as a development aid. It's perfectly possible to create and add components to the Matter world without using it. / this.add; /** An instance of the Body Bounds class. This class contains functions used for getting the world position from various points around the bounds of a physics body. / this.bodyBounds; //  Body /** A reference to the `Matter.Body` module. The `Matter.Body` module contains methods for creating and manipulating body models. A `Matter.Body` is a rigid body that can be simulated by a `Matter.Engine`. Factories for commonly used body configurations (such as rectangles, circles and other polygons) can be found in the `Bodies` module. / this.body = Body; /** A reference to the `Matter.Composite` module. The `Matter.Composite` module contains methods for creating and manipulating composite bodies. A composite body is a collection of `Matter.Body`, `Matter.Constraint` and other `Matter.Composite`, therefore composites form a tree structure. It is important to use the functions in this module to modify composites, rather than directly modifying their properties. Note that the `Matter.World` object is also a type of `Matter.Composite` and as such all composite methods here can also operate on a `Matter.World`. / this.composite = Composite; //  Collision: /** A reference to the `Matter.Collision` module. The `Matter.Collision` module contains methods for detecting collisions between a given pair of bodies. For efficient detection between a list of bodies, see `Matter.Detector` and `Matter.Query`. / this.collision = Collision; /** A reference to the `Matter.Detector` module. The `Matter.Detector` module contains methods for detecting collisions given a set of pairs. / this.detector = Detector; /** A reference to the `Matter.Pair` module. The `Matter.Pair` module contains methods for creating and manipulating collision pairs. / this.pair = Pair; /** A reference to the `Matter.Pairs` module. The `Matter.Pairs` module contains methods for creating and manipulating collision pair sets. / this.pairs = Pairs; /** A reference to the `Matter.Query` module. The `Matter.Query` module contains methods for performing collision queries. / this.query = Query; /** A reference to the `Matter.Resolver` module. The `Matter.Resolver` module contains methods for resolving collision pairs. / this.resolver = Resolver; //  Constraint /** A reference to the `Matter.Constraint` module. The `Matter.Constraint` module contains methods for creating and manipulating constraints. Constraints are used for specifying that a fixed distance must be maintained between two bodies (or a body and a fixed world-space position). The stiffness of constraints can be modified to create springs or elastic. / this.constraint = Constraint; //  Factory /** A reference to the `Matter.Bodies` module. The `Matter.Bodies` module contains factory methods for creating rigid bodies with commonly used body configurations (such as rectangles, circles and other polygons). / this.bodies = Bodies; /** A reference to the `Matter.Composites` module. The `Matter.Composites` module contains factory methods for creating composite bodies with commonly used configurations (such as stacks and chains). / this.composites = Composites; //  Geometry /** A reference to the `Matter.Axes` module. The `Matter.Axes` module contains methods for creating and manipulating sets of axes. / this.axes = Axes; /** A reference to the `Matter.Bounds` module. The `Matter.Bounds` module contains methods for creating and manipulating axis-aligned bounding boxes (AABB). / this.bounds = Bounds; /** A reference to the `Matter.Svg` module. The `Matter.Svg` module contains methods for converting SVG images into an array of vector points. To use this module you also need the SVGPathSeg polyfill: https://github.com/progers/pathseg / this.svg = Svg; /** A reference to the `Matter.Vector` module. The `Matter.Vector` module contains methods for creating and manipulating vectors. Vectors are the basis of all the geometry related operations in the engine. A `Matter.Vector` object is of the form `{ x: 0, y: 0 }`. / this.vector = Vector; /** A reference to the `Matter.Vertices` module. The `Matter.Vertices` module contains methods for creating and manipulating sets of vertices. A set of vertices is an array of `Matter.Vector` with additional indexing properties inserted by `Vertices.create`. A `Matter.Body` maintains a set of vertices to represent the shape of the object (its convex hull). / this.vertices = Vertices; /** A reference to the `Matter.Vertices` module. The `Matter.Vertices` module contains methods for creating and manipulating sets of vertices. A set of vertices is an array of `Matter.Vector` with additional indexing properties inserted by `Vertices.create`. A `Matter.Body` maintains a set of vertices to represent the shape of the object (its convex hull). / this.verts = Vertices; /** An internal temp vector used for velocity and force calculations. / this._tempVec2 = Vector.create(); Resolver._restingThresh = GetValue(this.config, 'restingThresh', 4); Resolver._restingThreshTangent = GetValue(this.config, 'restingThreshTangent', 6); Resolver._positionDampen = GetValue(this.config, 'positionDampen', 0.9); Resolver._positionWarming = GetValue(this.config, 'positionWarming', 0.8); Resolver._frictionNormalMultiplier = GetValue(this.config, 'frictionNormalMultiplier', 5); scene.sys.events.once(SceneEvents.BOOT, this.boot, this); scene.sys.events.on(SceneEvents.START, this.start, this); }, /** This method is called automatically, only once, when the Scene is first created. Do not invoke it directly."
+    },
+    {
+      "name": "start",
+      "type": "function ()\n    {\n        if (!this.world)\n        {\n            this.world = new World(this.scene, this.config)",
+      "optional": false,
+      "description": "This method is called automatically by the Scene when it is starting up. It is responsible for creating local systems, properties and listening for Scene events. Do not invoke it directly."
+    },
+    {
+      "name": "getConfig",
+      "type": "function ()\n    {\n        var gameConfig = this.systems.game.config.physics",
+      "optional": false,
+      "description": "This internal method is called when this class starts and retrieves the final Matter World Config."
+    },
+    {
+      "name": "pause",
+      "type": "function ()\n    {\n        return this.world.pause()",
+      "optional": false,
+      "description": "Pauses the Matter World instance and sets `enabled` to `false`. A paused world will not run any simulations for the duration it is paused."
+    },
+    {
+      "name": "resume",
+      "type": "function ()\n    {\n        return this.world.resume()",
+      "optional": false,
+      "description": "Resumes this Matter World instance from a paused state and sets `enabled` to `true`."
+    },
+    {
+      "name": "set60Hz",
+      "type": "function ()\n    {\n        this.world.getDelta = this.world.update60Hz",
+      "optional": false,
+      "description": "Sets the Matter Engine to run at fixed timestep of 60Hz and enables `autoUpdate`. If you have set a custom `getDelta` function then this will override it."
+    },
+    {
+      "name": "set30Hz",
+      "type": "function ()\n    {\n        this.world.getDelta = this.world.update30Hz",
+      "optional": false,
+      "description": "Sets the Matter Engine to run at fixed timestep of 30Hz and enables `autoUpdate`. If you have set a custom `getDelta` function then this will override it."
+    },
+    {
+      "name": "step",
+      "type": "function (delta, correction)\n    {\n        this.world.step(delta, correction)",
+      "optional": false,
+      "description": "Manually advances the physics simulation by one iteration. You can optionally pass in the `delta` and `correction` values to be used by Engine.update. If undefined they use the Matter defaults of 60Hz and no correction. Calling `step` directly bypasses any checks of `enabled` or `autoUpdate`. It also ignores any custom `getDelta` functions, as you should be passing the delta value in to this call. You can adjust the number of iterations that Engine.update performs internally. Use the Scene Matter Physics config object to set the following properties: positionIterations (defaults to 6) velocityIterations (defaults to 4) constraintIterations (defaults to 2) Adjusting these values can help performance in certain situations, depending on the physics requirements of your game."
+    },
+    {
+      "name": "containsPoint",
+      "type": "function (body, x, y)\n    {\n        body = this.getMatterBodies(body)",
+      "optional": false,
+      "description": "Checks if the vertices of the given body, or an array of bodies, contains the given point, or not. You can pass in either a single body, or an array of bodies to be checked. This method will return `true` if _any_ of the bodies in the array contain the point. See the `intersectPoint` method if you need to get a list of intersecting bodies. The point should be transformed into the Matter World coordinate system in advance. This happens by default with Input Pointers, but if you wish to use points from another system you may need to transform them before passing them."
+    },
+    {
+      "name": "intersectPoint",
+      "type": "function (x, y, bodies)\n    {\n        bodies = this.getMatterBodies(bodies)",
+      "optional": false,
+      "description": "Checks the given coordinates to see if any vertices of the given bodies contain it. If no bodies are provided it will search all bodies in the Matter World, including within Composites. The coordinates should be transformed into the Matter World coordinate system in advance. This happens by default with Input Pointers, but if you wish to use coordinates from another system you may need to transform them before passing them."
+    },
+    {
+      "name": "intersectRect",
+      "type": "function (x, y, width, height, outside, bodies)\n    {\n        if (outside === undefined) { outside = false",
+      "optional": false,
+      "description": "Checks the given rectangular area to see if any vertices of the given bodies intersect with it. Or, if the `outside` parameter is set to `true`, it checks to see which bodies do not intersect with it. If no bodies are provided it will search all bodies in the Matter World, including within Composites."
+    },
+    {
+      "name": "min",
+      "type": "{ x: x, y: y },\n            max: { x: x + width, y: y + height }\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "intersectRay",
+      "type": "function (x1, y1, x2, y2, rayWidth, bodies)\n    {\n        if (rayWidth === undefined) { rayWidth = 1",
+      "optional": false,
+      "description": "Checks the given ray segment to see if any vertices of the given bodies intersect with it. If no bodies are provided it will search all bodies in the Matter World. The width of the ray can be specified via the `rayWidth` parameter."
+    },
+    {
+      "name": "intersectBody",
+      "type": "function (body, bodies)\n    {\n        bodies = this.getMatterBodies(bodies)",
+      "optional": false,
+      "description": "Checks the given Matter Body to see if it intersects with any of the given bodies. If no bodies are provided it will check against all bodies in the Matter World."
+    },
+    {
+      "name": "overlap",
+      "type": "function (target, bodies, overlapCallback, processCallback, callbackContext)\n    {\n        if (overlapCallback === undefined) { overlapCallback = null",
+      "optional": false,
+      "description": "Checks to see if the target body, or an array of target bodies, intersects with any of the given bodies. If intersection occurs this method will return `true` and, if provided, invoke the callbacks. If no bodies are provided for the second parameter the target will check against all bodies in the Matter World. **Note that bodies can only overlap if they are in non-colliding collision groups or categories.** If you provide a `processCallback` then the two bodies that overlap are sent to it. This callback must return a boolean and is used to allow you to perform additional processing tests before a final outcome is decided. If it returns `true` then the bodies are finally passed to the `overlapCallback`, if set. If you provide an `overlapCallback` then the matching pairs of overlapping bodies will be sent to it. Both callbacks have the following signature: `function (bodyA, bodyB, collisionInfo)` where `bodyA` is always the target body. The `collisionInfo` object contains additional data, such as the angle and depth of penetration."
+    }
+  ]
+}

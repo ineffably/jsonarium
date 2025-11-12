@@ -1,0 +1,113 @@
+{
+  "type": "class",
+  "name": "BufferResource",
+  "sourcePath": "rendering/renderers/shared/buffer/BufferResource.ts",
+  "extends": "EventEmitter",
+  "implements": [],
+  "description": "A resource that can be bound to a bind group and used in a shader. Whilst a buffer can be used as a resource, this class allows you to specify an offset and size of the buffer to use. This is useful if you have a large buffer and only part of it is used in a shader. This resource, will listen for changes on the underlying buffer and emit a itself if the buffer changes shape. const buffer = new Buffer({ data: new Float32Array(1000), usage: BufferUsage.UNIFORM, }); // Create a buffer resource that uses the first 100 bytes of a buffer const bufferResource = new BufferResource({ buffer, offset: 0, size: 100, });",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'change'",
+          "type": null
+        },
+        {
+          "name": "this.onBufferChange",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onBufferChange",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "uid",
+      "params": [
+        {
+          "name": "'resource'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'change'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "destroyBuffer = false",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Destroys this resource. Make sure the underlying buffer is not used anywhere else if you want to destroy it as well, or code will explode"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'change'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

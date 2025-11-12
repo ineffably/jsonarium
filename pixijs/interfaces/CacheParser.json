@@ -1,0 +1,29 @@
+{
+  "type": "interface",
+  "name": "CacheParser",
+  "sourcePath": "assets/cache/CacheParser.ts",
+  "extends": [],
+  "description": "For every asset that is cached, it will call the parsers test function the flow is as follows: 1. `cacheParser.test()`: Test the asset. 2. `cacheParser.getCacheableAssets()`: If the test passes call the getCacheableAssets function with the asset Useful if you want to add more than just a raw asset to the cache (for example a spritesheet will want to make all its sub textures easily accessible in the cache)",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "extension",
+      "type": "ExtensionMetadata",
+      "optional": true,
+      "description": "The extension type of this cache parser"
+    },
+    {
+      "name": "config",
+      "type": "Record<string, any>\n\n    /**\n     * Gets called by the cache when a dev caches an asset\n     * @param asset - the asset to test\n     */\n    test: (asset: T) => boolean",
+      "optional": true,
+      "description": "A config to adjust the parser"
+    },
+    {
+      "name": "getCacheableAssets",
+      "type": "(keys: string[], asset: T) => Record<string, any>",
+      "optional": false,
+      "description": "If the test passes, this function is called to get the cacheable assets an example may be that a spritesheet object will return all the sub textures it has so they can be cached."
+    }
+  ]
+}

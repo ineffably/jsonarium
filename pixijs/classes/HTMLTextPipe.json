@@ -1,0 +1,289 @@
+{
+  "type": "class",
+  "name": "HTMLTextPipe",
+  "sourcePath": "scene/text-html/HTMLTextPipe.ts",
+  "extends": null,
+  "implements": [
+    "RenderPipe"
+  ],
+  "description": "The HTMLTextPipe class is responsible for rendering HTML text.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "validateRenderable",
+      "params": [
+        {
+          "name": "htmlText",
+          "type": "HTMLText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuText.currentKey !== newKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "htmlText",
+          "type": "HTMLText",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "htmlText._didTextUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batchableHTMLText.currentKey !== htmlText.styleKey || htmlText.resolution !== resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "catch",
+      "params": [
+        {
+          "name": "(e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "error",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateTextBounds",
+      "params": [
+        {
+          "name": "batchableHTMLText",
+          "type": null
+        },
+        {
+          "name": "htmlText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToBatch",
+      "params": [
+        {
+          "name": "batchableHTMLText",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateRenderable",
+      "params": [
+        {
+          "name": "htmlText",
+          "type": "HTMLText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateElement",
+      "params": [
+        {
+          "name": "batchableHTMLText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batchableHTMLText.generatingTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTexturePromise",
+      "params": [
+        {
+          "name": "htmlText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "oldTexturePromise",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finally",
+      "params": [
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "decreaseReferenceCount",
+      "params": [
+        {
+          "name": "batchableHTMLText.currentKey",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexturePromise",
+      "params": [
+        {
+          "name": "oldTexturePromise",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateTextBounds",
+      "params": [
+        {
+          "name": "batchableHTMLText",
+          "type": null
+        },
+        {
+          "name": "htmlText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initGpuText",
+      "params": [
+        {
+          "name": "htmlText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initGpuText",
+      "params": [
+        {
+          "name": "htmlText",
+          "type": "HTMLText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BatchableHTMLText",
+      "params": [
+        {
+          "name": "this._renderer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,743 @@
+{
+  "type": "class",
+  "name": "GpuMipmapGenerator",
+  "sourcePath": "rendering/renderers/gpu/texture/utils/GpuMipmapGenerator.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A class which generates mipmaps for a GPUTexture. Thanks to toji for the original implementation https://github.com/toji/web-texture-tool/blob/main/src/webgpu-mipmap-generator.js",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "createSampler",
+      "params": [
+        {
+          "name": "minFilter",
+          "type": "'linear' }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.mipmapShaderModule",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createShaderModule",
+      "params": [
+        {
+          "name": "code",
+          "type": "/* wgsl */ `\n                        var<private> pos : array<vec2<f32>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "3> = array<vec2<f32>",
+          "type": null
+        },
+        {
+          "name": "3>(\n                        vec2<f32>(-1.0",
+          "type": null
+        },
+        {
+          "name": "-1.0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "builtin",
+      "params": [
+        {
+          "name": "position",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "location",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vertexMain",
+      "params": [
+        {
+          "name": "@builtin(vertex_index",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "group",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "binding",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "group",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "binding",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fragmentMain",
+      "params": [
+        {
+          "name": "@location(0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "location",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "textureSample",
+      "params": [
+        {
+          "name": "img",
+          "type": null
+        },
+        {
+          "name": "imgSampler",
+          "type": null
+        },
+        {
+          "name": "texCoord",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createRenderPipeline",
+      "params": [
+        {
+          "name": "layout",
+          "type": "'auto'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "vertex",
+          "type": "{\n                    module: this.mipmapShaderModule",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'vertexMain'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": "{\n                    module: this.mipmapShaderModule",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'fragmentMain'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "targets",
+          "type": "[{ format }]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}\n            }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateMipmap",
+      "params": [
+        {
+          "name": "texture",
+          "type": "GPUTexture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Generates mipmaps for the given GPUTexture from the data in level 0."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "texture.dimension === '3d' || texture.dimension === '1d'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'Generating mipmaps for non-2d textures is currently unsupported!'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderToSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "texture.width / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "texture.height / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createTexture",
+      "params": [
+        {
+          "name": "mipTextureDescriptor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createCommandEncoder",
+      "params": [
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBindGroupLayout",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let arrayLayer = 0; arrayLayer < arrayLayerCount; ++arrayLayer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createView",
+      "params": [
+        {
+          "name": "baseMipLevel",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mipLevelCount",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dimension",
+          "type": "'2d'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "baseArrayLayer",
+          "type": "arrayLayer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "arrayLayerCount",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 1; i < texture.mipLevelCount; ++i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createView",
+      "params": [
+        {
+          "name": "baseMipLevel",
+          "type": "dstMipLevel++",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mipLevelCount",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dimension",
+          "type": "'2d'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "baseArrayLayer",
+          "type": "arrayLayer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "arrayLayerCount",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginRenderPass",
+      "params": [
+        {
+          "name": "colorAttachments",
+          "type": "[{\n                        view: dstView",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "storeOp",
+          "type": "'store'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "loadOp",
+          "type": "'clear'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "clearValue",
+          "type": "{ r: 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "g",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "b",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "a",
+          "type": "0 }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}]",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBindGroup",
+      "params": [
+        {
+          "name": "layout",
+          "type": "bindGroupLayout",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entries",
+          "type": "[{\n                        binding: 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resource",
+          "type": "this.sampler",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "binding",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resource",
+          "type": "srcView",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}]",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipeline",
+      "params": [
+        {
+          "name": "pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "bindGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "3",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "end",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderToSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "texture.width / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "texture.height / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 1; i < texture.mipLevelCount; ++i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyTextureToTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "mipTexture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mipLevel",
+          "type": "i - 1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "{\n                    texture",
+          "type": null
+        },
+        {
+          "name": "mipLevel",
+          "type": "i",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "mipLevelSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "mipLevelSize.width / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "mipLevelSize.height / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "submit",
+      "params": [
+        {
+          "name": "[commandEncoder.finish(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderToSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

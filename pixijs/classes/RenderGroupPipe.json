@@ -1,0 +1,379 @@
+{
+  "type": "class",
+  "name": "RenderGroupPipe",
+  "sourcePath": "scene/container/RenderGroupPipe.ts",
+  "extends": null,
+  "implements": [
+    "InstructionPipe"
+  ],
+  "description": "The RenderGroupPipe is a render pipe for rendering RenderGroups.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "addRenderGroup",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": "RenderGroup",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderGroup.isCachedAsTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": "RenderGroup",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderGroup.isRenderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderGroup.isCachedAsTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderGroup._batchableRenderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "renderGroup._batchableRenderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "BatchableSprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pushBlendMode",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": null
+        },
+        {
+          "name": "renderGroup.root.groupBlendMode",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToBatch",
+      "params": [
+        {
+          "name": "batchableRenderGroup",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "popBlendMode",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderGroup.textureNeedsUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "identity",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "-renderGroup._textureBounds.x",
+          "type": null
+        },
+        {
+          "name": "-renderGroup._textureBounds.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "renderGroup.texture",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "renderGroup.texture.frame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "{\n                worldTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "worldColor",
+          "type": "0xFFFFFFFF",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "offset",
+          "type": "{ x: 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "0 }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "executeInstructions",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": null
+        },
+        {
+          "name": "this._renderer.renderPipes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateElement",
+      "params": [
+        {
+          "name": "renderGroup._batchableRenderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "worldTransformMatrix",
+          "type": "renderGroup.inverseParentTextureTransform",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "worldColor",
+          "type": "renderGroup.worldColorAlpha",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "executeInstructions",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": null
+        },
+        {
+          "name": "this._renderer.renderPipes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

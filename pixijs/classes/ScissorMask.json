@@ -1,0 +1,160 @@
+{
+  "type": "class",
+  "name": "ScissorMask",
+  "sourcePath": "rendering/mask/scissor/ScissorMask.ts",
+  "extends": null,
+  "implements": [
+    "Effect"
+  ],
+  "description": "ScissorMask is an effect that applies a scissor mask to a container. It restricts rendering to the area defined by the mask. The mask is a Container that defines the area to be rendered. The mask must be a Container that is not renderable or measurable. This effect is used to create clipping regions in the rendering process.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "addBounds",
+      "params": [
+        {
+          "name": "bounds",
+          "type": "Bounds",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "skipUpdateTransform",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "addMaskBounds",
+      "params": [
+        {
+          "name": "this.mask",
+          "type": null
+        },
+        {
+          "name": "bounds",
+          "type": null
+        },
+        {
+          "name": "skipUpdateTransform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addLocalBounds",
+      "params": [
+        {
+          "name": "bounds",
+          "type": "Bounds",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "localRoot",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "addMaskLocalBounds",
+      "params": [
+        {
+          "name": "this.mask",
+          "type": null
+        },
+        {
+          "name": "bounds",
+          "type": null
+        },
+        {
+          "name": "localRoot",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "point",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "hitTestFn",
+          "type": "(container: Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "point",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTestFn",
+      "params": [
+        {
+          "name": "mask",
+          "type": null
+        },
+        {
+          "name": "point",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.mask === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

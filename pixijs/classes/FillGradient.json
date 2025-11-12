@@ -1,0 +1,867 @@
+{
+  "type": "class",
+  "name": "FillGradient",
+  "sourcePath": "scene/graphics/shared/fill/FillGradient.ts",
+  "extends": null,
+  "implements": [
+    "CanvasGradient"
+  ],
+  "description": "Defines the type of gradient to create. It can be: - 'linear': A linear gradient that transitions colors along a straight line. - 'radial': A radial gradient that transitions colors in a circular pattern from an inner circle to an outer circle. / export type GradientType = 'linear' | 'radial'; /** Represents the style options for a linear gradient fill. / export interface BaseGradientOptions { /** The type of gradient */ type?: GradientType; /** Array of colors stops to use in the gradient */ colorStops?: { offset: number, color: ColorSource }[]; /** Whether coordinates are 'global' or 'local' */ textureSpace?: TextureSpace; /** The size of the texture to use for the gradient - this is for advanced usage. The texture size does not need to match the size of the object being drawn. Due to GPU interpolation, gradient textures can be relatively small! Consider using a larger texture size if your gradient has a lot of very tight color steps / textureSize?: number; /** The wrap mode of the gradient. This can be 'clamp-to-edge' or 'repeat'. / wrapMode?: WRAP_MODE } /** Options specific to linear gradients. A linear gradient creates a smooth transition between colors along a straight line defined by start and end points. / export interface LinearGradientOptions extends BaseGradientOptions { /** The type of gradient. Must be 'linear' for linear gradients. */ type?: 'linear'; /** The start point of the gradient. This point defines where the gradient begins. It is represented as a PointData object containing x and y coordinates. The coordinates are in local space by default (0-1), but can be in global space if specified. / start?: PointData; /** The end point of the gradient. This point defines where the gradient ends. It is represented as a PointData object containing x and y coordinates. The coordinates are in local space by default (0-1), but can be in global space if specified. / end?: PointData; } /** Options specific to radial gradients. A radial gradient creates a smooth transition between colors that radiates outward in a circular pattern. The gradient is defined by inner and outer circles, each with their own radius. / export interface RadialGradientOptions extends BaseGradientOptions { /** The type of gradient. Must be 'radial' for radial gradients. */ type?: 'radial'; /** The center point of the inner circle where the gradient begins. In local coordinates by default (0-1). */ center?: PointData; /** The radius of the inner circle where the gradient begins. */ innerRadius?: number; /** The center point of the outer circle where the gradient ends. In local coordinates by default (0-1). */ outerCenter?: PointData; /** The radius of the outer circle where the gradient ends. */ outerRadius?: number; /** The y scale of the gradient, use this to make the gradient elliptical. NOTE: Only applied to radial gradients used with Graphics. / scale?: number; /** The rotation of the gradient in radians, useful for making the gradient elliptical. NOTE: Only applied to radial gradients used with Graphics. / rotation?: number; } /** Options for creating a gradient fill. / export type GradientOptions = LinearGradientOptions | RadialGradientOptions; /** If no color stops are provided, we use a default gradient of white to black - this is to avoid a blank gradient if a dev forgets to set them. / const emptyColorStops: { offset: number, color: string }[] = [{ offset: 0, color: 'white' }, { offset: 1, color: 'black' }]; /** Class representing a gradient fill that can be used to fill shapes and text. Supports both linear and radial gradients with multiple color stops. For linear gradients, color stops define colors and positions (0 to 1) along a line from start point (x0,y0) to end point (x1,y1). For radial gradients, color stops define colors between two circles - an inner circle centered at (x0,y0) with radius r0, and an outer circle centered at (x1,y1) with radius r1. ```ts // Create a vertical linear gradient from red to blue const linearGradient = new FillGradient({ type: 'linear', start: { x: 0, y: 0 },  // Start at top end: { x: 0, y: 1 },    // End at bottom colorStops: [ { offset: 0, color: 'red' },   // Red at start { offset: 1, color: 'blue' }   // Blue at end ], // Use normalized coordinate system where (0,0) is the top-left and (1,1) is the bottom-right of the shape textureSpace: 'local' }); // Create a radial gradient from yellow center to green edge const radialGradient = new FillGradient({ type: 'radial', center: { x: 0.5, y: 0.5 }, innerRadius: 0, outerCenter: { x: 0.5, y: 0.5 }, outerRadius: 0.5, colorStops: [ { offset: 0, color: 'yellow' }, // Center color { offset: 1, color: 'green' }   // Edge color ], // Use normalized coordinate system where (0,0) is the top-left and (1,1) is the bottom-right of the shape textureSpace: 'local' }); // Create a rainbow linear gradient in global coordinates const globalGradient = new FillGradient({ type: 'linear', start: { x: 0, y: 0 }, end: { x: 100, y: 0 }, colorStops: [ { offset: 0, color: 0xff0000 },    // Red { offset: 0.33, color: 0x00ff00 }, // Green { offset: 0.66, color: 0x0000ff }, // Blue { offset: 1, color: 0xff00ff }     // Purple ], textureSpace: 'global'  // Use world coordinates }); // Create an offset radial gradient const offsetRadial = new FillGradient({ type: 'radial', center: { x: 0.3, y: 0.3 }, innerRadius: 0.1, outerCenter: { x: 0.5, y: 0.5 }, outerRadius: 0.5, colorStops: [ { offset: 0, color: 'white' }, { offset: 1, color: 'black' } ], // Use normalized coordinate system where (0,0) is the top-left and (1,1) is the bottom-right of the shape textureSpace: 'local' }); ``` Internally this creates a  texture of the gradient then applies a transform to it to give it the correct size and angle. This means that it's important to destroy a gradient when it is no longer needed to avoid memory leaks. If you want to animate a gradient then it's best to modify and update an existing one rather than creating a whole new one each time. That or use a custom shader.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "ensureGradientOptions",
+      "params": [
+        {
+          "name": "args",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "definedProps",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.type === 'radial'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(stop",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addColorStop",
+      "params": [
+        {
+          "name": "stop.offset",
+          "type": null
+        },
+        {
+          "name": "stop.color",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addColorStop",
+      "params": [
+        {
+          "name": "offset",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "color",
+          "type": "ColorSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a color stop to the gradient"
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "{ offset",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": "Color.shared.setValue(color",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toHexa",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildLinearGradient",
+      "params": [],
+      "returnType": "void",
+      "description": "Builds the internal texture and transform for the gradient. Called automatically when the gradient is first used."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._wrapMode === 'clamp-to-edge'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "dx < 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "dy < 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCanvas",
+      "params": [
+        {
+          "name": "defaultSize",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createLinearGradient",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "this._textureSize",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": "context.createLinearGradient(this._textureSize, 0, 0, 0)",
+      "description": null
+    },
+    {
+      "name": "addColorStops",
+      "params": [
+        {
+          "name": "gradient",
+          "type": null
+        },
+        {
+          "name": "colorStops",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "defaultSize",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Texture",
+      "params": [
+        {
+          "name": "source",
+          "type": "new ImageSource({\n                resource: canvas",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "addressMode",
+          "type": "this._wrapMode",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "(dx * dx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "atan2",
+      "params": [
+        {
+          "name": "dy",
+          "type": null
+        },
+        {
+          "name": "dx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "(dist / defaultSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.textureSpace === 'local'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "defaultSize",
+          "type": null
+        },
+        {
+          "name": "defaultSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildGradient",
+      "params": [],
+      "returnType": "void",
+      "description": "Builds the internal texture and transform for the gradient. Called automatically when the gradient is first used."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.type === 'linear'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildLinearGradient",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildRadialGradient",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildRadialGradient",
+      "params": [],
+      "returnType": "void",
+      "description": "Builds the internal texture and transform for the radial gradient. Called automatically when the gradient is first used."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCanvas",
+      "params": [
+        {
+          "name": "defaultSize",
+          "type": null
+        },
+        {
+          "name": "defaultSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createRadialGradient",
+      "params": [
+        {
+          "name": "cx",
+          "type": null
+        },
+        {
+          "name": "cy",
+          "type": null
+        },
+        {
+          "name": "r0 * scale",
+          "type": null
+        },
+        {
+          "name": "(x1 - ox",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addColorStops",
+      "params": [
+        {
+          "name": "gradient",
+          "type": null
+        },
+        {
+          "name": "colorStops",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "defaultSize",
+          "type": null
+        },
+        {
+          "name": "defaultSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "cx",
+          "type": null
+        },
+        {
+          "name": "cy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "params": [
+        {
+          "name": "this.rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "this.scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "-cx",
+          "type": null
+        },
+        {
+          "name": "-cy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillRect",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "defaultSize",
+          "type": null
+        },
+        {
+          "name": "defaultSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Texture",
+      "params": [
+        {
+          "name": "source",
+          "type": "new ImageSource({\n                resource: canvas",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "addressMode",
+          "type": "this._wrapMode",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "1 / scale",
+          "type": null
+        },
+        {
+          "name": "1 / scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "ox",
+          "type": null
+        },
+        {
+          "name": "oy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.textureSpace === 'local'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "defaultSize",
+          "type": null
+        },
+        {
+          "name": "defaultSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": "Destroys the gradient, releasing resources. This will also destroy the internal texture."
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addColorStops",
+      "params": [
+        {
+          "name": "gradient",
+          "type": "CanvasGradient",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "colorStops",
+          "type": "{ offset: number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "color",
+          "type": "string }[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < colorStops.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addColorStop",
+      "params": [
+        {
+          "name": "stop.offset",
+          "type": null
+        },
+        {
+          "name": "stop.color",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCanvas",
+      "params": [
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "CanvasAndContext",
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createCanvas",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getContext",
+      "params": [
+        {
+          "name": "'2d'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureGradientOptions",
+      "params": [
+        {
+          "name": "start",
+          "type": "{ x: 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "0 }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "end",
+          "type": "{ x: 100",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "100 }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureSpace",
+          "type": "'local'\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "way",
+      "params": [
+        {
+          "name": "will show warning in debug",
+          "type": null
+        }
+      ],
+      "returnType": "* const options = ensureGradientOptions([0, 0, 100, 100, 'local'])",
+      "description": null
+    },
+    {
+      "name": "ensureGradientOptions",
+      "params": [
+        {
+          "name": "args",
+          "type": "any[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": "GradientOptions",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof options === 'number' || args[1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "'8.5.2'",
+          "type": null
+        },
+        {
+          "name": "`use options object instead`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,230 @@
+{
+  "type": "class",
+  "name": "MaskFilter",
+  "sourcePath": "filters/mask/MaskFilter.ts",
+  "extends": "Filter",
+  "implements": [],
+  "description": "export interface MaskFilterOptions extends FilterOptions { sprite: Sprite, inverse?: boolean; scale?: number | { x: number, y: number }, } /** @internal",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "TextureMatrix",
+      "params": [
+        {
+          "name": "sprite.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uFilterMatrix",
+          "type": "{ value: new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "vertex",
+          "type": "{\n                source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainVertex'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": "{\n                source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainFragment'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "{\n            vertex",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": "'mask-filter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            ...rest",
+          "type": null
+        },
+        {
+          "name": "gpuProgram",
+          "type": null
+        },
+        {
+          "name": "glProgram",
+          "type": null
+        },
+        {
+          "name": "clipToViewport",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                filterUniforms",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "uMaskTexture",
+          "type": "sprite.texture.source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "filterManager",
+          "type": "FilterSystem",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "input",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "output",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "clearMode",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "calculateSpriteMatrix",
+      "params": [
+        {
+          "name": "this.resources.filterUniforms.uniforms.uFilterMatrix as Matrix",
+          "type": null
+        },
+        {
+          "name": "this.sprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prepend",
+      "params": [
+        {
+          "name": "this._textureMatrix.mapCoord",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyFilter",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "input",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        },
+        {
+          "name": "clearMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

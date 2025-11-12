@@ -1,0 +1,317 @@
+{
+  "type": "interface",
+  "name": "PathInstruction",
+  "sourcePath": "scene/graphics/shared/path/GraphicsPath.ts",
+  "extends": [],
+  "description": "Represents a single drawing instruction in a `GraphicsPath`. Each instruction consists of an action type and associated data.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "action",
+      "type": "'moveTo' | 'lineTo' | 'quadraticCurveTo' |\n    'bezierCurveTo' | 'arc' | 'closePath' |\n    'addPath' | 'arcTo' | 'ellipse' |\n    'rect' | 'roundRect' | 'arcToSvg' |\n    'poly' | 'circle' |\n    'regularPoly' | 'roundPoly' | 'roundShape' | 'filletRect' | 'chamferRect'\n    data: any[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructions",
+      "type": "PathInstruction[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uid",
+      "type": "number = uid('graphicsPath')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_shapePath",
+      "type": "ShapePath",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "where",
+      "type": "* 1. Shapes are analyzed to find containment relationships\n     * 2. If Shape B is fully contained within Shape A, Shape B becomes a hole in Shape A\n     * 3. Multiple nested holes are supported\n     *\n     * Mainly used internally by the SVG parser to correctly handle holes in complex paths.\n     * When false, all shapes are filled independently without checking for holes.\n     */\n    public checkForHoles: boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructions",
+      "type": "string | PathInstruction[], signed = false)\n    {\n        this.checkForHoles = signed",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "GraphicsPath, transform?: Matrix): this\n    {\n        path = path.clone()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "action",
+      "type": "'addPath', data: [path, transform] })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number, boolean]): this\n    {\n        this.instructions.push({ action: 'arc', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x1",
+      "type": "number, y1: number, x2: number, y2: number, radius: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number]): this\n    {\n        this.instructions.push({ action: 'arcTo', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rx",
+      "type": "number, ry: number, xAxisRotation: number, largeArcFlag: number, sweepFlag: number, x: number, y: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number, number, number]): this\n    {\n        this.instructions.push({ action: 'arcToSvg', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "points",
+      "type": "the first two are control points and the third one is the end point.\n     * The starting point is the last point in the current path.\n     * @param cp1x - The x-coordinate of the first control point.\n     * @param cp1y - The y-coordinate of the first control point.\n     * @param cp2x - The x-coordinate of the second control point.\n     * @param cp2y - The y-coordinate of the second control point.\n     * @param x - The x-coordinate of the end point.\n     * @param y - The y-coordinate of the end point.\n     * @param smoothness - Optional parameter to adjust the smoothness of the curve.\n     * @returns The instance of the current object for chaining.\n     */\n    public bezierCurveTo(\n        cp1x: number, cp1y: number, cp2x: number, cp2y: number,\n        x: number, y: number,\n        smoothness?: number\n    ): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number, number, number]): this\n    {\n        this.instructions.push({ action: 'bezierCurveTo', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "points",
+      "type": "the second control point and the end point. The first control point is assumed to be\n     * The starting point is the last point in the current path.\n     * @param cp2x - The x-coordinate of the second control point.\n     * @param cp2y - The y-coordinate of the second control point.\n     * @param x - The x-coordinate of the end point.\n     * @param y - The y-coordinate of the end point.\n     * @param smoothness - Optional parameter to adjust the smoothness of the curve.\n     * @returns The instance of the current object for chaining.\n     */\n    public bezierCurveToShort(cp2x: number, cp2y: number, x: number, y: number, smoothness?: number): this\n    {\n        const last = this.instructions[this.instructions.length - 1]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "action",
+      "type": "'bezierCurveTo', data: [cp1x, cp1y, cp2x, cp2y, x, y, smoothness] })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "action",
+      "type": "'closePath', data: [] })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, radiusX: number, radiusY: number, matrix?: Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, Matrix]): this\n    {\n        this.instructions.push({ action: 'ellipse', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number]): this\n    {\n        this.instructions.push({ action: 'lineTo', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number]): this\n    {\n        this.instructions.push({ action: 'moveTo', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "points",
+      "type": "the control point and the end point.\n     * The starting point is the last point in the current path.\n     * @param cpx - The x-coordinate of the control point.\n     * @param cpy - The y-coordinate of the control point.\n     * @param x - The x-coordinate of the end point.\n     * @param y - The y-coordinate of the end point.\n     * @param smoothness - Optional parameter to adjust the smoothness of the curve.\n     * @returns The instance of the current object for chaining.\n     */\n    public quadraticCurveTo(cpx: number, cpy: number, x: number, y: number, smoothness?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number]): this\n    {\n        this.instructions.push({ action: 'quadraticCurveTo', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, smoothness?: number): this\n    {\n        // check if we have a previous quadraticCurveTo\n        const last = this.instructions[this.instructions.length - 1]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "action",
+      "type": "'quadraticCurveTo', data: [cpx1, cpy1, x, y, smoothness] })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, w: number, h: number, transform?: Matrix): this\n    {\n        this.instructions.push({ action: 'rect', data: [x, y, w, h, transform] })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, radius: number, transform?: Matrix): this\n    {\n        this.instructions.push({ action: 'circle', data: [x, y, radius, transform] })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, w: number, h: number, radius?: number, transform?: Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number, Matrix?]): this\n    {\n        this.instructions.push({ action: 'roundRect', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "points",
+      "type": "number[] | PointData[], close?: boolean, transform?: Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number[] | PointData[], boolean, Matrix?]): this\n    {\n        this.instructions.push({ action: 'poly', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, radius: number, sides: number, rotation?: number, transform?: Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number]): this\n    {\n        this.instructions.push({ action: 'regularPoly', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, radius: number, sides: number, corner: number, rotation?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number, number]): this\n    {\n        this.instructions.push({ action: 'roundPoly', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "points",
+      "type": "RoundedPoint[], radius: number, useQuadratic?: boolean, smoothness?: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[RoundedPoint[], number, boolean, number]): this\n    {\n        this.instructions.push({ action: 'roundShape', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, width: number, height: number, fillet: number): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number]): this\n    {\n        this.instructions.push({ action: 'filletRect', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, width: number, height: number, chamfer: number, transform?: Matrix): this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[number, number, number, number, number]): this\n    {\n        this.instructions.push({ action: 'chamferRect', data: args })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, points: number, radius: number, innerRadius?: number, rotation?: number, transform?: Matrix): this\n    {\n        innerRadius ||= radius / 2",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "action",
+      "type": "instruction.action, data: instruction.data.slice() })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Note",
+      "type": "The transformation is applied directly to the coordinates and control points of the drawing instructions,\n     * not to the path as a whole. This means the transformation's effects are baked into the individual instructions,\n     * allowing for fine-grained control over the path's appearance.\n     * @param matrix - A `Matrix` object representing the transformation to apply.\n     * @returns The instance of the current object for chaining further operations.\n     */\n    public transform(matrix: Matrix): this\n    {\n        if (matrix.isIdentity()) return this",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "default",
+      "type": "// #if _DEBUG\n                    warn('unknown transform action', instruction.action)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Point): Point\n    {\n        let index = this.instructions.length - 1",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "currentMatrix",
+      "type": "Matrix, transform?: Matrix): Matrix\n{\n    if (currentMatrix)\n    {\n        return currentMatrix.prepend(transform)",
+      "optional": true,
+      "description": null
+    }
+  ]
+}

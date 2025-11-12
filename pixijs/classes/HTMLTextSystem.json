@@ -1,0 +1,523 @@
+{
+  "type": "class",
+  "name": "HTMLTextSystem",
+  "sourcePath": "scene/text-html/HTMLTextSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "System plugin to the renderer to manage HTMLText",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "getTexture",
+      "params": [
+        {
+          "name": "options",
+          "type": "HTMLTextOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Promise<Texture>",
+      "description": "public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'htmlText', } as const; /** WebGPU has a cors issue when uploading an image that is an SVGImage To get around this we need to create a canvas draw the image to it and upload that instead. Bit of a shame.. but no other work around just yet! / private readonly _createCanvas: boolean; private readonly _renderer: Renderer; private readonly _activeTextures: Record<string, { texture: Texture, usageCount: number, promise: Promise<Texture>, }> = {}; constructor(renderer: Renderer) { this._renderer = renderer; this._createCanvas = renderer.type === RendererType.WEBGPU; } /**"
+    },
+    {
+      "name": "getTexturePromise",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getManagedTexture",
+      "params": [
+        {
+          "name": "text",
+          "type": "HTMLText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Promise<Texture>",
+      "description": "Increases the reference count for a texture."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeTextures[textKey]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "then",
+      "params": [
+        {
+          "name": "(texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getReferenceCount",
+      "params": [
+        {
+          "name": "textKey",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Gets the current reference count for a texture associated with a text key."
+    },
+    {
+      "name": "decreaseReferenceCount",
+      "params": [
+        {
+          "name": "textKey",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Decreases the reference count for a texture. If the count reaches zero, the texture is cleaned up."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!activeTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "activeTexture.usageCount === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "activeTexture.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "then",
+      "params": [
+        {
+          "name": "(texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "catch",
+      "params": [
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "HTMLTextSystem",
+          "type": "Failed to clean texture'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTexturePromise",
+      "params": [
+        {
+          "name": "options",
+          "type": "HTMLTextOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Promise<Texture>",
+      "description": "Returns a promise that resolves to a texture for the given HTMLText options."
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "HTMLTextRenderData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extractFontFamilies",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFontCss",
+      "params": [
+        {
+          "name": "fontFamilies",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureHtmlText",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "fontCSS",
+          "type": null
+        },
+        {
+          "name": "htmlTextData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "Math.ceil((Math.max(1",
+          "type": null
+        },
+        {
+          "name": "measured.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "Math.ceil((Math.max(1",
+          "type": null
+        },
+        {
+          "name": "measured.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSVGUrl",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        },
+        {
+          "name": "fontCSS",
+          "type": null
+        },
+        {
+          "name": "htmlTextData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "loadSVGImage",
+      "params": [
+        {
+          "name": "image",
+          "type": null
+        },
+        {
+          "name": "svgURL",
+          "type": null
+        },
+        {
+          "name": "isSafari(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._createCanvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTemporaryCanvasFromImage",
+      "params": [
+        {
+          "name": "image",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPo2TextureFromSource",
+      "params": [
+        {
+          "name": "canvasAndContext ? canvasAndContext.canvas : resource",
+          "type": null
+        },
+        {
+          "name": "image.width - uvSafeOffset",
+          "type": null
+        },
+        {
+          "name": "image.height - uvSafeOffset",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._createCanvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initSource",
+      "params": [
+        {
+          "name": "texture.source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnCanvasAndContext",
+      "params": [
+        {
+          "name": "canvasAndContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "htmlTextData as PoolItem",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexturePromise",
+      "params": [
+        {
+          "name": "texturePromise",
+          "type": "Promise<Texture>",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "then",
+      "params": [
+        {
+          "name": "(texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "catch",
+      "params": [
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "HTMLTextSystem",
+          "type": "Failed to clean texture'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const key in this._activeTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeTextures[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexturePromise",
+      "params": [
+        {
+          "name": "this._activeTextures[key].promise",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

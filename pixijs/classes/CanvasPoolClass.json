@@ -1,0 +1,184 @@
+{
+  "type": "class",
+  "name": "CanvasPoolClass",
+  "sourcePath": "rendering/renderers/shared/texture/CanvasPool.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A utility type that represents a canvas and its rendering context. / export interface CanvasAndContext { /** The canvas element. */ canvas: ICanvas; /** The rendering context of the canvas. */ context: ICanvasRenderingContext2D; } /** CanvasPool is a utility class that manages a pool of reusable canvas elements",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "getOptimalCanvasAndContext",
+      "params": [
+        {
+          "name": "minWidth",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "minHeight",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution = 1",
+          "type": null
+        }
+      ],
+      "returnType": "CanvasAndContext",
+      "description": "Allow renderTextures of the same size as screen, not just pow2 Automatically sets to true after `setScreenSize` / public enableFullScreen: boolean; private _canvasPool: {[x in string | number]: CanvasAndContext[]}; constructor(canvasOptions?: ICanvasRenderingContext2DSettings) { this._canvasPool = Object.create(null); this.canvasOptions = canvasOptions || {}; this.enableFullScreen = false; } /** Creates texture with params that were specified in pool constructor. / private _createCanvasAndContext(pixelWidth: number, pixelHeight: number): CanvasAndContext { const canvas = DOMAdapter.get().createCanvas(); canvas.width = pixelWidth; canvas.height = pixelHeight; const context = canvas.getContext('2d'); return { canvas, context }; } /** Gets a Power-of-Two render texture or fullScreen texture"
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "(minWidth * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "(minHeight * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextPow2",
+      "params": [
+        {
+          "name": "minWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextPow2",
+      "params": [
+        {
+          "name": "minHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._canvasPool[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!canvasAndContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnCanvasAndContext",
+      "params": [
+        {
+          "name": "canvasAndContext",
+          "type": "CanvasAndContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Place a render texture back into the pool."
+    },
+    {
+      "name": "resetTransform",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clearRect",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "canvasAndContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "CanvasPoolClass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "CanvasPool",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

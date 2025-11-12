@@ -1,0 +1,125 @@
+{
+  "type": "interface",
+  "name": "BatcherAdaptor",
+  "sourcePath": "rendering/batcher/shared/BatcherPipe.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "batchPipe",
+      "type": "BatcherPipe, geometry: Geometry, shader: Shader): void\n    init?(batchPipe: BatcherPipe): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "batchPipe",
+      "type": "BatcherPipe, batch: Batch): void\n    contextChange?(): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "[\n            ExtensionType.WebGLPipes,\n            ExtensionType.WebGPUPipes,\n            ExtensionType.CanvasPipes,\n        ],\n        name: 'batch',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "state",
+      "type": "State = State.for2d()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_batchersByInstructionSet",
+      "type": "Record<number, Record<string, Batcher>> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_adaptor",
+      "type": "BatcherAdaptor",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_activeBatches",
+      "type": "Record<string, Batcher> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_activeBatch",
+      "type": "Batcher",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_availableBatchers",
+      "type": "Record<string, new () => Batcher> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "string): Batcher\n    {\n        return new this._availableBatchers[name as keyof typeof this._availableBatchers]()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer, adaptor: BatcherAdaptor)\n    {\n        this.renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet)\n    {\n        let batchers = this._batchersByInstructionSet[instructionSet.uid]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "maxTextures",
+      "type": "this.renderer.limits.maxBatchableTextures,\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "batchableObject",
+      "type": "BatchableElement, instructionSet: InstructionSet)\n    {\n        if (this._activeBatch.name !== batchableObject.batcherName)\n        {\n            this._activeBatch.break(instructionSet)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet)\n    {\n        this._activeBatch.break(instructionSet)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet)\n    {\n        this._activeBatch.break(instructionSet)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet)\n    {\n        const batchers = this._batchersByInstructionSet[instructionSet.uid]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "batch",
+      "type": "Batch)\n    {\n        if (batch.action === 'startBatch')\n        {\n            const batcher = batch.batcher",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

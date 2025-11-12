@@ -1,0 +1,128 @@
+{
+  "type": "interface",
+  "name": "ApplicationOptions",
+  "sourcePath": "app/Application.ts",
+  "extends": [
+    "AutoDetectOptions",
+    "PixiMixins"
+  ],
+  "description": "Called when Application is constructed, scoped to Application instance. Passes in `options` as the only argument, which are Application `init()` options. / init(options: Partial<ApplicationOptions>): void; /** Called when destroying Application, scoped to Application instance. */ destroy(): void; } /** Application options supplied to the {@link Application#init} method. These options configure how your PixiJS application behaves. ```js import { Application } from 'pixi.js'; const app = new Application(); // Initialize with common options await app.init({ // Rendering options width: 800,                    // Canvas width height: 600,                   // Canvas height backgroundColor: 0x1099bb,     // Background color antialias: true,              // Enable antialiasing resolution: window.devicePixelRatio, // Screen resolution // Performance options autoStart: true,              // Auto-starts the render loop sharedTicker: true,           // Use shared ticker for better performance // Automatic resize options resizeTo: window,             // Auto-resize to window autoDensity: true,           // Adjust for device pixel ratio // Advanced options preference: 'webgl',         // Renderer preference ('webgl' or 'webgpu') powerPreference: 'high-performance' // GPU power preference }); ```",
+  "category": "app",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "features",
+      "type": "* - Automatically creates and manages the renderer\n * - Provides a stage (root container) for your display objects\n * - Handles canvas creation and management\n * - Supports plugins for extending functionality\n *   - {@link ResizePlugin} for automatic resizing\n *   - {@link TickerPlugin} for managing frame updates\n *   - {@link CullerPlugin} for culling off-screen objects\n * @example\n * ```js\n * import { Assets, Application, Sprite } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "800,           // Canvas width\n *     height: 600,          // Canvas height\n *     backgroundColor: 0x1099bb, // Background color\n *     antialias: true,     // Enable antialiasing\n *     resolution: 1,       // Resolution / device pixel ratio\n *     preference: 'webgl', // or 'webgpu' // Renderer preference\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_plugins",
+      "type": "ApplicationPlugin[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stage",
+      "type": "Container = new Container()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "800,\n     *     height: 600,\n     *     preference: 'webgl', // or 'webgpu'\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "R",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "Partial<ApplicationOptions>)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[Partial<ApplicationOptions>] | [])\n    {\n        // #if _DEBUG\n        if (args[0] !== undefined)\n        {\n            deprecation(v8_0_0, 'Application constructor options are deprecated, please use Application.init() instead.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "800,\n     *     height: 600,\n     *     backgroundColor: 0x1099bb,\n     *     preference: 'webgl', // or 'webgpu'\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "Partial<ApplicationOptions>)\n    {\n        // The default options\n        options = { ...options }",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "1",
+      "type": "Default setup (TickerPlugin handles rendering)\n     * const app = new Application()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "2",
+      "type": "Custom rendering loop (if TickerPlugin is disabled)\n     * const app = new Application()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoStart",
+      "type": "false })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "this.stage })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "for",
+      "type": "* - Setting filter areas for full-screen effects\n     * - Defining hit areas for screen-wide interaction\n     * - Determining the visible bounds of your application\n     * @readonly\n     * @example\n     * ```js\n     * // Use as filter area for a full-screen effect\n     * const blurFilter = new BlurFilter()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "*  - `false` or `undefined`: Preserves the canvas element (default)\n     *  - `true`: Removes the canvas element\n     *  - `{ removeView: boolean }`: Object with removeView property to control canvas removal\n     * @param options - Options for destroying the application:\n     *  - `false` or `undefined`: Basic cleanup (default)\n     *  - `true`: Complete cleanup including children\n     *  - Detailed options object:\n     *    - `children`: Remove children\n     *    - `texture`: Destroy textures\n     *    - `textureSource`: Destroy texture sources\n     *    - `context`: Destroy WebGL context\n     * @example\n     * ```js\n     * // Basic cleanup\n     * app.destroy()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "removeView",
+      "type": "true }, true)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "removeView",
+      "type": "true },\n     *     {\n     *         children: true,\n     *         texture: true,\n     *         textureSource: true,\n     *         context: true\n     *     }\n     * )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rendererDestroyOptions",
+      "type": "RendererDestroyOptions = false, options: DestroyOptions = false): void\n    {\n        // Destroy plugins in the opposite order\n        // which they were constructed\n        const plugins = Application._plugins.slice(0)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

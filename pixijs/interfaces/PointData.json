@@ -1,0 +1,23 @@
+{
+  "type": "interface",
+  "name": "PointData",
+  "sourcePath": "maths/point/PointData.ts",
+  "extends": [],
+  "description": "Common interface for points. Both Point and ObservablePoint implement it. Provides a standard way to represent 2D coordinates. Many PixiJS methods accept PointData for transformations, making it easy to work with different point types interchangeably. ```ts // Create an object implementing PointData const point: PointData = { x: 100, y: 200 }; // Use with matrix transformations const matrix = new Matrix(); matrix.translate(50, 50).apply(point); // Mix with other point types const observablePoint = new ObservablePoint(() => {}, null, 0, 0); const regularPoint = new Point(0, 0); // All are PointData compatible ``` - Basic x,y coordinate interface - Used by Point and ObservablePoint",
+  "category": "maths",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "x",
+      "type": "number",
+      "optional": false,
+      "description": "X coordinate"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "optional": false,
+      "description": "Y coordinate"
+    }
+  ]
+}

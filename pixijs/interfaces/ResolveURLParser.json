@@ -1,0 +1,29 @@
+{
+  "type": "interface",
+  "name": "ResolveURLParser",
+  "sourcePath": "assets/resolver/types.ts",
+  "extends": [],
+  "description": "the importance order of the params */ priority?: string[]; params: { [key: string]: any; }; } /** Format for url parser, will test a string and if it pass will then parse it, turning it into an ResolvedAsset",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "extension",
+      "type": "ExtensionMetadata",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "config",
+      "type": "Record<string, any>\n    /** the test to perform on the url to determine if it should be parsed */\n    test: (url: string) => boolean",
+      "optional": true,
+      "description": "A config to adjust the parser"
+    },
+    {
+      "name": "parse",
+      "type": "(value: string) => ResolvedAsset & {[key: string]: any}",
+      "optional": false,
+      "description": "the function that will convert the url into an object"
+    }
+  ]
+}

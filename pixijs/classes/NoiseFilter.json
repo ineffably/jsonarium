@@ -1,0 +1,171 @@
+{
+  "type": "class",
+  "name": "NoiseFilter",
+  "sourcePath": "filters/defaults/noise/NoiseFilter.ts",
+  "extends": "Filter",
+  "implements": [],
+  "description": "Configuration options for the NoiseFilter. The NoiseFilter adds random noise to the rendered content. The noise effect can be controlled through the noise intensity and an optional seed value for reproducible results. ```ts // Basic noise effect const options: NoiseFilterOptions = { noise: 0.5, seed: Math.random() }; // Create filter with options const noiseFilter = new NoiseFilter(options); ``` / export interface NoiseFilterOptions extends FilterOptions { /** The amount of noise to apply. Should be in range (0, 1]: - 0.1 = subtle noise - 0.5 = moderate noise (default) - 1.0 = maximum noise ```ts // Moderate noise effect const noiseFilter = new NoiseFilter({ noise: 0.5 }); ``` / noise?: number; /** A seed value to apply to the random noise generation. Using the same seed will generate the same noise pattern. ```ts // Using a fixed seed for reproducible noise const noiseFilter = new NoiseFilter({ seed: 12345 }); ``` / seed?: number; } /** A filter that adds configurable random noise to rendered content. This filter generates pixel noise based on a noise intensity value and an optional seed. It can be used to create various effects like film grain, static, or texture variation. Based on: https://github.com/evanw/glfx.js/blob/master/src/filters/adjust/noise.js ```ts import { NoiseFilter } from 'pixi.js'; // Create with options const filter = new NoiseFilter({ noise: 0.5,    // 50% noise intensity seed: 12345    // Fixed seed for consistent noise }); // Apply to a display object sprite.filters = [filter]; // Adjust noise dynamically filter.noise = 0.8;    // Increase noise filter.seed = Math.random(); // New random pattern ```",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "vertex",
+          "type": "{\n                source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainVertex'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": "{\n                source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainFragment'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "{\n            vertex",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": "'noise-filter'\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            ...rest",
+          "type": null
+        },
+        {
+          "name": "gpuProgram",
+          "type": null
+        },
+        {
+          "name": "glProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                noiseUniforms: new UniformGroup({\n                    uNoise: { value: 1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'f32' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "uSeed",
+          "type": "{ value: 1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'f32' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "random",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "NoiseFilter",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "random",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "random",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "NoiseFilter",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "random",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "noise",
+      "type": "number",
+      "description": "The amount of noise to apply to the filtered content. This value controls the intensity of the random noise effect: - Values close to 0 produce subtle noise - Values around 0.5 produce moderate noise - Values close to 1 produce strong noise ```ts const noiseFilter = new NoiseFilter(); // Set to subtle noise noiseFilter.noise = 0.2; // Set to maximum noise noiseFilter.noise = 1.0; ```"
+    },
+    {
+      "name": "seed",
+      "type": "number",
+      "description": "The seed value used for random noise generation. This value determines the noise pattern: - Using the same seed will generate identical noise patterns - Different seeds produce different but consistent patterns - `Math.random()` can be used for random patterns ```ts const noiseFilter = new NoiseFilter(); // Use a fixed seed for consistent noise noiseFilter.seed = 12345; // Generate new random pattern noiseFilter.seed = Math.random(); ```"
+    }
+  ]
+}

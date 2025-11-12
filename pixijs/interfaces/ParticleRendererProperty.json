@@ -1,0 +1,77 @@
+{
+  "type": "interface",
+  "name": "ParticleRendererProperty",
+  "sourcePath": "scene/particle-container/shared/particleData.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "attributeName",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "format",
+      "type": "VertexFormat",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "code",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dynamic",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "updateFunction",
+      "type": "(ps: IParticle[], f32v: Float32Array, u32v: Uint32Array, offset: number, stride: number) => void",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "{\n        attributeName: 'aVertex',\n        format: 'float32x2',\n        code: `\n            const texture = p.texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dynamic",
+      "type": "false,\n    },\n    // positionData\n    position: {\n        attributeName: 'aPosition',\n        format: 'float32x2',\n        code: `\n            var x = p.x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dynamic",
+      "type": "true,\n    },\n    // rotationData\n    rotation: {\n        attributeName: 'aRotation',\n        format: 'float32',\n        code: `\n            var rotation = p.rotation",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dynamic",
+      "type": "false,\n    },\n    // uvsData\n    uvs: {\n        attributeName: 'aUV',\n        format: 'float32x2',\n        code: `\n            var uvs = p.texture.uvs",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dynamic",
+      "type": "false,\n    },\n    // tintData\n    color: {\n        attributeName: 'aColor',\n        format: 'unorm8x4',\n        code: `\n            const c = p.color",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dynamic",
+      "type": "false,\n    },\n} as Record<string, ParticleRendererProperty>",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

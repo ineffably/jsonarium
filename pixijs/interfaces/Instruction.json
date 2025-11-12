@@ -1,0 +1,29 @@
+{
+  "type": "interface",
+  "name": "Instruction",
+  "sourcePath": "rendering/renderers/shared/instructions/Instruction.ts",
+  "extends": [],
+  "description": "An instruction that can be executed by the renderer",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderPipeId",
+      "type": "string",
+      "optional": false,
+      "description": "a the id of the render pipe that can run this instruction"
+    },
+    {
+      "name": "action",
+      "type": "string",
+      "optional": true,
+      "description": "the name of the instruction"
+    },
+    {
+      "name": "canBundle",
+      "type": "boolean",
+      "optional": false,
+      "description": "true if this instruction can be compiled into a WebGPU bundle"
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "type": "interface",
+  "name": "BaseGradientOptions",
+  "sourcePath": "scene/graphics/shared/fill/FillGradient.ts",
+  "extends": [],
+  "description": "Defines the type of gradient to create. It can be: - 'linear': A linear gradient that transitions colors along a straight line. - 'radial': A radial gradient that transitions colors in a circular pattern from an inner circle to an outer circle. / export type GradientType = 'linear' | 'radial'; /** Represents the style options for a linear gradient fill.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "type",
+      "type": "GradientType",
+      "optional": true,
+      "description": "The type of gradient"
+    },
+    {
+      "name": "colorStops",
+      "type": "{ offset: number, color: ColorSource }[]",
+      "optional": true,
+      "description": "Array of colors stops to use in the gradient"
+    },
+    {
+      "name": "textureSpace",
+      "type": "TextureSpace",
+      "optional": true,
+      "description": "Whether coordinates are 'global' or 'local'"
+    },
+    {
+      "name": "textureSize",
+      "type": "number",
+      "optional": true,
+      "description": "The size of the texture to use for the gradient - this is for advanced usage. The texture size does not need to match the size of the object being drawn. Due to GPU interpolation, gradient textures can be relatively small! Consider using a larger texture size if your gradient has a lot of very tight color steps"
+    },
+    {
+      "name": "wrapMode",
+      "type": "WRAP_MODE\n}\n\n/**\n * Options specific to linear gradients.\n * A linear gradient creates a smooth transition between colors along a straight line defined by start and end points.\n * @category scene\n * @standard\n */\nexport interface LinearGradientOptions extends BaseGradientOptions\n{\n    /** The type of gradient. Must be 'linear' for linear gradients. */\n    type?: 'linear'",
+      "optional": true,
+      "description": "The wrap mode of the gradient. This can be 'clamp-to-edge' or 'repeat'."
+    },
+    {
+      "name": "start",
+      "type": "PointData",
+      "optional": true,
+      "description": "The start point of the gradient. This point defines where the gradient begins. It is represented as a PointData object containing x and y coordinates. The coordinates are in local space by default (0-1), but can be in global space if specified."
+    },
+    {
+      "name": "end",
+      "type": "PointData",
+      "optional": true,
+      "description": "The end point of the gradient. This point defines where the gradient ends. It is represented as a PointData object containing x and y coordinates. The coordinates are in local space by default (0-1), but can be in global space if specified."
+    },
+    {
+      "name": "type",
+      "type": "'radial'",
+      "optional": true,
+      "description": "Options specific to radial gradients. A radial gradient creates a smooth transition between colors that radiates outward in a circular pattern. The gradient is defined by inner and outer circles, each with their own radius. / export interface RadialGradientOptions extends BaseGradientOptions { /** The type of gradient. Must be 'radial' for radial gradients."
+    },
+    {
+      "name": "center",
+      "type": "PointData",
+      "optional": true,
+      "description": "The center point of the inner circle where the gradient begins. In local coordinates by default (0-1)."
+    },
+    {
+      "name": "innerRadius",
+      "type": "number",
+      "optional": true,
+      "description": "The radius of the inner circle where the gradient begins."
+    },
+    {
+      "name": "outerCenter",
+      "type": "PointData",
+      "optional": true,
+      "description": "The center point of the outer circle where the gradient ends. In local coordinates by default (0-1)."
+    },
+    {
+      "name": "outerRadius",
+      "type": "number",
+      "optional": true,
+      "description": "The radius of the outer circle where the gradient ends."
+    },
+    {
+      "name": "scale",
+      "type": "number",
+      "optional": true,
+      "description": "The y scale of the gradient, use this to make the gradient elliptical. NOTE: Only applied to radial gradients used with Graphics."
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "optional": true,
+      "description": "The rotation of the gradient in radians, useful for making the gradient elliptical. NOTE: Only applied to radial gradients used with Graphics."
+    },
+    {
+      "name": "emptyColorStops",
+      "type": "{ offset: number, color: string }[] = [{ offset: 0, color: 'white' }, { offset: 1, color: 'black' }]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "'linear',\n *     start: { x: 0, y: 0 },  // Start at top\n *     end: { x: 0, y: 1 },    // End at bottom\n *     colorStops: [\n *         { offset: 0, color: 'red' },   // Red at start\n *         { offset: 1, color: 'blue' }   // Blue at end\n *     ],\n *     // Use normalized coordinate system where (0,0) is the top-left and (1,1) is the bottom-right of the shape\n *     textureSpace: 'local'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "'radial',\n *     center: { x: 0.5, y: 0.5 },\n *     innerRadius: 0,\n *     outerCenter: { x: 0.5, y: 0.5 },\n *     outerRadius: 0.5,\n *     colorStops: [\n *         { offset: 0, color: 'yellow' }, // Center color\n *         { offset: 1, color: 'green' }   // Edge color\n *     ],\n *     // Use normalized coordinate system where (0,0) is the top-left and (1,1) is the bottom-right of the shape\n *     textureSpace: 'local'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "'linear',\n *     start: { x: 0, y: 0 },\n *     end: { x: 100, y: 0 },\n *     colorStops: [\n *         { offset: 0, color: 0xff0000 },    // Red\n *         { offset: 0.33, color: 0x00ff00 }, // Green\n *         { offset: 0.66, color: 0x0000ff }, // Blue\n *         { offset: 1, color: 0xff00ff }     // Purple\n *     ],\n *     textureSpace: 'global'  // Use world coordinates\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "'radial',\n *     center: { x: 0.3, y: 0.3 },\n *     innerRadius: 0.1,\n *     outerCenter: { x: 0.5, y: 0.5 },\n *     outerRadius: 0.5,\n *     colorStops: [\n *         { offset: 0, color: 'white' },\n *         { offset: 1, color: 'black' }\n *     ],\n *     // Use normalized coordinate system where (0,0) is the top-left and (1,1) is the bottom-right of the shape\n *     textureSpace: 'local'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultLinearOptions",
+      "type": "LinearGradientOptions = {\n        start: { x: 0, y: 0 },\n        end: { x: 0, y: 1 },\n        colorStops: [],\n        textureSpace: 'local',\n        type: 'linear',\n        textureSize: 256,\n        wrapMode: 'clamp-to-edge'\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultRadialOptions",
+      "type": "RadialGradientOptions = {\n        center: { x: 0.5, y: 0.5 },\n        innerRadius: 0,\n        outerRadius: 0.5,\n        colorStops: [],\n        scale: 1,\n        textureSpace: 'local',\n        type: 'radial',\n        textureSize: 256,\n        wrapMode: 'clamp-to-edge'\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uid",
+      "type": "number = uid('fillGradient')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_tick",
+      "type": "number = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "GradientType = 'linear'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "transform",
+      "type": "Matrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "colorStops",
+      "type": "Array<{ offset: number, color: string }> = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureSpace",
+      "type": "TextureSpace",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_textureSize",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "start",
+      "type": "PointData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "end",
+      "type": "PointData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_wrapMode",
+      "type": "WRAP_MODE",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "center",
+      "type": "PointData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "outerCenter",
+      "type": "PointData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "innerRadius",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "outerRadius",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GradientOptions)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Deprecated",
+      "type": "Use the options object instead.\n     * @deprecated since 8.5.2\n     * @ignore\n     */\n    constructor(\n        x0?: number,\n        y0?: number,\n        x1?: number,\n        y1?: number,\n        textureSpace?: TextureSpace,\n        textureSize?: number\n    )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[GradientOptions] | [number?, number?, number?, number?, TextureSpace?, number?])\n    {\n        let options = ensureGradientOptions(args)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "offset",
+      "type": "number, color: ColorSource): this\n    {\n        this.colorStops.push({ offset, color: Color.shared.setValue(color).toHexa() })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "x0, y: y0 } = this.start",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "x1, y: y1 } = this.end",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "new ImageSource({\n                resource: canvas,\n                addressMode: this._wrapMode,\n            }),\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "x0, y: y0 } = this.center",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "x1, y: y1 } = this.outerCenter",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "new ImageSource({\n                resource: canvas,\n                addressMode: this._wrapMode,\n            }),\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "gradient",
+      "type": "CanvasGradient, colorStops: { offset: number, color: string }[]): void\n{\n    for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number, height: number): CanvasAndContext\n{\n    const canvas = DOMAdapter.get().createCanvas(width, height)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "way",
+      "type": "* const options = ensureGradientOptions({\n *     start: { x: 0, y: 0 },\n *     end: { x: 100, y: 100 },\n *     textureSpace: 'local'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "any[],\n): GradientOptions\n{\n    let options = (args[0] ?? {}) as GradientOptions",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "'linear',\n            start: { x: args[0], y: args[1] },\n            end: { x: args[2], y: args[3] },\n            textureSpace: args[4] as 'global' | 'local',\n            textureSize: args[5] ?? FillGradient.defaultLinearOptions.textureSize\n        }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

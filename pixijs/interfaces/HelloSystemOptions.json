@@ -1,0 +1,41 @@
+{
+  "type": "interface",
+  "name": "HelloSystemOptions",
+  "sourcePath": "rendering/renderers/shared/startup/HelloSystem.ts",
+  "extends": [],
+  "description": "Options for the startup system.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "hello",
+      "type": "boolean",
+      "optional": false,
+      "description": "Whether to log the version and type information of renderer to console."
+    },
+    {
+      "name": "hello",
+      "type": "false,\n    }",
+      "optional": false,
+      "description": "A simple system responsible for initiating the renderer. / export class HelloSystem implements System<HelloSystemOptions> { /** @ignore */ public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'hello', priority: -2, } as const; /** The default options for the system. */ public static defaultOptions: HelloSystemOptions = { /** {@link WebGLOptions.hello}"
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "HelloSystemOptions): void\n    {\n        if (options.hello)\n        {\n            let name = this._renderer.name",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

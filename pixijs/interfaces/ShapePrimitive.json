@@ -1,0 +1,59 @@
+{
+  "type": "interface",
+  "name": "ShapePrimitive",
+  "sourcePath": "maths/shapes/ShapePrimitive.ts",
+  "extends": [],
+  "description": "A basic interface that defines common properties and methods for all Pixi shape primitives. Provides a standard API for shape manipulation, hit testing, and bounds calculation. ```ts // Implement basic shape class CustomShape implements ShapePrimitive { public readonly type = 'custom'; public x = 0; public y = 0; // Implement required methods public contains(x: number, y: number): boolean { // Custom hit testing logic return true; } public getBounds(out?: Rectangle): Rectangle { // Custom bounds calculation return out || new Rectangle(); } // ... implement other required methods } // Use in a container container.hitArea = new CustomShape(); ```",
+  "category": "maths",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "type",
+      "type": "SHAPE_PRIMITIVE | (string & {})",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, strokeWidth: number, alignment?: number): boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "ShapePrimitive): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "destination",
+      "type": "ShapePrimitive): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Rectangle): Rectangle",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

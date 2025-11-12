@@ -1,0 +1,1292 @@
+{
+  "type": "class",
+  "name": "FX",
+  "sourcePath": "gameobjects/components/FX.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "gameobjects",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function FX (gameObject",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "isPost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "padding",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "padding === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "padding",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isPost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderer && renderer.pipelines",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "padding !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isPost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetPostPipeline",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < list.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "fx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isPost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPostPipeline",
+      "params": [
+        {
+          "name": "String(fx.type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!Array.isArray(pipelines",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < pipelines.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pipeline.controller === fx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removePostPipeline",
+      "params": [
+        {
+          "name": "pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < list.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "list[i] === fx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SpliceOne",
+      "params": [
+        {
+          "name": "list",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clear === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.isPost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetPipeline",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "fx",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isPost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "String",
+      "params": [
+        {
+          "name": "fx.type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPostPipeline",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPostPipeline",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.enabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enable",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "fx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "outerStrength",
+          "type": null
+        },
+        {
+          "name": "innerStrength",
+          "type": null
+        },
+        {
+          "name": "knockout",
+          "type": null
+        },
+        {
+          "name": "quality",
+          "type": null
+        },
+        {
+          "name": "distance",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Glow(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "outerStrength",
+          "type": null
+        },
+        {
+          "name": "innerStrength",
+          "type": null
+        },
+        {
+          "name": "knockout",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "decay",
+          "type": null
+        },
+        {
+          "name": "power",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "samples",
+          "type": null
+        },
+        {
+          "name": "intensity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Shadow(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "decay",
+          "type": null
+        },
+        {
+          "name": "power",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "samples",
+          "type": null
+        },
+        {
+          "name": "intensity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "amount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Pixelate(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "amount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Vignette(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "lineWidth",
+          "type": null
+        },
+        {
+          "name": "gradient",
+          "type": null
+        },
+        {
+          "name": "reveal",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Shine(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "speed",
+          "type": null
+        },
+        {
+          "name": "lineWidth",
+          "type": null
+        },
+        {
+          "name": "gradient",
+          "type": null
+        },
+        {
+          "name": "reveal",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "quality",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "steps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Blur(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "quality",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "steps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "color1",
+          "type": null
+        },
+        {
+          "name": "color2",
+          "type": null
+        },
+        {
+          "name": "alpha",
+          "type": null
+        },
+        {
+          "name": "fromX",
+          "type": null
+        },
+        {
+          "name": "fromY",
+          "type": null
+        },
+        {
+          "name": "toX",
+          "type": null
+        },
+        {
+          "name": "toY",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Gradient(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "color1",
+          "type": null
+        },
+        {
+          "name": "color2",
+          "type": null
+        },
+        {
+          "name": "alpha",
+          "type": null
+        },
+        {
+          "name": "fromX",
+          "type": null
+        },
+        {
+          "name": "fromY",
+          "type": null
+        },
+        {
+          "name": "toX",
+          "type": null
+        },
+        {
+          "name": "toY",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "offsetX",
+          "type": null
+        },
+        {
+          "name": "offsetY",
+          "type": null
+        },
+        {
+          "name": "blurStrength",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "steps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Bloom(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "offsetX",
+          "type": null
+        },
+        {
+          "name": "offsetY",
+          "type": null
+        },
+        {
+          "name": "blurStrength",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        },
+        {
+          "name": "steps",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.ColorMatrix(this.gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "thickness",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "backgroundColor",
+          "type": null
+        },
+        {
+          "name": "scale",
+          "type": null
+        },
+        {
+          "name": "feather",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Circle(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "thickness",
+          "type": null
+        },
+        {
+          "name": "color",
+          "type": null
+        },
+        {
+          "name": "backgroundColor",
+          "type": null
+        },
+        {
+          "name": "scale",
+          "type": null
+        },
+        {
+          "name": "feather",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "amount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Barrel(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "amount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Displacement(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "wipeWidth",
+          "type": null
+        },
+        {
+          "name": "direction",
+          "type": null
+        },
+        {
+          "name": "axis",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Wipe(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "wipeWidth",
+          "type": null
+        },
+        {
+          "name": "direction",
+          "type": null
+        },
+        {
+          "name": "axis",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "wipeWidth",
+          "type": null
+        },
+        {
+          "name": "direction",
+          "type": null
+        },
+        {
+          "name": "axis",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Wipe(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "wipeWidth",
+          "type": null
+        },
+        {
+          "name": "direction",
+          "type": null
+        },
+        {
+          "name": "axis",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "amount",
+          "type": null
+        },
+        {
+          "name": "contrast",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Bokeh(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "amount",
+          "type": null
+        },
+        {
+          "name": "contrast",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "amount",
+          "type": null
+        },
+        {
+          "name": "contrast",
+          "type": null
+        },
+        {
+          "name": "blurX",
+          "type": null
+        },
+        {
+          "name": "blurY",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "new Effects.Bokeh(this.gameObject",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "amount",
+          "type": null
+        },
+        {
+          "name": "contrast",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "blurX",
+          "type": null
+        },
+        {
+          "name": "blurY",
+          "type": null
+        },
+        {
+          "name": "strength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

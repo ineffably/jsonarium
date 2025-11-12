@@ -1,0 +1,634 @@
+{
+  "type": "class",
+  "name": "StencilMaskPipe",
+  "sourcePath": "rendering/mask/stencil/StencilMaskPipe.ts",
+  "extends": null,
+  "implements": [
+    "InstructionPipe"
+  ],
+  "description": "type MaskMode = 'pushMaskBegin' | 'pushMaskEnd' | 'popMaskBegin' | 'popMaskEnd'; /** @internal */ export interface StencilMaskInstruction extends Instruction { renderPipeId: 'stencilMask', action: MaskMode, inverse: boolean, mask: StencilMask, } /** @internal",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "mask",
+          "type": "Effect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBlendMode",
+      "params": [
+        {
+          "name": "effect.mask as Renderable",
+          "type": null
+        },
+        {
+          "name": "'none'",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'stencilMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'pushMaskBegin'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        },
+        {
+          "name": "inverse",
+          "type": "_container._maskOptions.inverse",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "} as StencilMaskInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._maskHash.has(effect",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "effect",
+          "type": null
+        },
+        {
+          "name": "instructionsStart",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionsLength",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "effect",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collectRenderables",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        },
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'stencilMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'pushMaskEnd'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mask",
+          "type": null
+        },
+        {
+          "name": "inverse",
+          "type": "_container._maskOptions.inverse",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "} as StencilMaskInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [
+        {
+          "name": "mask",
+          "type": "Effect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBlendMode",
+      "params": [
+        {
+          "name": "effect.mask as Renderable",
+          "type": null
+        },
+        {
+          "name": "'none'",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'stencilMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'popMaskBegin'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "inverse",
+          "type": "_container._maskOptions.inverse",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "} as StencilMaskInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "mask as StencilMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < maskData.instructionsLength; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'stencilMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'popMaskEnd'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "instruction",
+          "type": "StencilMaskInstruction",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'pushMaskBegin'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureDepthStencil",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "STENCIL_MODES.RENDERING_MASK_ADD",
+          "type": null
+        },
+        {
+          "name": "maskStackIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setMask",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'pushMaskEnd'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.inverse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "STENCIL_MODES.INVERSE_MASK_ACTIVE",
+          "type": null
+        },
+        {
+          "name": "maskStackIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "STENCIL_MODES.MASK_ACTIVE",
+          "type": null
+        },
+        {
+          "name": "maskStackIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setMask",
+      "params": [
+        {
+          "name": "0xF",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'popMaskBegin'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setMask",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "maskStackIndex !== 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "STENCIL_MODES.RENDERING_MASK_REMOVE",
+          "type": null
+        },
+        {
+          "name": "maskStackIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "CLEAR.STENCIL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "STENCIL_MODES.DISABLED",
+          "type": null
+        },
+        {
+          "name": "maskStackIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'popMaskEnd'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.inverse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "STENCIL_MODES.INVERSE_MASK_ACTIVE",
+          "type": null
+        },
+        {
+          "name": "maskStackIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "STENCIL_MODES.MASK_ACTIVE",
+          "type": null
+        },
+        {
+          "name": "maskStackIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setMask",
+      "params": [
+        {
+          "name": "0xF",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

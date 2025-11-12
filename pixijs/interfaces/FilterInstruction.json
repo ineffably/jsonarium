@@ -1,0 +1,241 @@
+{
+  "type": "interface",
+  "name": "FilterInstruction",
+  "sourcePath": "filters/FilterSystem.ts",
+  "extends": [
+    "Instruction"
+  ],
+  "description": "The filter pipeline is responsible for applying filters scene items! KNOWN BUGS: 1. Global bounds calculation is incorrect if it is used when flip flopping filters. The maths can be found below eg: filters [noiseFilter, blurFilter] noiseFilter will calculate the global bounds incorrectly. 2. RenderGroups do not work with filters. This is because the renderGroup matrix is not currently taken into account. Implementation notes: 1. Gotcha - nesting filters that require blending will not work correctly. This creates a chicken and egg problem the complexity and performance required to do this is not worth it i feel.. but lets see if others agree! 2. Filters are designed to be changed on the fly, this is means that changing filter information each frame will not trigger an instruction rebuild. If you are constantly turning a filter on and off.. its therefore better to set enabled to true or false on the filter. Or setting an empty array. 3. Need to look at perhaps aliasing when flip flopping filters. Really we should only need to antialias the FIRST Texture we render too. The rest can be non aliased. This might help performance. Currently we flip flop with an antialiased texture if antialiasing is enabled on the filter.",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderPipeId",
+      "type": "'filter',\n    action: 'pushFilter' | 'popFilter',\n    container?: Container,\n    renderables?: Renderable[],\n    filterEffect: FilterEffect,\n}\n\n/**\n * Class representing the data required for applying filters.\n * This class holds various properties that are used during the filter application process.\n * @internal\n */\nclass FilterData\n{\n    /**\n     * Indicates whether the filter should be skipped.\n     * @type {boolean}\n     */\n    public skip = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "inputTexture",
+      "type": "Texture = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "backTexture",
+      "type": "Texture = null",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "filters",
+      "type": "Filter[] = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "blendRequired",
+      "type": "boolean = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "outputRenderSurface",
+      "type": "RenderSurface = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, width: number, height: number }}\n     */\n    public globalFrame = { x: 0, y: 0, width: 0, height: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "antialias",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "[\n            ExtensionType.WebGLSystem,\n            ExtensionType.WebGPUSystem,\n        ],\n        name: 'filter',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_filterStack",
+      "type": "FilterData[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uInputSize",
+      "type": "{ value: new Float32Array(4), type: 'vec4<f32>' },\n        uInputPixel: { value: new Float32Array(4), type: 'vec4<f32>' },\n        uInputClamp: { value: new Float32Array(4), type: 'vec4<f32>' },\n        uOutputFrame: { value: new Float32Array(4), type: 'vec4<f32>' },\n        uGlobalFrame: { value: new Float32Array(4), type: 'vec4<f32>' },\n        uOutputTexture: { value: new Float32Array(4), type: 'vec4<f32>' },\n    })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_globalFilterBindGroup",
+      "type": "BindGroup = new BindGroup({})",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_activeFilterData",
+      "type": "FilterData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_passthroughFilter",
+      "type": "Filter",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this.renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instruction",
+      "type": "FilterInstruction)\n    {\n        const renderer = this.renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Points",
+      "type": "* 1. padding is not currently supported here - so clipping may occur with filters that use padding.\n     * 2. If all filters are disabled or skipped, the original texture is returned.\n     */\n    public generateFilteredTexture({ texture, filters }: {texture: Texture, filters: Filter[]}): Texture\n    {\n        // get a filter data from the stack. They can be reused multiple times each frame,\n        // so we don't need to worry about overwriting them in a single pass.\n        const filterData = this._pushFilterData()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "lastRenderSurface",
+      "type": "RenderTarget, bounds: Bounds, previousBounds?: Bounds)\n    {\n        const backgroundResolution = lastRenderSurface.colorTexture.source._resolution",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0, y: 0 }\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filter",
+      "type": "Filter, input: Texture, output: RenderSurface, clear: boolean)\n    {\n        const renderer = this.renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "outputMatrix",
+      "type": "Matrix, sprite: Sprite): Matrix\n    {\n        const data = this._activeFilterData",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filter",
+      "type": "Filter, input: Texture, renderer: Renderer): void\n    {\n        // TODO - should prolly use a adaptor...\n        if ((renderer as WebGPURenderer).renderPipes.uniformBatch)\n        {\n            const batchUniforms = (renderer as WebGPURenderer).renderPipes.uniformBatch\n                .getUboResource(this._filterGlobalUniforms)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "quadGeometry,\n            shader: filter,\n            state: filter._state,\n            topology: 'triangle-list'\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filterData",
+      "type": "FilterData,\n        bounds: Bounds,\n        renderer: Renderer,\n        previousFilterData: FilterData | null\n    ): void\n    {\n        // set all the filter data\n        filterData.backTexture = Texture.EMPTY",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "offset",
+      "type": "bounds,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filterData",
+      "type": "FilterData,\n        offsetX: number,\n        offsetY: number,\n        globalResolution: number,\n        sourceWidth: number,\n        sourceHeight: number\n    ): void\n    {\n        const globalFrame = filterData.globalFrame",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "input",
+      "type": "Texture,\n        output: RenderSurface,\n        filterData: FilterData,\n        offsetX: number,\n        offsetY: number,\n        resolution: number,\n        isFinalTarget: boolean,\n        clear: boolean\n    ): void\n    {\n        const uniforms = this._filterGlobalUniforms.uniforms",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rootResolution",
+      "type": "number): number\n    {\n        let currentIndex = this._filterStackIndex - 1",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number }\n    {\n        let offsetX = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "offsetX, y: offsetY }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instruction",
+      "type": "FilterInstruction, bounds: Bounds): void\n    {\n        // this path is used by the blend modes mostly!\n        // they collect all renderables and push them into a list.\n        // this list is then used to calculate the bounds of the filter area\n        if (instruction.renderables)\n        {\n            getGlobalRenderableBounds(instruction.renderables, bounds)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filterData",
+      "type": "FilterData, clear: boolean)\n    {\n        const inputTexture = filterData.inputTexture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filterData",
+      "type": "FilterData,\n        viewPort: Rectangle,\n        rootAntialias: boolean,\n        rootResolution: number,\n        // a multiplier padding for the bounds calculation\n        // this prop is used when applying filters to textures\n        // as the should have padding applied to them already (until we fix padding when applying them to textures)\n        // set to 0 to remove padding from the bounds calculation\n        paddingMultiplier: number\n    )\n    {\n        const renderer = this.renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "useBackBuffer",
+      "type": "true` in the renderer options.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "previousFilterData",
+      "type": "FilterData",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

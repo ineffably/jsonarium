@@ -1,0 +1,256 @@
+{
+  "type": "class",
+  "name": "GlGraphicsAdaptor",
+  "sourcePath": "scene/graphics/gl/GlGraphicsAdaptor.ts",
+  "extends": null,
+  "implements": [
+    "GraphicsAdaptor"
+  ],
+  "description": "A GraphicsAdaptor that uses WebGL to render graphics.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "contextChange",
+      "params": [
+        {
+          "name": "renderer",
+          "type": "Renderer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uColor",
+          "type": "{ value: new Float32Array([1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compileHighShaderGlProgram",
+      "params": [
+        {
+          "name": "name",
+          "type": "'graphics'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bits",
+          "type": "[\n                colorBitGl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "generateTextureBatchBitGl(maxTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Shader",
+      "params": [
+        {
+          "name": "{\n            glProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                localUniforms: uniforms",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "batchSamplers",
+          "type": "getBatchSamplersUniformGroup(maxTextures",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "graphicsPipe",
+          "type": "GraphicsPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "renderable",
+          "type": "Graphics",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getContextRenderData",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "graphicsPipe.state",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "batcher.geometry",
+          "type": null
+        },
+        {
+          "name": "shader.glProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < instructions.instructionSize; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batch.size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let j = 0; j < batch.textures.count; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "batch.textures.textures[j]",
+          "type": null
+        },
+        {
+          "name": "j",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "batch.topology",
+          "type": null
+        },
+        {
+          "name": "batch.size",
+          "type": null
+        },
+        {
+          "name": "batch.start",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

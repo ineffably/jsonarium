@@ -1,0 +1,1296 @@
+{
+  "type": "class",
+  "name": "Composites",
+  "sourcePath": "physics/matter-js/lib/factory/Composites.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../body/Composite'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../constraint/Constraint'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../core/Common'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'../body/Body'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "require",
+      "params": [
+        {
+          "name": "'./Bodies'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "columns",
+          "type": null
+        },
+        {
+          "name": "rows",
+          "type": null
+        },
+        {
+          "name": "columnGap",
+          "type": null
+        },
+        {
+          "name": "rowGap",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "label",
+          "type": "'Stack' }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var row = 0; row < rows; row++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var column = 0; column < columns; column++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "callback",
+      "params": [
+        {
+          "name": "currentX",
+          "type": null
+        },
+        {
+          "name": "currentY",
+          "type": null
+        },
+        {
+          "name": "column",
+          "type": null
+        },
+        {
+          "name": "row",
+          "type": null
+        },
+        {
+          "name": "lastBody",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bodyHeight > maxHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": "bodyWidth * 0.5",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "bodyHeight * 0.5 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBody",
+      "params": [
+        {
+          "name": "stack",
+          "type": null
+        },
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        },
+        {
+          "name": "xOffsetA",
+          "type": null
+        },
+        {
+          "name": "yOffsetA",
+          "type": null
+        },
+        {
+          "name": "xOffsetB",
+          "type": null
+        },
+        {
+          "name": "yOffsetB",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 1; i < bodies.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "defaults",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addConstraint",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        },
+        {
+          "name": "Constraint.create(constraint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        },
+        {
+          "name": "columns",
+          "type": null
+        },
+        {
+          "name": "rows",
+          "type": null
+        },
+        {
+          "name": "crossBrace",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "row = 0; row < rows; row++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "col = 1; col < columns; col++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addConstraint",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": "bodyA",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bodyB",
+          "type": "bodyB }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "row > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "col = 0; col < columns; col++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addConstraint",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": "bodyA",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bodyB",
+          "type": "bodyB }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "crossBrace && col > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addConstraint",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": "bodyC",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bodyB",
+          "type": "bodyB }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "crossBrace && col < columns - 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addConstraint",
+      "params": [
+        {
+          "name": "composite",
+          "type": null
+        },
+        {
+          "name": "bodyA",
+          "type": "bodyC",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bodyB",
+          "type": "bodyB }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "columns",
+          "type": null
+        },
+        {
+          "name": "rows",
+          "type": null
+        },
+        {
+          "name": "columnGap",
+          "type": null
+        },
+        {
+          "name": "rowGap",
+          "type": null
+        },
+        {
+          "name": "callback",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stack",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "columns",
+          "type": null
+        },
+        {
+          "name": "rows",
+          "type": null
+        },
+        {
+          "name": "columnGap",
+          "type": null
+        },
+        {
+          "name": "rowGap",
+          "type": null
+        },
+        {
+          "name": "function(stackX",
+          "type": null
+        },
+        {
+          "name": "stackY",
+          "type": null
+        },
+        {
+          "name": "column",
+          "type": null
+        },
+        {
+          "name": "row",
+          "type": null
+        },
+        {
+          "name": "lastBody",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "rows",
+          "type": null
+        },
+        {
+          "name": "Math.ceil(columns / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "row > actualRows",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "column < start || column > end",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "i === 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "translate",
+      "params": [
+        {
+          "name": "lastBody",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": "(column + (columns % 2",
+          "optional": true,
+          "default": "== 1 ? 1 : -1"
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "callback",
+      "params": [
+        {
+          "name": "x + xOffset + column * columnGap",
+          "type": null
+        },
+        {
+          "name": "stackY",
+          "type": null
+        },
+        {
+          "name": "column",
+          "type": null
+        },
+        {
+          "name": "row",
+          "type": null
+        },
+        {
+          "name": "lastBody",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": null
+        },
+        {
+          "name": "length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "label",
+          "type": "'Newtons Cradle' }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < number; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "x + i * (size * separation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "pointA",
+          "type": "{ x: x + i * (size * separation",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBody",
+      "params": [
+        {
+          "name": "newtonsCradle",
+          "type": null
+        },
+        {
+          "name": "circle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addConstraint",
+      "params": [
+        {
+          "name": "newtonsCradle",
+          "type": null
+        },
+        {
+          "name": "constraint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "wheelSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextGroup",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "label",
+          "type": "'Car' }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "collisionFilter",
+          "type": "{\n                    group: group\n                }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "chamfer",
+          "type": "{\n                    radius: height * 0.5\n                }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "density",
+          "type": "0.0002\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "x + wheelAOffset",
+          "type": null
+        },
+        {
+          "name": "y + wheelYOffset",
+          "type": null
+        },
+        {
+          "name": "wheelSize",
+          "type": null
+        },
+        {
+          "name": "collisionFilter",
+          "type": "{\n                group: group\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "friction",
+          "type": "0.8\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "x + wheelBOffset",
+          "type": null
+        },
+        {
+          "name": "y + wheelYOffset",
+          "type": null
+        },
+        {
+          "name": "wheelSize",
+          "type": null
+        },
+        {
+          "name": "collisionFilter",
+          "type": "{\n                group: group\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "friction",
+          "type": "0.8\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": "body",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "pointB",
+          "type": "{ x: wheelAOffset",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "wheelYOffset }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bodyA",
+          "type": "wheelA",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stiffness",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "length",
+          "type": "0\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "bodyB",
+          "type": "body",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "pointB",
+          "type": "{ x: wheelBOffset",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "wheelYOffset }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bodyA",
+          "type": "wheelB",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stiffness",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "length",
+          "type": "0\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBody",
+      "params": [
+        {
+          "name": "car",
+          "type": null
+        },
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBody",
+      "params": [
+        {
+          "name": "car",
+          "type": null
+        },
+        {
+          "name": "wheelA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBody",
+      "params": [
+        {
+          "name": "car",
+          "type": null
+        },
+        {
+          "name": "wheelB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addConstraint",
+      "params": [
+        {
+          "name": "car",
+          "type": null
+        },
+        {
+          "name": "axelA",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addConstraint",
+      "params": [
+        {
+          "name": "car",
+          "type": null
+        },
+        {
+          "name": "axelB",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "columns",
+          "type": null
+        },
+        {
+          "name": "rows",
+          "type": null
+        },
+        {
+          "name": "columnGap",
+          "type": null
+        },
+        {
+          "name": "rowGap",
+          "type": null
+        },
+        {
+          "name": "crossBrace",
+          "type": null
+        },
+        {
+          "name": "particleRadius",
+          "type": null
+        },
+        {
+          "name": "particleOptions",
+          "type": null
+        },
+        {
+          "name": "constraintOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "inertia",
+          "type": "Infinity }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "particleOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "extend",
+      "params": [
+        {
+          "name": "stiffness",
+          "type": "0.2",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "render",
+          "type": "{ type: 'line'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "anchors",
+          "type": "false } }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "constraintOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stack",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "columns",
+          "type": null
+        },
+        {
+          "name": "rows",
+          "type": null
+        },
+        {
+          "name": "columnGap",
+          "type": null
+        },
+        {
+          "name": "rowGap",
+          "type": null
+        },
+        {
+          "name": "function(stackX",
+          "type": null
+        },
+        {
+          "name": "stackY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "stackX",
+          "type": null
+        },
+        {
+          "name": "stackY",
+          "type": null
+        },
+        {
+          "name": "particleRadius",
+          "type": null
+        },
+        {
+          "name": "particleOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mesh",
+      "params": [
+        {
+          "name": "softBody",
+          "type": null
+        },
+        {
+          "name": "columns",
+          "type": null
+        },
+        {
+          "name": "rows",
+          "type": null
+        },
+        {
+          "name": "crossBrace",
+          "type": null
+        },
+        {
+          "name": "constraintOptions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

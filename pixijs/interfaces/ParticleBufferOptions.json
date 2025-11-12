@@ -1,0 +1,149 @@
+{
+  "type": "interface",
+  "name": "ParticleBufferOptions",
+  "sourcePath": "scene/particle-container/shared/ParticleBuffer.ts",
+  "extends": [],
+  "description": "Options for creating a ParticleBuffer.",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "size",
+      "type": "number",
+      "optional": false,
+      "description": "The size of the particle buffer, defaults to 1000."
+    },
+    {
+      "name": "properties",
+      "type": "Record<string, ParticleRendererProperty>",
+      "optional": false,
+      "description": "A record of attributes that the particle container uses."
+    },
+    {
+      "name": "staticAttributeBuffer",
+      "type": "ViewableBuffer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "dynamicAttributeBuffer",
+      "type": "ViewableBuffer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_staticBuffer",
+      "type": "Buffer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_dynamicBuffer",
+      "type": "Buffer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "indexBuffer",
+      "type": "IndexBufferArray",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_dynamicStride",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_staticStride",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "Geometry",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_dynamicUpload",
+      "type": "ParticleUpdateFunction",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_staticUpload",
+      "type": "ParticleUpdateFunction",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_generateParticleUpdateCache",
+      "type": "Record<string, {\n        dynamicUpdate: ParticleUpdateFunction",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "staticUpdate",
+      "type": "ParticleUpdateFunction",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ParticleBufferOptions)\n    {\n        // size in sprites!\n        const size = this._size = options.size ?? 1000",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "new Float32Array(1),\n            label: 'static-particle-buffer',\n            shrinkToFit: false,\n            usage: BufferUsage.VERTEX | BufferUsage.COPY_DST\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "new Float32Array(1),\n            label: 'dynamic-particle-buffer',\n            shrinkToFit: false,\n            usage: BufferUsage.VERTEX | BufferUsage.COPY_DST\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "buffer",
+      "type": "this._dynamicBuffer,\n                    stride: this._dynamicStride * 4,\n                    offset: dynamicOffset * 4,\n                    format: property.format,\n                })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "buffer",
+      "type": "this._staticBuffer,\n                    stride: this._staticStride * 4,\n                    offset: staticOffset * 4,\n                    format: property.format,\n                })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "properties",
+      "type": "Record<string, ParticleRendererProperty>)\n    {\n        const key = getParticleSyncKey(properties)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "properties",
+      "type": "Record<string, ParticleRendererProperty>)\n    {\n        return generateParticleUpdateFunction(properties)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "particles",
+      "type": "IParticle[], uploadStatic: boolean)\n    {\n        // first resize the buffers if needed!\n        // TODO resize!\n        if (particles.length > this._size)\n        {\n            uploadStatic = true",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "properties",
+      "type": "Record<string, ParticleRendererProperty>)\n{\n    const keyGen: string[] = []",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

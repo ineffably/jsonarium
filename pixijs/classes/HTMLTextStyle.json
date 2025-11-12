@@ -1,0 +1,506 @@
+{
+  "type": "class",
+  "name": "HTMLTextStyle",
+  "sourcePath": "scene/text-html/HTMLTextStyle.ts",
+  "extends": "TextStyle",
+  "implements": [],
+  "description": "Options for HTML text style, extends standard text styling with HTML-specific capabilities. Omits certain base text properties that don't apply to HTML rendering. ```ts // Basic HTML text style const text = new HTMLText({ text: '<p>Hello World</p>', style: { fontSize: 24, fill: '#ff0000', fontFamily: 'Arial', align: 'center' } }); // Custom tag styling const taggedText = new HTMLText({ text: '<custom>Custom Tag</custom>', style: { fontSize: 16, tagStyles: { custom: { fontSize: 32, fill: '#00ff00', fontStyle: 'italic' } } } }); ``` / export interface HTMLTextStyleOptions extends Omit<TextStyleOptions, 'leading' | 'textBaseline' | 'trim' | 'filters'> { /** List of CSS style overrides to apply to the HTML text. These styles are added after the built-in styles and can override any default styling. / cssOverrides?: string[]; /** Custom styles to apply to specific HTML tags. Allows for consistent styling of custom elements without CSS overrides. ```ts const text = new HTMLText({ text: ` <red>Main Title</red> <grey>The subtitle</grey> <blue>Regular content text</blue> `, style: { tagStyles: { red: { fill: '#ff0000', }, grey: { fill: '#666666', }, blue: { fill: 'blue', } } } }); ``` / tagStyles?: Record<string, HTMLTextStyleOptions>; } /** A TextStyle object rendered by the HTMLTextSystem.",
+  "category": "text",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": "Custom styles to apply to specific HTML tags. Allows for consistent styling of custom elements without CSS overrides. new HTMLText({ text:'<red>Red</red>,<blue>Blue</blue>,<green>Green</green>', style:{ fontFamily: 'DM Sans', fill: 'white', fontSize:100, tagStyles:{ red:{ fill:'red', }, blue:{ fill:'blue', }, green:{ fill:'green', } } } ); / public tagStyles: Record<string, HTMLTextStyleOptions>; constructor(options: HTMLTextStyleOptions = {}) { super(options); this.cssOverrides = options.cssOverrides ?? []; this.tagStyles = options.tagStyles ?? {}; } /** List of CSS style overrides to apply to the HTML text. These styles are added after the built-in styles and can override any default styling. / set cssOverrides(value: string | string[]) { this._cssOverrides = value instanceof Array ? value : [value]; this.update(); } /** @advanced */ get cssOverrides(): string[] { return this._cssOverrides; } /** Updates the text style and triggers a refresh of the CSS style cache. This method is called automatically when style properties are changed. ```ts // Update after multiple changes const text = new HTMLText({ text: 'Hello World', style }); style.fontSize = 32; style.fill = '#00ff00'; style.fontFamily = 'Arial'; style.update(); // Apply all changes at once ```"
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": "HTMLTextStyle",
+      "description": "Creates a new HTMLTextStyle object with the same values as this one. This creates a deep copy of all style properties, including dropShadow and tag styles. ```ts // Create original style const originalStyle = new HTMLTextStyle({ fontSize: 24, fill: '#ff0000', tagStyles: { header: { fontSize: 32, fill: '#00ff00' } } }); // Clone the style const clonedStyle = originalStyle.clone(); // Modify cloned style independently clonedStyle.fontSize = 36; clonedStyle.fill = '#0000ff'; // Original style remains unchanged console.log(originalStyle.fontSize); // Still 24 console.log(originalStyle.fill); // Still '#ff0000' ``` Properties that are cloned: - Basic text properties (fontSize, fontFamily, etc.) - Fill and stroke styles - Drop shadow configuration - CSS overrides - Tag styles (deep copied) - Word wrap settings - Alignment and spacing"
+    },
+    {
+      "name": "HTMLTextStyle",
+      "params": [
+        {
+          "name": "align",
+          "type": "this.align",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "breakWords",
+          "type": "this.breakWords",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dropShadow",
+          "type": "this.dropShadow ? { ...this.dropShadow } : null",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fill",
+          "type": "this._fill",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontFamily",
+          "type": "this.fontFamily",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontSize",
+          "type": "this.fontSize",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontStyle",
+          "type": "this.fontStyle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontVariant",
+          "type": "this.fontVariant",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontWeight",
+          "type": "this.fontWeight",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "letterSpacing",
+          "type": "this.letterSpacing",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "lineHeight",
+          "type": "this.lineHeight",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "padding",
+          "type": "this.padding",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stroke",
+          "type": "this._stroke",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "whiteSpace",
+          "type": "this.whiteSpace",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "wordWrap",
+          "type": "this.wordWrap",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "wordWrapWidth",
+          "type": "this.wordWrapWidth",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cssOverrides",
+          "type": "this.cssOverrides",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "tagStyles",
+          "type": "{ ...this.tagStyles }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addOverride",
+      "params": [
+        {
+          "name": "value",
+          "type": "string[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "The CSS style string that will be applied to the HTML text. / get cssStyle(): string { if (!this._cssStyle) { this._cssStyle = textStyleToCSS(this); } return this._cssStyle; } /** Add a style override, this can be any CSS property it will override any built-in style. This is the property and the value as a string (e.g., `color: red`). This will override any other internal style. style.addOverride('background-color: red');"
+    },
+    {
+      "name": "filter",
+      "params": [
+        {
+          "name": "(v",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "v",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "toAdd.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "...toAdd",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeOverride",
+      "params": [
+        {
+          "name": "value",
+          "type": "string[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Remove any overrides that match the value. style.removeOverride('background-color: red');"
+    },
+    {
+      "name": "filter",
+      "params": [
+        {
+          "name": "(v",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "v",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "toRemove.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "filter",
+      "params": [
+        {
+          "name": "(v",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "v",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fills",
+      "params": [
+        {
+          "name": "string or number values",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "HTMLText",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Colored Text'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{\n     *         fill: 0xff0000 // Red color\n     *     }\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "string",
+      "params": [
+        {
+          "name": "Green",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgb",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "usage",
+      "params": [
+        {
+          "name": "will trigger warning in debug",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "'pattern.png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof value !== 'string' && typeof value !== 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'[HTMLTextStyle] only color fill is not supported by HTMLText'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokes",
+      "params": [
+        {
+          "name": "string or number values",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "HTMLText",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Outlined Text'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{\n     *         stroke: 0xff0000 // Red outline\n     *     }\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "string",
+      "params": [
+        {
+          "name": "Green",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgb",
+      "params": [
+        {
+          "name": "255",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "usage",
+      "params": [
+        {
+          "name": "will trigger warning in debug",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "'pattern.png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value && typeof value !== 'string' && typeof value !== 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'[HTMLTextStyle] only color stroke is not supported by HTMLText'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "cssOverrides",
+      "type": "string[]",
+      "description": null
+    },
+    {
+      "name": "cssStyle",
+      "type": "string",
+      "description": "The CSS style string that will be applied to the HTML text."
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "type": "class",
+  "name": "GlUniformGroupSystem",
+  "sourcePath": "rendering/renderers/gl/shader/GlUniformGroupSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "System plugin to the renderer to manage shaders.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "contextChange",
+      "params": [
+        {
+          "name": "gl",
+          "type": "GlRenderingContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "group",
+          "type": "UniformGroup",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "program",
+          "type": "GlProgram",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "syncData",
+          "type": "{ textureCount: number }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Uploads the uniforms values to the currently bound shader."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!group.isStatic || group._dirtyId !== programData.uniformDirtyGroups[group.uid]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncFunc",
+      "params": [
+        {
+          "name": "programData.uniformData",
+          "type": null
+        },
+        {
+          "name": "group.uniforms",
+          "type": null
+        },
+        {
+          "name": "this._renderer",
+          "type": null
+        },
+        {
+          "name": "syncData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": "Overridable by the pixi.js/unsafe-eval package to use static syncUniforms instead. / private _getUniformSyncFunction(group: UniformGroup, program: GlProgram): UniformsSyncCallback { return this._uniformGroupSyncHash[group._signature]?.[program._key] || this._createUniformSyncFunction(group, program); } private _createUniformSyncFunction(group: UniformGroup, program: GlProgram): UniformsSyncCallback { const uniformGroupSyncHash = this._uniformGroupSyncHash[group._signature] || (this._uniformGroupSyncHash[group._signature] = {}); const id = this._getSignature(group, program._uniformData, 'u'); if (!this._cache[id]) { this._cache[id] = this._generateUniformsSync(group, program._uniformData); } uniformGroupSyncHash[program._key] = this._cache[id]; return uniformGroupSyncHash[program._key]; } private _generateUniformsSync(group: UniformGroup, uniformData: Record<string, GlUniformData>): UniformsSyncCallback { return generateUniformsSync(group, uniformData); } /** Takes a uniform group and data and generates a unique signature for them. / private _getSignature(group: UniformGroup, uniformData: Record<string, any>, preFix: string): string { const uniforms = group.uniforms; const strings = [`${preFix}-`]; for (const i in uniforms) { strings.push(i); if (uniformData[i]) { strings.push(uniformData[i].type); } } return strings.join('-'); } /** Destroys this System and removes all its textures."
+    }
+  ],
+  "properties": []
+}

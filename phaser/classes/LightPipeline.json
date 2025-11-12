@@ -1,0 +1,1347 @@
+{
+  "type": "class",
+  "name": "LightPipeline",
+  "sourcePath": "renderer/webgl/pipelines/LightPipeline.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "MultiPipeline",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function LightPipeline (config",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'fragShader'",
+          "type": null
+        },
+        {
+          "name": "LightShaderSourceFS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "replace",
+      "params": [
+        {
+          "name": "'%LIGHT_COUNT%'",
+          "type": null
+        },
+        {
+          "name": "config.game.renderer.config.maxLights",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[\n            1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1\n        ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Vec2",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!lightManager || !lightManager.active",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getLights",
+      "params": [
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uMainSampler'",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uNormSampler'",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "'uResolution'",
+          "type": null
+        },
+        {
+          "name": "this.width / 2",
+          "type": null
+        },
+        {
+          "name": "this.height / 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set4f",
+      "params": [
+        {
+          "name": "'uCamera'",
+          "type": null
+        },
+        {
+          "name": "camera.x",
+          "type": null
+        },
+        {
+          "name": "camera.y",
+          "type": null
+        },
+        {
+          "name": "camera.rotation",
+          "type": null
+        },
+        {
+          "name": "camera.zoom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set3f",
+      "params": [
+        {
+          "name": "'uAmbientLightColor'",
+          "type": null
+        },
+        {
+          "name": "lightManager.ambientColor.r",
+          "type": null
+        },
+        {
+          "name": "lightManager.ambientColor.g",
+          "type": null
+        },
+        {
+          "name": "lightManager.ambientColor.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'uLightCount'",
+          "type": null
+        },
+        {
+          "name": "lightsCount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "i = 0; i < lightsCount; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transformPoint",
+      "params": [
+        {
+          "name": "light.x",
+          "type": null
+        },
+        {
+          "name": "light.y",
+          "type": null
+        },
+        {
+          "name": "tempVec2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "lightName + 'position'",
+          "type": null
+        },
+        {
+          "name": "tempVec2.x - (camera.scrollX * light.scrollFactorX * camera.zoom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set3f",
+      "params": [
+        {
+          "name": "lightName + 'color'",
+          "type": null
+        },
+        {
+          "name": "color.r",
+          "type": null
+        },
+        {
+          "name": "color.g",
+          "type": null
+        },
+        {
+          "name": "color.b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1f",
+      "params": [
+        {
+          "name": "lightName + 'intensity'",
+          "type": null
+        },
+        {
+          "name": "light.intensity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1f",
+      "params": [
+        {
+          "name": "lightName + 'radius'",
+          "type": null
+        },
+        {
+          "name": "light.radius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "rotation !== this.currentNormalMapRotation || this.vertexCount === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.vertexCount > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cos",
+      "params": [
+        {
+          "name": "rot",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "rot",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setMatrix3fv",
+      "params": [
+        {
+          "name": "'uInverseRotationMatrix'",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "inverseRotationMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "texture === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getNormalMap",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isNewNormalMap(texture",
+          "type": null
+        },
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBatch",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addTextureToBatch",
+      "params": [
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject && gameObject.parentContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getWorldTransformMatrix",
+      "params": [
+        {
+          "name": "this._tempMatrix",
+          "type": null
+        },
+        {
+          "name": "this._tempMatrix2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.currentBatch === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBatch",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addTextureToBatch",
+      "params": [
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setNormalMapRotation",
+      "params": [
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "frame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "frame === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getNormalMap",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isNewNormalMap(texture",
+          "type": null
+        },
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBatch",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addTextureToBatch",
+      "params": [
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.parentContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getWorldTransformMatrix",
+      "params": [
+        {
+          "name": "this._tempMatrix",
+          "type": null
+        },
+        {
+          "name": "this._tempMatrix2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setNormalMapRotation",
+      "params": [
+        {
+          "name": "matrix.rotationNormalized",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setNormalMapRotation",
+      "params": [
+        {
+          "name": "gameObject.rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.currentBatch === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBatch",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addTextureToBatch",
+      "params": [
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "this.currentTexture !== texture || this.currentNormalMap !== normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.displayTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.tileset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(gameObject.tileset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.lightsActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "textureWidth",
+          "type": null
+        },
+        {
+          "name": "textureHeight",
+          "type": null
+        },
+        {
+          "name": "srcX",
+          "type": null
+        },
+        {
+          "name": "srcY",
+          "type": null
+        },
+        {
+          "name": "srcWidth",
+          "type": null
+        },
+        {
+          "name": "srcHeight",
+          "type": null
+        },
+        {
+          "name": "scaleX",
+          "type": null
+        },
+        {
+          "name": "scaleY",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "flipX",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        },
+        {
+          "name": "scrollFactorX",
+          "type": null
+        },
+        {
+          "name": "scrollFactorY",
+          "type": null
+        },
+        {
+          "name": "displayOriginX",
+          "type": null
+        },
+        {
+          "name": "displayOriginY",
+          "type": null
+        },
+        {
+          "name": "frameX",
+          "type": null
+        },
+        {
+          "name": "frameY",
+          "type": null
+        },
+        {
+          "name": "frameWidth",
+          "type": null
+        },
+        {
+          "name": "frameHeight",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "uOffset",
+          "type": null
+        },
+        {
+          "name": "vOffset",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "skipFlip",
+          "type": null
+        },
+        {
+          "name": "textureUnit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.lightsActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "textureWidth",
+          "type": null
+        },
+        {
+          "name": "textureHeight",
+          "type": null
+        },
+        {
+          "name": "srcX",
+          "type": null
+        },
+        {
+          "name": "srcY",
+          "type": null
+        },
+        {
+          "name": "srcWidth",
+          "type": null
+        },
+        {
+          "name": "srcHeight",
+          "type": null
+        },
+        {
+          "name": "scaleX",
+          "type": null
+        },
+        {
+          "name": "scaleY",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "flipX",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        },
+        {
+          "name": "scrollFactorX",
+          "type": null
+        },
+        {
+          "name": "scrollFactorY",
+          "type": null
+        },
+        {
+          "name": "displayOriginX",
+          "type": null
+        },
+        {
+          "name": "displayOriginY",
+          "type": null
+        },
+        {
+          "name": "frameX",
+          "type": null
+        },
+        {
+          "name": "frameY",
+          "type": null
+        },
+        {
+          "name": "frameWidth",
+          "type": null
+        },
+        {
+          "name": "frameHeight",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "uOffset",
+          "type": null
+        },
+        {
+          "name": "vOffset",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "skipFlip",
+          "type": null
+        },
+        {
+          "name": "textureUnit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "frame",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "alpha",
+          "type": null
+        },
+        {
+          "name": "transformMatrix",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.lightsActive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "frame",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "alpha",
+          "type": null
+        },
+        {
+          "name": "transformMatrix",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

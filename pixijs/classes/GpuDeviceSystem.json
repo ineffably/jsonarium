@@ -1,0 +1,148 @@
+{
+  "type": "class",
+  "name": "GpuDeviceSystem",
+  "sourcePath": "rendering/renderers/gpu/GpuDeviceSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "The GPU object. Contains the GPU adapter and device. / export interface GPU { /** The GPU adapter */ adapter: GPUAdapter; /** The GPU device */ device: GPUDevice; } /** Options for the WebGPU context. is suitable for the WebGPU context, can be `'high-performance'` or `'low-power'`. Setting to `'high-performance'` will prioritize rendering performance over power consumption, while setting to `'low-power'` will prioritize power saving over rendering performance. / export interface GpuContextOptions { /** An optional hint indicating what configuration of GPU is suitable for the WebGPU context, can be `'high-performance'` or `'low-power'`. Setting to `'high-performance'` will prioritize rendering performance over power consumption, while setting to `'low-power'` will prioritize power saving over rendering performance. / powerPreference?: GpuPowerPreference; /** Force the use of the fallback adapter / forceFallbackAdapter: boolean; /** Using shared device and adaptor from other engine */ gpu?: GPU; } /** System plugin to the renderer to manage the context.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "options",
+          "type": "GpuContextOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Promise<void>",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._initPromise",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolve",
+      "params": [
+        {
+          "name": "options.gpu",
+          "type": null
+        }
+      ],
+      "returnType": "this._createDeviceAndAdaptor(options))\n            .then((gpu) =>",
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "this.gpu",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contextChange",
+      "params": [
+        {
+          "name": "gpu",
+          "type": "GPU",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getNavigator",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "requestAdapter",
+      "params": [
+        {
+          "name": "powerPreference",
+          "type": "options.powerPreference",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "forceFallbackAdapter",
+          "type": "options.forceFallbackAdapter",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "filter",
+      "params": [
+        {
+          "name": "(feature",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "has",
+      "params": [
+        {
+          "name": "feature",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "requestDevice",
+      "params": [
+        {
+          "name": "{\n            requiredFeatures\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

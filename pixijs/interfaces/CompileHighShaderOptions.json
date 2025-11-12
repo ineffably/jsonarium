@@ -1,0 +1,65 @@
+{
+  "type": "interface",
+  "name": "CompileHighShaderOptions",
+  "sourcePath": "rendering/high-shader/compiler/compileHighShader.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "template",
+      "type": "HighShaderTemplate",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bits",
+      "type": "HighShaderBit[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "cacheMap",
+      "type": "{[key: string]: HighShaderSource} = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bitCacheMap",
+      "type": "Map<HighShaderBit, number> = new Map()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "template",
+      "type": "HighShaderTemplate, bits: HighShaderBit[])\n{\n    const vertexFragments = bits.map((shaderBit) => shaderBit.vertex).filter((v) => !!v)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "compiledVertex,\n        fragment: compiledFragment,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "template",
+      "type": "HighShaderTemplate, bits: HighShaderBit[]): string\n{\n    return bits\n        .map((highFragment) =>\n        {\n            if (!bitCacheMap.has(highFragment))\n            {\n                bitCacheMap.set(highFragment, CACHE_UID++)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "string, fragment: string, bits: HighShaderBit[])\n{\n    const vertexParts = compileHooks(vertex)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "injectBits(vertex, vertexParts),\n        fragment: injectBits(fragment, fragmentParts),\n    }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

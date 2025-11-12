@@ -1,0 +1,119 @@
+{
+  "type": "interface",
+  "name": "EffectsMixinConstructor",
+  "sourcePath": "scene/container/container-mixins/effectsMixin.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "mask",
+      "type": "Mask",
+      "optional": true,
+      "description": "The mask to apply, which can be a Container or null. If null, it clears the existing mask. ```ts // Set a mask sprite.setMask({ mask: graphics, inverse: false, });"
+    },
+    {
+      "name": "setMask",
+      "type": "(options: Partial<MaskOptionsAndMask>) => void",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "filters",
+      "type": "Filter | readonly Filter[]",
+      "optional": true,
+      "description": "Sets the filters for the displayObject. Filters are visual effects that can be applied to any display object and its children. > [!IMPORTANT] This is a WebGL/WebGPU only feature and will be ignored by the canvas renderer. ```ts new Container({ filters: [new BlurFilter(2), new ColorMatrixFilter()], }); ```"
+    },
+    {
+      "name": "inverse",
+      "type": "boolean",
+      "optional": false,
+      "description": "The Mask type represents different ways to mask a display object. - A number represents a mask ID. - A Container represents a mask object, such as a Graphics or Sprite. - null indicates that no mask is applied. ```ts // Using a Container as a mask const maskContainer: Mask = new Graphics(); // Using a mask ID const maskId: Mask = 123; // No mask applied const noMask: Mask = null; ``` / export type Mask = number | Container | null; /** Options for configuring mask behavior on a display object. ```ts // Basic mask inversion sprite.setMask({ mask: graphics, inverse: true }); ``` / export interface MaskOptions { /** Whether the mask should be inverted. When true, the masked area becomes transparent and the unmasked area becomes visible. ```ts // Invert the mask sprite.setMask({ mask: graphics, inverse: true }); ```"
+    },
+    {
+      "name": "mask",
+      "type": "Mask",
+      "optional": false,
+      "description": "MaskOptionsAndMask combines MaskOptions with a Mask for configuring masking behavior. Used when setting up complex masking effects with additional options. ```ts sprite.setMask({ mask: graphics, inverse: true, }); // Clear existing mask sprite.setMask({ mask: null, inverse: false, }); ``` / export interface MaskOptionsAndMask extends MaskOptions { /** The mask to apply, which can be a Container or null. If null, it clears the existing mask. ```ts // Set a mask sprite.setMask({ mask: graphics, inverse: false, });"
+    },
+    {
+      "name": "_maskEffect",
+      "type": "MaskEffect",
+      "optional": true,
+      "description": "The EffectsMixin interface provides methods and properties for managing effects such as masks and filters on a display object. It allows for adding, removing, and configuring effects, as well as setting a mask for the display object. / export interface EffectsMixin extends Required<EffectsMixinConstructor> { /** @private"
+    },
+    {
+      "name": "_maskOptions",
+      "type": "MaskOptions",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "_filterEffect",
+      "type": "FilterEffect,\n    /** @private */\n    _markStructureAsChanged(): void",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "filterArea",
+      "type": "Rectangle,\n    /**\n     * todo Needs docs\n     * @advanced\n     */\n    effects?: Effect[]",
+      "optional": true,
+      "description": "The area the filter is applied to. This is used as an optimization to define a specific region for filter effects instead of calculating the display object bounds each frame. > [!NOTE] > Setting this to a custom Rectangle allows you to define a specific area for filter effects, > which can improve performance by avoiding expensive bounds calculations. ```ts // Set specific filter area container.filterArea = new Rectangle(0, 0, 100, 100); // Optimize filter region const screen = app.screen; container.filterArea = new Rectangle( screen.x, screen.y, screen.width, screen.height ); ```"
+    },
+    {
+      "name": "mask",
+      "type": "Mask",
+      "optional": false,
+      "description": "todo Needs docs. / addEffect(effect: Effect): void; /** todo Needs docs. / removeEffect(effect: Effect): void; /** Used to set mask and control mask options on a display object. Allows for more detailed control over masking behavior compared to the mask property. ```ts import { Graphics, Sprite } from 'pixi.js'; // Create a circular mask const graphics = new Graphics() .beginFill(0xFF3300) .drawCircle(100, 100, 50) .endFill(); // Apply mask with options sprite.setMask({ mask: graphics, inverse: true, // Create a hole effect }); // Clear existing mask sprite.setMask({ mask: null }); ``` / setMask(options: Partial<MaskOptionsAndMask>): void; /** Sets a mask for the displayObject. A mask is an object that limits the visibility of an object to the shape of the mask applied to it. > [!IMPORTANT] In PixiJS a regular mask must be a {@link Graphics} or a {@link Sprite} object. > This allows for much faster masking in canvas as it utilities shape clipping. > Furthermore, a mask of an object must be in the subtree of its parent. > Otherwise, `getLocalBounds` may calculate incorrect bounds, which makes the container's width and height wrong. For sprite mask both alpha and red channel are used. Black mask is the same as transparent mask. ```ts // Apply mask to sprite const sprite = new Sprite(texture); sprite.mask = graphics; // Remove mask sprite.mask = null; ```"
+    },
+    {
+      "name": "value",
+      "type": "Filter | Filter[] | null | undefined)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "effectsMixin",
+      "type": "Partial<Container> = {\n    _maskEffect: null,\n    _maskOptions: {\n        inverse: false,\n    },\n    _filterEffect: null,\n\n    effects: [],\n\n    _markStructureAsChanged()\n    {\n        const renderGroup = this.renderGroup || this.parentRenderGroup",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "effect",
+      "type": "Effect)\n    {\n        const index = this.effects.indexOf(effect)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "effect",
+      "type": "Effect)\n    {\n        const index = this.effects.indexOf(effect)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Mask)\n    {\n        const effect = this._maskEffect",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "Partial<MaskOptionsAndMask>)\n    {\n        this._maskOptions = {\n            ...this._maskOptions,\n            ...options,\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Filter | Filter[] | null | undefined)\n    {\n        if (!Array.isArray(value) && value) value = [value]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Rectangle)\n    {\n        this._filterEffect ||= new FilterEffect()",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

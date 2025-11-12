@@ -1,0 +1,67 @@
+{
+  "type": "interface",
+  "name": "ColorMaskInstruction",
+  "sourcePath": "rendering/mask/color/ColorMaskPipe.ts",
+  "extends": [
+    "Instruction"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderPipeId",
+      "type": "'colorMask',\n    colorMask: number,\n}\n\n/** @internal */\nexport class ColorMaskPipe implements InstructionPipe<ColorMaskInstruction>\n{\n    /** @ignore */\n    public static extension = {\n        type: [\n            ExtensionType.WebGLPipes,\n            ExtensionType.WebGPUPipes,\n            ExtensionType.CanvasPipes,\n        ],\n        name: 'colorMask',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_colorStack",
+      "type": "number[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mask",
+      "type": "Effect, _container: Container, instructionSet: InstructionSet): void\n    {\n        const renderer = this._renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'colorMask',\n                colorMask: currentColor,\n                canBundle: false,\n            } as ColorMaskInstruction)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_mask",
+      "type": "Effect, _container: Container, instructionSet: InstructionSet): void\n    {\n        const renderer = this._renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "'colorMask',\n                colorMask: currentColor,\n                canBundle: false,\n            } as ColorMaskInstruction)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instruction",
+      "type": "ColorMaskInstruction)\n    {\n        const renderer = this._renderer",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

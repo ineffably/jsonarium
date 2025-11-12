@@ -1,0 +1,134 @@
+{
+  "type": "class",
+  "name": "GpuStencilSystem",
+  "sourcePath": "rendering/renderers/gpu/GpuStencilSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "This manages the stencil buffer. Used primarily for masking",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onRenderTargetChange",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!stencilState",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "stencilState.stencilMode",
+          "type": null
+        },
+        {
+          "name": "stencilState.stencilReference",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "stencilMode",
+          "type": "STENCIL_MODES",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stencilReference",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "stencilMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilReference",
+      "params": [
+        {
+          "name": "stencilReference",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

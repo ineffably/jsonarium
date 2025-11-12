@@ -1,0 +1,331 @@
+{
+  "type": "interface",
+  "name": "TilingSpriteOptions",
+  "sourcePath": "scene/sprite-tiling/TilingSprite.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": "Constructor options used for creating a TilingSprite instance. Defines the texture, tiling behavior, and rendering properties of the sprite. ```ts // Create a basic tiling sprite with repeating texture const tilingSprite = new TilingSprite({ texture: Texture.from('pattern.png'), width: 800,     // Width of the tiling area height: 600     // Height of the tiling area }); const background = new TilingSprite({ texture: Texture.from('background.png'), width: app.screen.width, height: app.screen.height, tilePosition: { x: 0, y: 0 }, tileScale: { x: 1.5, y: 1.5 }  // Scale up the texture anchor: 0.5,                    // Center anchor point roundPixels: true,              // Crisp pixel rendering }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "anchor",
+      "type": "PointData | number",
+      "optional": true,
+      "description": "The anchor point of the TilingSprite (0-1 range) Controls the origin point for rotation, scaling, and positioning. Can be a number for uniform anchor or a PointData for separate x/y values. ```ts // Centered anchor const sprite = new TilingSprite({ ..., anchor: 0.5 }); sprite.anchor = 0.5; // Separate x/y anchor sprite.anchor = { x: 0.5, y: 0.5 }; // Right-aligned anchor sprite.anchor = { x: 1, y: 0 }; // Update anchor directly sprite.anchor.set(0.5, 0.5); ```"
+    },
+    {
+      "name": "tilePosition",
+      "type": "PointData\n    /**\n     * Scale of the tiling texture.\n     * Affects the size of each repeated instance of the texture.\n     * @example\n     * ```ts\n     * // Scale the texture by 1.5 in both x and y directions\n     * tilingSprite.tileScale = { x: 1.5, y: 1.5 }",
+      "optional": true,
+      "description": "The offset of the tiling texture. Used to scroll or position the repeated pattern. ```ts // Offset the tiling pattern by 100 pixels in both x and y directions tilingSprite.tilePosition = { x: 100, y: 100 }; ```"
+    },
+    {
+      "name": "x",
+      "type": "1, y: 1}\n     */\n    tileScale?: PointData\n    /**\n     * Rotation of the tiling texture in radians.\n     * This controls the rotation applied to the texture before tiling.\n     * @example\n     * ```ts\n     * // Rotate the texture by 45 degrees (in radians)\n     * tilingSprite.tileRotation = Math.PI / 4",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "tileRotation",
+      "type": "number\n    /**\n     * The texture to use for tiling.\n     * This is the image that will be repeated across the sprite.\n     * @example\n     * ```ts\n     * // Use a texture from the asset cache\n     * tilingSprite.texture = Texture.from('assets/pattern.png')",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture\n    /**\n     * The width of the tiling area.\n     * This defines how wide the tiling sprite will be.\n     * @example\n     * ```ts\n     * // Set the width of the tiling sprite to 800 pixels\n     * tilingSprite.width = 800",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number\n    /**\n     * The height of the tiling area.\n     * This defines how tall the tiling sprite will be.\n     * @example\n     * ```ts\n     * // Set the height of the tiling sprite to 600 pixels\n     * tilingSprite.height = 600",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number\n    /**\n     * Whether the tiling pattern should originate from the anchor point.\n     * When true, tiling starts from the origin instead of top-left.\n     *\n     * This will make the texture coordinates assigned to each vertex dependent on the value of the anchor. Without\n     * this, the top-left corner always gets the (0, 0) texture coordinate.\n     * @example\n     * ```ts\n     * // Enable anchor-based tiling\n     * tilingSprite.applyAnchorToTexture = true",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "applyAnchorToTexture",
+      "type": "boolean\n    /**\n     * Whether to round the sprite's position to whole pixels.\n     * This can help with crisp rendering, especially for pixel art.\n     * When true, the sprite's position will be rounded to the nearest pixel.\n     * @example\n     * ```ts\n     * // Enable pixel rounding for crisp rendering\n     * tilingSprite.roundPixels = true",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "roundPixels",
+      "type": "boolean",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.EMPTY,\n        /** The anchor point of the sprite */\n        anchor: { x: 0, y: 0 },\n        /** The offset of the image that is being tiled. */\n        tilePosition: { x: 0, y: 0 },\n        /** Scaling of the image that is being tiled. */\n        tileScale: { x: 1, y: 1 },\n        /** The rotation of the image that is being tiled. */\n        tileRotation: 0,\n        /**\n         * Flags whether the tiling pattern should originate from the origin instead of the top-left corner in\n         * local space.\n         *\n         * This will make the texture coordinates assigned to each vertex dependent on the value of the anchor. Without\n         * this, the top-left corner always gets the (0, 0) texture coordinate.\n         * @default false\n         */\n        applyAnchorToTexture: false,\n    }",
+      "optional": false,
+      "description": "A TilingSprite is a fast and efficient way to render a repeating texture across a given area. The texture can be scrolled, scaled, and rotated independently of the sprite itself. ```ts // Create a simple tiling background const background = new TilingSprite({ texture: Texture.from('background.png'), width: app.screen.width, height: app.screen.height, }); app.stage.addChild(background); // Create a scrolling parallax background const parallax = new TilingSprite({ texture: Texture.from('clouds.png'), width: app.screen.width, height: app.screen.height, tileScale: { x: 0.5, y: 0.5 } }); // Animate the tiling position app.ticker.add(() => { parallax.tilePosition.x -= 1; // Scroll left parallax.tilePosition.y -= 0.5; // Scroll up slowly }); // Create a repeating pattern with rotation const pattern = new TilingSprite({ texture: Texture.from('pattern.png'), width: 300, height: 200, tileRotation: Math.PI / 4, // 45 degree rotation anchor: 0.5 // Center anchor point }); ``` / export class TilingSprite extends ViewContainer<TilingSpriteGpuData> implements View, Instruction { /** Creates a new tiling sprite based on a source texture or image path. This is a convenience method that automatically creates and manages textures. ```ts // Create a new tiling sprite from an image path const pattern = TilingSprite.from('pattern.png'); pattern.width = 300; // Set the width of the tiling area pattern.height = 200; // Set the height of the tiling area // Create from options const texture = Texture.from('pattern.png'); const pattern = TilingSprite.from(texture, { width: 300, height: 200, tileScale: { x: 0.5, y: 0.5 } }); ``` / public static from(source: Texture | string, options: TilingSpriteOptions = {}) { if (typeof source === 'string') { return new TilingSprite({ texture: Cache.get(source), ...options, }); } return new TilingSprite({ texture: source, ...options, }); } /** Default options used when creating a TilingSprite instance. These values are used as fallbacks when specific options are not provided. ```ts // Override default options globally TilingSprite.defaultOptions.texture = Texture.from('defaultPattern.png'); TilingSprite.defaultOptions.tileScale = { x: 2, y: 2 }; // Create sprite using default options const sprite = new TilingSprite(); // Will use defaultPattern.png and scale 2x ``` / public static defaultOptions: TilingSpriteOptions = { /** The texture to use for the sprite."
+    },
+    {
+      "name": "renderPipeId",
+      "type": "string = 'tilingSprite'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "applyAnchorToTexture",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        deprecation(v8_0_0, 'uvRespectAnchor is deprecated, please use applyAnchorToTexture instead')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_anchor",
+      "type": "ObservablePoint",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_tileTransform",
+      "type": "Transform",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_texture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "Texture | TilingSpriteOptions)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture, width: number, height: number)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[(Texture | TilingSpriteOptions)?] | [Texture, number, number])\n    {\n        let options = args[0] || {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "100, height:100 }) instead')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "'TilingSprite',\n            ...rest\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_onUpdate",
+      "type": "() =>\n                {\n                    this.onViewUpdate()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "observer",
+      "type": "{\n                _onUpdate: () => this.onViewUpdate(),\n            }\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._texture.textureMatrix.clampMargin = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1, // Right edge\n     *     y: 0  // Top edge\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData | number)\n    {\n        typeof value === 'number' ? this._anchor.set(value) : this._anchor.copyFrom(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "100, y: 100 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "0, y: 0}\n     */\n    get tilePosition(): ObservablePoint\n    {\n        return this._tileTransform.position",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData)\n    {\n        this._tileTransform.position.copyFrom(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1.5, y: 1.5 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1, y: 1}\n     */\n    get tileScale(): ObservablePoint\n    {\n        return this._tileTransform.scale",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData | number)\n    {\n        typeof value === 'number' ? this._tileTransform.scale.set(value) : this._tileTransform.scale.copyFrom(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Texture)\n    {\n        value ||= Texture.EMPTY",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('pattern.png'),\n     *     width: 500,\n     *     height: 300\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._width = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._height = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('pattern.png'),\n     *     width: 500,\n     *     height: 300\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Width",
+      "type": "300, Height: 200\n     *\n     * // Set uniform size (square)\n     * sprite.setSize(400)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Width",
+      "type": "400, Height: 400\n     *\n     * // Set size using object\n     * sprite.setSize({\n     *     width: 500,\n     *     height: 300\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | Optional<Size, 'height'>, height?: number): void\n    {\n        if (typeof value === 'object')\n        {\n            height = value.height ?? value.width",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Size",
+      "type": "${size.width}x${size.height}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "0, height: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Size): Size\n    {\n        out ||= {} as Size",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('pattern.png'),\n     *     width: 200,\n     *     height: 100,\n     *     anchor: 0.5 // Center anchor\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "50, y: 25 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "inside",
+      "type": "', contains)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "', sprite.containsPoint({ x: 150, y: 75 }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "PointData)\n    {\n        const width = this._width",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "true, textureSource: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions = false)\n    {\n        super.destroy(options)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

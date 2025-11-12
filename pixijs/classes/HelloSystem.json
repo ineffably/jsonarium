@@ -1,0 +1,61 @@
+{
+  "type": "class",
+  "name": "HelloSystem",
+  "sourcePath": "rendering/renderers/shared/startup/HelloSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "Options for the startup system. / export interface HelloSystemOptions { /** Whether to log the version and type information of renderer to console. / hello: boolean; } /** A simple system responsible for initiating the renderer.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "options",
+          "type": "HelloSystemOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'hello', priority: -2, } as const; /** The default options for the system. */ public static defaultOptions: HelloSystemOptions = { /** {@link WebGLOptions.hello} */ hello: false, }; private readonly _renderer: Renderer; constructor(renderer: Renderer) { this._renderer = renderer; } /** It all starts here! This initiates every system, passing in the options for any system by name."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.hello",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._renderer.type === RendererType.WEBGL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sayHello",
+      "params": [
+        {
+          "name": "name",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

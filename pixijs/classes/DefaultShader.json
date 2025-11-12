@@ -1,0 +1,80 @@
+{
+  "type": "class",
+  "name": "DefaultShader",
+  "sourcePath": "rendering/batcher/shared/DefaultShader.ts",
+  "extends": "Shader",
+  "implements": [],
+  "description": "DefaultShader is a specialized shader class designed for batch rendering. It extends the base Shader class and provides functionality for handling color, texture batching, and pixel rounding in both WebGL and WebGPU contexts. It is used by the default batcher",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "compileHighShaderGlProgram",
+      "params": [
+        {
+          "name": "name",
+          "type": "'batch'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bits",
+          "type": "[\n                colorBitGl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "generateTextureBatchBitGl(maxTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compileHighShaderGpuProgram",
+      "params": [
+        {
+          "name": "name",
+          "type": "'batch'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bits",
+          "type": "[\n                colorBit",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "generateTextureBatchBit(maxTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            glProgram",
+          "type": null
+        },
+        {
+          "name": "gpuProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                batchSamplers: getBatchSamplersUniformGroup(maxTextures",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

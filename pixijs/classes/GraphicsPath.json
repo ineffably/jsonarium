@@ -1,0 +1,1936 @@
+{
+  "type": "class",
+  "name": "GraphicsPath",
+  "sourcePath": "scene/graphics/shared/path/GraphicsPath.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Represents a single drawing instruction in a `GraphicsPath`. Each instruction consists of an action type and associated data. / export interface PathInstruction { action: 'moveTo' | 'lineTo' | 'quadraticCurveTo' | 'bezierCurveTo' | 'arc' | 'closePath' | 'addPath' | 'arcTo' | 'ellipse' | 'rect' | 'roundRect' | 'arcToSvg' | 'poly' | 'circle' | 'regularPoly' | 'roundPoly' | 'roundShape' | 'filletRect' | 'chamferRect' data: any[]; } /** The `GraphicsPath` class is designed to represent a graphical path consisting of multiple drawing instructions. This class serves as a collection of drawing commands that can be executed to render shapes and paths on a canvas or similar graphical context. It supports high-level drawing operations like lines, arcs, curves, and more, enabling complex graphic constructions with relative ease.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof instructions === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseSVGPath",
+      "params": [
+        {
+          "name": "instructions",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addPath",
+      "params": [
+        {
+          "name": "path",
+          "type": "GraphicsPath",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds another `GraphicsPath` to this path, optionally applying a transformation."
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'addPath'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "[path",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform] }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "startAngle",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "endAngle",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "counterclockwise",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an arc to the path. The arc is centered at (x, y) position with radius `radius` starting at `startAngle` and ending at `endAngle`."
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "boolean]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'arc'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "x1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an arc to the path with the arc tangent to the line joining two specified points. The arc radius is specified by `radius`."
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'arcTo'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bezierCurveTo",
+      "params": [
+        {
+          "name": "cp1x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp1y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp2x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp2y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an SVG-style arc to the path, allowing for elliptical arcs based on the SVG spec. to the x-axis of the coordinate system, in degrees. / // eslint-disable-next-line max-len public arcToSvg(rx: number, ry: number, xAxisRotation: number, largeArcFlag: number, sweepFlag: number, x: number, y: number): this; public arcToSvg(...args: [number, number, number, number, number, number, number]): this { this.instructions.push({ action: 'arcToSvg', data: args }); this._dirty = true; return this; } /** Adds a cubic Bezier curve to the path. It requires three points: the first two are control points and the third one is the end point. The starting point is the last point in the current path."
+    },
+    {
+      "name": "bezierCurveTo",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'bezierCurveTo'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bezierCurveToShort",
+      "params": [
+        {
+          "name": "cp2x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp2y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a cubic Bezier curve to the path. It requires two points: the second control point and the end point. The first control point is assumed to be The starting point is the last point in the current path."
+    },
+    {
+      "name": "getLastPoint",
+      "params": [
+        {
+          "name": "Point.shared",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!last || last.action !== 'bezierCurveTo'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'bezierCurveTo'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "[cp1x",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp1y",
+          "type": null
+        },
+        {
+          "name": "cp2x",
+          "type": null
+        },
+        {
+          "name": "cp2y",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "smoothness] }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": "this",
+      "description": "Closes the current path by drawing a straight line back to the start. If the shape is already closed or there are no points in the path, this method does nothing."
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'closePath'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "[] }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ellipse",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radiusX",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radiusY",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws an ellipse at the specified location and with the given x and y radii. An optional transformation can be applied, allowing for rotation, scaling, and translation."
+    },
+    {
+      "name": "ellipse",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "Matrix]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'ellipse'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Connects the current point to a new point with a straight line. This method updates the current path."
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'lineTo'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Sets the starting point for a new sub-path. Any subsequent drawing commands are considered part of this path."
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'moveTo'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "quadraticCurveTo",
+      "params": [
+        {
+          "name": "cpx",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cpy",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a quadratic curve to the path. It requires two points: the control point and the end point. The starting point is the last point in the current path."
+    },
+    {
+      "name": "quadraticCurveTo",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'quadraticCurveTo'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "quadraticCurveToShort",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a quadratic curve to the path. It uses the previous point as the control point."
+    },
+    {
+      "name": "getLastPoint",
+      "params": [
+        {
+          "name": "Point.shared",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!last || last.action !== 'quadraticCurveTo'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'quadraticCurveTo'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "[cpx1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cpy1",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "smoothness] }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "w",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a rectangle shape. This method adds a new rectangle path to the current drawing."
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'rect'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "[x",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "w",
+          "type": null
+        },
+        {
+          "name": "h",
+          "type": null
+        },
+        {
+          "name": "transform] }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a circle shape. This method adds a new circle path to the current drawing."
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'circle'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "[x",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "transform] }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "w",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a rectangle with rounded corners. The corner radius can be specified to determine how rounded the corners should be. An optional transformation can be applied, which allows for rotation, scaling, and translation of the rectangle."
+    },
+    {
+      "name": "roundRect",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "Matrix?]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'roundRect'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "poly",
+      "params": [
+        {
+          "name": "points",
+          "type": "number[] | PointData[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "close",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a polygon shape by specifying a sequence of points. This method allows for the creation of complex polygons, which can be both open and closed. An optional transformation can be applied, enabling the polygon to be scaled, rotated, or translated as needed."
+    },
+    {
+      "name": "poly",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number[] | PointData[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "boolean",
+          "type": null
+        },
+        {
+          "name": "Matrix?]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'poly'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "regularPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sides",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "rotation",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a regular polygon with a specified number of sides. All sides and angles are equal."
+    },
+    {
+      "name": "regularPoly",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'regularPoly'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sides",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "corner",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "rotation",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a polygon with rounded corners. Similar to `regularPoly` but with the ability to round the corners of the polygon."
+    },
+    {
+      "name": "roundPoly",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'roundPoly'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundShape",
+      "params": [
+        {
+          "name": "points",
+          "type": "RoundedPoint[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "useQuadratic",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a shape with rounded corners. This function supports custom radius for each corner of the shape. Optionally, corners can be rounded using a quadratic curve instead of an arc, providing a different aesthetic. A minimum of 3 points is required. This radius is applied to all corners unless overridden in `points`. method instead of an arc method. Defaults to false. Higher values make the curve smoother."
+    },
+    {
+      "name": "roundShape",
+      "params": [
+        {
+          "name": "args",
+          "type": "[RoundedPoint[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "boolean",
+          "type": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'roundShape'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "filletRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fillet",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draw Rectangle with fillet corners. This is much like rounded rectangle however it support negative numbers as well for the corner radius."
+    },
+    {
+      "name": "filletRect",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'filletRect'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "chamferRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "chamfer",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draw Rectangle with chamfer corners. These are angled corners."
+    },
+    {
+      "name": "chamferRect",
+      "params": [
+        {
+          "name": "args",
+          "type": "[number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number",
+          "type": null
+        },
+        {
+          "name": "number]",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "'chamferRect'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "args }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [
+        {
+          "name": "deep = false",
+          "type": null
+        }
+      ],
+      "returnType": "GraphicsPath",
+      "description": "Draws a star shape centered at a specified location. This method allows for the creation of stars with a variable number of points, outer radius, optional inner radius, and rotation. The star is drawn as a closed polygon with alternating outer and inner vertices to create the star's points. An optional transformation can be applied to scale, rotate, or translate the star as needed. (distance from the center to the inner points between the outer points). If not provided, defaults to half of the `radius`. Defaults to 0, meaning one point is directly upward. This can include rotations, scaling, and translations. / // eslint-disable-next-line max-len public star(x: number, y: number, points: number, radius: number, innerRadius?: number, rotation?: number, transform?: Matrix): this { innerRadius ||= radius / 2; const startAngle = (-1 * Math.PI / 2) + rotation; const len = points * 2; const delta = (Math.PI * 2) / len; const polygon = []; for (let i = 0; i < len; i++) { const r = i % 2 ? innerRadius : radius; const angle = (i * delta) + startAngle; polygon.push( x + (r * Math.cos(angle)), y + (r * Math.sin(angle)) ); } this.poly(polygon, true, transform); return this; } /** Creates a copy of the current `GraphicsPath` instance. This method supports both shallow and deep cloning. A shallow clone copies the reference of the instructions array, while a deep clone creates a new array and copies each instruction individually, ensuring that modifications to the instructions of the cloned `GraphicsPath` do not affect the original `GraphicsPath` and vice versa."
+    },
+    {
+      "name": "GraphicsPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!deep",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this.instructions.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "action",
+          "type": "instruction.action",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "instruction.data.slice(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": "this",
+      "description": null
+    },
+    {
+      "name": "transform",
+      "params": [
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Applies a transformation matrix to all drawing instructions within the `GraphicsPath`. This method enables the modification of the path's geometry according to the provided transformation matrix, which can include translations, rotations, scaling, and skewing. Each drawing instruction in the path is updated to reflect the transformation, ensuring the visual representation of the path is consistent with the applied matrix. Note: The transformation is applied directly to the coordinates and control points of the drawing instructions, not to the path as a whole. This means the transformation's effects are baked into the individual instructions, allowing for fine-grained control over the path's appearance."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "matrix.isIdentity(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this.instructions.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "switch",
+      "params": [
+        {
+          "name": "instruction.action",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "adjustTransform",
+      "params": [
+        {
+          "name": "data[3]",
+          "type": null
+        },
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "adjustTransform",
+      "params": [
+        {
+          "name": "data[4]",
+          "type": null
+        },
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "adjustTransform",
+      "params": [
+        {
+          "name": "data[8]",
+          "type": null
+        },
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "adjustTransform",
+      "params": [
+        {
+          "name": "data[5]",
+          "type": null
+        },
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transform",
+      "params": [
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "adjustTransform",
+      "params": [
+        {
+          "name": "data[2]",
+          "type": null
+        },
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'unknown transform action'",
+          "type": null
+        },
+        {
+          "name": "instruction.action",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getLastPoint",
+      "params": [
+        {
+          "name": "out",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Point",
+      "description": "Retrieves the last point from the current drawing instructions in the `GraphicsPath`. This method is useful for operations that depend on the path's current endpoint, such as connecting subsequent shapes or paths. It supports various drawing instructions, ensuring the last point's position is accurately determined regardless of the path's complexity. If the last instruction is a `closePath`, the method iterates backward through the instructions until it finds an actionable instruction that defines a point (e.g., `moveTo`, `lineTo`, `quadraticCurveTo`, etc.). For compound paths added via `addPath`, it recursively retrieves the last point from the nested path. This object is modified directly to contain the result."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!lastInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "lastInstruction.action === 'closePath'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "index < 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "switch",
+      "params": [
+        {
+          "name": "lastInstruction.action",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getLastPoint",
+      "params": [
+        {
+          "name": "out",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "adjustTransform",
+      "params": [
+        {
+          "name": "currentMatrix",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Matrix",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prepend",
+      "params": [
+        {
+          "name": "transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "shapePath",
+      "type": "ShapePath",
+      "description": "Provides access to the internal shape path, ensuring it is up-to-date with the current instructions."
+    }
+  ]
+}

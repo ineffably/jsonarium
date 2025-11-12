@@ -1,0 +1,293 @@
+{
+  "type": "interface",
+  "name": "ImageOptions",
+  "sourcePath": "rendering/renderers/shared/extract/ExtractSystem.ts",
+  "extends": [],
+  "description": "Options for creating an image from a renderer. Controls the output format and quality of extracted images. ```ts // Extract as PNG (default) const pngImage = await renderer.extract.image({ target: sprite, format: 'png' }); // Extract as JPEG with quality setting const jpgImage = await renderer.extract.image({ target: sprite, format: 'jpg', quality: 0.8 }); // Extract as WebP for better compression const webpImage = await renderer.extract.image({ target: sprite, format: 'webp', quality: 0.9 }); ```",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "format",
+      "type": "Formats",
+      "optional": true,
+      "description": "The format of the extracted image. - 'png': Lossless format, best for images with text or sharp edges - 'jpg': Lossy format, smaller file size, good for photos - 'webp': Modern format with better compression ```ts // Extract as PNG const pngImage = await renderer.extract.image({ target: sprite, format: 'png' }); // Extract as JPEG const jpgImage = await renderer.extract.image({ target: sprite, format: 'jpg', }); ```"
+    },
+    {
+      "name": "quality",
+      "type": "number",
+      "optional": true,
+      "description": "The quality of the extracted image, between 0 and 1. Only applies to lossy formats (jpg, webp). - 1: Maximum quality - 0: Maximum compression ```ts // Extract as JPEG with 80% quality const jpgImage = await renderer.extract.image({ target: sprite, format: 'jpg', quality: 0.8 }); // Extract as WebP with 90% quality const webpImage = await renderer.extract.image({ target: sprite, format: 'webp', quality: 0.9 }); ```"
+    },
+    {
+      "name": "target",
+      "type": "Container | Texture",
+      "optional": false,
+      "description": "Options for extracting content from a renderer. These options control how content is extracted and processed from the renderer. ```ts // Basic extraction const pixels = renderer.extract.pixels({ target: sprite, }); // Extract with custom region and resolution const canvas = renderer.extract.canvas({ target: container, frame: new Rectangle(0, 0, 100, 100), resolution: 2, }); // Extract with background color and anti-aliasing const image = await renderer.extract.image({ target: graphics, clearColor: '#ff0000', antialias: true }); ``` / export interface BaseExtractOptions { /** The target to extract. Can be a Container or Texture. ```ts // Extract from a sprite const sprite = new Sprite(texture); renderer.extract.pixels({ target: sprite }); // Extract from a texture directly renderer.extract.pixels({ target: texture }); ```"
+    },
+    {
+      "name": "frame",
+      "type": "Rectangle",
+      "optional": true,
+      "description": "The region of the target to extract. If not specified, extracts the entire target. ```ts // Extract a specific region renderer.extract.canvas({ target: sprite, frame: new Rectangle(10, 10, 100, 100) }); ```"
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "optional": true,
+      "description": "The resolution of the extracted content. Higher values create sharper images. ```ts // Extract at 2x resolution for retina displays renderer.extract.image({ target: sprite, resolution: 2 }); ```"
+    },
+    {
+      "name": "clearColor",
+      "type": "ColorSource",
+      "optional": true,
+      "description": "The color used to clear the extracted content before rendering. Can be a hex number, string, or array of numbers. ```ts // Clear with red background renderer.extract.canvas({ target: sprite, clearColor: '#ff0000' }); // Clear with semi-transparent black renderer.extract.canvas({ target: sprite, clearColor: [0, 0, 0, 0.5] }); ```"
+    },
+    {
+      "name": "antialias",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to enable anti-aliasing during extraction. Improves quality but may affect performance. ```ts // Enable anti-aliasing for smoother edges renderer.extract.image({ target: graphics, antialias: true }); ```"
+    },
+    {
+      "name": "filename",
+      "type": "string",
+      "optional": false,
+      "description": "Options for extracting an HTMLImage from the renderer. Combines base extraction options with image-specific settings. ```ts // Basic PNG extraction const image = await renderer.extract.image({ target: sprite, format: 'png' }); // High-quality JPEG with custom region const image = await renderer.extract.image({ target: container, format: 'jpg', quality: 0.9, frame: new Rectangle(0, 0, 100, 100), resolution: 2 }); // WebP with background and anti-aliasing const image = await renderer.extract.image({ target: graphics, format: 'webp', quality: 0.8, clearColor: '#ff0000', antialias: true }); ``` Combines all options from: - {@link BaseExtractOptions} for basic extraction settings - {@link ImageOptions} for image format and quality settings Common use cases: - Capturing game screenshots - Saving rendered content - Creating image thumbnails - Exporting canvas content / export type ExtractImageOptions = BaseExtractOptions & ImageOptions; /** Options for extracting and downloading content from a renderer. Combines base extraction options with download-specific settings. ```ts // Basic download with default filename renderer.extract.download({ target: sprite }); // Download with custom filename and region renderer.extract.download({ target: container, filename: 'screenshot.png', frame: new Rectangle(0, 0, 100, 100) }); // Download with high resolution and background renderer.extract.download({ target: stage, filename: 'hd-capture.png', resolution: 2, clearColor: '#ff0000' }); // Download with anti-aliasing renderer.extract.download({ target: graphics, filename: 'smooth.png', antialias: true }); ``` Combines all options from: - {@link BaseExtractOptions} for basic extraction settings - Additional download-specific options Common use cases: - Saving game screenshots - Exporting rendered content - Creating downloadable assets - Saving canvas state / export type ExtractDownloadOptions = BaseExtractOptions & { /** The filename to use when downloading the content. Should include the desired file extension (e.g., .png). ```ts renderer.extract.download({ target: sprite, filename: 'my-screenshot.png' }); ```"
+    },
+    {
+      "name": "target",
+      "type": "sprite\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "sprite,\n *     format: 'png',\n *     quality: 1\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "sprite,\n *     filename: 'screenshot.png'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "container,\n *     frame: new Rectangle(0, 0, 100, 100),\n *     resolution: 2,\n *     clearColor: '#ff0000',\n *     antialias: true,\n *     format: 'webp',\n *     quality: 0.8\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "* - {@link BaseExtractOptions} - Basic extraction settings\n * - {@link ExtractImageOptions} - Image-specific settings with format and quality\n * - {@link ExtractDownloadOptions} - Download settings with filename\n *\n * Common use cases:\n * - Extracting raw pixels\n * - Creating canvas elements\n * - Generating downloadable images\n * - Taking screenshots\n * - Creating thumbnails\n * @see {@link ExtractSystem.canvas} For canvas extraction\n * @see {@link ExtractSystem.image} For image extraction\n * @see {@link ExtractSystem.download} For downloading content\n * @category rendering\n * @advanced\n */\nexport type ExtractOptions = BaseExtractOptions | ExtractImageOptions | ExtractDownloadOptions",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "graphics,\n *     format: 'png',\n *     resolution: 2,\n *     frame: new Rectangle(0, 0, 100, 100),\n *     clearColor: '#00000000'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "graphics,\n *     filename: 'my-image.png'\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Features",
+      "type": "* - Extract as various formats (PNG, JPEG, WebP)\n * - Control output quality and resolution\n * - Extract specific regions\n * - Download extracted content\n * - Debug visualization\n *\n * Common Use Cases:\n * - Creating thumbnails\n * - Saving game screenshots\n * - Processing visual content\n * - Debugging renders\n * - Creating textures from rendered content\n *\n * Performance Considerations:\n * - Extraction operations are relatively expensive\n * - Consider caching results for frequently used content\n * - Be mindful of resolution and format choices\n * - Large extractions may impact performance\n * @category rendering\n * @standard\n */\nexport class ExtractSystem implements System\n{\n    /** @ignore */\n    public static extension = {\n        type: [\n            ExtensionType.WebGLSystem,\n            ExtensionType.WebGPUSystem,\n        ],\n        name: 'extract',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultImageOptions",
+      "type": "ImageOptions = {\n        format: 'png' as Formats,\n        quality: 1,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ExtractImageOptions | Container | Texture,\n        defaults: Partial<T> = {},\n    ): T\n    {\n        if (options instanceof Container || options instanceof Texture)\n        {\n            return {\n                target: options,\n                ...defaults\n            } as T",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "container,\n     *     format: 'webp',\n     *     quality: 0.8,\n     *     frame: new Rectangle(0, 0, 100, 100),\n     *     resolution: 2,\n     *     clearColor: '#ff0000',\n     *     antialias: true\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ExtractImageOptions | Container | Texture): Promise<ImageLike>\n    {\n        const image = DOMAdapter.get().createImage()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "image/png",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "container,\n     *     format: 'webp',\n     *     quality: 0.8,\n     *     frame: new Rectangle(0, 0, 100, 100),\n     *     resolution: 2\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "of",
+      "type": "* - ICanvas.toDataURL\n     * - ICanvas.toBlob\n     * - ICanvas.convertToBlob\n     * @see {@link ExtractImageOptions} For detailed options\n     * @see {@link ExtractSystem.canvas} For canvas output\n     * @see {@link ExtractSystem.image} For HTMLImage output\n     * @category rendering\n     */\n    public async base64(options: ExtractImageOptions | Container | Texture): Promise<string>\n    {\n        options = this._normalizeOptions<ExtractImageOptions>(\n            options,\n            ExtractSystem.defaultImageOptions\n        )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "imageTypes[format], quality })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "container,\n     *     frame: new Rectangle(0, 0, 100, 100)\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "sprite,\n     *     resolution: 2,\n     *     clearColor: '#ff0000'\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "graphics,\n     *     antialias: true\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ExtractOptions | Container | Texture): ICanvas\n    {\n        options = this._normalizeOptions(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "sprite,\n     *     frame: new Rectangle(0, 0, 100, 100)\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "sprite,\n     *     resolution: 2\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ExtractOptions | Container | Texture): GetPixelsOutput\n    {\n        options = this._normalizeOptions(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "container,\n     *     frame: new Rectangle(0, 0, 100, 100)\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "sprite,\n     *     resolution: 2,\n     *     clearColor: '#ff0000'\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "graphics,\n     *         antialias: true\n     *     })\n     * )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ExtractOptions | Container | Texture): Texture\n    {\n        options = this._normalizeOptions(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "sprite,\n     *     filename: 'screenshot.png'\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "container,\n     *     filename: 'region.png',\n     *     frame: new Rectangle(0, 0, 100, 100)\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "stage,\n     *     filename: 'hd-screenshot.png',\n     *     resolution: 2,\n     *     clearColor: '#ff0000'\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "target",
+      "type": "graphics,\n     *     filename: 'smooth.png',\n     *     antialias: true\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ExtractDownloadOptions | Container | Texture)\n    {\n        /* eslint-disable no-restricted-globals */\n        options = this._normalizeOptions<ExtractDownloadOptions>(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "(ExtractOptions & {width?: number}) | Container | Texture)\n    {\n        const width = options.width ?? 200",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "1px",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "padding",
+      "type": "${width}px ${300}px",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "background",
+      "type": "url(${base64}) no-repeat",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "contain",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

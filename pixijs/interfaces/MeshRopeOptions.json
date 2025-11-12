@@ -1,0 +1,91 @@
+{
+  "type": "interface",
+  "name": "MeshRopeOptions",
+  "sourcePath": "scene/mesh-simple/MeshRope.ts",
+  "extends": [
+    "Omit"
+  ],
+  "description": "Constructor options used for `MeshRope` instances. Allows configuration of a rope-like mesh that follows a series of points with a texture applied. ```ts // Create a basic rope with two points const rope = new MeshRope({ texture: Texture.from('snake.png'), points: [ new Point(0, 0), new Point(100, 0) ] }); // Create a rope with high-quality texture scaling const highQualityRope = new MeshRope({ texture: Texture.from('rope-hd.png'), points: [ new Point(0, 0), new Point(50, 25), new Point(100, 0) ], textureScale: 0.5  // Downscale HD texture for better quality }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": false,
+      "description": "The texture to use on the rope"
+    },
+    {
+      "name": "points",
+      "type": "PointData[]",
+      "optional": false,
+      "description": "An array of points that determine the rope's shape and path"
+    },
+    {
+      "name": "textureScale",
+      "type": "number",
+      "optional": true,
+      "description": "Controls how the texture is scaled along the rope. - If 0 (default), the texture stretches to fit between points - If > 0, texture repeats with preserved aspect ratio - Larger textures with textureScale < 1 can reduce artifacts"
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('snake.png'),\n *     points,\n *     textureScale: 0.5\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureScale",
+      "type": "0.5  // Set higher quality texture scaling\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('rope.png'),\n     *     points: [\n     *         new Point(0, 0),\n     *         new Point(100, 0)\n     *     ]\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureScale",
+      "type": "0.5\n     * ```\n     * @property {number} textureScale - Controls texture scaling along the rope (0 = stretch)\n     * @see {@link MeshRopeOptions} For all available options\n     */\n    public static defaultOptions: Partial<MeshRopeOptions> = {\n        textureScale: 0,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('rope.png'),\n     *     points\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoUpdate",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Note",
+      "type": "The wrap mode of the texture is set to REPEAT if `textureScale` is positive.\n     * @param options\n     * @param options.texture - The texture to use on the rope.\n     * @param options.points - An array of {@link math.Point} objects to construct this rope.\n     * @param {number} options.textureScale - Optional. Positive values scale rope texture\n     * keeping its aspect ratio. You can reduce alpha channel artifacts by providing a larger texture\n     * and downsampling here. If set to zero, texture will be stretched instead.\n     */\n    constructor(options: MeshRopeOptions)\n    {\n        const { texture, points, textureScale, ...rest } = { ...MeshRope.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "texture.height, points, textureScale }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "ropeGeometry,\n        }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "RopeGeometry = this.geometry as any",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

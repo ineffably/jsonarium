@@ -1,0 +1,203 @@
+{
+  "type": "class",
+  "name": "GlBatchAdaptor",
+  "sourcePath": "rendering/batcher/gl/GlBatchAdaptor.ts",
+  "extends": null,
+  "implements": [
+    "BatcherAdaptor"
+  ],
+  "description": "A BatcherAdaptor that uses WebGL to render batches.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "for2d",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "batcherPipe",
+          "type": "BatcherPipe",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contextChange",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "start",
+      "params": [
+        {
+          "name": "batchPipe",
+          "type": "BatcherPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "geometry",
+          "type": "Geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": "Shader",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "shader",
+          "type": null
+        },
+        {
+          "name": "didUpload",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!didUpload",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "renderer.globalUniforms.uniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "shader.glProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "batchPipe",
+          "type": "BatcherPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "batch",
+          "type": "Batch",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this._tempState",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < batch.textures.count; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "textures[i]",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "batch.topology",
+          "type": null
+        },
+        {
+          "name": "batch.size",
+          "type": null
+        },
+        {
+          "name": "batch.start",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

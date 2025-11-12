@@ -1,0 +1,871 @@
+{
+  "type": "class",
+  "name": "SVGFile",
+  "sourcePath": "loader/filetypes/SVGFile.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "loader",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "File",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function SVGFile (loader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "svgConfig",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "IsPlainObject(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'key'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'url'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'svgConfig'",
+          "type": null
+        },
+        {
+          "name": "{}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'xhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'extension'",
+          "type": null
+        },
+        {
+          "name": "extension",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "svgConfig",
+          "type": null
+        },
+        {
+          "name": "'width'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "svgConfig",
+          "type": null
+        },
+        {
+          "name": "'height'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "svgConfig",
+          "type": null
+        },
+        {
+          "name": "'scale'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "fileConfig",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width && height || scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DOMParser",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFromString",
+      "params": [
+        {
+          "name": "text",
+          "type": null
+        },
+        {
+          "name": "'text/xml'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getElementsByTagName",
+      "params": [
+        {
+          "name": "'svg'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hasAttribute",
+      "params": [
+        {
+          "name": "'viewBox'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFloat",
+      "params": [
+        {
+          "name": "svgXML.getAttribute('width'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFloat",
+      "params": [
+        {
+          "name": "svgXML.getAttribute('height'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!hasViewBox && svgWidth && svgHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setAttribute",
+      "params": [
+        {
+          "name": "'viewBox'",
+          "type": null
+        },
+        {
+          "name": "'0  0 ' + svgWidth + ' ' + svgHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "hasViewBox && !svgWidth && !svgHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAttribute",
+      "params": [
+        {
+          "name": "'viewBox'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "split",
+      "params": [
+        {
+          "name": "/\\s+|",
+          "type": null
+        },
+        {
+          "name": "/",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "svgWidth && svgHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setAttribute",
+      "params": [
+        {
+          "name": "'width'",
+          "type": null
+        },
+        {
+          "name": "width.toString(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setAttribute",
+      "params": [
+        {
+          "name": "'height'",
+          "type": null
+        },
+        {
+          "name": "height.toString(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "XMLSerializer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "serializeToString",
+      "params": [
+        {
+          "name": "svgXML",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Blob",
+      "params": [
+        {
+          "name": "svg",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": "'image/svg+xml;charset",
+          "optional": true,
+          "default": "utf-8' }"
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "catch",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcessError",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Image",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!retry",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "revokeObjectURL",
+      "params": [
+        {
+          "name": "_this.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcessComplete",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!retry",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "revokeObjectURL",
+      "params": [
+        {
+          "name": "_this.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "encodeURIComponent",
+      "params": [
+        {
+          "name": "svg.join(''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onProcessError",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createObjectURL",
+      "params": [
+        {
+          "name": "this.data",
+          "type": null
+        },
+        {
+          "name": "blob",
+          "type": null
+        },
+        {
+          "name": "'image/svg+xml'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addImage",
+      "params": [
+        {
+          "name": "this.key",
+          "type": null
+        },
+        {
+          "name": "this.data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "params": [
+        {
+          "name": "'morty'",
+          "type": null
+        },
+        {
+          "name": "'images/Morty.svg'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "params": [
+        {
+          "name": "key",
+          "type": "'morty'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "'images/Morty.svg'\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "params": [
+        {
+          "name": "'morty'",
+          "type": null
+        },
+        {
+          "name": "'images/Morty.svg'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "'morty'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "SVG",
+      "params": [
+        {
+          "name": "either down\n * or up",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "params": [
+        {
+          "name": "'morty'",
+          "type": null
+        },
+        {
+          "name": "'images/Morty.svg'",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": "300",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "600 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "params": [
+        {
+          "name": "key",
+          "type": "'morty'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "'images/Morty.svg'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "svgConfig",
+          "type": "{\n *         width: 300",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "600\n *     }\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "params": [
+        {
+          "name": "'morty'",
+          "type": null
+        },
+        {
+          "name": "'images/Morty.svg'",
+          "type": null
+        },
+        {
+          "name": "scale",
+          "type": "2.5 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "params": [
+        {
+          "name": "key",
+          "type": "'morty'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "'images/Morty.svg'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "svgConfig",
+          "type": "{\n *         scale: 2.5\n *     }\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'svg'",
+          "type": null
+        },
+        {
+          "name": "function (key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "svgConfig",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < key.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "new SVGFile(this",
+          "type": null
+        },
+        {
+          "name": "key[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "new SVGFile(this",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "url",
+          "type": null
+        },
+        {
+          "name": "svgConfig",
+          "type": null
+        },
+        {
+          "name": "xhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

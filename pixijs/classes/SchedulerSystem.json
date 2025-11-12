@@ -1,0 +1,158 @@
+{
+  "type": "class",
+  "name": "SchedulerSystem",
+  "sourcePath": "rendering/renderers/shared/SchedulerSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "The SchedulerSystem manages scheduled tasks with specific intervals.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "init",
+      "params": [],
+      "returnType": "void",
+      "description": "public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'scheduler', priority: 0, } as const; private readonly _tasks: { func: (elapsed: number) => void; duration: number; offset: number start: number; last: number; repeat: boolean; id: number; }[] = []; /** a small off set to apply to the repeat schedules. This is just to make sure they run at slightly different times */ private _offset = 0; /** Initializes the scheduler system and starts the ticker."
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this._update",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "repeat",
+      "params": [
+        {
+          "name": "func",
+          "type": "(elapsed: number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Schedules a repeating task."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "useOffset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "{\n            func",
+          "type": null
+        },
+        {
+          "name": "duration",
+          "type": null
+        },
+        {
+          "name": "start",
+          "type": "performance.now(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cancel",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Cancels a scheduled task."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._tasks.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._tasks[i].id === id",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": "Updates and executes the scheduled tasks. / private _update(): void { const now = performance.now(); for (let i = 0; i < this._tasks.length; i++) { const task = this._tasks[i]; if ((now - task.offset) - task.last >= task.duration) { const elapsed = now - task.start; task.func(elapsed); task.last = now; } } } /** Destroys the scheduler system and removes all tasks."
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this._update",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

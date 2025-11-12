@@ -1,0 +1,143 @@
+{
+  "type": "interface",
+  "name": "BitmapFontRawData",
+  "sourcePath": "scene/text-bitmap/asset/bitmapFontTextParser.ts",
+  "extends": [],
+  "description": "Internal data format used to convert to BitmapFontData.",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "info",
+      "type": "{\n        face: string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "common",
+      "type": "{ lineHeight: string, base: string }[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "page",
+      "type": "{\n        id: string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "file",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "chars",
+      "type": "{\n        count: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "char",
+      "type": "{\n        id: string\n        page: string\n        xoffset: string\n        yoffset: string\n        xadvance: string,\n        x: string\n        y: string\n        width: string\n        height: string\n        letter?: string\n        char?: string\n    }[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "kernings",
+      "type": "{\n        count: number",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "kerning",
+      "type": "{\n        first: string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "second",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "amount",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "distanceField",
+      "type": "{\n        fieldType: 'sdf' | 'msdf' | 'none'",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "distanceRange",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "string | XMLDocument | BitmapFontData): boolean\n    {\n        return typeof data === 'string' && data.startsWith('info face=')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "txt",
+      "type": "string): BitmapFontData\n    {\n        // Retrieve data item\n        const items = txt.match(/^[a-z]+\\s+.+$/gm)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rawData",
+      "type": "BitmapFontRawData = {\n            info: [],\n            common: [],\n            page: [],\n            char: [],\n            chars: [],\n            kerning: [],\n            kernings: [],\n            distanceField: [],\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "itemData",
+      "type": "any = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "font",
+      "type": "BitmapFontData = {\n            chars: {},\n            pages: [],\n            lineHeight: 0,\n            fontSize: 0,\n            fontFamily: '',\n            distanceField: null,\n            baseLineOffset: 0,\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "range",
+      "type": "parseInt(distanceField.distanceRange, 10),\n                type: distanceField.fieldType\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "id",
+      "type": "parseInt(page[i].id, 10) || 0,\n                file: page[i].file,\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "map",
+      "type": "Record<string, string> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "page",
+      "type": "parseInt(charNode.page, 10) || 0,\n                x: parseInt(charNode.x, 10),\n                y: parseInt(charNode.y, 10),\n                width: parseInt(charNode.width, 10),\n                height: parseInt(charNode.height, 10),\n                xOffset: parseInt(charNode.xoffset, 10),\n                yOffset: parseInt(charNode.yoffset, 10),\n                xAdvance: parseInt(charNode.xadvance, 10),\n                kerning: {},\n            } as RawCharData",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

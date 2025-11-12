@@ -1,0 +1,355 @@
+{
+  "type": "class",
+  "name": "BlendModePipe",
+  "sourcePath": "rendering/renderers/shared/blendModes/BlendModePipe.ts",
+  "extends": null,
+  "implements": [
+    "InstructionPipe"
+  ],
+  "description": "This Pipe handles the blend mode switching of the renderer. It will insert instructions into the {@link InstructionSet} to switch the blend mode according to the blend modes of the scene graph. This pipe is were wwe handle Advanced blend modes. Advanced blend modes essentially wrap the renderables in a filter that applies the blend mode. You only need to use this class if you are building your own render instruction set rather than letting PixiJS build the instruction set for you by traversing the scene graph",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "pushBlendMode",
+      "params": [
+        {
+          "name": "renderable",
+          "type": "Renderable | RenderGroup",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blendMode",
+          "type": "BLEND_MODES",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "public static extension = { type: [ ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes, ], name: 'blendMode', } as const; private _renderer: Renderer; private _renderableList?: Renderable[]; private _activeBlendMode: BLEND_MODES; private readonly _blendModeStack: BLEND_MODES[] = []; private _isAdvanced = false; private _filterHash: Partial<Record<BLEND_MODES, FilterEffect>> = Object.create(null); constructor(renderer: Renderer) { this._renderer = renderer; this._renderer.runners.prerender.add(this); } public prerender() { // make sure we reset the blend modes to normal // this way the next render will register any changes this._activeBlendMode = 'normal'; this._isAdvanced = false; } /** Push a blend mode onto the internal stack and apply it to the instruction set if needed."
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "blendMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBlendMode",
+      "params": [
+        {
+          "name": "renderable",
+          "type": null
+        },
+        {
+          "name": "blendMode",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "popBlendMode",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Pop the last blend mode from the stack and apply the new top-of-stack mode."
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBlendMode",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "blendMode",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBlendMode",
+      "params": [
+        {
+          "name": "renderable",
+          "type": "Renderable | RenderGroup | null",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blendMode",
+          "type": "BLEND_MODES",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Ensure a blend mode switch is added to the instruction set when the mode changes. If an advanced blend mode is active, subsequent renderables will be collected so they can be rendered within a single filter pass."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeBlendMode === blendMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._isAdvanced && renderable && !isRenderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._isAdvanced",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._isAdvanced",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!BLEND_MODE_FILTERS[blendMode]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "BlendMode",
+          "type": "'${blendMode}'. `\n                + `You may want to include: import 'pixi.js/advanced-blend-modes'`",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "instruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!filterEffect",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FilterEffect",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'filter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "action",
+          "type": "'popFilter'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildStart",
+      "params": [],
+      "returnType": null,
+      "description": "called when the instruction build process is starting this will reset internally to the default blend mode"
+    },
+    {
+      "name": "buildEnd",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "called when the instruction build process is finished, ensuring that if there is an advanced blend mode active, we add the final render instructions added to the instruction set"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._isAdvanced",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this._filterHash",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

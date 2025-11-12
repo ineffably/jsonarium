@@ -1,0 +1,155 @@
+{
+  "type": "class",
+  "name": "WebGLBufferWrapper",
+  "sourcePath": "renderer/webgl/wrappers/WebGLBufferWrapper.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function WebGLBufferWrapper (gl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialDataOrSize",
+          "type": null
+        },
+        {
+          "name": "bufferType",
+          "type": null
+        },
+        {
+          "name": "bufferUsage",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createResource",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.initialDataOrSize === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBuffer",
+      "params": [
+        {
+          "name": "bufferType",
+          "type": null
+        },
+        {
+          "name": "this.webGLBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bufferData",
+      "params": [
+        {
+          "name": "bufferType",
+          "type": null
+        },
+        {
+          "name": "this.initialDataOrSize",
+          "type": null
+        },
+        {
+          "name": "this.bufferUsage",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBuffer",
+      "params": [
+        {
+          "name": "bufferType",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteBuffer",
+      "params": [
+        {
+          "name": "this.webGLBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

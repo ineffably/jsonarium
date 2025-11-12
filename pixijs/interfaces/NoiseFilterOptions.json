@@ -1,0 +1,97 @@
+{
+  "type": "interface",
+  "name": "NoiseFilterOptions",
+  "sourcePath": "filters/defaults/noise/NoiseFilter.ts",
+  "extends": [
+    "FilterOptions"
+  ],
+  "description": "Configuration options for the NoiseFilter. The NoiseFilter adds random noise to the rendered content. The noise effect can be controlled through the noise intensity and an optional seed value for reproducible results. ```ts // Basic noise effect const options: NoiseFilterOptions = { noise: 0.5, seed: Math.random() }; // Create filter with options const noiseFilter = new NoiseFilter(options); ```",
+  "category": "filters",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "noise",
+      "type": "number",
+      "optional": true,
+      "description": "The amount of noise to apply. Should be in range (0, 1]: - 0.1 = subtle noise - 0.5 = moderate noise (default) - 1.0 = maximum noise ```ts // Moderate noise effect const noiseFilter = new NoiseFilter({ noise: 0.5 }); ```"
+    },
+    {
+      "name": "seed",
+      "type": "number",
+      "optional": true,
+      "description": "A seed value to apply to the random noise generation. Using the same seed will generate the same noise pattern. ```ts // Using a fixed seed for reproducible noise const noiseFilter = new NoiseFilter({ seed: 12345 }); ```"
+    },
+    {
+      "name": "on",
+      "type": "https://github.com/evanw/glfx.js/blob/master/src/filters/adjust/noise.js\n * @example\n * ```ts\n * import { NoiseFilter } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "noise",
+      "type": "0.5,    // 50% noise intensity\n *     seed: 12345    // Fixed seed for consistent noise\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Vico",
+      "type": "vicocotea\n * @standard\n * @noInheritDoc\n */\nexport class NoiseFilter extends Filter\n{\n    /**\n     * The default configuration options for the NoiseFilter.\n     *\n     * These values will be used when no specific options are provided to the constructor.\n     * You can override any of these values by passing your own options object.\n     * @example\n     * ```ts\n     * NoiseFilter.defaultOptions.noise = 0.7",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultOptions",
+      "type": "NoiseFilterOptions = {\n        noise: 0.5,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "NoiseFilterOptions = {})\n    {\n        options = { ...NoiseFilter.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "{\n                source,\n                entryPoint: 'mainVertex',\n            },\n            fragment: {\n                source,\n                entryPoint: 'mainFragment',\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'noise-filter'\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resources",
+      "type": "{\n                noiseUniforms: new UniformGroup({\n                    uNoise: { value: 1, type: 'f32' },\n                    uSeed: { value: 1, type: 'f32' },\n                })\n            },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "effect",
+      "type": "* - Values close to 0 produce subtle noise\n     * - Values around 0.5 produce moderate noise\n     * - Values close to 1 produce strong noise\n     * @default 0.5\n     * @example\n     * ```ts\n     * const noiseFilter = new NoiseFilter()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.resources.noiseUniforms.uniforms.uNoise = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "pattern",
+      "type": "* - Using the same seed will generate identical noise patterns\n     * - Different seeds produce different but consistent patterns\n     * - `Math.random()` can be used for random patterns\n     * @default Math.random()\n     * @example\n     * ```ts\n     * const noiseFilter = new NoiseFilter()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.resources.noiseUniforms.uniforms.uSeed = value",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

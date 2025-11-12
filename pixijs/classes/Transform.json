@@ -1,0 +1,184 @@
+{
+  "type": "class",
+  "name": "Transform",
+  "sourcePath": "utils/misc/Transform.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Options for the {@link Transform} constructor. / export interface TransformOptions { /** The matrix to use. */ matrix?: Matrix; /** The observer to use. / observer?: {_onUpdate: (transform: Transform) => void} } /** The Transform class facilitates the manipulation of a 2D transformation matrix through user-friendly properties: position, scale, rotation, skew, and pivot. ```ts // Basic transform usage const transform = new Transform(); transform.position.set(100, 100); transform.rotation = Math.PI / 4; // 45 degrees transform.scale.set(2, 2); // With pivot point transform.pivot.set(50, 50); transform.rotation = Math.PI; // Rotate around pivot // Matrix manipulation const matrix = transform.matrix; const position = { x: 0, y: 0 }; matrix.apply(position); // Transform point ``` - Manages 2D transformation properties - Auto-updates matrix on changes - Supports observable changes - Common in display objects",
+  "category": "utils",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "point === this.skew",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateSkew",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setFromMatrix",
+      "params": [
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Called when the skew or the rotation changes. */ protected updateSkew(): void { this._cx = Math.cos(this._rotation + this.skew.y); this._sx = Math.sin(this._rotation + this.skew.y); this._cy = -Math.sin(this._rotation - this.skew.x); // cos, added PI/2 this._sy = Math.cos(this._rotation - this.skew.x); // sin, added PI/2 this.dirty = true; } // #if _DEBUG public toString(): string { return `[pixi.js/math:Transform ` + `position=(${this.position.x}, ${this.position.y}) ` + `rotation=${this.rotation} ` + `scale=(${this.scale.x}, ${this.scale.y}) ` + `skew=(${this.skew.x}, ${this.skew.y}) ` + `]`; } // #endif /** Decomposes a matrix and sets the transforms properties based on it. ```ts // Basic matrix decomposition const transform = new Transform(); const matrix = new Matrix() .translate(100, 100) .rotate(Math.PI / 4) .scale(2, 2); transform.setFromMatrix(matrix); console.log(transform.position.x); // 100 console.log(transform.rotation); // ~0.785 (π/4) ```"
+    },
+    {
+      "name": "decompose",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "50",
+          "type": null
+        },
+        {
+          "name": "50",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._rotation !== value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "matrix",
+      "type": "Matrix",
+      "description": "The transformation matrix computed from the transform's properties. Combines position, scale, rotation, skew, and pivot into a single matrix. ```ts // Get current matrix const matrix = transform.matrix; console.log(matrix.toString()); ```"
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "description": "The rotation of the object in radians. ```ts // Basic rotation transform.rotation = Math.PI / 4; // 45 degrees // Rotate around pivot point transform.pivot.set(50, 50); transform.rotation = Math.PI; // 180 degrees around pivot // Animate rotation app.ticker.add(() => { transform.rotation += 0.1; }); ```"
+    }
+  ]
+}

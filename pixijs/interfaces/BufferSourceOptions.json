@@ -1,0 +1,49 @@
+{
+  "type": "interface",
+  "name": "BufferSourceOptions",
+  "sourcePath": "rendering/renderers/shared/texture/sources/BufferImageSource.ts",
+  "extends": [
+    "TextureSourceOptions"
+  ],
+  "description": "Options for creating a BufferImageSource.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "extension",
+      "type": "ExtensionMetadata = ExtensionType.TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "BufferSourceOptions)\n    {\n        const buffer = options.resource || new Float32Array(options.width * options.height * 4)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resource",
+      "type": "buffer,\n            format,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resource",
+      "type": "any): resource is TypedArray | ArrayBuffer\n    {\n        return resource instanceof Int8Array\n        || resource instanceof Uint8Array\n        || resource instanceof Uint8ClampedArray\n        || resource instanceof Int16Array\n        || resource instanceof Uint16Array\n        || resource instanceof Int32Array\n        || resource instanceof Uint32Array\n        || resource instanceof Float32Array",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

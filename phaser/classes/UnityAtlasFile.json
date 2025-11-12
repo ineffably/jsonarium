@@ -1,0 +1,645 @@
+{
+  "type": "class",
+  "name": "UnityAtlasFile",
+  "sourcePath": "loader/filetypes/UnityAtlasFile.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "loader",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "MultiFile",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function UnityAtlasFile (loader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "atlasURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        },
+        {
+          "name": "atlasXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "IsPlainObject(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'key'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ImageFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": "key",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "GetFastValue(config",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "'textureURL'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'textureExtension'",
+          "type": null
+        },
+        {
+          "name": "'png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'normalMap'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'textureXhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": "key",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "GetFastValue(config",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "'atlasURL'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'atlasExtension'",
+          "type": null
+        },
+        {
+          "name": "'txt'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'atlasXhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ImageFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "atlasURL",
+          "type": null
+        },
+        {
+          "name": "atlasXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "image.linkFile",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "'unityatlas'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "[ image",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "image.linkFile ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "'unityatlas'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "[ image",
+          "type": null
+        },
+        {
+          "name": "data ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isReadyToProcess(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addUnityAtlas",
+      "params": [
+        {
+          "name": "image.key",
+          "type": null
+        },
+        {
+          "name": "image.data",
+          "type": null
+        },
+        {
+          "name": "text.data",
+          "type": null
+        },
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unityAtlas",
+      "params": [
+        {
+          "name": "'mainmenu'",
+          "type": null
+        },
+        {
+          "name": "'images/MainMenu.png'",
+          "type": null
+        },
+        {
+          "name": "'images/MainMenu.txt'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unityAtlas",
+      "params": [
+        {
+          "name": "key",
+          "type": "'mainmenu'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'images/MainMenu.png'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "'images/MainMenu.txt'\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unityAtlas",
+      "params": [
+        {
+          "name": "'mainmenu'",
+          "type": null
+        },
+        {
+          "name": "'images/MainMenu.png'",
+          "type": null
+        },
+        {
+          "name": "'images/MainMenu.json'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "image",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "'mainmenu'",
+          "type": null
+        },
+        {
+          "name": "'background'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unityAtlas",
+      "params": [
+        {
+          "name": "'mainmenu'",
+          "type": null
+        },
+        {
+          "name": "[ 'images/MainMenu.png'",
+          "type": null
+        },
+        {
+          "name": "'images/MainMenu-n.png' ]",
+          "type": null
+        },
+        {
+          "name": "'images/MainMenu.txt'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unityAtlas",
+      "params": [
+        {
+          "name": "key",
+          "type": "'mainmenu'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'images/MainMenu.png'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "normalMap",
+          "type": "'images/MainMenu-n.png'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "'images/MainMenu.txt'\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'unityAtlas'",
+          "type": null
+        },
+        {
+          "name": "function (key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "atlasURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        },
+        {
+          "name": "atlasXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < key.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UnityAtlasFile",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "key[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "multifile.files",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UnityAtlasFile",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "atlasURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        },
+        {
+          "name": "atlasXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "multifile.files",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,95 @@
+{
+  "type": "interface",
+  "name": "GraphicsContextSystemOptions",
+  "sourcePath": "scene/graphics/shared/GraphicsContextSystem.ts",
+  "extends": [],
+  "description": "A class that holds batchable graphics data for a GraphicsContext. / export class GpuGraphicsContext { public isBatchable: boolean; public context: GraphicsContext; public batches: BatchableGraphics[] = []; public geometryData: GeometryData = { vertices: [], uvs: [], indices: [], }; public graphicsData: GraphicsContextRenderData; } /** A class that holds the render data for a GraphicsContext. / export class GraphicsContextRenderData { public batcher: DefaultBatcher; public instructions = new InstructionSet(); public init(maxTextures: number) { this.batcher = new DefaultBatcher({ maxTextures, }); this.instructions.reset(); } /** Use `batcher.geometry` instead. / get geometry() { // #if _DEBUG deprecation(v8_3_4, 'GraphicsContextRenderData#geometry is deprecated, please use batcher.geometry instead.'); // #endif return this.batcher.geometry; } public destroy() { this.batcher.destroy(); this.instructions.destroy(); this.batcher = null; this.instructions = null; } } /** Options for the GraphicsContextSystem.",
+  "category": "rendering",
+  "deprecated": true,
+  "properties": [
+    {
+      "name": "bezierSmoothness",
+      "type": "number",
+      "optional": true,
+      "description": "A value from 0 to 1 that controls the smoothness of bezier curves (the higher the smoother)"
+    },
+    {
+      "name": "bezierSmoothness",
+      "type": "0.5,\n    }",
+      "optional": false,
+      "description": "A system that manages the rendering of GraphicsContexts. / export class GraphicsContextSystem implements System<GraphicsContextSystemOptions> { /** @ignore */ public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'graphicsContext' } as const; /** The default options for the GraphicsContextSystem. */ public static readonly defaultOptions: GraphicsContextSystemOptions = { /** A value from 0 to 1 that controls the smoothness of bezier curves (the higher the smoother)"
+    },
+    {
+      "name": "_gpuContextHash",
+      "type": "Record<number, GpuGraphicsContext> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_graphicsDataContextHash",
+      "type": "Record<number, GraphicsContextRenderData> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GraphicsContextSystemOptions)\n    {\n        GraphicsContextSystem.defaultOptions.bezierSmoothness = options?.bezierSmoothness\n            ?? GraphicsContextSystem.defaultOptions.bezierSmoothness",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "GraphicsContext): GraphicsContextRenderData\n    {\n        return this._graphicsDataContextHash[context.uid] || this._initContextRenderData(context)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "GraphicsContext)\n    {\n        let gpuContext: GpuGraphicsContext = this._gpuContextHash[context.uid]\n\n            || this._initContext(context)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "GraphicsContext): GpuGraphicsContext\n    {\n        return this._gpuContextHash[context.uid] || this._initContext(context)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "GraphicsContext): GraphicsContextRenderData\n    {\n        const graphicsData: GraphicsContextRenderData = BigPool.get(GraphicsContextRenderData, {\n            maxTextures: this._renderer.limits.maxBatchableTextures,\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "GraphicsContext): GpuGraphicsContext\n    {\n        const gpuContext = new GpuGraphicsContext()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "GraphicsContext)\n    {\n        this._cleanGraphicsContextData(context)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "GraphicsContext)\n    {\n        const gpuContext: GpuGraphicsContext = this._gpuContextHash[context.uid]",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

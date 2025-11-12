@@ -1,0 +1,690 @@
+{
+  "type": "class",
+  "name": "TileBody",
+  "sourcePath": "physics/matter-js/MatterTileBody.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "physics",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "EventEmitter",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Mixins",
+          "type": "[\n        Components.Bounce",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "Components.Collision",
+          "type": null
+        },
+        {
+          "name": "Components.Friction",
+          "type": null
+        },
+        {
+          "name": "Components.Gravity",
+          "type": null
+        },
+        {
+          "name": "Components.Mass",
+          "type": null
+        },
+        {
+          "name": "Components.Sensor",
+          "type": null
+        },
+        {
+          "name": "Components.Sleep",
+          "type": null
+        },
+        {
+          "name": "Components.Static\n    ]",
+          "type": null
+        },
+        {
+          "name": "initialize",
+          "type": "function MatterTileBody (world",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "tile",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tile.physics.matterBody",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "body",
+      "params": [
+        {
+          "name": "if provided",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "layer",
+      "params": [
+        {
+          "name": "if it exists",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        },
+        {
+          "name": "'body'",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        },
+        {
+          "name": "'addToWorld'",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCollisionGroup",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "collisionGroup",
+          "type": null
+        },
+        {
+          "name": "'objects'",
+          "type": null
+        },
+        {
+          "name": "[]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "collisionObjects.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setFromTileCollision",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setFromTileRectangle",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBody",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "addToWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tile.flipX || tile.flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCenterX",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCenterY",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "scaleX",
+          "type": null
+        },
+        {
+          "name": "scaleY",
+          "type": null
+        },
+        {
+          "name": "rotationPoint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!HasValue(options",
+          "type": null
+        },
+        {
+          "name": "'isStatic'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!HasValue(options",
+          "type": null
+        },
+        {
+          "name": "'addToWorld'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBounds",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "params": [
+        {
+          "name": "cx",
+          "type": null
+        },
+        {
+          "name": "cy",
+          "type": null
+        },
+        {
+          "name": "bounds.width",
+          "type": null
+        },
+        {
+          "name": "bounds.height",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBody",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        },
+        {
+          "name": "options.addToWorld",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shapes",
+      "params": [
+        {
+          "name": "e.g. holes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!HasValue(options",
+          "type": null
+        },
+        {
+          "name": "'isStatic'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!HasValue(options",
+          "type": null
+        },
+        {
+          "name": "'addToWorld'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getLeft",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCollisionGroup",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "collisionGroup",
+          "type": null
+        },
+        {
+          "name": "'objects'",
+          "type": null
+        },
+        {
+          "name": "[]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < collisionObjects.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "object.rectangle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rectangle",
+      "params": [
+        {
+          "name": "ox + ow / 2",
+          "type": null
+        },
+        {
+          "name": "oy + oh / 2",
+          "type": null
+        },
+        {
+          "name": "ow",
+          "type": null
+        },
+        {
+          "name": "oh",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "object.ellipse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "ox + ow / 2",
+          "type": null
+        },
+        {
+          "name": "oy + oh / 2",
+          "type": null
+        },
+        {
+          "name": "ow / 2",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "object.polygon || object.polyline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "function (p",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "origin",
+      "params": [
+        {
+          "name": "first point placed in Tiled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "to",
+      "params": [
+        {
+          "name": "ox",
+          "type": null
+        },
+        {
+          "name": "oy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "centre",
+      "params": [
+        {
+          "name": "vertices",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fromVertices",
+      "params": [
+        {
+          "name": "ox",
+          "type": null
+        },
+        {
+          "name": "oy",
+          "type": null
+        },
+        {
+          "name": "vertices",
+          "type": null
+        },
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "body",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,449 @@
+{
+  "type": "class",
+  "name": "TextureSource",
+  "sourcePath": "rendering/renderers/shared/texture/sources/TextureSource.ts",
+  "extends": null,
+  "implements": [],
+  "description": "options for creating a new TextureSource / export interface TextureSourceOptions<T extends Record<string, any> = any> extends TextureStyleOptions { /** the resource that will be uploaded to the GPU. This is where we get our pixels from eg an ImageBimt / Canvas / Video etc / resource?: T; /** the pixel width of this texture source. This is the REAL pure number, not accounting resolution */ width?: number; /** the pixel height of this texture source. This is the REAL pure number, not accounting resolution */ height?: number; /** the resolution of the texture. */ resolution?: number; /** the format that the texture data has */ format?: TEXTURE_FORMATS; /** Used by internal textures / sampleCount?: number; /** Only really affects RenderTextures. Should we use antialiasing for this texture. It will look better, but may impact performance as a Blit operation will be required to resolve the texture. / antialias?: boolean; /** how many dimensions does this texture have? currently v8 only supports 2d */ dimensions?: TEXTURE_DIMENSIONS; /** The number of mip levels to generate for this texture. this is  overridden if autoGenerateMipmaps is true */ mipLevelCount?: number; /** Should we auto generate mipmaps for this texture? This will automatically generate mipmaps for this texture when uploading to the GPU. Mipmapped textures take up more memory, but can look better when scaled down. For performance reasons, it is recommended to NOT use this with RenderTextures, as they are often updated every frame. If you do, make sure to call `updateMipmaps` after you update the texture. / autoGenerateMipmaps?: boolean; /** the alpha mode of the texture */ alphaMode?: ALPHA_MODES; /** optional label, can be used for debugging */ label?: string; /** If true, the Garbage Collector will unload this texture if it is not used after a period of time */ autoGarbageCollect?: boolean; } /** A TextureSource stores the information that represents an image. All textures have require TextureSource, which contains information about the source. Therefore you can have many textures all using a single TextureSource (eg a sprite sheet) This is an class is extended depending on the source of the texture. Eg if you are using an an image as your resource, then an ImageSource is used.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextureStyle",
+      "params": [
+        {
+          "name": "definedProps(options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": "returns itself */ get source(): TextureSource { return this; } /** the style of the texture */ get style(): TextureStyle { return this._style; } set style(value: TextureStyle) { if (this.style === value) return; this._style?.off('change', this._onStyleChange, this); this._style = value; this._style?.on('change', this._onStyleChange, this); this._onStyleChange(); } /** Specifies the maximum anisotropy value clamp used by the sampler. */ set maxAnisotropy(value: number) { this._style.maxAnisotropy = value; } get maxAnisotropy(): number { return this._style.maxAnisotropy; } /** setting this will set wrapModeU, wrapModeV and wrapModeW all at once! */ get addressMode(): WRAP_MODE { return this._style.addressMode; } set addressMode(value: WRAP_MODE) { this._style.addressMode = value; } /** setting this will set wrapModeU, wrapModeV and wrapModeW all at once! */ get repeatMode(): WRAP_MODE { return this._style.addressMode; } set repeatMode(value: WRAP_MODE) { this._style.addressMode = value; } /** Specifies the sampling behavior when the sample footprint is smaller than or equal to one texel. */ get magFilter(): SCALE_MODE { return this._style.magFilter; } set magFilter(value: SCALE_MODE) { this._style.magFilter = value; } /** Specifies the sampling behavior when the sample footprint is larger than one texel. */ get minFilter(): SCALE_MODE { return this._style.minFilter; } set minFilter(value: SCALE_MODE) { this._style.minFilter = value; } /** Specifies behavior for sampling between mipmap levels. */ get mipmapFilter(): SCALE_MODE { return this._style.mipmapFilter; } set mipmapFilter(value: SCALE_MODE) { this._style.mipmapFilter = value; } /** Specifies the minimum and maximum levels of detail, respectively, used internally when sampling a texture. */ get lodMinClamp(): number { return this._style.lodMinClamp; } set lodMinClamp(value: number) { this._style.lodMinClamp = value; } /** Specifies the minimum and maximum levels of detail, respectively, used internally when sampling a texture. */ get lodMaxClamp(): number { return this._style.lodMaxClamp; } set lodMaxClamp(value: number) { this._style.lodMaxClamp = value; } private _onStyleChange() { this.emit('styleChange', this); } /** call this if you have modified the texture outside of the constructor"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "this.resourceWidth / resolution",
+          "type": null
+        },
+        {
+          "name": "this.resourceHeight / resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "didResize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": "Destroys this texture source"
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'change'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeAllListeners",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unload",
+      "params": [],
+      "returnType": null,
+      "description": "This will unload the Texture source from the GPU. This will free up the GPU memory As soon as it is required fore rendering, it will be re-uploaded."
+    },
+    {
+      "name": "uid",
+      "params": [
+        {
+          "name": "'resource'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'change'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'unload'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "the width of the resource. This is the REAL pure number, not accounting resolution   */ public get resourceWidth(): number { const { resource } = this; return resource.naturalWidth || resource.videoWidth || resource.displayWidth || resource.width; } /** the height of the resource. This is the REAL pure number, not accounting resolution */ public get resourceHeight(): number { const { resource } = this; return resource.naturalHeight || resource.videoHeight || resource.displayHeight || resource.height; } /** the resolution of the texture. Changing this number, will not change the number of pixels in the actual texture but will the size of the texture when rendered. changing the resolution of this texture to 2 for example will make it appear twice as small when rendered (as pixel density will have increased) / get resolution(): number { return this._resolution; } set resolution(resolution: number) { if (this._resolution === resolution) return; this._resolution = resolution; this.width = this.pixelWidth / resolution; this.height = this.pixelHeight / resolution; } /** Resize the texture, this is handy if you want to use the texture as a render texture"
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "width * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "height * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.pixelWidth === newPixelWidth && this.pixelHeight === newPixelHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uid",
+      "params": [
+        {
+          "name": "'resource'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'change'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateMipmaps",
+      "params": [],
+      "returnType": null,
+      "description": "Lets the renderer know that this texture has been updated and its mipmaps should be re-generated. This is only important for RenderTexture instances, as standard Texture instances will have their mipmaps generated on upload. You should call this method after you make any change to the texture The reason for this is is can be quite expensive to update mipmaps for a texture. So by default, We want you, the developer to specify when this action should happen. Generally you don't want to have mipmaps generated on Render targets that are changed every frame,"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.autoGenerateMipmaps && this.mipLevelCount > 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "'updateMipmaps'",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isPow2",
+      "params": [
+        {
+          "name": "this.pixelWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isPow2",
+      "params": [
+        {
+          "name": "this.pixelHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "_resource",
+          "type": "any",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "any",
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'Unimplemented'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "source",
+      "type": "TextureSource",
+      "description": "returns itself"
+    },
+    {
+      "name": "style",
+      "type": "TextureStyle",
+      "description": "the style of the texture"
+    },
+    {
+      "name": "addressMode",
+      "type": "WRAP_MODE",
+      "description": "setting this will set wrapModeU, wrapModeV and wrapModeW all at once!"
+    },
+    {
+      "name": "repeatMode",
+      "type": "WRAP_MODE",
+      "description": "setting this will set wrapModeU, wrapModeV and wrapModeW all at once!"
+    },
+    {
+      "name": "magFilter",
+      "type": "SCALE_MODE",
+      "description": "Specifies the sampling behavior when the sample footprint is smaller than or equal to one texel."
+    },
+    {
+      "name": "minFilter",
+      "type": "SCALE_MODE",
+      "description": "Specifies the sampling behavior when the sample footprint is larger than one texel."
+    },
+    {
+      "name": "mipmapFilter",
+      "type": "SCALE_MODE",
+      "description": "Specifies behavior for sampling between mipmap levels."
+    },
+    {
+      "name": "lodMinClamp",
+      "type": "number",
+      "description": "Specifies the minimum and maximum levels of detail, respectively, used internally when sampling a texture."
+    },
+    {
+      "name": "lodMaxClamp",
+      "type": "number",
+      "description": "Specifies the minimum and maximum levels of detail, respectively, used internally when sampling a texture."
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "description": "the resolution of the texture. Changing this number, will not change the number of pixels in the actual texture but will the size of the texture when rendered. changing the resolution of this texture to 2 for example will make it appear twice as small when rendered (as pixel density will have increased)"
+    },
+    {
+      "name": "scaleMode",
+      "type": "SCALE_MODE",
+      "description": "setting this will set magFilter,minFilter and mipmapFilter all at once!"
+    }
+  ]
+}

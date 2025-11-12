@@ -1,0 +1,419 @@
+{
+  "type": "class",
+  "name": "WebGLFramebufferWrapper",
+  "sourcePath": "renderer/webgl/wrappers/WebGLFramebufferWrapper.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function WebGLFramebufferWrapper (gl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "renderTexture",
+          "type": null
+        },
+        {
+          "name": "addDepthStencilBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createResource",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createFramebuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "framebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "renderTexture.webGLTexture",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "checkFramebufferStatus",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "complete !== gl.FRAMEBUFFER_COMPLETE",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "status",
+          "type": "' + (errors[complete] || complete",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.addDepthStencilBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createRenderbuffer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindRenderbuffer",
+      "params": [
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "depthStencilBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderbufferStorage",
+      "params": [
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.DEPTH_STENCIL",
+          "type": null
+        },
+        {
+          "name": "this.width",
+          "type": null
+        },
+        {
+          "name": "this.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferRenderbuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.DEPTH_STENCIL_ATTACHMENT",
+          "type": null
+        },
+        {
+          "name": "gl.RENDERBUFFER",
+          "type": null
+        },
+        {
+          "name": "depthStencilBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.webGLFramebuffer === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!gl.isContextLost(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "this.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFramebufferAttachmentParameter",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0",
+          "type": null
+        },
+        {
+          "name": "gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "colorAttachment !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "framebufferTexture2D",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.COLOR_ATTACHMENT0",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteTexture",
+      "params": [
+        {
+          "name": "colorAttachment",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getFramebufferAttachmentParameter",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "gl.DEPTH_STENCIL_ATTACHMENT",
+          "type": null
+        },
+        {
+          "name": "gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "depthStencilAttachment !== null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteRenderbuffer",
+      "params": [
+        {
+          "name": "depthStencilAttachment",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteFramebuffer",
+      "params": [
+        {
+          "name": "this.webGLFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

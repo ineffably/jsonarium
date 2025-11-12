@@ -1,0 +1,413 @@
+{
+  "type": "class",
+  "name": "TilingSpritePipe",
+  "sourcePath": "scene/sprite-tiling/TilingSpritePipe.ts",
+  "extends": null,
+  "implements": [
+    "RenderPipe"
+  ],
+  "description": "The TilingSpritePipe is a render pipe for rendering TilingSprites. It handles the batching and rendering of TilingSprites using a shader.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "validateRenderable",
+      "params": [
+        {
+          "name": "renderable",
+          "type": "TilingSprite",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "canBatch && canBatch === couldBatch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "checkAndUpdateTexture",
+      "params": [
+        {
+          "name": "batchableMesh",
+          "type": null
+        },
+        {
+          "name": "renderable.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "couldBatch !== canBatch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "tilingSprite",
+          "type": "TilingSprite",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "canBatch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BatchableMesh",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tilingSprite.didViewUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture",
+      "params": [
+        {
+          "name": "tilingSprite._texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToBatch",
+      "params": [
+        {
+          "name": "batchableMesh",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TilingSpriteShader",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateRenderable",
+      "params": [
+        {
+          "name": "tilingSprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "tilingSprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "tilingSprite",
+          "type": "TilingSprite",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "color32BitToUniform",
+      "params": [
+        {
+          "name": "tilingSprite.groupColorAlpha",
+          "type": null
+        },
+        {
+          "name": "localUniforms.uColor",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAdjustedBlendModeBlend",
+      "params": [
+        {
+          "name": "tilingSprite.groupBlendMode",
+          "type": null
+        },
+        {
+          "name": "tilingSprite.texture._source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "sharedQuad",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        },
+        {
+          "name": "state",
+          "type": "this._state",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateRenderable",
+      "params": [
+        {
+          "name": "tilingSprite",
+          "type": "TilingSprite",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "canBatch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tilingSprite.didViewUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateElement",
+      "params": [
+        {
+          "name": "batchableMesh",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "tilingSprite.didViewUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUniforms",
+      "params": [
+        {
+          "name": "tilingSprite.width",
+          "type": null
+        },
+        {
+          "name": "tilingSprite.height",
+          "type": null
+        },
+        {
+          "name": "tilingSprite._tileTransform.matrix",
+          "type": null
+        },
+        {
+          "name": "tilingSprite.anchor.x",
+          "type": null
+        },
+        {
+          "name": "tilingSprite.anchor.y",
+          "type": null
+        },
+        {
+          "name": "tilingSprite.texture",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TilingSpriteGpuData",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.addressMode !== 'repeat'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setUvs",
+      "params": [
+        {
+          "name": "tilingSprite",
+          "type": null
+        },
+        {
+          "name": "geometry.uvs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPositions",
+      "params": [
+        {
+          "name": "tilingSprite",
+          "type": null
+        },
+        {
+          "name": "geometry.positions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._renderer.type === RendererType.WEBGL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

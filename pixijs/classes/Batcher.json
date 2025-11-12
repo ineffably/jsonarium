@@ -1,0 +1,692 @@
+{
+  "type": "class",
+  "name": "Batcher",
+  "sourcePath": "rendering/batcher/shared/Batcher.ts",
+  "extends": null,
+  "implements": [],
+  "description": "breaking rules slightly here in the name of performance.. storing references to these bindgroups here is just faster for access! keeps a reference to the GPU bind group to set when rendering this batch for WebGPU. Will be null is using WebGL. / public gpuBindGroup: GPUBindGroup; /** breaking rules slightly here in the name of performance.. storing references to these bindgroups here is just faster for access! keeps a reference to the bind group to set when rendering this batch for WebGPU. Will be null if using WebGl. / public bindGroup: BindGroup; public batcher: Batcher; public destroy() { this.textures = null; this.gpuBindGroup = null; this.bindGroup = null; this.batcher = null; } } // inlined pool for SPEEEEEEEEEED :D const batchPool: Batch[] = []; let batchPoolIndex = 0; GlobalResourceRegistry.register({ clear: () => { // check if the first element has a destroy method if (batchPool.length > 0) { for (const item of batchPool) { if (item) item.destroy(); } } batchPool.length = 0; // clear the array batchPoolIndex = 0; }, }); function getBatchFromPool() { return batchPoolIndex > 0 ? batchPool[--batchPoolIndex] : new Batch(); } function returnBatchToPool(batch: Batch) { batchPool[batchPoolIndex++] = batch; } /** Represents an element that can be batched for rendering. / export interface BatchableElement { /** The name of the batcher to use. Must be registered. / batcherName: string; /** The texture to be used for rendering. / texture: Texture; /** The blend mode to be applied. / blendMode: BLEND_MODES; /** The size of the index data. / indexSize: number; /** The size of the attribute data. / attributeSize: number; /** The topology to be used for rendering. / topology: Topology /** Whether the element should be packed as a quad for better performance. / packAsQuad: boolean; /** The texture ID, stored for efficient updating. / _textureId: number; /** The starting position in the attribute buffer. / _attributeStart: number; /** The starting position in the index buffer. / _indexStart: number; /** Reference to the batcher. / _batcher: Batcher; /** Reference to the batch. / _batch: Batch; } /** Represents a batchable quad element. / export interface BatchableQuadElement extends BatchableElement { /** Indicates that this element should be packed as a quad. / packAsQuad: true; /** The size of the attribute data for this quad element. / attributeSize: 4; /** The size of the index data for this quad element. / indexSize: 6; /** The bounds data for this quad element. / bounds: BoundsData; } /** Represents a batchable mesh element. / export interface BatchableMeshElement extends BatchableElement { /** The UV coordinates of the mesh. / uvs: number[] | Float32Array; /** The vertex positions of the mesh. / positions: number[] | Float32Array; /** The indices of the mesh. / indices: number[] | Uint16Array | Uint32Array; /** The offset in the index buffer. / indexOffset: number; /** The offset in the attribute buffer. / attributeOffset: number; /** Indicates that this element should not be packed as a quad. / packAsQuad: false; } let BATCH_TICK = 0; /** The options for the batcher. / export interface BatcherOptions { /** The maximum number of textures per batch. */ maxTextures: number; /** The initial size of the attribute buffer. */ attributesInitialSize?: number; /** The initial size of the index buffer. */ indicesInitialSize?: number; } /** A batcher is used to batch together objects with the same texture. It is an abstract class that must be extended. see DefaultBatcher for an example.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "unique id for this batcher */ public readonly uid: number = uid('batcher'); /** The buffer containing attribute data for all elements in the batch. */ public attributeBuffer: ViewableBuffer; /** The buffer containing index data for all elements in the batch. */ public indexBuffer: IndexBufferArray; /** The current size of the attribute data in the batch. */ public attributeSize: number; /** The current size of the index data in the batch. */ public indexSize: number; /** The total number of elements currently in the batch. */ public elementSize: number; /** The starting index of elements in the current batch. */ public elementStart: number; /** Indicates whether the batch data has been modified and needs updating. */ public dirty = true; /** The current index of the batch being processed. */ public batchIndex = 0; /** An array of all batches created during the current rendering process. */ public batches: Batch[] = []; private _elements: BatchableElement[] = []; private _batchIndexStart: number; private _batchIndexSize: number; /** The maximum number of textures per batch. */ public readonly maxTextures: number; /** The name of the batcher. Must be implemented by subclasses. */ public abstract name: string; /** The vertex size of the batcher. Must be implemented by subclasses. */ protected abstract vertexSize: number; /** The geometry used by this batcher. Must be implemented by subclasses. */ public abstract geometry: Geometry; /** The shader used by this batcher. Must be implemented by subclasses. this can be shared by multiple batchers of the same type. / public abstract shader: Shader; /** Packs the attributes of a BatchableMeshElement into the provided views. Must be implemented by subclasses. / public abstract packAttributes( element: BatchableMeshElement, float32View: Float32Array, uint32View: Uint32Array, index: number, textureId: number ): void; /** Packs the attributes of a BatchableQuadElement into the provided views. Must be implemented by subclasses. / public abstract packQuadAttributes( element: BatchableQuadElement, float32View: Float32Array, uint32View: Uint32Array, index: number, textureId: number ): void; constructor(options: BatcherOptions) { options = { ...Batcher.defaultOptions, ...options }; if (!options.maxTextures) { deprecation('v8.8.0', 'maxTextures is a required option for Batcher now, please pass it in the options'); options.maxTextures = getMaxTexturesPerBatch(); } const { maxTextures, attributesInitialSize, indicesInitialSize } = options; this.attributeBuffer = new ViewableBuffer(attributesInitialSize * 4); this.indexBuffer = new Uint16Array(indicesInitialSize); this.maxTextures = maxTextures; } public begin() { this.elementSize = 0; this.elementStart = 0; this.indexSize = 0; this.attributeSize = 0; for (let i = 0; i < this.batchIndex; i++) { returnBatchToPool(this.batches[i]); } this.batchIndex = 0; this._batchIndexStart = 0; this._batchIndexSize = 0; this.dirty = true; } public add(batchableObject: BatchableElement) { this._elements[this.elementSize++] = batchableObject; batchableObject._indexStart = this.indexSize; batchableObject._attributeStart = this.attributeSize; batchableObject._batcher = this; this.indexSize += batchableObject.indexSize; this.attributeSize += ((batchableObject.attributeSize) * this.vertexSize); } public checkAndUpdateTexture(batchableObject: BatchableElement, texture: Texture): boolean { const textureId = batchableObject._batch.textures.ids[texture._source.uid]; // TODO could try to be a bit smarter if there are spare textures.. // but need to figure out how to alter the bind groups too.. if (!textureId && textureId !== 0) return false; batchableObject._textureId = textureId; batchableObject.texture = texture; return true; } public updateElement(batchableObject: BatchableElement) { this.dirty = true; const attributeBuffer = this.attributeBuffer; if (batchableObject.packAsQuad) { this.packQuadAttributes( batchableObject as BatchableQuadElement, attributeBuffer.float32View, attributeBuffer.uint32View, batchableObject._attributeStart, batchableObject._textureId); } else { this.packAttributes( batchableObject as BatchableMeshElement, attributeBuffer.float32View, attributeBuffer.uint32View, batchableObject._attributeStart, batchableObject._textureId); } } /** breaks the batcher. This happens when a batch gets too big, or we need to switch to a different type of rendering (a filter for example)"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!elements[this.elementStart]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBatchFromPool",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAdjustedBlendModeBlend",
+      "params": [
+        {
+          "name": "firstElement.blendMode",
+          "type": null
+        },
+        {
+          "name": "firstElement.texture._source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.attributeSize * 4 > this.attributeBuffer.size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.indexSize > this.indexBuffer.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = this.elementStart; i < this.elementSize; ++i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAdjustedBlendModeBlend",
+      "params": [
+        {
+          "name": "element.blendMode",
+          "type": null
+        },
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source._batchTick === BATCH_TICK && !breakRequired",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "element.packAsQuad",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packQuadAttributes",
+      "params": [
+        {
+          "name": "element as BatchableQuadElement",
+          "type": null
+        },
+        {
+          "name": "f32",
+          "type": null
+        },
+        {
+          "name": "u32",
+          "type": null
+        },
+        {
+          "name": "element._attributeStart",
+          "type": null
+        },
+        {
+          "name": "element._textureId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packQuadIndex",
+      "params": [
+        {
+          "name": "indexBuffer",
+          "type": null
+        },
+        {
+          "name": "element._indexStart",
+          "type": null
+        },
+        {
+          "name": "element._attributeStart / this.vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packAttributes",
+      "params": [
+        {
+          "name": "element as BatchableMeshElement",
+          "type": null
+        },
+        {
+          "name": "f32",
+          "type": null
+        },
+        {
+          "name": "u32",
+          "type": null
+        },
+        {
+          "name": "element._attributeStart",
+          "type": null
+        },
+        {
+          "name": "element._textureId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packIndex",
+      "params": [
+        {
+          "name": "element as BatchableMeshElement",
+          "type": null
+        },
+        {
+          "name": "indexBuffer",
+          "type": null
+        },
+        {
+          "name": "element._indexStart",
+          "type": null
+        },
+        {
+          "name": "element._attributeStart / this.vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureBatch.count >= maxTextures || breakRequired",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBatchFromPool",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "element.packAsQuad",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packQuadAttributes",
+      "params": [
+        {
+          "name": "element as BatchableQuadElement",
+          "type": null
+        },
+        {
+          "name": "f32",
+          "type": null
+        },
+        {
+          "name": "u32",
+          "type": null
+        },
+        {
+          "name": "element._attributeStart",
+          "type": null
+        },
+        {
+          "name": "element._textureId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packQuadIndex",
+      "params": [
+        {
+          "name": "indexBuffer",
+          "type": null
+        },
+        {
+          "name": "element._indexStart",
+          "type": null
+        },
+        {
+          "name": "element._attributeStart / this.vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packAttributes",
+      "params": [
+        {
+          "name": "element as BatchableMeshElement",
+          "type": null
+        },
+        {
+          "name": "f32",
+          "type": null
+        },
+        {
+          "name": "u32",
+          "type": null
+        },
+        {
+          "name": "element._attributeStart",
+          "type": null
+        },
+        {
+          "name": "element._textureId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packIndex",
+      "params": [
+        {
+          "name": "element as BatchableMeshElement",
+          "type": null
+        },
+        {
+          "name": "indexBuffer",
+          "type": null
+        },
+        {
+          "name": "element._indexStart",
+          "type": null
+        },
+        {
+          "name": "element._attributeStart / this.vertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureBatch.count > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "batch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finish",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureAttributeBuffer",
+      "params": [
+        {
+          "name": "size",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Resizes the attribute buffer to the given size (1 = 1 float32)"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "size * 4 <= this.attributeBuffer.size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureIndexBuffer",
+      "params": [
+        {
+          "name": "size",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Resizes the index buffer to the given size (1 = 1 float32)"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "size <= this.indexBuffer.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "size",
+          "type": null
+        },
+        {
+          "name": "this.attributeBuffer.size * 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ViewableBuffer",
+      "params": [
+        {
+          "name": "newSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fastCopy",
+      "params": [
+        {
+          "name": "this.attributeBuffer.rawBinaryData",
+          "type": null
+        },
+        {
+          "name": "newArrayBuffer.rawBinaryData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "size",
+          "type": null
+        },
+        {
+          "name": "indexBuffer.length * 1.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint32Array",
+      "params": [
+        {
+          "name": "newSize",
+          "type": null
+        }
+      ],
+      "returnType": "new Uint16Array(newSize)",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "newIndexBuffer.BYTES_PER_ELEMENT !== indexBuffer.BYTES_PER_ELEMENT",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < indexBuffer.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fastCopy",
+      "params": [
+        {
+          "name": "indexBuffer.buffer",
+          "type": null
+        },
+        {
+          "name": "newIndexBuffer.buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packQuadIndex",
+      "params": [
+        {
+          "name": "indexBuffer",
+          "type": "IndexBufferArray",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "indicesOffset",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "packIndex",
+      "params": [
+        {
+          "name": "element",
+          "type": "BatchableMeshElement",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "indexBuffer",
+          "type": "IndexBufferArray",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "indicesOffset",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < size; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.batches === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this.batches.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnBatchToPool",
+      "params": [
+        {
+          "name": "this.batches[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._elements.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._elements[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

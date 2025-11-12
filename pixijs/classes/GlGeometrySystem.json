@@ -1,0 +1,458 @@
+{
+  "type": "class",
+  "name": "GlGeometrySystem",
+  "sourcePath": "rendering/renderers/gl/geometry/GlGeometrySystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "System plugin to the renderer to manage geometry.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "addManagedHash",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'_geometryVaoHash'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "Geometry",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "program",
+          "type": "GlProgram",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Sets up the renderer context and necessary buffers. */ protected contextChange(): void { const gl = this.gl = this._renderer.gl; if (!this._renderer.context.supports.vertexArrayObject) { throw new Error('[PixiJS] Vertex Array Objects are not supported on this device'); } const nativeVaoExtension = this._renderer.context.extensions.vertexArrayObject; if (nativeVaoExtension) { gl.createVertexArray = (): WebGLVertexArrayObject => nativeVaoExtension.createVertexArrayOES(); gl.bindVertexArray = (vao): void => nativeVaoExtension.bindVertexArrayOES(vao); gl.deleteVertexArray = (vao): void => nativeVaoExtension.deleteVertexArrayOES(vao); } const nativeInstancedExtension = this._renderer.context.extensions.vertexAttribDivisorANGLE; if (nativeInstancedExtension) { gl.drawArraysInstanced = (a, b, c, d): void => { nativeInstancedExtension.drawArraysInstancedANGLE(a, b, c, d); }; gl.drawElementsInstanced = (a, b, c, d, e): void => { nativeInstancedExtension.drawElementsInstancedANGLE(a, b, c, d, e); }; gl.vertexAttribDivisor = (a, b): void => nativeInstancedExtension.vertexAttribDivisorANGLE(a, b); } this._activeGeometry = null; this._activeVao = null; this._geometryVaoHash = Object.create(null); } /** Binds geometry so that is can be drawn. Creating a Vao if required"
+    },
+    {
+      "name": "getVao",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeVao !== vao",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindVertexArray",
+      "params": [
+        {
+          "name": "vao",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBuffers",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetState",
+      "params": [],
+      "returnType": "void",
+      "description": "Reset and unbind any active VAO and geometry."
+    },
+    {
+      "name": "unbind",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBuffers",
+      "params": [],
+      "returnType": "void",
+      "description": "Update buffers of the currently bound geometry."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < geometry.buffers.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroyAll",
+      "params": [
+        {
+          "name": "contextLost = false",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Check compatibility between a geometry and a program / protected checkCompatibility(geometry: Geometry, program: GlProgram): void { // geometry must have at least all the attributes that the shader requires. const geometryAttributes = geometry.attributes; const shaderAttributes = program._attributeData; for (const j in shaderAttributes) { if (!geometryAttributes[j]) { throw new Error(`shader and geometry incompatible, geometry missing the \"${j}\" attribute`); } } } /** Takes a geometry and program and generates a unique signature for them. / protected getSignature(geometry: Geometry, program: GlProgram): string { const attribs = geometry.attributes; const shaderAttributes = program._attributeData; const strings = ['g', geometry.uid]; for (const i in attribs) { if (shaderAttributes[i]) { strings.push(i, shaderAttributes[i].location); } } return strings.join('-'); } protected getVao(geometry: Geometry, program: GlProgram): WebGLVertexArrayObject { return this._geometryVaoHash[geometry.uid]?.[program._key] || this.initGeometryVao(geometry, program); } /** Creates or gets Vao with the same structure as the geometry and stores it on the geometry. If vao is created, it is bound automatically. We use a shader to infer what and how to set up the attribute locations. / protected initGeometryVao(geometry: Geometry, program: GlProgram, _incRefCount = true): WebGLVertexArrayObject { const gl = this._renderer.gl; // const CONTEXT_UID = this.CONTEXT_UID; const bufferSystem = this._renderer.buffer; this._renderer.shader._getProgramData(program); this.checkCompatibility(geometry, program); const signature = this.getSignature(geometry, program); if (!this._geometryVaoHash[geometry.uid]) { this._geometryVaoHash[geometry.uid] = Object.create(null); geometry.on('destroy', this.onGeometryDestroy, this); } const vaoObjectHash = this._geometryVaoHash[geometry.uid]; let vao = vaoObjectHash[signature]; if (vao) { // this will give us easy access to the vao vaoObjectHash[program._key] = vao; return vao; } ensureAttributes(geometry, program._attributeData); const buffers = geometry.buffers; // @TODO: We don't know if VAO is supported. vao = gl.createVertexArray(); gl.bindVertexArray(vao); // first update - and create the buffers! // only create a gl buffer if it actually gets for (let i = 0; i < buffers.length; i++) { const buffer = buffers[i]; bufferSystem.bind(buffer); } // TODO - maybe make this a data object? // lets wait to see if we need to first! this.activateVao(geometry, program); // add it to the cache! vaoObjectHash[program._key] = vao; vaoObjectHash[signature] = vao; gl.bindVertexArray(null); return vao; } /** Disposes geometry. / protected onGeometryDestroy(geometry: Geometry, contextLost?: boolean): void { const vaoObjectHash = this._geometryVaoHash[geometry.uid]; const gl = this.gl; if (vaoObjectHash) { if (contextLost) { for (const i in vaoObjectHash) { if (this._activeVao !== vaoObjectHash[i]) { this.unbind(); } gl.deleteVertexArray(vaoObjectHash[i]); } } this._geometryVaoHash[geometry.uid] = null; } } /** Dispose all WebGL resources of all managed geometries."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this._geometryVaoHash",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "contextLost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const j in this._geometryVaoHash[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeVao !== vaoObjectHash",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unbind",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteVertexArray",
+      "params": [
+        {
+          "name": "vaoObjectHash[j]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activateVao",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "Geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "program",
+          "type": "GlProgram",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "geometry.indexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "geometry.indexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const j in attributes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "programAttrib",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lastBuffer !== glBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enableVertexAttribArray",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAttributeInfoFromFormat",
+      "params": [
+        {
+          "name": "attribute.format",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlTypeFromFormat",
+      "params": [
+        {
+          "name": "attribute.format",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "programAttrib.format?.substring(1",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vertexAttribIPointer",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "attributeInfo.size",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": null
+        },
+        {
+          "name": "attribute.stride",
+          "type": null
+        },
+        {
+          "name": "attribute.offset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vertexAttribPointer",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "attributeInfo.size",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": null
+        },
+        {
+          "name": "attributeInfo.normalised",
+          "type": null
+        },
+        {
+          "name": "attribute.stride",
+          "type": null
+        },
+        {
+          "name": "attribute.offset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "attribute.instance",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.hasInstance",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vertexAttribDivisor",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "divisor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'geometry error",
+          "type": null
+        },
+        {
+          "name": "GPU Instancing is not supported on this device'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

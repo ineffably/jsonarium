@@ -1,0 +1,376 @@
+{
+  "type": "class",
+  "name": "GlShaderSystem",
+  "sourcePath": "rendering/renderers/gl/shader/GlShaderSystem.ts",
+  "extends": null,
+  "implements": [],
+  "description": "export interface ShaderSyncData { textureCount: number; blockIndex: number; } /** @internal */ export type ShaderSyncFunction = (renderer: WebGLRenderer, shader: Shader, syncData: ShaderSyncData) => void; // default sync data so we don't create a new one each time! const defaultSyncData: ShaderSyncData = { textureCount: 0, blockIndex: 0, }; /** System plugin to the renderer to manage the shaders for WebGL.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "shader",
+          "type": "Shader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "skipSync",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "public static extension = { type: [ ExtensionType.WebGLSystem, ], name: 'shader', } as const; /** @internal */ public _activeProgram: GlProgram = null; private _programDataHash: Record<string, GlProgramData> = Object.create(null); private readonly _renderer: WebGLRenderer; /** @internal */ public _gl: WebGL2RenderingContext; private _shaderSyncFunctions: Record<string, ShaderSyncFunction> = Object.create(null); constructor(renderer: WebGLRenderer) { this._renderer = renderer; this._renderer.renderableGC.addManagedHash(this, '_programDataHash'); } protected contextChange(gl: GlRenderingContext): void { this._gl = gl; this._programDataHash = Object.create(null); /** these need to also be cleared as internally some uniforms are set as an optimisation as the sync function is generated. Specifically the texture ints. / this._shaderSyncFunctions = Object.create(null); this._activeProgram = null; } /** Changes the current shader to the one given in parameter."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "skipSync",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!syncFunction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "nextBindBase",
+      "params": [
+        {
+          "name": "!!shader.glProgram.transformFeedbackVaryings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncFunction",
+      "params": [
+        {
+          "name": "this._renderer",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        },
+        {
+          "name": "defaultSyncData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": "UniformGroup",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Updates the uniform group."
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": null
+        },
+        {
+          "name": "this._activeProgram",
+          "type": null
+        },
+        {
+          "name": "defaultSyncData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindUniformBlock",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": "UniformGroup | BufferResource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "index = 0",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Binds a uniform block to the shader."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!isBufferResource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "uniformGroup as UniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeLocationForBufferBase",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isBufferResource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "offset === 0 && size === buffer.data.byteLength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBufferBase",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": null
+        },
+        {
+          "name": "boundLocation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBufferRange",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": null
+        },
+        {
+          "name": "boundLocation",
+          "type": null
+        },
+        {
+          "name": "offset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bufferSystem.getLastBindBaseLocation(glBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindBufferBase",
+      "params": [
+        {
+          "name": "glBuffer",
+          "type": null
+        },
+        {
+          "name": "boundLocation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "programData.uniformBlockBindings[index] === boundLocation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uniformBlockBinding",
+      "params": [
+        {
+          "name": "programData.program",
+          "type": null
+        },
+        {
+          "name": "uniformBlockIndex",
+          "type": null
+        },
+        {
+          "name": "boundLocation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeProgram === program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "useProgram",
+      "params": [
+        {
+          "name": "programData.program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateProgram",
+      "params": [
+        {
+          "name": "this._gl",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const key of Object.keys(this._programDataHash",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateShaderSyncCode",
+      "params": [
+        {
+          "name": "shader",
+          "type": null
+        },
+        {
+          "name": "shaderSystem",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetState",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

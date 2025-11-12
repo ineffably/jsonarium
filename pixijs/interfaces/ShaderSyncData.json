@@ -1,0 +1,107 @@
+{
+  "type": "interface",
+  "name": "ShaderSyncData",
+  "sourcePath": "rendering/renderers/gl/shader/GlShaderSystem.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "textureCount",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "blockIndex",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "WebGLRenderer, shader: Shader, syncData: ShaderSyncData) => void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultSyncData",
+      "type": "ShaderSyncData = {\n    textureCount: 0,\n    blockIndex: 0,\n}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "[\n            ExtensionType.WebGLSystem,\n        ],\n        name: 'shader',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_activeProgram",
+      "type": "GlProgram = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_programDataHash",
+      "type": "Record<string, GlProgramData> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderer",
+      "type": "WebGLRenderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_gl",
+      "type": "WebGL2RenderingContext",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_shaderSyncFunctions",
+      "type": "Record<string, ShaderSyncFunction> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "WebGLRenderer)\n    {\n        this._renderer = renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "gl",
+      "type": "GlRenderingContext): void\n    {\n        this._gl = gl",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "shader",
+      "type": "Shader, skipSync?: boolean): void\n    {\n        this._setProgram(shader.glProgram)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "TODO",
+      "type": "take into account number of TF buffers. Currently works only with interleaved\n        this._renderer.buffer.nextBindBase(!!shader.glProgram.transformFeedbackVaryings)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uniformGroup",
+      "type": "UniformGroup): void\n    {\n        this._renderer.uniformGroup.updateUniformGroup(uniformGroup, this._activeProgram, defaultSyncData)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uniformGroup",
+      "type": "UniformGroup | BufferResource, name: string, index = 0): void\n    {\n        const bufferSystem = this._renderer.buffer",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

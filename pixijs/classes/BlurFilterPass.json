@@ -1,0 +1,244 @@
+{
+  "type": "class",
+  "name": "BlurFilterPass",
+  "sourcePath": "filters/defaults/blur/BlurFilterPass.ts",
+  "extends": "Filter",
+  "implements": [],
+  "description": "Options for BlurFilterPass / export interface BlurFilterPassOptions extends BlurFilterOptions { /** Do pass along the x-axis (`true`) or y-axis (`false`). */ horizontal: boolean; } /** The BlurFilterPass applies a horizontal or vertical Gaussian blur to an object. import { BlurFilterPass } from 'pixi.js'; const filter = new BlurFilterPass({ horizontal: true, strength: 8 }); sprite.filters = filter; // update blur filter.blur = 16;",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "generateBlurGlProgram",
+      "params": [
+        {
+          "name": "options.horizontal",
+          "type": null
+        },
+        {
+          "name": "options.kernelSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateBlurProgram",
+      "params": [
+        {
+          "name": "options.horizontal",
+          "type": null
+        },
+        {
+          "name": "options.kernelSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            glProgram",
+          "type": null
+        },
+        {
+          "name": "gpuProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                blurUniforms: {\n                    uStrength: { value: 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'f32' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}\n            }",
+          "type": null
+        },
+        {
+          "name": "...options\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "filterManager",
+          "type": "FilterSystem",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "input",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "output",
+          "type": "RenderSurface",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "clearMode",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Applies the filter."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.passes === 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyFilter",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "input",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        },
+        {
+          "name": "clearMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSameSizeTexture",
+      "params": [
+        {
+          "name": "input",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this.passes - 1; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyFilter",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "flip",
+          "type": null
+        },
+        {
+          "name": "flop",
+          "type": null
+        },
+        {
+          "name": "i === 0 ? true : shouldClear",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyFilter",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "flip",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        },
+        {
+          "name": "clearMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "tempTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "blur",
+      "type": "number",
+      "description": "Sets the strength of both the blur."
+    },
+    {
+      "name": "quality",
+      "type": "number",
+      "description": "Sets the quality of the blur by modifying the number of passes. More passes means higher quality blurring but the lower the performance."
+    }
+  ]
+}

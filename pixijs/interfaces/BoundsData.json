@@ -1,0 +1,149 @@
+{
+  "type": "interface",
+  "name": "BoundsData",
+  "sourcePath": "scene/container/bounds/Bounds.ts",
+  "extends": [],
+  "description": "A simple axis-aligned bounding box (AABB) data structure used to define rectangular boundaries. Provides a clearer alternative to array-based bounds representation [minX, minY, maxX, maxY]. ```ts // Create bounds data const bounds: BoundsData = { minX: 0, minY: 0, maxX: 100, maxY: 100 }; // Calculate dimensions const width = bounds.maxX - bounds.minX; const height = bounds.maxY - bounds.minY; // Check if point is inside const isInside = (x: number, y: number) => x >= bounds.minX && x <= bounds.maxX && y >= bounds.minY && y <= bounds.maxY; ```",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "minX",
+      "type": "number",
+      "optional": false,
+      "description": "The minimum X coordinate of the bounds"
+    },
+    {
+      "name": "minY",
+      "type": "number",
+      "optional": false,
+      "description": "The minimum Y coordinate of the bounds"
+    },
+    {
+      "name": "maxX",
+      "type": "number",
+      "optional": false,
+      "description": "The maximum X coordinate of the bounds"
+    },
+    {
+      "name": "maxY",
+      "type": "number",
+      "optional": false,
+      "description": "The maximum Y coordinate of the bounds"
+    },
+    {
+      "name": "_rectangle",
+      "type": "Rectangle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x0",
+      "type": "number, y0: number, x1: number, y1: number)\n    {\n        this.minX = x0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x0",
+      "type": "number, y0: number, x1: number, y1: number, matrix?: Matrix): void\n    {\n        matrix ||= this.matrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "type": "Rectangle, matrix?: Matrix)\n    {\n        this.addFrame(rect.x, rect.y, rect.x + rect.width, rect.y + rect.height, matrix)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bounds",
+      "type": "BoundsData, matrix?: Matrix)\n    {\n        this.addFrame(bounds.minX, bounds.minY, bounds.maxX, bounds.maxY, matrix)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mask",
+      "type": "Bounds): void\n    {\n        this.minX = this.minX > mask.minX ? this.minX : mask.minX",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matrix",
+      "type": "Matrix): void\n    {\n        const minX = this.minX",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "type": "Rectangle): this\n    {\n        if (this.minX < rect.left) this.minX = rect.left",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "left",
+      "type": "number, right: number, top: number, bottom: number): this\n    {\n        if (this.minX < left) this.minX = left",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "paddingX",
+      "type": "number, paddingY: number = paddingX): this\n    {\n        this.minX -= paddingX",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number = x): this\n    {\n        this.minX *= x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        const width = this.maxX - this.minX",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        const height = this.maxY - this.minY",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.maxX = this.minX + value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.maxY = this.minY + value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "vertexData",
+      "type": "Float32Array, beginOffset: number, endOffset: number, matrix?: Matrix): void\n    {\n        let minX = this.minX",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): boolean\n    {\n        if (this.minX <= x && this.minY <= y && this.maxX >= x && this.maxY >= y)\n        {\n            return true",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "js",
+      "type": "Bounds minX=0 minY=0 maxX=100 maxY=100 width=100 height=100]\"\n     * ```\n     * @returns A string describing the bounds\n     * @see {@link Bounds#copyFrom} For copying bounds\n     * @see {@link Bounds#clone} For creating a new instance\n     */\n    public toString(): string\n    {\n        // eslint-disable-next-line max-len\n        return `[pixi.js:Bounds minX=${this.minX} minY=${this.minY} maxX=${this.maxX} maxY=${this.maxY} width=${this.width} height=${this.height}]`",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bounds",
+      "type": "Bounds): this\n    {\n        this.minX = bounds.minX",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

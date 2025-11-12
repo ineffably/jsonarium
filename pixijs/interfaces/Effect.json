@@ -1,0 +1,17 @@
+{
+  "type": "interface",
+  "name": "Effect",
+  "sourcePath": "scene/container/Effect.ts",
+  "extends": [],
+  "description": "An effect that can be applied to a container. This is used to create effects such as filters/masks etc.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "pipe",
+      "type": "string\n    priority: number\n    addBounds?(bounds: Bounds, skipUpdateTransform?: boolean): void\n    addLocalBounds?(bounds: Bounds, localRoot: Container): void\n    containsPoint?(point: PointData, hitTestFn: (container: Container, point: Point) => boolean): boolean\n    destroy(): void\n}\n\n/**\n * The constructor for an Effect.\n * It is used to create instances of effects that can be applied to containers.\n * @param options - The options for the effect.\n * @returns A new instance of the effect.\n * @category rendering\n * @advanced\n */\nexport interface EffectConstructor\n{\n    new(options?: any): Effect\n    test?(options: any): boolean\n}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

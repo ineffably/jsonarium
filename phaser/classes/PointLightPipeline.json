@@ -1,0 +1,615 @@
+{
+  "type": "class",
+  "name": "PointLightPipeline",
+  "sourcePath": "renderer/webgl/pipelines/PointLightPipeline.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "WebGLPipeline",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function PointLightPipeline (config",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'vertShader'",
+          "type": null
+        },
+        {
+          "name": "PointLightShaderSourceVS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'fragShader'",
+          "type": null
+        },
+        {
+          "name": "PointLightShaderSourceFS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'attributes'",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": "'inPosition'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "2\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inLightPosition'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "2\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inLightRadius'\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inLightAttenuation'\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inLightColor'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "4\n            }\n        ]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "scene",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "'uResolution'",
+          "type": null
+        },
+        {
+          "name": "this.width",
+          "type": null
+        },
+        {
+          "name": "this.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1f",
+      "params": [
+        {
+          "name": "'uCameraZoom'",
+          "type": null
+        },
+        {
+          "name": "camera.zoom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "light",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        },
+        {
+          "name": "lightX",
+          "type": null
+        },
+        {
+          "name": "lightY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.shouldFlush(6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.currentBatch",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture2D",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchLightVert",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "lightX",
+          "type": null
+        },
+        {
+          "name": "lightY",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "attenuation",
+          "type": null
+        },
+        {
+          "name": "r",
+          "type": null
+        },
+        {
+          "name": "g",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchLightVert",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "lightX",
+          "type": null
+        },
+        {
+          "name": "lightY",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "attenuation",
+          "type": null
+        },
+        {
+          "name": "r",
+          "type": null
+        },
+        {
+          "name": "g",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchLightVert",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "lightX",
+          "type": null
+        },
+        {
+          "name": "lightY",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "attenuation",
+          "type": null
+        },
+        {
+          "name": "r",
+          "type": null
+        },
+        {
+          "name": "g",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchLightVert",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "lightX",
+          "type": null
+        },
+        {
+          "name": "lightY",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "attenuation",
+          "type": null
+        },
+        {
+          "name": "r",
+          "type": null
+        },
+        {
+          "name": "g",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchLightVert",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "lightX",
+          "type": null
+        },
+        {
+          "name": "lightY",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "attenuation",
+          "type": null
+        },
+        {
+          "name": "r",
+          "type": null
+        },
+        {
+          "name": "g",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchLightVert",
+      "params": [
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        },
+        {
+          "name": "lightX",
+          "type": null
+        },
+        {
+          "name": "lightY",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "attenuation",
+          "type": null
+        },
+        {
+          "name": "r",
+          "type": null
+        },
+        {
+          "name": "g",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "lightX",
+          "type": null
+        },
+        {
+          "name": "lightY",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "attenuation",
+          "type": null
+        },
+        {
+          "name": "r",
+          "type": null
+        },
+        {
+          "name": "g",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        },
+        {
+          "name": "a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,287 @@
+{
+  "type": "class",
+  "name": "UboSystem",
+  "sourcePath": "rendering/renderers/shared/shader/UboSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "export interface UboAdaptor { createUboElements: (uniformData: UniformData[]) => UboLayout; generateUboSync: (uboElements: UboElement[]) => UniformsSyncCallback; } /** System plugin to the renderer to manage uniform buffers.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!unsafeEvalSupported(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'Current environment does not allow unsafe-eval",
+          "type": null
+        },
+        {
+          "name": "'\n                 + 'please use pixi.js/unsafe-eval module to enable support.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureUniformGroup",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": "UniformGroup",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getUniformGroupData",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "new Float32Array(uniformData.layout.size / 4",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUniformGroupData",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": "UniformGroup",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!uniformData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "keys",
+      "params": [
+        {
+          "name": "uniformGroup.uniformStructures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "(i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createUboElements",
+      "params": [
+        {
+          "name": "elements",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateUboSync",
+      "params": [
+        {
+          "name": "uboElements",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncUniformGroup",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": "UniformGroup",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "Float32Array",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "getUniformGroupData",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "new Float32Array(uniformGroupData.layout.size / 4",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncFunction",
+      "params": [
+        {
+          "name": "uniformGroup.uniforms",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "dataInt32",
+          "type": null
+        },
+        {
+          "name": "offset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": "UniformGroup",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "uniformGroup.isStatic && !uniformGroup._dirtyId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncUniformGroup",
+      "params": [
+        {
+          "name": "uniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

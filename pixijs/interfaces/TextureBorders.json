@@ -1,0 +1,209 @@
+{
+  "type": "interface",
+  "name": "TextureBorders",
+  "sourcePath": "rendering/renderers/shared/texture/Texture.ts",
+  "extends": [],
+  "description": "Stores the width of the non-scalable borders, for example when used with {@link NineSlicePlane} texture.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "left",
+      "type": "number",
+      "optional": false,
+      "description": "left border in pixels"
+    },
+    {
+      "name": "top",
+      "type": "number",
+      "optional": false,
+      "description": "top border in pixels"
+    },
+    {
+      "name": "right",
+      "type": "number",
+      "optional": false,
+      "description": "right border in pixels"
+    },
+    {
+      "name": "bottom",
+      "type": "number",
+      "optional": false,
+      "description": "bottom border in pixels"
+    },
+    {
+      "name": "source",
+      "type": "TextureSourceType",
+      "optional": true,
+      "description": "The UVs data structure for a texture. / export type UVs = { x0: number; y0: number; x1: number; y1: number; x2: number; y2: number; x3: number; y3: number; }; /** The options that can be passed to a new Texture / export interface TextureOptions<TextureSourceType extends TextureSource = TextureSource> { /** the underlying texture data that this texture will use"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "optional": true,
+      "description": "optional label, for debugging"
+    },
+    {
+      "name": "frame",
+      "type": "Rectangle",
+      "optional": true,
+      "description": "The rectangle frame of the texture to show"
+    },
+    {
+      "name": "orig",
+      "type": "Rectangle",
+      "optional": true,
+      "description": "The area of original texture"
+    },
+    {
+      "name": "trim",
+      "type": "Rectangle",
+      "optional": true,
+      "description": "Trimmed rectangle of original texture"
+    },
+    {
+      "name": "defaultAnchor",
+      "type": "{ x: number",
+      "optional": true,
+      "description": "Default anchor point used for sprite placement / rotation"
+    },
+    {
+      "name": "y",
+      "type": "number }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultBorders",
+      "type": "TextureBorders",
+      "optional": true,
+      "description": "Default borders used for 9-slice scaling {@link NineSlicePlane}"
+    },
+    {
+      "name": "rotate",
+      "type": "number",
+      "optional": true,
+      "description": "indicates how the texture was rotated by texture packer. See {@link groupD8}"
+    },
+    {
+      "name": "dynamic",
+      "type": "boolean",
+      "optional": true,
+      "description": "Set to true if you plan on modifying this texture's frame, UVs, or swapping its source at runtime. This is false by default as it improves performance. Generally, it's recommended to create new textures and swap those rather than modifying an existing texture's properties unless you are working with a dynamic frames. Not setting this to true when modifying the texture can lead to visual artifacts. If this is false and you modify the texture, you can manually update the sprite's texture by calling `sprite.onViewUpdate()`."
+    },
+    {
+      "name": "source",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "mode",
+      "type": "* it subscribes on baseTexture events, it automatically resizes at the same time as baseTexture.\n * @category rendering\n * @class\n * @standard\n */\nexport class Texture<TextureSourceType extends TextureSource = TextureSource> extends EventEmitter<{\n    update: Texture\n    destroy: Texture\n}> implements BindableTexture\n{\n    /**\n     * Helper function that creates a returns Texture based on the source you provide.\n     * The source should be loaded and ready to go. If not its best to grab the asset using Assets.\n     * @param id - String or Source to create texture from\n     * @param skipCache - Skip adding the texture to the cache\n     * @returns The texture based on the Id provided\n     */\n    public static from: (id: TextureSourceLike, skipCache?: boolean) => Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "uid",
+      "type": "number = uid('texture')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "destroyed",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_source",
+      "type": "TextureSourceType",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rotate",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "uvs",
+      "type": "UVs = { x0: 0, y0: 0, x1: 0, y1: 0, x2: 0, y2: 0, x3: 0, y3: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultAnchor",
+      "type": "{ x: number",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "y",
+      "type": "number }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultBorders",
+      "type": "TextureBorders",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "orig",
+      "type": "Rectangle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "trim",
+      "type": "Rectangle",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_textureMatrix",
+      "type": "TextureMatrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "TextureSourceType)\n    {\n        if (this._source)\n        {\n            this._source.off('resize', this.update, this)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "EMPTY",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "WHITE",
+      "type": "Texture<BufferImageSource>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "'EMPTY',\n    source: new TextureSource({\n        label: 'EMPTY',\n    })\n})",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "new BufferImageSource({\n        resource: new Uint8Array([255, 255, 255, 255]),\n        width: 1,\n        height: 1,\n        alphaMode: 'premultiply-alpha-on-upload',\n        label: 'WHITE',\n    }),\n    label: 'WHITE',\n})",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "type": "class",
+  "name": "GlStencilSystem",
+  "sourcePath": "rendering/renderers/gl/GlStencilSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "This manages the stencil buffer. Used primarily for masking",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contextChange",
+      "params": [
+        {
+          "name": "gl",
+          "type": "WebGLRenderingContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onRenderTargetChange",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": "RenderTarget",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeRenderTarget === renderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!stencilState",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "stencilState.stencilMode",
+          "type": null
+        },
+        {
+          "name": "stencilState.stencilReference",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetState",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setStencilMode",
+      "params": [
+        {
+          "name": "stencilMode",
+          "type": "STENCIL_MODES",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stencilReference",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "stencilMode === STENCIL_MODES.DISABLED",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._stencilCache.enabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "disable",
+      "params": [
+        {
+          "name": "gl.STENCIL_TEST",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._stencilCache.enabled",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "enable",
+      "params": [
+        {
+          "name": "gl.STENCIL_TEST",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "stencilMode !== _stencilCache.stencilMode || _stencilCache.stencilReference !== stencilReference",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilFunc",
+      "params": [
+        {
+          "name": "this._comparisonFuncMapping[mode.stencilBack.compare]",
+          "type": null
+        },
+        {
+          "name": "stencilReference",
+          "type": null
+        },
+        {
+          "name": "0xFF",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stencilOp",
+      "params": [
+        {
+          "name": "gl.KEEP",
+          "type": null
+        },
+        {
+          "name": "gl.KEEP",
+          "type": null
+        },
+        {
+          "name": "this._stencilOpsMapping[mode.stencilBack.passOp]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

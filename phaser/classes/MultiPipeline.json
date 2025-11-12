@@ -1,0 +1,2796 @@
+{
+  "type": "class",
+  "name": "MultiPipeline",
+  "sourcePath": "renderer/webgl/pipelines/MultiPipeline.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "WebGLPipeline",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function MultiPipeline (config",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'fragShader'",
+          "type": null
+        },
+        {
+          "name": "ShaderSourceFS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "parseFragmentShaderMaxTextures",
+      "params": [
+        {
+          "name": "fragmentShaderSource",
+          "type": null
+        },
+        {
+          "name": "renderer.maxTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'vertShader'",
+          "type": null
+        },
+        {
+          "name": "ShaderSourceVS",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'attributes'",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": "'inPosition'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "2\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inTexCoord'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "2\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inTexId'\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inTintEffect'\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "name",
+          "type": "'inTint'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "WEBGL_CONST.UNSIGNED_BYTE",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "normalized",
+          "type": "true\n            }\n        ]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "config",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TransformMatrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1iv",
+      "params": [
+        {
+          "name": "'uMainSampler'",
+          "type": null
+        },
+        {
+          "name": "renderer.textureIndexes",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "'uResolution'",
+          "type": null
+        },
+        {
+          "name": "renderer.width",
+          "type": null
+        },
+        {
+          "name": "renderer.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.isCropped",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "crop.flipX !== gameObject.flipX || crop.flipY !== gameObject.flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateCropUVs",
+      "params": [
+        {
+          "name": "crop",
+          "type": null
+        },
+        {
+          "name": "gameObject.flipX",
+          "type": null
+        },
+        {
+          "name": "gameObject.flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.flipX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!customPivot",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!customPivot",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "camera.roundPixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "gx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "gy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyITRS",
+      "params": [
+        {
+          "name": "gx",
+          "type": null
+        },
+        {
+          "name": "gy",
+          "type": null
+        },
+        {
+          "name": "gameObject.rotation",
+          "type": null
+        },
+        {
+          "name": "gameObject.scaleX * flipX",
+          "type": null
+        },
+        {
+          "name": "gameObject.scaleY * flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "camera.matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiplyWithOffset",
+      "params": [
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "-camera.scrollX * gameObject.scrollFactorX",
+          "type": null
+        },
+        {
+          "name": "-camera.scrollY * gameObject.scrollFactorY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiply",
+      "params": [
+        {
+          "name": "spriteMatrix",
+          "type": null
+        },
+        {
+          "name": "calcMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setQuad",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "x + frameWidth",
+          "type": null
+        },
+        {
+          "name": "y + frameHeight",
+          "type": null
+        },
+        {
+          "name": "camera.renderRoundPixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTint",
+      "params": [
+        {
+          "name": "gameObject.tintTopLeft",
+          "type": null
+        },
+        {
+          "name": "cameraAlpha * gameObject._alphaTL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTint",
+      "params": [
+        {
+          "name": "gameObject.tintTopRight",
+          "type": null
+        },
+        {
+          "name": "cameraAlpha * gameObject._alphaTR",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTint",
+      "params": [
+        {
+          "name": "gameObject.tintBottomLeft",
+          "type": null
+        },
+        {
+          "name": "cameraAlpha * gameObject._alphaBL",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTint",
+      "params": [
+        {
+          "name": "gameObject.tintBottomRight",
+          "type": null
+        },
+        {
+          "name": "cameraAlpha * gameObject._alphaBR",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.shouldFlush(6",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "flush",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setGameObject",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "frame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preBatch",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchQuad",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "quad[0]",
+          "type": null
+        },
+        {
+          "name": "quad[1]",
+          "type": null
+        },
+        {
+          "name": "quad[2]",
+          "type": null
+        },
+        {
+          "name": "quad[3]",
+          "type": null
+        },
+        {
+          "name": "quad[4]",
+          "type": null
+        },
+        {
+          "name": "quad[5]",
+          "type": null
+        },
+        {
+          "name": "quad[6]",
+          "type": null
+        },
+        {
+          "name": "quad[7]",
+          "type": null
+        },
+        {
+          "name": "u0",
+          "type": null
+        },
+        {
+          "name": "v0",
+          "type": null
+        },
+        {
+          "name": "u1",
+          "type": null
+        },
+        {
+          "name": "v1",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "gameObject.tintFill",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "unit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "postBatch",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "defaults to currently bound if undefined or null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "textureWidth",
+          "type": null
+        },
+        {
+          "name": "textureHeight",
+          "type": null
+        },
+        {
+          "name": "srcX",
+          "type": null
+        },
+        {
+          "name": "srcY",
+          "type": null
+        },
+        {
+          "name": "srcWidth",
+          "type": null
+        },
+        {
+          "name": "srcHeight",
+          "type": null
+        },
+        {
+          "name": "scaleX",
+          "type": null
+        },
+        {
+          "name": "scaleY",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "flipX",
+          "type": null
+        },
+        {
+          "name": "flipY",
+          "type": null
+        },
+        {
+          "name": "scrollFactorX",
+          "type": null
+        },
+        {
+          "name": "scrollFactorY",
+          "type": null
+        },
+        {
+          "name": "displayOriginX",
+          "type": null
+        },
+        {
+          "name": "displayOriginY",
+          "type": null
+        },
+        {
+          "name": "frameX",
+          "type": null
+        },
+        {
+          "name": "frameY",
+          "type": null
+        },
+        {
+          "name": "frameWidth",
+          "type": null
+        },
+        {
+          "name": "frameHeight",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "uOffset",
+          "type": null
+        },
+        {
+          "name": "vOffset",
+          "type": null
+        },
+        {
+          "name": "camera",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "skipFlip",
+          "type": null
+        },
+        {
+          "name": "textureUnit",
+          "type": null
+        },
+        {
+          "name": "skipPrePost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "skipPrePost === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject.isCropped",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flipX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flipX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "flipY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "camera.roundPixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "srcX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "srcY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyITRS",
+      "params": [
+        {
+          "name": "srcX",
+          "type": null
+        },
+        {
+          "name": "srcY",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        },
+        {
+          "name": "scaleX",
+          "type": null
+        },
+        {
+          "name": "scaleY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "camera.matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiplyWithOffset",
+      "params": [
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "-camera.scrollX * scrollFactorX",
+          "type": null
+        },
+        {
+          "name": "-camera.scrollY * scrollFactorY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiply",
+      "params": [
+        {
+          "name": "spriteMatrix",
+          "type": null
+        },
+        {
+          "name": "calcMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setQuad",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "x + width",
+          "type": null
+        },
+        {
+          "name": "y + height",
+          "type": null
+        },
+        {
+          "name": "camera.renderRoundPixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureUnit === undefined || textureUnit === null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture2D",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject && !skipPrePost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preBatch",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchQuad",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        },
+        {
+          "name": "quad[0]",
+          "type": null
+        },
+        {
+          "name": "quad[1]",
+          "type": null
+        },
+        {
+          "name": "quad[2]",
+          "type": null
+        },
+        {
+          "name": "quad[3]",
+          "type": null
+        },
+        {
+          "name": "quad[4]",
+          "type": null
+        },
+        {
+          "name": "quad[5]",
+          "type": null
+        },
+        {
+          "name": "quad[6]",
+          "type": null
+        },
+        {
+          "name": "quad[7]",
+          "type": null
+        },
+        {
+          "name": "u0",
+          "type": null
+        },
+        {
+          "name": "v0",
+          "type": null
+        },
+        {
+          "name": "u1",
+          "type": null
+        },
+        {
+          "name": "v1",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "tintEffect",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "textureUnit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gameObject && !skipPrePost",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "postBatch",
+      "params": [
+        {
+          "name": "gameObject",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "frame",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "alpha",
+          "type": null
+        },
+        {
+          "name": "transformMatrix",
+          "type": null
+        },
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "transformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiply",
+      "params": [
+        {
+          "name": "parentTransformMatrix",
+          "type": null
+        },
+        {
+          "name": "calcMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setQuad",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "x + frame.width",
+          "type": null
+        },
+        {
+          "name": "y + frame.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture2D",
+      "params": [
+        {
+          "name": "frame.source.glTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTintAppendFloatAlpha",
+      "params": [
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "alpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchQuad",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "quad[0]",
+          "type": null
+        },
+        {
+          "name": "quad[1]",
+          "type": null
+        },
+        {
+          "name": "quad[2]",
+          "type": null
+        },
+        {
+          "name": "quad[3]",
+          "type": null
+        },
+        {
+          "name": "quad[4]",
+          "type": null
+        },
+        {
+          "name": "quad[5]",
+          "type": null
+        },
+        {
+          "name": "quad[6]",
+          "type": null
+        },
+        {
+          "name": "quad[7]",
+          "type": null
+        },
+        {
+          "name": "frame.u0",
+          "type": null
+        },
+        {
+          "name": "frame.v0",
+          "type": null
+        },
+        {
+          "name": "frame.u1",
+          "type": null
+        },
+        {
+          "name": "frame.v1",
+          "type": null
+        },
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "tint",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "frame.glTexture",
+          "type": null
+        },
+        {
+          "name": "unit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiply",
+      "params": [
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "calcMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setQuad",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "x + width",
+          "type": null
+        },
+        {
+          "name": "y + height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchQuad",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "quad[0]",
+          "type": null
+        },
+        {
+          "name": "quad[1]",
+          "type": null
+        },
+        {
+          "name": "quad[2]",
+          "type": null
+        },
+        {
+          "name": "quad[3]",
+          "type": null
+        },
+        {
+          "name": "quad[4]",
+          "type": null
+        },
+        {
+          "name": "quad[5]",
+          "type": null
+        },
+        {
+          "name": "quad[6]",
+          "type": null
+        },
+        {
+          "name": "quad[7]",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "tint.TL",
+          "type": null
+        },
+        {
+          "name": "tint.TR",
+          "type": null
+        },
+        {
+          "name": "tint.BL",
+          "type": null
+        },
+        {
+          "name": "tint.BR",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiply",
+      "params": [
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "calcMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchTri",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "tx0",
+          "type": null
+        },
+        {
+          "name": "ty0",
+          "type": null
+        },
+        {
+          "name": "tx1",
+          "type": null
+        },
+        {
+          "name": "ty1",
+          "type": null
+        },
+        {
+          "name": "tx2",
+          "type": null
+        },
+        {
+          "name": "ty2",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "tint.TL",
+          "type": null
+        },
+        {
+          "name": "tint.TR",
+          "type": null
+        },
+        {
+          "name": "tint.BL",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "lineWidth",
+          "type": null
+        },
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchStrokePath",
+      "params": [
+        {
+          "name": "tempTriangle",
+          "type": null
+        },
+        {
+          "name": "lineWidth",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "path",
+          "type": null
+        },
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiply",
+      "params": [
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "calcMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var pathIndex = 0; pathIndex < length; ++pathIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "point.x",
+          "type": null
+        },
+        {
+          "name": "point.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Earcut",
+      "params": [
+        {
+          "name": "polygonCache",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var index = 0; index < length; index += 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchTri",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "tx0",
+          "type": null
+        },
+        {
+          "name": "ty0",
+          "type": null
+        },
+        {
+          "name": "tx1",
+          "type": null
+        },
+        {
+          "name": "ty1",
+          "type": null
+        },
+        {
+          "name": "tx2",
+          "type": null
+        },
+        {
+          "name": "ty2",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "path",
+          "type": null
+        },
+        {
+          "name": "lineWidth",
+          "type": null
+        },
+        {
+          "name": "pathOpen",
+          "type": null
+        },
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var pathIndex = 0; pathIndex < pathLength; pathIndex++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchLine",
+      "params": [
+        {
+          "name": "point0.x",
+          "type": null
+        },
+        {
+          "name": "point0.y",
+          "type": null
+        },
+        {
+          "name": "point1.x",
+          "type": null
+        },
+        {
+          "name": "point1.y",
+          "type": null
+        },
+        {
+          "name": "point0.width / 2",
+          "type": null
+        },
+        {
+          "name": "point1.width / 2",
+          "type": null
+        },
+        {
+          "name": "lineWidth",
+          "type": null
+        },
+        {
+          "name": "pathIndex",
+          "type": null
+        },
+        {
+          "name": "!pathOpen && (pathIndex === pathLength - 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "ax",
+          "type": null
+        },
+        {
+          "name": "ay",
+          "type": null
+        },
+        {
+          "name": "bx",
+          "type": null
+        },
+        {
+          "name": "by",
+          "type": null
+        },
+        {
+          "name": "aLineWidth",
+          "type": null
+        },
+        {
+          "name": "bLineWidth",
+          "type": null
+        },
+        {
+          "name": "lineWidth",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "closePath",
+          "type": null
+        },
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "parentMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiply",
+      "params": [
+        {
+          "name": "currentMatrix",
+          "type": null
+        },
+        {
+          "name": "calcMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "dx * dx + dy * dy",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "len === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cannot",
+      "params": [
+        {
+          "name": "and should not",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "lx0",
+          "type": null
+        },
+        {
+          "name": "ly0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "lx0",
+          "type": null
+        },
+        {
+          "name": "ly0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "lx1",
+          "type": null
+        },
+        {
+          "name": "ly1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "lx1",
+          "type": null
+        },
+        {
+          "name": "ly1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "lx2",
+          "type": null
+        },
+        {
+          "name": "ly2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "lx2",
+          "type": null
+        },
+        {
+          "name": "ly2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getX",
+      "params": [
+        {
+          "name": "lx3",
+          "type": null
+        },
+        {
+          "name": "ly3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getY",
+      "params": [
+        {
+          "name": "lx3",
+          "type": null
+        },
+        {
+          "name": "ly3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchQuad",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "tlX",
+          "type": null
+        },
+        {
+          "name": "tlY",
+          "type": null
+        },
+        {
+          "name": "blX",
+          "type": null
+        },
+        {
+          "name": "blY",
+          "type": null
+        },
+        {
+          "name": "brX",
+          "type": null
+        },
+        {
+          "name": "brY",
+          "type": null
+        },
+        {
+          "name": "trX",
+          "type": null
+        },
+        {
+          "name": "trY",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lineWidth <= 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "index > 0 && prev[4]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchQuad",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "tlX",
+          "type": null
+        },
+        {
+          "name": "tlY",
+          "type": null
+        },
+        {
+          "name": "blX",
+          "type": null
+        },
+        {
+          "name": "blY",
+          "type": null
+        },
+        {
+          "name": "prev[0]",
+          "type": null
+        },
+        {
+          "name": "prev[1]",
+          "type": null
+        },
+        {
+          "name": "prev[2]",
+          "type": null
+        },
+        {
+          "name": "prev[3]",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "closePath && first[4]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "batchQuad",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "brX",
+          "type": null
+        },
+        {
+          "name": "brY",
+          "type": null
+        },
+        {
+          "name": "trX",
+          "type": null
+        },
+        {
+          "name": "trY",
+          "type": null
+        },
+        {
+          "name": "first[0]",
+          "type": null
+        },
+        {
+          "name": "first[1]",
+          "type": null
+        },
+        {
+          "name": "first[2]",
+          "type": null
+        },
+        {
+          "name": "first[3]",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "tintTL",
+          "type": null
+        },
+        {
+          "name": "tintTR",
+          "type": null
+        },
+        {
+          "name": "tintBL",
+          "type": null
+        },
+        {
+          "name": "tintBR",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

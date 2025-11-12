@@ -1,0 +1,626 @@
+{
+  "type": "class",
+  "name": "AsepriteFile",
+  "sourcePath": "loader/filetypes/AsepriteFile.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "loader",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "MultiFile",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function AsepriteFile (loader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "atlasURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        },
+        {
+          "name": "atlasXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "IsPlainObject(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'key'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ImageFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": "key",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "GetFastValue(config",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "'textureURL'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'textureExtension'",
+          "type": null
+        },
+        {
+          "name": "'png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'normalMap'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'textureXhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "JSONFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": "key",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "GetFastValue(config",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "'atlasURL'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'atlasExtension'",
+          "type": null
+        },
+        {
+          "name": "'json'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GetFastValue",
+      "params": [
+        {
+          "name": "config",
+          "type": null
+        },
+        {
+          "name": "'atlasXhrSettings'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ImageFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "JSONFile",
+      "params": [
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "atlasURL",
+          "type": null
+        },
+        {
+          "name": "atlasXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "image.linkFile",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "'atlasjson'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "[ image",
+          "type": null
+        },
+        {
+          "name": "data",
+          "type": null
+        },
+        {
+          "name": "image.linkFile ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "loader",
+          "type": null
+        },
+        {
+          "name": "'atlasjson'",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "[ image",
+          "type": null
+        },
+        {
+          "name": "data ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.isReadyToProcess(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addAtlas",
+      "params": [
+        {
+          "name": "image.key",
+          "type": null
+        },
+        {
+          "name": "image.data",
+          "type": null
+        },
+        {
+          "name": "json.data",
+          "type": null
+        },
+        {
+          "name": "normalMap",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addToCache",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "preload",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "aseprite",
+      "params": [
+        {
+          "name": "'gladiator'",
+          "type": null
+        },
+        {
+          "name": "'images/Gladiator.png'",
+          "type": null
+        },
+        {
+          "name": "'images/Gladiator.json'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "0",
+      "params": [
+        {
+          "name": "1 is usually enough",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "aseprite",
+      "params": [
+        {
+          "name": "key",
+          "type": "'gladiator'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureURL",
+          "type": "'images/Gladiator.png'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "atlasURL",
+          "type": "'images/Gladiator.json'\n * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createFromAseprite",
+      "params": [
+        {
+          "name": "'paladin'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sprite",
+      "params": [
+        {
+          "name": "400",
+          "type": null
+        },
+        {
+          "name": "300",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "play",
+      "params": [
+        {
+          "name": "'War Cry'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createFromAseprite",
+      "params": [
+        {
+          "name": "'paladin'",
+          "type": null
+        },
+        {
+          "name": "[ 'step'",
+          "type": null
+        },
+        {
+          "name": "'War Cry'",
+          "type": null
+        },
+        {
+          "name": "'Magnum Break' ]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "'aseprite'",
+          "type": null
+        },
+        {
+          "name": "function (key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "atlasURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        },
+        {
+          "name": "atlasXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "Array.isArray(key",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "var i = 0; i < key.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AsepriteFile",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "key[i]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "multifile.files",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AsepriteFile",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "textureURL",
+          "type": null
+        },
+        {
+          "name": "atlasURL",
+          "type": null
+        },
+        {
+          "name": "textureXhrSettings",
+          "type": null
+        },
+        {
+          "name": "atlasXhrSettings",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addFile",
+      "params": [
+        {
+          "name": "multifile.files",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

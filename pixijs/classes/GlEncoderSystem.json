@@ -1,0 +1,195 @@
+{
+  "type": "class",
+  "name": "GlEncoderSystem",
+  "sourcePath": "rendering/renderers/gl/GlEncoderSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "The system that handles encoding commands for the WebGL.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "resolve",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setGeometry",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "Geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": "Shader",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "shader.glProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "options",
+          "type": "{\n        geometry: Geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": "Shader",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "state",
+          "type": "State",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "topology",
+          "type": "Topology",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "start",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "instanceCount",
+          "type": "number\n        skipSync?: boolean",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "shader",
+          "type": null
+        },
+        {
+          "name": "skipSync",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "renderer.shader._activeProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "state",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "state",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": null
+        },
+        {
+          "name": "start",
+          "type": null
+        },
+        {
+          "name": "instanceCount ?? geometry.instanceCount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

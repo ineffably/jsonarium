@@ -1,0 +1,49 @@
+{
+  "type": "interface",
+  "name": "AccessibleTarget",
+  "sourcePath": "accessibility/accessibilityTarget.ts",
+  "extends": [
+    "AccessibleOptions"
+  ],
+  "description": "Flag for if the object is accessible. If true AccessibilityManager will overlay a shadow div with attributes set ```js const container = new Container(); container.accessible = true; ``` / accessible: boolean; /** Sets the title attribute of the shadow div If accessibleTitle AND accessibleHint has not been this will default to 'container [tabIndex]' ```js const container = new Container(); container.accessible = true; container.accessibleTitle = 'My Container'; ``` / accessibleTitle: string | null; /** Sets the aria-label attribute of the shadow div ```js const container = new Container(); container.accessible = true; container.accessibleHint = 'This is a container'; ``` / accessibleHint: string | null; /** Sets the tabIndex of the shadow div. You can use this to set the order of the elements when using the tab key to navigate. ```js const container = new Container(); container.accessible = true; container.tabIndex = 0; const sprite = new Sprite(texture); sprite.accessible = true; sprite.tabIndex = 1; ``` / tabIndex: number; /** Specify the type of div the accessible layer is. Screen readers treat the element differently depending on this type. Defaults to button. ```js const container = new Container(); container.accessible = true; container.accessibleType = 'button'; // or 'link', 'checkbox', etc. ``` / accessibleType: keyof HTMLElementTagNameMap; /** Specify the pointer-events the accessible div will use Defaults to auto. ```js const container = new Container(); container.accessible = true; container.accessiblePointerEvents = 'none'; // or 'auto', 'visiblePainted', etc. ``` / accessiblePointerEvents: PointerEvents; /** Sets the text content of the shadow ```js const container = new Container(); container.accessible = true; container.accessibleText = 'This is a container'; ``` / accessibleText: string | null; /** Setting to false will prevent any children inside this container to be accessible. Defaults to true. ```js const container = new Container(); container.accessible = true; container.accessibleChildren = false; // This will prevent any children from being accessible const sprite = new Sprite(texture); sprite.accessible = true; // This will not work since accessibleChildren is false ``` / accessibleChildren: boolean; } /** The Accessibility object is attached to the {@link Container}.",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "_accessibleActive",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_accessibleDiv",
+      "type": "AccessibleHTMLElement | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_renderId",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "accessibilityTarget",
+      "type": "AccessibleTarget = {\n    accessible: false,\n    accessibleTitle: null,\n    accessibleHint: null,\n    tabIndex: 0,\n    accessibleType: 'button',\n    accessibleText: null,\n    accessiblePointerEvents: 'auto',\n    accessibleChildren: true,\n    _accessibleActive: false,\n    _accessibleDiv: null,\n    _renderId: -1,\n}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

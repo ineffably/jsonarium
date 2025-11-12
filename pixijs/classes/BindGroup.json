@@ -1,0 +1,200 @@
+{
+  "type": "class",
+  "name": "BindGroup",
+  "sourcePath": "rendering/renderers/gpu/shader/BindGroup.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A bind group is a collection of resources that are bound together for use by a shader. They are essentially a wrapper for the WebGPU BindGroup class. But with the added bonus that WebGL can also work with them. // Create a bind group with a single texture and sampler const bindGroup = new BindGroup({ uTexture: texture.source, uTexture: texture.style, }); Bind groups resources must implement the {@link BindResource} interface. The following resources are supported: - {@link TextureSource} - {@link TextureStyle} - {@link Buffer} - {@link BufferResource} - {@link UniformGroup} The keys in the bind group must correspond to the names of the resources in the GPU program. This bind group class will also watch for changes in its resources ensuring that the changes are reflected in the WebGPU BindGroup.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in resources",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "resource",
+          "type": null
+        },
+        {
+          "name": "index++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._dirty",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this.resources",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "join",
+      "params": [
+        {
+          "name": "'|'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setResource",
+      "params": [
+        {
+          "name": "resource",
+          "type": "BindResource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Set a resource at a given index. this function will ensure that listeners will be removed from the current resource and added to the new resource."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resource === currentResource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentResource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getResource",
+      "params": [
+        {
+          "name": "index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "BindResource",
+      "description": "Returns the resource at the current specified index."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in resources",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": "Destroys this bind group and removes all listeners."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in resources",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onResourceChange",
+      "params": [
+        {
+          "name": "resource",
+          "type": "BindResource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resource.destroyed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in resources",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resources[i] === resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

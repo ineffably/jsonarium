@@ -1,0 +1,215 @@
+{
+  "type": "class",
+  "name": "ViewContainer",
+  "sourcePath": "scene/view/ViewContainer.ts",
+  "extends": null,
+  "implements": [],
+  "description": "export interface GPUData { destroy: () => void; } /** Options for the construction of a ViewContainer. / export interface ViewContainerOptions extends ContainerOptions, PixiMixins.ViewContainerOptions {} // eslint-disable-next-line requireExport/require-export-jsdoc, requireMemberAPI/require-member-api-doc export interface ViewContainer<GPU_DATA extends GPUData = any> extends PixiMixins.ViewContainer, Container { // eslint-disable-next-line requireMemberAPI/require-member-api-doc _gpuData: Record<number, GPU_DATA>; } /** A ViewContainer is a type of container that represents a view. This view can be a Sprite, a Graphics object, or any other object that can be rendered. This class is abstract and should not be used directly.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "point",
+          "type": "PointData",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "public override readonly renderPipeId: string; /** @internal */ public readonly canBundle = true; /** @internal */ public override allowChildren = false; /** @internal */ public _roundPixels: 0 | 1 = 0; /** @internal */ public _lastUsed = -1; /** @internal */ public _gpuData: Record<number, GPU_DATA> = Object.create(null); protected _bounds: Bounds = new Bounds(0, 1, 0, 0); protected _boundsDirty = true; /** The local bounds of the view in its own coordinate space. Bounds are automatically updated when the view's content changes. ```ts // Get bounds dimensions const bounds = view.bounds; console.log(`Width: ${bounds.maxX - bounds.minX}`); console.log(`Height: ${bounds.maxY - bounds.minY}`); ``` / public get bounds() { if (!this._boundsDirty) return this._bounds; this.updateBounds(); this._boundsDirty = false; return this._bounds; } /** @private */ protected abstract updateBounds(): void; /** Whether or not to round the x/y position of the sprite. ```ts // Enable pixel rounding for crisp rendering view.roundPixels = true; ``` / get roundPixels() { return !!this._roundPixels; } set roundPixels(value: boolean) { this._roundPixels = value ? 1 : 0; } // eslint-disable-next-line @typescript-eslint/no-useless-constructor constructor(options: ViewContainerOptions) { super(options); } /** Checks if the object contains the given point in local coordinates. Uses the view's bounds for hit testing. ```ts // Basic point check const localPoint = { x: 50, y: 25 }; const contains = view.containsPoint(localPoint); console.log('Point is inside:', contains); ```"
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "x >= bounds.minX\n            && x <= bounds.maxX\n            && y >= bounds.minY\n            && y <= bounds.maxY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.didViewUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "renderGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onChildViewUpdate",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": "DestroyOptions",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const key in this._gpuData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collectRenderablesSimple",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "renderer",
+          "type": "Renderer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "currentLayer",
+          "type": "RenderLayer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "pushBlendMode",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "this.groupBlendMode",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "collectRenderables",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        },
+        {
+          "name": "renderer",
+          "type": null
+        },
+        {
+          "name": "currentLayer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "popBlendMode",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

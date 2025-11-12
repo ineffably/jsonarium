@@ -1,0 +1,85 @@
+{
+  "type": "interface",
+  "name": "CanvasTextOptions",
+  "sourcePath": "scene/text/Text.ts",
+  "extends": [
+    "TextOptions"
+  ],
+  "description": "Constructor options used for `Text` instances. These options extend TextOptions with canvas-specific features like texture styling. ```ts // Create basic canvas text const text = new Text({ text: 'Hello Pixi!', style: { fontSize: 24, fill: 0xff1010, } }); // Create text with custom texture style const customText = new Text({ text: 'Custom Text', style: { fontSize: 32, fill: 0x4a4a4a }, textureStyle: { scaleMode: 'nearest', } }); ```",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "textureStyle",
+      "type": "TextureStyle | TextureStyleOptions",
+      "optional": true,
+      "description": "Optional texture style to use for the text texture. This allows fine control over how the text is rendered to a texture before being displayed. The texture style can affect: - Scale mode (nearest/linear) - Resolution - Format (rgb/rgba) - Alpha handling ```ts const text = new Text({ text: 'Crisp Text', textureStyle: { scaleMode: 'nearest', // Pixel-perfect scaling } }); ```"
+    },
+    {
+      "name": "features",
+      "type": "* - Dynamic text content and styling\n * - Multi-line text support\n * - Word wrapping\n * - Custom texture styling\n * - High-quality text rendering\n * @example\n * ```ts\n * import { Text } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello Pixi!',\n *     style: {\n *         fontFamily: 'Arial',\n *         fontSize: 24,\n *         fill: 0xff1010,\n *         align: 'center',\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Styled\\nMultiline\\nText',\n *     style: {\n *         fontFamily: 'Arial',\n *         fontSize: 36,\n *         fill: 'red',\n *         stroke: { color: '#4a1850', width: 5 },\n *         align: 'center',\n *         lineHeight: 45,\n *         dropShadow: {\n *             color: '#000000',\n *             blur: 4,\n *             distance: 6,\n *         }\n *     },\n *     anchor: 0.5,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'High Quality Text',\n *     style: {\n *         fontSize: 24,\n *         fill: 0x4a4a4a,\n *     },\n *     textureStyle: {\n *         scaleMode: 'nearest',\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'This is a long piece of text that will automatically wrap to multiple lines',\n *     style: {\n *         fontSize: 20,\n *         wordWrap: true,\n *         wordWrapWidth: 200,\n *         lineHeight: 30,\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Considerations",
+      "type": "* - Each text instance creates its own texture\n * - Texture is regenerated when text or style changes\n * - Use BitmapText for better performance with static text\n * - Consider texture style options for quality vs performance tradeoffs\n * @category text\n * @standard\n * @see {@link TextStyle} For detailed style options\n * @see {@link BitmapText} For better performance with static text\n * @see {@link HTMLText} For HTML/CSS-based text rendering\n */\nexport class Text\n    extends AbstractText<TextStyle, TextStyleOptions, CanvasTextOptions, BatchableText>\n    implements View\n{\n    /** @internal */\n    public override readonly renderPipeId: string = 'text'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureStyle",
+      "type": "TextureStyle",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "CanvasTextOptions)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "TextString, options?: Partial<TextStyle>)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[CanvasTextOptions?] | [TextString, Partial<TextStyle>])\n    {\n        const options = ensureTextOptions<CanvasTextOptions>(args, 'Text')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "this.text,\n                style: this._style,\n                resolution: 1,\n            })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

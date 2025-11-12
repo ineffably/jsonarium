@@ -1,0 +1,101 @@
+{
+  "type": "interface",
+  "name": "BitmapTextLayoutData",
+  "sourcePath": "scene/text-bitmap/utils/getBitmapTextLayout.ts",
+  "extends": [],
+  "description": "The layout data for a bitmap text. This contains the width, height, scale, offsetY and lines of text. Each line contains its width, character positions, characters, space width and spaces index.",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "offsetY",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "lines",
+      "type": "{\n        width: number\n        charPositions: number[],\n        chars: string[],\n        // / spaces: number\n        spaceWidth: number\n        spacesIndex: number[]\n    }[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "chars",
+      "type": "string[],\n    style: TextStyle,\n    font: AbstractBitmapFont<any>,\n    trimEnd: boolean\n): BitmapTextLayoutData\n{\n    const layoutData: BitmapTextLayoutData = {\n        width: 0,\n        height: 0,\n        offsetY: 0,\n        scale: style.fontSize / font.baseMeasurementFontSize,\n        lines: [{\n            width: 0,\n            charPositions: [] as number[],\n            spaceWidth: 0,\n            spacesIndex: [],\n            chars: [],\n        }]\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "previousChar",
+      "type": "string = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "spaceWord",
+      "type": "false,\n        width: 0,\n        start: 0,\n        index: 0, // use index to not modify the array as we use it a lot!\n        positions: [] as number[],\n        chars: [] as string[],\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "word",
+      "type": "typeof currentWord) =>\n    {\n        const start = currentLine.width",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "0,\n            charPositions: [],\n            chars: [],\n            spaceWidth: 0,\n            spacesIndex: [],\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "lineWidth",
+      "type": "number) =>\n        lineWidth - adjustedLetterSpacing > adjustedWordWrapWidth",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "char",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "measurementData",
+      "type": "BitmapTextLayoutData)\n{\n    for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "measurementData",
+      "type": "BitmapTextLayoutData)\n{\n    for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "measurementData",
+      "type": "BitmapTextLayoutData)\n{\n    const width = measurementData.width",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

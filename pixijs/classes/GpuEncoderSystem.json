@@ -1,0 +1,825 @@
+{
+  "type": "class",
+  "name": "GpuEncoderSystem",
+  "sourcePath": "rendering/renderers/gpu/GpuEncoderSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "The system that handles encoding commands for the GPU.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderStart",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "Promise",
+      "params": [
+        {
+          "name": "(resolve",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createCommandEncoder",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginRenderPass",
+      "params": [
+        {
+          "name": "gpuRenderTarget",
+          "type": "GpuRenderTarget",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "endRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginRenderPass",
+      "params": [
+        {
+          "name": "gpuRenderTarget.descriptor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "endRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderPassEncoder",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "end",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setViewport",
+      "params": [
+        {
+          "name": "viewport",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "setViewport",
+      "params": [
+        {
+          "name": "viewport.x",
+          "type": null
+        },
+        {
+          "name": "viewport.y",
+          "type": null
+        },
+        {
+          "name": "viewport.width",
+          "type": null
+        },
+        {
+          "name": "viewport.height",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipelineFromGeometryProgramAndState",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "Geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "program",
+          "type": "GpuProgram",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "state",
+          "type": "any",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "topology",
+          "type": "Topology",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getPipeline",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        },
+        {
+          "name": "state",
+          "type": null
+        },
+        {
+          "name": "topology",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipeline",
+      "params": [
+        {
+          "name": "pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipeline",
+      "params": [
+        {
+          "name": "pipeline",
+          "type": "GPURenderPipeline",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._boundPipeline === pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipeline",
+      "params": [
+        {
+          "name": "pipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._boundVertexBuffer[index] === buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setVertexBuffer",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "this._renderer.buffer.updateBuffer(buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._boundIndexBuffer === buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setIndexBuffer",
+      "params": [
+        {
+          "name": "this._renderer.buffer.updateBuffer(buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetBindGroup",
+      "params": [
+        {
+          "name": "index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "index",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bindGroup",
+          "type": "BindGroup",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "program",
+          "type": "GpuProgram",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._boundBindGroup[index] === bindGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBindGroup",
+      "params": [
+        {
+          "name": "bindGroup",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "gpuBindGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setGeometry",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "Geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "program",
+          "type": "GpuProgram",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBufferNamesToBind",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "program",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in buffersToBind",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "geometry.indexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in shader.groups",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!skipSync",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "i as unknown as number",
+          "type": null
+        },
+        {
+          "name": "bindGroup",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const j in bindGroup.resources",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(resource as UniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "resource as UniformGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "options",
+          "type": "{\n        geometry: Geometry;\n        shader: Shader;\n        state?: State;\n        topology?: Topology;\n        size?: number;\n        start?: number;\n        instanceCount?: number;\n        skipSync?: boolean;\n    }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipelineFromGeometryProgramAndState",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        },
+        {
+          "name": "state",
+          "type": null
+        },
+        {
+          "name": "topology",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setGeometry",
+      "params": [
+        {
+          "name": "geometry",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "geometry.indexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawIndexed",
+      "params": [
+        {
+          "name": "size || geometry.indexBuffer.data.length",
+          "type": null
+        },
+        {
+          "name": "instanceCount ?? geometry.instanceCount",
+          "type": null
+        },
+        {
+          "name": "start || 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "size || geometry.getSize(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.renderPassEncoder",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "end",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "postrender",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finishRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "submit",
+      "params": [
+        {
+          "name": "[this.commandEncoder.finish(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "restoreRenderPass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getDescriptor",
+      "params": [
+        {
+          "name": "this._renderer.renderTarget.renderTarget",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "[0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1]",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "beginRenderPass",
+      "params": [
+        {
+          "name": "descriptor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setViewport",
+      "params": [
+        {
+          "name": "viewport.x",
+          "type": null
+        },
+        {
+          "name": "viewport.y",
+          "type": null
+        },
+        {
+          "name": "viewport.width",
+          "type": null
+        },
+        {
+          "name": "viewport.height",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipeline",
+      "params": [
+        {
+          "name": "boundPipeline",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in boundVertexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in boundBindGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "i as unknown as number",
+          "type": null
+        },
+        {
+          "name": "boundBindGroup[i]",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < 16; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contextChange",
+      "params": [
+        {
+          "name": "gpu",
+          "type": "GPU",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

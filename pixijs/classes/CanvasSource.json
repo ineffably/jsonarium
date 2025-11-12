@@ -1,0 +1,232 @@
+{
+  "type": "class",
+  "name": "CanvasSource",
+  "sourcePath": "rendering/renderers/shared/texture/sources/CanvasSource.ts",
+  "extends": "TextureSource",
+  "implements": [],
+  "description": "Options for creating a CanvasSource. / export interface CanvasSourceOptions extends TextureSourceOptions<ICanvas> { /** Should the canvas be resized to preserve its screen width and height regardless of the resolution of the renderer, this is only supported for HTMLCanvasElement and will be ignored if the canvas is an OffscreenCanvas. / autoDensity?: boolean; /** if true, this canvas will be set up to be transparent where possible */ transparent?: boolean; } /** A texture source that uses a canvas as its resource. It automatically resizes the canvas based on the width, height, and resolution. It also provides a 2D rendering context for drawing.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!options.resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createCanvas",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!options.width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!options.autoDensity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!options.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!options.autoDensity",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resizeCanvas",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resizeCanvas",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.autoDensity && 'style' in this.resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "canvas",
+      "params": [
+        {
+          "name": "even if values are set to the same",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.resource.width !== this.pixelWidth || this.resource.height !== this.pixelHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width = this.width",
+          "type": null
+        },
+        {
+          "name": "height = this.height",
+          "type": null
+        },
+        {
+          "name": "resolution = this._resolution",
+          "type": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "didResize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resizeCanvas",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "resource",
+          "type": "any",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "resource is ICanvas",
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "globalThis.HTMLCanvasElement && resource instanceof HTMLCanvasElement",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getContext",
+      "params": [
+        {
+          "name": "'2d'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "context2D",
+      "type": "CanvasRenderingContext2D",
+      "description": "Returns the 2D rendering context for the canvas. Caches the context after creating it."
+    }
+  ]
+}

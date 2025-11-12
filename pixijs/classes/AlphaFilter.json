@@ -1,0 +1,165 @@
+{
+  "type": "class",
+  "name": "AlphaFilter",
+  "sourcePath": "filters/defaults/alpha/AlphaFilter.ts",
+  "extends": "Filter",
+  "implements": [],
+  "description": "Options for AlphaFilter / export interface AlphaFilterOptions extends FilterOptions { /** Amount of alpha from 0 to 1, where 0 is transparent / alpha: number; } /** Simplest filter - applies alpha. Use this instead of Container's alpha property to avoid visual layering of individual elements. AlphaFilter applies alpha evenly across the entire display object and any opaque elements it contains. If elements are not opaque, they will blend with each other anyway. Very handy if you want to use common features of all filters: 1. Assign a blendMode to this filter, blend all elements inside display object with background. 2. To use clipping in display coordinates, assign a filterArea to the same container that has this filter. import { AlphaFilter } from 'pixi.js'; const filter = new AlphaFilter({ alpha: 0.5 }); sprite.filters = filter; // update alpha filter.alpha = 0.8;",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "AlphaFilter",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "opaque",
+      "params": [
+        {
+          "name": "default",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "vertex",
+          "type": "{\n                source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainVertex'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": "{\n                source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainFragment'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "{\n            vertex",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": "'alpha-filter'\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uAlpha",
+          "type": "{ value: alpha",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "'f32' }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            ...rest",
+          "type": null
+        },
+        {
+          "name": "gpuProgram",
+          "type": null
+        },
+        {
+          "name": "glProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                alphaUniforms\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "AlphaFilter",
+      "params": [
+        {
+          "name": "alpha",
+          "type": "0.5 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "alpha",
+      "type": "number",
+      "description": "The alpha value of the filter. Controls the transparency of the filtered display object. ```ts // Create filter with initial alpha const filter = new AlphaFilter({ alpha: 0.5 }); // Update alpha value dynamically filter.alpha = 0.8; ``` - 0 = fully transparent - 1 = fully opaque - Values are clamped between 0 and 1"
+    }
+  ]
+}

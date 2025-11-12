@@ -1,0 +1,79 @@
+{
+  "type": "interface",
+  "name": "PerspectivePlaneOptions",
+  "sourcePath": "scene/mesh-perspective/PerspectiveMesh.ts",
+  "extends": [
+    "MeshPlaneOptions"
+  ],
+  "description": "Constructor options used for `PerspectiveMesh` instances. Defines the geometry and appearance of a 2D mesh with perspective projection. ```ts // Create a perspective mesh with a texture const mesh = new PerspectiveMesh({ texture: Texture.from('myImage.png'), verticesX: 20, verticesY: 20, // Define corners clockwise from top-left x0: 0,   y0: 0,    // Top-left x1: 100, y1: 20,   // Top-right (raised) x2: 100, y2: 100,  // Bottom-right x3: 0,   y3: 80    // Bottom-left (raised) }); // Create a skewed perspective const skewedMesh = new PerspectiveMesh({ texture: Texture.from('background.jpg'), verticesX: 15,     // More vertices for smoother perspective verticesY: 15, x0: 0,   y0: 30,   // Shifted top-left x1: 128, y1: 0,    // Raised top-right x2: 128, y2: 128,  // Normal bottom-right x3: 0,   y3: 98    // Shifted bottom-left }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "x0",
+      "type": "number,\n    /** The y-coordinate of the top-left corner */\n    y0?: number,\n    /** The x-coordinate of the top-right corner */\n    x1?: number,\n    /** The y-coordinate of the top-right corner */\n    y1?: number,\n    /** The x-coordinate of the bottom-right corner */\n    x2?: number,\n    /** The y-coordinate of the bottom-right corner */\n    y2?: number,\n    /** The x-coordinate of the bottom-left corner */\n    x3?: number,\n    /** The y-coordinate of the bottom-left corner */\n    y3?: number\n}\n\n/**\n * A perspective mesh that allows you to draw a 2d plane with perspective. Where ever you move the corners\n * the texture will be projected to look like it is in 3d space. Great for mapping a 2D mesh into a 3D scene.\n *\n * The calculations is done at the uv level. This means that the more vertices you have the more smooth\n * the perspective will be. If you have a low amount of vertices you may see the texture stretch. Too many vertices\n * could be slower. It is a balance between performance and quality! We leave that to you to decide.\n *\n * > [!IMPORTANT] This is not a full 3D mesh, it is a 2D mesh with a perspective projection applied to it.\n * @category scene\n * @standard\n * @see {@link PerspectiveMesh}\n * @example\n * ```ts\n * // Create a perspective mesh with a texture\n * const mesh = new PerspectiveMesh({\n *     texture: Texture.from('myImage.png'),\n *     verticesX: 20,\n *     verticesY: 20,\n *     // Define corners clockwise from top-left\n *     x0: 0,   y0: 0,    // Top-left\n *     x1: 100, y1: 20,   // Top-right (raised)\n *     x2: 100, y2: 100,  // Bottom-right\n *     x3: 0,   y3: 80    // Bottom-left (raised)\n * })",
+      "optional": true,
+      "description": "The x-coordinate of the top-left corner"
+    },
+    {
+      "name": "verticesX",
+      "type": "15,\n     *     verticesY: 15,\n     *     // Move top edge up for default skew\n     *     y0: -20,\n     *     y1: -20\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultOptions",
+      "type": "PerspectivePlaneOptions = {\n        texture: Texture.WHITE,\n        verticesX: 10,\n        verticesY: 10,\n        x0: 0,\n        y0: 0,\n        x1: 100,\n        y1: 0,\n        x2: 100,\n        y2: 100,\n        x3: 0,\n        y3: 100\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "PerspectivePlaneOptions)\n    {\n        options = { ...PerspectiveMesh.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "texture.width,\n            height: texture.height,\n            verticesX,\n            verticesY,\n        }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "planeGeometry }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "PerspectivePlaneGeometry = this.geometry as any",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Texture)\n    {\n        if (this._texture === value) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('initial.png'),\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('myImage.png'),\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x0",
+      "type": "number, y0: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number)\n    {\n        this.geometry.setCorners(x0, y0, x1, y1, x2, y2, x3, y3)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

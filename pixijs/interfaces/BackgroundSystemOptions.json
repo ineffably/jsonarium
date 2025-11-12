@@ -1,0 +1,65 @@
+{
+  "type": "interface",
+  "name": "BackgroundSystemOptions",
+  "sourcePath": "rendering/renderers/shared/background/BackgroundSystem.ts",
+  "extends": [],
+  "description": "Options for the background system.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "backgroundColor",
+      "type": "ColorSource",
+      "optional": false,
+      "description": "The background color used to clear the canvas. See {@link ColorSource} for accepted color values."
+    },
+    {
+      "name": "background",
+      "type": "ColorSource\n    /**\n     * Transparency of the background color, value from `0` (fully transparent) to `1` (fully opaque).\n     * This value determines whether the canvas is initialized with alpha transparency support.\n     * Note: This cannot be changed after initialization. If set to `1`, the canvas will remain opaque,\n     * even if a transparent background color is set later.\n     * @default 1\n     */\n    backgroundAlpha?: number",
+      "optional": true,
+      "description": "Alias for `backgroundColor`"
+    },
+    {
+      "name": "clearBeforeRender",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to clear the canvas before new render passes."
+    },
+    {
+      "name": "backgroundAlpha",
+      "type": "1,\n        /**\n         * {@link WebGLOptions.backgroundColor}\n         * @default 0x000000\n         */\n        backgroundColor: 0x0,\n        /**\n         * {@link WebGLOptions.clearBeforeRender}\n         * @default true\n         */\n        clearBeforeRender: true,\n    }",
+      "optional": false,
+      "description": "The background system manages the background color and alpha of the main view. / export class BackgroundSystem implements System<BackgroundSystemOptions> { /** @ignore */ public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'background', priority: 0, } as const; /** default options used by the system */ public static defaultOptions: BackgroundSystemOptions = { /** {@link WebGLOptions.backgroundAlpha}"
+    },
+    {
+      "name": "clearBeforeRender",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_backgroundColor",
+      "type": "Color",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "BackgroundSystemOptions): void\n    {\n        options = { ...BackgroundSystem.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "ColorSource)\n    {\n        // #if _DEBUG\n\n        const incoming = Color.shared.setValue(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._backgroundColor.setAlpha(value)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

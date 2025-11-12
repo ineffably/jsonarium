@@ -1,0 +1,67 @@
+{
+  "type": "interface",
+  "name": "FindMixin",
+  "sourcePath": "scene/container/container-mixins/findMixin.ts",
+  "extends": [
+    "Required"
+  ],
+  "description": "The instance label of the object. / label?: string; } /** The FindMixin interface provides methods for finding children within a container by their label. It allows for searching for a single child or multiple children with a specific label, either directly or recursively through the container's hierarchy.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "name",
+      "type": "string",
+      "optional": false,
+      "description": "The instance name of the object."
+    },
+    {
+      "name": "label",
+      "type": "RegExp | string, deep?: boolean): Container | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "RegExp | string, deep?: boolean): Container | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "RegExp | string, deep?: boolean, out?: Container[]): Container[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "findMixin",
+      "type": "Partial<Container> = {\n    label: null,\n\n    get name(): string\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Container.name property has been removed, use Container.label instead')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "string)\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'Container.name property has been removed, use Container.label instead')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "string, deep = false): Container | null\n    {\n        return this.getChildByLabel(name, deep)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "string | RegExp, deep = false): Container | null\n    {\n        const children = this.children",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "string | RegExp, deep = false, out = []): Container[]\n    {\n        const children = this.children",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

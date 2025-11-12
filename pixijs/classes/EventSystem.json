@@ -1,0 +1,356 @@
+{
+  "type": "class",
+  "name": "EventSystem",
+  "sourcePath": "events/EventSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "Options for configuring the PixiJS event system. These options control how the event system handles different types of interactions and event propagation. ```ts // Basic event system configuration const app = new Application(); await app.init({ // Configure default interaction mode eventMode: 'static', // Configure event features eventFeatures: { move: true,           // Enable pointer movement events globalMove: false,    // Disable global move events click: true,          // Enable click events wheel: true          // Enable wheel/scroll events } }); // Access event system after initialization const eventSystem = app.renderer.events; console.log(eventSystem.features); // Check enabled features ``` / export interface EventSystemOptions { /** The default event mode for all display objects. Controls how objects respond to interaction events. Possible values: - `'none'`: No interaction events - `'passive'`: Only container's children receive events (default) - `'auto'`: Receives events when parent is interactive - `'static'`: Standard interaction events - `'dynamic'`: Like static but with additional synthetic events / eventMode?: EventMode; /** Configuration for enabling/disabling specific event features. Use this to optimize performance by turning off unused functionality. ```ts const app = new Application(); await app.init({ eventFeatures: { // Core interaction events move: true,        // Pointer/mouse/touch movement click: true,       // Click/tap events wheel: true,       // Mouse wheel/scroll events // Global tracking globalMove: false  // Global pointer movement } }); ``` / eventFeatures?: Partial<EventSystemFeatures>; } /** The event features that are enabled by the EventSystem. These features control different types of interaction events in your PixiJS application. ```ts // Configure features during application initialization const app = new Application(); await app.init({ eventFeatures: { // Basic interaction events move: true,        // Enable pointer movement tracking click: true,       // Enable click/tap events wheel: true,       // Enable mouse wheel/scroll events // Advanced features globalMove: false  // Disable global move tracking for performance } }); // Or configure after initialization app.renderer.events.features.move = false;      // Disable movement events app.renderer.events.features.globalMove = true; // Enable global tracking ``` / export interface EventSystemFeatures { /** Enables pointer events associated with pointer movement. When enabled, these events will fire: - `pointermove` / `mousemove` / `touchmove` - `pointerout` / `mouseout` - `pointerover` / `mouseover` ```ts // Enable movement events app.renderer.events.features.move = true; // Listen for movement sprite.on('pointermove', (event) => { console.log('Pointer position:', event.global.x, event.global.y); }); ``` / move: boolean; /** Enables global pointer move events that fire regardless of target. When enabled, these events will fire: - `globalpointermove` - `globalmousemove` - `globaltouchmove` ```ts // Enable global tracking app.renderer.events.features.globalMove = true; // Track pointer globally sprite.on('globalpointermove', (event) => { // Fires even when pointer is not over sprite console.log('Global position:', event.global.x, event.global.y); }); ``` / globalMove: boolean; /** Enables pointer events associated with clicking/tapping. When enabled, these events will fire: - `pointerdown` / `mousedown` / `touchstart` / `rightdown` - `pointerup` / `mouseup` / `touchend` / `rightup` - `pointerupoutside` / `mouseupoutside` / `touchendoutside` / `rightupoutside` - `click` / `tap` ```ts // Enable click events app.renderer.events.features.click = true; // Handle clicks sprite.on('click', (event) => { console.log('Clicked at:', event.global.x, event.global.y); }); ``` / click: boolean; /** Enables mouse wheel/scroll events. ```ts // Enable wheel events app.renderer.events.features.wheel = true; // Handle scrolling sprite.on('wheel', (event) => { // Zoom based on scroll direction const scale = 1 + (event.deltaY / 1000); sprite.scale.set(sprite.scale.x * scale); }); ``` / wheel: boolean; } /** The system for handling UI events in PixiJS applications. This class manages mouse, touch, and pointer events, normalizing them into a consistent event model. ```ts // Access event system through renderer const eventSystem = app.renderer.events; // Configure event features eventSystem.features.globalMove = false;  // Disable global move events eventSystem.features.click = true;        // Enable click events // Set custom cursor styles eventSystem.cursorStyles.default = 'pointer'; eventSystem.cursorStyles.grab = 'grab'; // Get current pointer position const pointer = eventSystem.pointer; console.log(pointer.global.x, pointer.global.y); ``` Features: - Normalizes browser events into consistent format - Supports mouse, touch, and pointer events - Handles event delegation and bubbling - Provides cursor management - Configurable event features",
+  "category": "events",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "EventBoundary",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FederatedPointerEvent",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "FederatedWheelEvent",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Proxy",
+      "params": [
+        {
+          "name": "{ ...EventSystem.defaultEventFeatures }",
+          "type": null
+        },
+        {
+          "name": "set",
+          "type": "(target",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "key === 'globalMove'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "options",
+          "type": "EventSystemOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Runner init called, view is available at this point."
+    },
+    {
+      "name": "setTargetElement",
+      "params": [
+        {
+          "name": "canvas as HTMLCanvasElement",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "assign",
+      "params": [
+        {
+          "name": "this.features",
+          "type": null
+        },
+        {
+          "name": "options.eventFeatures ?? {}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolutionChange",
+      "params": [
+        {
+          "name": "resolution",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Handle changing resolution."
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": "Destroys all event listeners and detaches the renderer."
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTargetElement",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setCursor",
+      "params": [
+        {
+          "name": "mode",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Sets the current cursor mode, handling any callbacks or CSS style changes. The cursor can be a CSS cursor string, a custom callback function, or a key from the cursorStyles dictionary. - A CSS cursor string (e.g., 'pointer', 'grab') - A key from the cursorStyles dictionary - null/undefined to reset to default ```ts // Using predefined cursor styles app.renderer.events.setCursor('pointer');    // Set standard pointer cursor app.renderer.events.setCursor('grab');       // Set grab cursor app.renderer.events.setCursor(null);         // Reset to default // Using custom cursor styles app.renderer.events.cursorStyles.custom = 'url(\"cursor.png\"), auto'; app.renderer.events.setCursor('custom');     // Apply custom cursor // Using callback-based cursor app.renderer.events.cursorStyles.dynamic = (mode) => { document.body.style.cursor = mode === 'hover' ? 'pointer' : 'default'; }; app.renderer.events.setCursor('dynamic');    // Trigger cursor callback ``` - Has no effect on OffscreenCanvas except for callback-based cursors - Caches current cursor to avoid unnecessary DOM updates - Supports CSS cursor values, style objects, and callback functions"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "globalThis.OffscreenCanvas && this.domElement instanceof OffscreenCanvas",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._currentCursor === mode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "switch",
+      "params": [
+        {
+          "name": "typeof style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "applyStyles",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "style",
+      "params": [
+        {
+          "name": "mode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "applyStyles",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "assign",
+      "params": [
+        {
+          "name": "this.domElement.style",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "applyStyles && typeof mode === 'string' && !Object.prototype.hasOwnProperty.call(this.cursorStyles",
+          "type": null
+        },
+        {
+          "name": "mode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "string",
+      "params": [
+        {
+          "name": "not a Symbol",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

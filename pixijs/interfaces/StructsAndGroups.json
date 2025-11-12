@@ -1,0 +1,77 @@
+{
+  "type": "interface",
+  "name": "StructsAndGroups",
+  "sourcePath": "rendering/renderers/gpu/shader/utils/extractStructAndGroups.ts",
+  "extends": [],
+  "description": "Defines the structure of the extracted WGSL structs and groups.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "groups",
+      "type": "{\n        group: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "binding",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "isUniform",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "structs",
+      "type": "{\n        name: string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "members",
+      "type": "Record<string, string>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "wgsl",
+      "type": "string): StructsAndGroups\n{\n    // Patterns for parsing the WGSL file\n    const linePattern = /(^|[^/])@(group|binding)\\(\\d+\\)[^",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "group",
+      "type": "parseInt(item.match(groupPattern)[1], 10),\n        binding: parseInt(item.match(bindingPattern)[1], 10),\n        name: item.match(namePattern)[2],\n        isUniform: item.match(namePattern)[1] === '<uniform>',\n        type: item.match(typePattern)[1],\n    }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "groups",
+      "type": "[],\n            structs: [],\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "acc",
+      "type": "Record<string, string>, member) =>\n            {\n                const [name, type] = member.split(':')",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

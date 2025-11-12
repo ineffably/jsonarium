@@ -1,0 +1,185 @@
+{
+  "type": "interface",
+  "name": "LoadOptions",
+  "sourcePath": "assets/loader/Loader.ts",
+  "extends": [],
+  "description": "Options for loading assets with the Loader ```ts await Assets.load(['file1.png', 'file2.png'], { onProgress: (progress) => console.log(`Progress: ${progress * 100}%`), onError: (error, url) => console.error(`Error loading ${url}: ${error.message}`), strategy: 'retry', // 'throw' | 'skip' | 'retry' retryCount: 5, // Number of retry attempts if strategy is 'retry' retryDelay: 500, // Delay in ms between retries }); ```",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "onProgress",
+      "type": "(progress: number) => void",
+      "optional": true,
+      "description": "Callback for progress updates during loading ```ts const options: LoadOptions = { onProgress: (progress) => { console.log(`Loading progress: ${progress * 100}%`); }, }; await Assets.load('image.png', options); ```"
+    },
+    {
+      "name": "onError",
+      "type": "(error: Error, url: string | ResolvedAsset) => void",
+      "optional": true,
+      "description": "Callback for handling errors during loading ```ts const options: LoadOptions = { onError: (error, url) => { console.error(`Failed to load ${url}: ${error.message}`); }, }; await Assets.load('missing-file.png', options); ```"
+    },
+    {
+      "name": "strategy",
+      "type": "'throw' | 'skip' | 'retry'",
+      "optional": true,
+      "description": "Strategy to handle load failures - 'throw': Immediately throw an error and stop loading (default) - 'skip': Skip the failed asset and continue loading others - 'retry': Retry loading the asset a specified number of times ```ts const options: LoadOptions = { strategy: 'skip', }; await Assets.load('sometimes-fails.png', options); ```"
+    },
+    {
+      "name": "retryCount",
+      "type": "number",
+      "optional": true,
+      "description": "Number of retry attempts if strategy is 'retry' ```ts const options: LoadOptions = { strategy: 'retry', retryCount: 5, // Retry up to 5 times }; await Assets.load('unstable-asset.png', options); ```"
+    },
+    {
+      "name": "retryDelay",
+      "type": "number",
+      "optional": true,
+      "description": "Delay in milliseconds between retry attempts ```ts const options: LoadOptions = { strategy: 'retry', retryDelay: 1000, // Wait 1 second between retries }; await Assets.load('sometimes-fails.png', options); ```"
+    },
+    {
+      "name": "strategy",
+      "type": "'skip', // Change default strategy to 'skip'\n     *   retryCount: 5,   // Change default retry count to 5\n     *   retryDelay: 500, // Change default retry delay to 500ms\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultOptions",
+      "type": "LoadOptions = {\n        onProgress: undefined,\n        onError: undefined,\n        strategy: 'throw',\n        retryCount: 3,\n        retryDelay: 250,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "strategy",
+      "type": "'skip', // Default strategy to 'skip'\n     *   retryCount: 5,   // Default retry count to 5\n     *   retryDelay: 500, // Default retry delay to 500ms\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "loadOptions",
+      "type": "LoadOptions = { ...Loader.defaultOptions }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_parsers",
+      "type": "LoaderParser[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_parserHash",
+      "type": "Record<string, LoaderParser>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "set",
+      "type": "(target, key, value) =>\n        {\n            this._parsersValidated = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "promiseCache",
+      "type": "Record<string, PromiseAndParser> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "string, data?: ResolvedAsset): PromiseAndParser\n    {\n        const result: PromiseAndParser = {\n            promise: null,\n            parser: null\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parser",
+      "type": "LoaderParser = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "asset",
+      "type": "* const asset = await Loader.load('cool.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assets",
+      "type": "* const assets = await Loader.load(['cool.png', 'cooler.png'])",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assetsToLoadIn",
+      "type": "string | ResolvedAsset,\n        onProgress?: ProgressCallback | LoadOptions,\n    ): Promise<T>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assetsToLoadIn",
+      "type": "string[] | ResolvedAsset[],\n        onProgress?: ProgressCallback | LoadOptions,\n    ): Promise<Record<string, T>>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assetsToLoadIn",
+      "type": "string | string[] | ResolvedAsset | ResolvedAsset[],\n        onProgressOrOptions?: ProgressCallback | LoadOptions,\n    ): Promise<T | Record<string, T>>\n    {\n        if (!this._parsersValidated)\n        {\n            this._validateParsers()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "LoadOptions = typeof onProgressOrOptions === 'function'\n            ? { ...Loader.defaultOptions, ...this.loadOptions, onProgress: onProgressOrOptions }\n            : { ...Loader.defaultOptions, ...this.loadOptions, ...(onProgressOrOptions || {}) }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assets",
+      "type": "Record<string, Promise<any>> = {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "alias",
+      "type": "[item],\n            src: item,\n            data: {}\n        }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "promises",
+      "type": "Promise<void>[] = assetsToLoad.map(async (asset: ResolvedAsset) =>\n        {\n            const url = path.toAbsolute(asset.src)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "asset",
+      "type": "* const asset = await Loader.load('cool.png')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "assetsToUnloadIn",
+      "type": "string | string[] | ResolvedAsset | ResolvedAsset[],\n    ): Promise<void>\n    {\n        const assetsToUnload = convertToList<ResolvedAsset>(assetsToUnloadIn, (item) => ({\n            alias: [item],\n            src: item,\n        }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "promises",
+      "type": "Promise<void>[] = assetsToUnload.map(async (asset: ResolvedAsset) =>\n        {\n            const url = path.toAbsolute(asset.src)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "string,\n        asset: ResolvedAsset,\n        options: LoadOptions,\n        assets: Record<string, Promise<any>>\n    )\n    {\n        let attempt = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "ms",
+      "type": "number) => new Promise((r) => setTimeout(r, ms))",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

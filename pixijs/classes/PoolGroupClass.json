@@ -1,0 +1,111 @@
+{
+  "type": "class",
+  "name": "PoolGroupClass",
+  "sourcePath": "utils/pool/PoolGroup.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A type alias for a constructor of a Pool. / export type PoolConstructor<T extends PoolItem> = new () => Pool<T>; /** A group of pools that can be used to store objects of different types.",
+  "category": "utils",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "item",
+          "type": "PoolItem",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "A map to store the pools by their class type. / private readonly _poolsByClass: Map<PoolItemConstructor<PoolItem>, Pool<PoolItem>> = new Map(); /** Prepopulates a specific pool with a given number of items. / public prepopulate<T extends PoolItem>(Class: PoolItemConstructor<T>, total: number): void { const classPool = this.getPool(Class); classPool.prepopulate(total); } /** Gets an item from a specific pool. / public get<T extends PoolItem>(Class: PoolItemConstructor<T>, data?: unknown): T { const pool = this.getPool(Class); return pool.get(data) as T; } /** Returns an item to its respective pool."
+    },
+    {
+      "name": "getPool",
+      "params": [
+        {
+          "name": "item.constructor as PoolItemConstructor<PoolItem>",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "stats",
+      "params": [],
+      "returnType": "Record<string,",
+      "description": "Gets a specific pool based on the class type. / public getPool<T extends PoolItem>(ClassType: PoolItemConstructor<T>): Pool<T> { if (!this._poolsByClass.has(ClassType)) { this._poolsByClass.set(ClassType, new Pool(ClassType)); } return this._poolsByClass.get(ClassType) as Pool<T>; } /** gets the usage stats of each pool in the system"
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(pool",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": "void",
+      "description": "Clears all pools in the group. This will reset all pools and free their resources."
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(pool",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "PoolGroupClass",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "register",
+      "params": [
+        {
+          "name": "BigPool",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

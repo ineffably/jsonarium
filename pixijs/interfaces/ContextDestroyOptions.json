@@ -1,0 +1,29 @@
+{
+  "type": "interface",
+  "name": "ContextDestroyOptions",
+  "sourcePath": "scene/container/destroyTypes.ts",
+  "extends": [],
+  "description": "Whether to destroy the texture for the display object. ```js texturedObject.destroy({ texture: true }); ``` / texture?: boolean; /** Whether to destroy the underlying texture source. Use carefully with shared texture sources. ```js texturedObject.destroy({ textureSource: true }); ``` / textureSource?: boolean; } /** Options when destroying a graphics context. Controls the cleanup of graphics-specific resources. ```ts // Basic context cleanup graphics.destroy({ context: true }); // Full graphics cleanup graphics.destroy({ context: true, texture: true, textureSource: true }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "context",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to destroy the graphics context associated with the graphics object. ```js graphics.destroy({ context: true }); ```"
+    },
+    {
+      "name": "style",
+      "type": "boolean\n}\n\n/**\n * A utility type that allows a type to be either the specified type or a boolean.\n * This is useful for options that can be either a specific value or a boolean flag.\n * @category utils\n * @advanced\n */\nexport type TypeOrBool<T> = T | boolean",
+      "optional": true,
+      "description": "Options when destroying a text object. Controls whether associated text styles should be cleaned up along with the text object itself. ```ts // Basic text cleanup text.destroy({ style: false }); // Keep style for reuse text.destroy({ style: true }); // Destroy style as well ``` / export interface TextDestroyOptions { /** Whether to destroy the text style object along with the text. Use carefully with shared styles."
+    },
+    {
+      "name": "children",
+      "type": "true,\n *     texture: true,\n *     textureSource: true,\n *     context: true,\n *     style: true\n * })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

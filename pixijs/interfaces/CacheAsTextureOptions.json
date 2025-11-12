@@ -1,0 +1,245 @@
+{
+  "type": "interface",
+  "name": "CacheAsTextureOptions",
+  "sourcePath": "scene/container/RenderGroup.ts",
+  "extends": [],
+  "description": "Options for caching a container as a texture.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "antialias",
+      "type": "boolean",
+      "optional": true,
+      "description": "If true, the texture will be antialiased. This smooths out the edges of the texture."
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "optional": true,
+      "description": "The resolution of the texture. A higher resolution means a sharper texture but uses more memory. By default the resolution is 1 which is the same as the rendererers resolution."
+    },
+    {
+      "name": "scaleMode",
+      "type": "SCALE_MODE",
+      "optional": true,
+      "description": "Scale Mode to use for the cached texture ```ts const container = new Container(); container.cacheAsTexture({ scaleMode: 'nearest' }); ```"
+    },
+    {
+      "name": "root",
+      "type": "Container = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderGroupParent",
+      "type": "RenderGroup = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderGroupChildren",
+      "type": "RenderGroup[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "worldTransform",
+      "type": "Matrix = new Matrix()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "childrenToUpdate",
+      "type": "Record<number, { list: Container[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "childrenRenderablesToUpdate",
+      "type": "{ list: Container[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "list",
+      "type": "[], index: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet = new InstructionSet()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_onRenderContainers",
+      "type": "Container[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "_textureBounds",
+      "type": "Bounds",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "textureOptions",
+      "type": "CacheAsTextureOptions",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_batchableRenderGroup",
+      "type": "BatchableSprite",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_parentCacheAsTextureRenderGroup",
+      "type": "RenderGroup",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_inverseWorldTransform",
+      "type": "Matrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_textureOffsetInverseTransform",
+      "type": "Matrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_inverseParentTextureTransform",
+      "type": "Matrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "root",
+      "type": "Container)\n    {\n        this.root = root",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "CacheAsTextureOptions = {}): void\n    {\n        this.textureOptions = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderGroupChild",
+      "type": "RenderGroup)\n    {\n        if (renderGroupChild.renderGroupParent)\n        {\n            renderGroupChild.renderGroupParent._removeRenderGroupChild(renderGroupChild)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderGroupChild",
+      "type": "RenderGroup)\n    {\n        const index = this.renderGroupChildren.indexOf(renderGroupChild)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "Container)\n    {\n        this.structureDidChange = true",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "Container)\n    {\n        // remove all the children...\n        this.structureDidChange = true",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "conditions",
+      "type": "// 1. If the child is not a render group.\n            // 2. If the child is a render group root of this render group - which it can't be removed from in this case.\n            if (!child.renderGroup)\n            {\n                this.removeOnRender(child)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "children",
+      "type": "Container[])\n    {\n        for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "Container)\n    {\n        let childrenToUpdate = this.childrenToUpdate[child.relativeRenderGroupDepth]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "0,\n                list: [],\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderable",
+      "type": "ViewContainer)\n    {\n        if (renderable.globalDisplayStatus < 0b111) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "child",
+      "type": "Container)\n    {\n        this.childrenRenderablesToUpdate.list[this.childrenRenderablesToUpdate.index++] = child",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container)\n    {\n        this._onRenderContainers.push(container)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container)\n    {\n        this._onRenderContainers.splice(this._onRenderContainers.indexOf(container), 1)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer)\n    {\n        for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Container[] = []): Container[]\n    {\n        const children = this.root.children",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container, out: Container[] = []): Container[]\n    {\n        out.push(container)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

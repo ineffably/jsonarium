@@ -1,0 +1,321 @@
+{
+  "type": "class",
+  "name": "DOMPipe",
+  "sourcePath": "dom/DOMPipe.ts",
+  "extends": null,
+  "implements": [
+    "RenderPipe"
+  ],
+  "description": "The DOMPipe class is responsible for managing and rendering DOM elements within a PixiJS scene. It maps dom elements to the canvas and ensures they are correctly positioned and visible.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createElement",
+      "params": [
+        {
+          "name": "'div'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [],
+      "returnType": "void",
+      "description": "Initializes the DOMPipe, setting up the main DOM element and adding it to the document body."
+    },
+    {
+      "name": "CanvasObserver",
+      "params": [
+        {
+          "name": "domElement",
+          "type": "this._domElement",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "renderer",
+          "type": "this._renderer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "domContainer",
+          "type": "DOMContainer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Adds a renderable DOM container to the list of attached elements."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._attachedDomElements.includes(domContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "domContainer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateRenderable",
+      "params": [
+        {
+          "name": "_domContainer",
+          "type": "DOMContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Updates a renderable DOM container."
+    },
+    {
+      "name": "validateRenderable",
+      "params": [
+        {
+          "name": "_domContainer",
+          "type": "DOMContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Validates a renderable DOM container."
+    },
+    {
+      "name": "postrender",
+      "params": [],
+      "returnType": "void",
+      "description": "Handles the post-rendering process, ensuring DOM elements are correctly positioned and visible."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "attachedDomElements.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureAttached",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < attachedDomElements.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!domContainer.parent || domContainer.globalDisplayStatus < 0b111",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._domElement.contains(element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "appendChild",
+      "params": [
+        {
+          "name": "element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "matrix",
+      "params": [
+        {
+          "name": "${wt.a}",
+          "type": null
+        },
+        {
+          "name": "${wt.b}",
+          "type": null
+        },
+        {
+          "name": "${wt.c}",
+          "type": null
+        },
+        {
+          "name": "${wt.d}",
+          "type": null
+        },
+        {
+          "name": "${wt.tx - ax}",
+          "type": null
+        },
+        {
+          "name": "${wt.ty - ay}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": "Destroys the DOMPipe, removing all attached DOM elements and cleaning up resources."
+    },
+    {
+      "name": "remove",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._attachedDomElements.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "remove",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,115 @@
+{
+  "type": "class",
+  "name": "BatchableMesh",
+  "sourcePath": "scene/mesh/shared/BatchableMesh.ts",
+  "extends": null,
+  "implements": [
+    "DefaultBatchableMeshElement"
+  ],
+  "description": "A batchable mesh object.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "reset",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTexture",
+      "params": [
+        {
+          "name": "value",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Sets the texture for the batchable mesh. As it does so, it resets the texture matrix update ID. this is to ensure that the texture matrix is recalculated when the uvs are referenced"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.texture === value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBuffer",
+      "params": [
+        {
+          "name": "'aUV'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!textureMatrix.isSimple",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._textureMatrixUpdateId !== textureMatrix._updateID || this._uvUpdateId !== uvBuffer._updateID",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!transformedUvs || transformedUvs.length < uvs.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "uvs.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "multiplyUvs",
+      "params": [
+        {
+          "name": "uvs as Float32Array",
+          "type": null
+        },
+        {
+          "name": "transformedUvs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

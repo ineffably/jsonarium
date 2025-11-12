@@ -1,0 +1,115 @@
+{
+  "type": "class",
+  "name": "CustomRenderPipe",
+  "sourcePath": "scene/container/CustomRenderPipe.ts",
+  "extends": null,
+  "implements": [
+    "InstructionPipe"
+  ],
+  "description": "The CustomRenderPipe is a render pipe that allows for custom rendering logic for your renderable objects. import { RenderContainer } from 'pixi.js'; const renderContainer = new RenderContainer( (renderer) =>  { renderer.clear({ clearColor: 'green', // clear the screen to green when rendering this item }); })",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "updateRenderable",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroyRenderable",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "validateRenderable",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "container",
+          "type": "RenderContainer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "container",
+          "type": "RenderContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!container.isRenderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "render",
+      "params": [
+        {
+          "name": "this._renderer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

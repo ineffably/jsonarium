@@ -1,0 +1,169 @@
+{
+  "type": "interface",
+  "name": "BlurFilterOptions",
+  "sourcePath": "filters/defaults/blur/BlurFilter.ts",
+  "extends": [
+    "FilterOptions"
+  ],
+  "description": "Configuration options for the BlurFilter. Controls how the Gaussian blur effect is applied. ```ts // Basic blur with default values const filter = new BlurFilter(); // Custom blur configuration const filter = new BlurFilter({ strength: 8,        // Overall blur strength quality: 4,         // Higher quality = better blur kernelSize: 5      // Size of blur kernel }); // Different horizontal/vertical blur const filter = new BlurFilter({ strengthX: 4,      // Horizontal blur only strengthY: 12,     // Stronger vertical blur quality: 2         // Lower quality for better performance }); ``` - Higher quality values produce better blur but impact performance - KernelSize affects blur precision and performance - Strength values determine blur intensity",
+  "category": "filters",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "strength",
+      "type": "number",
+      "optional": true,
+      "description": "The strength of the blur filter. Applied to both horizontal and vertical blur if strengthX/Y not set."
+    },
+    {
+      "name": "strengthX",
+      "type": "number",
+      "optional": true,
+      "description": "The horizontal strength of the blur. Overrides strength parameter for x-axis."
+    },
+    {
+      "name": "strengthY",
+      "type": "number",
+      "optional": true,
+      "description": "The vertical strength of the blur. Overrides strength parameter for y-axis."
+    },
+    {
+      "name": "quality",
+      "type": "number",
+      "optional": true,
+      "description": "The quality of the blur filter. Higher values mean better quality but slower performance."
+    },
+    {
+      "name": "kernelSize",
+      "type": "number",
+      "optional": true,
+      "description": "The kernelSize of the blur filter. Larger values create more precise blur but impact performance. Options: 5, 7, 9, 11, 13, 15."
+    },
+    {
+      "name": "strength",
+      "type": "8,\n        /** The quality of the blur filter. */\n        quality: 4,\n        /** The kernelSize of the blur filter.Options: 5, 7, 9, 11, 13, 15. */\n        kernelSize: 5,\n    }",
+      "optional": false,
+      "description": "The BlurFilter applies a Gaussian blur to an object. The strength of the blur can be set for the x-axis and y-axis separately. ```ts import { BlurFilter } from 'pixi.js'; // Create with default settings const filter = new BlurFilter(); // Create with custom settings const filter = new BlurFilter({ strength: 8,      // Overall blur strength quality: 4,       // Blur quality (higher = better but slower) kernelSize: 5     // Size of blur kernel matrix }); // Apply to a display object sprite.filters = [filter]; // Update properties filter.strength = 10;          // Set both X and Y blur filter.strengthX = 5;          // Set only horizontal blur filter.strengthY = 15;         // Set only vertical blur filter.quality = 2;            // Adjust quality // Enable edge pixel clamping filter.repeatEdgePixels = true; ``` - Higher quality values produce better blur but impact performance - Strength controls blur intensity independently for X and Y - Can be optimized using quality and kernelSize settings - Supports edge pixel clamping for special effects / export class BlurFilter extends Filter { /** Default blur filter options ```ts // Set default options for all BlurFilters BlurFilter.defaultOptions = { strength: 10,       // Default blur strength quality: 2,        // Default blur quality kernelSize: 7      // Default kernel size }; // Create a filter with these defaults const filter = new BlurFilter(); // Uses default options ``` - These options are used when creating a new BlurFilter without specific parameters - Can be overridden by passing options to the constructor - Useful for setting global defaults for all blur filters in your application / public static defaultOptions: Partial<BlurFilterOptions> = { /** The strength of the blur filter."
+    },
+    {
+      "name": "blurXFilter",
+      "type": "BlurFilterPass",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "blurYFilter",
+      "type": "BlurFilterPass",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "BlurFilterOptions)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "strength",
+      "type": "number, quality?: number, resolution?: number | null, kernelSize?: number)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[BlurFilterOptions?] | [number?, number?, number?, number?])\n    {\n        let options = args[0] ?? {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "params",
+      "type": "{ strength, quality, resolution, kernelSize }')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "strength",
+      "type": "options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "compatibleRenderers",
+      "type": "RendererType.BOTH,\n            resources: {}\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "horizontal",
+      "type": "true, ...options })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "horizontal",
+      "type": "false, ...options })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "filterManager",
+      "type": "FilterSystem,\n        input: Texture,\n        output: RenderSurface,\n        clearMode: boolean\n    ): void\n    {\n        const xStrength = Math.abs(this.blurXFilter.strength)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "type": "BlurFilter's strengthX and strengthY are different\n     * ```\n     * @default 8\n     * @throws {Error} If strengthX and strengthY are different values\n     */\n    get strength(): number\n    {\n        if (this.strengthX !== this.strengthY)\n        {\n            throw new Error('BlurFilter\\'s strengthX and strengthY are different')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.blurXFilter.blur = this.blurYFilter.blur = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.blurXFilter.quality = this.blurYFilter.quality = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.blurXFilter.blur = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.blurYFilter.blur = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        // #if _DEBUG\n        deprecation('8.3.0', 'BlurFilter.blur is deprecated, please use BlurFilter.strength instead.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        // #if _DEBUG\n        deprecation('8.3.0', 'BlurFilter.blurX is deprecated, please use BlurFilter.strengthX instead.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        // #if _DEBUG\n        deprecation('8.3.0', 'BlurFilter.blurY is deprecated, please use BlurFilter.strengthY instead.')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        this._repeatEdgePixels = value",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

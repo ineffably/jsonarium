@@ -1,0 +1,358 @@
+{
+  "type": "class",
+  "name": "PrepareBase",
+  "sourcePath": "prepare/PrepareBase.ts",
+  "extends": null,
+  "implements": [],
+  "description": "The accepted types to pass to the prepare system / export type PrepareSourceItem = Container | TextureSource | Texture | GraphicsContext; /** The valid types resolved to the queue ready for upload / export type PrepareQueueItem = TextureSource | Text | GraphicsContext; /** Part of the prepare system. Responsible for uploading all the items to the GPU. This class provides the base functionality and handles processing the queue asynchronously.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "getQueue",
+      "params": [],
+      "returnType": "PrepareQueueItem[]",
+      "description": "Resolve the given resource type and return an item for the queue */ protected abstract resolveQueueItem(source: PrepareSourceItem, queue: PrepareQueueItem[]): void; protected abstract uploadQueueItem(item: PrepareQueueItem): void; /** Return a copy of the queue"
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "resource",
+          "type": "PrepareSourceItem | PrepareSourceItem[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Add a textures or graphics resource to the queue"
+    },
+    {
+      "name": "isArray",
+      "params": [
+        {
+          "name": "resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const resourceItem of resourceArray",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resourceItem instanceof Container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolveQueueItem",
+      "params": [
+        {
+          "name": "resourceItem",
+          "type": null
+        },
+        {
+          "name": "this.queue",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "upload",
+      "params": [
+        {
+          "name": "resource",
+          "type": "PrepareSourceItem | PrepareSourceItem[]",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Promise<void>",
+      "description": "Recursively add a container and its children to the queue / private _addContainer(container: Container): void { this.resolveQueueItem(container, this.queue); // recursively add children for (const child of container.children) { this._addContainer(child); } } /** Upload all the textures and graphics to the GPU (optionally add more resources to the queue first)"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "resource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Promise",
+      "params": [
+        {
+          "name": "(resolve",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.queue.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "resolve",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dedupeQueue",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addOnce",
+      "params": [
+        {
+          "name": "this._tick",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "UPDATE_PRIORITY.UTILITY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolve",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dedupeQueue",
+      "params": [],
+      "returnType": "void",
+      "description": "eliminate duplicates before processing"
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this.queue.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!hash[current.uid]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "clearTimeout",
+      "params": [
+        {
+          "name": "this.timeout",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._destroyed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setTimeout",
+      "params": [
+        {
+          "name": "this._processQueue",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._destroyed",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "queue.length && itemsProcessed < PrepareBase.uploadsPerFrame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "shift",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadQueueItem",
+      "params": [
+        {
+          "name": "queueItem",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "queue.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addOnce",
+      "params": [
+        {
+          "name": "this._tick",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "UPDATE_PRIORITY.UTILITY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const resolve of array",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resolve",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

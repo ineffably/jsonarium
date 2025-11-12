@@ -1,0 +1,453 @@
+{
+  "type": "class",
+  "name": "GpuUniformBatchPipe",
+  "sourcePath": "rendering/renderers/gpu/GpuUniformBatchPipe.ts",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addManagedHash",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "'_bindGroupHash'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UboBatch",
+      "params": [
+        {
+          "name": "{ minUniformOffsetAlignment }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < totalBuffers; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "i === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "data",
+          "type": "this._batchBuffer.data",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "usage\n            }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderEnd",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in this._bindGroupHash",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUniformBindGroup",
+      "params": [
+        {
+          "name": "group",
+          "type": "UniformGroup<any>",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "duplicate",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "BindGroup",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!duplicate && this._bindGroupHash[group.uid]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureUniformGroup",
+      "params": [
+        {
+          "name": "group",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEmptyGroup",
+      "params": [
+        {
+          "name": "data.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "syncUniformGroup",
+      "params": [
+        {
+          "name": "group",
+          "type": null
+        },
+        {
+          "name": "this._batchBuffer.data",
+          "type": null
+        },
+        {
+          "name": "offset / 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUboResource",
+      "params": [
+        {
+          "name": "group",
+          "type": "UniformGroup<any>",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "BufferResource",
+      "description": null
+    },
+    {
+      "name": "updateUniformGroup",
+      "params": [
+        {
+          "name": "group",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addGroup",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getArrayBindGroup",
+      "params": [
+        {
+          "name": "data",
+          "type": "Float32Array",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "BindGroup",
+      "description": null
+    },
+    {
+      "name": "addGroup",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getArrayBufferResource",
+      "params": [
+        {
+          "name": "data",
+          "type": "Float32Array",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "BufferResource",
+      "description": null
+    },
+    {
+      "name": "addGroup",
+      "params": [
+        {
+          "name": "data",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._bufferResources[index]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BufferResource",
+      "params": [
+        {
+          "name": "{\n                buffer",
+          "type": null
+        },
+        {
+          "name": "offset",
+          "type": "((index / 2",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this._bindGroups[index]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BindGroup",
+      "params": [
+        {
+          "name": "0",
+          "type": "this._getBufferResource(index",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "this._batchBuffer.byteIndex",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBuffer",
+      "params": [
+        {
+          "name": "firstBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createCommandEncoder",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 1; i < this._buffers.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyBufferToBuffer",
+      "params": [
+        {
+          "name": "bufferSystem.getGPUBuffer(firstBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGPUBuffer",
+      "params": [
+        {
+          "name": "buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "submit",
+      "params": [
+        {
+          "name": "[commandEncoder.finish(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._bindGroups.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._buffers.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this._bufferResources.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

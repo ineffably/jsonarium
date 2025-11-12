@@ -1,0 +1,29 @@
+{
+  "type": "interface",
+  "name": "BatchPipe",
+  "sourcePath": "rendering/renderers/shared/instructions/RenderPipe.ts",
+  "extends": [],
+  "description": "This is where the renderable is added to the instruction set. This is called once per renderable. For instance, a MeshRenderPipe could be used to enqueue a 'draw mesh' command to the rendering instruction set, catering to the rendering of mesh geometry. In more complex scenarios, such as the SpritePipe, this seamlessly coordinates with a batchPipe to efficiently batch and add batch instructions to the instructions set Add is called when the instructions set is being built. / addRenderable: (renderable: RENDERABLE, instructionSet: InstructionSet) => void; /** Called whenever a renderable has been been updated, eg its position has changed. This is only called in the render loop if the instructions set is being reused from the last frame. Otherwise addRenderable is called. / updateRenderable: (renderable: RENDERABLE) => void; /** Called whenever a renderable is destroyed, often the pipes keep a webGL / webGPU specific representation of the renderable that needs to be tidied up when the renderable is destroyed. / destroyRenderable?: (renderable: RENDERABLE) => void; /** This function is called when the renderer is determining if it can use the same instruction set again to improve performance. If this function returns true, the renderer will rebuild the whole instruction set for the scene. This is only called if the scene has not its changed its structure . / validateRenderable: (renderable: RENDERABLE) => boolean; } /** An interface for a pipe that can be used to build instructions for the renderer. BatchPipes are specifically used to build and render Batches.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "addToBatch",
+      "type": "(renderable: BatchableElement, instructionSet: InstructionSet) => void",
+      "optional": false,
+      "description": "Add a add a batchable object to the batch."
+    },
+    {
+      "name": "break",
+      "type": "(instructionSet: InstructionSet) => void",
+      "optional": false,
+      "description": "Forces the batch to break. This can happen if for example you need to render everything and then change the render target."
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer, adaptor?: any): RenderPipe | BatchPipe | InstructionPipe<any>",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

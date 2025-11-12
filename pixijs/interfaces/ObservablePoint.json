@@ -1,0 +1,121 @@
+{
+  "type": "interface",
+  "name": "ObservablePoint",
+  "sourcePath": "maths/point/ObservablePoint.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "_onUpdate",
+      "type": "(point?: T) => void",
+      "optional": false,
+      "description": "Observer used to listen for observable point changes. Provides callback mechanism for point value updates. ```ts // Basic observer implementation const observer: Observer<ObservablePoint> = { _onUpdate: (point) => { console.log(`Point updated to (${point.x}, ${point.y})`); } }; // Create observable point with observer const point = new ObservablePoint(observer, 100, 100); // Observer will be notified on changes point.x = 200; // Logs: Point updated to (200, 100) ``` - Used internally by ObservablePoint - Triggered on x/y changes - Can track multiple points - Useful for change detection / export interface Observer<T> { /** Callback to call when the point has updated. Triggered whenever x or y coordinates change."
+    },
+    {
+      "name": "_onUpdate",
+      "type": "(p) => console.log(`Updated to (${p.x}, ${p.y})`) },\n *     100, 100\n * )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Logs",
+      "type": "Updated to (200, 100)\n * point.y = 300",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Logs",
+      "type": "Updated to (200, 300)\n *\n * // Set both coordinates\n * point.set(50, 50)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Logs",
+      "type": "Updated to (50, 50)\n * ```\n * @see {@link Point} For non-observable version\n * @see {@link Observer} For observer interface\n * @see {@link PointLike} For point interface\n * @category maths\n * @standard\n */\nexport class ObservablePoint implements PointLike\n{\n    /** @ignore */\n    public _x: number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_y",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_observer",
+      "type": "Observer<ObservablePoint>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "observer",
+      "type": "Observer<ObservablePoint>, x?: number, y?: number)\n    {\n        this._x = x || 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_onUpdate",
+      "type": "(p) => console.log(`Clone updated: (${p.x}, ${p.y})`)\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "observer",
+      "type": "Observer<ObservablePoint>): ObservablePoint\n    {\n        return new ObservablePoint(observer ?? this._observer, this._x, this._y)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "10, y: 20 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "p",
+      "type": "PointData): this\n    {\n        if (this._x !== p.x || this._y !== p.y)\n        {\n            this._x = p.x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "p",
+      "type": "T): T\n    {\n        p.set(this._x, this._y)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "100, y: 200 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "p",
+      "type": "PointData): boolean\n    {\n        return (p.x === this._x) && (p.y === this._y)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "math",
+      "type": "ObservablePoint x=${this._x} y=${this._y} scope=${this._observer}]`",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        if (this._x !== value)\n        {\n            this._x = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        if (this._y !== value)\n        {\n            this._y = value",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "type": "class",
+  "name": "MeshRope",
+  "sourcePath": "scene/mesh-simple/MeshRope.ts",
+  "extends": "Mesh",
+  "implements": [],
+  "description": "Constructor options used for `MeshRope` instances. Allows configuration of a rope-like mesh that follows a series of points with a texture applied. ```ts // Create a basic rope with two points const rope = new MeshRope({ texture: Texture.from('snake.png'), points: [ new Point(0, 0), new Point(100, 0) ] }); // Create a rope with high-quality texture scaling const highQualityRope = new MeshRope({ texture: Texture.from('rope-hd.png'), points: [ new Point(0, 0), new Point(50, 25), new Point(100, 0) ], textureScale: 0.5  // Downscale HD texture for better quality }); ``` / export interface MeshRopeOptions extends Omit<MeshOptions, 'geometry'> { /** The texture to use on the rope */ texture: Texture; /** An array of points that determine the rope's shape and path */ points: PointData[]; /** Controls how the texture is scaled along the rope. - If 0 (default), the texture stretches to fit between points - If > 0, texture repeats with preserved aspect ratio - Larger textures with textureScale < 1 can reduce artifacts / textureScale?: number; } /** A specialized mesh that renders a texture along a path defined by points. Perfect for creating snake-like animations, chains, ropes, and other flowing objects. ```ts // Create a snake with multiple segments const points = []; for (let i = 0; i < 20; i++) { points.push(new Point(i * 50, 0)); } const snake = new MeshRope({ texture: Texture.from('snake.png'), points, textureScale: 0.5 }); // Animate the snake app.ticker.add((delta) => { const time = performance.now() / 1000; // Update points to create wave motion for (let i = 0; i < points.length; i++) { points[i].y = Math.sin(i * 0.5 + time) * 30; points[i].x = (i * 50) + Math.cos(i * 0.3 + time) * 20; } }); // Disable auto updates if manually updating snake.autoUpdate = false; ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "RopeGeometry",
+      "params": [
+        {
+          "name": "width",
+          "type": "texture.height",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "textureScale }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureScale > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "definedProps({\n            ...rest",
+          "type": null
+        },
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "geometry",
+          "type": "ropeGeometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.autoUpdate || geometry._width !== this.texture.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

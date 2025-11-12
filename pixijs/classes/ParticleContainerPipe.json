@@ -1,0 +1,274 @@
+{
+  "type": "class",
+  "name": "ParticleContainerPipe",
+  "sourcePath": "scene/particle-container/shared/ParticleContainerPipe.ts",
+  "extends": null,
+  "implements": [
+    "RenderPipe"
+  ],
+  "description": "export interface ParticleContainerAdaptor { execute(particleContainerPop: ParticleContainerPipe, container: ParticleContainer): void; } /** Renderer for Particles that is designer for speed over feature set.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "ParticleShader",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for2d",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "validateRenderable",
+      "params": [
+        {
+          "name": "_renderable",
+          "type": "ParticleContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "addRenderable",
+      "params": [
+        {
+          "name": "renderable",
+          "type": "ParticleContainer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBuffers",
+      "params": [
+        {
+          "name": "renderable",
+          "type": "ParticleContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "ParticleBuffer",
+      "description": null
+    },
+    {
+      "name": "ParticleBuffer",
+      "params": [
+        {
+          "name": "size",
+          "type": "renderable.particleChildren.length",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "properties",
+          "type": "renderable._properties",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateRenderable",
+      "params": [
+        {
+          "name": "_renderable",
+          "type": "ParticleContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "container",
+          "type": "ParticleContainer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "children.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBuffers",
+      "params": [
+        {
+          "name": "container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "children",
+          "type": null
+        },
+        {
+          "name": "container._childrenDirty",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAdjustedBlendModeBlend",
+      "params": [
+        {
+          "name": "container.blendMode",
+          "type": null
+        },
+        {
+          "name": "container.texture._source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyTo",
+      "params": [
+        {
+          "name": "transformationMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "prepend",
+      "params": [
+        {
+          "name": "renderer.globalUniforms.globalUniformData.projectionMatrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "color32BitToUniform",
+      "params": [
+        {
+          "name": "container.groupColorAlpha",
+          "type": null
+        },
+        {
+          "name": "uniforms.uColor",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "container",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": "Destroys the ParticleRenderer."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.defaultShader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,35 @@
+{
+  "type": "interface",
+  "name": "CollectRenderablesMixin",
+  "sourcePath": "scene/container/container-mixins/collectRenderablesMixin.ts",
+  "extends": [],
+  "description": "The CollectRenderablesMixin interface defines methods for collecting renderable objects from a container and its children. These methods add the renderables to an instruction set, which is used by the renderer to process and display the scene.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet, renderer: Renderer, currentLayer: RenderLayer): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet, renderer: Renderer, currentLayer: RenderLayer): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet,\n        renderer: Renderer,\n        currentLayer: RenderLayer,\n    ): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "collectRenderablesMixin",
+      "type": "Partial<Container> = {\n    collectRenderables(instructionSet: InstructionSet, renderer: Renderer, currentLayer: RenderLayer): void\n    {\n        // Skip processing if the container is not in the current render layer or is not fully visible.\n        if ((this.parentRenderLayer && this.parentRenderLayer !== currentLayer)\n            || this.globalDisplayStatus < 0b111 || !this.includeInBuild) return",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

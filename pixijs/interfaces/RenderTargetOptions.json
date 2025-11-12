@@ -1,0 +1,137 @@
+{
+  "type": "interface",
+  "name": "RenderTargetOptions",
+  "sourcePath": "rendering/renderers/shared/renderTarget/RenderTarget.ts",
+  "extends": [],
+  "description": "Options for creating a render target.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": true,
+      "description": "the width of the RenderTarget"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": true,
+      "description": "the height of the RenderTarget"
+    },
+    {
+      "name": "resolution",
+      "type": "number",
+      "optional": true,
+      "description": "the resolution of the RenderTarget"
+    },
+    {
+      "name": "colorTextures",
+      "type": "BindableTexture[] | number",
+      "optional": true,
+      "description": "an array of textures, or a number indicating how many color textures there should be"
+    },
+    {
+      "name": "stencil",
+      "type": "boolean",
+      "optional": true,
+      "description": "should this render target have a stencil buffer?"
+    },
+    {
+      "name": "depth",
+      "type": "boolean",
+      "optional": true,
+      "description": "should this render target have a depth buffer?"
+    },
+    {
+      "name": "depthStencilTexture",
+      "type": "BindableTexture | boolean",
+      "optional": true,
+      "description": "a depth stencil texture that the depth and stencil outputs will be written to"
+    },
+    {
+      "name": "antialias",
+      "type": "boolean",
+      "optional": true,
+      "description": "should this render target be antialiased?"
+    },
+    {
+      "name": "isRoot",
+      "type": "boolean",
+      "optional": true,
+      "description": "is this a root element, true if this is gl context owners render target"
+    },
+    {
+      "name": "width",
+      "type": "0,\n        /** the height of the RenderTarget */\n        height: 0,\n        /** the resolution of the RenderTarget */\n        resolution: 1,\n        /** an array of textures, or a number indicating how many color textures there should be */\n        colorTextures: 1,\n        /** should this render target have a stencil buffer? */\n        stencil: false,\n        /** should this render target have a depth buffer? */\n        depth: false,\n        /** should this render target be antialiased? */\n        antialias: false, // save on perf by default!\n        /** is this a root element, true if this is gl context owners render target */\n        isRoot: false\n    }",
+      "optional": false,
+      "description": "A class that describes what the renderers are rendering to. This can be as simple as a Texture, or as complex as a multi-texture, multi-sampled render target. Support for stencil and depth buffers is also included. If you need something more complex than a Texture to render to, you should use this class. Under the hood, all textures you render to have a RenderTarget created on their behalf. / export class RenderTarget { /** The default options for a render target */ public static defaultOptions: RenderTargetOptions = { /** the width of the RenderTarget"
+    },
+    {
+      "name": "uid",
+      "type": "number = uid('renderTarget')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "colorTextures",
+      "type": "TextureSource[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "depthStencilTexture",
+      "type": "TextureSource",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stencil",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "depth",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_managedColorTextures",
+      "type": "boolean = false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "descriptor",
+      "type": "RenderTargetOptions = {})\n    {\n        descriptor = { ...RenderTarget.defaultOptions, ...descriptor }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "descriptor.width,\n                    height: descriptor.height,\n                    resolution: descriptor.resolution,\n                    antialias: descriptor.antialias,\n                })\n                )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "source",
+      "type": "TextureSource)\n    {\n        this.resize(source.width, source.height, source._resolution, true)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "this.width,\n                height: this.height,\n                resolution: this.resolution,\n                format: 'depth24plus-stencil8',\n                autoGenerateMipmaps: false,\n                antialias: false,\n                mipLevelCount: 1,\n                // sampleCount: handled by the render target system..\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number, height: number, resolution = this.resolution, skipColorTexture = false)\n    {\n        this.dirtyId++",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

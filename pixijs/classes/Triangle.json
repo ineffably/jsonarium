@@ -1,0 +1,338 @@
+{
+  "type": "class",
+  "name": "Triangle",
+  "sourcePath": "maths/shapes/Triangle.ts",
+  "extends": null,
+  "implements": [
+    "ShapePrimitive"
+  ],
+  "description": "A class to define a shape of a triangle via user defined coordinates. Used for creating triangular shapes and hit areas with three points (x,y), (x2,y2), (x3,y3). Points are stored in counter-clockwise order. ```ts // Basic triangle creation const triangle = new Triangle(0, 0, 100, 0, 50, 50); // Use as hit area container.hitArea = new Triangle(0, 0, 100, 0, 50, 100); // Check point containment const isInside = triangle.contains(mouseX, mouseY); // Get bounding box const bounds = triangle.getBounds(); ```",
+  "category": "maths",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "contains",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks whether the x and y coordinates given are contained within this triangle ```ts // Basic containment check const triangle = new Triangle(0, 0, 100, 0, 50, 100); const isInside = triangle.contains(25, 25); // true ``` - Uses barycentric coordinate system - Works with any triangle shape"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(s < 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeContains",
+      "params": [
+        {
+          "name": "pointX",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "pointY",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "strokeWidth",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_alignment",
+          "type": "number",
+          "optional": true,
+          "default": "0.5"
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks whether the x and y coordinates given are contained within this triangle including the stroke. ```ts // Basic stroke check const triangle = new Triangle(0, 0, 100, 0, 50, 100); const isOnStroke = triangle.strokeContains(25, 25, 4); // 4px line width // Check with different alignments const innerStroke = triangle.strokeContains(25, 25, 4, 1);   // Inside const centerStroke = triangle.strokeContains(25, 25, 4, 0.5); // Centered const outerStroke = triangle.strokeContains(25, 25, 4, 0);   // Outside ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "squaredDistanceToLineSegment(pointX",
+          "type": null
+        },
+        {
+          "name": "pointY",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "squaredDistanceToLineSegment",
+      "params": [
+        {
+          "name": "pointX",
+          "type": null
+        },
+        {
+          "name": "pointY",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "squaredDistanceToLineSegment",
+      "params": [
+        {
+          "name": "pointX",
+          "type": null
+        },
+        {
+          "name": "pointY",
+          "type": null
+        },
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": "Triangle",
+      "description": "Creates a clone of this Triangle ```ts // Basic cloning const original = new Triangle(0, 0, 100, 0, 50, 100); const copy = original.clone(); // Clone and modify const modified = original.clone(); modified.x3 = 75; modified.y3 = 150; // Verify independence console.log(original.y3);  // 100 console.log(modified.y3);  // 150 ```"
+    },
+    {
+      "name": "Triangle",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.x2",
+          "type": null
+        },
+        {
+          "name": "this.y2",
+          "type": null
+        },
+        {
+          "name": "this.x3",
+          "type": null
+        },
+        {
+          "name": "this.y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "triangle",
+          "type": "Triangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Copies another triangle to this one. ```ts // Basic copying const source = new Triangle(0, 0, 100, 0, 50, 100); const target = new Triangle(); target.copyFrom(source); // Chain with other operations const triangle = new Triangle() .copyFrom(source) .getBounds(rect); ```"
+    },
+    {
+      "name": "copyTo",
+      "params": [
+        {
+          "name": "triangle",
+          "type": "Triangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Triangle",
+      "description": "Copies this triangle to another one. ```ts // Basic copying const source = new Triangle(0, 0, 100, 0, 50, 100); const target = new Triangle(); source.copyTo(target); // Chain with other operations const result = source .copyTo(new Triangle()) .getBounds(); ``` - Updates target triangle values - Copies all point coordinates - Returns target for chaining - More efficient than clone()"
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBounds",
+      "params": [
+        {
+          "name": "out",
+          "type": "Rectangle",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Rectangle",
+      "description": "Returns the framing rectangle of the triangle as a Rectangle object ```ts // Basic bounds calculation const triangle = new Triangle(0, 0, 100, 0, 50, 100); const bounds = triangle.getBounds(); // bounds: x=0, y=0, width=100, height=100 // Reuse existing rectangle const rect = new Rectangle(); triangle.getBounds(rect); ```"
+    },
+    {
+      "name": "Rectangle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.x2",
+          "type": null
+        },
+        {
+          "name": "this.x3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "this.x",
+          "type": null
+        },
+        {
+          "name": "this.x2",
+          "type": null
+        },
+        {
+          "name": "this.x3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.y2",
+          "type": null
+        },
+        {
+          "name": "this.y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "this.y",
+          "type": null
+        },
+        {
+          "name": "this.y2",
+          "type": null
+        },
+        {
+          "name": "this.y3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

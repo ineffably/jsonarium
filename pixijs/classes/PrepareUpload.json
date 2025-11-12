@@ -1,0 +1,311 @@
+{
+  "type": "class",
+  "name": "PrepareUpload",
+  "sourcePath": "prepare/PrepareUpload.ts",
+  "extends": "PrepareQueue",
+  "implements": [],
+  "description": "Part of the prepare system. Responsible for uploading all the items to the GPU. This class extends the resolver functionality and uploads the given queue items.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "uploadQueueItem",
+      "params": [
+        {
+          "name": "item",
+          "type": "PrepareQueueItem",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item instanceof TextureSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadTextureSource",
+      "params": [
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item instanceof Text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadText",
+      "params": [
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item instanceof HTMLText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadHTMLText",
+      "params": [
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item instanceof BitmapText",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadBitmapText",
+      "params": [
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "item instanceof GraphicsContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadGraphicsContext",
+      "params": [
+        {
+          "name": "item",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadTextureSource",
+      "params": [
+        {
+          "name": "textureSource",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "initSource",
+      "params": [
+        {
+          "name": "textureSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadText",
+      "params": [
+        {
+          "name": "_text",
+          "type": "Text",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "initGpuText",
+      "params": [
+        {
+          "name": "_text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadBitmapText",
+      "params": [
+        {
+          "name": "_text",
+          "type": "BitmapText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "initGpuText",
+      "params": [
+        {
+          "name": "_text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadHTMLText",
+      "params": [
+        {
+          "name": "_text",
+          "type": "HTMLText",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "initGpuText",
+      "params": [
+        {
+          "name": "_text",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadGraphicsContext",
+      "params": [
+        {
+          "name": "graphicsContext",
+          "type": "GraphicsContext",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getGpuContext",
+      "params": [
+        {
+          "name": "graphicsContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const instruction of instructions",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'texture'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadTextureSource",
+      "params": [
+        {
+          "name": "image.source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "instruction.action === 'fill'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "uploadTextureSource",
+      "params": [
+        {
+          "name": "texture.source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

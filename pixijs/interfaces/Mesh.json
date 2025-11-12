@@ -1,0 +1,121 @@
+{
+  "type": "interface",
+  "name": "Mesh",
+  "sourcePath": "scene/mesh/shared/Mesh.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "following",
+      "type": "* - Geometry - The structure and data for the mesh. This can include anything from positions, uvs, normals, colors etc..\n * - Shader - This is the shader that PixiJS will render the geometry with (attributes in the shader must match the geometry)\n * - State - This is the state of WebGL required to render the mesh.\n *\n * Through a combination of the above elements you can render anything you want, 2D or 3D!\n * @category scene\n * @advanced\n */\nexport class Mesh<\n    GEOMETRY extends Geometry = MeshGeometry,\n    SHADER extends Shader = TextureShader\n> extends ViewContainer<MeshGpuData> implements View, Instruction\n{\n    /** @internal */\n    public override readonly renderPipeId: string = 'mesh'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "state",
+      "type": "State",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_texture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_geometry",
+      "type": "GEOMETRY",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_shader",
+      "type": "SHADER | null = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "MeshOptions<GEOMETRY, SHADER>)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY, shader: SHADER, state?: State, drawMode?: Topology)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[MeshOptions<GEOMETRY, SHADER>] | [GEOMETRY, SHADER, State?, Topology?])\n    {\n        let options = args[0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Mesh",
+      "type": "use new Mesh({ geometry, shader }) instead')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "options,\n                shader: args[1],\n            } as MeshOptions<GEOMETRY, SHADER>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Mesh",
+      "type": "drawMode argument has been removed, use geometry.topology instead')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "'Mesh',\n            ...rest\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "SHADER | null)\n    {\n        if (this._shader === value) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "GEOMETRY)\n    {\n        if (this._geometry === value) return",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Texture)\n    {\n        value ||= Texture.EMPTY",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "PointData)\n    {\n        const { x, y } = point",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "true, textureSource: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions): void\n    {\n        super.destroy(options)",
+      "optional": true,
+      "description": null
+    }
+  ]
+}

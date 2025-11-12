@@ -1,0 +1,71 @@
+{
+  "type": "interface",
+  "name": "LoaderParserAdvanced",
+  "sourcePath": "assets/loader/parsers/LoaderParser.ts",
+  "extends": [],
+  "description": "The extension priority for loader parsers. Helpful when managing multiple parsers that share the same extension test. The higher priority parsers will be checked first. / export enum LoaderParserPriority { /** Generic parsers: txt, json, webfonts */ Low = 0, /** PixiJS assets with generic extensions: spritesheets, bitmapfonts  */ Normal = 1, /** Specific texture types: svg, png, ktx, dds, basis */ High = 2, } /** A more verbose version of the LoaderParser, allowing you to set the loaded, parsed, and unloaded asset separately",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "extension",
+      "type": "ExtensionMetadata",
+      "optional": true,
+      "description": "Should be ExtensionType.LoaderParser"
+    },
+    {
+      "name": "config",
+      "type": "CONFIG",
+      "optional": true,
+      "description": "A config to adjust the parser"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "optional": false,
+      "description": "The name of the parser (this can be used when specifying parser in a ResolvedAsset)"
+    },
+    {
+      "name": "test",
+      "type": "(url: string, resolvedAsset?: ResolvedAsset<META_DATA>, loader?: Loader) => boolean",
+      "optional": true,
+      "description": "Each URL to load will be tested here, if the test is passed the assets are loaded using the load function below. Good place to test for things like file extensions!"
+    },
+    {
+      "name": "load",
+      "type": "<T>(url: string, resolvedAsset?: ResolvedAsset<META_DATA>, loader?: Loader) => Promise<ASSET | T>",
+      "optional": true,
+      "description": "This is the promise that loads the URL provided resolves with a loaded asset if returned by the parser."
+    },
+    {
+      "name": "testParse",
+      "type": "(asset: ASSET, resolvedAsset?: ResolvedAsset<META_DATA>, loader?: Loader) => Promise<boolean>",
+      "optional": true,
+      "description": "This function is used to test if the parse function should be run on the asset If this returns true then parse is called with the asset"
+    },
+    {
+      "name": "parse",
+      "type": "<T>(asset: ASSET, resolvedAsset?: ResolvedAsset<META_DATA>, loader?: Loader) => Promise<PARSED_ASSET | T>",
+      "optional": true,
+      "description": "Gets called on the asset it testParse passes. Useful to convert a raw asset into something more useful"
+    },
+    {
+      "name": "unload",
+      "type": "(asset: UNLOAD_ASSET, resolvedAsset?: ResolvedAsset<META_DATA>, loader?: Loader) => Promise<void> | void",
+      "optional": true,
+      "description": "If an asset is parsed using this parser, the unload function will be called when the user requests an asset to be unloaded. This is useful for things like sounds or textures that can be unloaded from memory"
+    },
+    {
+      "name": "is",
+      "type": "*\n * 1. `parser.test()` - Each URL to load will be tested here, if the test is passed the assets are\n * loaded using the load function below. Good place to test for things like file extensions!\n * 2. `parser.load()` - This is the promise that loads the URL provided resolves with a loaded asset\n * if returned by the parser.\n * 3. `parser.testParse()` - This function is used to test if the parse function should be run on the\n *  asset If this returns true then parse is called with the asset\n * 4. `parse.parse()` - Gets called on the asset it testParse passes. Useful to convert a raw asset\n *  into something more useful\n *\n * <br/>\n * Some loaders may only be used for parsing, some only for loading, and some for both!\n * @category assets\n * @advanced\n */\n// eslint-disable-next-line @typescript-eslint/no-empty-object-type\nexport interface LoaderParser<ASSET = any, META_DATA = any, CONFIG = Record<string, any>>\n    extends LoaderParserAdvanced<ASSET, ASSET, ASSET, META_DATA, CONFIG> {}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "type": "class",
+  "name": "Text",
+  "sourcePath": "scene/text/Text.ts",
+  "extends": "AbstractText",
+  "implements": [],
+  "description": "Constructor options used for `Text` instances. These options extend TextOptions with canvas-specific features like texture styling. ```ts // Create basic canvas text const text = new Text({ text: 'Hello Pixi!', style: { fontSize: 24, fill: 0xff1010, } }); // Create text with custom texture style const customText = new Text({ text: 'Custom Text', style: { fontSize: 32, fill: 0x4a4a4a }, textureStyle: { scaleMode: 'nearest', } }); ``` / export interface CanvasTextOptions extends TextOptions { /** Optional texture style to use for the text texture. This allows fine control over how the text is rendered to a texture before being displayed. The texture style can affect: - Scale mode (nearest/linear) - Resolution - Format (rgb/rgba) - Alpha handling ```ts const text = new Text({ text: 'Crisp Text', textureStyle: { scaleMode: 'nearest', // Pixel-perfect scaling } }); ``` / textureStyle?: TextureStyle | TextureStyleOptions; } /** A powerful text rendering class that creates one or multiple lines of text using the Canvas API. Provides rich text styling capabilities with runtime modifications. Key features: - Dynamic text content and styling - Multi-line text support - Word wrapping - Custom texture styling - High-quality text rendering ```ts import { Text } from 'pixi.js'; // Basic text creation const basicText = new Text({ text: 'Hello Pixi!', style: { fontFamily: 'Arial', fontSize: 24, fill: 0xff1010, align: 'center', } }); // Rich text with multiple styles const richText = new Text({ text: 'Styled\\nMultiline\\nText', style: { fontFamily: 'Arial', fontSize: 36, fill: 'red', stroke: { color: '#4a1850', width: 5 }, align: 'center', lineHeight: 45, dropShadow: { color: '#000000', blur: 4, distance: 6, } }, anchor: 0.5, }); // Text with custom texture settings const crispText = new Text({ text: 'High Quality Text', style: { fontSize: 24, fill: 0x4a4a4a, }, textureStyle: { scaleMode: 'nearest', } }); // Word-wrapped text const wrappedText = new Text({ text: 'This is a long piece of text that will automatically wrap to multiple lines', style: { fontSize: 20, wordWrap: true, wordWrapWidth: 200, lineHeight: 30, } }); ``` Performance Considerations: - Each text instance creates its own texture - Texture is regenerated when text or style changes - Use BitmapText for better performance with static text - Consider texture style options for quality vs performance tradeoffs",
+  "category": "text",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        },
+        {
+          "name": "TextStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options.textureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextureStyle",
+      "params": [
+        {
+          "name": "options.textureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBounds",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._style.trim",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCanvasAndContext",
+      "params": [
+        {
+          "name": "text",
+          "type": "this.text",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "this._style",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnCanvasAndContext",
+      "params": [
+        {
+          "name": "canvasAndContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "this._text",
+          "type": null
+        },
+        {
+          "name": "this._style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

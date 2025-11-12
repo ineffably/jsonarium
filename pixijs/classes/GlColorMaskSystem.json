@@ -1,0 +1,50 @@
+{
+  "type": "class",
+  "name": "GlColorMaskSystem",
+  "sourcePath": "rendering/renderers/gl/GlColorMaskSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "The system that handles color masking for the WebGL.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "setMask",
+      "params": [
+        {
+          "name": "colorMask",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._colorMaskCache === colorMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "colorMask",
+      "params": [
+        {
+          "name": "!!(colorMask & 0b1000",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

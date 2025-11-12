@@ -1,0 +1,59 @@
+{
+  "type": "interface",
+  "name": "DefaultBatchElements",
+  "sourcePath": "rendering/batcher/shared/DefaultBatcher.ts",
+  "extends": [],
+  "description": "Represents the common elements for default batch rendering. This interface defines the properties that are used by the DefaultBatcher to render elements efficiently in a batch.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "color",
+      "type": "number",
+      "optional": false,
+      "description": "The color of the element that will be multiplied with the texture color. This is typically represented as a 32-bit integer in RGBA format."
+    },
+    {
+      "name": "roundPixels",
+      "type": "0 | 1",
+      "optional": false,
+      "description": "Determines whether the element should be rounded to the nearest pixel. - 0: No rounding (default) - 1: Round to nearest pixel This can help with visual consistency, especially for pixel art styles."
+    },
+    {
+      "name": "transform",
+      "type": "Matrix",
+      "optional": false,
+      "description": "The transform matrix of the element. This matrix represents the position, scale, rotation, and skew of the element."
+    },
+    {
+      "name": "elements",
+      "type": "* - tints\n * - roundPixels\n * - texture\n * - transform\n * @category rendering\n * @advanced\n */\nexport class DefaultBatcher extends Batcher\n{\n    /** @ignore */\n    public static extension = {\n        type: [\n            ExtensionType.Batcher,\n        ],\n        name: 'default',\n    } as const",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "shader",
+      "type": "DefaultShader",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "BatcherOptions)\n    {\n        super(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "element",
+      "type": "DefaultBatchableMeshElement,\n        float32View: Float32Array,\n        uint32View: Uint32Array,\n        index: number,\n        textureId: number\n    )\n    {\n        const textureIdAndRound = (textureId << 16) | (element.roundPixels & 0xFFFF)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "element",
+      "type": "DefaultBatchableQuadElement,\n        float32View: Float32Array,\n        uint32View: Uint32Array,\n        index: number,\n        textureId: number\n    )\n    {\n        const texture = element.texture",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

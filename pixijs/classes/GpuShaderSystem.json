@@ -1,0 +1,91 @@
+{
+  "type": "class",
+  "name": "GpuShaderSystem",
+  "sourcePath": "rendering/renderers/gpu/shader/GpuShaderSystem.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Data structure for GPU program layout. Contains bind group layouts and pipeline layout. / export interface GPUProgramData { bindGroups: GPUBindGroupLayout[] pipeline: GPUPipelineLayout } /** A system that manages the rendering of GpuPrograms.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "contextChange",
+      "params": [
+        {
+          "name": "gpu",
+          "type": "GPU",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getProgramData",
+      "params": [
+        {
+          "name": "program",
+          "type": "GpuProgram",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "(group",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createBindGroupLayout",
+      "params": [
+        {
+          "name": "entries",
+          "type": "group }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPipelineLayout",
+      "params": [
+        {
+          "name": "pipelineLayoutDesc",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    }
+  ],
+  "properties": []
+}

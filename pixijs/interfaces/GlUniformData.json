@@ -1,0 +1,173 @@
+{
+  "type": "interface",
+  "name": "GlUniformData",
+  "sourcePath": "rendering/renderers/gl/shader/GlProgram.ts",
+  "extends": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "name",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "isArray",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "any",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fragment",
+      "type": "string",
+      "optional": false,
+      "description": "export interface GlUniformBlockData { index: number; name: string; size: number; value?: TypedArray; } /** The options for the gl program / export interface GlProgramOptions { /** The fragment glsl shader source."
+    },
+    {
+      "name": "vertex",
+      "type": "string",
+      "optional": false,
+      "description": "The vertex glsl shader source."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "optional": true,
+      "description": "the name of the program, defaults to 'pixi-program'"
+    },
+    {
+      "name": "preferredVertexPrecision",
+      "type": "string",
+      "optional": true,
+      "description": "the preferred vertex precision for the shader, this may not be used if the device does not support it"
+    },
+    {
+      "name": "preferredFragmentPrecision",
+      "type": "string",
+      "optional": true,
+      "description": "the preferred fragment precision for the shader, this may not be used if the device does not support it"
+    },
+    {
+      "name": "transformFeedbackVaryings",
+      "type": "{names: string[], bufferMode: 'separate' | 'interleaved'}",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "processes",
+      "type": "Record<string, ((source: string, options: any, isFragment?: boolean) => string)> = {\n    // strips any version headers..\n    stripVersion,\n    // adds precision string if not already present\n    ensurePrecision,\n    // add some defines if WebGL1 to make it more compatible with WebGL2 shaders\n    addProgramDefines,\n    // add the program name to the shader\n    setProgramName,\n    // add the version string to the shader header\n    insertVersion,\n}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "programCache",
+      "type": "Record<string, GlProgram> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "https",
+      "type": "//developer.mozilla.org/en-US/docs/Web/API/WebGLProgram\n * @example\n *\n * // Create a new program\n * const program = new GlProgram({\n *   vertex: '...',\n *   fragment: '...',\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "automatically",
+      "type": "* <br>\n * - If no precision is provided in the shader, it will be injected into the program source for you.\n * This precision will be taken form the options provided, if none is provided,\n * then the program will default to the defaultOptions.\n * <br>\n * - It will inject the program name into the shader source if none is provided.\n * <br>\n *  - It will set the program version to 300 es.\n *\n * For optimal usage and best performance, its best to reuse programs as much as possible.\n * You should use the {@link GlProgram.from} helper function to create programs.\n * @class\n * @category rendering\n * @advanced\n */\nexport class GlProgram\n{\n    /** The default options used by the program. */\n    public static defaultOptions: Partial<GlProgramOptions> = {\n        preferredVertexPrecision: 'highp',\n        preferredFragmentPrecision: 'mediump',\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fragment",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "vertex",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "_attributeData",
+      "type": "Record<string, ExtractedAttributeData>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_uniformData",
+      "type": "Record<string, GlUniformData>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_uniformBlockData",
+      "type": "Record<string, GlUniformBlockData>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "transformFeedbackVaryings",
+      "type": "{names: string[], bufferMode: 'separate' | 'interleaved'}",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "_key",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_cacheKey",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GlProgramOptions)\n    {\n        options = { ...GlProgram.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stripVersion",
+      "type": "isES300,\n            ensurePrecision: {\n                requestedFragmentPrecision: options.preferredFragmentPrecision,\n                requestedVertexPrecision: options.preferredVertexPrecision,\n                maxSupportedVertexPrecision: 'highp',\n                maxSupportedFragmentPrecision: getMaxFragmentPrecision(),\n            },\n            setProgramName: {\n                name: options.name,\n            },\n            addProgramDefines: isES300,\n            insertVersion: isES300\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GlProgramOptions): GlProgram\n    {\n        const key = `${options.vertex}:${options.fragment}`",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

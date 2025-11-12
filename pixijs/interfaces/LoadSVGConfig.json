@@ -1,0 +1,71 @@
+{
+  "type": "interface",
+  "name": "LoadSVGConfig",
+  "sourcePath": "assets/loader/parsers/textures/loadSVG.ts",
+  "extends": [],
+  "description": "Configuration for the {@link loadSvg} plugin.",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "crossOrigin",
+      "type": "ImageLike['crossOrigin']",
+      "optional": false,
+      "description": "The crossOrigin value to use for loading the SVG as an image."
+    },
+    {
+      "name": "parseAsGraphicsContext",
+      "type": "boolean",
+      "optional": false,
+      "description": "When set to `true`, loading and decoding images will happen with `new Image()`,"
+    },
+    {
+      "name": "name",
+      "type": "'loadSVG',\n    id: 'svg',\n\n    config: {\n        crossOrigin: 'anonymous',\n        parseAsGraphicsContext: false,\n    },\n\n    test(url: string): boolean\n    {\n        return checkDataUrl(url, validSVGMIME) || checkExtension(url, validSVGExtension)",
+      "optional": false,
+      "description": "Regular expression for SVG XML document. / const validSVGExtension = '.svg'; const validSVGMIME = 'image/svg+xml'; /** A simple loader plugin for loading json data / export const loadSvg: LoaderParser<Texture | GraphicsContext, TextureSourceOptions & LoadSVGConfig, LoadSVGConfig> = { extension: { type: ExtensionType.LoadParser, priority: LoaderParserPriority.Low, name: 'loadSVG', }, /** used for deprecation purposes"
+    },
+    {
+      "name": "url",
+      "type": "string,\n        asset: ResolvedAsset<TextureSourceOptions & LoadSVGConfig>,\n        loader: Loader\n    ): Promise<Texture | GraphicsContext>\n    {\n        if (asset.data?.parseAsGraphicsContext ?? this.config.parseAsGraphicsContext)\n        {\n            return loadAsGraphics(url)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "asset",
+      "type": "Texture | GraphicsContext): void\n    {\n        asset.destroy(true)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "string,\n    asset: ResolvedAsset<TextureSourceOptions & LoadSVGConfig>,\n    loader: Loader,\n    crossOrigin: ImageLike['crossOrigin']\n): Promise<Texture>\n{\n    const response = await DOMAdapter.get().fetch(url)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "image/svg+xml",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "parseAsGraphicsContext",
+      "type": "_p, ...rest } = asset.data ?? {}",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resource",
+      "type": "canvas,\n        alphaMode: 'premultiply-alpha-on-upload',\n        resolution,\n        ...rest,\n    })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "string): Promise<GraphicsContext>\n{\n    const response = await DOMAdapter.get().fetch(url)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

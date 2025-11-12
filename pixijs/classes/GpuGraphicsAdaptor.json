@@ -1,0 +1,359 @@
+{
+  "type": "class",
+  "name": "GpuGraphicsAdaptor",
+  "sourcePath": "scene/graphics/gpu/GpuGraphicsAdaptor.ts",
+  "extends": null,
+  "implements": [
+    "GraphicsAdaptor"
+  ],
+  "description": "A GraphicsAdaptor that uses the GPU to render graphics.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "contextChange",
+      "params": [
+        {
+          "name": "renderer",
+          "type": "Renderer",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uTransformMatrix",
+          "type": "{ value: new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "compileHighShaderGpuProgram",
+      "params": [
+        {
+          "name": "name",
+          "type": "'graphics'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bits",
+          "type": "[\n                colorBit",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "generateTextureBatchBit(this._maxTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Shader",
+      "params": [
+        {
+          "name": "{\n            gpuProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                // added on the fly!\n                localUniforms",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "graphicsPipe",
+          "type": "GraphicsPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "renderable",
+          "type": "Graphics",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getContextRenderData",
+      "params": [
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setGeometry",
+      "params": [
+        {
+          "name": "batcher.geometry",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "globalUniformsBindGroup",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUniformBindGroup",
+      "params": [
+        {
+          "name": "shader.resources.localUniforms",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        },
+        {
+          "name": "localBindGroup",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < instructions.instructionSize; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "batch.topology !== topology",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setPipelineFromGeometryProgramAndState",
+      "params": [
+        {
+          "name": "batcher.geometry",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        },
+        {
+          "name": "graphicsPipe.state",
+          "type": null
+        },
+        {
+          "name": "batch.topology",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!batch.gpuBindGroup",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTextureBatchBindGroup",
+      "params": [
+        {
+          "name": "textureBatch.textures",
+          "type": null
+        },
+        {
+          "name": "textureBatch.count",
+          "type": null
+        },
+        {
+          "name": "this._maxTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBindGroup",
+      "params": [
+        {
+          "name": "batch.bindGroup",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setBindGroup",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "batch.bindGroup",
+          "type": null
+        },
+        {
+          "name": "shader.gpuProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawIndexed",
+      "params": [
+        {
+          "name": "batch.size",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "batch.start",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

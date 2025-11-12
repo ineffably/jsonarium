@@ -1,0 +1,104 @@
+{
+  "type": "interface",
+  "name": "ViewContainerOptions",
+  "sourcePath": "scene/view/ViewContainer.ts",
+  "extends": [
+    "ContainerOptions",
+    "PixiMixins"
+  ],
+  "description": "Options for the construction of a ViewContainer.",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "_gpuData",
+      "type": "Record<number, GPU_DATA>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeId",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_roundPixels",
+      "type": "0 | 1 = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_gpuData",
+      "type": "Record<number, GPU_DATA> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_bounds",
+      "type": "Bounds = new Bounds(0, 1, 0, 0)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Width",
+      "type": "${bounds.maxX - bounds.minX}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Height",
+      "type": "${bounds.maxY - bounds.minY}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "boolean)\n    {\n        this._roundPixels = value ? 1 : 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ViewContainerOptions)\n    {\n        super(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "50, y: 25 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "inside",
+      "type": "', contains)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "PointData)\n    {\n        const bounds = this.bounds",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "batched",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions): void\n    {\n        super.destroy(options)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "instructionSet",
+      "type": "InstructionSet,\n        renderer: Renderer,\n        currentLayer: RenderLayer,\n    ): void\n    {\n        const { renderPipes } = renderer",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

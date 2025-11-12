@@ -1,0 +1,143 @@
+{
+  "type": "class",
+  "name": "UboBatch",
+  "sourcePath": "rendering/renderers/gpu/buffer/UboBatch.ts",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "65535",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "addEmptyGroup",
+      "params": [
+        {
+          "name": "size",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "number",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "size > this._minUniformOffsetAlignment / 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "UniformBufferBatch",
+          "type": "array is too large: ${size * 4}`",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "newSize / this._minUniformOffsetAlignment",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "newSize > this.data.length * 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "UniformBufferBatch",
+          "type": "ubo batch got too big'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addGroup",
+      "params": [
+        {
+          "name": "array",
+          "type": "Float32Array",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "number",
+      "description": null
+    },
+    {
+      "name": "addEmptyGroup",
+      "params": [
+        {
+          "name": "array.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < array.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

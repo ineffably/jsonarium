@@ -1,0 +1,884 @@
+{
+  "type": "class",
+  "name": "DynamicBitmapFont",
+  "sourcePath": "scene/text-bitmap/DynamicBitmapFont.ts",
+  "extends": "AbstractBitmapFont",
+  "implements": [],
+  "description": "export interface DynamicBitmapFontOptions { style: TextStyle skipKerning?: boolean resolution?: number padding?: number overrideFill?: boolean overrideSize?: boolean textureSize?: number mipmap?: boolean textureStyle?: TextureStyle | TextureStyleOptions } /** A BitmapFont that generates its glyphs dynamically.",
+  "category": "text",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "TextStyle",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "dynamicOptions.overrideFill",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fontStringFromTextStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "dynamicOptions.overrideSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style._stroke",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "accordingly",
+      "params": [
+        {
+          "name": "eg font size 20",
+          "type": null
+        },
+        {
+          "name": "with stroke 10 - stroke is 50% of size",
+          "type": null
+        },
+        {
+          "name": "// as dynamic font is size 100",
+          "type": null
+        },
+        {
+          "name": "the stroke should be adjusted to 50 to make it look right",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "dynamicOptions.textureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextureStyle",
+      "params": [
+        {
+          "name": "dynamicOptions.textureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureFont",
+      "params": [
+        {
+          "name": "font",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureCharacters",
+      "params": [
+        {
+          "name": "chars",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "graphemeSegmenter",
+      "params": [
+        {
+          "name": "chars",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "filter",
+      "params": [
+        {
+          "name": "(char",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "char",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "filter",
+      "params": [
+        {
+          "name": "(char",
+          "type": null
+        },
+        {
+          "name": "index",
+          "type": null
+        },
+        {
+          "name": "self",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "indexOf",
+      "params": [
+        {
+          "name": "char",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!charList.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._currentPageIndex === -1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < charList.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "char",
+          "type": null
+        },
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "canvas",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "(style.fontStyle === 'italic' ? 2 : 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "char !== '\\n' && char !== '\\r' && char !== '\\t' && char !== ' '",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "Math.max(paddedHeight",
+          "type": null
+        },
+        {
+          "name": "currentMaxCharHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentX + paddedWidth > maxTextureWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentY + currentMaxCharHeight > maxTextureHeight",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "codePointAt",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "skipTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [
+        {
+          "name": "((currentX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Texture",
+      "params": [
+        {
+          "name": "source",
+          "type": "textureSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "frame",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "paddedWidth",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "textures",
+      "params": [
+        {
+          "name": "i.e.",
+          "type": null
+        },
+        {
+          "name": "sheets of glyphs",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'BitmapFont.pageTextures is deprecated",
+          "type": null
+        },
+        {
+          "name": "please use BitmapFont.pages instead.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < newChars.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let j = 0; j < this._currentChars.length; j++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!c1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "first",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!c2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "second",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "first + second",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "amount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "measureText",
+      "params": [
+        {
+          "name": "first + second",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "amount",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getOptimalCanvasAndContext",
+      "params": [
+        {
+          "name": "this._textureSize",
+          "type": null
+        },
+        {
+          "name": "this._textureSize",
+          "type": null
+        },
+        {
+          "name": "textureResolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Texture",
+      "params": [
+        {
+          "name": "source",
+          "type": "new ImageSource({\n                resource: canvasAndContext.canvas",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        },
+        {
+          "name": "alphaMode",
+          "type": "'premultiply-alpha-on-upload'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "autoGenerateMipmaps",
+          "type": "this._mipmap",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._textureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "resolution",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fontStringFromTextStyle",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "stroke",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCanvasFillStyle",
+      "params": [
+        {
+          "name": "stroke",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style._fill",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCanvasFillStyle",
+      "params": [
+        {
+          "name": "style._fill",
+          "type": null
+        },
+        {
+          "name": "context",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.dropShadow",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setValue",
+      "params": [
+        {
+          "name": "shadowOptions.color",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toArray",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rgba",
+      "params": [
+        {
+          "name": "${rgb[0] * 255}",
+          "type": null
+        },
+        {
+          "name": "${rgb[1] * 255}",
+          "type": null
+        },
+        {
+          "name": "${rgb[2] * 255}",
+          "type": null
+        },
+        {
+          "name": "${shadowOptions.alpha}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cos",
+      "params": [
+        {
+          "name": "shadowOptions.angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "shadowOptions.angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.stroke && strokeThickness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "strokeText",
+      "params": [
+        {
+          "name": "char",
+          "type": null
+        },
+        {
+          "name": "tx",
+          "type": null
+        },
+        {
+          "name": "ty + lineHeight - descent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style._fill",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "removeShadow",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fillText",
+      "params": [
+        {
+          "name": "char",
+          "type": null
+        },
+        {
+          "name": "tx",
+          "type": null
+        },
+        {
+          "name": "ty + lineHeight - descent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "removeShadow",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < this.pages.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnCanvasAndContext",
+      "params": [
+        {
+          "name": "canvasAndContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

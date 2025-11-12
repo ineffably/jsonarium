@@ -1,0 +1,206 @@
+{
+  "type": "class",
+  "name": "BatchGeometry",
+  "sourcePath": "rendering/batcher/shared/BatchGeometry.ts",
+  "extends": "Geometry",
+  "implements": [],
+  "description": "This class represents a geometry used for batching in the rendering system. It defines the structure of vertex attributes and index buffers for batched rendering.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "placeHolderBufferData",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "label",
+          "type": "'attribute-batch-buffer'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "usage",
+          "type": "BufferUsage.VERTEX | BufferUsage.COPY_DST",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shrinkToFit",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "placeHolderIndexData",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "label",
+          "type": "'index-batch-buffer'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "usage",
+          "type": "BufferUsage.INDEX | BufferUsage.COPY_DST",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "// | BufferUsage.STATIC",
+          "type": null
+        },
+        {
+          "name": "shrinkToFit",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "attributes",
+          "type": "{\n                aPosition: {\n                    buffer: attributeBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "'float32x2'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stride",
+          "type": null
+        },
+        {
+          "name": "offset",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "aUV",
+          "type": "{\n                    buffer: attributeBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "'float32x2'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stride",
+          "type": null
+        },
+        {
+          "name": "offset",
+          "type": "2 * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "aColor",
+          "type": "{\n                    buffer: attributeBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "'unorm8x4'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stride",
+          "type": null
+        },
+        {
+          "name": "offset",
+          "type": "4 * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "aTextureIdAndRound",
+          "type": "{\n                    buffer: attributeBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "'uint16x2'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stride",
+          "type": null
+        },
+        {
+          "name": "offset",
+          "type": "5 * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "indexBuffer\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

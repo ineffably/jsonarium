@@ -1,0 +1,2230 @@
+{
+  "type": "class",
+  "name": "ShapePath",
+  "sourcePath": "scene/graphics/shared/path/ShapePath.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A type representing a shape primitive with optional transformation and holes. / export type ShapePrimitiveWithHoles = { shape: ShapePrimitive, transform?: Matrix, holes?: ShapePrimitiveWithHoles[] }; /** The `ShapePath` class acts as a bridge between high-level drawing commands and the lower-level `GraphicsContext` rendering engine. It translates drawing commands, such as those for creating lines, arcs, ellipses, rectangles, and complex polygons, into a format that can be efficiently processed by a `GraphicsContext`. This includes handling path starts, ends, and transformations for shapes. It is used internally by `GraphicsPath` to build up the path.",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "The list of shape primitives that make up the path. */ public shapePrimitives: ShapePrimitiveWithHoles[] = []; private _currentPoly: Polygon | null = null; private readonly _graphicsPath2D: GraphicsPath; private readonly _bounds = new Bounds(); public readonly signed: boolean; constructor(graphicsPath2D: GraphicsPath) { this._graphicsPath2D = graphicsPath2D; this.signed = graphicsPath2D.checkForHoles; } /** Sets the starting point for a new sub-path. Any subsequent drawing commands are considered part of this path."
+    },
+    {
+      "name": "startPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Connects the current point to a new point with a straight line. This method updates the current path."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fromX !== x || fromY !== y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arc",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "startAngle",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "endAngle",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "counterclockwise",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an arc to the path. The arc is centered at (x, y) position with radius `radius` starting at `startAngle` and ending at `endAngle`."
+    },
+    {
+      "name": "buildArc",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "startAngle",
+          "type": null
+        },
+        {
+          "name": "endAngle",
+          "type": null
+        },
+        {
+          "name": "counterclockwise",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "x1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y2",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an arc to the path with the arc tangent to the line joining two specified points. The arc radius is specified by `radius`."
+    },
+    {
+      "name": "buildArcTo",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        },
+        {
+          "name": "x2",
+          "type": null
+        },
+        {
+          "name": "y2",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcToSvg",
+      "params": [
+        {
+          "name": "rx",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "ry",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "xAxisRotation",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "largeArcFlag",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sweepFlag",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds an SVG-style arc to the path, allowing for elliptical arcs based on the SVG spec. to the x-axis of the coordinate system, in degrees."
+    },
+    {
+      "name": "buildArcToSvg",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "this._currentPoly.lastX",
+          "type": null
+        },
+        {
+          "name": "this._currentPoly.lastY",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "rx",
+          "type": null
+        },
+        {
+          "name": "ry",
+          "type": null
+        },
+        {
+          "name": "xAxisRotation",
+          "type": null
+        },
+        {
+          "name": "largeArcFlag",
+          "type": null
+        },
+        {
+          "name": "sweepFlag",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bezierCurveTo",
+      "params": [
+        {
+          "name": "cp1x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp1y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp2x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp2y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a cubic Bezier curve to the path. It requires three points: the first two are control points and the third one is the end point. The starting point is the last point in the current path."
+    },
+    {
+      "name": "buildAdaptiveBezier",
+      "params": [
+        {
+          "name": "this._currentPoly.points",
+          "type": null
+        },
+        {
+          "name": "currentPoly.lastX",
+          "type": null
+        },
+        {
+          "name": "currentPoly.lastY",
+          "type": null
+        },
+        {
+          "name": "cp1x",
+          "type": null
+        },
+        {
+          "name": "cp1y",
+          "type": null
+        },
+        {
+          "name": "cp2x",
+          "type": null
+        },
+        {
+          "name": "cp2y",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "smoothness",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "quadraticCurveTo",
+      "params": [
+        {
+          "name": "cp1x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "cp1y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "smoothing",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds a quadratic curve to the path. It requires two points: the control point and the end point. The starting point is the last point in the current path."
+    },
+    {
+      "name": "buildAdaptiveQuadratic",
+      "params": [
+        {
+          "name": "this._currentPoly.points",
+          "type": null
+        },
+        {
+          "name": "currentPoly.lastX",
+          "type": null
+        },
+        {
+          "name": "currentPoly.lastY",
+          "type": null
+        },
+        {
+          "name": "cp1x",
+          "type": null
+        },
+        {
+          "name": "cp1y",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "smoothing",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": "this",
+      "description": "Closes the current path by drawing a straight line back to the start. If the shape is already closed or there are no points in the path, this method does nothing."
+    },
+    {
+      "name": "endPoly",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addPath",
+      "params": [
+        {
+          "name": "path",
+          "type": "GraphicsPath",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Adds another path to the current path. This method allows for the combination of multiple paths into one."
+    },
+    {
+      "name": "endPoly",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "transform && !transform.isIdentity(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "transform",
+      "params": [
+        {
+          "name": "transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < path.instructions.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "polygon",
+      "params": [
+        {
+          "name": "mainShape",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "path.checkForHoles && shapePrimitives.length - start > 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = start; i < shapePrimitives.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "shapePrimitive.shape.type === 'polygon'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "mainPolygon && mainPolygon.containsPolygon(polygon",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "shapePrimitive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyWithin",
+      "params": [
+        {
+          "name": "i",
+          "type": null
+        },
+        {
+          "name": "i + 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finish",
+      "params": [
+        {
+          "name": "closePath = false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": "Finalizes the drawing of the current path. Optionally, it can close the path."
+    },
+    {
+      "name": "endPoly",
+      "params": [
+        {
+          "name": "closePath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "w",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a rectangle shape. This method adds a new rectangle path to the current drawing."
+    },
+    {
+      "name": "drawShape",
+      "params": [
+        {
+          "name": "new Rectangle(x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "w",
+          "type": null
+        },
+        {
+          "name": "h",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "circle",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a circle shape. This method adds a new circle path to the current drawing."
+    },
+    {
+      "name": "drawShape",
+      "params": [
+        {
+          "name": "new Circle(x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "poly",
+      "params": [
+        {
+          "name": "points",
+          "type": "number[] | PointData[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "close",
+          "type": "boolean",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a polygon shape. This method allows for the creation of complex polygons by specifying a sequence of points. representing the x and y coordinates of the polygon's vertices, in sequence."
+    },
+    {
+      "name": "Polygon",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawShape",
+      "params": [
+        {
+          "name": "polygon",
+          "type": null
+        },
+        {
+          "name": "transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "regularPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sides",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "rotation = 0",
+          "type": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a regular polygon with a specified number of sides. All sides and angles are equal."
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "sides | 0",
+          "type": null
+        },
+        {
+          "name": "3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < sides; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "x + (radius * Math.cos(angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "poly",
+      "params": [
+        {
+          "name": "polygon",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sides",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "corner",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "rotation = 0",
+          "type": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a polygon with rounded corners. Similar to `regularPoly` but with the ability to round the corners of the polygon."
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "(sides | 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "corner <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "regularPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "sides",
+          "type": null
+        },
+        {
+          "name": "rotation",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "Math.PI / sides",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "corner",
+          "type": null
+        },
+        {
+          "name": "sideLength",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < sides; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cos",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "angle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cos",
+      "params": [
+        {
+          "name": "a1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "a1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "cos",
+      "params": [
+        {
+          "name": "a2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sin",
+      "params": [
+        {
+          "name": "a2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "i === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "x1",
+          "type": null
+        },
+        {
+          "name": "y1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "quadraticCurveTo",
+      "params": [
+        {
+          "name": "x0",
+          "type": null
+        },
+        {
+          "name": "y0",
+          "type": null
+        },
+        {
+          "name": "x3",
+          "type": null
+        },
+        {
+          "name": "y3",
+          "type": null
+        },
+        {
+          "name": "smoothness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundShape",
+      "params": [
+        {
+          "name": "points",
+          "type": "RoundedPoint[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "useQuadratic = false",
+          "type": null
+        },
+        {
+          "name": "smoothness",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a shape with rounded corners. This function supports custom radius for each corner of the shape. Optionally, corners can be rounded using a quadratic curve instead of an arc, providing a different aesthetic. A minimum of 3 points is required. This radius is applied to all corners unless overridden in `points`. method instead of an arc method. Defaults to false. Higher values make the curve smoother."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "points.length < 3",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "useQuadratic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundedShapeQuadraticCurve",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        },
+        {
+          "name": "smoothness",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundedShapeArc",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "filletRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fillet",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draw Rectangle with fillet corners. This is much like rounded rectangle however it support negative numbers as well for the corner radius."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "fillet === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "maxFillet",
+          "type": null
+        },
+        {
+          "name": "Math.max(-maxFillet",
+          "type": null
+        },
+        {
+          "name": "fillet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "inset",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "moveTo",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y + size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "x + dir",
+          "type": null
+        },
+        {
+          "name": "y + dir",
+          "type": null
+        },
+        {
+          "name": "x + size",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "right - size",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "right - dir",
+          "type": null
+        },
+        {
+          "name": "y + dir",
+          "type": null
+        },
+        {
+          "name": "right",
+          "type": null
+        },
+        {
+          "name": "y + size",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "right",
+          "type": null
+        },
+        {
+          "name": "bottom - size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "right - dir",
+          "type": null
+        },
+        {
+          "name": "bottom - dir",
+          "type": null
+        },
+        {
+          "name": "x + width - size",
+          "type": null
+        },
+        {
+          "name": "bottom",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "lineTo",
+      "params": [
+        {
+          "name": "x + size",
+          "type": null
+        },
+        {
+          "name": "bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "arcTo",
+      "params": [
+        {
+          "name": "x + dir",
+          "type": null
+        },
+        {
+          "name": "bottom - dir",
+          "type": null
+        },
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "bottom - size",
+          "type": null
+        },
+        {
+          "name": "size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "closePath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "chamferRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "chamfer",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draw Rectangle with chamfer corners. These are angled corners."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "chamfer <= 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "rect",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "min",
+      "params": [
+        {
+          "name": "chamfer",
+          "type": null
+        },
+        {
+          "name": "Math.min(width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = points.length - 1; i >= 2; i -= 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "points[i] === points[i - 2] && points[i - 1] === points[i - 3]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "i - 1",
+          "type": null
+        },
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "poly",
+      "params": [
+        {
+          "name": "points",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ellipse",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radiusX",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radiusY",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws an ellipse at the specified location and with the given x and y radii. An optional transformation can be applied, allowing for rotation, scaling, and translation."
+    },
+    {
+      "name": "drawShape",
+      "params": [
+        {
+          "name": "new Ellipse(x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "radiusX",
+          "type": null
+        },
+        {
+          "name": "radiusY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "roundRect",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "w",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "transform",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a rectangle with rounded corners. The corner radius can be specified to determine how rounded the corners should be. An optional transformation can be applied, which allows for rotation, scaling, and translation of the rectangle."
+    },
+    {
+      "name": "drawShape",
+      "params": [
+        {
+          "name": "new RoundedRectangle(x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        },
+        {
+          "name": "w",
+          "type": null
+        },
+        {
+          "name": "h",
+          "type": null
+        },
+        {
+          "name": "radius",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "drawShape",
+      "params": [
+        {
+          "name": "shape",
+          "type": "ShapePrimitive",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Draws a given shape on the canvas. This is a generic method that can draw any type of shape specified by the `ShapePrimitive` parameter. An optional transformation matrix can be applied to the shape, allowing for complex transformations. scaling, and translations."
+    },
+    {
+      "name": "endPoly",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "{ shape",
+          "type": null
+        },
+        {
+          "name": "transform",
+          "type": "matrix }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "startPoly",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Starts a new polygon path from the specified starting point. This method initializes a new polygon or ends the current one if it exists."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentPoly",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "endPoly",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Polygon",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "endPoly",
+      "params": [
+        {
+          "name": "closePath = false",
+          "type": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Ends the current polygon path. If `closePath` is set to true, the path is closed by connecting the last point to the first one. This method finalizes the current polygon and prepares it for drawing or adding to the shape primitives. back to the starting point. False by default."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "shape && shape.points.length > 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "{ shape }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._currentPoly",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Polygon",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "start",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lastShape",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lastShape.transform && !lastShape.transform.isIdentity(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "lx",
+          "type": null
+        },
+        {
+          "name": "ly",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "buildPath",
+      "params": [],
+      "returnType": null,
+      "description": "Builds the path."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < path.instructions.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "finish",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < shapePrimitives.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBounds",
+      "params": [
+        {
+          "name": "tempRectangle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "shapePrimitive.transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRect",
+      "params": [
+        {
+          "name": "boundsRect",
+          "type": null
+        },
+        {
+          "name": "shapePrimitive.transform",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRect",
+      "params": [
+        {
+          "name": "boundsRect",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "bounds",
+      "type": "Bounds",
+      "description": "Gets the bounds of the path."
+    }
+  ]
+}

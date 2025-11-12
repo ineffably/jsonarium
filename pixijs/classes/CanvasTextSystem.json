@@ -1,0 +1,580 @@
+{
+  "type": "class",
+  "name": "CanvasTextSystem",
+  "sourcePath": "scene/text/canvas/CanvasTextSystem.ts",
+  "extends": null,
+  "implements": [
+    "System"
+  ],
+  "description": "System plugin to the renderer to manage canvas text.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "getTexture",
+      "params": [
+        {
+          "name": "text",
+          "type": "string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "TextStyle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textKey",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Texture",
+      "description": "public static extension = { type: [ ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem, ], name: 'canvasText', } as const; private readonly _renderer: Renderer; private readonly _activeTextures: Record<string, { texture: Texture, usageCount: number, }> = {}; constructor(_renderer: Renderer) { this._renderer = _renderer; } /** @deprecated since 8.0.0"
+    },
+    {
+      "name": "getTexture",
+      "params": [
+        {
+          "name": "options",
+          "type": "CanvasTextOptions",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Texture",
+      "description": "This is a function that will create a texture from a text string, style and resolution. Useful if you want to make a texture of your text and use if for various other pixi things!"
+    },
+    {
+      "name": "getTexture",
+      "params": [
+        {
+          "name": "options",
+          "type": "CanvasTextOptions | string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_resolution",
+          "type": "number",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "_style",
+          "type": "TextStyle",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "_textKey",
+          "type": "string",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Texture",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof options === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "'8.0.0'",
+          "type": null
+        },
+        {
+          "name": "getTexture",
+          "type": "Use object TextOptions instead of separate arguments'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(options.style instanceof TextStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextStyle",
+      "params": [
+        {
+          "name": "options.style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(options.textureStyle instanceof TextureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextureStyle",
+      "params": [
+        {
+          "name": "options.textureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof options.text !== 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getCanvasAndContext",
+      "params": [
+        {
+          "name": "text",
+          "type": "text as string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "style as TextStyle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPo2TextureFromSource",
+      "params": [
+        {
+          "name": "canvasAndContext.canvas",
+          "type": null
+        },
+        {
+          "name": "frame.width",
+          "type": null
+        },
+        {
+          "name": "frame.height",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "textureStyle",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.trim",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pad",
+      "params": [
+        {
+          "name": "style.padding",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "frame",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "1 / resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateUvs",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style.filters",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnCanvasAndContext",
+      "params": [
+        {
+          "name": "canvasAndContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "initSource",
+      "params": [
+        {
+          "name": "texture._source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnCanvasAndContext",
+      "params": [
+        {
+          "name": "canvasAndContext",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Returns a texture that was created wit the above `getTexture` function. Handy if you are done with a texture and want to return it to the pool."
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "renderTextToCanvas",
+      "params": [],
+      "returnType": "void",
+      "description": "Renders text to its canvas, and updates its texture."
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "'8.10.0'",
+          "type": null
+        },
+        {
+          "name": "renderTextToCanvas",
+          "type": "no longer supported",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "use CanvasTextSystem.getTexture instead'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getManagedTexture",
+      "params": [
+        {
+          "name": "text",
+          "type": "Text",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Gets or creates a managed texture for a Text object. This method handles texture reuse and reference counting. This method performs the following: 1. Sets the appropriate resolution based on auto-resolution settings 2. Checks if a texture already exists for the text's style 3. Creates a new texture if needed or returns an existing one 4. Manages reference counting for texture reuse"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeTextures[textKey]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTexture",
+      "params": [
+        {
+          "name": "text",
+          "type": "text.text",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "text.style",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "text._resolution",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureStyle",
+          "type": "text.textureStyle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "decreaseReferenceCount",
+      "params": [
+        {
+          "name": "textKey",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Decreases the reference count for a texture associated with a text key. When the reference count reaches zero, the texture is returned to the pool. This method is crucial for memory management, ensuring textures are properly cleaned up when they are no longer needed by any Text instances."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "activeTexture.usageCount === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "activeTexture.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getReferenceCount",
+      "params": [
+        {
+          "name": "textKey",
+          "type": "string",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Gets the current reference count for a texture associated with a text key."
+    },
+    {
+      "name": "generateFilteredTexture",
+      "params": [
+        {
+          "name": "{\n            texture",
+          "type": null
+        },
+        {
+          "name": "filters",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "currentRenderTarget",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const key in this._activeTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeTextures[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "returnTexture",
+      "params": [
+        {
+          "name": "this._activeTextures[key].texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

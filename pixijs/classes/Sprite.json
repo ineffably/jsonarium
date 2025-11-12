@@ -1,0 +1,873 @@
+{
+  "type": "class",
+  "name": "Sprite",
+  "sourcePath": "scene/sprite/Sprite.ts",
+  "extends": "ViewContainer",
+  "implements": [],
+  "description": "Options for configuring a Sprite instance. Defines the texture, anchor point, and rendering behavior. ```ts // Create a basic sprite with texture const sprite = new Sprite({ texture: Texture.from('sprite.png') }); // Create a centered sprite with rounded position const centeredSprite = new Sprite({ texture: Texture.from('centered.png'), anchor: 0.5,        // Center point roundPixels: true,  // Crisp rendering x: 100,            // Position from ViewContainerOptions y: 100 }); // Create a sprite with specific anchor points const anchoredSprite = new Sprite({ texture: Texture.from('corner.png'), anchor: { x: 1,  // Right-aligned y: 0   // Top-aligned } }); ``` / export interface SpriteOptions extends PixiMixins.SpriteOptions, ViewContainerOptions { /** The texture to use for the sprite. If not provided, uses Texture.EMPTY ```ts // Create a sprite with a texture const sprite = new Sprite({ texture: Texture.from('path/to/image.png') }); // Update the texture later sprite.texture = Texture.from('path/to/another-image.png'); ``` / texture?: Texture; /** The anchor point of the sprite (0-1 range). Controls the origin point for rotation, scaling, and positioning. Can be a number for uniform anchor or a PointData for separate x/y values. ```ts // Centered anchor anchor: 0.5 // Separate x/y anchor anchor: { x: 0.5, y: 0.5 } // Right-aligned anchor anchor: { x: 1, y: 0 } ``` / anchor?: PointData | number; /** Whether or not to round the x/y position to whole pixels. Useful for crisp pixel art style rendering. ```ts const sprite = new Sprite({ texture: Texture.from('sprite.png'), roundPixels: true // Ensures crisp rendering }); ``` / roundPixels?: boolean; } // eslint-disable-next-line requireExport/require-export-jsdoc, requireMemberAPI/require-member-api-doc export interface Sprite extends PixiMixins.Sprite, ViewContainer<BatchableSprite> {} /** The Sprite object is one of the most important objects in PixiJS. It is a drawing item that can be added to a scene and rendered to the screen. Sprites can display images, handle input events, and be transformed in various ways. ```ts // Create a sprite directly from an image path const sprite = Sprite.from('assets/image.png'); sprite.position.set(100, 100); app.stage.addChild(sprite); // Create from a spritesheet (more efficient) const sheet = await Assets.load('assets/spritesheet.json'); const sprite = new Sprite(sheet.textures['image.png']); // Create with specific options const configuredSprite = new Sprite({ texture: Texture.from('sprite.png'), anchor: 0.5,           // Center anchor point position: { x: 100, y: 100 }, scale: { x: 2, y: 2 }, // Double size rotation: Math.PI / 4   // 45 degrees }); // Animate sprite properties app.ticker.add(() => { sprite.rotation += 0.1;      // Rotate sprite.scale.x = Math.sin(performance.now() / 1000) + 1; // Pulse scale }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "source",
+          "type": "Texture | TextureSourceLike",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "skipCache = false",
+          "type": null
+        }
+      ],
+      "returnType": "Sprite",
+      "description": "Creates a new sprite based on a source texture, image, video, or canvas element. This is a convenience method that automatically creates and manages textures. ```ts // Create from path or URL const sprite = Sprite.from('assets/image.png'); // Create from existing texture const sprite = Sprite.from(texture); // Create from canvas const canvas = document.createElement('canvas'); const sprite = Sprite.from(canvas, true); // Skip caching new texture ``` or any valid texture source (canvas, video, etc.)"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source instanceof Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Sprite",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Sprite",
+      "params": [
+        {
+          "name": "Texture.from(source",
+          "type": null
+        },
+        {
+          "name": "skipCache",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options instanceof Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "label",
+          "type": "'Sprite'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "...rest\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "_onUpdate",
+          "type": "(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anchor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "texture.defaultAnchor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "height !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTexture === value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTexture && currentTexture.dynamic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onViewUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "value.dynamic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onViewUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Sprite",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture.from('sprite.png'",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "'newSprite.png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "load",
+      "params": [
+        {
+          "name": "'spritesheet.json'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Texture",
+      "params": [
+        {
+          "name": "source",
+          "type": "new TextureSource({ width: 300",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "300 }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [
+        {
+          "name": "196",
+          "type": null
+        },
+        {
+          "name": "66",
+          "type": null
+        },
+        {
+          "name": "58",
+          "type": null
+        },
+        {
+          "name": "56",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [
+        {
+          "name": "4",
+          "type": null
+        },
+        {
+          "name": "4",
+          "type": null
+        },
+        {
+          "name": "58",
+          "type": null
+        },
+        {
+          "name": "56",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Rectangle",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "64",
+          "type": null
+        },
+        {
+          "name": "64",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Sprite",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "visualBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateQuadBounds",
+      "params": [
+        {
+          "name": "this._visualBounds",
+          "type": null
+        },
+        {
+          "name": "this._anchor",
+          "type": null
+        },
+        {
+          "name": "this._texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "'8.6.1'",
+          "type": null
+        },
+        {
+          "name": "'Sprite.sourceBounds is deprecated",
+          "type": null
+        },
+        {
+          "name": "use visualBounds instead.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBounds",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "texture",
+          "type": "true",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureSource",
+          "type": "true }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": "DestroyOptions",
+          "optional": true,
+          "default": "false"
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "destroyTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "destroyTextureSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "400",
+          "type": null
+        },
+        {
+          "name": "300",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        },
+        {
+          "name": "1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "0.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": "this._anchor.copyFrom(value)",
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "sprite.scale.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "300",
+          "type": null
+        },
+        {
+          "name": "400",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "this.scale.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "sprite.scale.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "300",
+          "type": null
+        },
+        {
+          "name": "400",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "this.scale.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Sprite",
+      "params": [
+        {
+          "name": "Texture.from('sprite.png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "Size",
+          "type": "${size.width}x${size.height}`",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [
+        {
+          "name": "reuseSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [
+        {
+          "name": "out",
+          "type": "Size",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Size",
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "this.scale.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "this.scale.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Sprite",
+      "params": [
+        {
+          "name": "Texture.from('sprite.png'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "100",
+          "type": null
+        },
+        {
+          "name": "200",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "100",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "width",
+          "type": "200",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "300\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "*     sprite.texture.orig.width",
+          "type": null
+        },
+        {
+          "name": "*     sprite.texture.orig.height\n     *",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "value",
+          "type": "number | Optional<Size",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "'height'>",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof value === 'object'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "anchor",
+      "type": "ObservablePoint",
+      "description": "The anchor sets the origin point of the sprite. The default value is taken from the {@link Texture} and passed to the constructor. - The default is `(0,0)`, this means the sprite's origin is the top left. - Setting the anchor to `(0.5,0.5)` means the sprite's origin is centered. - Setting the anchor to `(1,1)` would mean the sprite's origin point will be the bottom right corner. If you pass only single parameter, it will set both x and y to the same value as shown in the example below. ```ts // Center the anchor point sprite.anchor = 0.5; // Sets both x and y to 0.5 sprite.position.set(400, 300); // Sprite will be centered at this position // Set specific x/y anchor points sprite.anchor = { x: 1, // Right edge y: 0  // Top edge }; // Using individual coordinates sprite.anchor.set(0.5, 1); // Center-bottom // For rotation around center sprite.anchor.set(0.5); sprite.rotation = Math.PI / 4; // 45 degrees around center // For scaling from center sprite.anchor.set(0.5); sprite.scale.set(2); // Scales from center point ```"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "description": "The width of the sprite, setting this will actually modify the scale to achieve the value set. ```ts // Set width directly sprite.width = 200; console.log(sprite.scale.x); // Scale adjusted to match width // Set width while preserving aspect ratio const ratio = sprite.height / sprite.width; sprite.width = 300; sprite.height = 300 * ratio; // For better performance when setting both width and height sprite.setSize(300, 400); // Avoids recalculating bounds twice // Reset to original texture size sprite.width = sprite.texture.orig.width; ```"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "description": "The height of the sprite, setting this will actually modify the scale to achieve the value set. ```ts // Set height directly sprite.height = 150; console.log(sprite.scale.y); // Scale adjusted to match height // Set height while preserving aspect ratio const ratio = sprite.width / sprite.height; sprite.height = 200; sprite.width = 200 * ratio; // For better performance when setting both width and height sprite.setSize(300, 400); // Avoids recalculating bounds twice // Reset to original texture size sprite.height = sprite.texture.orig.height; ```"
+    }
+  ]
+}

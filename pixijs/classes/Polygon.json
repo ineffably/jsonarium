@@ -1,0 +1,152 @@
+{
+  "type": "class",
+  "name": "Polygon",
+  "sourcePath": "maths/shapes/Polygon.ts",
+  "extends": null,
+  "implements": [
+    "ShapePrimitive"
+  ],
+  "description": "A class to define a shape via user defined coordinates. Used for creating complex shapes and hit areas with custom points. ```ts // Create polygon from array of points const polygon1 = new Polygon([ new Point(0, 0), new Point(0, 100), new Point(100, 100) ]); // Create from array of coordinates const polygon2 = new Polygon([0, 0, 0, 100, 100, 100]); // Create from sequence of points const polygon3 = new Polygon( new Point(0, 0), new Point(0, 100), new Point(100, 100) ); // Create from sequence of coordinates const polygon4 = new Polygon(0, 0, 0, 100, 100, 100); // Use as container hit area container.hitArea = new Polygon([0, 0, 100, 0, 50, 100]); ```",
+  "category": "maths",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "isArray",
+      "params": [
+        {
+          "name": "points[0]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof flat[0] !== 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0",
+          "type": null
+        },
+        {
+          "name": "il = flat.length; i < il; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "(flat[i] as PointData",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isClockwise",
+      "params": [],
+      "returnType": "boolean",
+      "description": "Determines whether the polygon's points are arranged in a clockwise direction. Uses the shoelace formula (surveyor's formula) to calculate the signed area. A positive area indicates clockwise winding, while negative indicates counter-clockwise. The formula sums up the cross products of adjacent vertices: For each pair of adjacent points (x1,y1) and (x2,y2), we calculate (x1*y2 - x2*y1) The final sum divided by 2 gives the signed area - positive for clockwise. ```ts // Check polygon winding const polygon = new Polygon([0, 0, 100, 0, 50, 100]); console.log(polygon.isClockwise()); // Check direction // Use in path construction const hole = new Polygon([25, 25, 75, 25, 75, 75, 25, 75]); if (hole.isClockwise() === shape.isClockwise()) { hole.points.reverse(); // Reverse for proper hole winding } ```"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < length; i += 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPolygon",
+      "params": [
+        {
+          "name": "polygon",
+          "type": "Polygon",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks if this polygon completely contains another polygon. Used for detecting holes in shapes, like when parsing SVG paths. ```ts // Basic containment check const outerSquare = new Polygon([0,0, 100,0, 100,100, 0,100]); // A square const innerSquare = new Polygon([25,25, 75,25, 75,75, 25,75]); // A smaller square inside outerSquare.containsPolygon(innerSquare); // Returns true innerSquare.containsPolygon(outerSquare); // Returns false ``` - Uses bounds check for quick rejection - Tests all points for containment"
+    },
+    {
+      "name": "getBounds",
+      "params": [
+        {
+          "name": "tempRect",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getBounds",
+      "params": [
+        {
+          "name": "tempRect2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!thisBounds.containsRect(otherBounds",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < points.length; i += 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.contains(x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

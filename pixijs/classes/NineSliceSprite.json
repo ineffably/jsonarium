@@ -1,0 +1,122 @@
+{
+  "type": "class",
+  "name": "NineSliceSprite",
+  "sourcePath": "scene/sprite-nine-slice/NineSliceSprite.ts",
+  "extends": "ViewContainer",
+  "implements": [],
+  "description": "Constructor options used for `NineSliceSprite` instances. Defines how the sprite's texture is divided and scaled in nine sections. <pre> A                          B +---+----------------------+---+ C | 1 |          2           | 3 | +---+----------------------+---+ |   |                      |   | | 4 |          5           | 6 | |   |                      |   | +---+----------------------+---+ D | 7 |          8           | 9 | +---+----------------------+---+ When changing this objects width and/or height: areas 1 3 7 and 9 will remain unscaled. areas 2 and 8 will be stretched horizontally areas 4 and 6 will be stretched vertically area 5 will be stretched both horizontally and vertically </pre> ```ts // Create a basic nine-slice sprite const button = new NineSliceSprite({ texture: Texture.from('button.png'), leftWidth: 20, // Left border (A) rightWidth: 20, // Right border (B) topHeight: 20, // Top border (C) bottomHeight: 20, // Bottom border (D) width: 100, // Initial width height: 50, // Initial height anchor: 0.5, // Center anchor point }); ``` / export interface NineSliceSpriteOptions extends PixiMixins.NineSliceSpriteOptions, ViewContainerOptions { /** The texture to use on the NineSliceSprite. ```ts // Create a sprite with a texture const sprite = new NineSliceSprite({ texture: Texture.from('path/to/image.png') }); // Update the texture later sprite.texture = Texture.from('path/to/another-image.png'); ``` / texture: Texture; /** Width of the left vertical bar (A). Controls the size of the left edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., leftWidth: 20 }); sprite.leftWidth = 20; // Set left border width ``` / leftWidth?: number; /** Height of the top horizontal bar (C). Controls the size of the top edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., topHeight: 20 }); sprite.topHeight = 20; // Set top border height ``` / topHeight?: number; /** Width of the right vertical bar (B). Controls the size of the right edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., rightWidth: 20 }); sprite.rightWidth = 20; // Set right border width ``` / rightWidth?: number; /** Height of the bottom horizontal bar (D). Controls the size of the bottom edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., bottomHeight: 20 }); sprite.bottomHeight = 20; // Set bottom border height ``` / bottomHeight?: number; /** Width of the NineSliceSprite. Modifies the vertices directly rather than UV coordinates ```ts const sprite = new NineSliceSprite({ ..., width: 200 }); sprite.width = 200; // Set the width of the sprite ``` / width?: number; /** Height of the NineSliceSprite. Modifies the vertices directly rather than UV coordinates ```ts const sprite = new NineSliceSprite({ ..., height: 100 }); sprite.height = 100; // Set the height of the sprite ``` / height?: number; /** Whether to round the x/y position to whole pixels ```ts const sprite = new NineSliceSprite({ ..., roundPixels: true }); ``` / roundPixels?: boolean; /** The anchor point of the NineSliceSprite (0-1 range) Controls the origin point for rotation, scaling, and positioning. Can be a number for uniform anchor or a PointData for separate x/y values. ```ts // Centered anchor const sprite = new NineSliceSprite({ ..., anchor: 0.5 }); sprite.anchor = 0.5; // Separate x/y anchor sprite.anchor = { x: 0.5, y: 0.5 }; // Right-aligned anchor sprite.anchor = { x: 1, y: 0 }; // Update anchor directly sprite.anchor.set(0.5, 0.5); ``` / anchor?: PointData | number; } // eslint-disable-next-line requireExport/require-export-jsdoc, requireMemberAPI/require-member-api-doc export interface NineSliceSprite extends PixiMixins.NineSliceSprite, ViewContainer<NineSliceSpriteGpuData> {} /** The NineSliceSprite allows you to stretch a texture using 9-slice scaling. The corners will remain unscaled (useful for buttons with rounded corners for example) and the other areas will be scaled horizontally and or vertically <pre> A                          B +---+----------------------+---+ C | 1 |          2           | 3 | +---+----------------------+---+ |   |                      |   | | 4 |          5           | 6 | |   |                      |   | +---+----------------------+---+ D | 7 |          8           | 9 | +---+----------------------+---+ When changing this objects width and/or height: areas 1 3 7 and 9 will remain unscaled. areas 2 and 8 will be stretched horizontally areas 4 and 6 will be stretched vertically area 5 will be stretched both horizontally and vertically </pre> ```ts import { NineSliceSprite, Texture } from 'pixi.js'; const plane9 = new NineSliceSprite({ texture: Texture.from('BoxWithRoundedCorners.png'), leftWidth: 15, topHeight: 15, rightWidth: 15, bottomHeight: 15, width: 200, height: 100, }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options instanceof Texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'NineSlicePlane now uses the options object {texture",
+          "type": null
+        },
+        {
+          "name": "leftWidth",
+          "type": null
+        },
+        {
+          "name": "rightWidth",
+          "type": null
+        },
+        {
+          "name": "topHeight",
+          "type": null
+        },
+        {
+          "name": "bottomHeight}'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'NineSlicePlane is deprecated. Use NineSliceSprite instead.'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "anchor",
+      "type": "ObservablePoint",
+      "description": "The anchor sets the origin point of the sprite. The default value is taken from the {@link Texture} and passed to the constructor. - The default is `(0,0)`, this means the sprite's origin is the top left. - Setting the anchor to `(0.5,0.5)` means the sprite's origin is centered. - Setting the anchor to `(1,1)` would mean the sprite's origin point will be the bottom right corner. If you pass only single parameter, it will set both x and y to the same value as shown in the example below. ```ts // Center the anchor point sprite.anchor = 0.5; // Sets both x and y to 0.5 sprite.position.set(400, 300); // Sprite will be centered at this position // Set specific x/y anchor points sprite.anchor = { x: 1, // Right edge y: 0  // Top edge }; // Using individual coordinates sprite.anchor.set(0.5, 1); // Center-bottom // For rotation around center sprite.anchor.set(0.5); sprite.rotation = Math.PI / 4; // 45 degrees around center // For scaling from center sprite.anchor.set(0.5); sprite.scale.set(2); // Scales from center point ```"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "description": "The width of the NineSliceSprite, setting this will actually modify the vertices and UV's of this plane. The width affects how the middle sections are scaled. ```ts // Create a nine-slice sprite with fixed width const panel = new NineSliceSprite({ texture: Texture.from('panel.png'), width: 200  // Sets initial width }); // Adjust width dynamically panel.width = 300;  // Stretches middle sections ```"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "description": "The height of the NineSliceSprite, setting this will actually modify the vertices and UV's of this plane. The height affects how the middle sections are scaled. ```ts // Create a nine-slice sprite with fixed height const panel = new NineSliceSprite({ texture: Texture.from('panel.png'), height: 150  // Sets initial height }); // Adjust height dynamically panel.height = 200;  // Stretches middle sections // Create responsive UI element const dialog = new NineSliceSprite({ texture: Texture.from('dialog.png'), topHeight: 30, bottomHeight: 30, height: parent.height * 0.5  // 50% of parent height }); ```"
+    },
+    {
+      "name": "leftWidth",
+      "type": "number",
+      "description": "Width of the left vertical bar (A). Controls the size of the left edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., leftWidth: 20 }); sprite.leftWidth = 20; // Set left border width ```"
+    },
+    {
+      "name": "topHeight",
+      "type": "number",
+      "description": "Height of the top horizontal bar (C). Controls the size of the top edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., topHeight: 20 }); sprite.topHeight = 20; // Set top border height ```"
+    },
+    {
+      "name": "rightWidth",
+      "type": "number",
+      "description": "Width of the right vertical bar (B). Controls the size of the right edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., rightWidth: 20 }); sprite.rightWidth = 20; // Set right border width ```"
+    },
+    {
+      "name": "bottomHeight",
+      "type": "number",
+      "description": "Height of the bottom horizontal bar (D). Controls the size of the bottom edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., bottomHeight: 20 }); sprite.bottomHeight = 20; // Set bottom border height ```"
+    },
+    {
+      "name": "texture",
+      "type": "Texture",
+      "description": "The texture to use on the NineSliceSprite. ```ts // Create a sprite with a texture const sprite = new NineSliceSprite({ texture: Texture.from('path/to/image.png') }); // Update the texture later sprite.texture = Texture.from('path/to/another-image.png'); ```"
+    }
+  ]
+}

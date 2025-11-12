@@ -1,0 +1,331 @@
+{
+  "type": "interface",
+  "name": "NineSliceSpriteOptions",
+  "sourcePath": "scene/sprite-nine-slice/NineSliceSprite.ts",
+  "extends": [
+    "PixiMixins"
+  ],
+  "description": "Constructor options used for `NineSliceSprite` instances. Defines how the sprite's texture is divided and scaled in nine sections. <pre> A                          B +---+----------------------+---+ C | 1 |          2           | 3 | +---+----------------------+---+ |   |                      |   | | 4 |          5           | 6 | |   |                      |   | +---+----------------------+---+ D | 7 |          8           | 9 | +---+----------------------+---+ When changing this objects width and/or height: areas 1 3 7 and 9 will remain unscaled. areas 2 and 8 will be stretched horizontally areas 4 and 6 will be stretched vertically area 5 will be stretched both horizontally and vertically </pre> ```ts // Create a basic nine-slice sprite const button = new NineSliceSprite({ texture: Texture.from('button.png'), leftWidth: 20, // Left border (A) rightWidth: 20, // Right border (B) topHeight: 20, // Top border (C) bottomHeight: 20, // Bottom border (D) width: 100, // Initial width height: 50, // Initial height anchor: 0.5, // Center anchor point }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": false,
+      "description": "The texture to use on the NineSliceSprite. ```ts // Create a sprite with a texture const sprite = new NineSliceSprite({ texture: Texture.from('path/to/image.png') }); // Update the texture later sprite.texture = Texture.from('path/to/another-image.png'); ```"
+    },
+    {
+      "name": "leftWidth",
+      "type": "number",
+      "optional": true,
+      "description": "Width of the left vertical bar (A). Controls the size of the left edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., leftWidth: 20 }); sprite.leftWidth = 20; // Set left border width ```"
+    },
+    {
+      "name": "topHeight",
+      "type": "number",
+      "optional": true,
+      "description": "Height of the top horizontal bar (C). Controls the size of the top edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., topHeight: 20 }); sprite.topHeight = 20; // Set top border height ```"
+    },
+    {
+      "name": "rightWidth",
+      "type": "number",
+      "optional": true,
+      "description": "Width of the right vertical bar (B). Controls the size of the right edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., rightWidth: 20 }); sprite.rightWidth = 20; // Set right border width ```"
+    },
+    {
+      "name": "bottomHeight",
+      "type": "number",
+      "optional": true,
+      "description": "Height of the bottom horizontal bar (D). Controls the size of the bottom edge that remains unscaled ```ts const sprite = new NineSliceSprite({ ..., bottomHeight: 20 }); sprite.bottomHeight = 20; // Set bottom border height ```"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": true,
+      "description": "Width of the NineSliceSprite. Modifies the vertices directly rather than UV coordinates ```ts const sprite = new NineSliceSprite({ ..., width: 200 }); sprite.width = 200; // Set the width of the sprite ```"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": true,
+      "description": "Height of the NineSliceSprite. Modifies the vertices directly rather than UV coordinates ```ts const sprite = new NineSliceSprite({ ..., height: 100 }); sprite.height = 100; // Set the height of the sprite ```"
+    },
+    {
+      "name": "roundPixels",
+      "type": "boolean",
+      "optional": true,
+      "description": "Whether to round the x/y position to whole pixels ```ts const sprite = new NineSliceSprite({ ..., roundPixels: true }); ```"
+    },
+    {
+      "name": "anchor",
+      "type": "PointData | number",
+      "optional": true,
+      "description": "The anchor point of the NineSliceSprite (0-1 range) Controls the origin point for rotation, scaling, and positioning. Can be a number for uniform anchor or a PointData for separate x/y values. ```ts // Centered anchor const sprite = new NineSliceSprite({ ..., anchor: 0.5 }); sprite.anchor = 0.5; // Separate x/y anchor sprite.anchor = { x: 0.5, y: 0.5 }; // Right-aligned anchor sprite.anchor = { x: 1, y: 0 }; // Update anchor directly sprite.anchor.set(0.5, 0.5); ```"
+    },
+    {
+      "name": "texture",
+      "type": "Texture.EMPTY,\n    }",
+      "optional": false,
+      "description": "The NineSliceSprite allows you to stretch a texture using 9-slice scaling. The corners will remain unscaled (useful for buttons with rounded corners for example) and the other areas will be scaled horizontally and or vertically <pre> A                          B +---+----------------------+---+ C | 1 |          2           | 3 | +---+----------------------+---+ |   |                      |   | | 4 |          5           | 6 | |   |                      |   | +---+----------------------+---+ D | 7 |          8           | 9 | +---+----------------------+---+ When changing this objects width and/or height: areas 1 3 7 and 9 will remain unscaled. areas 2 and 8 will be stretched horizontally areas 4 and 6 will be stretched vertically area 5 will be stretched both horizontally and vertically </pre> ```ts import { NineSliceSprite, Texture } from 'pixi.js'; const plane9 = new NineSliceSprite({ texture: Texture.from('BoxWithRoundedCorners.png'), leftWidth: 15, topHeight: 15, rightWidth: 15, bottomHeight: 15, width: 200, height: 100, }); ``` / export class NineSliceSprite extends ViewContainer<NineSliceSpriteGpuData> implements View { /** The default options used to override initial values of any options passed in the constructor. These values are used as fallbacks when specific options are not provided. ```ts // Override default options globally NineSliceSprite.defaultOptions.texture = Texture.from('defaultButton.png'); // Create sprite with default texture const sprite = new NineSliceSprite({...}); // sprite will use 'defaultButton.png' as its texture // Reset to empty texture NineSliceSprite.defaultOptions.texture = Texture.EMPTY; ``` / public static defaultOptions: NineSliceSpriteOptions = { /** @default Texture.EMPTY"
+    },
+    {
+      "name": "renderPipeId",
+      "type": "string = 'nineSliceSprite'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_texture",
+      "type": "Texture",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_anchor",
+      "type": "ObservablePoint",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_leftWidth",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_topHeight",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_rightWidth",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_bottomHeight",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "NineSliceSpriteOptions | Texture)\n    {\n        if ((options instanceof Texture))\n        {\n            options = { texture: options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "label",
+      "type": "'NineSliceSprite',\n            ...rest\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_onUpdate",
+      "type": "() =>\n                {\n                    this.onViewUpdate()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "1, // Right edge\n     *     y: 0  // Top edge\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "PointData | number)\n    {\n        typeof value === 'number' ? this._anchor.set(value) : this._anchor.copyFrom(value)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('panel.png'),\n     *     width: 200  // Sets initial width\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._width = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('panel.png'),\n     *     height: 150  // Sets initial height\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('dialog.png'),\n     *     topHeight: 30,\n     *     bottomHeight: 30,\n     *     height: parent.height * 0.5  // 50% of parent height\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._height = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Width",
+      "type": "300, Height: 200\n     *\n     * // Set uniform size\n     * panel.setSize(200)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "400,\n     *     height: 300\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number | Optional<Size, 'height'>, height?: number): void\n    {\n        if (typeof value === 'object')\n        {\n            height = value.height ?? value.width",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Size",
+      "type": "${size.width}x${size.height}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "0, height: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "out",
+      "type": "Size): Size\n    {\n        out ||= {} as Size",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "leftWidth",
+      "type": "20 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._leftWidth = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "topHeight",
+      "type": "20 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._topHeight = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "rightWidth",
+      "type": "20 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._rightWidth = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "bottomHeight",
+      "type": "20 })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._bottomHeight = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture.from('path/to/image.png')\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Texture)\n    {\n        value ||= Texture.EMPTY",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "${sprite.originalWidth}x${sprite.originalHeight}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "size",
+      "type": "${sprite.originalWidth}x${sprite.originalHeight}`)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "true, textureSource: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions): void\n    {\n        super.destroy(options)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "NineSliceSpriteOptions | Texture)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Texture, leftWidth: number, topHeight: number, rightWidth: number, bottomHeight: number)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[NineSliceSpriteOptions | Texture] | [Texture, number, number, number, number])\n    {\n        let options = args[0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "options,\n                leftWidth: args[1],\n                topHeight: args[2],\n                rightWidth: args[3],\n                bottomHeight: args[4],\n            }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

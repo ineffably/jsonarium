@@ -1,0 +1,95 @@
+{
+  "type": "interface",
+  "name": "InstructionPipe",
+  "sourcePath": "rendering/renderers/shared/instructions/RenderPipe.ts",
+  "extends": [],
+  "description": "An interface for a pipe that can be used to build instructions for the renderer. InstructionPipes are specifically  used to manage the state of the renderer. For example, the BlendModePipe is used to set the blend mode of the renderer.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "upload",
+      "type": "(instructionSet: InstructionSet) => void",
+      "optional": true,
+      "description": "called just before we execute the draw calls , this is where the pipes have an opportunity to upload data to the GPU. This is only called if data changes."
+    },
+    {
+      "name": "execute",
+      "type": "(instruction: INSTRUCTION) => void",
+      "optional": true,
+      "description": "this is where the actual instruction is executed - eg make the draw call activate a filter. Any instructions that have the same renderPipeId have their execute method called"
+    },
+    {
+      "name": "buildReset",
+      "type": "(instructionSet: InstructionSet) => void",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "buildStart",
+      "type": "(instructionSet: InstructionSet) => void",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "buildEnd",
+      "type": "(instructionSet: InstructionSet) => void",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "renderEnd",
+      "type": "() => void",
+      "optional": true,
+      "description": "Called just after the render ends giving the RenderPipes a chance to do any cleanup"
+    },
+    {
+      "name": "renderStart",
+      "type": "() => void",
+      "optional": true,
+      "description": "Called just before the render starts giving the RenderPipes a chance to do any setup"
+    },
+    {
+      "name": "push",
+      "type": "(effect: Effect, targetContainer: Container, instructionSet: InstructionSet) => void\n    /**\n     * Used by effect pipes to pop effects from the renderer.\n     * @param effect - the effect to pop\n     * @param targetContainer - the container that the effect is being applied to\n     * @param instructionSet - the instruction set currently being built\n     */\n    pop?: (effect: Effect, targetContainer: Container, instructionSet: InstructionSet) => void\n}\n\n/**\n * An interface for a pipe that can be used to build instructions for the renderer.\n * RenderPipes are specifically used to render Renderables like a Mesh.\n * @category rendering\n * @advanced\n */\nexport interface RenderPipe<RENDERABLE = Renderable>\n{\n    /**\n     * This is where the renderable is added to the instruction set. This is called once per renderable.\n     * For instance, a MeshRenderPipe could be used to enqueue a 'draw mesh' command\n     * to the rendering instruction set, catering to the rendering of mesh geometry.\n     * In more complex scenarios, such as the SpritePipe, this seamlessly coordinates\n     * with a batchPipe to efficiently batch and add batch instructions to the instructions set\n     *\n     * Add is called when the instructions set is being built.\n     * @param renderable - the renderable that needs to be rendered\n     * @param instructionSet - the instruction set currently being built\n     */\n    addRenderable: (renderable: RENDERABLE, instructionSet: InstructionSet) => void",
+      "optional": true,
+      "description": "Used by the effect pipes push and pop effects to the renderer. A push effect allows the renderer to change its state to support the effect. A pop effect allows the renderer to return to its previous state. An example of this would be the filter effect."
+    },
+    {
+      "name": "updateRenderable",
+      "type": "(renderable: RENDERABLE) => void",
+      "optional": false,
+      "description": "Called whenever a renderable has been been updated, eg its position has changed. This is only called in the render loop if the instructions set is being reused from the last frame. Otherwise addRenderable is called."
+    },
+    {
+      "name": "destroyRenderable",
+      "type": "(renderable: RENDERABLE) => void",
+      "optional": true,
+      "description": "Called whenever a renderable is destroyed, often the pipes keep a webGL / webGPU specific representation of the renderable that needs to be tidied up when the renderable is destroyed."
+    },
+    {
+      "name": "validateRenderable",
+      "type": "(renderable: RENDERABLE) => boolean",
+      "optional": false,
+      "description": "This function is called when the renderer is determining if it can use the same instruction set again to improve performance. If this function returns true, the renderer will rebuild the whole instruction set for the scene. This is only called if the scene has not its changed its structure ."
+    },
+    {
+      "name": "addToBatch",
+      "type": "(renderable: BatchableElement, instructionSet: InstructionSet) => void",
+      "optional": false,
+      "description": "An interface for a pipe that can be used to build instructions for the renderer. BatchPipes are specifically used to build and render Batches. / export interface BatchPipe { /** Add a add a batchable object to the batch."
+    },
+    {
+      "name": "break",
+      "type": "(instructionSet: InstructionSet) => void",
+      "optional": false,
+      "description": "Forces the batch to break. This can happen if for example you need to render everything and then change the render target."
+    },
+    {
+      "name": "renderer",
+      "type": "Renderer, adaptor?: any): RenderPipe | BatchPipe | InstructionPipe<any>",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "type": "class",
+  "name": "ColorMaskPipe",
+  "sourcePath": "rendering/mask/color/ColorMaskPipe.ts",
+  "extends": null,
+  "implements": [
+    "InstructionPipe"
+  ],
+  "description": "export interface ColorMaskInstruction extends Instruction { renderPipeId: 'colorMask', colorMask: number, } /** @internal",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "buildStart",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "mask",
+          "type": "Effect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentColor !== this._currentColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'colorMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "colorMask",
+          "type": "currentColor",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "} as ColorMaskInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [
+        {
+          "name": "_mask",
+          "type": "Effect",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "_container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "instructionSet",
+          "type": "InstructionSet",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "break",
+      "params": [
+        {
+          "name": "instructionSet",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentColor !== this._currentColor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "add",
+      "params": [
+        {
+          "name": "renderPipeId",
+          "type": "'colorMask'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "colorMask",
+          "type": "currentColor",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "canBundle",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "} as ColorMaskInstruction",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "instruction",
+          "type": "ColorMaskInstruction",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setMask",
+      "params": [
+        {
+          "name": "instruction.colorMask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

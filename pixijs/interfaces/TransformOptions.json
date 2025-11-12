@@ -1,0 +1,119 @@
+{
+  "type": "interface",
+  "name": "TransformOptions",
+  "sourcePath": "utils/misc/Transform.ts",
+  "extends": [],
+  "description": "Options for the {@link Transform} constructor.",
+  "category": "utils",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "matrix",
+      "type": "Matrix",
+      "optional": true,
+      "description": "The matrix to use."
+    },
+    {
+      "name": "observer",
+      "type": "{_onUpdate: (transform: Transform) => void}\n}\n\n/**\n * The Transform class facilitates the manipulation of a 2D transformation matrix through\n * user-friendly properties: position, scale, rotation, skew, and pivot.\n * @example\n * ```ts\n * // Basic transform usage\n * const transform = new Transform()",
+      "optional": true,
+      "description": "The observer to use."
+    },
+    {
+      "name": "x",
+      "type": "0, y: 0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_matrix",
+      "type": "Matrix",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "position",
+      "type": "ObservablePoint",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "type": "ObservablePoint",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "pivot",
+      "type": "ObservablePoint",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "skew",
+      "type": "ObservablePoint",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_rotation",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_cx",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_sx",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_cy",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_sy",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "observer",
+      "type": "Observer<Transform>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "point",
+      "type": "ObservablePoint): void\n    {\n        this.dirty = true",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "math",
+      "type": "Transform `\n            + `position=(${this.position.x}, ${this.position.y}) `\n            + `rotation=${this.rotation} `\n            + `scale=(${this.scale.x}, ${this.scale.y}) `\n            + `skew=(${this.skew.x}, ${this.skew.y}) `\n            + `]`",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matrix",
+      "type": "Matrix): void\n    {\n        matrix.decompose(this)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        if (this._rotation !== value)\n        {\n            this._rotation = value",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

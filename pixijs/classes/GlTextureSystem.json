@@ -1,0 +1,1454 @@
+{
+  "type": "class",
+  "name": "GlTextureSystem",
+  "sourcePath": "rendering/renderers/gl/texture/GlTextureSystem.ts",
+  "extends": null,
+  "implements": [
+    "System",
+    "CanvasGenerator"
+  ],
+  "description": "The system for managing textures in WebGL.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "initSource",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "public static extension = { type: [ ExtensionType.WebGLSystem, ], name: 'texture', } as const; public readonly managedTextures: TextureSource[] = []; private readonly _renderer: WebGLRenderer; private _glTextures: Record<number, GlTexture> = Object.create(null); private _glSamplers: Record<string, WebGLSampler> = Object.create(null); private _boundTextures: TextureSource[] = []; private _activeTextureLocation = -1; private _boundSamplers: Record<number, WebGLSampler> = Object.create(null); private readonly _uploads: Record<string, GLTextureUploader> = { image: glUploadImageResource, buffer: glUploadBufferImageResource, video: glUploadVideoResource, compressed: glUploadCompressedTextureResource, }; private _gl: GlRenderingContext; private _mapFormatToInternalFormat: Record<string, number>; private _mapFormatToType: Record<string, number>; private _mapFormatToFormat: Record<string, number>; private _premultiplyAlpha = false; // TODO - separate samplers will be a cool thing to add, but not right now! private readonly _useSeparateSamplers = false; constructor(renderer: WebGLRenderer) { this._renderer = renderer; this._renderer.renderableGC.addManagedHash(this, '_glTextures'); this._renderer.renderableGC.addManagedHash(this, '_glSamplers'); } protected contextChange(gl: GlRenderingContext): void { this._gl = gl; if (!this._mapFormatToInternalFormat) { this._mapFormatToInternalFormat = mapFormatToGlInternalFormat(gl, this._renderer.context.extensions); this._mapFormatToType = mapFormatToGlType(gl); this._mapFormatToFormat = mapFormatToGlFormat(gl); } this._glTextures = Object.create(null); this._glSamplers = Object.create(null); this._boundSamplers = Object.create(null); this._premultiplyAlpha = false; for (let i = 0; i < 16; i++) { this.bind(Texture.EMPTY, i); } } /** Initializes a texture source, if it has already been initialized nothing will happen."
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "texture",
+          "type": "BindableTexture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "location = 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._useSeparateSamplers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindSource",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        },
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._useSeparateSamplers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindSource",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "location = 0",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._boundTextures[location] !== source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "glTexture.target",
+          "type": null
+        },
+        {
+          "name": "glTexture.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindSampler",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._boundSamplers[location] !== sampler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindSampler",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "sampler",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unbind",
+      "params": [
+        {
+          "name": "texture",
+          "type": "BindableTexture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < boundTextures.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "boundTextures[i] === source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "glTexture.target",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._activeTextureLocation !== location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "activeTexture",
+      "params": [
+        {
+          "name": "this._gl.TEXTURE0 + location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "GlTexture",
+      "params": [
+        {
+          "name": "gl.createTexture(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source.autoGenerateMipmaps && (this._renderer.context.supports.nonPowOf2mipmaps || source.isPowerOfTwo",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "source.width",
+          "type": null
+        },
+        {
+          "name": "source.height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "Math.log2(biggestDimension",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.managedTextures.includes(source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'styleChange'",
+          "type": null
+        },
+        {
+          "name": "this.onStyleChange",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'unload'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUnload",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'updateMipmaps'",
+          "type": null
+        },
+        {
+          "name": "this.onUpdateMipmaps",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUpdate",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateStyle",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onStyleChange",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "updateStyle",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateStyle",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "firstCreation",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getGlSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "glTexture.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyStyleParams",
+      "params": [
+        {
+          "name": "source.style",
+          "type": null
+        },
+        {
+          "name": "gl",
+          "type": null
+        },
+        {
+          "name": "source.mipLevelCount > 1",
+          "type": null
+        },
+        {
+          "name": "this._renderer.context.extensions.anisotropicFiltering",
+          "type": null
+        },
+        {
+          "name": "'texParameteri'",
+          "type": null
+        },
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "// will force a clamp to edge if the texture is not a power of two\n            !this._renderer.context.supports.nonPowOf2wrapping && !source.isPowerOfTwo",
+          "type": null
+        },
+        {
+          "name": "firstCreation",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUnload",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!glTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unbind",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deleteTexture",
+      "params": [
+        {
+          "name": "glTexture.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUpdate",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "getGlSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindTexture",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "glTexture.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._premultiplyAlpha !== premultipliedAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pixelStorei",
+      "params": [
+        {
+          "name": "gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL",
+          "type": null
+        },
+        {
+          "name": "premultipliedAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._uploads[source.uploadMethodId]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "upload",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "glTexture",
+          "type": null
+        },
+        {
+          "name": "gl",
+          "type": null
+        },
+        {
+          "name": "this._renderer.context.webGLVersion",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "texImage2D",
+      "params": [
+        {
+          "name": "gl.TEXTURE_2D",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "gl.RGBA",
+          "type": null
+        },
+        {
+          "name": "source.pixelWidth",
+          "type": null
+        },
+        {
+          "name": "source.pixelHeight",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "gl.RGBA",
+          "type": null
+        },
+        {
+          "name": "gl.UNSIGNED_BYTE",
+          "type": null
+        },
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "source.autoGenerateMipmaps && source.mipLevelCount > 1",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdateMipmaps",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onUpdateMipmaps",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bind = true",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "bind",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlSource",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateMipmap",
+      "params": [
+        {
+          "name": "glTexture.target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceDestroy",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'destroy'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceDestroy",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'unload'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceUnload",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'styleChange'",
+          "type": null
+        },
+        {
+          "name": "this.onStyleChange",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'updateMipmaps'",
+          "type": null
+        },
+        {
+          "name": "this.onUpdateMipmaps",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "this.managedTextures.indexOf(source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceUnload",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createSampler",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyStyleParams",
+      "params": [
+        {
+          "name": "style",
+          "type": null
+        },
+        {
+          "name": "gl",
+          "type": null
+        },
+        {
+          "name": "this._boundTextures[this._activeTextureLocation].mipLevelCount > 1",
+          "type": null
+        },
+        {
+          "name": "this._renderer.context.extensions.anisotropicFiltering",
+          "type": null
+        },
+        {
+          "name": "'samplerParameteri'",
+          "type": null
+        },
+        {
+          "name": "glSampler",
+          "type": null
+        },
+        {
+          "name": "false",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGlSource",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GlTexture",
+      "description": null
+    },
+    {
+      "name": "generateCanvas",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "ICanvas",
+      "description": null
+    },
+    {
+      "name": "getPixels",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createCanvas",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getContext",
+      "params": [
+        {
+          "name": "'2d'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "ctx",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createImageData",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "putImageData",
+      "params": [
+        {
+          "name": "imageData",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getPixels",
+      "params": [
+        {
+          "name": "texture",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "GetPixelsOutput",
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "Math.round(frame.width * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "Math.round(frame.height * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint8Array",
+      "params": [
+        {
+          "name": "BYTES_PER_PIXEL * width * height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getRenderTarget",
+      "params": [
+        {
+          "name": "texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getGpuRenderTarget",
+      "params": [
+        {
+          "name": "renderTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bindFramebuffer",
+      "params": [
+        {
+          "name": "gl.FRAMEBUFFER",
+          "type": null
+        },
+        {
+          "name": "glRenterTarget.resolveTargetFramebuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "readPixels",
+      "params": [
+        {
+          "name": "Math.round(frame.x * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "round",
+      "params": [
+        {
+          "name": "frame.y * resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "texture.source.premultiplyAlpha > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "unpremultiplyAlpha",
+      "params": [
+        {
+          "name": "pixels",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Uint8ClampedArray",
+      "params": [
+        {
+          "name": "pixels.buffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceDestroy",
+      "params": [
+        {
+          "name": "source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resetState",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "fill",
+      "params": [
+        {
+          "name": "Texture.EMPTY.source",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "create",
+      "params": [
+        {
+          "name": "null",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pixelStorei",
+      "params": [
+        {
+          "name": "gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL",
+          "type": null
+        },
+        {
+          "name": "this._premultiplyAlpha",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

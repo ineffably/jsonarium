@@ -1,0 +1,95 @@
+{
+  "type": "interface",
+  "name": "MeasureMixinConstructor",
+  "sourcePath": "scene/container/container-mixins/measureMixin.ts",
+  "extends": [],
+  "description": "A utility type that makes all properties of T optional except for the specified keys K. / export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>; /** @ignore",
+  "category": "utils",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": true,
+      "description": "The width of the display object, in pixels. ```ts new Container({ width: 100}); ```"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": true,
+      "description": "The height of the display object, in pixels. ```ts new Container({ height: 100}); ```"
+    },
+    {
+      "name": "_localBoundsCacheData",
+      "type": "LocalBoundsCacheData",
+      "optional": false,
+      "description": "The MeasureMixin interface provides methods for measuring and manipulating the size and bounds of a display object. It includes methods to get and set the size of the object, retrieve its local bounds, and calculate its global bounds. / export interface MeasureMixin extends Required<MeasureMixinConstructor> { getSize(out?: Size): Size; setSize(width: number, height?: number): void; setSize(value: Optional<Size, 'height'>): void; /** Retrieves the local bounds of the container as a Bounds object. Uses cached values when possible for better performance. ```ts // Basic bounds check const bounds = container.getLocalBounds(); console.log(`Width: ${bounds.width}, Height: ${bounds.height}`); // subsequent calls will reuse the cached bounds const cachedBounds = container.getLocalBounds(); console.log(bounds === cachedBounds); // true ``` / getLocalBounds(): Bounds; /** Calculates and returns the (world) bounds of the display object as a Rectangle. Takes into account transforms and child bounds. ```ts // Basic bounds calculation const bounds = sprite.getBounds(); console.log(`World bounds: ${bounds.x}, ${bounds.y}, ${bounds.width}, ${bounds.height}`); // Reuse bounds object for performance const recycleBounds = new Bounds(); sprite.getBounds(false, recycleBounds); // Skip update for performance const fastBounds = sprite.getBounds(true); ``` - Includes transform calculations - Updates scene graph by default - Can reuse bounds objects - Common in hit testing being updated. This means the calculation returned MAY be out of date BUT will give you a nice performance boost. / getBounds(skipUpdate?: boolean, bounds?: Bounds): Bounds; /** @private"
+    },
+    {
+      "name": "_localBoundsCacheId",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number, localWidth: number): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number, localHeight: number): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "number[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "didChange",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "localBounds",
+      "type": "Bounds",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "measureMixin",
+      "type": "Partial<Container> = {\n\n    _localBoundsCacheId: -1,\n    _localBoundsCacheData: null,\n\n    _setWidth(value: number, localWidth: number)\n    {\n        const sign = Math.sign(this.scale.x) || 1",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number, localHeight: number)\n    {\n        const sign = Math.sign(this.scale.y) || 1",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "data",
+      "type": "[],\n                index: 1,\n                didChange: false,\n                localBounds: new Bounds()\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "skipUpdate",
+      "type": "boolean, bounds?: Bounds): Bounds\n    {\n        return getGlobalBounds(this, skipUpdate, bounds || new Bounds())",
+      "optional": true,
+      "description": null
+    }
+  ]
+}

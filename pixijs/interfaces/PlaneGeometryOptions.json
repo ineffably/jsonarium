@@ -1,0 +1,95 @@
+{
+  "type": "interface",
+  "name": "PlaneGeometryOptions",
+  "sourcePath": "scene/mesh-plane/PlaneGeometry.ts",
+  "extends": [],
+  "description": "Constructor options used for `PlaneGeometry` instances. ```js const planeGeometry = new PlaneGeometry({ width: 100, height: 100, verticesX: 10, verticesY: 10, }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "width",
+      "type": "number",
+      "optional": true,
+      "description": "Width of plane"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": true,
+      "description": "Height of plane"
+    },
+    {
+      "name": "verticesX",
+      "type": "number",
+      "optional": true,
+      "description": "Number of vertices on x-axis"
+    },
+    {
+      "name": "verticesY",
+      "type": "number",
+      "optional": true,
+      "description": "Number of vertices on y-axis"
+    },
+    {
+      "name": "defaultOptions",
+      "type": "PlaneGeometryOptions & MeshGeometryOptions = {\n        width: 100,\n        height: 100,\n        verticesX: 10,\n        verticesY: 10,\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "verticesX",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "verticesY",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "PlaneGeometryOptions)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "number, height?: number, verticesX?: number, verticesY?: number)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "[PlaneGeometryOptions?] | [number?, number?, number?, number?])\n    {\n        super({})",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "options,\n                height: args[1],\n                verticesX: args[2],\n                verticesY: args[3],\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "PlaneGeometryOptions): void\n    {\n        options = { ...PlaneGeometry.defaultOptions, ...options }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

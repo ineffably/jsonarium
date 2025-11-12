@@ -1,0 +1,4075 @@
+{
+  "type": "class",
+  "name": "EventBoundary",
+  "sourcePath": "events/EventBoundary.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Event boundaries are \"barriers\" where events coming from an upstream scene are modified before downstream propagation. ## Root event boundary The {@link EventSystem#rootBoundary rootBoundary} handles events coming from the &lt;canvas /&gt;. {@link EventSystem} handles the normalization from native {@link https://dom.spec.whatwg.org/#event Events} into {@link FederatedEvent FederatedEvents}. The rootBoundary then does the hit-testing and event dispatch for the upstream normalized event. ## Additional event boundaries An additional event boundary may be desired within an application's scene graph. For example, if a portion of the scene is is flat with many children at one level - a spatial hash maybe needed to accelerate hit testing. In this scenario, the container can be detached from the scene and glued using a custom event boundary. ```ts import { Container } from 'pixi.js'; import { EventBoundary } from 'pixi.js'; import { SpatialHash } from 'pixi-spatial-hash'; class HashedHitTestingEventBoundary { private spatialHash: SpatialHash; constructor(scene: Container, spatialHash: SpatialHash) { super(scene); this.spatialHash = spatialHash; } hitTestRecursive(...) { // TODO: If target === this.rootTarget, then use spatial hash to get a // list of possible children that match the given (x,y) coordinates. } } class VastScene extends Container { protected eventBoundary: EventBoundary; protected scene: Container; protected spatialHash: SpatialHash; constructor() { this.scene = new Container(); this.spatialHash = new SpatialHash(); this.eventBoundary = new HashedHitTestingEventBoundary(this.scene, this.spatialHash); // Populate this.scene with a ton of children, while updating this.spatialHash } } ```",
+  "category": "events",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "bind",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "'pointerdown'",
+          "type": null
+        },
+        {
+          "name": "this.mapPointerDown",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "'pointermove'",
+          "type": null
+        },
+        {
+          "name": "this.mapPointerMove",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "'pointerout'",
+          "type": null
+        },
+        {
+          "name": "this.mapPointerOut",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "'pointerleave'",
+          "type": null
+        },
+        {
+          "name": "this.mapPointerOut",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "'pointerover'",
+          "type": null
+        },
+        {
+          "name": "this.mapPointerOver",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "'pointerup'",
+          "type": null
+        },
+        {
+          "name": "this.mapPointerUp",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "'pointerupoutside'",
+          "type": null
+        },
+        {
+          "name": "this.mapPointerUpOutside",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "'wheel'",
+          "type": null
+        },
+        {
+          "name": "this.mapWheel",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addEventMapping",
+      "params": [
+        {
+          "name": "type",
+          "type": "string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fn",
+          "type": "(e: FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Adds an event mapping for the event `type` handled by `fn`. Event mappings can be used to implement additional or custom events. They take an event coming from the upstream scene (or directly from the {@link EventSystem}) and dispatch new downstream events generally trickling down and bubbling up to {@link EventBoundary.rootTarget this.rootTarget}. To modify the semantics of existing events, the built-in mapping methods of EventBoundary should be overridden instead."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.mappingTable[type]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "{\n            fn",
+          "type": null
+        },
+        {
+          "name": "priority",
+          "type": "0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sort",
+      "params": [
+        {
+          "name": "(a",
+          "type": null
+        },
+        {
+          "name": "b",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Dispatches the given event"
+    },
+    {
+      "name": "propagate",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "emit",
+      "params": [
+        {
+          "name": "type || e.type",
+          "type": null
+        },
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mapEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Maps the given upstream event through the event boundary and propagates it downstream."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.rootTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "mappers",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0",
+          "type": null
+        },
+        {
+          "name": "j = mappers.length; i < j; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fn",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "`[EventBoundary]: Event mapping not defined for ${e.type}`",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTest",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "",
+          "type": null
+        }
+      ],
+      "returnType": "Container",
+      "description": "Finds the Container that is the target of a event at the given coordinates. The passed (x,y) coordinates are in the world space above this event boundary."
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "x",
+          "type": null
+        },
+        {
+          "name": "y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "propagate",
+      "params": [
+        {
+          "name": "e",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Propagate the passed event from from {@link EventBoundary.rootTarget this.rootTarget} to its target `e.target`."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!e.target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "composedPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0",
+          "type": null
+        },
+        {
+          "name": "j = composedPath.length - 1; i < j; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.propagationStopped || e.propagationImmediatelyStopped",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.propagationStopped || e.propagationImmediatelyStopped",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = composedPath.length - 2; i >= 0; i--",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.propagationStopped || e.propagationImmediatelyStopped",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "all",
+      "params": [
+        {
+          "name": "e",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "string | string[]",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "targets = this._allInteractiveElements",
+          "type": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Emits the event `e` to all interactive containers. The event is propagated in the bubbling phase always. This is used in the `globalpointermove` event."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "targets.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isArray",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = targets.length - 1; i >= 0; i--",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "propagationPath",
+      "params": [
+        {
+          "name": "target",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Container[]",
+      "description": "Finds the propagation path from {@link EventBoundary.rootTarget rootTarget} to the passed `target`. The last element in the path is `target`."
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < PROPAGATION_LIMIT && (target !== this.rootTarget && target.parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!target.parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'Cannot find propagation path to disconnected target'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "target.parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "reverse",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTestMoveRecursive",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "eventMode",
+          "type": "EventMode",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "location",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "testFn",
+          "type": "(object: Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "pt",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._interactivePrune(currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTarget.eventMode === 'dynamic' || eventMode === 'dynamic'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTarget.interactiveChildren && currentTarget.children",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = children.length - 1; i >= 0; i--",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTestMoveRecursive",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "this._isInteractive(eventMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pruneFn",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        },
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "nestedHit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "nestedHit.length > 0 && !nestedHit[nestedHit.length - 1].parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "started",
+      "params": [
+        {
+          "name": "i.e. the event target has been found",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isInteractive",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "nestedHit.length > 0 || isInteractive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isInteractive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._hitElements.length === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isInteractive",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isInteractiveTarget && isInteractiveTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "ignore || this._hitElements.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "shouldReturn",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isInteractiveMode && (!pruneFn(currentTarget",
+          "type": null
+        },
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "testFn",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        },
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTestRecursive",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "eventMode",
+          "type": "EventMode",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "location",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "testFn",
+          "type": "(object: Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "pt",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._interactivePrune(currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pruneFn",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        },
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTarget.eventMode === 'dynamic' || eventMode === 'dynamic'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "currentTarget.interactiveChildren && currentTarget.children",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = children.length - 1; i >= 0; i--",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTestRecursive",
+      "params": [
+        {
+          "name": "child",
+          "type": null
+        },
+        {
+          "name": "this._isInteractive(eventMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "nestedHit",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "nestedHit.length > 0 && !nestedHit[nestedHit.length - 1].parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "started",
+      "params": [
+        {
+          "name": "i.e. the event target has been found",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isInteractive",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "nestedHit.length > 0 || isInteractive",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "isInteractive",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isInteractiveMode && testFn(currentTarget",
+          "type": null
+        },
+        {
+          "name": "location",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!container || !container.visible || !container.renderable || !container.measurable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container.eventMode === 'none'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container.eventMode === 'passive' && !container.interactiveChildren",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitPruneFn",
+      "params": [
+        {
+          "name": "container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "location",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container.hitArea",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyInverse",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "tempLocalMapping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!container.hitArea.contains(tempLocalMapping.x",
+          "type": null
+        },
+        {
+          "name": "tempLocalMapping.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container.effects && container.effects.length",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < container.effects.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "effect.containsPoint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "this.hitTestFn",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!effectContainsPoint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTestFn",
+      "params": [
+        {
+          "name": "container",
+          "type": "Container",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "location",
+          "type": "Point",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "container.hitArea",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "(container as Renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyInverse",
+      "params": [
+        {
+          "name": "location",
+          "type": null
+        },
+        {
+          "name": "tempLocalMapping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "return",
+      "params": [
+        {
+          "name": "container as Renderable",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "tempLocalMapping",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!e.currentTarget.isInteractive(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.eventPhase === e.AT_TARGET",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mapPointerDown",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'EventBoundary cannot map a non-pointer event as a pointer event'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'pointerdown'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'touch'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'touchstart'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'mouse' || e.pointerType === 'pen'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "isRightButton ? 'rightdown' : 'mousedown'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trackingData",
+      "params": [
+        {
+          "name": "from.pointerId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "composedPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mapPointerMove",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'EventBoundary cannot map a non-pointer event as a pointer event'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trackingData",
+      "params": [
+        {
+          "name": "from.pointerId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "findMountedTarget",
+      "params": [
+        {
+          "name": "trackingData.overTargets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "trackingData.overTargets?.length > 0 && outTarget !== e.target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "outType",
+          "type": null
+        },
+        {
+          "name": "outTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "outEvent",
+          "type": null
+        },
+        {
+          "name": "'pointerout'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "outEvent",
+          "type": null
+        },
+        {
+          "name": "'mouseout'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!e.composedPath(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "outTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "'pointerleave'",
+          "type": null
+        },
+        {
+          "name": "outTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "leaveEvent.target && !e.composedPath(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "leaveEvent.target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "leaveEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "leaveEvent",
+          "type": null
+        },
+        {
+          "name": "'mouseleave'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "leaveEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "outEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "outTarget !== e.target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clonePointerEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "overType",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "overEvent",
+          "type": null
+        },
+        {
+          "name": "'pointerover'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "overEvent",
+          "type": null
+        },
+        {
+          "name": "'mouseover'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "overTargetAncestor && overTargetAncestor !== this.rootTarget.parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "overTargetAncestor === e.target",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "didPointerEnter",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clonePointerEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'pointerenter'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "enterEvent.target\n                        && enterEvent.target !== outTarget\n                        && enterEvent.target !== this.rootTarget.parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "enterEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "enterEvent",
+          "type": null
+        },
+        {
+          "name": "'mouseenter'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "enterEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "overEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "'pointermove'",
+          "type": null
+        }
+      ],
+      "returnType": "this.dispatchEvent(e, 'pointermove')",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "'globalpointermove'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'touch'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "'touchmove'",
+          "type": null
+        }
+      ],
+      "returnType": "this.dispatchEvent(e, 'touchmove')",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "'globaltouchmove'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "splice",
+      "params": [
+        {
+          "name": "1",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "'mousemove'",
+          "type": null
+        }
+      ],
+      "returnType": "this.dispatchEvent(e, 'mousemove')",
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "'globalmousemove'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "allMethods.length > 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "all",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "allMethods",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "composedPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mapPointerOver",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'EventBoundary cannot map a non-pointer event as a pointer event'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trackingData",
+      "params": [
+        {
+          "name": "from.pointerId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'pointerover'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'mouseover'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'mouse'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clonePointerEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'pointerenter'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "enterEvent.target && enterEvent.target !== this.rootTarget.parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "enterEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "enterEvent",
+          "type": null
+        },
+        {
+          "name": "'mouseenter'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "composedPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "enterEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mapPointerOut",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'EventBoundary cannot map a non-pointer event as a pointer event'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trackingData",
+      "params": [
+        {
+          "name": "from.pointerId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "trackingData.overTargets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "findMountedTarget",
+      "params": [
+        {
+          "name": "trackingData.overTargets",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "'pointerout'",
+          "type": null
+        },
+        {
+          "name": "outTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "outEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "outEvent",
+          "type": null
+        },
+        {
+          "name": "'mouseout'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pointerleave",
+      "params": [
+        {
+          "name": "s",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "event",
+      "params": [
+        {
+          "name": "upstream events do not know rootTarget has descendants",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "'pointerleave'",
+          "type": null
+        },
+        {
+          "name": "outTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "leaveEvent.target && leaveEvent.target !== this.rootTarget.parent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "leaveEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "isMouse",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "leaveEvent",
+          "type": null
+        },
+        {
+          "name": "'mouseleave'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "outEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "leaveEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mapPointerUp",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'EventBoundary cannot map a non-pointer event as a pointer event'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'pointerup'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'touch'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'touchend'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'mouse' || e.pointerType === 'pen'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "isRightButton ? 'rightup' : 'mouseup'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trackingData",
+      "params": [
+        {
+          "name": "from.pointerId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "findMountedTarget",
+      "params": [
+        {
+          "name": "trackingData.pressTargetsByButton[from.button]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pressTarget && !e.composedPath(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "pressTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "currentTarget && !e.composedPath(",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "includes",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'pointerupoutside'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'touch'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'touchendoutside'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'mouse' || e.pointerType === 'pen'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "isRightButton ? 'rightupoutside' : 'mouseupoutside'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clickTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clonePointerEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'click'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!trackingData.clicksByButton[from.button]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clickHistory.target === clickEvent.target\n                && now - clickHistory.timeStamp < 200",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clickEvent.pointerType === 'mouse'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "clickEvent",
+          "type": null
+        },
+        {
+          "name": "isRightButton ? 'rightclick' : 'click'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "clickEvent.pointerType === 'touch'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "clickEvent",
+          "type": null
+        },
+        {
+          "name": "'tap'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "clickEvent",
+          "type": null
+        },
+        {
+          "name": "'pointertap'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "clickEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mapPointerUpOutside",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'EventBoundary cannot map a non-pointer event as a pointer event'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trackingData",
+      "params": [
+        {
+          "name": "from.pointerId",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "findMountedTarget",
+      "params": [
+        {
+          "name": "trackingData.pressTargetsByButton[from.button]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "pressTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "while",
+      "params": [
+        {
+          "name": "currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'pointerupoutside'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'touch'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "'touchendoutside'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "e.pointerType === 'mouse' || e.pointerType === 'pen'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "notifyTarget",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        },
+        {
+          "name": "e.button === 2 ? 'rightupoutside' : 'mouseupoutside'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "mapWheel",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedWheelEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'EventBoundary cannot map a non-wheel event as a wheel event'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createWheelEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "dispatchEvent",
+      "params": [
+        {
+          "name": "wheelEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "freeEvent",
+      "params": [
+        {
+          "name": "wheelEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "findMountedTarget",
+      "params": [
+        {
+          "name": "propagationPath",
+          "type": "Container[]",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "Container",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!propagationPath",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 1; i < propagationPath.length; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "graph",
+      "params": [
+        {
+          "name": "i.e. parent still points to the expected ancestor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "propagationPath[i].parent === currentTarget",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createPointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedPointerEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "optional": true,
+          "default": null
+        },
+        {
+          "name": "target",
+          "type": "Container",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "FederatedPointerEvent",
+      "description": null
+    },
+    {
+      "name": "allocateEvent",
+      "params": [
+        {
+          "name": "FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyPointerData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyMouseData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTest",
+      "params": [
+        {
+          "name": "event.global.x",
+          "type": null
+        },
+        {
+          "name": "event.global.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof type === 'string'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createWheelEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedWheelEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "FederatedWheelEvent",
+      "description": null
+    },
+    {
+      "name": "allocateEvent",
+      "params": [
+        {
+          "name": "FederatedWheelEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyWheelData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyMouseData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "hitTest",
+      "params": [
+        {
+          "name": "event.global.x",
+          "type": null
+        },
+        {
+          "name": "event.global.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clonePointerEvent",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedPointerEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "FederatedPointerEvent",
+      "description": null
+    },
+    {
+      "name": "allocateEvent",
+      "params": [
+        {
+          "name": "FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyPointerData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyMouseData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyData",
+      "params": [
+        {
+          "name": "from",
+          "type": null
+        },
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "composedPath",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "slice",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyWheelData",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedWheelEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "to",
+          "type": "FederatedWheelEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "copyPointerData",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "to",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedPointerEvent && to instanceof FederatedPointerEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyMouseData",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "to",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!(from instanceof FederatedMouseEvent && to instanceof FederatedMouseEvent",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "from.client",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "from.movement",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "from.screen",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "from.global",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyData",
+      "params": [
+        {
+          "name": "from",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "to",
+          "type": "FederatedEvent",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "now",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "from.layer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "from.page",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "trackingData",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "TrackingData",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.mappingState.trackingData[id]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "new",
+      "params": [
+        {
+          "name": "boundary",
+          "type": "EventBoundary",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "T }\n    ): T",
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.eventPool.has(constructor as any",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "constructor as any",
+          "type": null
+        },
+        {
+          "name": "[]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "constructor as any",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pop",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "event.manager !== this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Error",
+      "params": [
+        {
+          "name": "'It is illegal to free an event not managed by this EventBoundary!'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.eventPool.has(constructor as any",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "constructor as any",
+          "type": null
+        },
+        {
+          "name": "[]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "get",
+      "params": [
+        {
+          "name": "constructor as any",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "event",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!listeners",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "'fn' in listeners",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "listeners.once",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeListener",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        },
+        {
+          "name": "listeners.fn",
+          "type": null
+        },
+        {
+          "name": "undefined",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "listeners.context",
+          "type": null
+        },
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0",
+          "type": null
+        },
+        {
+          "name": "j = listeners.length;\n                i < j && !e.propagationImmediatelyStopped;\n                i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "listeners[i].once",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeListener",
+      "params": [
+        {
+          "name": "type",
+          "type": null
+        },
+        {
+          "name": "listeners[i].fn",
+          "type": null
+        },
+        {
+          "name": "undefined",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "listeners[i].context",
+          "type": null
+        },
+        {
+          "name": "e",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

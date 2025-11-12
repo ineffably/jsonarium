@@ -1,0 +1,49 @@
+{
+  "type": "interface",
+  "name": "ImageLike",
+  "sourcePath": "environment/ImageLike.ts",
+  "extends": [
+    "EventTarget"
+  ],
+  "description": "Interface for HTMLImageElement.",
+  "category": "environment",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "crossOrigin",
+      "type": "string | null",
+      "optional": false,
+      "description": "Whether or not the image has completely loaded. */ readonly complete: boolean; /** The Cross-Origin Resource Sharing (CORS) setting to use when retrieving the image."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "optional": false,
+      "description": "The URL of the image which is currently presented in the <img> element it represents. */ readonly currentSrc: string; /** The width."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "optional": false,
+      "description": "The height."
+    },
+    {
+      "name": "src",
+      "type": "string",
+      "optional": false,
+      "description": "The address or URL of the a media resource that is to be considered."
+    },
+    {
+      "name": "onload",
+      "type": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "onerror",
+      "type": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

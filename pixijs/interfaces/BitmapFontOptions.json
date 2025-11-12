@@ -1,0 +1,113 @@
+{
+  "type": "interface",
+  "name": "BitmapFontOptions",
+  "sourcePath": "scene/text-bitmap/BitmapFont.ts",
+  "extends": [],
+  "description": "Options for creating a BitmapFont. Used when loading or creating bitmap fonts from existing textures and data. ```ts import { BitmapFont, Texture } from 'pixi.js'; // Create a bitmap font from loaded textures and data const font = new BitmapFont({ // Font data containing character metrics and layout info data: { pages: [{ id: 0, file: 'font.png' }], chars: { '65': { // 'A' id: 65, page: 0, x: 0, y: 0, width: 32, height: 32, xOffset: 0, yOffset: 0, xAdvance: 32, letter: 'A' } // ... other characters }, fontSize: 32, lineHeight: 36, baseLineOffset: 26, fontFamily: 'MyFont', // Optional distance field info for MSDF/SDF fonts distanceField: { type: 'msdf', range: 4 } }, // Array of textures containing the font glyphs textures: [ Texture.from('font.png') ] }); ```",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "data",
+      "type": "BitmapFontData",
+      "optional": false,
+      "description": "The bitmap font data containing character metrics, layout information, and font properties. This includes character positions, dimensions, kerning data, and general font settings."
+    },
+    {
+      "name": "textures",
+      "type": "Texture[]",
+      "optional": false,
+      "description": "Array of textures containing the font glyphs. Each texture corresponds to a page in the font data. For simple fonts this is typically just one texture, but complex fonts may split glyphs across multiple textures."
+    },
+    {
+      "name": "data",
+      "type": "{\n *         pages: [{ id: 0, file: 'font.png' }],\n *         chars: {\n *             '65': { // 'A'\n *                 id: 65,\n *                 page: 0,\n *                 x: 0,\n *                 y: 0,\n *                 width: 32,\n *                 height: 32,\n *                 xOffset: 0,\n *                 yOffset: 0,\n *                 xAdvance: 32,\n *                 letter: 'A'\n *             }\n *         },\n *         fontSize: 32,\n *         lineHeight: 36,\n *         baseLineOffset: 26,\n *         fontFamily: 'MyFont',\n *         distanceField: {\n *             type: 'msdf',\n *             range: 4\n *         }\n *     },\n *     textures: [Texture.from('font.png')]\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'MyCustomFont',\n *     style: {\n *         fontFamily: 'Arial',\n *         fontSize: 32,\n *         fill: '#ffffff',\n *         stroke: { color: '#000000', width: 2 }\n *     }\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "BitmapFontOptions, url?: string)\n    {\n        super()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "key",
+      "type": "string) =>\n        {\n            const pageData = data.pages[parseInt(key, 10)]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "key",
+      "type": "string) =>\n        {\n            const charData = data.chars[key]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "frame",
+      "type": "textureFrame,\n                source: textureSource,\n                rotate: textureRotate,\n            } = textures[charData.page]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "orig",
+      "type": "new Rectangle(0, 0, charData.width, charData.height),\n                source: textureSource,\n                rotate: textureRotate,\n            })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "id",
+      "type": "key.codePointAt(0),\n                xOffset: charData.xOffset,\n                yOffset: charData.yOffset,\n                xAdvance: charData.xAdvance,\n                kerning: charData.kerning ?? {},\n                texture,\n            }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "ascent",
+      "type": "0,\n            descent: 0,\n            fontSize: data.fontSize,\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "string, range: number }) = data.distanceField ?? {\n            type: 'none',\n            range: 0,\n        }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'Title',\n     *     style: {\n     *         fontFamily: 'Arial',\n     *         fontSize: 32,\n     *         fill: '#ffffff'\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'Custom',\n     *     style: {\n     *         fontFamily: 'Arial',\n     *         fontSize: 24,\n     *         fill: '#00ff00',\n     *         stroke: { color: '#000000', width: 2 }\n     *     },\n     *     chars: [['a', 'z'], ['A', 'Z'], ['0', '9']],\n     *     resolution: 2,\n     *     padding: 4,\n     *     textureStyle: {\n     *         scaleMode: 'nearest'\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "BitmapFontInstallOptions)\n    {\n        BitmapFontManager.install(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "string)\n    {\n        BitmapFontManager.uninstall(name)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "type": "interface",
+  "name": "StrokeStyle",
+  "sourcePath": "scene/graphics/shared/FillTypes.ts",
+  "extends": [
+    "FillStyle",
+    "StrokeAttributes"
+  ],
+  "description": "The width of the stroke in pixels. ```ts const stroke = { width: 4 }; ``` / width?: number; /** The alignment of the stroke relative to the path. - 1: Inside the shape - 0.5: Centered on the path (default) - 0: Outside the shape ```ts // Inside alignment const stroke = { alignment: 1 }; // Centered alignment const stroke = { alignment: 0.5 }; // Outside alignment const stroke = { alignment: 0 }; ``` / alignment?: number; /** The style to use for the ends of open paths. - 'butt': Ends at path end - 'round': Rounds past path end - 'square': Squares past path end ```ts const stroke = { cap: 'round' }; ``` / cap?: LineCap; /** The style to use where paths connect. - 'miter': Sharp corner - 'round': Rounded corner - 'bevel': Beveled corner ```ts const stroke = { join: 'round' }; ``` / join?: LineJoin; /** Controls how far miter joins can extend. Only applies when join is 'miter'. Higher values allow sharper corners. ```ts const stroke = { join: 'miter', miterLimit: 3, }; ``` / miterLimit?: number; /** When true, ensures crisp 1px lines by aligning to pixel boundaries. > [!NOTE] Only available for Graphics fills. ```ts const graphics = new Graphics(); // Draw pixel-perfect line graphics .moveTo(50, 50) .lineTo(150, 50) .stroke({ width: 1, pixelLine: true, color: 0x000000 }); ``` / pixelLine?: boolean; } /** A stroke style object that combines fill properties with stroke attributes to define both the visual style and stroke behavior of lines, shape outlines, and text strokes. ```ts // --- Graphics Examples --- const graphics = new Graphics(); // Basic solid color stroke graphics.stroke({ width: 4, color: 0xff0000, alpha: 0.8, join: 'round' }); // Gradient stroke with attributes const gradient = new FillGradient({ end: { x: 1, y: 0 }, stops: [ { color: 0xff0000, offset: 0 }, // Red at start { color: 0x0000ff, offset: 1 }, // Blue at end ] }); graphics.stroke({ width: 8, fill: gradient, cap: 'round', join: 'round', alignment: 0.5 }); // --- Text Examples --- // Basic text stroke const text = new Text('Hello World', { fontSize: 48, stroke: { width: 4, color: 0x000000, alignment: 0  // Outside stroke } }); // Gradient text stroke const textGradient = new FillGradient({ end: { x: 1, y: 0 }, stops: [ { color: 0xff0000, offset: 0 }, // Red at start { color: 0x0000ff, offset: 1 }, // Blue at end ] }); const fancyText = new Text('Gradient Outline', { fontSize: 64, fill: 0xffffff, stroke: { width: 6, fill: textGradient, alignment: 0.5, join: 'round' } }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "color",
+      "type": "0xff0000,\n *   alpha: 0.5,\n *   texture?: null,\n *   matrix?: null,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "new FillPattern(texture),\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "new FillGradient(0, 0, 200, 0),\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0xff0000,\n *   width?: 1,\n *   alignment?: 0.5,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "new FillPattern(texture),\n *   width: 1,\n *   alignment: 0.5,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fill",
+      "type": "new FillGradient(0, 0, 200, 0),\n *   width: 1,\n *   alignment: 0.5,\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "number }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

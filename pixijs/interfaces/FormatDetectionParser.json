@@ -1,0 +1,23 @@
+{
+  "type": "interface",
+  "name": "FormatDetectionParser",
+  "sourcePath": "assets/detections/types.ts",
+  "extends": [],
+  "description": "Format detection is useful for detecting feature support on the current platform.",
+  "category": "assets",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "extension",
+      "type": "ExtensionMetadata",
+      "optional": true,
+      "description": "Should be ExtensionType.DetectionParser"
+    },
+    {
+      "name": "test",
+      "type": "() => Promise<boolean>,\n    /**\n     * Add formats (file extensions) to the existing list of formats.\n     * Return an new array with added formats, do not mutate the formats argument.\n     * @returns {Promise<string[]>} - Promise that resolves to the new formats array.\n     */\n    add: (formats: string[]) => Promise<string[]>,\n    /**\n     * Remove formats (file extensions) from the list of supported formats.\n     * This is used when uninstalling this DetectionParser.\n     * Return an new array with filtered formats, do not mutate the formats argument.\n     * @returns {Promise<string[]>} - Promise that resolves to the new formats array.\n     */\n    remove: (formats: string[]) => Promise<string[]>,\n}",
+      "optional": false,
+      "description": "Browser/platform feature detection supported if return true"
+    }
+  ]
+}

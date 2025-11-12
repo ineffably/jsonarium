@@ -1,0 +1,103 @@
+{
+  "type": "interface",
+  "name": "MeshPlaneOptions",
+  "sourcePath": "scene/mesh-plane/MeshPlane.ts",
+  "extends": [
+    "Omit"
+  ],
+  "description": "Constructor options used for `MeshPlane` instances. Defines how a texture is mapped onto a plane with configurable vertex density. ```ts // Basic plane with default vertex density const plane = new MeshPlane({ texture: Assets.get('background.png') }); // High-detail plane for complex deformations const detailedPlane = new MeshPlane({ texture: Assets.get('landscape.jpg'), verticesX: 20, verticesY: 20 }); ```",
+  "category": "scene",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "texture",
+      "type": "Texture",
+      "optional": false,
+      "description": "The texture to use on the plane."
+    },
+    {
+      "name": "verticesX",
+      "type": "number",
+      "optional": true,
+      "description": "Number of vertices along the X axis. More vertices allow for more detailed deformations."
+    },
+    {
+      "name": "verticesY",
+      "type": "number",
+      "optional": true,
+      "description": "Number of vertices along the Y axis. More vertices allow for more detailed deformations."
+    },
+    {
+      "name": "texture",
+      "type": "Assets.get('background.png'),\n *     verticesX: 10,\n *     verticesY: 10\n * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Assets.get('small.png'),\n     *     verticesX: 10,\n     *     verticesY: 10\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "autoResize",
+      "type": "boolean",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_textureID",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "MeshPlaneOptions)\n    {\n        const { texture, verticesX, verticesY, ...rest } = options",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "width",
+      "type": "texture.width,\n            height: texture.height,\n            verticesX,\n            verticesY,\n        }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "planeGeometry, texture }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "geometry",
+      "type": "PlaneGeometry = this.geometry as any",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "Texture)\n    {\n        this._texture?.off('update', this.textureUpdated, this)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "Assets.get('initial.png'),\n     *     verticesX: 10,\n     *     verticesY: 10\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "texture",
+      "type": "true, textureSource: true })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "DestroyOptions): void\n    {\n        this.texture.off('update', this.textureUpdated, this)",
+      "optional": true,
+      "description": null
+    }
+  ]
+}

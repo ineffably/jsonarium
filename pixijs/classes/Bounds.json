@@ -1,0 +1,783 @@
+{
+  "type": "class",
+  "name": "Bounds",
+  "sourcePath": "scene/container/bounds/Bounds.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A simple axis-aligned bounding box (AABB) data structure used to define rectangular boundaries. Provides a clearer alternative to array-based bounds representation [minX, minY, maxX, maxY]. ```ts // Create bounds data const bounds: BoundsData = { minX: 0, minY: 0, maxX: 100, maxY: 100 }; // Calculate dimensions const width = bounds.maxX - bounds.minX; const height = bounds.maxY - bounds.minY; // Check if point is inside const isInside = (x: number, y: number) => x >= bounds.minX && x <= bounds.maxX && y >= bounds.minY && y <= bounds.maxY; ``` / export interface BoundsData { /** The minimum X coordinate of the bounds */ minX: number; /** The minimum Y coordinate of the bounds */ minY: number; /** The maximum X coordinate of the bounds */ maxX: number; /** The maximum Y coordinate of the bounds */ maxY: number; } const defaultMatrix = new Matrix(); // TODO optimisations // 1 - get rectangle could use a dirty flag, rather than setting the data each time is called // 2- getFrame ALWAYS assumes a matrix, could be optimised to avoid the matrix calculation if not needed /** A representation of an axis-aligned bounding box (AABB) used for efficient collision detection and culling. Stores minimum and maximum coordinates to define a rectangular boundary. ```ts // Create bounds const bounds = new Bounds(); // Add a rectangular frame bounds.addFrame(0, 0, 100, 100); console.log(bounds.width, bounds.height); // 100, 100 // Transform bounds const matrix = new Matrix() .translate(50, 50) .rotate(Math.PI / 4); bounds.applyMatrix(matrix); // Check point intersection if (bounds.containsPoint(75, 75)) { console.log('Point is inside bounds!'); } ```",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "isEmpty",
+      "params": [],
+      "returnType": "boolean",
+      "description": "Checks if bounds are empty, meaning either width or height is zero or negative. Empty bounds occur when min values exceed max values on either axis. ```ts const bounds = new Bounds(); // Check if newly created bounds are empty console.log(bounds.isEmpty()); // true, default bounds are empty // Add frame and check again bounds.addFrame(0, 0, 100, 100); console.log(bounds.isEmpty()); // false, bounds now have area // Clear bounds bounds.clear(); console.log(bounds.isEmpty()); // true, bounds are empty again ```"
+    },
+    {
+      "name": "clear",
+      "params": [],
+      "returnType": "this",
+      "description": "The bounding rectangle representation of these bounds. Lazily creates and updates a Rectangle instance based on the current bounds. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get rectangle representation const rect = bounds.rectangle; console.log(rect.x, rect.y, rect.width, rect.height); // Use for hit testing if (bounds.rectangle.contains(mouseX, mouseY)) { console.log('Mouse is inside bounds!'); } ``` / get rectangle(): Rectangle { if (!this._rectangle) { this._rectangle = new Rectangle(); } const rectangle = this._rectangle; if (this.minX > this.maxX || this.minY > this.maxY) { rectangle.x = 0; rectangle.y = 0; rectangle.width = 0; rectangle.height = 0; } else { rectangle.copyFromBounds(this); } return rectangle; } /** Clears the bounds and resets all coordinates to their default values. Resets the transformation matrix back to identity. ```ts const bounds = new Bounds(0, 0, 100, 100); console.log(bounds.isEmpty()); // false // Clear the bounds bounds.clear(); console.log(bounds.isEmpty()); // true ```"
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "x0",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y0",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Sets the bounds directly using coordinate values. Provides a way to set all bounds values at once. ```ts const bounds = new Bounds(); bounds.set(0, 0, 100, 100); ```"
+    },
+    {
+      "name": "addFrame",
+      "params": [
+        {
+          "name": "x0",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y0",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "x1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y1",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Adds a rectangular frame to the bounds, optionally transformed by a matrix. Updates the bounds to encompass the new frame coordinates. ```ts const bounds = new Bounds(); bounds.addFrame(0, 0, 100, 100); // Add transformed frame const matrix = new Matrix() .translate(50, 50) .rotate(Math.PI / 4); bounds.addFrame(0, 0, 100, 100, matrix); ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x < minX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y < minY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x > maxX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y > maxY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x < minX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y < minY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x > maxX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y > maxY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x < minX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y < minY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x > maxX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y > maxY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x < minX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y < minY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "x > maxX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "y > maxY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addRect",
+      "params": [
+        {
+          "name": "rect",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Adds a rectangle to the bounds, optionally transformed by a matrix. Updates the bounds to encompass the given rectangle. ```ts const bounds = new Bounds(); // Add simple rectangle const rect = new Rectangle(0, 0, 100, 100); bounds.addRect(rect); // Add transformed rectangle const matrix = new Matrix() .translate(50, 50) .rotate(Math.PI / 4); bounds.addRect(rect, matrix); ```"
+    },
+    {
+      "name": "addFrame",
+      "params": [
+        {
+          "name": "rect.x",
+          "type": null
+        },
+        {
+          "name": "rect.y",
+          "type": null
+        },
+        {
+          "name": "rect.x + rect.width",
+          "type": null
+        },
+        {
+          "name": "rect.y + rect.height",
+          "type": null
+        },
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBounds",
+      "params": [
+        {
+          "name": "bounds",
+          "type": "BoundsData",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": "Adds another bounds object to this one, optionally transformed by a matrix. Expands the bounds to include the given bounds' area. ```ts const bounds = new Bounds(); // Add child bounds const childBounds = sprite.getBounds(); bounds.addBounds(childBounds); // Add transformed bounds const matrix = new Matrix() .scale(2, 2); bounds.addBounds(childBounds, matrix); ```"
+    },
+    {
+      "name": "addFrame",
+      "params": [
+        {
+          "name": "bounds.minX",
+          "type": null
+        },
+        {
+          "name": "bounds.minY",
+          "type": null
+        },
+        {
+          "name": "bounds.maxX",
+          "type": null
+        },
+        {
+          "name": "bounds.maxY",
+          "type": null
+        },
+        {
+          "name": "matrix",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addBoundsMask",
+      "params": [
+        {
+          "name": "mask",
+          "type": "Bounds",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Adds other Bounds as a mask, creating an intersection of the two bounds. Only keeps the overlapping region between current bounds and mask bounds. ```ts const bounds = new Bounds(0, 0, 100, 100); // Create mask bounds const mask = new Bounds(); mask.addFrame(50, 50, 150, 150); // Apply mask - results in bounds of (50,50,100,100) bounds.addBoundsMask(mask); ```"
+    },
+    {
+      "name": "applyMatrix",
+      "params": [
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Applies a transformation matrix to the bounds, updating its coordinates. Transforms all corners of the bounds using the given matrix. ```ts const bounds = new Bounds(0, 0, 100, 100); // Apply translation const translateMatrix = new Matrix() .translate(50, 50); bounds.applyMatrix(translateMatrix); ```"
+    },
+    {
+      "name": "fit",
+      "params": [
+        {
+          "name": "rect",
+          "type": "Rectangle",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Resizes the bounds object to fit within the given rectangle. Clips the bounds if they extend beyond the rectangle's edges. ```ts const bounds = new Bounds(0, 0, 200, 200); // Fit within viewport const viewport = new Rectangle(50, 50, 100, 100); bounds.fit(viewport); // bounds are now (50, 50, 150, 150) ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.minX < rect.left",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.maxX > rect.right",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.minY < rect.top",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.maxY > rect.bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "fitBounds",
+      "params": [
+        {
+          "name": "left",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "right",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "top",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bottom",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Resizes the bounds object to include the given bounds. Similar to fit() but works with raw coordinate values instead of a Rectangle. ```ts const bounds = new Bounds(0, 0, 200, 200); // Fit to specific coordinates bounds.fitBounds(50, 150, 50, 150); // bounds are now (50, 50, 150, 150) ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.minX < left",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.maxX > right",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.minY < top",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.maxY > bottom",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "pad",
+      "params": [
+        {
+          "name": "paddingX",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "paddingY",
+          "type": "number",
+          "optional": true,
+          "default": "paddingX"
+        }
+      ],
+      "returnType": "this",
+      "description": "Pads bounds object, making it grow in all directions. If paddingY is omitted, both paddingX and paddingY will be set to paddingX. ```ts const bounds = new Bounds(0, 0, 100, 100); // Add equal padding bounds.pad(10); // bounds are now (-10, -10, 110, 110) // Add different padding for x and y bounds.pad(20, 10); // bounds are now (-30, -20, 130, 120) ```"
+    },
+    {
+      "name": "ceil",
+      "params": [],
+      "returnType": "this",
+      "description": "Ceils the bounds by rounding up max values and rounding down min values. Useful for pixel-perfect calculations and avoiding fractional pixels. ```ts const bounds = new Bounds(); bounds.set(10.2, 10.9, 50.1, 50.8); // Round to whole pixels bounds.ceil(); // bounds are now (10, 10, 51, 51) ```"
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "this.minX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "floor",
+      "params": [
+        {
+          "name": "this.minY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "this.maxX",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ceil",
+      "params": [
+        {
+          "name": "this.maxY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "clone",
+      "params": [],
+      "returnType": "Bounds",
+      "description": "Creates a new Bounds instance with the same values. ```ts const bounds = new Bounds(0, 0, 100, 100); // Create a copy const copy = bounds.clone(); // Original and copy are independent bounds.pad(10); console.log(copy.width === bounds.width); // false ```"
+    },
+    {
+      "name": "Bounds",
+      "params": [
+        {
+          "name": "this.minX",
+          "type": null
+        },
+        {
+          "name": "this.minY",
+          "type": null
+        },
+        {
+          "name": "this.maxX",
+          "type": null
+        },
+        {
+          "name": "this.maxY",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "scale",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": true,
+          "default": "x"
+        }
+      ],
+      "returnType": "this",
+      "description": "Scales the bounds by the given values, adjusting all edges proportionally. ```ts const bounds = new Bounds(0, 0, 100, 100); // Scale uniformly bounds.scale(2); // bounds are now (0, 0, 200, 200) // Scale non-uniformly bounds.scale(0.5, 2); // bounds are now (0, 0, 100, 400) ```"
+    },
+    {
+      "name": "addVertexData",
+      "params": [
+        {
+          "name": "vertexData",
+          "type": "Float32Array",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "beginOffset",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "endOffset",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "matrix",
+          "type": "Matrix",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "The x position of the bounds in local space. Setting this value will move the bounds while maintaining its width. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get x position console.log(bounds.x); // 0 // Move bounds horizontally bounds.x = 50; console.log(bounds.minX, bounds.maxX); // 50, 150 // Width stays the same console.log(bounds.width); // Still 100 ``` / get x(): number { return this.minX; } set x(value: number) { const width = this.maxX - this.minX; this.minX = value; this.maxX = value + width; } /** The y position of the bounds in local space. Setting this value will move the bounds while maintaining its height. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get y position console.log(bounds.y); // 0 // Move bounds vertically bounds.y = 50; console.log(bounds.minY, bounds.maxY); // 50, 150 // Height stays the same console.log(bounds.height); // Still 100 ``` / get y(): number { return this.minY; } set y(value: number) { const height = this.maxY - this.minY; this.minY = value; this.maxY = value + height; } /** The width value of the bounds. Represents the distance between minX and maxX coordinates. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get width console.log(bounds.width); // 100 // Resize width bounds.width = 200; console.log(bounds.maxX - bounds.minX); // 200 ``` / get width(): number { return this.maxX - this.minX; } set width(value: number) { this.maxX = this.minX + value; } /** The height value of the bounds. Represents the distance between minY and maxY coordinates. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get height console.log(bounds.height); // 100 // Resize height bounds.height = 150; console.log(bounds.maxY - bounds.minY); // 150 ``` / get height(): number { return this.maxY - this.minY; } set height(value: number) { this.maxY = this.minY + value; } /** The left edge coordinate of the bounds. Alias for minX. ```ts const bounds = new Bounds(50, 0, 150, 100); console.log(bounds.left); // 50 console.log(bounds.left === bounds.minX); // true ``` / get left(): number { return this.minX; } /** The right edge coordinate of the bounds. Alias for maxX. ```ts const bounds = new Bounds(0, 0, 100, 100); console.log(bounds.right); // 100 console.log(bounds.right === bounds.maxX); // true ``` / get right(): number { return this.maxX; } /** The top edge coordinate of the bounds. Alias for minY. ```ts const bounds = new Bounds(0, 25, 100, 125); console.log(bounds.top); // 25 console.log(bounds.top === bounds.minY); // true ``` / get top(): number { return this.minY; } /** The bottom edge coordinate of the bounds. Alias for maxY. ```ts const bounds = new Bounds(0, 0, 100, 200); console.log(bounds.bottom); // 200 console.log(bounds.bottom === bounds.maxY); // true ``` / get bottom(): number { return this.maxY; } /** Whether the bounds has positive width and height. Checks if both dimensions are greater than zero. ```ts const bounds = new Bounds(0, 0, 100, 100); // Check if bounds are positive console.log(bounds.isPositive); // true // Negative bounds bounds.maxX = bounds.minX; console.log(bounds.isPositive); // false, width is 0 ``` / get isPositive(): boolean { return (this.maxX - this.minX > 0) && (this.maxY - this.minY > 0); } /** Whether the bounds has valid coordinates. Checks if the bounds has been initialized with real values. ```ts const bounds = new Bounds(); console.log(bounds.isValid); // false, default state // Set valid bounds bounds.addFrame(0, 0, 100, 100); console.log(bounds.isValid); // true ``` / get isValid(): boolean { return (this.minX + this.minY !== Infinity); } /** Adds vertices from a Float32Array to the bounds, optionally transformed by a matrix. Used for efficiently updating bounds from raw vertex data. ```ts const bounds = new Bounds(); // Add vertices from geometry const vertices = new Float32Array([ 0, 0,    // Vertex 1 100, 0,  // Vertex 2 100, 100 // Vertex 3 ]); bounds.addVertexData(vertices, 0, 6); // Add transformed vertices const matrix = new Matrix() .translate(50, 50) .rotate(Math.PI / 4); bounds.addVertexData(vertices, 0, 6, matrix); // Add subset of vertices bounds.addVertexData(vertices, 2, 4); // Only second vertex ```"
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = beginOffset; i < endOffset; i += 2",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "x",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": "Checks if a point is contained within the bounds. Returns true if the point's coordinates fall within the bounds' area. ```ts const bounds = new Bounds(0, 0, 100, 100); // Basic point check console.log(bounds.containsPoint(50, 50)); // true console.log(bounds.containsPoint(150, 150)); // false // Check edges console.log(bounds.containsPoint(0, 0));   // true, includes edges console.log(bounds.containsPoint(100, 100)); // true, includes edges ```"
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.minX <= x && this.minY <= y && this.maxX >= x && this.maxY >= y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": "string",
+      "description": "Returns a string representation of the bounds. Useful for debugging and logging bounds information. ```ts const bounds = new Bounds(0, 0, 100, 100); console.log(bounds.toString()); // \"[pixi.js:Bounds minX=0 minY=0 maxX=100 maxY=100 width=100 height=100]\" ```"
+    },
+    {
+      "name": "copyFrom",
+      "params": [
+        {
+          "name": "bounds",
+          "type": "Bounds",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "this",
+      "description": "Copies the bounds from another bounds object. Useful for reusing bounds objects and avoiding allocations. ```ts const sourceBounds = new Bounds(0, 0, 100, 100); // Copy bounds const targetBounds = new Bounds(); targetBounds.copyFrom(sourceBounds); ```"
+    }
+  ],
+  "properties": [
+    {
+      "name": "rectangle",
+      "type": "Rectangle",
+      "description": "The bounding rectangle representation of these bounds. Lazily creates and updates a Rectangle instance based on the current bounds. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get rectangle representation const rect = bounds.rectangle; console.log(rect.x, rect.y, rect.width, rect.height); // Use for hit testing if (bounds.rectangle.contains(mouseX, mouseY)) { console.log('Mouse is inside bounds!'); } ```"
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "description": "The x position of the bounds in local space. Setting this value will move the bounds while maintaining its width. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get x position console.log(bounds.x); // 0 // Move bounds horizontally bounds.x = 50; console.log(bounds.minX, bounds.maxX); // 50, 150 // Width stays the same console.log(bounds.width); // Still 100 ```"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "description": "The y position of the bounds in local space. Setting this value will move the bounds while maintaining its height. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get y position console.log(bounds.y); // 0 // Move bounds vertically bounds.y = 50; console.log(bounds.minY, bounds.maxY); // 50, 150 // Height stays the same console.log(bounds.height); // Still 100 ```"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "description": "The width value of the bounds. Represents the distance between minX and maxX coordinates. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get width console.log(bounds.width); // 100 // Resize width bounds.width = 200; console.log(bounds.maxX - bounds.minX); // 200 ```"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "description": "The height value of the bounds. Represents the distance between minY and maxY coordinates. ```ts const bounds = new Bounds(0, 0, 100, 100); // Get height console.log(bounds.height); // 100 // Resize height bounds.height = 150; console.log(bounds.maxY - bounds.minY); // 150 ```"
+    },
+    {
+      "name": "left",
+      "type": "number",
+      "description": "The left edge coordinate of the bounds. Alias for minX. ```ts const bounds = new Bounds(50, 0, 150, 100); console.log(bounds.left); // 50 console.log(bounds.left === bounds.minX); // true ```"
+    },
+    {
+      "name": "right",
+      "type": "number",
+      "description": "The right edge coordinate of the bounds. Alias for maxX. ```ts const bounds = new Bounds(0, 0, 100, 100); console.log(bounds.right); // 100 console.log(bounds.right === bounds.maxX); // true ```"
+    },
+    {
+      "name": "top",
+      "type": "number",
+      "description": "The top edge coordinate of the bounds. Alias for minY. ```ts const bounds = new Bounds(0, 25, 100, 125); console.log(bounds.top); // 25 console.log(bounds.top === bounds.minY); // true ```"
+    },
+    {
+      "name": "bottom",
+      "type": "number",
+      "description": "The bottom edge coordinate of the bounds. Alias for maxY. ```ts const bounds = new Bounds(0, 0, 100, 200); console.log(bounds.bottom); // 200 console.log(bounds.bottom === bounds.maxY); // true ```"
+    },
+    {
+      "name": "isPositive",
+      "type": "boolean",
+      "description": "Whether the bounds has positive width and height. Checks if both dimensions are greater than zero. ```ts const bounds = new Bounds(0, 0, 100, 100); // Check if bounds are positive console.log(bounds.isPositive); // true // Negative bounds bounds.maxX = bounds.minX; console.log(bounds.isPositive); // false, width is 0 ```"
+    },
+    {
+      "name": "isValid",
+      "type": "boolean",
+      "description": "Whether the bounds has valid coordinates. Checks if the bounds has been initialized with real values. ```ts const bounds = new Bounds(); console.log(bounds.isValid); // false, default state // Set valid bounds bounds.addFrame(0, 0, 100, 100); console.log(bounds.isValid); // true ```"
+    }
+  ]
+}

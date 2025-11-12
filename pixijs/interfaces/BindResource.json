@@ -1,0 +1,41 @@
+{
+  "type": "interface",
+  "name": "BindResource",
+  "sourcePath": "rendering/renderers/gpu/shader/BindResource.ts",
+  "extends": [],
+  "description": "an interface that allows a resource to be bound to the gpu in a bind group",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "_resourceType",
+      "type": "string",
+      "optional": false,
+      "description": "The type of resource this is"
+    },
+    {
+      "name": "_resourceId",
+      "type": "number",
+      "optional": false,
+      "description": "Unique id for this resource this can change and is used to link the gpu"
+    },
+    {
+      "name": "_touched",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "destroyed",
+      "type": "boolean",
+      "optional": false,
+      "description": "a boolean that indicates if the resource has been destroyed. If true, the resource should not be used and any bind groups that will release any references to this resource."
+    },
+    {
+      "name": "event",
+      "type": "'change', listenerFunction: (resource: BindResource) => void, listener: BindGroup): void\n    /** todo */\n    off?(event: 'change', listenerFunction: (resource: BindResource) => void, listener: BindGroup): void\n}",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

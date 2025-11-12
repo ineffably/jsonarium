@@ -1,0 +1,359 @@
+{
+  "type": "class",
+  "name": "DisplacementFilter",
+  "sourcePath": "filters/defaults/displacement/DisplacementFilter.ts",
+  "extends": "Filter",
+  "implements": [],
+  "description": "Configuration options for the DisplacementFilter. A displacement filter uses a sprite's texture as a displacement map, moving pixels of the target based on the color values of corresponding pixels in the displacement sprite. ```ts const options: DisplacementFilterOptions = { sprite: displacementSprite, scale: { x: 20, y: 20 } }; const filter = new DisplacementFilter(options); ``` / export interface DisplacementFilterOptions extends FilterOptions { /** The sprite whose texture will be used as the displacement map. Red channel = horizontal displacement Green channel = vertical displacement ```ts const displacementSprite = new Sprite(texture); const filter = new DisplacementFilter({ sprite: displacementSprite }); ``` / sprite: Sprite; /** The scale of the displacement effect. Can be a single number for uniform scaling or a point-like object for separate x/y scaling. ```ts // Uniform scaling new DisplacementFilter({ sprite, scale: 20 }); // Separate scaling new DisplacementFilter({ sprite, scale: { x: 10, y: 15 } }); ``` / scale?: number | PointData; } /** A filter that applies a displacement map effect using a sprite's texture. The DisplacementFilter uses another texture (from a sprite) as a displacement map, where the red and green channels of each pixel in the map determine how the corresponding pixel in the filtered object should be offset: - Red channel controls horizontal displacement - Green channel controls vertical displacement Common use cases: - Creating ripple or wave effects - Distorting images dynamically - Implementing heat haze effects - Creating transition effects ```ts import { Sprite, DisplacementFilter } from 'pixi.js'; // Create a sprite to use as the displacement map const displacementSprite = Sprite.from('displacement-map.png'); // Create and configure the filter const displacementFilter = new DisplacementFilter({ sprite: displacementSprite, scale: { x: 20, y: 20 } }); // Apply to any display object container.filters = [displacementFilter]; ```",
+  "category": "filters",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options instanceof Sprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "args[1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "'DisplacementFilter now uses options object instead of params. {sprite",
+          "type": null
+        },
+        {
+          "name": "scale}'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof scale === 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Point",
+      "params": [
+        {
+          "name": "scale",
+          "type": null
+        },
+        {
+          "name": "scale",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "UniformGroup",
+      "params": [
+        {
+          "name": "uFilterMatrix",
+          "type": "{ value: new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Float32Array",
+      "params": [
+        {
+          "name": "[0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "{\n            vertex",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": null
+        },
+        {
+          "name": "name",
+          "type": "'displacement-filter'\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "vertex",
+          "type": "{\n                source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainVertex'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "fragment",
+          "type": "{\n                source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainFragment'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            ...rest",
+          "type": null
+        },
+        {
+          "name": "gpuProgram",
+          "type": null
+        },
+        {
+          "name": "glProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                filterUniforms",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "uMapTexture",
+          "type": "textureSource",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "uMapSampler",
+          "type": "textureSource.style",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "apply",
+      "params": [
+        {
+          "name": "filterManager",
+          "type": "FilterSystem",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "input",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "output",
+          "type": "Texture",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "clearMode",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": "Applies the filter."
+    },
+    {
+      "name": "calculateSpriteMatrix",
+      "params": [
+        {
+          "name": "uniforms.uFilterMatrix",
+          "type": null
+        },
+        {
+          "name": "this._sprite",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "(wt.a * wt.a",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "sqrt",
+      "params": [
+        {
+          "name": "(wt.c * wt.c",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "lenX !== 0 && lenY !== 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "applyFilter",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "input",
+          "type": null
+        },
+        {
+          "name": "output",
+          "type": null
+        },
+        {
+          "name": "clearMode",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DisplacementFilter",
+      "params": [
+        {
+          "name": "{ sprite }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "filter.scale.x",
+          "type": null
+        },
+        {
+          "name": "filter.scale.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "scale",
+      "type": "Point",
+      "description": "The scale of the displacement effect. Gets the current x and y scaling values used for the displacement mapping. - x: Horizontal displacement scale - y: Vertical displacement scale ```ts const filter = new DisplacementFilter({ sprite }); // Get current scale console.log(filter.scale.x, filter.scale.y); // Update scale filter.scale.x = 100; filter.scale.y = 50; ```"
+    }
+  ]
+}

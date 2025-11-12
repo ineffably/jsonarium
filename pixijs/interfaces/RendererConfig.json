@@ -1,0 +1,257 @@
+{
+  "type": "interface",
+  "name": "RendererConfig",
+  "sourcePath": "rendering/renderers/shared/system/AbstractRenderer.ts",
+  "extends": [],
+  "description": "The configuration for the renderer. This is used to define the systems and render pipes that will be used by the renderer.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "type",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "runners",
+      "type": "string[]",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "systems",
+      "type": "{name: string, value: SystemConstructor}[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipes",
+      "type": "{name: string, value: PipeConstructor}[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "renderPipeAdaptors",
+      "type": "{name: string, value: any}[]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container",
+      "optional": false,
+      "description": "The options for rendering a view. / export interface RenderOptions extends ClearOptions { /** The container to render."
+    },
+    {
+      "name": "transform",
+      "type": "Matrix",
+      "optional": true,
+      "description": "the transform to apply to the container."
+    },
+    {
+      "name": "target",
+      "type": "RenderSurface",
+      "optional": true,
+      "description": "The options for clearing the render target. / export interface ClearOptions { /** The render target to render. if this target is a canvas and  you are using the WebGL renderer, please ensure you have set `multiView` to `true` on renderer."
+    },
+    {
+      "name": "clearColor",
+      "type": "ColorSource",
+      "optional": true,
+      "description": "The color to clear with."
+    },
+    {
+      "name": "clear",
+      "type": "CLEAR_OR_BOOL\n}\n\n/**\n * Options for destroying the renderer.\n * This can be a boolean or an object.\n * @category rendering\n * @standard\n */\nexport type RendererDestroyOptions = TypeOrBool<ViewSystemDestroyOptions & {\n    /** Whether to clean up global resource pools/caches */\n    releaseGlobalResources?: boolean",
+      "optional": true,
+      "description": "The clear mode to use."
+    },
+    {
+      "name": "K",
+      "type": "({} & string) | ({} & symbol)]: SystemRunner",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "resolution",
+      "type": "1,\n        /**\n         * Should the `failIfMajorPerformanceCaveat` flag be enabled as a context option used in the `isWebGLSupported`\n         * function. If set to true, a WebGL renderer can fail to be created if the browser thinks there could be\n         * performance issues when using WebGL.\n         *\n         * In PixiJS v6 this has changed from true to false by default, to allow WebGL to work in as many\n         * scenarios as possible. However, some users may have a poor experience, for example, if a user has a gpu or\n         * driver version blacklisted by the\n         * browser.\n         *\n         * If your application requires high performance rendering, you may wish to set this to false.\n         * We recommend one of two options if you decide to set this flag to false:\n         *\n         * 1: Use the Canvas renderer as a fallback in case high performance WebGL is\n         *    not supported.\n         *\n         * 2: Call `isWebGLSupported` (which if found in the utils package) in your code before attempting to create a\n         *    PixiJS renderer, and show an error message to the user if the function returns false, explaining that their\n         *    device & browser combination does not support high performance WebGL.\n         *    This is a much better strategy than trying to create a PixiJS renderer and finding it then fails.\n         * @default false\n         */\n        failIfMajorPerformanceCaveat: false,\n        /**\n         * Should round pixels be forced when rendering?\n         * @default false\n         */\n        roundPixels: false\n    }",
+      "optional": false,
+      "description": "The base class for a PixiJS Renderer. It contains the shared logic for all renderers. You should not use this class directly, but instead use {@link WebGLRenderer} or {@link WebGPURenderer}. Alternatively, you can also use {@link autoDetectRenderer} if you want us to determine the best renderer for you. The renderer is composed of systems that manage specific tasks. The following systems are added by default whenever you create a renderer: | Generic Systems                      | Systems that manage functionality that all renderer types share               | | ------------------------------------ | ----------------------------------------------------------------------------- | | {@link ViewSystem}              | This manages the main view of the renderer usually a Canvas              | | {@link BackgroundSystem}        | This manages the main views background color and alpha                   | | {@link EventSystem}           | This manages UI events.                                                       | | {@link AccessibilitySystem} | This manages accessibility features. Requires `import 'pixi.js/accessibility'`| | Core Systems                   | Provide an optimised, easy to use API to work with WebGL/WebGPU               | | ------------------------------------ | ----------------------------------------------------------------------------- | | {@link GlobalUniformSystem} | This manages shaders, programs that run on the GPU to calculate 'em pixels.   | | {@link TextureGCSystem}     | This will automatically remove textures from the GPU if they are not used.    | | PixiJS High-Level Systems            | Set of specific systems designed to work with PixiJS objects                  | | ------------------------------------ | ----------------------------------------------------------------------------- | | {@link HelloSystem}               | Says hello, buy printing out the pixi version into the console log (along with the renderer type)       | | {@link GenerateTextureSystem} | This adds the ability to generate textures from any Container       | | {@link FilterSystem}          | This manages the filtering pipeline for post-processing effects.             | | {@link PrepareSystem}               | This manages uploading assets to the GPU. Requires `import 'pixi.js/prepare'`| | {@link ExtractSystem}               | This extracts image data from display objects.                               | The breadth of the API surface provided by the renderer is contained within these systems. / export class AbstractRenderer< PIPES, OPTIONS extends SharedRendererOptions, CANVAS extends ICanvas = HTMLCanvasElement > extends EventEmitter<{resize: [screenWidth: number, screenHeight: number, resolution: number]}> { /** The default options for the renderer. */ public static defaultOptions = { /** Default resolution / device pixel ratio of the renderer."
+    },
+    {
+      "name": "type",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_roundPixels",
+      "type": "0 | 1",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "runners",
+      "type": "Runners = Object.create(null) as Runners",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "background",
+      "type": "BackgroundSystem",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "textureGenerator",
+      "type": "GenerateTextureSystem",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_initOptions",
+      "type": "OPTIONS = {} as OPTIONS",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "config",
+      "type": "RendererConfig",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_systemsHash",
+      "type": "Record<string, System> = Object.create(null)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_lastObjectRendered",
+      "type": "Container",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "config",
+      "type": "RendererConfig)\n    {\n        super()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "Partial<OPTIONS> = {})\n    {\n        const skip = options.skipExtensionImports === true ? true : options.manageImports === false",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "RenderOptions | Container): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "Container, options: {renderTexture: any}): void",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "args",
+      "type": "RenderOptions | Container, deprecated?: {renderTexture: any}): void\n    {\n        let options = args",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "container",
+      "type": "options }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "TODO",
+      "type": "we should eventually fix events so that it can handle multiple canvas elements\n        if (options.target === this.view.renderTarget)\n        {\n            // TODO get rid of this\n            this._lastObjectRendered = options.container",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "desiredScreenWidth",
+      "type": "number, desiredScreenHeight: number, resolution?: number): void\n    {\n        const previousResolution = this.view.resolution",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "ClearOptions = {}): void\n    {\n        // override!\n        const renderer = this as unknown as Renderer",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this.view.resolution = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "NOTE",
+      "type": "this was `view` in v7\n    /**\n     * The canvas element that everything is drawn to.\n     * @type {environment.ICanvas}\n     */\n    get canvas(): CANVAS\n    {\n        return this.view.canvas as CANVAS",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "runnerIds",
+      "type": "string[]): void\n    {\n        runnerIds.forEach((runnerId) =>\n        {\n            this.runners[runnerId] = new SystemRunner(runnerId)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "systems",
+      "type": "RendererConfig['systems']): void\n    {\n        let i: keyof typeof systems",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "ClassRef",
+      "type": "SystemConstructor, name: string): this\n    {\n        const system = new ClassRef(this as unknown as Renderer)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "pipes",
+      "type": "RendererConfig['renderPipes'], pipeAdaptors: RendererConfig['renderPipeAdaptors']): void\n    {\n        const adaptors = pipeAdaptors.reduce((acc, adaptor) =>\n        {\n            acc[adaptor.name] = adaptor.value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "RendererDestroyOptions = false): void\n    {\n        this.runners.destroy.items.reverse()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "GenerateTextureOptions | Container): Texture\n    {\n        return this.textureGenerator.generateTexture(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "js",
+      "type": "* ```js\n     * // Reset Three.js state\n     * threeRenderer.resetState()",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

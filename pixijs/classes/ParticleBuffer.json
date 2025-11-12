@@ -1,0 +1,550 @@
+{
+  "type": "class",
+  "name": "ParticleBuffer",
+  "sourcePath": "scene/particle-container/shared/ParticleBuffer.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Options for creating a ParticleBuffer. / export interface ParticleBufferOptions { /** The size of the particle buffer, defaults to 1000. */ size: number; /** A record of attributes that the particle container uses. */ properties: Record<string, ParticleRendererProperty>; } /** The ParticleBuffer holds the buffers and geometry for a particle container. It also contains the upload functions for the static and dynamic properties.",
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in properties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAttributeInfoFromFormat",
+      "params": [
+        {
+          "name": "property.format",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "property.dynamic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ViewableBuffer",
+      "params": [
+        {
+          "name": "size * 4 * staticVertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ViewableBuffer",
+      "params": [
+        {
+          "name": "size * 4 * dynamicVertexSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createIndicesForQuads",
+      "params": [
+        {
+          "name": "size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Geometry",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "new Float32Array(1",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Buffer",
+      "params": [
+        {
+          "name": "data",
+          "type": "new Float32Array(1",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const i in properties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getAttributeInfoFromFormat",
+      "params": [
+        {
+          "name": "property.format",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "property.dynamic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addAttribute",
+      "params": [
+        {
+          "name": "property.attributeName",
+          "type": null
+        },
+        {
+          "name": "buffer",
+          "type": "this._dynamicBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stride",
+          "type": "this._dynamicStride * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "offset",
+          "type": "dynamicOffset * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "property.format",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addAttribute",
+      "params": [
+        {
+          "name": "property.attributeName",
+          "type": null
+        },
+        {
+          "name": "buffer",
+          "type": "this._staticBuffer",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stride",
+          "type": "this._staticStride * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "offset",
+          "type": "staticOffset * 4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "property.format",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "addIndex",
+      "params": [
+        {
+          "name": "this.indexBuffer",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getParticleUpdate",
+      "params": [
+        {
+          "name": "properties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getParticleUpdate",
+      "params": [
+        {
+          "name": "properties",
+          "type": "Record<string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "ParticleRendererProperty>",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getParticleSyncKey",
+      "params": [
+        {
+          "name": "properties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._generateParticleUpdateCache[key]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateParticleUpdate",
+      "params": [
+        {
+          "name": "properties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateParticleUpdate",
+      "params": [
+        {
+          "name": "properties",
+          "type": "Record<string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "ParticleRendererProperty>",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "generateParticleUpdateFunction",
+      "params": [
+        {
+          "name": "properties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "update",
+      "params": [
+        {
+          "name": "particles",
+          "type": "IParticle[]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "uploadStatic",
+          "type": "boolean",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "particles.length > this._size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "max",
+      "params": [
+        {
+          "name": "particles.length",
+          "type": null
+        },
+        {
+          "name": "(this._size * 1.5",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ViewableBuffer",
+      "params": [
+        {
+          "name": "this._size * this._staticStride * 4 * 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ViewableBuffer",
+      "params": [
+        {
+          "name": "this._size * this._dynamicStride * 4 * 4",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createIndicesForQuads",
+      "params": [
+        {
+          "name": "this._size",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDataWithSize",
+      "params": [
+        {
+          "name": "this.indexBuffer",
+          "type": null
+        },
+        {
+          "name": "this.indexBuffer.byteLength",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDataWithSize",
+      "params": [
+        {
+          "name": "this.dynamicAttributeBuffer.float32View",
+          "type": null
+        },
+        {
+          "name": "particles.length * this._dynamicStride * 4",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "uploadStatic",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setDataWithSize",
+      "params": [
+        {
+          "name": "staticAttributeBuffer.float32View",
+          "type": null
+        },
+        {
+          "name": "particles.length * this._staticStride * 4",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getParticleSyncKey",
+      "params": [
+        {
+          "name": "properties",
+          "type": "Record<string",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "ParticleRendererProperty>",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "const key in properties",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "key",
+          "type": null
+        },
+        {
+          "name": "property.code",
+          "type": null
+        },
+        {
+          "name": "property.dynamic ? 'd' : 's'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "join",
+      "params": [
+        {
+          "name": "'_'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

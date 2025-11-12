@@ -1,0 +1,83 @@
+{
+  "type": "interface",
+  "name": "Session",
+  "sourcePath": "scene/graphics/shared/svg/SVGParser.ts",
+  "extends": [],
+  "description": "Represents a session for SVG parsing. Contains the current state and resources needed during parsing.",
+  "category": null,
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "context",
+      "type": "GraphicsContext",
+      "optional": false,
+      "description": "The graphics context to render to"
+    },
+    {
+      "name": "path",
+      "type": "GraphicsPath",
+      "optional": false,
+      "description": "The current path being constructed"
+    },
+    {
+      "name": "defs",
+      "type": "Record<string, FillGradient>",
+      "optional": false,
+      "description": "Map of definitions by id"
+    },
+    {
+      "name": "svg",
+      "type": "string | SVGElement | SVGSVGElement,\n    graphicsContext?: GraphicsContext\n): GraphicsContext\n{\n    // Convert string input to SVG element\n    if (typeof svg === 'string')\n    {\n        // eslint-disable-next-line no-restricted-globals\n        const div = document.createElement('div')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "context",
+      "type": "graphicsContext,\n        defs: {},\n        path: new GraphicsPath(),\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "svg",
+      "type": "SVGElement, session: Session, fillStyle: FillStyle, strokeStyle: StrokeStyle): void\n{\n    const children = svg.children",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fillStyle",
+      "type": "f1, strokeStyle: s1 } = parseSVGStyle(svg, session)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "0 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "path",
+      "type": "subpath,\n                    area: calculatePathArea(subpath)\n                }))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "approach",
+      "type": "first (largest) is fill, rest are holes\n                    for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "approach",
+      "type": "alternate between fill and cut\n                    for (let i = 0",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "default",
+      "type": "{\n            // Log unsupported elements\n            warn(`[SVG parser] <${svg.nodeName}> elements unsupported`)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "type": "class",
+  "name": "RenderTarget",
+  "sourcePath": "rendering/renderers/shared/renderTarget/RenderTarget.ts",
+  "extends": null,
+  "implements": [],
+  "description": "Options for creating a render target. / export interface RenderTargetOptions { /** the width of the RenderTarget */ width?: number; /** the height of the RenderTarget */ height?: number; /** the resolution of the RenderTarget */ resolution?: number; /** an array of textures, or a number indicating how many color textures there should be */ colorTextures?: BindableTexture[] | number; /** should this render target have a stencil buffer? */ stencil?: boolean; /** should this render target have a depth buffer? */ depth?: boolean; /** a depth stencil texture that the depth and stencil outputs will be written to */ depthStencilTexture?: BindableTexture | boolean; /** should this render target be antialiased? */ antialias?: boolean; /** is this a root element, true if this is gl context owners render target */ isRoot?: boolean; } /** A class that describes what the renderers are rendering to. This can be as simple as a Texture, or as complex as a multi-texture, multi-sampled render target. Support for stencil and depth buffers is also included. If you need something more complex than a Texture to render to, you should use this class. Under the hood, all textures you render to have a RenderTarget created on their behalf.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof descriptor.colorTextures === 'number'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "for",
+      "params": [
+        {
+          "name": "let i = 0; i < descriptor.colorTextures; i++",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "push",
+      "params": [
+        {
+          "name": "width",
+          "type": "descriptor.width",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "descriptor.height",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "descriptor.resolution",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "antialias",
+          "type": "descriptor.antialias",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "}",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "map",
+      "params": [
+        {
+          "name": "(texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "colorSource.width",
+          "type": null
+        },
+        {
+          "name": "colorSource.height",
+          "type": null
+        },
+        {
+          "name": "colorSource._resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceResize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "descriptor.depthStencilTexture || this.stencil",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "descriptor.depthStencilTexture instanceof Texture\n                || descriptor.depthStencilTexture instanceof TextureSource",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureDepthStencilTexture",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onSourceResize",
+      "params": [
+        {
+          "name": "source",
+          "type": "TextureSource",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "source.width",
+          "type": null
+        },
+        {
+          "name": "source.height",
+          "type": null
+        },
+        {
+          "name": "source._resolution",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureDepthStencilTexture",
+      "params": [],
+      "returnType": null,
+      "description": "This will ensure a depthStencil texture is created for this render target. Most likely called by the mask system to make sure we have stencil buffer added."
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.depthStencilTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "TextureSource",
+      "params": [
+        {
+          "name": "width",
+          "type": "this.width",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "this.height",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "this.resolution",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "format",
+          "type": "'depth24plus-stencil8'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "autoGenerateMipmaps",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "antialias",
+          "type": "false",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mipLevelCount",
+          "type": "1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "sampleCount",
+          "type": "handled by the render target system..\n            }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution = this.resolution",
+          "type": null
+        },
+        {
+          "name": "skipColorTexture = false",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(colorTexture",
+          "type": null
+        },
+        {
+          "name": "i",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "skipColorTexture && i === 0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.depthStencilTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "resize",
+      "params": [
+        {
+          "name": "width",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": null
+        },
+        {
+          "name": "resolution",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'resize'",
+          "type": null
+        },
+        {
+          "name": "this.onSourceResize",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._managedColorTextures",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "forEach",
+      "params": [
+        {
+          "name": "(texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this.depthStencilTexture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

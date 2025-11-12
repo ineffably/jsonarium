@@ -1,0 +1,26 @@
+{
+  "type": "interface",
+  "name": "WebGPUOptions",
+  "sourcePath": "rendering/renderers/gpu/WebGPURenderer.ts",
+  "extends": [
+    "SharedRendererOptions",
+    "ExtractRendererOptions"
+  ],
+  "description": "The default WebGPU systems. These are the systems that are added by default to the WebGPURenderer. / export type WebGPUSystems = ExtractSystemTypes<typeof DefaultWebGPUSystems> & PixiMixins.RendererSystems & PixiMixins.WebGPUSystems; /** The WebGPU renderer pipes. These are used to render the scene. / export type WebGPUPipes = ExtractSystemTypes<typeof DefaultWebGPUPipes> & PixiMixins.RendererPipes & PixiMixins.WebGPUPipes; /** Options for WebGPURenderer.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "renderer",
+      "type": "*\n * | WebGPU Core Systems                      | Systems that are specific to the WebGL renderer                               |\n * | ---------------------------------------- | ----------------------------------------------------------------------------- |\n * | {@link GpuUboSystem}           | This manages WebGPU uniform buffer objects feature for shaders                |\n * | {@link GpuEncoderSystem}       | This manages the WebGPU command encoder                                       |\n * | {@link GpuDeviceSystem}        | This manages the WebGPU Device and its extensions                             |\n * | {@link GpuBufferSystem}        | This manages buffers and their GPU resources, keeps everything in sync        |\n * | {@link GpuTextureSystem}       | This manages textures and their GPU resources, keeps everything in sync       |\n * | {@link GpuRenderTargetSystem}  | This manages what we render too. For example the screen, or another texture   |\n * | {@link GpuShaderSystem}        | This manages shaders, programs that run on the GPU to output lovely pixels    |\n * | {@link GpuStateSystem}         | This manages the state of the WebGPU Pipelines. eg the various flags that can be set blend modes / depthTesting etc |\n * | {@link PipelineSystem}         | This manages the WebGPU pipelines, used for rendering                         |\n * | {@link GpuColorMaskSystem}     | This manages the color mask. Used for color masking                           |\n * | {@link GpuStencilSystem}       | This manages the stencil buffer. Used primarily for masking                   |\n * | {@link BindGroupSystem}        | This manages the WebGPU bind groups. this is how data is bound to a shader when rendering |\n *\n * The breadth of the API surface provided by the renderer is contained within these systems.\n * @category rendering\n * @standard\n * @property {GpuUboSystem} ubo - UboSystem instance.\n * @property {GpuEncoderSystem} encoder - EncoderSystem instance.\n * @property {GpuDeviceSystem} device - DeviceSystem instance.\n * @property {GpuBufferSystem} buffer - BufferSystem instance.\n * @property {GpuTextureSystem} texture - TextureSystem instance.\n * @property {GpuRenderTargetSystem} renderTarget - RenderTargetSystem instance.\n * @property {GpuShaderSystem} shader - ShaderSystem instance.\n * @property {GpuStateSystem} state - StateSystem instance.\n * @property {PipelineSystem} pipeline - PipelineSystem instance.\n * @property {GpuColorMaskSystem} colorMask - ColorMaskSystem instance.\n * @property {GpuStencilSystem} stencil - StencilSystem instance.\n * @property {BindGroupSystem} bindGroup - BindGroupSystem instance.\n * @extends AbstractRenderer\n */\nexport class WebGPURenderer<T extends ICanvas = HTMLCanvasElement>\n    extends AbstractRenderer<WebGPUPipes, WebGPUOptions, T>\n    implements WebGPUSystems\n{\n    /** The WebGPU Device. */\n    public gpu: GPU",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "name",
+      "type": "'webgpu',\n            type: RendererType.WEBGPU,\n            systems,\n            renderPipes,\n            renderPipeAdaptors,\n        }",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "type": "class",
+  "name": "ParticleShader",
+  "sourcePath": "scene/particle-container/shared/shader/ParticleShader.ts",
+  "extends": "Shader",
+  "implements": [],
+  "description": null,
+  "category": null,
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "{\n            vertex",
+          "type": null
+        },
+        {
+          "name": "fragment\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "from",
+      "params": [
+        {
+          "name": "fragment",
+          "type": "{\n                source: wgsl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainFragment'\n            }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "vertex",
+          "type": "{\n                source: wgsl",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "entryPoint",
+          "type": "'mainVertex'\n            }\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            glProgram",
+          "type": null
+        },
+        {
+          "name": "gpuProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                // this will be replaced with the texture from the particle container\n                uTexture: Texture.WHITE.source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "uSampler",
+          "type": "new TextureStyle({}",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Matrix",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Color",
+      "params": [
+        {
+          "name": "0xFFFFFF",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

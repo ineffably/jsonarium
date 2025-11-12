@@ -1,0 +1,145 @@
+{
+  "type": "interface",
+  "name": "HTMLTextStyleOptions",
+  "sourcePath": "scene/text-html/HTMLTextStyle.ts",
+  "extends": [
+    "Omit"
+  ],
+  "description": "Options for HTML text style, extends standard text styling with HTML-specific capabilities. Omits certain base text properties that don't apply to HTML rendering. ```ts // Basic HTML text style const text = new HTMLText({ text: '<p>Hello World</p>', style: { fontSize: 24, fill: '#ff0000', fontFamily: 'Arial', align: 'center' } }); // Custom tag styling const taggedText = new HTMLText({ text: '<custom>Custom Tag</custom>', style: { fontSize: 16, tagStyles: { custom: { fontSize: 32, fill: '#00ff00', fontStyle: 'italic' } } } }); ```",
+  "category": "text",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "cssOverrides",
+      "type": "string[]",
+      "optional": true,
+      "description": "List of CSS style overrides to apply to the HTML text. These styles are added after the built-in styles and can override any default styling."
+    },
+    {
+      "name": "tagStyles",
+      "type": "Record<string, HTMLTextStyleOptions>",
+      "optional": true,
+      "description": "Custom styles to apply to specific HTML tags. Allows for consistent styling of custom elements without CSS overrides. ```ts const text = new HTMLText({ text: ` <red>Main Title</red> <grey>The subtitle</grey> <blue>Regular content text</blue> `, style: { tagStyles: { red: { fill: '#ff0000', }, grey: { fill: '#666666', }, blue: { fill: 'blue', } } } }); ```"
+    },
+    {
+      "name": "_cssOverrides",
+      "type": "string[] = []",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_cssStyle",
+      "type": "string",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'<red>Red</red>,<blue>Blue</blue>,<green>Green</green>',\n     *   style:{\n     *       fontFamily: 'DM Sans',\n     *       fill: 'white',\n     *       fontSize:100,\n     *       tagStyles:{\n     *           red:{\n     *               fill:'red',\n     *           },\n     *           blue:{\n     *               fill:'blue',\n     *           },\n     *           green:{\n     *               fill:'green',\n     *           }\n     *       }\n     *   }\n     * )",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "tagStyles",
+      "type": "Record<string, HTMLTextStyleOptions>",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "HTMLTextStyleOptions = {})\n    {\n        super(options)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "string | string[])\n    {\n        this._cssOverrides = value instanceof Array ? value : [value]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Hello World',\n     *     style\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "fontSize",
+      "type": "24,\n     *     fill: '#ff0000',\n     *     tagStyles: {\n     *         header: { fontSize: 32, fill: '#00ff00' }\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "cloned",
+      "type": "* - Basic text properties (fontSize, fontFamily, etc.)\n     * - Fill and stroke styles\n     * - Drop shadow configuration\n     * - CSS overrides\n     * - Tag styles (deep copied)\n     * - Word wrap settings\n     * - Alignment and spacing\n     * @returns {HTMLTextStyle} A new HTMLTextStyle instance with the same properties\n     * @see {@link HTMLTextStyle} For available style properties\n     * @see {@link HTMLTextStyle#cssOverrides} For CSS override handling\n     * @see {@link HTMLTextStyle#tagStyles} For tag style configuration\n     * @standard\n     */\n    public clone(): HTMLTextStyle\n    {\n        return new HTMLTextStyle({\n            align: this.align,\n            breakWords: this.breakWords,\n            dropShadow: this.dropShadow ? { ...this.dropShadow } : null,\n            fill: this._fill,\n            fontFamily: this.fontFamily,\n            fontSize: this.fontSize,\n            fontStyle: this.fontStyle,\n            fontVariant: this.fontVariant,\n            fontWeight: this.fontWeight,\n            letterSpacing: this.letterSpacing,\n            lineHeight: this.lineHeight,\n            padding: this.padding,\n            stroke: this._stroke,\n            whiteSpace: this.whiteSpace,\n            wordWrap: this.wordWrap,\n            wordWrapWidth: this.wordWrapWidth,\n            cssOverrides: this.cssOverrides,\n            tagStyles: { ...this.tagStyles },\n        })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "red`).\n     * This will override any other internal style.\n     * @param {string} value - CSS style(s) to add.\n     * @example\n     * style.addOverride('background-color: red')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "string[]): void\n    {\n        const toAdd = value.filter((v) => !this.cssOverrides.includes(v))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "color",
+      "type": "red')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "string[]): void\n    {\n        const toRemove = value.filter((v) => this.cssOverrides.includes(v))",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Colored Text',\n     *     style: {\n     *         fill: 0xff0000 // Red color\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "'pattern',\n     *     texture: Texture.from('pattern.png')\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "FillInput)\n    {\n        // if its not a string or a number, then its a texture!\n        if (typeof value !== 'string' && typeof value !== 'number')\n        {\n            // #if _DEBUG\n            warn('[HTMLTextStyle] only color fill is not supported by HTMLText')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "text",
+      "type": "'Outlined Text',\n     *     style: {\n     *         stroke: 0xff0000 // Red outline\n     *     }\n     * })",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "stroke",
+      "type": "{\n     *         color: '#ff0000',\n     *         width: 2\n     *     }\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "type",
+      "type": "'pattern',\n     *     texture: Texture.from('pattern.png')\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "StrokeInput)\n    {\n        // if its not a string or a number, then its a texture!\n        if (value && typeof value !== 'string' && typeof value !== 'number')\n        {\n            // #if _DEBUG\n            warn('[HTMLTextStyle] only color stroke is not supported by HTMLText')",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

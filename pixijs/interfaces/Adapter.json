@@ -1,0 +1,83 @@
+{
+  "type": "interface",
+  "name": "Adapter",
+  "sourcePath": "environment/adapter.ts",
+  "extends": [],
+  "description": "This interface describes all the DOM dependent calls that Pixi makes throughout its codebase. Implementations of this interface can be used to make sure Pixi will work in any environment, such as browser, Web Workers, and Node.js.",
+  "category": "environment",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "createCanvas",
+      "type": "(width?: number, height?: number) => ICanvas",
+      "optional": false,
+      "description": "Returns a canvas object that can be used to create a webgl context."
+    },
+    {
+      "name": "createImage",
+      "type": "() => ImageLike",
+      "optional": false,
+      "description": "Returns an IImage (HTMLImageElement) that can be used to create a texture."
+    },
+    {
+      "name": "getCanvasRenderingContext2D",
+      "type": "() => { prototype: ICanvasRenderingContext2D",
+      "optional": false,
+      "description": "Returns a 2D rendering context."
+    },
+    {
+      "name": "getWebGLRenderingContext",
+      "type": "() => typeof WebGLRenderingContext",
+      "optional": false,
+      "description": "Returns a WebGL rendering context."
+    },
+    {
+      "name": "getNavigator",
+      "type": "() => { userAgent: string, gpu: GPU | null }",
+      "optional": false,
+      "description": "Returns a partial implementation of the browsers window.navigator"
+    },
+    {
+      "name": "getBaseUrl",
+      "type": "() => string",
+      "optional": false,
+      "description": "Returns the current base URL For browser environments this is either the document.baseURI or window.location.href"
+    },
+    {
+      "name": "getFontFaceSet",
+      "type": "() => FontFaceSet | null",
+      "optional": false,
+      "description": "Return the font face set if available"
+    },
+    {
+      "name": "fetch",
+      "type": "(url: RequestInfo, options?: RequestInit) => Promise<Response>",
+      "optional": false,
+      "description": "Returns a Response object that has been fetched from the given URL."
+    },
+    {
+      "name": "parseXML",
+      "type": "(xml: string) => Document",
+      "optional": false,
+      "description": "Returns Document object that has been parsed from the given XML string."
+    },
+    {
+      "name": "currentAdapter",
+      "type": "Adapter = BrowserAdapter",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "methods",
+      "type": "`get():Adapter` and `set(adapter: Adapter)`.\n *\n * Defaults to the {@link BrowserAdapter}.\n * @example\n * import { DOMAdapter, WebWorkerAdapter } from 'pixi.js'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "adapter",
+      "type": "Adapter): void\n    {\n        currentAdapter = adapter",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

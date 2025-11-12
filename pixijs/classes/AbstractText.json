@@ -1,0 +1,1032 @@
+{
+  "type": "class",
+  "name": "AbstractText",
+  "sourcePath": "scene/text/AbstractText.ts",
+  "extends": null,
+  "implements": [],
+  "description": "A string or number that can be used as text. ```ts const text: TextString = 'Hello Pixi!'; const text2: TextString = 12345; const text3: TextString = { toString: () => 'Hello Pixi!' }; ``` / export type TextString = string | number | { toString: () => string }; /** A union of all text styles, including HTML, Bitmap and Canvas text styles. This is used to allow for any text style to be passed to a text object. ```ts import { TextStyle, HTMLTextStyle } from 'pixi.js'; const style: AnyTextStyle = new TextStyle({ fontSize: 24 }); const htmlStyle: AnyTextStyle = new HTMLTextStyle({ fontSize: '24px' }); ``` / export type AnyTextStyle = TextStyle | HTMLTextStyle; /** A union of all text style options, including HTML, Bitmap and Canvas text style options. This is used to allow for any text style options to be passed to a text object. ```ts import { TextStyleOptions, HTMLTextStyleOptions } from 'pixi.js'; const styleOptions: AnyTextStyleOptions = { fontSize: 24 } as TextStyleOptions; const htmlStyleOptions: AnyTextStyleOptions = { fontSize: '24px' } as HTMLTextStyleOptions; ``` / export type AnyTextStyleOptions = TextStyleOptions | HTMLTextStyleOptions; /** Options for creating text objects in PixiJS. This interface defines the common properties used across different text rendering implementations (Canvas, HTML, and Bitmap). ```ts // Create basic text with minimal options const basicText = new Text({ text: 'Hello Pixi!', style: { fontSize: 24, fill: 0xff1010 } }); // Create text with advanced styling const styledText = new Text({ text: 'Styled Text', style: { fontFamily: 'Arial', fontSize: 32, fill: new FillGradient({ end: { x: 1, y: 1 }, stops: [ { color: 0xff0000, offset: 0 }, // Red at start { color: 0x0000ff, offset: 1 }, // Blue at end ] }), stroke: { color: '#4a1850', width: 5 }, dropShadow: { color: '#000000', blur: 4, distance: 6 }, align: 'center' }, anchor: 0.5, resolution: window.devicePixelRatio }); // Create multiline text with word wrap const wrappedText = new Text({ text: 'This is a long piece of text that will wrap onto multiple lines', style: { fontSize: 20, wordWrap: true, wordWrapWidth: 200, lineHeight: 30 }, resolution: 2, roundPixels: true }); ``` / export interface TextOptions< TEXT_STYLE extends TextStyle = TextStyle, TEXT_STYLE_OPTIONS extends TextStyleOptions = TextStyleOptions, > extends PixiMixins.TextOptions, ViewContainerOptions { /** The anchor point of the text that controls the origin point for positioning and rotation. Can be a number (same value for x/y) or a PointData object. - (0,0) is top-left - (0.5,0.5) is center - (1,1) is bottom-right ```ts // Set anchor to center const text = new Text({ text: 'Hello Pixi!', anchor: 0.5 // Same as { x: 0.5, y: 0.5 } }); // Set anchor to top-left const text2 = new Text({ text: 'Hello Pixi!', anchor: { x: 0, y: 0 } // Top-left corner }); // Set anchor to bottom-right const text3 = new Text({ text: 'Hello Pixi!', anchor: { x: 1, y: 1 } // Bottom-right corner }); ``` / anchor?: PointData | number; /** The text content to display. Use '\\n' for line breaks. Accepts strings, numbers, or objects with toString() method. ```ts const text = new Text({ text: 'Hello Pixi!', }); const multilineText = new Text({ text: 'Line 1\\nLine 2\\nLine 3', }); const numberText = new Text({ text: 12345, // Will be converted to '12345' }); const objectText = new Text({ text: { toString: () => 'Object Text' }, // Custom toString }); ``` / text?: TextString; /** The resolution/device pixel ratio for rendering. Higher values result in sharper text at the cost of performance. Set to null for auto-resolution based on device. ```ts const text = new Text({ text: 'Hello Pixi!', resolution: 2 // High DPI for sharper text }); const autoResText = new Text({ text: 'Auto Resolution', resolution: null // Use device's pixel ratio }); ``` / resolution?: number; /** The style configuration for the text. Can be a TextStyle instance or a configuration object. Supports canvas text styles, HTML text styles, and bitmap text styles. ```ts const text = new Text({ text: 'Styled Text', style: { fontSize: 24, fill: 0xff1010, // Red color fontFamily: 'Arial', align: 'center', // Center alignment stroke: { color: '#4a1850', width: 5 }, // Purple stroke dropShadow: { color: '#000000', // Black shadow blur: 4, // Shadow blur distance: 6 // Shadow distance } } }); const htmlText = new HTMLText({ text: 'HTML Styled Text', style: { fontSize: '20px', fill: 'blue', fontFamily: 'Verdana', } }); const bitmapText = new BitmapText({ text: 'Bitmap Styled Text', style: { fontName: 'Arial', fontSize: 32, } }) / style?: TEXT_STYLE | TEXT_STYLE_OPTIONS; /** Whether to round the x/y position to whole pixels. Enabling can prevent anti-aliasing of text edges but may cause slight position shifting. ```ts const text = new Text({ text: 'Rounded Text', roundPixels: true // Rounds position to whole pixels }); / roundPixels?: boolean; } /** An abstract Text class, used by all text type in Pixi. This includes Canvas, HTML, and Bitmap Text.",
+  "category": "text",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "new",
+      "params": [
+        {
+          "name": "options",
+          "type": "TEXT_STYLE_OPTIONS",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "{\n            ...rest\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ObservablePoint",
+      "params": [
+        {
+          "name": "_onUpdate",
+          "type": "(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anchor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "width !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "height !== undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "number",
+      "params": [
+        {
+          "name": "same value for x/y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello Pixi!'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "anchor",
+          "type": "0.5 // Same as { x: 0.5",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "0.5 }\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello Pixi!'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "anchor",
+          "type": "{ x: 0",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "0 } // Top-left corner\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello Pixi!'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "anchor",
+          "type": "{ x: 1",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "1 } // Bottom-right corner\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": "this._anchor.copyFrom(value)",
+      "description": null
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello Pixi!'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "* }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Line 1\\nLine 2\\nLine 3'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "* }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "12345",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "// Will be converted to '12345'\n     * }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "{ toString: (",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "toString",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._text === value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello Pixi!'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "2 // High DPI for sharper text\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Auto Resolution'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "resolution",
+          "type": "null // Use device's pixel ratio\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Styled Text'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{\n     *         fontSize: 24",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fill",
+          "type": "0xff1010",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontFamily",
+          "type": "'Arial'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "align",
+          "type": "'center'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "stroke",
+          "type": "{ color: '#4a1850'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "width",
+          "type": "5 }",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "dropShadow",
+          "type": "{\n     *             color: '#000000'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "blur",
+          "type": "4",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "distance",
+          "type": "6 // Shadow distance\n     *         }\n     *     }\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "HTMLText",
+      "params": [
+        {
+          "name": "text",
+          "type": "'HTML Styled Text'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{\n     *         fontSize: '20px'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fill",
+          "type": "'blue'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontFamily",
+          "type": "'Verdana'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "*     }\n     * }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "BitmapText",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Bitmap Styled Text'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{\n     *         fontName: 'Arial'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fontSize",
+          "type": "32",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "*     }\n     * }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "off",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onViewUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "style instanceof this._styleClass",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "on",
+      "params": [
+        {
+          "name": "'update'",
+          "type": null
+        },
+        {
+          "name": "this.onViewUpdate",
+          "type": null
+        },
+        {
+          "name": "this",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "texture.scale.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "300",
+          "type": null
+        },
+        {
+          "name": "400",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "this.scale.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "texture.scale.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "300",
+          "type": null
+        },
+        {
+          "name": "400",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "this.scale.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello Pixi!'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{ fontSize: 24 }\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "Size",
+          "type": "${size.width}x${size.height}`",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [
+        {
+          "name": "reuseSize",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getSize",
+      "params": [
+        {
+          "name": "out",
+          "type": "Size",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": "Size",
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "this.scale.x",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "abs",
+      "params": [
+        {
+          "name": "this.scale.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Text",
+      "params": [
+        {
+          "name": "text",
+          "type": "'Hello Pixi!'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{ fontSize: 24 }\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "100",
+          "type": null
+        },
+        {
+          "name": "200",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "100",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "width",
+          "type": "200",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "height",
+          "type": "300\n     * }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "setSize",
+      "params": [
+        {
+          "name": "value",
+          "type": "number | Optional<Size",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "'height'>",
+          "type": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": true,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof value === 'object'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "localPoint",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "log",
+      "params": [
+        {
+          "name": "inside",
+          "type": "'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "contains",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "containsPoint",
+      "params": [
+        {
+          "name": "point",
+          "type": "PointData",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "point.x >= x1 && point.x <= x1 + width",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "point.y >= y1 && point.y <= y1 + height",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!this.didViewUpdate",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "style",
+          "type": "true",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "texture",
+          "type": "true",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureSource",
+          "type": "true }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": "DestroyOptions",
+          "optional": true,
+          "default": "false"
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof options === 'boolean' ? options : options?.style",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "ensureTextOptions",
+      "params": [
+        {
+          "name": "text",
+          "type": "\"Hello\"",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style",
+          "type": "{ fontSize: 20 }\n * }]",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "\"Text\"",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "way",
+      "params": [
+        {
+          "name": "will show warning in debug",
+          "type": null
+        }
+      ],
+      "returnType": "* const options = ensureTextOptions([\"Hello\",",
+      "description": null
+    },
+    {
+      "name": "class",
+      "params": [
+        {
+          "name": "used in deprecation warning",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "typeof options === 'string' || args[1]",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "deprecation",
+      "params": [
+        {
+          "name": "v8_0_0",
+          "type": null
+        },
+        {
+          "name": "text",
+          "type": "\"hi!\"",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "style }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "anchor",
+      "type": "ObservablePoint",
+      "description": "The anchor point of the text that controls the origin point for positioning and rotation. Can be a number (same value for x/y) or a PointData object. - (0,0) is top-left - (0.5,0.5) is center - (1,1) is bottom-right ```ts // Set anchor to center const text = new Text({ text: 'Hello Pixi!', anchor: 0.5 // Same as { x: 0.5, y: 0.5 } }); // Set anchor to top-left const text2 = new Text({ text: 'Hello Pixi!', anchor: { x: 0, y: 0 } // Top-left corner }); // Set anchor to bottom-right const text3 = new Text({ text: 'Hello Pixi!', anchor: { x: 1, y: 1 } // Bottom-right corner }); ```"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "description": "The width of the sprite, setting this will actually modify the scale to achieve the value set. ```ts // Set width directly texture.width = 200; console.log(texture.scale.x); // Scale adjusted to match width // For better performance when setting both width and height texture.setSize(300, 400); // Avoids recalculating bounds twice ```"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "description": "The height of the sprite, setting this will actually modify the scale to achieve the value set. ```ts // Set height directly texture.height = 200; console.log(texture.scale.y); // Scale adjusted to match height // For better performance when setting both width and height texture.setSize(300, 400); // Avoids recalculating bounds twice ```"
+    }
+  ]
+}

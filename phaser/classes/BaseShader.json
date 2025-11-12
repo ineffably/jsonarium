@@ -1,0 +1,169 @@
+{
+  "type": "class",
+  "name": "BaseShader",
+  "sourcePath": "display/shader/BaseShader.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "display",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "initialize",
+          "type": "function BaseShader (key",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fragmentSrc",
+          "type": null
+        },
+        {
+          "name": "vertexSrc",
+          "type": null
+        },
+        {
+          "name": "uniforms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!fragmentSrc || fragmentSrc === ''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "main",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec4",
+      "params": [
+        {
+          "name": "uv.xyx",
+          "type": null
+        },
+        {
+          "name": "1.0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "join",
+      "params": [
+        {
+          "name": "'\\n'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!vertexSrc || vertexSrc === ''",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "main",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec4",
+      "params": [
+        {
+          "name": "inPosition",
+          "type": null
+        },
+        {
+          "name": "1.0",
+          "type": null
+        },
+        {
+          "name": "1.0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec2",
+      "params": [
+        {
+          "name": "inPosition.x",
+          "type": null
+        },
+        {
+          "name": "uResolution.y - inPosition.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "vec2",
+      "params": [
+        {
+          "name": "inPosition.x / uResolution.x",
+          "type": null
+        },
+        {
+          "name": "fragCoord.y / uResolution.y",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "join",
+      "params": [
+        {
+          "name": "'\\n'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "uniforms === undefined",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

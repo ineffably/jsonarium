@@ -1,0 +1,231 @@
+{
+  "type": "class",
+  "name": "GpuMeshAdapter",
+  "sourcePath": "scene/mesh/gpu/GpuMeshAdapter.ts",
+  "extends": null,
+  "implements": [
+    "MeshAdaptor"
+  ],
+  "description": "The WebGL adaptor for the mesh system. Allows the Mesh System to be used with the WebGl renderer",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "init",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "compileHighShaderGpuProgram",
+      "params": [
+        {
+          "name": "name",
+          "type": "'mesh'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "bits",
+          "type": "[\n                localUniformBit",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureBit",
+          "type": null
+        },
+        {
+          "name": "roundPixelsBit",
+          "type": null
+        },
+        {
+          "name": "]\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Shader",
+      "params": [
+        {
+          "name": "{\n            gpuProgram",
+          "type": null
+        },
+        {
+          "name": "resources",
+          "type": "{\n                uTexture: Texture.EMPTY._source",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "uSampler",
+          "type": "Texture.EMPTY._source.style",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "textureUniforms",
+          "type": "{\n                    uTextureMatrix: { type: 'mat3x3<f32>'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "value",
+          "type": "new Matrix(",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "execute",
+      "params": [
+        {
+          "name": "meshPipe",
+          "type": "MeshPipe",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "mesh",
+          "type": "Mesh",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getTextureBindGroup",
+      "params": [
+        {
+          "name": "mesh.texture",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!shader.gpuProgram",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "warn",
+      "params": [
+        {
+          "name": "'Mesh shader has no gpuProgram'",
+          "type": null
+        },
+        {
+          "name": "mesh.shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuProgram.autoAssignGlobalUniforms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "gpuProgram.autoAssignLocalUniforms",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getUniformBindGroup",
+      "params": [
+        {
+          "name": "localUniforms",
+          "type": null
+        },
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "draw",
+      "params": [
+        {
+          "name": "geometry",
+          "type": "mesh._geometry",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        },
+        {
+          "name": "state",
+          "type": "mesh.state\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}

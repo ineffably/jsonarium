@@ -1,0 +1,70 @@
+{
+  "type": "class",
+  "name": "ColorMask",
+  "sourcePath": "rendering/mask/color/ColorMask.ts",
+  "extends": null,
+  "implements": [
+    "Effect",
+    "PoolItem"
+  ],
+  "description": "The ColorMask effect allows you to apply a color mask to the rendering process. This can be useful for selectively rendering certain colors or for creating effects based on color values.",
+  "category": "rendering",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "options?.mask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "options.mask",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "init",
+      "params": [
+        {
+          "name": "mask",
+          "type": "number",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": "void",
+      "description": null
+    },
+    {
+      "name": "test",
+      "params": [
+        {
+          "name": "mask",
+          "type": "any",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": "boolean",
+      "description": null
+    }
+  ],
+  "properties": []
+}

@@ -1,0 +1,241 @@
+{
+  "type": "class",
+  "name": "DOMContainer",
+  "sourcePath": "dom/DOMContainer.ts",
+  "extends": "ViewContainer",
+  "implements": [],
+  "description": "Options for configuring a {@link DOMContainer}. Controls how DOM elements are integrated into the PixiJS scene graph. ```ts // Create with a custom element const domContainer = new DOMContainer({ element: document.createElement('input'), anchor: { x: 0.5, y: 0.5 } // or anchor: 0.5 to center both x and y }); ``` / export interface DOMContainerOptions extends ViewContainerOptions { /** The DOM element to use for the container. Can be any HTML element like div, input, textarea, etc. If not provided, creates a new div element. / element?: HTMLElement; /** The anchor point of the container. - Can be a single number to set both x and y - Can be a point-like object with x,y coordinates - (0,0) is top-left - (1,1) is bottom-right - (0.5,0.5) is center / anchor?: PointData | number; } /** The DOMContainer object is used to render DOM elements within the PixiJS scene graph. It allows you to integrate HTML elements into your PixiJS application while maintaining proper transform hierarchy and visibility. DOMContainer is especially useful for rendering standard DOM elements that handle user input, such as `<input>` or `<textarea>`. This is often simpler and more flexible than trying to implement text input directly in PixiJS. For instance, if you need text fields or text areas, you can embed them through this container for native browser text handling. --------- EXPERIMENTAL --------- This is a new API, things may change and it may not work as expected. We want to hear your feedback as we go! -------------------------------- ```ts // Basic text display const textContainer = new DOMContainer(); textContainer.element.innerHTML = 'Hello World!'; app.stage.addChild(textContainer); // Input field with centered anchor const inputContainer = new DOMContainer({ element: document.createElement('input'), anchor: 0.5 }); inputContainer.position.set(400, 300); app.stage.addChild(inputContainer); // Rich text area const textArea = new DOMContainer({ element: document.createElement('textarea'), anchor: { x: 0, y: 0 } }); textArea.scale.set(2); app.stage.addChild(textArea); ```",
+  "category": "scene",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "super",
+      "params": [
+        {
+          "name": "label",
+          "type": "'DOMContainer'",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "...rest\n        }",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Point",
+      "params": [
+        {
+          "name": "0",
+          "type": null
+        },
+        {
+          "name": "0",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "anchor",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createElement",
+      "params": [
+        {
+          "name": "'div'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DOMContainer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "center",
+      "params": [
+        {
+          "name": "shorthand",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "Point",
+      "params": [
+        {
+          "name": "0.3",
+          "type": null
+        },
+        {
+          "name": "0.7",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set",
+      "params": [
+        {
+          "name": "value",
+          "type": null
+        }
+      ],
+      "returnType": "this._anchor.copyFrom(value)",
+      "description": null
+    },
+    {
+      "name": "DOMContainer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "createElement",
+      "params": [
+        {
+          "name": "'input'",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "this._element === value",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "onViewUpdate",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "DOMContainer",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "appendChild",
+      "params": [
+        {
+          "name": "domContainer.element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "updateBounds",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "if",
+      "params": [
+        {
+          "name": "!element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "true",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": "boolean",
+          "optional": true,
+          "default": "false"
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "destroy",
+      "params": [
+        {
+          "name": "options",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "removeChild",
+      "params": [
+        {
+          "name": "this._element",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": [
+    {
+      "name": "anchor",
+      "type": "Point",
+      "description": "The anchor sets the origin point of the container. Controls the relative positioning of the DOM element. The default is `(0,0)`, this means the container's origin is the top left. Setting the anchor to `(0.5,0.5)` means the container's origin is centered. Setting the anchor to `(1,1)` would mean the container's origin point will be the bottom right corner. ```ts const container = new DOMContainer(); // Set anchor to center (shorthand) container.anchor = 0.5; // Set anchor to bottom-right container.anchor = { x: 1, y: 1 }; // Set anchor to custom position container.anchor = new Point(0.3, 0.7); ```"
+    },
+    {
+      "name": "element",
+      "type": "HTMLElement",
+      "description": "The DOM element associated with this container. ```ts const domContainer = new DOMContainer(); domContainer.element.innerHTML = 'Hello World!'; document.body.appendChild(domContainer.element); ```"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "type": "interface",
+  "name": "TextureStyleOptions",
+  "sourcePath": "rendering/renderers/shared/texture/TextureStyle.ts",
+  "extends": [
+    "Partial"
+  ],
+  "description": "This takes a shader string and maps it to a resource id. This is a little different than regular resource ids as these ids are not unique to the resource. But must not overlap with other (non sampler) resources Ids. / function createResourceIdFromString(value: string): number { const id = idHash[value]; if (id === undefined) { idHash[value] = uid('resource'); } return id; } /** The options for the texture style.",
+  "category": "rendering",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "addressMode",
+      "type": "WRAP_MODE",
+      "optional": true,
+      "description": "setting this will set wrapModeU,wrapModeV and wrapModeW all at once!"
+    },
+    {
+      "name": "addressModeU",
+      "type": "WRAP_MODE",
+      "optional": true,
+      "description": "specifies the {{GPUAddressMode|address modes}} for the texture width, height, and depth coordinates, respectively."
+    },
+    {
+      "name": "addressModeV",
+      "type": "WRAP_MODE",
+      "optional": true,
+      "description": "specifies the {{GPUAddressMode|address modes}} for the texture width, height, and depth coordinates, respectively."
+    },
+    {
+      "name": "addressModeW",
+      "type": "WRAP_MODE",
+      "optional": true,
+      "description": "Specifies the {{GPUAddressMode|address modes}} for the texture width, height, and depth coordinates, respectively."
+    },
+    {
+      "name": "scaleMode",
+      "type": "SCALE_MODE",
+      "optional": true,
+      "description": "setting this will set magFilter,minFilter and mipmapFilter all at once!"
+    },
+    {
+      "name": "magFilter",
+      "type": "SCALE_MODE",
+      "optional": true,
+      "description": "specifies the sampling behavior when the sample footprint is smaller than or equal to one texel."
+    },
+    {
+      "name": "minFilter",
+      "type": "SCALE_MODE",
+      "optional": true,
+      "description": "specifies the sampling behavior when the sample footprint is larger than one texel."
+    },
+    {
+      "name": "mipmapFilter",
+      "type": "SCALE_MODE",
+      "optional": true,
+      "description": "specifies behavior for sampling between mipmap levels."
+    },
+    {
+      "name": "lodMinClamp",
+      "type": "number",
+      "optional": true,
+      "description": "specifies the minimum and maximum levels of detail, respectively, used internally when sampling a texture."
+    },
+    {
+      "name": "lodMaxClamp",
+      "type": "number",
+      "optional": true,
+      "description": "Specifies the minimum and maximum levels of detail, respectively, used internally when sampling a texture."
+    },
+    {
+      "name": "compare",
+      "type": "COMPARE_FUNCTION",
+      "optional": true,
+      "description": "When provided the sampler will be a comparison sampler with the specified {@link COMPARE_FUNCTION}. Note: Comparison samplers may use filtering, but the sampling results will be implementation-dependent and may differ from the normal filtering rules."
+    },
+    {
+      "name": "maxAnisotropy",
+      "type": "number",
+      "optional": true,
+      "description": "Specifies the maximum anisotropy value clamp used by the sampler. Note: Most implementations support {@link TextureStyle#maxAnisotropy} values in range between 1 and 16, inclusive. The used value of {@link TextureStyle#maxAnisotropy} will be clamped to the maximum value that the platform supports. setting this to anything higher than 1 will set scale modes to 'linear'"
+    },
+    {
+      "name": "change",
+      "type": "TextureStyle,\n    destroy: TextureStyle,\n}> implements BindResource\n{\n    /** @internal */\n    public _resourceType = 'textureSampler'",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "_sharedResourceId",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "defaultOptions",
+      "type": "TextureStyleOptions = {\n        addressMode: 'clamp-to-edge',\n        scaleMode: 'linear'\n    }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "addressModeU",
+      "type": "WRAP_MODE",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "addressModeV",
+      "type": "WRAP_MODE",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "addressModeW",
+      "type": "WRAP_MODE",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "magFilter",
+      "type": "SCALE_MODE",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "minFilter",
+      "type": "SCALE_MODE",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "mipmapFilter",
+      "type": "SCALE_MODE",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "lodMinClamp",
+      "type": "number",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "lodMaxClamp",
+      "type": "number",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "Note",
+      "type": "Comparison samplers may use filtering, but the sampling results will be\n     * implementation-dependent and may differ from the normal filtering rules.\n     */\n    public compare?: COMPARE_FUNCTION",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "Note",
+      "type": "Most implementations support {@link TextureStyle#maxAnisotropy} values in range\n     * between 1 and 16, inclusive. The used value of {@link TextureStyle#maxAnisotropy} will\n     * be clamped to the maximum value that the platform supports.\n     * @internal\n     */\n    public _maxAnisotropy?: number = 1",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "options",
+      "type": "TextureStyleOptions = {})\n    {\n        super()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "WRAP_MODE)\n    {\n        this.addressModeU = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "WRAP_MODE)\n    {\n        // #if _DEBUG\n        deprecation(v8_0_0, 'TextureStyle.wrapMode is now TextureStyle.addressMode')",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "SCALE_MODE)\n    {\n        this.magFilter = value",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "value",
+      "type": "number)\n    {\n        this._maxAnisotropy = Math.min(value, 16)",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

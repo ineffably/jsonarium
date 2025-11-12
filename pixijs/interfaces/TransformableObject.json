@@ -1,0 +1,245 @@
+{
+  "type": "interface",
+  "name": "TransformableObject",
+  "sourcePath": "maths/matrix/Matrix.ts",
+  "extends": [],
+  "description": "The data structure that contains the position, scale, pivot, skew and rotation of an object. This is used by the {@link Matrix} class to decompose the matrix into its components.",
+  "category": "maths",
+  "deprecated": false,
+  "properties": [
+    {
+      "name": "position",
+      "type": "PointData",
+      "optional": false,
+      "description": "The position of the object"
+    },
+    {
+      "name": "scale",
+      "type": "PointData",
+      "optional": false,
+      "description": "The scale of the object"
+    },
+    {
+      "name": "pivot",
+      "type": "PointData",
+      "optional": false,
+      "description": "The pivot of the object"
+    },
+    {
+      "name": "skew",
+      "type": "PointData",
+      "optional": false,
+      "description": "The skew of the object"
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "optional": false,
+      "description": "The rotation of the object"
+    },
+    {
+      "name": "matrix",
+      "type": "*\n * ```js\n * | a  c  tx |\n * | b  d  ty |\n * | 0  0  1  |\n * ```\n * @example\n * ```ts\n * // Create identity matrix\n * const matrix = new Matrix()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "10, y: 20 }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "a",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "c",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "d",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "tx",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "ty",
+      "type": "number",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "array",
+      "type": "Float32Array | null = null",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "order",
+      "type": "* > ```\n     * > array[0] = a  (x scale)\n     * > array[1] = b  (y skew)\n     * > array[2] = tx (x translation)\n     * > array[3] = c  (x skew)\n     * > array[4] = d  (y scale)\n     * > array[5] = ty (y translation)\n     * > ```\n     * @example\n     * ```ts\n     * // Create matrix from array\n     * const matrix = new Matrix()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "array",
+      "type": "number[]): void\n    {\n        this.a = array[0]",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "a",
+      "type": "number, b: number, c: number, d: number, tx: number, ty: number): this\n    {\n        this.a = a",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "is",
+      "type": "* > ```\n     * > Non-transposed:\n     * > [a, c, tx,\n     * > b, d, ty,\n     * > 0, 0, 1]\n     * >\n     * > Transposed:\n     * > [a, b, 0,\n     * > c, d, 0,\n     * > tx,ty,1]\n     * > ```\n     * @example\n     * ```ts\n     * // Basic array conversion\n     * const matrix = new Matrix(2, 0, 0, 2, 100, 100)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "transpose",
+      "type": "boolean, out?: Float32Array): Float32Array\n    {\n        if (!this.array)\n        {\n            this.array = new Float32Array(9)",
+      "optional": true,
+      "description": null
+    },
+    {
+      "name": "pos",
+      "type": "PointData, newPos?: P): P\n    {\n        newPos = (newPos || new Point()) as P",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "pos",
+      "type": "PointData, newPos?: P): P\n    {\n        newPos = (newPos || new Point()) as P",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): this\n    {\n        this.tx += x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number): this\n    {\n        this.a *= x",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "angle",
+      "type": "number): this\n    {\n        const cos = Math.cos(angle)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "together",
+      "type": "this = this * matrix\n     * @example\n     * ```ts\n     * // Basic matrix combination\n     * const matrix = new Matrix()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matters",
+      "type": "A.append(B) !== B.append(A)\n     * - Modifies current matrix\n     * - Preserves transformation order\n     * - Commonly used for combining transforms\n     * @param matrix - The matrix to append\n     * @returns This matrix. Good for chaining method calls.\n     * @see {@link Matrix.prepend} For prepending transformations\n     * @see {@link Matrix.appendFrom} For appending two external matrices\n     */\n    public append(matrix: Matrix): this\n    {\n        const a1 = this.a",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "multiplication",
+      "type": "this = A * B\n     * @example\n     * ```ts\n     * // Basic matrix multiplication\n     * const result = new Matrix()",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matters",
+      "type": "A * B !== B * A\n     * - Creates a new transformation from two others\n     * - More efficient than append() for multiple operations\n     * - Does not modify input matrices\n     * @param a - The first matrix to multiply\n     * @param b - The second matrix to multiply\n     * @returns This matrix. Good for chaining method calls.\n     * @see {@link Matrix.append} For single matrix combination\n     * @see {@link Matrix.prepend} For reverse order multiplication\n     */\n    public appendFrom(a: Matrix, b: Matrix): this\n    {\n        const a1 = a.a",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "number, y: number, pivotX: number, pivotY: number, scaleX: number,\n        scaleY: number, rotation: number, skewX: number, skewY: number): this\n    {\n        this.a = Math.cos(rotation + skewY) * scaleX",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "together",
+      "type": "this = matrix * this\n     * @example\n     * ```ts\n     * // Basic matrix prepend\n     * const matrix = new Matrix().scale(2, 2)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matters",
+      "type": "A.prepend(B) !== B.prepend(A)\n     * - Modifies current matrix\n     * - Reverses transformation order compared to append()\n     * @param matrix - The matrix to prepend\n     * @returns This matrix. Good for chaining method calls.\n     * @see {@link Matrix.append} For appending transformations\n     * @see {@link Matrix.appendFrom} For combining external matrices\n     */\n    public prepend(matrix: Matrix): this\n    {\n        const tx1 = this.tx",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "position",
+      "type": "new Point(),\n     *     scale: new Point(),\n     *     pivot: new Point(),\n     *     skew: new Point(),\n     *     rotation: 0\n     * }",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "transform",
+      "type": "TransformableObject): TransformableObject\n    {\n        // sort out rotation / skew..\n        const a = this.a",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "values",
+      "type": "scale=1, no skew, no translation.\n     * @example\n     * ```ts\n     * // Reset transformed matrix\n     * const matrix = new Matrix()\n     *     .scale(2, 2)\n     *     .rotate(Math.PI / 4)",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matrix",
+      "type": "Matrix): Matrix\n    {\n        matrix.a = this.a",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matrix",
+      "type": "Matrix): this\n    {\n        this.a = matrix.a",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "matrix",
+      "type": "Matrix)\n    {\n        return matrix.a === this.a && matrix.b === this.b\n            && matrix.c === this.c && matrix.d === this.d\n            && matrix.tx === this.tx && matrix.ty === this.ty",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "js",
+      "type": "Matrix a=${this.a} b=${this.b} c=${this.c} d=${this.d} tx=${this.tx} ty=${this.ty}]`",
+      "optional": false,
+      "description": null
+    },
+    {
+      "name": "x",
+      "type": "10, y: 20 })",
+      "optional": false,
+      "description": null
+    }
+  ]
+}

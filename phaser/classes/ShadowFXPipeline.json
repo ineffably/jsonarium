@@ -1,0 +1,195 @@
+{
+  "type": "class",
+  "name": "ShadowFXPipeline",
+  "sourcePath": "renderer/webgl/pipelines/fx/ShadowFXPipeline.js",
+  "extends": null,
+  "implements": [],
+  "description": null,
+  "category": "renderer",
+  "deprecated": false,
+  "methods": [
+    {
+      "name": "Class",
+      "params": [
+        {
+          "name": "Extends",
+          "type": "PostFXPipeline",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "initialize",
+          "type": "function ShadowFXPipeline (game",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "call",
+      "params": [
+        {
+          "name": "this",
+          "type": null
+        },
+        {
+          "name": "game",
+          "type": "game",
+          "optional": false,
+          "default": null
+        },
+        {
+          "name": "fragShader",
+          "type": "ShadowFrag\n        }",
+          "optional": false,
+          "default": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "function",
+      "params": [
+        {
+          "name": "controller",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "getController",
+      "params": [
+        {
+          "name": "controller",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1i",
+      "params": [
+        {
+          "name": "'samples'",
+          "type": null
+        },
+        {
+          "name": "samples",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1f",
+      "params": [
+        {
+          "name": "'intensity'",
+          "type": null
+        },
+        {
+          "name": "controller.intensity",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1f",
+      "params": [
+        {
+          "name": "'decay'",
+          "type": null
+        },
+        {
+          "name": "controller.decay",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set1f",
+      "params": [
+        {
+          "name": "'power'",
+          "type": null
+        },
+        {
+          "name": "(controller.power / samples",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set2f",
+      "params": [
+        {
+          "name": "'lightPosition'",
+          "type": null
+        },
+        {
+          "name": "controller.x",
+          "type": null
+        },
+        {
+          "name": "controller.y",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    },
+    {
+      "name": "set4fv",
+      "params": [
+        {
+          "name": "'color'",
+          "type": null
+        },
+        {
+          "name": "controller.glcolor",
+          "type": null
+        },
+        {
+          "name": "shader",
+          "type": null
+        }
+      ],
+      "returnType": null,
+      "description": null
+    }
+  ],
+  "properties": []
+}
