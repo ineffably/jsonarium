@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local LLM Model Finder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .filters {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            position: sticky;
+            top: 73px;
+            z-index: 90;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .filters-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .filter-section {
+            margin-bottom: 0;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+            display: block;
+            color: var(--text);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .filter-option {
+            position: relative;
+        }
+
+        .filter-option input[type="radio"],
+        .filter-option input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .filter-option label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem 0.75rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            line-height: 1.2;
+        }
+
+        .filter-option input:checked + label {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .filter-option label:hover {
+            border-color: var(--primary);
+        }
+
+        .filter-option .spec {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            line-height: 1.2;
+        }
+
+        .filter-option input:checked + label .spec {
+            opacity: 0.9;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .tag-select-container {
+            position: relative;
+        }
+
+        .tag-select-input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            background: white;
+        }
+
+        .tag-select-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .selected-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.5rem;
+            min-height: 20px;
+        }
+
+        .tag-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .tag-chip-remove {
+            cursor: pointer;
+            font-weight: bold;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .tag-chip-remove:hover {
+            opacity: 1;
+        }
+
+        .tag-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 0.25rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: none;
+        }
+
+        .tag-dropdown.show {
+            display: block;
+        }
+
+        .tag-option {
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .tag-option:hover {
+            background: var(--background);
+        }
+
+        .tag-option.selected {
+            background: #e3f2fd;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .tag-option-name {
+            font-weight: 500;
+        }
+
+        .tag-option-count {
+            color: var(--text-light);
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            padding: 0.5rem 1rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .model-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .model-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .model-header {
+            margin-bottom: 1rem;
+        }
+
+        .model-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--text);
+            word-break: break-word;
+        }
+
+        .model-id {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-family: 'Courier New', monospace;
+        }
+
+        .model-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .badge-size {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-recommended {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-task-multimodal {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .badge-task-vision {
+            background: #fce7f3;
+            color: #9f1239;
+        }
+
+        .badge-task-audio {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-task-nlp {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .filter-section-full-width {
+            margin-bottom: 0.75rem;
+        }
+
+        .model-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: var(--background);
+            border-radius: 6px;
+        }
+
+        .model-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .model-stat-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .model-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .model-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.5rem;
+            background: var(--background);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .model-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .empty {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .pagination button {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination button.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .pagination .page-info {
+            padding: 0.5rem 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .filters-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🤖 Local LLM Model Finder</h1>
+        <p>Find the perfect open-weight model for your hardware</p>
+    </header>
+
+    <div class="container">
+        <div class="filters">
+            <div class="filter-section filter-section-full-width">
+                <label class="filter-label" for="taskSelect">Filter by Task</label>
+                <select id="taskSelect" class="search-box">
+                    <option value="all">All Tasks</option>
+                </select>
+            </div>
+
+            <div class="filters-grid">
+                <div class="filters-column">
+                    <div class="filter-section">
+                        <label class="filter-label">Search Models</label>
+                        <input type="text" id="searchInput" class="search-box" placeholder="Search by name or description...">
+                    </div>
+
+                    <div class="filter-section">
+                        <label class="filter-label">Sort By</label>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <select id="sortBy" class="search-box" style="flex: 1;">
+                                <option value="downloads">Downloads</option>
+                                <option value="likes">Likes</option>
+                                <option value="modelName">Model Name</option>
+                                <option value="modelId">Model ID</option>
+                                <option value="size">Model Size</option>
+                            </select>
+                            <button id="sortDirection" class="search-box" style="width: 45px; cursor: pointer; text-align: center; padding: 0.5rem;" title="Toggle sort direction">↓</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <label class="filter-label" for="hardwareSelect">Your Hardware</label>
+                        <select id="hardwareSelect" class="search-box">
+                            <option value="all">All Hardware</option>
+                            <optgroup label="PC / Nvidia GPU">
+                                <option value="8">PC (Nvidia 8GB VRAM)</option>
+                                <option value="12">PC (Nvidia 12GB VRAM)</option>
+                                <option value="16">PC (Nvidia 16GB VRAM)</option>
+                                <option value="24">PC (Nvidia 24GB VRAM)</option>
+                                <option value="32">PC (Nvidia 32GB VRAM)</option>
+                                <option value="48">PC (Nvidia 48GB VRAM)</option>
+                                <option value="64">PC (Nvidia 64GB VRAM)</option>
+                                <option value="96">PC (Nvidia 96GB VRAM)</option>
+                            </optgroup>
+                            <optgroup label="Mac M4 Mini">
+                                <option value="32">Mac M4 Mini (32GB RAM)</option>
+                                <option value="64">Mac M4 Mini (64GB RAM)</option>
+                            </optgroup>
+                            <optgroup label="Mac M4 Laptop">
+                                <option value="16">Mac M4 Laptop (16GB RAM)</option>
+                                <option value="24">Mac M4 Laptop (24GB RAM)</option>
+                                <option value="32">Mac M4 Laptop (32GB RAM)</option>
+                                <option value="64">Mac M4 Laptop (64GB RAM)</option>
+                            </optgroup>
+                            <optgroup label="Mac Studio">
+                                <option value="64">Mac Studio (64GB RAM)</option>
+                                <option value="128">Mac Studio (128GB RAM)</option>
+                                <option value="192">Mac Studio (192GB RAM)</option>
+                            </optgroup>
+                        </select>
+                        <div style="margin-top: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.85rem;" id="recommendedLabel">
+                                <input type="checkbox" id="showRecommendedOnly" style="cursor: pointer;" disabled>
+                                <span>Show Recommended for My Hardware</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filters-column">
+                    <div class="filter-section">
+                        <label class="filter-label">Filter by Tags (any match)</label>
+                        <div class="tag-select-container">
+                            <input
+                                type="text"
+                                id="tagSearchInput"
+                                class="tag-select-input"
+                                placeholder="Search and select tags..."
+                                autocomplete="off"
+                            >
+                            <div id="tagDropdown" class="tag-dropdown"></div>
+                        </div>
+                        <div id="selectedTags" class="selected-tags"></div>
+                    </div>
+
+                    <div class="filter-section">
+                        <label class="filter-label">Popularity</label>
+                        <div class="filter-grid">
+                            <div class="filter-option">
+                                <input type="checkbox" id="pop-viral" value="viral">
+                                <label for="pop-viral">
+                                    <span>Viral (5M+)</span>
+                                </label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="pop-very-popular" value="very-popular">
+                                <label for="pop-very-popular">
+                                    <span>Very Popular (1M+)</span>
+                                </label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="pop-popular" value="popular">
+                                <label for="pop-popular">
+                                    <span>Popular (100K+)</span>
+                                </label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="pop-moderate" value="moderate">
+                                <label for="pop-moderate">
+                                    <span>Moderate (10K+)</span>
+                                </label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="pop-emerging" value="emerging">
+                                <label for="pop-emerging">
+                                    <span>Emerging (&lt;10K)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <label class="filter-label">Model Size</label>
+                        <div class="filter-grid">
+                            <div class="filter-option">
+                                <input type="checkbox" id="size-tiny" value="tiny">
+                                <label for="size-tiny">
+                                    <span>Tiny (1-3B)</span>
+                                </label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="size-small" value="small">
+                                <label for="size-small">
+                                    <span>Small (3-8B)</span>
+                                </label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="size-medium" value="medium">
+                                <label for="size-medium">
+                                    <span>Medium (8-20B)</span>
+                                </label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="size-large" value="large">
+                                <label for="size-large">
+                                    <span>Large (20-50B)</span>
+                                </label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="size-xlarge" value="xlarge">
+                                <label for="size-xlarge">
+                                    <span>Extra Large (50B+)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats" id="stats">
+            <div class="stat">
+                <div class="stat-value" id="totalModels">-</div>
+                <div class="stat-label">Total Models</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="filteredModels">-</div>
+                <div class="stat-label">Matching Filters</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="recommendedModels">-</div>
+                <div class="stat-label">Recommended</div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">
+            <p>Loading models...</p>
+        </div>
+
+        <div id="models" class="models-grid" style="display: none;"></div>
+
+        <div id="pagination" class="pagination" style="display: none;"></div>
+
+        <div id="empty" class="empty" style="display: none;">
+            <div class="empty-icon">🔍</div>
+            <h3>No models found</h3>
+            <p>Try adjusting your filters or search terms</p>
+        </div>
+    </div>
+
+    <script>
+        let allModels = [];
+        let filteredModels = [];
+        let currentPage = 1;
+        const modelsPerPage = 24;
+        let sortDescending = true;
+        let tagCounts = {};
+        let selectedTags = [];
+        let allTags = [];
+
+        // Get available RAM from hardware selection
+        function getAvailableRAM(hardware) {
+            if (hardware === 'all') return Infinity;
+            return parseInt(hardware);
+        }
+
+        // Extract model size from tags or name
+        function getModelSize(model) {
+            const sizePatterns = [
+                /(\d+\.?\d*)b/i,  // e.g., "7b", "13b", "70b"
+                /(\d+\.?\d*)B/,   // capital B
+            ];
+
+            // Check tags first
+            if (model.tags) {
+                for (const tag of model.tags) {
+                    for (const pattern of sizePatterns) {
+                        const match = tag.match(pattern);
+                        if (match) {
+                            return parseFloat(match[1]);
+                        }
+                    }
+                }
+            }
+
+            // Check model name
+            for (const pattern of sizePatterns) {
+                const match = model.id.match(pattern);
+                if (match) {
+                    return parseFloat(match[1]);
+                }
+            }
+
+            return null;
+        }
+
+        // Estimate memory requirement (rough approximation)
+        // Formula: model_size_in_billions * 1.2 (for 4-bit quantization) to 2.0 (for full precision)
+        function estimateMemoryGB(sizeInBillions) {
+            if (!sizeInBillions) return null;
+            // Using 1.5 as middle ground (8-bit quantization typical for local)
+            return sizeInBillions * 1.5;
+        }
+
+        // Categorize model size
+        function getSizeCategory(sizeInBillions) {
+            if (!sizeInBillions) return null;
+            if (sizeInBillions < 3) return 'tiny';
+            if (sizeInBillions < 8) return 'small';
+            if (sizeInBillions < 20) return 'medium';
+            if (sizeInBillions < 50) return 'large';
+            return 'xlarge';
+        }
+
+        // Build tag counts from all models
+        function buildTagCounts(models) {
+            const counts = {};
+
+            models.forEach(model => {
+                if (model.tags && Array.isArray(model.tags)) {
+                    model.tags.forEach(tag => {
+                        // Skip some noise tags
+                        if (tag.startsWith('license:') ||
+                            tag.startsWith('region:') ||
+                            tag.startsWith('doi:') ||
+                            tag === 'has_space') {
+                            return;
+                        }
+                        counts[tag] = (counts[tag] || 0) + 1;
+                    });
+                }
+            });
+
+            return counts;
+        }
+
+        // Populate tag dropdown
+        function populateTagDropdown(searchTerm = '') {
+            const dropdown = document.getElementById('tagDropdown');
+            const term = searchTerm.toLowerCase();
+
+            const filtered = allTags.filter(([tag]) =>
+                tag.toLowerCase().includes(term)
+            );
+
+            dropdown.innerHTML = filtered.map(([tag, count]) => `
+                <div class="tag-option ${selectedTags.includes(tag) ? 'selected' : ''}" data-tag="${tag}">
+                    <span class="tag-option-name">${tag}</span>
+                    <span class="tag-option-count">(${count})</span>
+                </div>
+            `).join('');
+        }
+
+        // Render selected tags
+        function renderSelectedTags() {
+            const container = document.getElementById('selectedTags');
+
+            if (selectedTags.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = selectedTags.map(tag => `
+                <div class="tag-chip">
+                    <span>${tag}</span>
+                    <span class="tag-chip-remove" data-tag="${tag}">×</span>
+                </div>
+            `).join('');
+        }
+
+        // Toggle tag selection
+        function toggleTag(tag) {
+            const index = selectedTags.indexOf(tag);
+
+            if (index > -1) {
+                selectedTags.splice(index, 1);
+            } else {
+                selectedTags.push(tag);
+            }
+
+            renderSelectedTags();
+            populateTagDropdown(document.getElementById('tagSearchInput').value);
+            filterAndRender();
+        }
+
+        // Initialize tag filter
+        function initTagFilter() {
+            const input = document.getElementById('tagSearchInput');
+            const dropdown = document.getElementById('tagDropdown');
+            const container = document.getElementById('selectedTags');
+
+            if (!input || !dropdown || !container) {
+                console.error('Tag filter elements not found');
+                return;
+            }
+
+            // Show dropdown on focus
+            input.addEventListener('focus', () => {
+                dropdown.classList.add('show');
+                populateTagDropdown(input.value);
+            });
+
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.tag-select-container') && !e.target.closest('.selected-tags')) {
+                    dropdown.classList.remove('show');
+                }
+            });
+
+            // Search tags
+            input.addEventListener('input', (e) => {
+                populateTagDropdown(e.target.value);
+            });
+
+            // Handle tag option clicks
+            dropdown.addEventListener('click', (e) => {
+                const option = e.target.closest('.tag-option');
+                if (option) {
+                    const tag = option.dataset.tag;
+                    toggleTag(tag);
+                    input.value = '';
+                    input.focus();
+                }
+            });
+
+            // Handle tag chip remove clicks
+            container.addEventListener('click', (e) => {
+                if (e.target.classList.contains('tag-chip-remove')) {
+                    const tag = e.target.dataset.tag;
+                    toggleTag(tag);
+                }
+            });
+        }
+
+        // Task grouping configuration
+        const taskGroups = {
+            'Natural Language Processing': [
+                'text-generation',
+                'translation',
+                'summarization',
+                'question-answering',
+                'text-classification',
+                'sentence-similarity',
+                'feature-extraction',
+                'text-ranking',
+                'fill-mask',
+                'token-classification',
+                'zero-shot-classification'
+            ],
+            'Multimodal': [
+                'image-text-to-text',
+                'video-text-to-text',
+                'audio-text-to-text',
+                'visual-question-answering',
+                'any-to-any'
+            ],
+            'Computer Vision': [
+                'image-to-text',
+                'text-to-image',
+                'zero-shot-image-classification',
+                'image-classification',
+                'object-detection',
+                'image-segmentation'
+            ],
+            'Audio': [
+                'text-to-speech',
+                'automatic-speech-recognition',
+                'audio-classification',
+                'text-to-audio',
+                'audio-to-audio'
+            ]
+        };
+
+        // Format task name for display
+        function formatTaskName(pipelineTag) {
+            return pipelineTag
+                .split('-')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+        }
+
+        // Get task group for a pipeline tag
+        function getTaskGroup(pipelineTag) {
+            for (const [group, tasks] of Object.entries(taskGroups)) {
+                if (tasks.includes(pipelineTag)) return group;
+            }
+            return 'Other';
+        }
+
+        // Map task groups to badge CSS classes
+        const taskGroupBadgeClasses = {
+            'Multimodal': 'badge-task-multimodal',
+            'Computer Vision': 'badge-task-vision',
+            'Audio': 'badge-task-audio',
+            'Natural Language Processing': 'badge-task-nlp',
+            'Other': 'badge-size'
+        };
+
+        // Build and populate task dropdown from model data
+        function populateTaskDropdown(models) {
+            const taskCounts = {};
+
+            // Count models per pipeline_tag
+            models.forEach(model => {
+                if (model.pipeline_tag) {
+                    taskCounts[model.pipeline_tag] = (taskCounts[model.pipeline_tag] || 0) + 1;
+                }
+            });
+
+            // Group tasks by category
+            const groupedTasks = {};
+            Object.keys(taskCounts).forEach(task => {
+                const group = getTaskGroup(task);
+                if (!groupedTasks[group]) groupedTasks[group] = [];
+                groupedTasks[group].push({ task, count: taskCounts[task] });
+            });
+
+            // Sort tasks within each group by count (descending)
+            Object.values(groupedTasks).forEach(tasks => {
+                tasks.sort((a, b) => b.count - a.count);
+            });
+
+            // Build dropdown HTML
+            const select = document.getElementById('taskSelect');
+            select.innerHTML = '<option value="all">All Tasks</option>';
+
+            // Add groups in order
+            const groupOrder = ['Natural Language Processing', 'Multimodal', 'Computer Vision', 'Audio', 'Other'];
+            groupOrder.forEach(groupName => {
+                if (groupedTasks[groupName] && groupedTasks[groupName].length > 0) {
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = groupName;
+
+                    groupedTasks[groupName].forEach(({ task, count }) => {
+                        const option = document.createElement('option');
+                        option.value = task;
+                        option.textContent = `${formatTaskName(task)} (${count})`;
+                        optgroup.appendChild(option);
+                    });
+
+                    select.appendChild(optgroup);
+                }
+            });
+        }
+
+        // Get popularity category
+        function getPopularityCategory(downloads) {
+            if (downloads >= 5000000) return 'viral';
+            if (downloads >= 1000000) return 'very-popular';
+            if (downloads >= 100000) return 'popular';
+            if (downloads >= 10000) return 'moderate';
+            return 'emerging';
+        }
+
+        // Check if model is recommended for hardware
+        function isRecommendedForHardware(model, hardware) {
+            if (hardware === 'all') return false;
+
+            const size = getModelSize(model);
+            if (!size) return false;
+
+            const memRequired = estimateMemoryGB(size);
+            if (!memRequired) return false;
+
+            const availableRAM = getAvailableRAM(hardware);
+            const memMargin = memRequired * 1.2; // 20% overhead
+
+            // Recommended if it fits with headroom and uses at least 40% of available RAM
+            return memMargin <= availableRAM && memMargin >= availableRAM * 0.4;
+        }
+
+        // Format number with K/M suffix
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        }
+
+        // Render model card
+        function renderModelCard(model) {
+            const size = getModelSize(model);
+            const memRequired = size ? estimateMemoryGB(size) : null;
+            const hardware = document.getElementById('hardwareSelect').value;
+            const isRecommended = isRecommendedForHardware(model, hardware);
+
+            let badges = '';
+            // Add task badge if pipeline_tag exists
+            if (model.pipeline_tag) {
+                const taskGroup = getTaskGroup(model.pipeline_tag);
+                const badgeClass = taskGroupBadgeClasses[taskGroup] || 'badge-size';
+                badges += `<span class="badge ${badgeClass}" title="${formatTaskName(model.pipeline_tag)}">${formatTaskName(model.pipeline_tag)}</span>`;
+            }
+            if (size) {
+                badges += `<span class="badge badge-size">${size}B params</span>`;
+            }
+            if (isRecommended) {
+                badges += `<span class="badge badge-recommended">✓ Recommended</span>`;
+            }
+            if (memRequired && memRequired > 50) {
+                badges += `<span class="badge badge-warning">Large Model</span>`;
+            }
+
+            const displayTags = (model.tags || [])
+                .filter(t => !t.startsWith('license:') && !t.startsWith('region:'))
+                .slice(0, 8)
+                .map(tag => `<span class="tag">${tag}</span>`)
+                .join('');
+
+            return `
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-name">${model.id.split('/').pop()}</div>
+                        <div class="model-id">${model.id}</div>
+                    </div>
+
+                    <div class="model-badges">
+                        ${badges}
+                    </div>
+
+                    <div class="model-stats">
+                        <div class="model-stat">
+                            <div class="model-stat-value">↓ ${formatNumber(model.downloads)}</div>
+                            <div class="model-stat-label">Downloads</div>
+                        </div>
+                        <div class="model-stat">
+                            <div class="model-stat-value">♥ ${formatNumber(model.likes)}</div>
+                            <div class="model-stat-label">Likes</div>
+                        </div>
+                        ${memRequired ? `
+                        <div class="model-stat">
+                            <div class="model-stat-value">~${memRequired.toFixed(1)}GB</div>
+                            <div class="model-stat-label">Est. Memory</div>
+                        </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="model-tags">
+                        ${displayTags}
+                    </div>
+
+                    <div class="model-actions">
+                        <a href="https://huggingface.co/${model.id}" target="_blank" class="btn btn-primary">
+                            View on HF
+                        </a>
+                        <button class="btn btn-secondary" onclick="copyOllamaCommand('${model.id}')">
+                            Copy for Ollama
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Copy Ollama command to clipboard
+        function copyOllamaCommand(modelId) {
+            const command = `ollama pull ${modelId}`;
+            navigator.clipboard.writeText(command).then(() => {
+                alert('Copied to clipboard:\n' + command);
+            });
+        }
+
+        // Render pagination controls
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredModels.length / modelsPerPage);
+            const paginationContainer = document.getElementById('pagination');
+
+            if (totalPages <= 1) {
+                paginationContainer.style.display = 'none';
+                return;
+            }
+
+            paginationContainer.style.display = 'flex';
+
+            let html = '';
+
+            // Previous button
+            html += `<button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>← Prev</button>`;
+
+            // Page numbers
+            const maxVisible = 7;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+            if (endPage - startPage < maxVisible - 1) {
+                startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+
+            if (startPage > 1) {
+                html += `<button onclick="goToPage(1)">1</button>`;
+                if (startPage > 2) html += `<span class="page-info">...</span>`;
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                html += `<button onclick="goToPage(${i})" class="${i === currentPage ? 'active' : ''}">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) html += `<span class="page-info">...</span>`;
+                html += `<button onclick="goToPage(${totalPages})">${totalPages}</button>`;
+            }
+
+            // Next button
+            html += `<button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next →</button>`;
+
+            // Page info
+            const start = (currentPage - 1) * modelsPerPage + 1;
+            const end = Math.min(currentPage * modelsPerPage, filteredModels.length);
+            html += `<span class="page-info">${start}-${end} of ${filteredModels.length}</span>`;
+
+            paginationContainer.innerHTML = html;
+        }
+
+        // Go to specific page
+        function goToPage(page) {
+            const totalPages = Math.ceil(filteredModels.length / modelsPerPage);
+            if (page < 1 || page > totalPages) return;
+
+            currentPage = page;
+            renderCurrentPage();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render current page of models
+        function renderCurrentPage() {
+            const modelsContainer = document.getElementById('models');
+            const start = (currentPage - 1) * modelsPerPage;
+            const end = start + modelsPerPage;
+            const pageModels = filteredModels.slice(start, end);
+
+            modelsContainer.innerHTML = pageModels.map(renderModelCard).join('');
+            renderPagination();
+        }
+
+        // Filter and render models
+        function filterAndRender() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const hardware = document.getElementById('hardwareSelect').value;
+            const selectedTask = document.getElementById('taskSelect').value;
+            // selectedTags is now a global variable from the custom tag filter component
+            const sizes = Array.from(document.querySelectorAll('[id^="size-"]:checked')).map(el => el.value);
+            const popularity = Array.from(document.querySelectorAll('[id^="pop-"]:checked')).map(el => el.value);
+            const sortBy = document.getElementById('sortBy').value;
+            const showRecommendedOnly = document.getElementById('showRecommendedOnly').checked;
+
+            filteredModels = allModels.filter(model => {
+                // Search filter (search both model name and full ID)
+                if (searchTerm &&
+                    !model.modelName.toLowerCase().includes(searchTerm) &&
+                    !model.id.toLowerCase().includes(searchTerm)) {
+                    return false;
+                }
+
+                // Hardware filter
+                if (hardware !== 'all') {
+                    const size = getModelSize(model);
+                    if (!size) return false;
+
+                    const memRequired = estimateMemoryGB(size);
+                    if (!memRequired) return false;
+
+                    const availableRAM = getAvailableRAM(hardware);
+                    if (memRequired * 1.2 > availableRAM) return false; // 20% overhead
+                }
+
+                // Recommended only filter
+                if (showRecommendedOnly && !isRecommendedForHardware(model, hardware)) {
+                    return false;
+                }
+
+                // Tag filter - model must have ANY selected tag (OR logic - inclusive)
+                if (selectedTags.length > 0) {
+                    const modelTags = model.tags || [];
+                    const hasAnyTag = selectedTags.some(tag => modelTags.includes(tag));
+                    if (!hasAnyTag) return false;
+                }
+
+                // Popularity filter
+                if (popularity.length > 0) {
+                    const popCategory = getPopularityCategory(model.downloads);
+                    if (!popularity.includes(popCategory)) return false;
+                }
+
+                // Size filter
+                if (sizes.length > 0) {
+                    const size = getModelSize(model);
+                    const category = getSizeCategory(size);
+                    if (!sizes.includes(category)) return false;
+                }
+
+                // Task filter - filter by specific pipeline_tag
+                if (selectedTask !== 'all') {
+                    if (model.pipeline_tag !== selectedTask) return false;
+                }
+
+                return true;
+            });
+
+            // Sort models
+            filteredModels.sort((a, b) => {
+                let comparison = 0;
+
+                switch(sortBy) {
+                    case 'downloads':
+                        comparison = b.downloads - a.downloads;
+                        break;
+                    case 'likes':
+                        comparison = b.likes - a.likes;
+                        break;
+                    case 'modelName':
+                        comparison = a.modelName.localeCompare(b.modelName);
+                        break;
+                    case 'modelId':
+                        comparison = a.id.localeCompare(b.id);
+                        break;
+                    case 'size':
+                        const sizeA = getModelSize(a) || 0;
+                        const sizeB = getModelSize(b) || 0;
+                        comparison = sizeB - sizeA;
+                        break;
+                }
+
+                return sortDescending ? comparison : -comparison;
+            });
+
+            // Reset to page 1 when filters change
+            currentPage = 1;
+
+            // Render
+            const modelsContainer = document.getElementById('models');
+            const emptyContainer = document.getElementById('empty');
+
+            if (filteredModels.length === 0) {
+                modelsContainer.style.display = 'none';
+                document.getElementById('pagination').style.display = 'none';
+                emptyContainer.style.display = 'block';
+            } else {
+                modelsContainer.style.display = 'grid';
+                emptyContainer.style.display = 'none';
+                renderCurrentPage();
+            }
+
+            // Update stats
+            document.getElementById('totalModels').textContent = allModels.length;
+            document.getElementById('filteredModels').textContent = filteredModels.length;
+
+            const hardware_val = document.getElementById('hardwareSelect').value;
+            const recommendedCount = filteredModels.filter(m =>
+                isRecommendedForHardware(m, hardware_val)
+            ).length;
+            document.getElementById('recommendedModels').textContent = recommendedCount;
+        }
+
+        // Load models from JSON
+        async function loadModels() {
+            try {
+                const response = await fetch('models-open-weight.json');
+                const data = await response.json();
+
+                // Add modelName field to each model
+                allModels = data.models.map(model => ({
+                    ...model,
+                    modelName: model.id.split('/').pop()
+                }));
+
+                // Build tag counts and populate filter
+                tagCounts = buildTagCounts(allModels);
+
+                // Sort tags by count (most common first)
+                allTags = Object.entries(tagCounts)
+                    .sort((a, b) => b[1] - a[1])
+                    .filter(([tag, count]) => count >= 5); // Only show tags that appear 5+ times
+
+                // Populate task dropdown from data
+                populateTaskDropdown(allModels);
+
+                initTagFilter();
+
+                document.getElementById('loading').style.display = 'none';
+                filterAndRender();
+            } catch (error) {
+                document.getElementById('loading').innerHTML = `
+                    <p style="color: var(--danger);">Error loading models: ${error.message}</p>
+                `;
+            }
+        }
+
+        // Toggle sort direction
+        document.getElementById('sortDirection').addEventListener('click', function() {
+            sortDescending = !sortDescending;
+            this.textContent = sortDescending ? '↓' : '↑';
+            filterAndRender();
+        });
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', filterAndRender);
+        document.getElementById('hardwareSelect').addEventListener('change', function() {
+            // Enable/disable recommended filter based on hardware selection
+            const hardware = this.value;
+            const recommendedCheckbox = document.getElementById('showRecommendedOnly');
+            const recommendedLabel = document.getElementById('recommendedLabel');
+
+            if (hardware === 'all') {
+                recommendedCheckbox.disabled = true;
+                recommendedCheckbox.checked = false;
+                recommendedLabel.style.opacity = '0.5';
+                recommendedLabel.style.cursor = 'not-allowed';
+            } else {
+                recommendedCheckbox.disabled = false;
+                recommendedLabel.style.opacity = '1';
+                recommendedLabel.style.cursor = 'pointer';
+            }
+
+            filterAndRender();
+        });
+        document.getElementById('showRecommendedOnly').addEventListener('change', filterAndRender);
+        document.getElementById('sortBy').addEventListener('change', filterAndRender);
+        document.getElementById('taskSelect').addEventListener('change', filterAndRender);
+        document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+            input.addEventListener('change', filterAndRender);
+        });
+
+        // Load on page load
+        loadModels();
+    </script>
+</body>
+</html>
